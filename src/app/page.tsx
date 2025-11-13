@@ -31,6 +31,10 @@ export default function Home() {
       <main className="flex-1">
         <ConversationalHero id="hero" />
         <HowItWorks id="how" />
+        <ServicesSection id="services" />
+        <WhyUtilityKing id="why" />
+        <ComparisonDemo id="compare" />
+        <TrustProofs id="trust" />
         <AnimatedCTABanner
           id="cta-banner-1"
           type="quote"
@@ -38,19 +42,15 @@ export default function Home() {
           buttonText="Start Quoting"
           buttonLink="#compare"
         />
-        <ServicesSection id="services" />
-        <WhyUtilityKing id="why" />
-        <ComparisonDemo id="compare" />
-        <TrustProofs id="trust" />
+        <FAQs id="faqs" />
+        <BlogPreview id="blog" />
+        <AboutSection id="about" />
         <AnimatedCTABanner
           id="cta-banner-2"
           type="chat"
           title="Not sure where to start? Ask UKi live."
           buttonText="Chat with UKi"
         />
-        <FAQs id="faqs" />
-        <BlogPreview id="blog" />
-        <AboutSection id="about" />
       </main>
       <Footer id="contact" />
     </div>

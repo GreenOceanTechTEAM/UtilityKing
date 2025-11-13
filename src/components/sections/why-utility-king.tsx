@@ -9,7 +9,7 @@ type WhyUtilityKingProps = {
 const values = [
   {
     icon: <Scale className="h-8 w-8 text-accent" />,
-    title: "100% Impartial",
+    title: "100% Impartial Advice",
     description: "Our recommendations are based purely on data and what's best for you, not on commissions."
   },
   {
