@@ -3,9 +3,11 @@ import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
 import { type Container } from "@tsparticles/engine";
 import { loadSlim } from "@tsparticles/slim"; 
+import { useTheme } from "next-themes";
 
 const ParticleBackground = () => {
   const [init, setInit] = useState(false);
+  const { theme } = useTheme();
 
   useEffect(() => {
     initParticlesEngine(async (engine) => {
@@ -43,10 +45,10 @@ const ParticleBackground = () => {
       },
       particles: {
         color: {
-          value: "#ffffff",
+          value: theme === 'dark' ? "hsl(var(--foreground))" : "hsl(var(--primary))",
         },
         links: {
-          color: "#ffffff",
+          color: theme === 'dark' ? "hsl(var(--foreground))" : "hsl(var(--primary))",
           distance: 150,
           enable: true,
           opacity: 0.2,
@@ -80,7 +82,7 @@ const ParticleBackground = () => {
       },
       detectRetina: true,
     }),
-    []
+    [theme]
   );
 
   if (init) {

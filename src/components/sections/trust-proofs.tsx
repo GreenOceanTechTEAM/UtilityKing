@@ -55,7 +55,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
               <CardContent className="flex flex-1 flex-col justify-between p-6">
                 <div>
                     <div className="flex mb-2">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-yellow-400 text-yellow-400" />)}
+                        {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-accent text-accent" />)}
                     </div>
                     <blockquote className="text-lg text-foreground">
                         <p>"{testimonial.quote}"</p>

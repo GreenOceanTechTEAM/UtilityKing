@@ -91,7 +91,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                         {...field}
                       />
                     </FormControl>
-                    <FormMessage className="text-left text-yellow-300" />
+                    <FormMessage className="text-left text-destructive" />
                   </FormItem>
                 )}
               />
