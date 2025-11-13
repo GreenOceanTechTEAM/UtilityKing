@@ -53,10 +53,10 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
           </p>
         </div>
 
-        <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
+        <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => (
-            <div key={value.title} className="flex gap-4 transform transition-all duration-300 hover:-translate-y-1">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10">
+            <div key={value.title} className="flex gap-4">
+              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
                 {value.icon}
               </div>
               <div>
