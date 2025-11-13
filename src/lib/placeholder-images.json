@@ -2,92 +2,92 @@
   "placeholderImages": [
     {
       "id": "hero-background",
-      "description": "A modern, bright living room with large windows overlooking a city skyline at dusk.",
-      "imageUrl": "https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtb2Rlcm4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8MTc2Mjk3MjQ4MXww&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "modern living room"
+      "description": "Abstract network of glowing blue and purple nodes and lines on a dark background, representing an energy grid or data network.",
+      "imageUrl": "https://images.unsplash.com/photo-1533613220915-609f661a6fe1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxhYnN0cmFjdCUyMG5ldHdvcmt8ZW58MHx8fHwxNzYzMDM1NTMzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract network"
     },
     {
       "id": "cta-banner-1",
-      "description": "Abstract blue and teal energy waves.",
-      "imageUrl": "https://images.unsplash.com/photo-1550275994-2bc88dc68637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGVuZXJneXxlbnwwfHx8fDE3NjI5MzkyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Abstract vibrant blue and teal light trails creating a sense of energy and motion.",
+      "imageUrl": "https://images.unsplash.com/photo-1535223289827-42f1e9919769?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGVuZXJneXxlbnwwfHx8fDE3NjI5MzkyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract energy"
     },
     {
       "id": "cta-banner-2",
-      "description": "Close up of fiber optic cables glowing.",
-      "imageUrl": "https://images.unsplash.com/photo-1517181875630-f72350452109?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmaWJlciUyMG9wdGljc3xlbnwwfHx8fDE3NjI5NjcwNDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Close-up of glowing blue fiber optic cables against a dark background, symbolizing data and technology.",
+      "imageUrl": "https://images.unsplash.com/photo-1587135304383-a71994052994?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxmaWJlciUyMG9wdGljc3xlbnwwfHx8fDE3NjI5NjcwNDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "fiber optics"
     },
     {
       "id": "blog-post-1",
-      "description": "A person looking at an energy bill with a calculator.",
-      "imageUrl": "https://images.unsplash.com/photo-1757256137041-0aab889db199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYWxjdWxhdGluZyUyMGJpbGxzfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A sleek, modern desk with a laptop displaying financial charts, a notebook, and a calculator, representing financial planning and savings.",
+      "imageUrl": "https://images.unsplash.com/photo-1554224155-1696413565d3?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjYWxjdWxhdGluZyUyMGJpbGxzfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "calculating bills"
     },
     {
       "id": "blog-post-2",
-      "description": "A wifi router with glowing lights in a modern home.",
-      "imageUrl": "https://images.unsplash.com/photo-1516044734145-07ca8eef8731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3aWZpJTIwcm91dGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A minimalist white Wi-Fi router with a glowing blue light, placed in a modern, clean home environment.",
+      "imageUrl": "https://images.unsplash.com/photo-1619343213271-a69a4c925d62?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx3aWZpJTIwcm91dGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "wifi router"
     },
     {
       "id": "blog-post-3",
-      "description": "A smart meter display on a kitchen wall.",
-      "imageUrl": "https://images.unsplash.com/photo-1527332756452-1ebef4a55fb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzbWFydCUyMG1ldGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A close-up of a digital smart meter display showing energy consumption data with glowing numbers.",
+      "imageUrl": "https://images.unsplash.com/photo-1620714223084-8fcacc6dfd8d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzbWFydCUyMG1ldGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "smart meter"
     },
     {
       "id": "about-team",
-      "description": "A diverse group of professionals collaborating in a modern office.",
-      "imageUrl": "https://images.unsplash.com/photo-1556484687-30636164638b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkaXZlcnNlJTIwdGVhbXxlbnwwfHx8fDE3NjI5ODk1OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A diverse team of professionals collaborating around a table in a bright, modern office with a city view.",
+      "imageUrl": "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxkaXZlcnNlJTIwdGVhbXxlbnwwfHx8fDE3NjI5ODk1OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "diverse team"
     },
     {
       "id": "avatar-1",
-      "description": "Portrait of a smiling woman in her 30s.",
-      "imageUrl": "https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzbWlsaW5nJTIwd29tYW58ZW58MHx8fHwxNzYzMDA4MTM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Professional headshot of a smiling woman in her 30s, with a clean, out-of-focus background.",
+      "imageUrl": "https://images.unsplash.com/photo-1494790108377-be9c29b29330?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxzbWlsaW5nJTIwd29tYW58ZW58MHx8fHwxNzYzMDA4MTM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "smiling woman"
     },
     {
       "id": "avatar-2",
-      "description": "Portrait of a man in his 40s with glasses.",
-      "imageUrl": "https://images.unsplash.com/photo-1618077360395-f3068be8e001?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc2MjkzNjY5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Headshot of a friendly-looking man in his 40s wearing glasses, in a professional setting.",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc2MjkzNjY5NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man glasses"
     },
     {
       "id": "avatar-3",
-      "description": "Portrait of a young woman with curly hair.",
-      "imageUrl": "https://images.unsplash.com/photo-1606752445153-beb5c9d03ae8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "Candid portrait of a young, happy woman with natural curly hair, smiling warmly.",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "curly hair"
     },
     {
       "id": "logo-1",
-      "description": "Abstract geometric logo in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1747862712521-e4a37b12a039?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYzMDE1NTcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A minimalist, clean, and modern abstract geometric logo in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYzMDE1NTcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "abstract logo"
     },
     {
       "id": "logo-2",
-      "description": "Minimalist wordmark logo in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1645782068569-2d889782ee61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwbG9nb3xlbnwwfHx8fDE3NjI5NzQ2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A sophisticated and simple wordmark logo on a dark background.",
+      "imageUrl": "https://images.unsplash.com/photo-1622547748225-3fc4abd2d67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwbG9nb3xlbnwwfHx8fDE3NjI5NzQ2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "minimalist logo"
     },
     {
       "id": "logo-3",
-      "description": "Circular emblem logo in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1605896403575-8b987c86d449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbWJsZW0lMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A classic circular emblem logo with elegant typography, in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbWJsZW0lMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "emblem logo"
     },
     {
       "id": "logo-4",
-      "description": "Logo with an animal icon in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1622512251353-8a67dd7683bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhbmltYWwlMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A stylized logo featuring a powerful animal silhouette, in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbmltYWwlMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "animal logo"
     },
     {
       "id": "logo-5",
-      "description": "Futuristic tech logo in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1663124178647-24f30cedd1ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWNoJTIwbG9nb3xlbnwwfHx8fDE3NjMwMDE3NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "description": "A futuristic and sharp logo for a technology company, in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwbG9nb3xlbnwwfHx8fDE3NjMwMDE3NDZ8MA&ixlibrb-4.1.0&q=80&w=1080",
       "imageHint": "tech logo"
     }
   ]
