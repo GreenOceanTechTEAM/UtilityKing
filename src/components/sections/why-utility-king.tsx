@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Scale, Database, Bot, Radio, CircleDollarSign, CheckSquare } from 'lucide-react';
+import { Scale, Database, Bot, Radio, CircleDollarSign, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 
 type WhyUtilityKingProps = {
@@ -9,13 +9,8 @@ type WhyUtilityKingProps = {
 const values = [
   {
     icon: <Scale className="h-8 w-8 text-accent" />,
-    title: "100% Impartial Advice",
+    title: "100% Impartial",
     description: "Our recommendations are based purely on data and what's best for you, not on commissions."
-  },
-  {
-    icon: <Database className="h-8 w-8 text-accent" />,
-    title: "Backed by Data",
-    description: "We analyze millions of data points to ensure our comparisons are accurate and up-to-date."
   },
   {
     icon: <Bot className="h-8 w-8 text-accent" />,
@@ -23,14 +18,19 @@ const values = [
     description: "Our smart assistant, UKi, is always available to answer your questions and guide you."
   },
   {
-    icon: <Radio className="h-8 w-8 text-accent" />,
-    title: "Live Rates",
-    description: "We fetch real-time pricing to ensure you're seeing the very latest deals available on the market."
+    icon: <Database className="h-8 w-8 text-accent" />,
+    title: "Backed by Data",
+    description: "We analyze millions of data points to ensure our comparisons are accurate and up-to-date."
   },
   {
-    icon: <CircleDollarSign className="h-8 w-8 text-accent" />,
-    title: "No Hidden Fees",
-    description: "The price you see is the price you pay. We believe in complete transparency with no surprises."
+    icon: <MousePointerClick className="h-8 w-8 text-accent" />,
+    title: "One-Click Switching",
+    description: "Our streamlined process makes switching providers quick and hassle-free."
+  },
+  {
+    icon: <ShieldCheck className="h-8 w-8 text-accent" />,
+    title: "GDPR & Data Safe",
+    description: "Your privacy is paramount. We follow the strictest data protection standards."
   },
   {
     icon: <CheckSquare className="h-8 w-8 text-accent" />,
@@ -51,7 +51,7 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            The Utility King Difference
+            Why UtilityKing?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We're not just another comparison site. We're a technology company dedicated to making the utility market fair and transparent for everyone.
