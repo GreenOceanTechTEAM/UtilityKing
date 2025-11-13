@@ -47,11 +47,11 @@ const stats = [
 
 export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
   return (
-    <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
+    <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Why UtilityKing?
+            The Utility King Difference
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We're not just another comparison site. We're a technology company dedicated to making the utility market fair and transparent for everyone.

@@ -76,8 +76,8 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
           />
         </motion.div>
       )}
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-primary/80 via-primary/50 to-transparent" />
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-primary/30 to-transparent" />
+      <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background/80 via-background/50 to-transparent" />
+      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-background/30 to-transparent" />
 
 
       <div className="container mx-auto px-4 text-center">
@@ -90,10 +90,10 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
              <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
           </Badge>
           <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Let's slash your utility bills together.
+            AI-Powered Energy Comparison: Find Your Best Rate in Seconds.
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-primary-foreground/90">
-            UKi, your smart assistant, will find the best options instantly.
+            Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
           </p>
         </motion.div>
 
@@ -126,7 +126,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                 {isLoading ? (
                   <Loader2 className="h-5 w-5 animate-spin" />
                 ) : (
-                  <ArrowRight className="h-5 w-5" />
+                  'Compare Plans'
                 )}
               </Button>
             </form>
