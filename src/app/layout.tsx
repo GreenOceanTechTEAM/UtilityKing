@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
-import { Analytics } from '@vercel/analytics/react';
-import { SpeedInsights } from '@vercel/speed-insights/next';
 import { cn } from '@/lib/utils';
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar';
 import UKiChat from '@/components/shared/uki-chat';
@@ -33,8 +31,6 @@ export default function RootLayout({
         <UKiChat />
         <ScrollToTop />
         <Toaster />
-        <Analytics />
-        <SpeedInsights />
       </body>
     </html>
   );
