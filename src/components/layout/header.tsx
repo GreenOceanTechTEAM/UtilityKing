@@ -2,11 +2,10 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, useAnimation } from 'framer-motion';
-import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu, X } from 'lucide-react';
+import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
 import { ThemeSwitcher } from '../shared/theme-switcher';
@@ -51,7 +50,7 @@ export default function Header({ sections }: HeaderProps) {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-
+  
   useEffect(() => {
     controls.start({
       backdropFilter: scrolled ? 'blur(16px)' : 'blur(0px)',
@@ -59,55 +58,54 @@ export default function Header({ sections }: HeaderProps) {
     });
   }, [scrolled, controls]);
 
-  const NavLink = ({ id, name }: { id: string, name: string }) => {
-    const Icon = iconMap[id] || HelpCircle;
+
+  const NavLink = ({ id, name }: { id: string; name: string }) => {
     const isActive = activeId === id;
     return (
-      <Tooltip>
-        <TooltipTrigger asChild>
+      <Link
+        href={`#${id}`}
+        className={cn(
+          "relative px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md",
+          isActive
+            ? "text-primary"
+            : "text-muted-foreground hover:text-foreground"
+        )}
+      >
+        {name}
+        {isActive && (
           <motion.div
-            className={cn(
-              'relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300',
-              isActive ? 'text-accent-foreground' : 'text-muted-foreground hover:bg-accent/10 hover:text-foreground'
-            )}
-            >
-            <Link href={`#${id}`} className="flex h-full w-full items-center justify-center">
-              <Icon className="h-5 w-5" />
-            </Link>
-            {isActive && (
-              <motion.div
-                layoutId="active-nav-indicator"
-                className="absolute inset-0 z-[-1] rounded-lg bg-accent"
-                initial={false}
-                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-              />
-            )}
-          </motion.div>
-        </TooltipTrigger>
-        <TooltipContent side="right">
-          <p>{name}</p>
-        </TooltipContent>
-      </Tooltip>
+            layoutId="active-nav-indicator-desktop"
+            className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+            initial={false}
+            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+          />
+        )}
+      </Link>
     );
   };
-  
+
   return (
-    <TooltipProvider>
       <motion.header
-        animate={controls}
-        initial={{ backdropFilter: 'blur(0px)', backgroundColor: 'hsl(var(--background) / 0)' }}
-        transition={{ duration: 0.3 }}
-        className="fixed top-0 left-0 right-0 z-50 border-b"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.5, delay: 0.2 }}
+        className="fixed top-0 left-0 right-0 z-50"
       >
-        <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+        <motion.div
+            animate={controls}
+            initial={{ backdropFilter: 'blur(0px)', backgroundColor: 'hsl(var(--background) / 0)' }}
+            transition={{ duration: 0.3 }}
+            className="absolute inset-0 w-full h-full border-b"
+        />
+        <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
             <Crown className="h-8 w-8 text-primary" />
             <span className="hidden text-xl font-bold font-headline text-foreground sm:inline">Utility King AI</span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden items-center space-x-2 rounded-full border bg-background/50 p-1 md:flex">
-            {sections.slice(0, -1).map(section => (
+          <nav className="hidden items-center gap-1 md:flex">
+            {sections.map(section => (
                 <NavLink key={section.id} id={section.id} name={section.name} />
             ))}
           </nav>
@@ -161,6 +159,5 @@ export default function Header({ sections }: HeaderProps) {
           </div>
         </div>
       </motion.header>
-    </TooltipProvider>
   );
 }

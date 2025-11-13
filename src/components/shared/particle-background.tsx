@@ -25,7 +25,7 @@ const ParticleBackground = () => {
     () => ({
       background: {
         color: {
-          value: "hsl(var(--background))",
+          value: "transparent",
         },
       },
       fpsLimit: 60,
@@ -45,13 +45,13 @@ const ParticleBackground = () => {
       },
       particles: {
         color: {
-          value: theme === 'dark' ? "hsl(var(--foreground))" : "hsl(var(--primary))",
+          value: "hsl(var(--primary))",
         },
         links: {
-          color: theme === 'dark' ? "hsl(var(--foreground))" : "hsl(var(--primary))",
+          color: "hsl(var(--primary))",
           distance: 150,
           enable: true,
-          opacity: 0.2,
+          opacity: 0.3,
           width: 1,
         },
         move: {
@@ -71,7 +71,7 @@ const ParticleBackground = () => {
           value: 80,
         },
         opacity: {
-          value: 0.2,
+          value: 0.3,
         },
         shape: {
           type: "circle",
@@ -82,7 +82,7 @@ const ParticleBackground = () => {
       },
       detectRetina: true,
     }),
-    [theme]
+    []
   );
 
   if (init) {

@@ -5,11 +5,12 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { conversationalHeroAssistance, ConversationalHeroAssistanceOutput } from '@/ai/flows/conversational-hero-assistance';
+import { motion } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import Link from 'next/link';
@@ -24,6 +25,31 @@ const formSchema = z.object({
     message: "Please describe what you're looking for.",
   }),
 });
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.5,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+};
+
 
 export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
@@ -56,70 +82,86 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
   }
 
   return (
-    <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden text-primary-foreground">
+    <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
       <ParticleBackground />
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background/80 via-background/50 to-transparent" />
+      <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
-        <div>
-          <Badge variant="secondary" className="mb-4 text-sm bg-background/20 text-foreground backdrop-blur-sm border-0">
-             <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
-          </Badge>
-          <h1 className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl">
-            AI-Powered Energy Comparison: Find Your Best Rate in Seconds.
-          </h1>
-          <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-foreground/90">
-            Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
-          </p>
-        </div>
-
-        <div
-          className="mt-10 mx-auto max-w-xl"
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
-          <Form {...form}>
-            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
-              <FormField
-                control={form.control}
-                name="userInput"
-                render={({ field }) => (
-                  <FormItem className="w-full">
-                    <FormControl>
-                      <Input
-                        type="text"
-                        placeholder="e.g., 'Find me a cheaper energy deal in London'"
-                        className="h-12 text-base text-foreground"
-                        {...field}
-                      />
-                    </FormControl>
-                    <FormMessage className="text-left text-destructive" />
-                  </FormItem>
-                )}
-              />
-              <Button type="submit" size="lg" className="h-12" disabled={isLoading}>
-                {isLoading ? (
-                  <Loader2 className="h-5 w-5 animate-spin" />
-                ) : (
-                  'Compare Plans'
-                )}
-              </Button>
-            </form>
-          </Form>
+          <motion.div variants={itemVariants}>
+            <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm">
+              <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
+            </Badge>
+          </motion.div>
+          <motion.h1 
+            variants={itemVariants}
+            className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+          >
+            AI-Powered Energy Comparison: Find Your Best Rate in Seconds.
+          </motion.h1>
+          <motion.p 
+            variants={itemVariants}
+            className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-muted-foreground"
+          >
+            Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
+          </motion.p>
 
-          {assistance && (
-            <div
-              className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
-            >
-              <p className="text-sm font-medium text-primary-foreground">{assistance.aiResponse}</p>
-              <div className="mt-3 flex flex-wrap gap-2">
-                {assistance.suggestedServices.map(service => (
-                  <Button key={service} asChild size="sm" variant="secondary">
-                     <Link href="#services">{service}</Link>
-                  </Button>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
+          <motion.div
+            variants={itemVariants}
+            className="mt-10 mx-auto max-w-xl"
+          >
+            <Form {...form}>
+              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
+                <FormField
+                  control={form.control}
+                  name="userInput"
+                  render={({ field }) => (
+                    <FormItem className="w-full">
+                      <FormControl>
+                        <Input
+                          type="text"
+                          placeholder="e.g., 'Find me a cheaper energy deal in London'"
+                          className="h-12 text-base text-foreground"
+                          {...field}
+                        />
+                      </FormControl>
+                      <FormMessage className="text-left" />
+                    </FormItem>
+                  )}
+                />
+                <Button type="submit" size="lg" className="h-12" disabled={isLoading}>
+                  {isLoading ? (
+                    <Loader2 className="h-5 w-5 animate-spin" />
+                  ) : (
+                    'Compare Plans'
+                  )}
+                </Button>
+              </form>
+            </Form>
+
+            {assistance && (
+              <motion.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.4, delay: 0.2 }}
+                className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
+              >
+                <p className="text-sm font-medium text-foreground">{assistance.aiResponse}</p>
+                <div className="mt-3 flex flex-wrap gap-2">
+                  {assistance.suggestedServices.map(service => (
+                    <Button key={service} asChild size="sm" variant="secondary">
+                       <Link href="#services">{service}</Link>
+                    </Button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </motion.div>
+        </motion.div>
       </div>
     </section>
   );
