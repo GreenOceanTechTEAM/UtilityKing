@@ -1,9 +1,12 @@
+"use client";
+
 import Image from 'next/image';
 import Link from 'next/link';
 import { Card, CardContent, CardFooter } from '@/components/ui/card';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { ArrowRight } from 'lucide-react';
 import { Badge } from '../ui/badge';
+import { motion } from 'framer-motion';
 
 type BlogPreviewProps = {
   id: string;
@@ -30,6 +33,31 @@ const blogPosts = [
   }
 ];
 
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+};
+
+
 export default function BlogPreview({ id }: BlogPreviewProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
@@ -42,34 +70,42 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
             Get the latest tips, tricks, and insights on managing your utilities and saving money.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
           {blogPosts.map((post) => (
-            <Card key={post.title} className="flex flex-col overflow-hidden rounded-xl shadow-lg transition-all hover:shadow-xl hover:-translate-y-1">
-              {post.image && (
-                <div className="aspect-video overflow-hidden">
-                    <Image
-                    src={post.image.imageUrl}
-                    alt={post.image.description}
-                    width={600}
-                    height={338}
-                    data-ai-hint={post.image.imageHint}
-                    className="h-full w-full object-cover"
-                    />
-                </div>
-              )}
-              <CardContent className="flex-1 p-6">
-                <Badge variant="secondary" className="mb-2">{post.category}</Badge>
-                <h3 className="font-headline text-xl font-semibold text-foreground">{post.title}</h3>
-                <p className="mt-3 text-base text-muted-foreground">{post.excerpt}</p>
-              </CardContent>
-              <CardFooter className="p-6 pt-0">
-                <Link href="#" className="flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>
-                  Read more <ArrowRight className="h-4 w-4" />
-                </Link>
-              </CardFooter>
-            </Card>
+            <motion.div key={post.title} variants={itemVariants}>
+              <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                {post.image && (
+                  <div className="aspect-video overflow-hidden">
+                      <Image
+                      src={post.image.imageUrl}
+                      alt={post.image.description}
+                      width={600}
+                      height={338}
+                      data-ai-hint={post.image.imageHint}
+                      className="h-full w-full object-cover"
+                      />
+                  </div>
+                )}
+                <CardContent className="flex-1 p-6">
+                  <Badge variant="secondary" className="mb-2">{post.category}</Badge>
+                  <h3 className="font-headline text-xl font-semibold text-foreground">{post.title}</h3>
+                  <p className="mt-3 text-base text-muted-foreground">{post.excerpt}</p>
+                </CardContent>
+                <CardFooter className="p-6 pt-0">
+                  <Link href="#" className="flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>
+                    Read more <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </CardFooter>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

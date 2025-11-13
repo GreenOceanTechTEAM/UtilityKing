@@ -24,14 +24,14 @@ export default function AboutSection({ id }: AboutSectionProps) {
             </p>
           </div>
           {image && (
-             <div className="aspect-w-3 aspect-h-2 overflow-hidden rounded-2xl shadow-xl">
+             <div className="overflow-hidden rounded-2xl shadow-xl">
                 <Image
                     src={image.imageUrl}
                     alt={image.description}
                     width={600}
                     height={400}
                     data-ai-hint={image.imageHint}
-                    className="object-cover transition-transform duration-300 hover:scale-105"
+                    className="object-cover aspect-[3/2] transition-transform duration-300 hover:scale-105"
                 />
             </div>
           )}

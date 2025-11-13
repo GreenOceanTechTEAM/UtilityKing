@@ -1,8 +1,11 @@
+"use client";
+
 import Image from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 type TrustProofsProps = {
   id: string;
@@ -37,6 +40,31 @@ const partners = [
   { name: 'Partner 5', logo: PlaceHolderImages.find(p => p.id === 'logo-5') },
 ];
 
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { y: 20, opacity: 0 },
+  visible: {
+    y: 0,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 100,
+      damping: 12,
+    },
+  },
+};
+
+
 export default function TrustProofs({ id }: TrustProofsProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
@@ -49,34 +77,42 @@ export default function TrustProofs({ id }: TrustProofsProps) {
             Don't just take our word for it. Here's what our users have to say about their experience.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <motion.div
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.2 }}
+          className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
+        >
           {testimonials.map((testimonial) => (
-            <Card key={testimonial.name} className="flex flex-col">
-              <CardContent className="flex flex-1 flex-col justify-between p-6">
-                <div>
-                    <div className="flex mb-2">
-                        {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-accent text-accent" />)}
-                    </div>
-                    <blockquote className="text-lg text-foreground">
-                        <p>"{testimonial.quote}"</p>
-                    </blockquote>
-                </div>
-                <div className="mt-6 flex items-center">
-                  {testimonial.avatar && (
-                    <Avatar>
-                      <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
-                      <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                    </Avatar>
-                  )}
-                  <div className="ml-4">
-                    <p className="font-semibold text-foreground">{testimonial.name}</p>
-                    <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+            <motion.div key={testimonial.name} variants={itemVariants}>
+              <Card className="flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+                <CardContent className="flex flex-1 flex-col justify-between p-6">
+                  <div>
+                      <div className="flex mb-2">
+                          {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-accent text-accent" />)}
+                      </div>
+                      <blockquote className="text-lg text-foreground">
+                          <p>"{testimonial.quote}"</p>
+                      </blockquote>
                   </div>
-                </div>
-              </CardContent>
-            </Card>
+                  <div className="mt-6 flex items-center">
+                    {testimonial.avatar && (
+                      <Avatar>
+                        <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
+                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                      </Avatar>
+                    )}
+                    <div className="ml-4">
+                      <p className="font-semibold text-foreground">{testimonial.name}</p>
+                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </motion.div>
           ))}
-        </div>
+        </motion.div>
         <div className="mt-20">
           <p className="text-center text-base font-semibold text-muted-foreground">
             In partnership with the UK's leading providers
@@ -84,7 +120,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
           <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-5 lg:mt-8">
             {partners.map((partner) => (
               partner.logo && (
-                 <div key={partner.name} className="col-span-1 flex justify-center bg-background/50 p-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all">
+                 <div key={partner.name} className="col-span-1 flex justify-center bg-background/50 p-8 grayscale opacity-60 transition-all hover:grayscale-0 hover:opacity-100">
                     <Image
                     src={partner.logo.imageUrl}
                     alt={partner.name}
