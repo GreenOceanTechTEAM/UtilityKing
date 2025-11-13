@@ -19,7 +19,7 @@ const values = [
   },
   {
     icon: <Bot className="h-8 w-8 text-accent" />,
-    title: "UKi AI-Powered Help",
+    title: "AI Powered by Gemini",
     description: "Our smart assistant, UKi, is always available to answer your questions and guide you."
   },
   {
@@ -40,8 +40,8 @@ const values = [
 ];
 
 const stats = [
-    { value: 1.2, label: "Million Users Helped", suffix: "M" },
-    { value: 280, label: "Average Annual Savings", prefix: "£" },
+    { value: 10000, label: "Trusted UK Users", suffix: "+" },
+    { value: 284, label: "Average Annual Savings", prefix: "£" },
     { value: 98, label: "Customer Satisfaction", suffix: "%" }
 ];
 

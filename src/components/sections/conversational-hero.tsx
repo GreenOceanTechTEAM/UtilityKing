@@ -90,10 +90,10 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
              <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
           </Badge>
           <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
-            Stop Overpaying. Start Saving.
+            Let's slash your utility bills together.
           </h1>
           <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-primary-foreground/90">
-            Tired of confusing utility bills and endless comparison sites? Tell our AI what you need, and we'll find the perfect plan for you.
+            UKi, your smart assistant, will find the best options instantly.
           </p>
         </motion.div>
 
