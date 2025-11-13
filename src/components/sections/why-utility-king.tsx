@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Scale, Database, Bot, Radio, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
+import { Scale, Bot, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 
 type WhyUtilityKingProps = {
@@ -16,11 +16,6 @@ const values = [
     icon: <Bot className="h-8 w-8 text-accent" />,
     title: "AI Powered by Gemini",
     description: "Our smart assistant, UKi, is always available to answer your questions and guide you."
-  },
-  {
-    icon: <Database className="h-8 w-8 text-accent" />,
-    title: "Backed by Data",
-    description: "We analyze millions of data points to ensure our comparisons are accurate and up-to-date."
   },
   {
     icon: <MousePointerClick className="h-8 w-8 text-accent" />,
@@ -47,7 +42,7 @@ const stats = [
 
 export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
   return (
-    <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-background">
+    <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="lg:text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
