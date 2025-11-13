@@ -64,24 +64,24 @@ export default function Header({ sections }: HeaderProps) {
     return (
       <Tooltip>
         <TooltipTrigger asChild>
-          <Link href={`#${id}`} passHref>
-            <motion.a
-              className={cn(
-                'relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300',
-                isActive ? 'text-accent-foreground' : 'text-muted-foreground hover:bg-accent/10 hover:text-foreground'
-              )}
+          <motion.div
+            className={cn(
+              'relative flex h-10 w-10 items-center justify-center rounded-lg transition-colors duration-300',
+              isActive ? 'text-accent-foreground' : 'text-muted-foreground hover:bg-accent/10 hover:text-foreground'
+            )}
             >
+            <Link href={`#${id}`} className="flex h-full w-full items-center justify-center">
               <Icon className="h-5 w-5" />
-              {isActive && (
-                <motion.div
-                  layoutId="active-nav-indicator"
-                  className="absolute inset-0 z-[-1] rounded-lg bg-accent"
-                  initial={false}
-                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-                />
-              )}
-            </motion.a>
-          </Link>
+            </Link>
+            {isActive && (
+              <motion.div
+                layoutId="active-nav-indicator"
+                className="absolute inset-0 z-[-1] rounded-lg bg-accent"
+                initial={false}
+                transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+              />
+            )}
+          </motion.div>
         </TooltipTrigger>
         <TooltipContent side="right">
           <p>{name}</p>
