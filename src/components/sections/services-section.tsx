@@ -47,7 +47,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
         </div>
         <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {services.map((service) => (
-            <Card key={service.title} className="group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl">
+            <Card key={service.title} className="group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20">
               <CardHeader className="p-6">
                 <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary">
                   {/* Clone icon to change color on hover */}

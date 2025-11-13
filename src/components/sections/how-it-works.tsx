@@ -37,8 +37,8 @@ export default function HowItWorks({ id }: HowItWorksProps) {
         </div>
         <div className="mt-12 grid gap-8 md:grid-cols-3">
           {steps.map((step, index) => (
-            <Card key={index} className="text-center shadow-sm hover:shadow-lg transition-shadow">
-              <CardHeader className="items-center">
+            <Card key={index} className="text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20">
+              <CardHeader className="items-center p-8">
                 <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 mb-4">
                   {step.icon}
                 </div>

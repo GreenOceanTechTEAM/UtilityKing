@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Scale, Database, Bot, Radio, CircleDollarSign, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
+import { Scale, Database, Bot, Radio, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 
 type WhyUtilityKingProps = {
@@ -60,7 +60,7 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
 
         <div className="mt-12 grid grid-cols-1 gap-x-8 gap-y-10 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => (
-            <div key={value.title} className="flex gap-4">
+            <div key={value.title} className="flex gap-4 transform transition-all duration-300 hover:-translate-y-1">
               <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-accent/10">
                 {value.icon}
               </div>
