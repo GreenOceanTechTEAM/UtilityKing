@@ -32,7 +32,9 @@ export default function Home() {
         <ConversationalHero id="hero" />
         <ServicesSection id="services" />
         <HowItWorks id="how" />
+        <WhyUtilityKing id="why" />
         <ComparisonDemo id="compare" />
+        <TrustProofs id="trust" />
         <AnimatedCTABanner
           id="cta-banner-1"
           type="quote"
@@ -40,8 +42,6 @@ export default function Home() {
           buttonText="Start Quoting"
           buttonLink="#compare"
         />
-        <WhyUtilityKing id="why" />
-        <TrustProofs id="trust" />
         <FAQs id="faqs" />
         <BlogPreview id="blog" />
         <AboutSection id="about" />

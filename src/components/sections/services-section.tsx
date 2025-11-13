@@ -39,7 +39,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            What Can We Help You With?
+            All Your Utilities, Smarter
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We help you find savings on more than just energy. Explore all the ways Utility King AI can help you save.
