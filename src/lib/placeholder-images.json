@@ -1,3 +1,94 @@
 {
-  "placeholderImages": []
+  "placeholderImages": [
+    {
+      "id": "hero-background",
+      "description": "A modern, bright living room with large windows overlooking a city skyline at dusk.",
+      "imageUrl": "https://images.unsplash.com/photo-1628744876497-eb30460be9f6?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw2fHxtb2Rlcm4lMjBsaXZpbmclMjByb29tfGVufDB8fHx8MTc2Mjk3MjQ4MXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "modern living room"
+    },
+    {
+      "id": "cta-banner-1",
+      "description": "Abstract blue and teal energy waves.",
+      "imageUrl": "https://images.unsplash.com/photo-1550275994-2bc88dc68637?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGVuZXJneXxlbnwwfHx8fDE3NjI5MzkyMDV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract energy"
+    },
+    {
+      "id": "cta-banner-2",
+      "description": "Close up of fiber optic cables glowing.",
+      "imageUrl": "https://images.unsplash.com/photo-1517181875630-f72350452109?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxmaWJlciUyMG9wdGljc3xlbnwwfHx8fDE3NjI5NjcwNDR8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "fiber optics"
+    },
+    {
+      "id": "blog-post-1",
+      "description": "A person looking at an energy bill with a calculator.",
+      "imageUrl": "https://images.unsplash.com/photo-1757256137041-0aab889db199?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjYWxjdWxhdGluZyUyMGJpbGxzfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "calculating bills"
+    },
+    {
+      "id": "blog-post-2",
+      "description": "A wifi router with glowing lights in a modern home.",
+      "imageUrl": "https://images.unsplash.com/photo-1516044734145-07ca8eef8731?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHx3aWZpJTIwcm91dGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "wifi router"
+    },
+    {
+      "id": "blog-post-3",
+      "description": "A smart meter display on a kitchen wall.",
+      "imageUrl": "https://images.unsplash.com/photo-1527332756452-1ebef4a55fb1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxzbWFydCUyMG1ldGVyfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smart meter"
+    },
+    {
+      "id": "about-team",
+      "description": "A diverse group of professionals collaborating in a modern office.",
+      "imageUrl": "https://images.unsplash.com/photo-1556484687-30636164638b?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwzfHxkaXZlcnNlJTIwdGVhbXxlbnwwfHx8fDE3NjI5ODk1OTB8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "diverse team"
+    },
+    {
+      "id": "avatar-1",
+      "description": "Portrait of a smiling woman in her 30s.",
+      "imageUrl": "https://images.unsplash.com/photo-1662850886700-4ec19bd30d11?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxzbWlsaW5nJTIwd29tYW58ZW58MHx8fHwxNzYzMDA4MTM4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "smiling woman"
+    },
+    {
+      "id": "avatar-2",
+      "description": "Portrait of a man in his 40s with glasses.",
+      "imageUrl": "https://images.unsplash.com/photo-1618077360395-f3068be8e001?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc2MjkzNjY5NXww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "man glasses"
+    },
+    {
+      "id": "avatar-3",
+      "description": "Portrait of a young woman with curly hair.",
+      "imageUrl": "https://images.unsplash.com/photo-1606752445153-beb5c9d03ae8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "curly hair"
+    },
+    {
+      "id": "logo-1",
+      "description": "Abstract geometric logo in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1747862712521-e4a37b12a039?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw1fHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYzMDE1NTcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "abstract logo"
+    },
+    {
+      "id": "logo-2",
+      "description": "Minimalist wordmark logo in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1645782068569-2d889782ee61?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxtaW5pbWFsaXN0JTIwbG9nb3xlbnwwfHx8fDE3NjI5NzQ2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "minimalist logo"
+    },
+    {
+      "id": "logo-3",
+      "description": "Circular emblem logo in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1605896403575-8b987c86d449?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw0fHxlbWJsZW0lMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "emblem logo"
+    },
+    {
+      "id": "logo-4",
+      "description": "Logo with an animal icon in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1622512251353-8a67dd7683bd?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw5fHxhbmltYWwlMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "animal logo"
+    },
+    {
+      "id": "logo-5",
+      "description": "Futuristic tech logo in grayscale.",
+      "imageUrl": "https://images.unsplash.com/photo-1663124178647-24f30cedd1ba?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHx0ZWNoJTIwbG9nb3xlbnwwfHx8fDE3NjMwMDE3NDZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "tech logo"
+    }
+  ]
 }

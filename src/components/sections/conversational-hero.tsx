@@ -1,0 +1,155 @@
+"use client";
+
+import { useState } from 'react';
+import Image from 'next/image';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
+import { conversationalHeroAssistance, ConversationalHeroAssistanceOutput } from '@/ai/flows/conversational-hero-assistance';
+
+import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { Button } from '@/components/ui/button';
+import { Input } from '@/components/ui/input';
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
+import { useToast } from '@/hooks/use-toast';
+import { Badge } from '../ui/badge';
+import Link from 'next/link';
+
+type ConversationalHeroProps = {
+  id: string;
+};
+
+const formSchema = z.object({
+  userInput: z.string().min(10, {
+    message: "Please describe what you're looking for.",
+  }),
+});
+
+export default function ConversationalHero({ id }: ConversationalHeroProps) {
+  const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const { toast } = useToast();
+
+  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
+  
+  const { scrollYProgress } = useScroll();
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
+
+  const form = useForm<z.infer<typeof formSchema>>({
+    resolver: zodResolver(formSchema),
+    defaultValues: {
+      userInput: "",
+    },
+  });
+
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setIsLoading(true);
+    setAssistance(null);
+    try {
+      const result = await conversationalHeroAssistance(values);
+      setAssistance(result);
+    } catch (error) {
+      console.error("Hero assistance failed:", error);
+      toast({
+        variant: "destructive",
+        title: "AI Assistant Error",
+        description: "Sorry, I couldn't process that request. Please try again.",
+      });
+    } finally {
+      setIsLoading(false);
+    }
+  }
+
+  return (
+    <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden text-primary-foreground">
+      {heroImage && (
+        <motion.div className="absolute inset-0 z-[-2]" style={{ scale }}>
+          <Image
+            src={heroImage.imageUrl}
+            alt={heroImage.description}
+            fill
+            priority
+            className="object-cover"
+            data-ai-hint={heroImage.imageHint}
+          />
+        </motion.div>
+      )}
+      <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-primary/80 via-primary/50 to-transparent" />
+      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-primary/30 to-transparent" />
+
+
+      <div className="container mx-auto px-4 text-center">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+        >
+          <Badge variant="secondary" className="mb-4 text-sm bg-background/20 text-foreground backdrop-blur-sm border-0">
+             <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
+          </Badge>
+          <h1 className="font-headline text-4xl font-bold tracking-tight text-white sm:text-6xl lg:text-7xl">
+            Stop Overpaying. Start Saving.
+          </h1>
+          <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-primary-foreground/90">
+            Tired of confusing utility bills and endless comparison sites? Tell our AI what you need, and we'll find the perfect plan for you.
+          </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="mt-10 mx-auto max-w-xl"
+        >
+          <Form {...form}>
+            <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
+              <FormField
+                control={form.control}
+                name="userInput"
+                render={({ field }) => (
+                  <FormItem className="w-full">
+                    <FormControl>
+                      <Input
+                        type="text"
+                        placeholder="e.g., 'Find me a cheaper energy deal in London'"
+                        className="h-12 text-base text-foreground"
+                        {...field}
+                      />
+                    </FormControl>
+                    <FormMessage className="text-left text-yellow-300" />
+                  </FormItem>
+                )}
+              />
+              <Button type="submit" size="lg" className="h-12" disabled={isLoading}>
+                {isLoading ? (
+                  <Loader2 className="h-5 w-5 animate-spin" />
+                ) : (
+                  <ArrowRight className="h-5 w-5" />
+                )}
+              </Button>
+            </form>
+          </Form>
+
+          {assistance && (
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
+            >
+              <p className="text-sm font-medium text-primary-foreground">{assistance.aiResponse}</p>
+              <div className="mt-3 flex flex-wrap gap-2">
+                {assistance.suggestedServices.map(service => (
+                  <Button key={service} asChild size="sm" variant="secondary">
+                     <Link href="#services">{service}</Link>
+                  </Button>
+                ))}
+              </div>
+            </motion.div>
+          )}
+        </motion.div>
+      </div>
+    </section>
+  );
+}
