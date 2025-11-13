@@ -1,14 +1,11 @@
 "use client";
 
 import { useState } from 'react';
-import Image from 'next/image';
-import { motion, useScroll, useTransform } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { conversationalHeroAssistance, ConversationalHeroAssistanceOutput } from '@/ai/flows/conversational-hero-assistance';
 
-import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
@@ -16,6 +13,7 @@ import { ArrowRight, Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import Link from 'next/link';
+import ParticleBackground from '../shared/particle-background';
 
 type ConversationalHeroProps = {
   id: string;
@@ -31,12 +29,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const { toast } = useToast();
-
-  const heroImage = PlaceHolderImages.find(p => p.id === 'hero-background');
   
-  const { scrollYProgress } = useScroll();
-  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.15]);
-
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -64,28 +57,11 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden text-primary-foreground">
-      {heroImage && (
-        <motion.div className="absolute inset-0 z-[-2]" style={{ scale }}>
-          <Image
-            src={heroImage.imageUrl}
-            alt={heroImage.description}
-            fill
-            priority
-            className="object-cover"
-            data-ai-hint={heroImage.imageHint}
-          />
-        </motion.div>
-      )}
+      <ParticleBackground />
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background/80 via-background/50 to-transparent" />
-      <div className="absolute inset-0 z-[-1] bg-gradient-to-r from-background/30 to-transparent" />
-
-
-      <div className="container mx-auto px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-        >
+      
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <div>
           <Badge variant="secondary" className="mb-4 text-sm bg-background/20 text-foreground backdrop-blur-sm border-0">
              <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
           </Badge>
@@ -95,12 +71,9 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
           <p className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-primary-foreground/90">
             Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
           </p>
-        </motion.div>
+        </div>
 
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+        <div
           className="mt-10 mx-auto max-w-xl"
         >
           <Form {...form}>
@@ -133,9 +106,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
           </Form>
 
           {assistance && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
+            <div
               className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
             >
               <p className="text-sm font-medium text-primary-foreground">{assistance.aiResponse}</p>
@@ -146,9 +117,9 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                   </Button>
                 ))}
               </div>
-            </motion.div>
+            </div>
           )}
-        </motion.div>
+        </div>
       </div>
     </section>
   );
