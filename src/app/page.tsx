@@ -14,10 +14,10 @@ import AboutSection from '@/components/sections/about-section';
 export default function Home() {
   const sections = [
     { id: 'hero', name: 'Home' },
-    { id: 'how', name: 'How It Works' },
     { id: 'services', name: 'Services' },
-    { id: 'why', name: 'Why Us' },
+    { id: 'how', name: 'How It Works' },
     { id: 'compare', name: 'Compare' },
+    { id: 'why', name: 'Why Us' },
     { id: 'trust', name: 'Reviews' },
     { id: 'faqs', name: 'FAQs' },
     { id: 'blog', name: 'Blog' },
@@ -30,11 +30,9 @@ export default function Home() {
       <Header sections={sections} />
       <main className="flex-1">
         <ConversationalHero id="hero" />
-        <HowItWorks id="how" />
         <ServicesSection id="services" />
-        <WhyUtilityKing id="why" />
+        <HowItWorks id="how" />
         <ComparisonDemo id="compare" />
-        <TrustProofs id="trust" />
         <AnimatedCTABanner
           id="cta-banner-1"
           type="quote"
@@ -42,6 +40,8 @@ export default function Home() {
           buttonText="Start Quoting"
           buttonLink="#compare"
         />
+        <WhyUtilityKing id="why" />
+        <TrustProofs id="trust" />
         <FAQs id="faqs" />
         <BlogPreview id="blog" />
         <AboutSection id="about" />

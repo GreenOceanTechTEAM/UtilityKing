@@ -3,7 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
-import { Crown, Zap, Settings, Database, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu, X } from 'lucide-react';
+import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu, X } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
@@ -22,7 +22,7 @@ type HeaderProps = {
 const iconMap: { [key: string]: React.ElementType } = {
   hero: Zap,
   how: Settings,
-  services: Database,
+  services: LayoutGrid,
   why: ThumbsUp,
   compare: BarChart3,
   trust: ShieldCheck,

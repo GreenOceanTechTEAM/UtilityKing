@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Zap, Wifi, Smartphone, Thermometer, FileBarChart } from 'lucide-react';
+import { Zap, Wifi, Smartphone, Thermometer, FilePieChart } from 'lucide-react';
 
 type ServicesSectionProps = {
   id: string;
@@ -27,7 +27,7 @@ const services = [
     description: "Connect your smart meter data to get personalized insights and find tariffs that reward your usage patterns."
   },
   {
-    icon: <FileBarChart className="h-8 w-8 text-primary" />,
+    icon: <FilePieChart className="h-8 w-8 text-primary" />,
     title: "Bill Decoder",
     description: "Upload or describe your bill, and our AI will break down the charges, identify savings, and check for errors."
   }
