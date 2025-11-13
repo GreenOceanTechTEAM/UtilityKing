@@ -8,27 +8,27 @@ type ServicesSectionProps = {
 const services = [
   {
     icon: <Zap className="h-8 w-8 text-primary" />,
-    title: "Energy Tariff Switch",
+    title: "Energy Comparison",
     description: "Compare gas and electricity prices from UK suppliers to find a cheaper tariff and lower your energy bills."
   },
   {
     icon: <Wifi className="h-8 w-8 text-primary" />,
-    title: "Broadband Plan Match",
+    title: "Broadband Planner",
     description: "Find faster, more reliable, and better-value broadband deals in your area, from standard to full-fibre."
   },
   {
     icon: <Smartphone className="h-8 w-8 text-primary" />,
-    title: "Mobile Data Savings",
+    title: "Mobile Data Match",
     description: "Analyze your data usage and find a mobile plan that gives you what you need without overpaying."
   },
   {
     icon: <Thermometer className="h-8 w-8 text-primary" />,
-    title: "Smart Meter Insight",
+    title: "Smart Meter Advice",
     description: "Connect your smart meter data to get personalized insights and find tariffs that reward your usage patterns."
   },
   {
     icon: <FileBarChart className="h-8 w-8 text-primary" />,
-    title: "Bill Breakdown Explainer",
+    title: "Bill Decoder",
     description: "Upload or describe your bill, and our AI will break down the charges, identify savings, and check for errors."
   }
 ];
@@ -39,7 +39,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            All Your Utilities, Smarter
+            What Can We Help You With?
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We help you find savings on more than just energy. Explore all the ways Utility King AI can help you save.
