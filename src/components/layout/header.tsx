@@ -9,6 +9,7 @@ import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
+import { ThemeSwitcher } from '../shared/theme-switcher';
 
 type Section = {
   id: string;
@@ -112,6 +113,7 @@ export default function Header({ sections }: HeaderProps) {
           </nav>
           
           <div className="flex items-center gap-2">
+            <ThemeSwitcher />
             <Button asChild size="sm" className="hidden md:flex">
                 <Link href="#contact">Get in Touch</Link>
             </Button>

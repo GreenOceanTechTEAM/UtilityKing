@@ -5,6 +5,7 @@ import { cn } from '@/lib/utils';
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar';
 import UKiChat from '@/components/shared/uki-chat';
 import ScrollToTop from '@/components/layout/scroll-to-top';
+import { ThemeProvider } from '@/components/shared/theme-provider';
 
 export const metadata: Metadata = {
   title: 'Utility King AI',
@@ -17,7 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
@@ -26,11 +27,18 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased')}>
-        <ScrollProgressBar />
-        {children}
-        <UKiChat />
-        <ScrollToTop />
-        <Toaster />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ScrollProgressBar />
+          {children}
+          <UKiChat />
+          <ScrollToTop />
+          <Toaster />
+        </ThemeProvider>
       </body>
     </html>
   );
