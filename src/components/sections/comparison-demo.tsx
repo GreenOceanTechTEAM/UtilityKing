@@ -70,10 +70,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-start">
           <div className="lg:sticky lg:top-24">
             <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              Compare Plans with UKi
+              Find a Better Deal Instantly
             </h2>
             <p className="mt-4 text-lg text-muted-foreground">
-              Fill in your details below, and our AI will find the best utility deals tailored just for you. Get personalized recommendations in seconds.
+              Enter your details below, and UKi will analyze your options to find the best deals for you.
             </p>
             <Card className="mt-8 shadow-lg">
                 <CardContent className="p-6">
