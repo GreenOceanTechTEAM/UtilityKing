@@ -1,3 +1,6 @@
+"use client";
+
+import { motion } from 'framer-motion';
 import { FileText, BarChart3, Smile } from 'lucide-react';
 import { Card, CardHeader, CardTitle, CardDescription } from '../ui/card';
 
@@ -7,21 +10,38 @@ type HowItWorksProps = {
 
 const steps = [
   {
-    icon: <FileText className="h-10 w-10 text-accent" />,
-    title: "Step 1: Tell Us About You",
+    icon: <FileText className="h-8 w-8 text-accent" />,
+    title: "Share Your Details",
     description: "Provide a few details about your current usage, location, and what you're looking for in a new plan."
   },
   {
-    icon: <BarChart3 className="h-10 w-10 text-accent" />,
-    title: "Step 2: Compare Deals",
+    icon: <BarChart3 className="h-8 w-8 text-accent" />,
+    title: "Compare Deals Instantly",
     description: "Our AI, UKi, instantly analyzes thousands of deals to find the perfect matches for you, showing clear savings."
   },
   {
-    icon: <Smile className="h-10 w-10 text-accent" />,
-    title: "Step 3: Switch & Save",
+    icon: <Smile className="h-8 w-8 text-accent" />,
+    title: "Switch and Save",
     description: "Choose your new plan, and we'll handle the switch. It's a seamless process, and you start saving money."
   }
 ];
+
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { type: 'spring', stiffness: 50, damping: 10 },
+  },
+};
 
 export default function HowItWorks({ id }: HowItWorksProps) {
   return (
@@ -35,18 +55,57 @@ export default function HowItWorks({ id }: HowItWorksProps) {
             Our streamlined process makes finding a better utility deal simpler than ever before.
           </p>
         </div>
-        <div className="mt-12 grid gap-8 md:grid-cols-3">
-          {steps.map((step, index) => (
-            <Card key={index} className="text-center shadow-lg transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-accent/20">
-              <CardHeader className="items-center p-8">
-                <div className="flex h-20 w-20 items-center justify-center rounded-full bg-accent/10 mb-4">
-                  {step.icon}
+        <div className="relative mt-20">
+          {/* The connecting line */}
+          <div
+            className="absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-border md:block"
+            aria-hidden="true"
+          />
+
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+            variants={containerVariants}
+            className="space-y-16"
+          >
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.title}
+                variants={itemVariants}
+                className="relative flex flex-col items-center md:flex-row"
+              >
+                <div className="flex w-full items-center gap-8 md:w-1/2 md:pr-16" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
+                  <div className={`flex-shrink-0 md:order-${index % 2 === 0 ? 1 : 2}`}>
+                    <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg">
+                      <div className="absolute inset-0 m-auto h-full w-full animate-pulse rounded-full bg-accent/30 blur-xl" />
+                      <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
+                    </div>
+                  </div>
+                  <div className={`flex-grow md:order-${index % 2 === 0 ? 2 : 1} text-center md:text-left`} style={{textAlign: index % 2 === 0 ? 'left' : 'right'}}>
+                    <div className="inline-flex items-center gap-3">
+                      {step.icon}
+                      <h3 className="font-headline text-xl font-bold text-foreground">{step.title}</h3>
+                    </div>
+                    <p className="mt-2 text-muted-foreground">{step.description}</p>
+                  </div>
                 </div>
-                <CardTitle>{step.title}</CardTitle>
-                <CardDescription className="pt-2">{step.description}</CardDescription>
-              </CardHeader>
-            </Card>
-          ))}
+                 {/* Empty div for spacing on the other side */}
+                <div className="hidden md:block md:w-1/2"></div>
+                 {/* This re-orders the content for alternating layout on medium screens */}
+                <style jsx>{`
+                  @media (min-width: 768px) {
+                    .md\\:flex-row:nth-child(odd) > div:first-child {
+                        margin-left: 50%;
+                    }
+                    .md\\:flex-row:nth-child(even) > div:first-child {
+                        margin-right: 50%;
+                    }
+                  }
+                `}</style>
+              </motion.div>
+            ))}
+          </motion.div>
         </div>
       </div>
     </section>
