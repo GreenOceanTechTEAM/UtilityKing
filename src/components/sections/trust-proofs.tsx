@@ -33,13 +33,13 @@ const testimonials = [
 ];
 
 const partners = [
-  { name: 'British Gas', logo: PlaceHolderImages.find(p => p.id === 'logo-british-gas') },
-  { name: 'Octopus Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-octopus') },
-  { name: 'EDF Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-edf') },
-  { name: 'E.ON Next', logo: PlaceHolderImages.find(p => p.id === 'logo-eon') },
-  { name: 'OVO Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-ovo') },
-  { name: 'Scottish Power', logo: PlaceHolderImages.find(p => p.id === 'logo-scottish-power') },
-  { name: 'Crown Gas & Power', logo: PlaceHolderImages.find(p => p.id === 'logo-crown-gas-power') },
+  { name: 'British Gas', logo: '/logos/british-gas.png' },
+  { name: 'Octopus Energy', logo: '/logos/octopus.png' },
+  { name: 'EDF Energy', logo: '/logos/edf.png' },
+  { name: 'E.ON Next', logo: '/logos/eon.png' },
+  { name: 'OVO Energy', logo: '/logos/ovo.png' },
+  { name: 'Scottish Power', logo: '/logos/scottish-power.png' },
+  { name: 'Crown Gas & Power', logo: '/logos/crown-gas-power.png' },
 ];
 
 const containerVariants = {
@@ -182,24 +182,21 @@ export default function TrustProofs({ id }: TrustProofsProps) {
               }}
             >
               {[...partners, ...partners].map((partner, index) => (
-                partner.logo && (
-                  <motion.div
-                    key={`${partner.name}-${index}`}
-                    whileHover={{ y: -4, opacity: 1 }}
-                    className="mx-8 flex-shrink-0"
-                    style={{ opacity: 0.8 }}
-                  >
-                    <Image
-                      src={partner.logo.imageUrl}
-                      alt={partner.name}
-                      width={158}
-                      height={48}
-                      className="object-contain h-12 w-auto"
-                      data-ai-hint={partner.logo.imageHint}
-                      unoptimized
-                    />
-                  </motion.div>
-                )
+                <motion.div
+                  key={`${partner.name}-${index}`}
+                  whileHover={{ y: -4, opacity: 1 }}
+                  className="mx-8 flex-shrink-0"
+                  style={{ opacity: 0.8 }}
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    width={158}
+                    height={48}
+                    className="object-contain h-12 w-auto"
+                    unoptimized
+                  />
+                </motion.div>
               ))}
             </motion.div>
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10"></div>
