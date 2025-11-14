@@ -8,13 +8,14 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowLeft, ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 type ComparisonDemoProps = {
   id: string;
@@ -27,10 +28,9 @@ const iconMap: { [key: string]: React.ReactNode } = {
 };
 
 const analysisLines = [
-  "Connecting to tariff database...",
-  "Fetching supplier data...",
-  "Running optimization model...",
-  "Evaluating 34,512 possible combinations...",
+  "Analyzing 174 active tariffs in your region...",
+  "Matching to your preferences...",
+  "Identifying cheapest deals...",
 ];
 
 const wizardSteps = [
@@ -48,7 +48,7 @@ const wizardSteps = [
     },
     {
         step: 2,
-        key: 'householdSize',
+        key: 'occupants',
         title: "People in the Home",
         aiMessage: "How many people live in your home?",
         options: [
@@ -59,59 +59,70 @@ const wizardSteps = [
         step: 3,
         key: 'heatingType',
         title: "Your Heating Type",
-        aiMessage: "What type of heating do you use?",
+        aiMessage: "How do you heat your home?",
         options: [
-            { label: "Gas Heating", icon: Flame },
-            { label: "Electric Heating", icon: Bolt },
-            { label: "Mixed / Not sure", icon: Info },
+            { label: "Gas heating", icon: Flame },
+            { label: "Electric heating", icon: Bolt },
+            { label: "Mixed", icon: Info },
+            { label: "Not sure", icon: Info },
         ],
     },
     {
         step: 4,
         key: 'currentSupplier',
-        title: "Current Supplier",
+        title: "Current Energy Supplier",
         aiMessage: "Who supplies your energy right now?",
         options: [
-            { label: "British Gas" }, { label: "Octopus Energy" }, { label: "EDF" },
-            { label: "E.ON Next" }, { label: "Scottish Power" }, { label: "Shell" }, { label: "Ovo" }
+            { label: "Octopus" }, { label: "British Gas" }, { label: "EDF" },
+            { label: "E.ON Next" }, { label: "Ovo" }, { label: "Scottish Power" },
         ],
-        customOption: { label: "I don't know", description: "" },
+        customOption: { label: "Other", description: "" },
     },
     {
         step: 5,
-        key: 'usageEntry',
-        title: "Current Tariff / Bill",
-        aiMessage: "How do you prefer to enter your usage?",
+        key: 'tariffDetails',
+        title: "Tariff Details",
+        aiMessage: "Do you know your current tariff name?",
         options: [
-            { label: "I know my annual kWh usage" },
-            { label: "I know my monthly bill amount" },
+            { label: "Yes, I know it" },
+            { label: "No" },
         ],
-        customOption: { label: "Not sure", description: "" },
     },
     {
         step: 6,
+        key: 'usageMethod',
+        title: "Usage Method",
+        aiMessage: "What do you know about your usage?",
+        options: [
+            { label: "Annual usage (kWh)" },
+            { label: "Monthly bill amount (£)" },
+            { label: "I'm not sure" },
+        ],
+    },
+    {
+        step: 7,
         key: 'preferences',
         title: "Your Preferences",
         aiMessage: "What matters most to you? (select up to 3)",
         options: [
-            { label: "Cheapest price" }, { label: "Fixed price stability" }, { label: "Flexibility / no exit fees" },
-            { label: "100% Renewable" }, { label: "Smart meter compatible" }, { label: "Simple, hassle-free switch" },
+            { label: "Cheapest price" }, { label: "Fixed price stability" }, { label: "Flexible plans (no exit fees)" },
+            { label: "100% renewable" }, { label: "Smart meter compatible" }, { label: "Low standing charge" }, { label: "Fast switching" }
         ],
         isMultiSelect: true,
     },
     {
-        step: 7,
+        step: 8,
         key: 'postcode',
-        title: "Location",
-        aiMessage: "What's your postcode? This is required for exact regional pricing.",
+        title: "Postcode",
+        aiMessage: "What's your postcode?",
         isInput: true,
         customPlaceholder: "e.g., M1 1AA",
     },
     {
-        step: 8,
+        step: 9,
         key: 'summary',
-        title: "Final Confirmation",
-        aiMessage: "Here's what I've learned so far:",
+        title: "AI Summary Review",
+        aiMessage: "Great — here’s what I’ve learned about your home…",
     },
 ];
 
@@ -144,7 +155,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
     return () => clearTimeout(timer);
   }, [currentStep]);
-  
+
   const handleKeyDown = (event: React.KeyboardEvent) => {
     if (event.key === 'ArrowRight') {
       handleNextStep();
@@ -152,13 +163,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       handlePrevStep();
     }
   };
-  
+
   React.useEffect(() => {
-    window.addEventListener('keydown', (e) => handleKeyDown(e as any));
+    const handleGlobalKeyDown = (e: KeyboardEvent) => handleKeyDown(e as any);
+    window.addEventListener('keydown', handleGlobalKeyDown);
     return () => {
-      window.removeEventListener('keydown', (e) => handleKeyDown(e as any));
+      window.removeEventListener('keydown', handleGlobalKeyDown);
     };
-  }, [currentStep]);
+  }, [currentStep, selections]);
 
 
   const handleSelect = (stepKey: string, option: string) => {
@@ -213,6 +225,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const isStepComplete = (stepIndex: number) => {
     const step = wizardSteps[stepIndex];
     const selection = selections[step.key];
+    if (step.key === 'summary') return true;
     if (!selection) return false;
 
     if (step.isMultiSelect) {
@@ -232,8 +245,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: `Home Type: ${selections['homeType'] || 'Not specified'}, Household Size: ${selections['householdSize'] || 'Not specified'}, Heating: ${selections['heatingType'] || 'Not specified'}`,
-        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}, Current Supplier: ${selections['currentSupplier'] || 'Not specified'}`,
+        usageData: `Home Type: ${selections['homeType'] || 'Not specified'}, Occupants: ${selections['occupants'] || 'Not specified'}, Heating: ${selections['heatingType'] || 'Not specified'}`,
+        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}, Current Supplier: ${selections['currentSupplier'] || 'Not specified'}, Tariff: ${selections['tariffDetails'] === 'Yes, I know it' ? customValues['tariffDetails'] : 'Unknown'}`,
         location: selections['postcode'] || 'London'
     }
 
@@ -278,29 +291,26 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             <div className={cn("w-full max-w-2xl", comparisonResult && !isLoading ? "lg:col-span-3" : "")}>
                 <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     
-                    {currentStep !== wizardSteps.length - 1 && (
-                      <div className="absolute top-4 right-4 z-10 flex gap-2">
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={handlePrevStep}
-                          disabled={currentStep === 0}
-                          aria-label="Previous step"
-                        >
-                          <ChevronLeft className="h-5 w-5" />
-                        </Button>
-                        <Button
-                          variant="ghost"
-                          size="icon"
-                          onClick={handleNextStep}
-                          disabled={!isStepComplete(currentStep) || currentStep === wizardSteps.length - 1}
-                          aria-label="Next step"
-                        >
-                          <ChevronRight className="h-5 w-5" />
-                        </Button>
-                      </div>
-                    )}
-
+                    <div className="absolute top-4 right-4 z-10 flex gap-2">
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handlePrevStep}
+                        disabled={currentStep === 0}
+                        aria-label="Previous step"
+                      >
+                        <ChevronLeft className="h-5 w-5" />
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleNextStep}
+                        disabled={!isStepComplete(currentStep) || currentStep === wizardSteps.length - 1}
+                        aria-label="Next step"
+                      >
+                        <ChevronRight className="h-5 w-5" />
+                      </Button>
+                    </div>
 
                     {currentStep !== (wizardSteps.length - 1) && (
                         <div className="mb-6 text-center">
@@ -413,7 +423,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     )}
                                                 </div>
 
-                                                {( (currentWizardStep.customOption && selections[currentWizardStep.key] === currentWizardStep.customOption.label) || currentWizardStep.isInput) && (
+                                                {( (currentWizardStep.customOption && selections[currentWizardStep.key] === currentWizardStep.customOption.label) || currentWizardStep.isInput || (currentWizardStep.key === 'tariffDetails' && selections[currentWizardStep.key] === 'Yes, I know it')) && (
                                                   <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                                     <Input 
                                                         placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
@@ -421,7 +431,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                         value={customValues[currentWizardStep.key] || ''}
                                                         onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
                                                     />
-                                                     { (customValues[currentWizardStep.key] || selections[currentWizardStep.key]) && (
+                                                     { (customValues[currentWizardStep.key] || (currentWizardStep.isInput && selections[currentWizardStep.key])) && (
                                                       <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
                                                     )}
                                                   </motion.div>
@@ -539,5 +549,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
