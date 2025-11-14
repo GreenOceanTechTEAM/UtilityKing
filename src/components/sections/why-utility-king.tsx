@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Scale, Bot, MousePointerClick, ShieldCheck, SquareCheckBig, Users, Euro, Smile, TrendingUp } from 'lucide-react';
+import { Scale, Bot, MousePointerClick, ShieldCheck, SquareCheckBig, Users, Smile, TrendingUp } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 import { motion } from 'framer-motion';
 
@@ -10,41 +10,41 @@ type WhyUtilityKingProps = {
 };
 
 const stats = [
-    { value: 10000, label: "Trusted UK Users", suffix: "+", icon: Users },
-    { value: 284, label: "Average Annual Savings", prefix: "£", icon: Euro },
+    { value: 10000, label: "UK Users", suffix: "+", icon: Users },
+    { value: 284, label: "Average Annual Savings", prefix: "£", icon: TrendingUp },
     { value: 98, label: "Customer Satisfaction", suffix: "%", icon: Smile }
 ];
 
 const values = [
   {
     icon: Scale,
-    title: "100% Impartial",
-    description: "Our recommendations are based purely on data and what's best for you, not on commissions."
+    title: "100% Independent Results",
+    description: "We never rank tariffs based on sponsorship. Your results are always unbiased and transparent."
   },
   {
     icon: Bot,
-    title: "UKi AI-powered help",
-    description: "Our smart assistant is powered by AI, always available to answer your questions and guide you."
+    title: "Real-Time Price Tracking",
+    description: "Tariffs change daily. We update supplier prices in real time to ensure accuracy."
   },
   {
     icon: MousePointerClick,
-    title: "One-Click Switching",
-    description: "Our streamlined process makes switching providers quick and hassle-free."
+    title: "Effortless One-Click Switching",
+    description: "Switch without stress — no hold times, no paperwork, no disruption."
   },
   {
     icon: ShieldCheck,
-    title: "GDPR & Data Safe",
-    description: "Your privacy is paramount. We follow the strictest data protection standards."
+    title: "Ofgem-Compliant",
+    description: "Our comparison process follows strict Ofgem standards to protect your rights as a consumer."
   },
   {
     icon: SquareCheckBig,
-    title: "Free to Use",
-    description: "Our comparison service is completely free, with no obligation to switch."
+    title: "Average £284/year Saved",
+    description: "Most users find a significantly cheaper tariff within their first comparison."
   },
   {
-    icon: TrendingUp,
-    title: "Live Rates",
-    description: "We fetch real-time data to ensure you're getting the most up-to-date prices and deals."
+    icon: Smile,
+    title: "98% Customer Satisfaction",
+    description: "Clear recommendations, transparent pricing, and a seamless switching journey."
   }
 ];
 
@@ -64,8 +64,8 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            The Utility King Difference
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter text-foreground sm:text-4xl">
+            Why Thousands of UK Homes Trust UtilityKing With Their Savings
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We're not just another comparison site. We're a technology company dedicated to making the utility market fair and transparent for everyone.
@@ -101,7 +101,7 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
                             <div><Icon className="h-8 w-8 text-accent" /></div>
                         </motion.div>
                         <div>
-                            <CardTitle className="text-lg leading-6">{value.title}</CardTitle>
+                            <CardTitle className="text-lg font-semibold leading-tight">{value.title}</CardTitle>
                             <CardDescription className="mt-2 text-base">{value.description}</CardDescription>
                         </div>
                     </CardHeader>
@@ -125,10 +125,10 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
                         <Card className="text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
                           <CardContent className="flex flex-col items-center justify-center p-6">
                             <Icon className="h-8 w-8 text-muted-foreground" />
-                            <div className="relative text-5xl font-bold font-headline text-primary mt-4">
+                            <div className="relative font-headline text-4xl md:text-5xl font-bold text-primary mt-4 tracking-tighter">
                                 <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                             </div>
-                            <p className="text-lg text-muted-foreground mt-2">
+                            <p className="text-sm tracking-widest uppercase text-muted-foreground mt-2">
                                 {stat.label}
                             </p>
                           </CardContent>

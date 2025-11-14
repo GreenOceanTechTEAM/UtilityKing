@@ -89,11 +89,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
           transition={{ duration: 0.6, ease: 'easeOut' }}
           className="text-center mb-12"
         >
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-                Find a Better Deal Instantly
+            <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                Get Personalised Energy Deals Tailored to Your Home
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Answer a few simple questions. Let our AI find the perfect deal for you.
+                Enter a few quick details and we’ll calculate your exact savings across top UK suppliers.
             </p>
         </motion.div>
 
@@ -150,7 +150,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     className="lg:mt-0 mt-8"
                 >
                     <div className='text-center mb-4'>
-                        <h3 className="text-xl font-semibold text-primary">> Analysis complete. Optimal deals identified:</h3>
+                        <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">> Your Cheapest Energy Deals — Matched to Your Home Needs</h3>
                         <p className='text-muted-foreground'>> {comparisonResult.comparisonSummary}</p>
                     </div>
 
@@ -172,23 +172,23 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <div className="flex items-start justify-between">
                                         <div>
                                             <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                                            <CardTitle className="text-lg font-bold text-foreground">{plan.planName}</CardTitle>
+                                            <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
                                         </div>
                                         {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
                                     </div>
                                 </CardHeader>
                                 <CardContent className="flex-1 space-y-4">
-                                    <div className="text-3xl font-bold font-headline text-foreground">
+                                    <div className="text-3xl md:text-4xl font-bold font-headline text-foreground">
                                         £{plan.price.toFixed(2)}
-                                        <span className="text-base font-normal text-muted-foreground">/month</span>
+                                        <span className="text-base font-normal text-muted-foreground">/year</span>
                                     </div>
                                     <p className="text-sm text-muted-foreground">
                                         Contract: <span className="font-semibold text-card-foreground">{plan.contractLength}</span>
                                     </p>
                                 </CardContent>
                                 <CardFooter>
-                                    <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90">
-                                        <Link href={plan.link} target="_blank">View Deal <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                    <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
+                                        <Link href={plan.link} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                     </Button>
                                 </CardFooter>
                                 </Card>

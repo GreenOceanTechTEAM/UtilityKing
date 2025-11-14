@@ -14,10 +14,10 @@ type BlogPreviewProps = {
 
 const blogPosts = [
   {
-    title: "5 Common Mistakes to Avoid When Switching Energy Suppliers",
+    title: "5 Ways to Instantly Reduce Your Energy Bills (Backed by Data)",
     category: "Energy",
     image: PlaceHolderImages.find(p => p.id === "blog-post-1"),
-    excerpt: "Switching can save you hundreds, but pitfalls exist. Here's what to watch out for to ensure you get the best deal without the headache."
+    excerpt: "Featured tips, expert advice, and energy-saving insights updated weekly."
   },
   {
     title: "Is Your Broadband Really 'Superfast'? A Guide to UK Speeds",
@@ -52,6 +52,7 @@ const itemVariants = {
       type: "spring",
       stiffness: 100,
       damping: 12,
+      ease: "easeOut"
     },
   },
 };
@@ -67,8 +68,8 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
         >
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            From Our Blog
+          <h2 className="font-headline text-3xl md:text-[34px] font-bold tracking-tight text-foreground">
+            Energy-Saving Tips, Market Insights & Smart Home Guides
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Get the latest tips, tricks, and insights on managing your utilities and saving money.
@@ -99,9 +100,9 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
                   </motion.div>
                 )}
                 <CardContent className="flex-1 p-6">
-                  <Badge variant="secondary" className="mb-2">{post.category}</Badge>
-                  <h3 className="font-headline text-xl font-semibold text-foreground">{post.title}</h3>
-                  <p className="mt-3 text-base text-muted-foreground">{post.excerpt}</p>
+                  <Badge variant="secondary" className="mb-2 text-xs">{post.category}</Badge>
+                  <h3 className="font-headline text-lg font-semibold text-foreground">{post.title}</h3>
+                  <p className="mt-3 text-base text-muted-foreground leading-relaxed">{post.excerpt}</p>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
                   <Link href="#" className="group flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>

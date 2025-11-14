@@ -47,7 +47,7 @@ const wordVariants = {
             type: "spring",
             stiffness: 100,
             damping: 12,
-            ease: [0.17, 0.89, 0.32, 1.27],
+            ease: "easeOut",
         },
     },
 };
@@ -108,7 +108,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     }
   }
   
-  const headlineText = "AI-Powered Energy Comparison: Find Your Best Rate in Seconds.";
+  const headlineText = "Compare UK Energy Deals in Seconds — Switch Smarter, Save More.";
   const words = headlineText.split(" ");
 
   return (
@@ -117,21 +117,10 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.div initial="hidden" animate="visible">
-            <motion.div variants={subtitleVariants}>
-                <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm inline-flex items-center">
-                  <motion.div
-                    animate={{ y: [0, -4, 0] }}
-                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
-                  >
-                    <Sparkles className="mr-2 h-4 w-4 text-accent" />
-                  </motion.div>
-                   AI-Powered Comparisons
-                </Badge>
-            </motion.div>
+          <motion.div initial="hidden" animate="visible" variants={containerVariants}>
             <motion.h1 
                 variants={containerVariants}
-                className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+                className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-[60px] sm:leading-[1.08]"
             >
                 {words.map((word, index) => (
                     <motion.span key={index} variants={wordVariants} className="inline-block mr-[0.25em]">
@@ -141,9 +130,9 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
             </motion.h1>
             <motion.p 
                 variants={subtitleVariants}
-                className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-muted-foreground"
+                className="mt-6 max-w-xl mx-auto text-lg md:text-xl leading-relaxed text-muted-foreground"
             >
-                Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
+                Stop overpaying on electricity and gas. Instantly compare live tariffs, discover your cheapest options, and switch effortlessly — all with real-time pricing powered by UtilityKing’s smart engine.
             </motion.p>
 
             <motion.div
@@ -160,7 +149,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                         <FormControl>
                             <Input
                             type="text"
-                            placeholder="e.g., 'Find me a cheaper energy deal in London'"
+                            placeholder="e.g., 'Find the cheapest deal near you'"
                             className="h-12 text-base text-foreground"
                             {...field}
                             />
@@ -169,15 +158,21 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                         </FormItem>
                     )}
                     />
-                    <Button type="submit" size="lg" className={cn("h-12", !isLoading && "glowing-btn-border")} disabled={isLoading}>
+                    <Button type="submit" size="lg" className={cn("h-12 text-base font-semibold tracking-tight", !isLoading && "glowing-btn-border")} disabled={isLoading}>
                     {isLoading ? (
                         <Loader2 className="h-5 w-5 animate-spin" />
                     ) : (
-                        'Compare Plans'
+                        'Compare Tariffs Now'
                     )}
                     </Button>
                 </form>
                 </Form>
+                 <motion.p 
+                    variants={subtitleVariants}
+                    className="mt-4 text-sm text-muted-foreground"
+                >
+                    10,000+ households switched · Ofgem compliant · Always free to use
+                </motion.p>
 
                 {assistance && (
                 <motion.div

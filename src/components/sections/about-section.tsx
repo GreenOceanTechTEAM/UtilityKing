@@ -57,14 +57,14 @@ export default function AboutSection({ id }: AboutSectionProps) {
             viewport={{ once: true, amount: 0.5 }}
             variants={textContainerVariants}
           >
-            <motion.h2 variants={textLineVariants} className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-              About Utility King AI
+            <motion.h2 variants={textLineVariants} className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+              Empowering UK Households With Smarter, Fairer Energy Choices
             </motion.h2>
-            <motion.p variants={textLineVariants} className="mt-6 text-lg text-muted-foreground">
-              We started Utility King AI with a simple mission: to demystify the complex world of utility services. Our team of experts and our advanced AI, UKi, work tirelessly to bring you unbiased, data-driven comparisons.
+            <motion.p variants={textLineVariants} className="mt-6 text-lg text-muted-foreground max-w-[680px] leading-relaxed">
+              UtilityKing is a modern comparison platform built to help you cut costs and take control of your household utilities.
             </motion.p>
-            <motion.p variants={textLineVariants} className="mt-4 text-lg text-muted-foreground">
-              We believe everyone deserves a fair deal. That's why our service is, and always will be, completely free for you to use. We're here to empower you with the information you need to make smarter choices and save money.
+            <motion.p variants={textLineVariants} className="mt-4 text-lg text-muted-foreground max-w-[680px] leading-relaxed">
+              We analyze real-time supplier data, recommend the best value options, and simplify switching into a fast, seamless journey — saving you time, money, and stress.
             </motion.p>
           </motion.div>
           {image && (

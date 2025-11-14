@@ -38,8 +38,9 @@ export default function Home() {
         <AnimatedCTABanner
           id="cta-banner-1"
           type="quote"
-          title="Get a smart quote from UKi in 2 minutes"
-          buttonText="Start Quoting"
+          title="Compare Live UK Energy Prices — Get Your Smart Quote Today"
+          subtitle="Energy prices change daily. Grab today’s lowest deal before rates increase again."
+          buttonText="Check My Best Price"
           buttonLink="#compare"
         />
         <FAQs id="faqs" />
@@ -49,6 +50,7 @@ export default function Home() {
           id="cta-banner-2"
           type="chat"
           title="Not sure where to start? Ask UKi live."
+          subtitle="Our AI assistant is here to help you 24/7."
           buttonText="Chat with UKi"
         />
       </main>

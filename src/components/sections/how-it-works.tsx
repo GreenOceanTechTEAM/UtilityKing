@@ -10,18 +10,18 @@ type HowItWorksProps = {
 const steps = [
   {
     icon: <FileText className="h-8 w-8 text-accent" />,
-    title: "Share Your Details",
-    description: "Provide a few details about your current usage, location, and what you're looking for in a new plan."
+    title: "Tell Us About Your Home",
+    description: "Share your energy usage, home type, and preferences. No sensitive details needed — just enough for accurate comparison."
   },
   {
     icon: <BarChart3 className="h-8 w-8 text-accent" />,
-    title: "Compare Deals Instantly",
-    description: "Our AI, UKi, instantly analyzes thousands of deals to find the perfect matches for you, showing clear savings."
+    title: "Compare Live Deals Instantly",
+    description: "We analyze the latest electricity and gas tariffs available, ranking them by price, contract length, provider rating, and renewal fit."
   },
   {
     icon: <Smile className="h-8 w-8 text-accent" />,
-    title: "Switch and Save",
-    description: "Choose your new plan, and we'll handle the switch. It's a seamless process, and you start saving money."
+    title: "Switch Online & Start Saving",
+    description: "Pick your ideal deal and switch in minutes — no phone calls, no paperwork, no disruption to your supply."
   }
 ];
 
@@ -53,8 +53,8 @@ export default function HowItWorks({ id }: HowItWorksProps) {
           transition={{duration: 0.6}}
           className="text-center"
         >
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Saving Money is as Easy as 1-2-3
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter text-foreground sm:text-4xl">
+            Switching to a Cheaper Energy Deal Has Never Been Easier
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Our streamlined process makes finding a better utility deal simpler than ever before.
@@ -98,7 +98,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                             delay: 0.5 + index * 0.2
                         }}
                      />
-                    <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
+                    <span className="relative font-body text-lg font-semibold text-accent">{`0${index + 1}`}</span>
                   </motion.div>
                   <motion.div 
                      whileHover={{ y: -6 }}
@@ -106,10 +106,10 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                      className="text-left"
                   >
                     <div className="flex items-center gap-3">
-                      {step.icon}
-                      <h3 className="font-headline text-xl font-bold text-foreground">{step.title}</h3>
+                      
+                      <h3 className="font-body text-xl font-semibold leading-tight text-foreground">{step.title}</h3>
                     </div>
-                    <p className="mt-2 text-muted-foreground">{step.description}</p>
+                    <p className="mt-2 text-base text-muted-foreground leading-relaxed">{step.description}</p>
                   </motion.div>
               </motion.div>
             ))}

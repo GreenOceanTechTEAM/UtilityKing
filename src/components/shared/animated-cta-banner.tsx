@@ -12,11 +12,12 @@ type AnimatedCTABannerProps = {
   id: string;
   type: 'quote' | 'chat';
   title: string;
+  subtitle: string;
   buttonText: string;
   buttonLink?: string;
 };
 
-export default function AnimatedCTABanner({ id, type, title, buttonText, buttonLink }: AnimatedCTABannerProps) {
+export default function AnimatedCTABanner({ id, type, title, subtitle, buttonText, buttonLink }: AnimatedCTABannerProps) {
   const bannerImage = PlaceHolderImages.find(p => p.id === (type === 'quote' ? 'cta-banner-1' : 'cta-banner-2'));
   const targetRef = useRef<HTMLDivElement>(null);
   
@@ -63,9 +64,10 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
             repeat: Infinity,
           }}
         />
-        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl shimmer-text">
+        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-[40px] shimmer-text">
           {title}
         </h2>
+        <p className="mt-4 text-lg text-primary-foreground/90">{subtitle}</p>
         <motion.div
           className="mt-8"
           initial={{ scale: 0.98, opacity: 0 }}
@@ -73,7 +75,7 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 glowing-btn-border">
+            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 glowing-btn-border text-lg font-semibold">
                 {buttonLink ? <Link href={buttonLink}>{buttonText}</Link> : <button>{buttonText}</button>}
             </Button>
         </motion.div>

@@ -13,10 +13,10 @@ type TrustProofsProps = {
 
 const testimonials = [
   {
-    name: "Sarah J.",
-    location: "Manchester",
+    name: "Sarah M.",
+    location: "Birmingham",
     avatar: PlaceHolderImages.find(p => p.id === 'avatar-1'),
-    quote: "I was skeptical at first, but UKi found me an energy deal that saved me over £300 a year. The process was incredibly simple. Highly recommended!"
+    quote: "UtilityKing helped me save over £300 on my annual bill. The process took less than 5 minutes — highly recommend!"
   },
   {
     name: "David L.",
@@ -60,6 +60,7 @@ const itemVariants = {
       type: "spring",
       stiffness: 100,
       damping: 12,
+      ease: "easeOut"
     },
   },
 };
@@ -114,7 +115,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
               >
                   {[...Array(5)].map((_, i) => <motion.div key={i} variants={starVariants}><Star className="h-5 w-5 fill-current" /></motion.div>)}
               </motion.div>
-              <blockquote className="text-lg text-foreground">
+              <blockquote className="text-lg text-foreground leading-relaxed">
                   <p>"{testimonial.quote}"</p>
               </blockquote>
           </div>
@@ -133,7 +134,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
               </motion.div>
             )}
             <div className="ml-4">
-              <p className="font-semibold text-foreground">{testimonial.name}</p>
+              <p className="text-base font-semibold text-foreground">{testimonial.name}</p>
               <p className="text-sm text-muted-foreground">{testimonial.location}</p>
             </div>
           </motion.div>
@@ -155,8 +156,8 @@ export default function TrustProofs({ id }: TrustProofsProps) {
             transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
         >
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Trusted by Thousands of Savers
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+            Trusted by Thousands of Savvy UK Switchers
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Don't just take our word for it. Here's what our users have to say about their experience.

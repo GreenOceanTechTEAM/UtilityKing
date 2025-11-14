@@ -16,13 +16,13 @@ const steps = [
     name: "usage", 
     label: "Your Usage:", 
     options: ["Small Home", "Medium Home", "Large Home"],
-    customPlaceholder: "e.g. 5-bed house"
+    customPlaceholder: "e.g. 3-bed house, family of 4"
   },
   { 
     name: "preference", 
-    label: "Your Preference:", 
+    label: "Your Preferences:", 
     options: ["Cheapest", "Renewable", "Fixed Plan"],
-    customPlaceholder: "e.g. 18-month contract"
+    customPlaceholder: "e.g. cheapest fixed tariff"
   },
   {
     name: "supplier",
@@ -34,7 +34,7 @@ const steps = [
     name: "location", 
     label: "Your Location:", 
     options: [],
-    customPlaceholder: "e.g. SW1A 0AA"
+    customPlaceholder: "e.g. Manchester, M1 1AA"
   },
 ];
 
@@ -63,7 +63,7 @@ const CustomInput = ({
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="h-10 transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+        className="h-10 text-base transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2"
       />
     </motion.div>
   );
@@ -174,7 +174,7 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
                                 value={selections.location}
                                 onChange={(e) => handleCustomInputChange('location', e.target.value)}
                                 placeholder={step.customPlaceholder}
-                                className="h-10 transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                                className="h-10 text-base transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2"
                             />
                         </motion.div>
                     ) : (
@@ -187,7 +187,7 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
                                     key={option}
                                     variant={isSelected ? "default" : "outline"}
                                     onClick={() => handleSelect(step.name as keyof typeof selections, option)}
-                                    className="rounded-full transition-all duration-200"
+                                    className="rounded-full transition-all duration-200 text-sm font-medium px-4 py-2.5"
                                 >
                                     <AnimatePresence>
                                         {isSelected && <motion.div initial={{scale:0}} animate={{scale:1}}><Check className="mr-2 h-4 w-4" /></motion.div>}
@@ -199,7 +199,7 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
                             <Button
                                 variant={selections[step.name as keyof typeof selections] === "Custom" ? "default" : "outline"}
                                 onClick={() => handleCustomClick(step.name as keyof typeof showCustomInput)}
-                                className="rounded-full transition-all duration-200"
+                                className="rounded-full transition-all duration-200 text-sm font-medium px-4 py-2.5"
                             >
                                 {selections[step.name as keyof typeof selections] === "Custom" ? <Check className="mr-2 h-4 w-4" /> : <Edit className="mr-2 h-4 w-4" />}
                                 Custom
@@ -237,7 +237,7 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
         >
           <Button 
             size="lg" 
-            className="glowing-btn-border"
+            className="glowing-btn-border text-lg font-semibold tracking-tight"
             onClick={() => onSubmit({
                 usage: getFinalValue('usage'),
                 preference: getFinalValue('preference'),
@@ -245,7 +245,7 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
                 location: getFinalValue('location'),
             })}
           >
-            Analyze Deals
+            Compare My Energy Deals
           </Button>
         </motion.div>
       )}

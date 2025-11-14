@@ -9,12 +9,12 @@ type FaqsProps = {
 
 const faqItems = [
   {
-    question: "Is Utility King AI really free to use?",
-    answer: "Yes, absolutely. Our service is 100% free for you. We earn a small commission from the provider if you choose to switch through us, but this never affects the price you pay or our impartiality."
+    question: "How does switching energy suppliers work?",
+    answer: "It’s quick and seamless. Your new supplier handles everything — you don’t need to contact your old supplier, and your energy supply continues without interruption."
   },
   {
-    question: "How does the AI comparison work?",
-    answer: "Our AI, UKi, analyzes your usage data, location, and preferences against a live database of thousands of deals from UK providers. It then calculates potential savings and recommends the best-value plans for you, saving you the time of manual comparison."
+    question: "How much can I save by switching?",
+    answer: "Most UK households save between £200–£350 per year by switching to a cheaper tariff."
   },
   {
     question: "Is my personal data safe?",
@@ -55,7 +55,7 @@ export default function FAQs({ id }: FaqsProps) {
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <h2 className="font-headline text-3xl md:text-[34px] font-bold tracking-tight text-foreground">
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
@@ -73,10 +73,10 @@ export default function FAQs({ id }: FaqsProps) {
             {faqItems.map((item, index) => (
               <motion.div key={index} variants={itemVariants}>
                 <AccordionItem value={`item-${index}`}>
-                  <AccordionTrigger className="text-left text-lg hover:no-underline">
+                  <AccordionTrigger className="text-left text-base md:text-lg font-semibold hover:no-underline">
                     {item.question}
                   </AccordionTrigger>
-                  <AccordionContent className="text-base text-muted-foreground">
+                  <AccordionContent className="text-base text-muted-foreground leading-relaxed">
                     {item.answer}
                   </AccordionContent>
                 </AccordionItem>

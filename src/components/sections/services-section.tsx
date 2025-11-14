@@ -12,33 +12,33 @@ type ServicesSectionProps = {
 const services = [
   {
     icon: <Zap className="h-8 w-8" />,
-    title: "Energy",
-    description: "Unlock cheaper electricity tariffs and slash your annual energy costs. Let UKi find you the best deal."
+    title: "Electricity",
+    description: "Find cheaper fixed, variable, and renewable electricity tariffs from trusted UK suppliers."
   },
   {
     icon: <Flame className="h-8 w-8" />,
     title: "Gas",
-    description: "Switch to a better gas supplier in minutes. We compare the market to find you big savings."
+    description: "Compare competitive gas prices and dual-fuel bundles available in your region."
   },
   {
     icon: <Wifi className="h-8 w-8" />,
     title: "Broadband",
-    description: "From superfast fibre to budget-friendly plans, find the perfect broadband for your home."
+    description: "Discover faster, more reliable broadband plans — and stop paying for speeds you don’t need."
   },
   {
     icon: <Smartphone className="h-8 w-8" />,
-    title: "SIMs",
-    description: "Get more data for your money. Compare the latest SIM-only deals from all major UK networks."
+    title: "Mobile / SIM",
+    description: "Save money on SIM-only, unlimited, and flexible contract plans."
   },
   {
     icon: <Droplets className="h-8 w-8" />,
     title: "Water",
-    description: "Discover if you can switch your water supplier or get a water meter to reduce your bills."
+    description: "Uncover ways to reduce water charges with smart usage insights and regional provider options."
   },
   {
     icon: <ShieldCheck className="h-8 w-8" />,
     title: "Insurance",
-    description: "Protect what matters most. Compare quotes for home, car, and travel insurance effortlessly."
+    description: "Lower your home, boiler, and appliance cover costs with transparent, unbiased comparisons."
   }
 ];
 
@@ -75,11 +75,11 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           viewport={{ once: true }}
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
-          <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            Find Savings in Every Corner of Your Home
+          <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter leading-tight text-foreground">
+            Smarter Savings Across All Your Home Utilities
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-            We help you find savings on more than just energy. Explore all the ways Utility King AI can help you save.
+            Electricity, gas, broadband, water, mobile and insurance — everything in one place, optimized for your lifestyle and location.
           </p>
         </motion.div>
         <motion.div
@@ -110,8 +110,8 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
                     {service.icon}
                   </motion.div>
                   <div>
-                    <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                    <CardDescription className="pt-2">{service.description}</CardDescription>
+                    <CardTitle className="font-body text-lg font-semibold">{service.title}</CardTitle>
+                    <CardDescription className="pt-2 text-base leading-relaxed">{service.description}</CardDescription>
                   </div>
                 </CardHeader>
               </Card>
