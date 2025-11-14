@@ -63,37 +63,37 @@
     {
       "id": "logo-british-gas",
       "description": "The official logo for British Gas energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1635545710116-ad48ab0be1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxCcml0aXNoJTIwR2FzJTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/2a559868-a46c-4809-9134-fb3170e0f3d9.png",
       "imageHint": "British Gas logo"
     },
     {
       "id": "logo-octopus",
       "description": "The official logo for Octopus Energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1589413794996-0c40d50d3458?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxPY3RvcHVzJTIwRW5lcmd5JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/b3504856-74b8-4c12-b9b5-c4238e815e13.png",
       "imageHint": "Octopus Energy logo"
     },
     {
       "id": "logo-edf",
       "description": "The official logo for EDF Energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1650829729301-96cd547131c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8RURGJTIwRW5lcmd5JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/79b3922c-a28a-446c-9477-85474c107e32.png",
       "imageHint": "EDF Energy logo"
     },
     {
       "id": "logo-eon",
       "description": "The official logo for E.ON Next energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1643018048923-bfa2a3c6c0be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxFT04lMjBOZXh0JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/a07a1670-0775-4d08-a359-0db79f64e29f.png",
       "imageHint": "EON Next logo"
     },
     {
       "id": "logo-ovo",
       "description": "The official logo for OVO Energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1617149302783-06f5f5dc0d03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxPVk8lMjBFbmVyZ3klMjBsb2dvfGVufDB8fHx8MTc2MzEyNDk4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/b0b741a2-5b5c-4b5b-8664-586b40552b7a.png",
       "imageHint": "OVO Energy logo"
     },
     {
       "id": "logo-scottish-power",
       "description": "The official logo for Scottish Power energy supplier.",
-      "imageUrl": "https://images.unsplash.com/photo-1654361831264-07a220a6bcfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxTY290dGlzaCUyMFBvd2VyJTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://storage.googleapis.com/studioprod-52a1c.appspot.com/project-IKtSRyn7xnHpeXL_u6255BftkA4/924f3366-4b66-4af3-953e-2f1f63625f9b.png",
       "imageHint": "Scottish Power logo"
     }
   ]
