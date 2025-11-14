@@ -10,7 +10,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
+import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
 import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase } from 'lucide-react';
 import { Card } from '@/components/ui/card';
@@ -103,10 +103,11 @@ export default function ContactSection({ id }: ContactSectionProps) {
     setCurrentStep(0);
   }
   
-  const progress = ((currentStep + 1) / (isBusiness ? steps.length + 1 : steps.length)) * 100;
+  const activeSteps = isBusiness ? [...steps.slice(0,3), { field: "businessName", title: "What's your business name?", placeholder: "ACME Inc.", icon: Building }, ...steps.slice(3)] : steps;
+  const progress = ((currentStep + 1) / activeSteps.length) * 100;
 
   const renderStep = () => {
-    const stepConfig = steps[currentStep];
+    const stepConfig = activeSteps[currentStep];
     const Icon = stepConfig.icon;
     
     if (stepConfig.field === 'isBusiness') {
@@ -120,45 +121,24 @@ export default function ContactSection({ id }: ContactSectionProps) {
                 className="w-full max-w-sm mx-auto flex flex-col items-center"
              >
                 <div 
-                    onClick={() => form.setValue('isBusiness', !isBusiness, { shouldValidate: true })}
+                    onClick={() => {
+                        const newIsBusiness = !isBusiness;
+                        form.setValue('isBusiness', newIsBusiness, { shouldValidate: true });
+                        setTimeout(() => handleNextStep(), 100);
+                    }}
                     className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm cursor-pointer hover:bg-muted/50 w-full"
                 >
                     <Checkbox
                         checked={isBusiness}
-                        onCheckedChange={(checked) => form.setValue('isBusiness', !!checked, { shouldValidate: true })}
+                        onCheckedChange={(checked) => {
+                            form.setValue('isBusiness', !!checked, { shouldValidate: true });
+                            if(!checked) setTimeout(() => handleNextStep(), 100);
+                        }}
                     />
-                    <FormLabel className="cursor-pointer">
+                    <FormLabel className="cursor-pointer font-normal">
                         This is a business inquiry
                     </FormLabel>
                 </div>
-                
-                <AnimatePresence>
-                {isBusiness && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        transition={{ duration: 0.3, ease: 'easeInOut' }}
-                        className="overflow-hidden w-full pt-4"
-                    >
-                        <FormField
-                            control={form.control}
-                            name="businessName"
-                            render={({ field }) => (
-                                <FormItem>
-                                    <FormControl>
-                                        <div className="relative">
-                                          <Building className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                          <Input placeholder="ACME Inc." {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base"/>
-                                        </div>
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                            )}
-                        />
-                    </motion.div>
-                )}
-                </AnimatePresence>
              </motion.div>
         )
     }
@@ -217,7 +197,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     />
                 </div>
 
-                <div className="relative h-48 overflow-hidden">
+                <div className="relative h-28 overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
@@ -228,15 +208,15 @@ export default function ContactSection({ id }: ContactSectionProps) {
                             className="absolute w-full"
                         >
                             <div className="text-center mb-6">
-                                <h3 className="text-lg font-semibold text-foreground">{steps[currentStep].title}</h3>
+                                <h3 className="text-lg font-semibold text-foreground">{activeSteps[currentStep].title}</h3>
                             </div>
                             {renderStep()}
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
-                <div className="flex justify-end gap-4">
-                  {currentStep < steps.length - 1 ? (
+                <div className="flex justify-end gap-4 pt-4">
+                  {currentStep < activeSteps.length - 1 ? (
                     <Button type="button" size="lg" onClick={handleNextStep} disabled={!form.formState.isValid}>
                       Next
                       <ChevronRight className="ml-2 h-4 w-4" />
@@ -265,5 +245,3 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
-
-    
