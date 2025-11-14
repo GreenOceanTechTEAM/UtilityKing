@@ -73,7 +73,6 @@ const wizardSteps = [
             { label: "Utility Warehouse" }, { label: "Outfox the Market" }, { label: "Boost" },
             { label: "Co-op Energy" }, { label: "Bulb (legacy)"}, { label: "Utilita" },
         ],
-        customOption: { label: "Other Supplier", description: "Enter supplier name" },
         additionalOptions: ["I Don’t Know"]
     },
     {
@@ -191,7 +190,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
 
-    if (!isMulti && !(stepKey === 'electricitySupplier' && option === currentWizardStep.customOption?.label)) {
+    if (!isMulti) {
         setTimeout(() => {
             handleNextStep();
         }, 300);
@@ -227,9 +226,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
 
     if (step.customOption?.label && selection === step.customOption.label) {
-        // "Other" for step 1 doesn't need custom input.
-        if (step.step === 1) return true;
-        return !!customValues[step.key];
+        return true;
     }
     
     if(step.additionalOptions?.includes(selection)) {
@@ -419,21 +416,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             </motion.div>
                                         )}
 
-                                        {(selections[currentWizardStep.key] === currentWizardStep.customOption?.label && currentWizardStep.step !== 1) && (
-                                          <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                            <Input 
-                                                placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
-                                                className="h-12 text-base text-center"
-                                                value={customValues[currentWizardStep.key] || ''}
-                                                onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
-                                            />
-                                            {currentWizardStep.helperText && <p className="text-sm text-muted-foreground">{currentWizardStep.helperText}</p>}
-                                             { ((customValues[currentWizardStep.key] && selections[currentWizardStep.key] === currentWizardStep.customOption?.label) || (currentWizardStep.isInput && selections[currentWizardStep.key])) && (
-                                              <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
-                                            )}
-                                          </motion.div>
-                                        )}
-                                        {currentWizardStep.isInput && !currentWizardStep.customOption && (
+                                        {currentWizardStep.isInput && (
                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                             <Input 
                                                 placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
@@ -554,6 +537,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
 
