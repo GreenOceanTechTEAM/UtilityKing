@@ -1,4 +1,4 @@
-import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
+import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
 import { Scale, Bot, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 
@@ -44,7 +44,7 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="lg:text-center">
+        <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             The Utility King Difference
           </h2>
@@ -55,31 +55,31 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {values.map((value) => (
-            <div key={value.title} className="flex gap-4">
-              <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10">
-                {value.icon}
-              </div>
-              <div>
-                <h3 className="text-lg font-semibold leading-6 text-foreground">{value.title}</h3>
-                <p className="mt-2 text-base text-muted-foreground">{value.description}</p>
-              </div>
-            </div>
+             <Card key={value.title} className="bg-transparent border-0 shadow-none hover:bg-muted/30 transition-colors">
+                 <CardHeader className="flex flex-row items-start gap-4">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-accent">
+                        {value.icon}
+                    </div>
+                    <div>
+                        <CardTitle className="text-lg leading-6">{value.title}</CardTitle>
+                        <CardDescription className="mt-2 text-base">{value.description}</CardDescription>
+                    </div>
+                </CardHeader>
+            </Card>
           ))}
         </div>
         
         <div className="mt-20">
-             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
+             <div className="grid grid-cols-1 gap-px md:grid-cols-3 bg-border rounded-lg overflow-hidden">
                 {stats.map((stat) => (
-                    <Card key={stat.label} className="text-center bg-transparent border-0 md:border-l first:border-l-0">
-                        <CardHeader>
-                            <CardTitle className="text-5xl font-bold font-headline text-primary">
-                                <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-                            </CardTitle>
-                            <CardDescription className="text-lg">
-                                {stat.label}
-                            </CardDescription>
-                        </CardHeader>
-                    </Card>
+                    <div key={stat.label} className="bg-background text-center p-8">
+                        <p className="text-5xl font-bold font-headline text-primary">
+                            <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
+                        </p>
+                        <p className="text-lg text-muted-foreground mt-2">
+                            {stat.label}
+                        </p>
+                    </div>
                 ))}
              </div>
         </div>

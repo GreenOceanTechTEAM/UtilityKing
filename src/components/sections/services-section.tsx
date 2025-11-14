@@ -10,27 +10,27 @@ type ServicesSectionProps = {
 
 const services = [
   {
-    icon: <Zap className="h-8 w-8 text-primary" />,
+    icon: <Zap className="h-8 w-8" />,
     title: "Energy Comparison",
     description: "Compare gas and electricity prices from UK suppliers to find a cheaper tariff and lower your energy bills."
   },
   {
-    icon: <Wifi className="h-8 w-8 text-primary" />,
+    icon: <Wifi className="h-8 w-8" />,
     title: "Broadband Planner",
     description: "Find faster, more reliable, and better-value broadband deals in your area, from standard to full-fibre."
   },
   {
-    icon: <Smartphone className="h-8 w-8 text-primary" />,
+    icon: <Smartphone className="h-8 w-8" />,
     title: "Mobile Data Match",
     description: "Analyze your data usage and find a mobile plan that gives you what you need without overpaying."
   },
   {
-    icon: <Thermometer className="h-8 w-8 text-primary" />,
+    icon: <Thermometer className="h-8 w-8" />,
     title: "Smart Meter Advice",
     description: "Connect your smart meter data to get personalized insights and find tariffs that reward your usage patterns."
   },
   {
-    icon: <FileText className="h-8 w-8 text-primary" />,
+    icon: <FileText className="h-8 w-8" />,
     title: "Bill Decoder",
     description: "Upload or describe your bill, and our AI will break down the charges, identify savings, and check for errors."
   }
@@ -82,7 +82,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
             <motion.div key={service.title} variants={itemVariants}>
               <Card className="group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
                 <CardHeader className="p-6">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 transition-colors group-hover:bg-primary text-primary group-hover:text-primary-foreground">
+                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                     {service.icon}
                   </div>
                   <CardTitle className="font-headline text-xl">{service.title}</CardTitle>

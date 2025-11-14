@@ -2,7 +2,6 @@
 
 import { motion } from 'framer-motion';
 import { FileText, BarChart3, Smile } from 'lucide-react';
-import { Card, CardHeader, CardTitle, CardDescription } from '../ui/card';
 
 type HowItWorksProps = {
   id: string;
@@ -35,10 +34,10 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, y: 50 },
+  hidden: { opacity: 0, x: -50 },
   visible: {
     opacity: 1,
-    y: 0,
+    x: 0,
     transition: { type: 'spring', stiffness: 50, damping: 10 },
   },
 };
@@ -55,10 +54,9 @@ export default function HowItWorks({ id }: HowItWorksProps) {
             Our streamlined process makes finding a better utility deal simpler than ever before.
           </p>
         </div>
-        <div className="relative mt-20">
-          {/* The connecting line */}
+        <div className="relative mt-20 max-w-2xl mx-auto">
           <div
-            className="absolute left-1/2 top-8 hidden h-[calc(100%-4rem)] w-px -translate-x-1/2 bg-border md:block"
+            className="absolute left-8 top-0 h-full w-px bg-border"
             aria-hidden="true"
           />
 
@@ -73,36 +71,19 @@ export default function HowItWorks({ id }: HowItWorksProps) {
               <motion.div
                 key={step.title}
                 variants={itemVariants}
-                className="relative flex flex-col items-center md:flex-row"
+                className="relative pl-20"
               >
-                <div className="flex w-full items-center gap-8 md:w-1/2 md:pr-16" style={{ flexDirection: index % 2 === 0 ? 'row' : 'row-reverse' }}>
-                  <div className={`flex-shrink-0 md:order-${index % 2 === 0 ? 1 : 2}`}>
-                    <div className="relative flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg">
-                      <div className="absolute inset-0 m-auto h-full w-full animate-pulse rounded-full bg-accent/30 blur-xl" />
-                      <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
-                    </div>
+                  <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg">
+                    <div className="absolute inset-0 m-auto h-full w-full animate-pulse rounded-full bg-accent/30 blur-xl" />
+                    <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
                   </div>
-                  <div className={`flex-grow md:order-${index % 2 === 0 ? 2 : 1} text-center md:text-left`} style={{textAlign: index % 2 === 0 ? 'left' : 'right'}}>
-                    <div className="inline-flex items-center gap-3">
+                  <div className="text-left">
+                    <div className="flex items-center gap-3">
                       {step.icon}
                       <h3 className="font-headline text-xl font-bold text-foreground">{step.title}</h3>
                     </div>
                     <p className="mt-2 text-muted-foreground">{step.description}</p>
                   </div>
-                </div>
-                 {/* Empty div for spacing on the other side */}
-                <div className="hidden md:block md:w-1/2"></div>
-                 {/* This re-orders the content for alternating layout on medium screens */}
-                <style jsx>{`
-                  @media (min-width: 768px) {
-                    .md\\:flex-row:nth-child(odd) > div:first-child {
-                        margin-left: 50%;
-                    }
-                    .md\\:flex-row:nth-child(even) > div:first-child {
-                        margin-right: 50%;
-                    }
-                  }
-                `}</style>
               </motion.div>
             ))}
           </motion.div>

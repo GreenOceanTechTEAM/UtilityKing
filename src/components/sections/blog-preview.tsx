@@ -78,7 +78,7 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
           className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
           {blogPosts.map((post) => (
-            <motion.div key={post.title} variants={itemVariants}>
+            <motion.div key={post.title} variants={itemVariants} className="flex">
               <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 {post.image && (
                   <div className="aspect-video overflow-hidden">
