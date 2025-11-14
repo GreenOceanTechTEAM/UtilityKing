@@ -40,6 +40,7 @@ const partners = [
   { name: 'E.ON Next', logo: PlaceHolderImages.find(p => p.id === 'logo-eon') },
   { name: 'OVO Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-ovo') },
   { name: 'Scottish Power', logo: PlaceHolderImages.find(p => p.id === 'logo-scottish-power') },
+  { name: 'Crown Gas & Power', logo: PlaceHolderImages.find(p => p.id === 'logo-crown-gas-power') },
 ];
 
 const containerVariants = {
