@@ -184,14 +184,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </p>
         </motion.div>
 
-        <div className={cn(
-          "grid grid-cols-1 items-start gap-12 justify-center",
-          comparisonResult && !isLoading && "lg:grid-cols-5"
-        )}>
-            <div className={cn(
-                "w-full max-w-2xl mx-auto",
-                comparisonResult && !isLoading ? "lg:col-span-3" : "lg:col-span-5"
-            )}>
+        <div className="grid grid-cols-1 items-start gap-12 justify-center">
+            <div className={cn("w-full max-w-2xl mx-auto", comparisonResult && !isLoading ? "lg:col-span-3" : "lg:col-span-5")}>
                 <div className="rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     {/* Progress Bar and Step Title */}
                     <div className="mb-6 text-center">
@@ -338,9 +332,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 </div>
             </div>
 
-            <div className={cn("lg:col-span-2 w-full", !(comparisonResult && !isLoading) && "hidden")}>
-                <AnimatePresence>
-                {comparisonResult && !isLoading && (
+            {comparisonResult && !isLoading && (
+                <div className="lg:col-span-2 w-full">
+                    <AnimatePresence>
                     <motion.div
                         key="results"
                         initial={{ opacity: 0, y: 50 }}
@@ -400,9 +394,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         <CarouselNext className="hidden sm:flex -right-4" />
                         </Carousel>
                     </motion.div>
-                )}
-                </AnimatePresence>
-            </div>
+                    </AnimatePresence>
+                </div>
+            )}
         </div>
       </div>
     </section>
