@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -34,13 +35,29 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -50 },
+  hidden: { opacity: 0, x: -50, rotateY: -20 },
   visible: {
     opacity: 1,
     x: 0,
-    transition: { type: 'spring', stiffness: 50, damping: 10 },
+    rotateY: 0,
+    transition: { type: 'spring', stiffness: 50, damping: 15 },
   },
 };
+
+const orbVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: {
+      type: "spring",
+      stiffness: 260,
+      damping: 20,
+      delay: 0.3,
+    },
+  },
+};
+
 
 export default function HowItWorks({ id }: HowItWorksProps) {
   return (
@@ -55,10 +72,30 @@ export default function HowItWorks({ id }: HowItWorksProps) {
           </p>
         </div>
         <div className="relative mt-20 max-w-2xl mx-auto">
-          <div
+          <motion.div
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.1 }}
             className="absolute left-8 top-0 h-full w-px bg-border"
-            aria-hidden="true"
-          />
+          >
+             <motion.div 
+                className="absolute left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-accent shadow-[0_0_12px] shadow-accent"
+                style={{
+                    boxShadow: '0 0 12px hsl(var(--accent)), 0 0 20px hsl(var(--accent))'
+                }}
+                animate={{
+                    y: ['0%', '1000%', '2100%']
+                }}
+                transition={{
+                    duration: 3,
+                    ease: "easeInOut",
+                    repeat: Infinity,
+                    repeatDelay: 1,
+                    delay: 1,
+                }}
+             />
+
+          </motion.div>
 
           <motion.div
             initial="hidden"
@@ -73,10 +110,27 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                 variants={itemVariants}
                 className="relative pl-20"
               >
-                  <div className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg">
-                    <div className="absolute inset-0 m-auto h-full w-full animate-pulse rounded-full bg-accent/30 blur-xl" />
+                  <motion.div 
+                    variants={orbVariants}
+                    className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg"
+                   >
+                     <motion.div 
+                        className="absolute inset-0 rounded-full"
+                        style={{
+                            boxShadow: '0 0 15px hsl(var(--accent) / 0.7)'
+                        }}
+                        initial={{ scale: 1, opacity: 0 }}
+                        animate={{ scale: [1, 2, 1], opacity: [0, 0.7, 0] }}
+                        transition={{
+                            duration: 1.5,
+                            ease: "easeInOut",
+                            delay: 0.5 + index * 0.3,
+                            repeat: Infinity,
+                            repeatDelay: 3
+                        }}
+                     />
                     <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
-                  </div>
+                  </motion.div>
                   <div className="text-left">
                     <div className="flex items-center gap-3">
                       {step.icon}
