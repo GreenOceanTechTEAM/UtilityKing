@@ -58,7 +58,7 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
             repeat: Infinity,
           }}
         />
-        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-[40px] shimmer-text">
+        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-[40px] text-primary-foreground">
           {title}
         </h2>
         <p className="mt-4 text-lg text-primary-foreground/90">{subtitle}</p>
@@ -69,7 +69,7 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 glowing-btn-border text-lg font-semibold">
+            <Button asChild size="lg" variant="secondary" className="text-lg font-semibold">
                 {buttonLink ? <Link href={buttonLink}>{buttonText}</Link> : <button>{buttonText}</button>}
             </Button>
         </motion.div>

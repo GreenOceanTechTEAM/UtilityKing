@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  .theme-arctic {
+  :root {
     --background: 216 100% 98.6%;
     --foreground: 213 80% 12%;
     --card: 220 100% 97%;
@@ -24,6 +24,33 @@
     --input: 214 32% 91%;
     --ring: 211 100% 59%;
     --radius: 0.5rem;
+    --chart-1: 12 76% 61%;
+    --chart-2: 173 58% 39%;
+    --chart-3: 197 37% 24%;
+    --chart-4: 43 74% 66%;
+    --chart-5: 27 87% 67%;
+  }
+
+  .theme-arctic {
+    --background: 216 100% 98.6%;
+    --foreground: 213 80% 12%;
+    --card: 220 100% 97%;
+    --card-foreground: 213 80% 12%;
+    --popover: 220 100% 97%;
+    --popover-foreground: 213 80% 12%;
+    --primary: 211 100% 59%;
+    --primary-foreground: 210 100% 10%;
+    --secondary: 210 100% 94%;
+    --secondary-foreground: 213 80% 12%;
+    --muted: 210 100% 94%;
+    --muted-foreground: 217 33% 40%;
+    --accent: 191 100% 50%;
+    --accent-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 211 100% 59%;
     --chart-1: 12 76% 61%;
     --chart-2: 173 58% 39%;
     --chart-3: 197 37% 24%;
@@ -59,19 +86,6 @@
     border: 1px solid transparent;
     animation: glowBorder 4s infinite;
     z-index: -1;
-  }
-  .shimmer-text {
-    background-image: linear-gradient(
-      -75deg,
-      hsl(var(--accent-foreground) / 0.6) 30%,
-      hsl(var(--accent-foreground)) 50%,
-      hsl(var(--accent-foreground) / 0.6) 70%
-    );
-    background-size: 200% auto;
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: shimmer 8s infinite;
   }
 }
 
