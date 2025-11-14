@@ -1,7 +1,7 @@
 "use client";
 
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Scale, Bot, MousePointerClick, ShieldCheck, SquareCheckBig, Users, Euro, Smile } from 'lucide-react';
+import { Scale, Bot, MousePointerClick, ShieldCheck, SquareCheckBig, Users, Euro, Smile, TrendingUp } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 import { motion } from 'framer-motion';
 
@@ -25,8 +25,8 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
     },
     {
       icon: Bot,
-      title: "AI Powered by Gemini",
-      description: "Our smart assistant, UKi, is always available to answer your questions and guide you."
+      title: "UKi AI-powered help",
+      description: "Our smart assistant is powered by AI, always available to answer your questions and guide you."
     },
     {
       icon: MousePointerClick,
@@ -42,6 +42,11 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
       icon: SquareCheckBig,
       title: "Free to Use",
       description: "Our comparison service is completely free, with no obligation to switch."
+    },
+    {
+      icon: TrendingUp,
+      title: "Live Rates",
+      description: "We fetch real-time data to ensure you're getting the most up-to-date prices and deals."
     }
   ];
 
