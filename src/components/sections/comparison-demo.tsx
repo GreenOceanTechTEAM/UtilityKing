@@ -8,7 +8,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, Flame, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, Flame, ChevronLeft, ChevronRight, UploadCloud, CornerDownLeft } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -77,23 +77,32 @@ const wizardSteps = [
     },
     {
         step: 5,
-        key: 'usageInputRaw',
+        key: 'usageInputType',
         title: "Energy Usage",
-        aiMessage: "Enter your energy usage or monthly cost.",
-        isInput: true,
-        customPlaceholder: "e.g., 2700 kWh/year or £75 per month",
-        helperText: "Enter whatever you know — kWh, monthly bill, or both.",
-        options: [],
+        aiMessage: "How do you want to provide your energy usage?",
+        options: [
+            { label: "Consumption (kWh)" },
+            { label: "Monthly Amount (£)" },
+        ],
     },
     {
         step: 6,
+        key: 'usageInputRaw',
+        title: "Energy Usage",
+        aiMessage: "Enter your energy usage details.",
+        isInput: true,
+        options: [],
+        skipIf: (selections: any) => !selections.usageInputType,
+    },
+    {
+        step: 7,
         key: 'billAvailable',
         title: "Bill Available",
         aiMessage: "Do you have your bill handy?",
         options: [{ label: "Yes" }, { label: "No" }],
     },
     {
-        step: 7,
+        step: 8,
         key: 'preferences',
         title: "Your Preferences",
         aiMessage: "What matters most to you?",
@@ -104,7 +113,7 @@ const wizardSteps = [
         isMultiSelect: true,
     },
     {
-        step: 8,
+        step: 9,
         key: 'postcode',
         title: "Postcode",
         aiMessage: "What’s your postcode?",
@@ -136,14 +145,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
-  const [customValues, setCustomValues] = useState<{ [key: string]: string }>({});
   const [isTyping, setIsTyping] = useState(true);
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
   }, [selections]);
 
-  const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === wizardSteps[currentStep].step);
+  const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === wizardSteps[currentStep]?.step);
 
   useEffect(() => {
     setIsTyping(true);
@@ -163,7 +171,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     let prevStepIndex = currentStep - 1;
-    while (prevStepIndex > 0 && wizardSteps[prevStepIndex].skipIf && wizardSteps[prevStepIndex].skipIf!(selections)) {
+    while (prevStepIndex >= 0 && wizardSteps[prevStepIndex].skipIf && wizardSteps[prevStepIndex].skipIf!(selections)) {
       prevStepIndex--;
     }
     if (prevStepIndex >= 0) {
@@ -201,6 +209,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setSelections(prev => ({...prev, [stepKey]: value}));
   }
 
+  const handleCustomSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      handleNextStep();
+    }
+  };
 
   const isStepComplete = (stepIndex: number) => {
     const step = wizardSteps[stepIndex];
@@ -252,6 +266,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const progress = ((currentVisibleStepIndex + 1) / (activeWizardSteps.length)) * 100;
   const currentWizardStep = wizardSteps[currentStep];
 
+  const getPlaceholderForUsage = () => {
+    if (selections.usageInputType === 'Consumption (kWh)') {
+        return "e.g., 2700 kWh/year";
+    }
+    if (selections.usageInputType === 'Monthly Amount (£)') {
+        return "e.g., £75 per month";
+    }
+    return "e.g., 2700 kWh/year or £75 per month";
+  }
+
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -295,6 +319,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                     <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
                         <AnimatePresence mode="wait">
+                            {currentWizardStep &&
                             <motion.div
                                 key={currentStep}
                                 variants={stepVariants}
@@ -324,15 +349,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <div className="space-y-3 w-full max-w-md">
                                         <div className={cn(
                                           "grid grid-cols-1 gap-3",
-                                          currentWizardStep.options.length > 1 && ![4, 7].includes(currentWizardStep.step) && "sm:grid-cols-2",
+                                          currentWizardStep.options.length > 1 && ![4, 7, 8].includes(currentWizardStep.step) && "sm:grid-cols-2",
                                           currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2",
-                                          currentWizardStep.step === 7 && "sm:grid-cols-2"
+                                          currentWizardStep.step === 8 && "sm:grid-cols-2"
                                           )}>
                                             {currentWizardStep.options.map(option => {
                                                 const Icon = (option as any).icon;
                                                 const isSelected = currentWizardStep.isMultiSelect 
                                                     ? (selections[currentWizardStep.key] || []).includes(option.label)
                                                     : selections[currentWizardStep.key] === option.label;
+
+                                                const isCustomOptionSelected = isSelected && option.customOption;
 
                                                 return (
                                                     <motion.button
@@ -388,14 +415,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                                         {currentWizardStep.isInput && (
                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                            <Input 
-                                                placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
-                                                className="h-12 text-base text-center"
-                                                value={selections[currentWizardStep.key] || ''}
-                                                onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
-                                            />
+                                            <div className="relative">
+                                                <Input 
+                                                    placeholder={currentWizardStep.key === 'usageInputRaw' ? getPlaceholderForUsage() : (currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`)}
+                                                    className="h-12 text-base text-center"
+                                                    value={selections[currentWizardStep.key] || ''}
+                                                    onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
+                                                    onKeyDown={handleCustomSubmit}
+                                                />
+                                            </div>
                                             {currentWizardStep.helperText && <p className="text-sm text-muted-foreground">{currentWizardStep.helperText}</p>}
-                                            {selections[currentWizardStep.key] && currentWizardStep.step !== 8 && (
+                                            {selections[currentWizardStep.key] && currentWizardStep.step !== 9 && (
                                                 <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
                                             )}
                                             </motion.div>
@@ -421,6 +451,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     </div>
                                 )}
                             </motion.div>
+                            }
                         </AnimatePresence>
                     </div>
 
@@ -513,5 +544,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
