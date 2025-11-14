@@ -18,7 +18,7 @@ const ParticleBackground = () => {
   }, []);
 
   const particlesLoaded = async (container?: Container): Promise<void> => {
-    console.log(container);
+    // console.log(container);
   };
 
   const options: ISourceOptions = useMemo(
@@ -45,17 +45,17 @@ const ParticleBackground = () => {
       },
       particles: {
         color: {
-          value: "hsl(var(--primary))",
+          value: theme === 'dark' ? "hsl(var(--primary))" : "hsl(var(--primary))",
         },
         links: {
-          color: "hsl(var(--primary))",
+          color: theme === 'dark' ? "hsl(var(--primary))" : "hsl(var(--primary))",
           distance: 150,
           enable: true,
           opacity: 0.2,
           width: 1,
         },
         move: {
-          direction: "right",
+          direction: "none",
           enable: true,
           outModes: {
             default: "out",
@@ -82,7 +82,7 @@ const ParticleBackground = () => {
       },
       detectRetina: true,
     }),
-    []
+    [theme]
   );
 
   if (init) {
