@@ -8,7 +8,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { Zap, Wifi, Smartphone, ArrowRight, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -40,9 +40,9 @@ const wizardSteps = [
         title: "Your Home Setup",
         aiMessage: "What best describes your home?",
         options: [
-            { label: "Small Home", description: "1-2 bedrooms", icon: Home },
-            { label: "Medium Home", description: "3 bedrooms", icon: Home },
-            { label: "Large Home", description: "4+ bedrooms", icon: Home },
+            { label: "Small Home", description: "1-2 beds", icon: Home },
+            { label: "Medium Home", description: "3 beds", icon: Home },
+            { label: "Large Home", description: "4+ beds", icon: Home },
         ],
         customOption: { label: "Custom", description: "Enter exact details" },
     },
@@ -144,6 +144,22 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
     return () => clearTimeout(timer);
   }, [currentStep]);
+  
+  const handleKeyDown = (event: React.KeyboardEvent) => {
+    if (event.key === 'ArrowRight') {
+      handleNextStep();
+    } else if (event.key === 'ArrowLeft') {
+      handlePrevStep();
+    }
+  };
+  
+  React.useEffect(() => {
+    window.addEventListener('keydown', (e) => handleKeyDown(e as any));
+    return () => {
+      window.removeEventListener('keydown', (e) => handleKeyDown(e as any));
+    };
+  }, [currentStep]);
+
 
   const handleSelect = (stepKey: string, option: string) => {
     const currentWizardStep = wizardSteps[currentStep];
@@ -158,7 +174,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         } else if (currentSelection.length < 3) {
             newSelections = { ...selections, [stepKey]: [...currentSelection, option] };
         } else {
-            // Optional: Add a toast or message that they can't select more than 3
             toast({ title: "You can select up to 3 preferences." });
             return;
         }
@@ -170,9 +185,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
     if (!isMulti && option !== (currentWizardStep.customOption?.label || '')) {
         setTimeout(() => {
-            if (currentStep < wizardSteps.length - 1) {
-                setCurrentStep(currentStep + 1);
-            }
+            handleNextStep();
         }, 300);
     }
   };
@@ -185,10 +198,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }
 
   const handleNextStep = () => {
-    if (currentStep < wizardSteps.length - 1) {
+    if (currentStep < wizardSteps.length - 1 && isStepComplete(currentStep)) {
       setCurrentStep(currentStep + 1);
     }
   };
+
+  const handlePrevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
+
 
   const isStepComplete = (stepIndex: number) => {
     const step = wizardSteps[stepIndex];
@@ -256,7 +276,32 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         <div className="flex items-start justify-center gap-12">
             <div className={cn("w-full max-w-2xl", comparisonResult && !isLoading ? "lg:col-span-3" : "")}>
-                <div className="rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
+                <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
+                    
+                    {currentStep !== wizardSteps.length - 1 && (
+                      <div className="absolute top-4 right-4 z-10 flex gap-2">
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={handlePrevStep}
+                          disabled={currentStep === 0}
+                          aria-label="Previous step"
+                        >
+                          <ChevronLeft className="h-5 w-5" />
+                        </Button>
+                        <Button
+                          variant="ghost"
+                          size="icon"
+                          onClick={handleNextStep}
+                          disabled={!isStepComplete(currentStep) || currentStep === wizardSteps.length - 1}
+                          aria-label="Next step"
+                        >
+                          <ChevronRight className="h-5 w-5" />
+                        </Button>
+                      </div>
+                    )}
+
+
                     {currentStep !== (wizardSteps.length - 1) && (
                         <div className="mb-6 text-center">
                             <p className="text-base font-medium text-foreground mb-2">Step {currentWizardStep.step} of {wizardSteps.length-1} &mdash; {currentWizardStep.title}</p>
@@ -286,7 +331,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                         <Sparkles className="w-5 h-5" />
                                     </div>
                                     <div>
-                                        <p className="text-base font-medium text-foreground text-card-foreground">
+                                        <p className="text-lg font-semibold text-card-foreground">
                                           {currentWizardStep.title}
                                         </p>
                                         <p className="text-base text-muted-foreground max-w-md mx-auto">
@@ -305,7 +350,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 <CardContent className="space-y-2 text-sm p-0">
                                                     {Object.entries(selections).map(([key, value]) => {
                                                         const step = wizardSteps.find(s => s.key === key);
-                                                        if (!step) return null;
+                                                        if (!step || !value) return null;
                                                         const displayValue = Array.isArray(value) ? value.join(', ') : value;
                                                         return (
                                                             <div key={key}>
@@ -371,15 +416,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 {( (currentWizardStep.customOption && selections[currentWizardStep.key] === currentWizardStep.customOption.label) || currentWizardStep.isInput) && (
                                                   <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                                     <Input 
-                                                        placeholder={currentWizardStep.customPlaceholder}
+                                                        placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
                                                         className="h-12 text-base text-center"
                                                         value={customValues[currentWizardStep.key] || ''}
                                                         onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
                                                     />
+                                                     { (customValues[currentWizardStep.key] || selections[currentWizardStep.key]) && (
+                                                      <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
+                                                    )}
                                                   </motion.div>
-                                                )}
-                                                {isStepComplete(currentStep) && currentStep < wizardSteps.length - 1 && (
-                                                    <Button size="lg" className="w-full h-12 text-base mt-3" onClick={handleNextStep}>Next Step &rarr;</Button>
                                                 )}
                                             </>
                                         )}
@@ -494,3 +539,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
