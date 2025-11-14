@@ -34,11 +34,12 @@ const containerVariants = {
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, scale: 0.98 },
+  hidden: { opacity: 0, scale: 0.98, y: 20 },
   visible: {
     opacity: 1,
     scale: 1,
-    transition: { ease: [0.17, 0.67, 0.45, 1.35], duration: 0.5 },
+    y: 0,
+    transition: { type: "spring", stiffness: 100, damping: 13, mass: 0.8 },
   },
 };
 
@@ -54,7 +55,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
           className="text-center"
         >
           <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter text-foreground sm:text-4xl">
-            Switching to a Cheaper Energy Deal Has Never Been Easier
+            Saving Money is as Easy as 1-2-3
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Our streamlined process makes finding a better utility deal simpler than ever before.
@@ -66,7 +67,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
             whileInView={{ height: "100%" }}
             viewport={{ once: true, amount: 0.1 }}
             transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
-            className="absolute left-8 top-0 w-px bg-border"
+            className="absolute left-8 top-0 w-px bg-gradient-to-b from-transparent via-accent to-transparent"
           />
 
           <motion.div
@@ -86,7 +87,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ ease: "easeOut", duration: 0.9, delay: index * 0.2 }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.3 + index * 0.1 }}
                     className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg"
                    >
                      <motion.div 
@@ -101,12 +102,15 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                     <span className="relative font-body text-lg font-semibold text-accent">{`0${index + 1}`}</span>
                   </motion.div>
                   <motion.div 
-                     whileHover={{ y: -6 }}
-                     transition={{ type: 'spring', stiffness: 300 }}
+                     whileHover={{ y: -6, transition: { type: 'spring', stiffness: 300 } }}
                      className="text-left"
                   >
                     <div className="flex items-center gap-3">
-                      
+                       <motion.div
+                        whileHover={{ scale: 1.1, rotate: -8, transition: { type: 'spring', stiffness: 400 } }}
+                       >
+                        {step.icon}
+                       </motion.div>
                       <h3 className="font-body text-xl font-semibold leading-tight text-foreground">{step.title}</h3>
                     </div>
                     <p className="mt-2 text-base text-muted-foreground leading-relaxed">{step.description}</p>

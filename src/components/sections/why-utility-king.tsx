@@ -54,8 +54,8 @@ const containerVariants = {
 }
 
 const itemVariants = (side: 'left' | 'right') => ({
-    hidden: { x: side === 'left' ? -10 : 10, opacity: 0 },
-    visible: { x: 0, opacity: 1, transition: { duration: 0.4 } }
+    hidden: { x: side === 'left' ? -20 : 20, opacity: 0 },
+    visible: { x: 0, opacity: 1, transition: { duration: 0.5, ease: "easeOut" } }
 })
 
 
@@ -63,14 +63,20 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div 
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+        >
           <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter text-foreground sm:text-4xl">
-            Why Thousands of UK Homes Trust UtilityKing With Their Savings
+            The UtilityKing Difference
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We're not just another comparison site. We're a technology company dedicated to making the utility market fair and transparent for everyone.
           </p>
-        </div>
+        </motion.div>
 
         <motion.div
             variants={containerVariants}

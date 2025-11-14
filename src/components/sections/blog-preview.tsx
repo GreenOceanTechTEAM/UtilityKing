@@ -86,18 +86,21 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
             <motion.div key={post.title} variants={itemVariants} className="flex">
               <Card className="group flex flex-col h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 {post.image && (
-                  <motion.div className="aspect-video overflow-hidden" whileHover={{
-                    transform: "rotateY(-5deg) rotateX(5deg) scale(1.05)",
-                  }}>
-                      <Image
-                      src={post.image.imageUrl}
-                      alt={post.image.description}
-                      width={600}
-                      height={338}
-                      data-ai-hint={post.image.imageHint}
-                      className="h-full w-full object-cover"
-                      />
-                  </motion.div>
+                  <div className="aspect-video overflow-hidden">
+                      <motion.div
+                        whileHover={{ scale: 1.05 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <Image
+                        src={post.image.imageUrl}
+                        alt={post.image.description}
+                        width={600}
+                        height={338}
+                        data-ai-hint={post.image.imageHint}
+                        className="h-full w-full object-cover"
+                        />
+                      </motion.div>
+                  </div>
                 )}
                 <CardContent className="flex-1 p-6">
                   <Badge variant="secondary" className="mb-2 text-xs">{post.category}</Badge>

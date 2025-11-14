@@ -94,8 +94,7 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
   return (
     <motion.div
       variants={itemVariants}
-      whileHover={{ y: -10 }}
-      transition={{ type: 'spring', stiffness: 300 }}
+      whileHover={{ y: -10, transition: { type: 'spring', stiffness: 300 } }}
     >
       <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all">
         <CardContent className="flex flex-1 flex-col justify-between p-6">
@@ -188,9 +187,9 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                 partner.logo && (
                   <motion.div
                     key={`${partner.name}-${index}`}
-                    whileHover={{ y: -4, opacity: 1 }}
-                    className="mx-8 flex-shrink-0 grayscale transition-all hover:grayscale-0"
-                    style={{ opacity: 0.6 }}
+                    whileHover={{ y: -4, opacity: 1, filter: "grayscale(0)" }}
+                    className="mx-8 flex-shrink-0"
+                    style={{ opacity: 0.6, filter: "grayscale(100%)" }}
                   >
                     <Image
                       src={partner.logo.imageUrl}
@@ -204,8 +203,8 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                 )
               ))}
             </motion.div>
-            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent"></div>
-            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-primary/5 to-transparent"></div>
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10"></div>
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-primary/5 to-transparent dark:from-primary/10"></div>
           </div>
         </div>
       </div>

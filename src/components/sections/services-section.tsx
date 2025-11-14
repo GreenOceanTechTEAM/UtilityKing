@@ -76,7 +76,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           transition={{ duration: 0.5, ease: "easeOut" }}
         >
           <h2 className="font-headline text-3xl md:text-4xl font-bold tracking-tighter leading-tight text-foreground">
-            Smarter Savings Across All Your Home Utilities
+            Find Savings In Every Corner Of Your Home
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Electricity, gas, broadband, water, mobile and insurance — everything in one place, optimized for your lifestyle and location.
