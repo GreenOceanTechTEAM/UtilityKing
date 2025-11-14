@@ -63,9 +63,9 @@
   .shimmer-text {
     background-image: linear-gradient(
       -75deg,
-      hsl(var(--primary-foreground) / 0.5) 30%,
-      hsl(var(--primary-foreground)) 50%,
-      hsl(var(--primary-foreground) / 0.5) 70%
+      hsl(var(--accent-foreground) / 0.6) 30%,
+      hsl(var(--accent-foreground)) 50%,
+      hsl(var(--accent-foreground) / 0.6) 70%
     );
     background-size: 200% auto;
     -webkit-background-clip: text;
