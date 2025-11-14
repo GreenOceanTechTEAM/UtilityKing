@@ -3,9 +3,9 @@ import './globals.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar';
-import UKiChat from '@/components/shared/uki-chat';
 import ScrollToTop from '@/components/layout/scroll-to-top';
 import { ThemeProvider } from '@/components/shared/theme-provider';
+import Script from 'next/script';
 
 export const metadata: Metadata = {
   title: 'Utility King AI',
@@ -35,10 +35,36 @@ export default function RootLayout({
         >
           <ScrollProgressBar />
           {children}
-          <UKiChat />
           <ScrollToTop />
           <Toaster />
         </ThemeProvider>
+        
+        {/* @ts-ignore */}
+        <vapi-widget
+          public-key="48b6f337-a89e-4f1c-acd5-4498466d44d1"
+          assistant-id="7bec6ee3-bfbe-45e6-aa21-95a3f32c78ee"
+          mode="voice"
+          theme="light"
+          base-bg-color="#ffffff"
+          accent-color="#000000"
+          cta-button-color="#ff8903"
+          cta-button-text-color="#000000"
+          border-radius="large"
+          size="compact"
+          position="bottom-right"
+          title="Slash Bills with UKi"
+          start-button-text="Start"
+          end-button-text="End Call"
+          cta-subtitle="Smart. Fast. Fair. Yours."
+          chat-first-message="Hey, How can I help you today?"
+          chat-placeholder="Type your message..."
+          voice-show-transcript="true"
+          consent-required="true"
+          consent-title="Terms and conditions"
+          consent-content="By clicking 'Agree,' and each time I interact with this AI agent, I consent to the recording, storage, and sharing of my communications with third-party service providers, and as otherwise described in our Terms of Service."
+          consent-storage-key="vapi_widget_consent"
+        ></vapi-widget>
+        <Script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async />
       </body>
     </html>
   );
