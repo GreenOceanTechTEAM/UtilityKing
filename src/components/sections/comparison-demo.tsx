@@ -8,7 +8,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, Flame, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -22,8 +22,8 @@ type ComparisonDemoProps = {
 
 const iconMap: { [key: string]: React.ReactNode } = {
   "Energy": <Zap className="h-5 w-5 text-amber-500" />,
-  "Broadband": <Wifi className="h-5 w-5 text-blue-500" />,
-  "Mobile": <Smartphone className="h-5 w-5 text-green-500" />,
+  "Broadband": <Zap className="h-5 w-5 text-blue-500" />,
+  "Mobile": <Zap className="h-5 w-5 text-green-500" />,
 };
 
 const analysisLines = [
@@ -71,7 +71,7 @@ const wizardSteps = [
             { label: "Shell Energy" }, { label: "SSE (Ovo)" }, { label: "So Energy" },
             { label: "Ecotricity" }, { label: "Green Energy UK" }, { label: "Good Energy" },
             { label: "Utility Warehouse" }, { label: "Outfox the Market" }, { label: "Boost" },
-            { label: "Co-op Energy" },
+            { label: "Co-op Energy" }, { label: "Bulb (legacy)"}, { label: "Utilita" },
         ],
         customOption: { label: "Other Supplier", description: "Enter supplier name" },
         additionalOptions: ["I Don’t Know"]
@@ -191,7 +191,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
 
-    if (!isMulti) {
+    if (!isMulti && !(stepKey === 'electricitySupplier' && option === currentWizardStep.customOption?.label)) {
         setTimeout(() => {
             handleNextStep();
         }, 300);
@@ -338,7 +338,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 
                                 {!isTyping && (
                                     <div className="space-y-3 w-full max-w-md">
-                                        <div className={cn("grid grid-cols-1 gap-3", currentWizardStep.options.length > 1 && "sm:grid-cols-2")}>
+                                        <div className={cn(
+                                          "grid grid-cols-1 gap-3",
+                                          currentWizardStep.options.length > 1 && currentWizardStep.step !== 4 && "sm:grid-cols-2",
+                                          currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2"
+                                          )}>
                                             {currentWizardStep.options.map(option => {
                                                 const Icon = (option as any).icon;
                                                 const isSelected = currentWizardStep.isMultiSelect 
@@ -550,5 +554,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
