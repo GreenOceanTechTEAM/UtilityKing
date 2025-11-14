@@ -52,7 +52,6 @@ const wizardSteps = [
         title: "Heating Usage",
         aiMessage: "Does your premises use heating?",
         options: [{ label: "Yes" }, { label: "No" }],
-        skipIf: (selections: any) => selections.premisesType === 'Factory',
     },
     {
         step: 3,
@@ -60,6 +59,7 @@ const wizardSteps = [
         title: "Occupants",
         aiMessage: "How many people use this premises?",
         options: [{ label: "Under 5" }, { label: "Over 5" }],
+        skipIf: (selections: any) => selections.premisesType === 'Factory',
     },
     {
         step: 4,
@@ -198,9 +198,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    if (!isMulti && !isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
-        setTimeout(() => handleNextStep(), 300);
-    } else if (currentWizardStepConfig.key === 'billAvailable' && option === 'No') {
+    if (!isMulti && !isComplex && !currentWizardStepConfig.isInput) {
         setTimeout(() => handleNextStep(), 300);
     }
   };
@@ -326,7 +324,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         />
                     </div>
 
-                    <div className="relative min-h-[300px] overflow-y-auto flex flex-col items-center pr-2">
+                    <div className="relative h-[350px] overflow-y-auto flex flex-col items-center pr-2">
                         <AnimatePresence mode="wait">
                             {currentWizardStepConfig &&
                             <motion.div
@@ -380,7 +378,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                 ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                 : "bg-background/50 hover:border-primary hover:bg-primary/5",
                                                              (option as any).description && "items-start",
-                                                            currentWizardStepConfig.step === 1 && currentWizardStepConfig.options.length % 2 !== 0 && "last:sm:col-span-2",
+                                                            currentWizardStepConfig.key === 'premisesType' && "last:sm:col-span-2",
                                                         )}
                                                     >
                                                         <div className="flex items-center justify-center gap-2">
