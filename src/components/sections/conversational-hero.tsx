@@ -32,25 +32,51 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.05,
       delayChildren: 0.5,
     },
   },
 };
 
-const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
-  visible: {
-    y: 0,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
+const wordVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            type: "spring",
+            stiffness: 100,
+            damping: 12,
+            ease: [0.17, 0.89, 0.32, 1.27],
+        },
     },
-  },
 };
 
+const subtitleVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut",
+            delay: 1.5
+        }
+    }
+}
+
+const formVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+        y: 0,
+        opacity: 1,
+        transition: {
+            duration: 0.8,
+            ease: "easeOut",
+            delay: 1.8
+        }
+    }
+}
 
 export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
@@ -81,6 +107,9 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       setIsLoading(false);
     }
   }
+  
+  const headlineText = "AI-Powered Energy Comparison: Find Your Best Rate in Seconds.";
+  const words = headlineText.split(" ");
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
@@ -88,80 +117,80 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate="visible"
-        >
-          <motion.div variants={itemVariants}>
-            <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm">
-              <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
-            </Badge>
-          </motion.div>
-          <motion.h1 
-            variants={itemVariants}
-            className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
-          >
-            AI-Powered Energy Comparison: Find Your Best Rate in Seconds.
-          </motion.h1>
-          <motion.p 
-            variants={itemVariants}
-            className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-muted-foreground"
-          >
-            Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
-          </motion.p>
+          <motion.div initial="hidden" animate="visible">
+            <motion.div variants={subtitleVariants}>
+                <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm">
+                <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
+                </Badge>
+            </motion.div>
+            <motion.h1 
+                variants={containerVariants}
+                className="font-headline text-4xl font-bold tracking-tight text-foreground sm:text-6xl lg:text-7xl"
+            >
+                {words.map((word, index) => (
+                    <motion.span key={index} variants={wordVariants} className="inline-block mr-[0.25em]">
+                        {word}
+                    </motion.span>
+                ))}
+            </motion.h1>
+            <motion.p 
+                variants={subtitleVariants}
+                className="mt-6 max-w-3xl mx-auto text-lg leading-8 text-muted-foreground"
+            >
+                Stop overpaying on electricity. UKi compares rates for you in seconds, saving you time and money.
+            </motion.p>
 
-          <motion.div
-            variants={itemVariants}
-            className="mt-10 mx-auto max-w-xl"
-          >
-            <Form {...form}>
-              <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
-                <FormField
-                  control={form.control}
-                  name="userInput"
-                  render={({ field }) => (
-                    <FormItem className="w-full">
-                      <FormControl>
-                        <Input
-                          type="text"
-                          placeholder="e.g., 'Find me a cheaper energy deal in London'"
-                          className="h-12 text-base text-foreground"
-                          {...field}
-                        />
-                      </FormControl>
-                      <FormMessage className="text-left" />
-                    </FormItem>
-                  )}
-                />
-                <Button type="submit" size="lg" className={cn("h-12", !isLoading && "glowing-btn-border")} disabled={isLoading}>
-                  {isLoading ? (
-                    <Loader2 className="h-5 w-5 animate-spin" />
-                  ) : (
-                    'Compare Plans'
-                  )}
-                </Button>
-              </form>
-            </Form>
-
-            {assistance && (
-              <motion.div
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: 0.2 }}
-                className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
-              >
-                <p className="text-sm font-medium text-foreground">{assistance.aiResponse}</p>
-                <div className="mt-3 flex flex-wrap gap-2">
-                  {assistance.suggestedServices.map(service => (
-                    <Button key={service} asChild size="sm" variant="secondary">
-                       <Link href="#services">{service}</Link>
+            <motion.div
+                variants={formVariants}
+                className="mt-10 mx-auto max-w-xl"
+            >
+                <Form {...form}>
+                <form onSubmit={form.handleSubmit(onSubmit)} className="flex flex-col sm:flex-row gap-2">
+                    <FormField
+                    control={form.control}
+                    name="userInput"
+                    render={({ field }) => (
+                        <FormItem className="w-full">
+                        <FormControl>
+                            <Input
+                            type="text"
+                            placeholder="e.g., 'Find me a cheaper energy deal in London'"
+                            className="h-12 text-base text-foreground"
+                            {...field}
+                            />
+                        </FormControl>
+                        <FormMessage className="text-left" />
+                        </FormItem>
+                    )}
+                    />
+                    <Button type="submit" size="lg" className={cn("h-12", !isLoading && "glowing-btn-border")} disabled={isLoading}>
+                    {isLoading ? (
+                        <Loader2 className="h-5 w-5 animate-spin" />
+                    ) : (
+                        'Compare Plans'
+                    )}
                     </Button>
-                  ))}
-                </div>
-              </motion.div>
-            )}
-          </motion.div>
+                </form>
+                </Form>
+
+                {assistance && (
+                <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.4, delay: 0.2 }}
+                    className="mt-6 p-4 rounded-lg bg-background/20 backdrop-blur-sm text-left"
+                >
+                    <p className="text-sm font-medium text-foreground">{assistance.aiResponse}</p>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                    {assistance.suggestedServices.map(service => (
+                        <Button key={service} asChild size="sm" variant="secondary">
+                        <Link href="#services">{service}</Link>
+                        </Button>
+                    ))}
+                    </div>
+                </motion.div>
+                )}
+            </motion.div>
         </motion.div>
       </div>
     </section>
