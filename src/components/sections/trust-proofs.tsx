@@ -1,11 +1,22 @@
 "use client";
 
-import Image from 'next/image';
+import Image, { type StaticImageData } from 'next/image';
 import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+
+// Import logos from the src/assets directory
+// IMPORTANT: You must ensure these image files exist in `src/assets/`
+import logoBritishGas from '@/assets/britishgas.jpg';
+import logoOctopus from '@/assets/octopus.jpg';
+import logoEdf from '@/assets/edf.jpg';
+import logoEon from '@/assets/eon.jpg';
+import logoOvo from '@/assets/ovo.jpg';
+import logoScottishPower from '@/assets/scottish-power.jpg';
+import logoCrownGasPower from '@/assets/crown-gas-power.jpg';
+
 
 type TrustProofsProps = {
   id: string;
@@ -32,14 +43,14 @@ const testimonials = [
   }
 ];
 
-const partners = [
-  { name: 'British Gas', logo: '/logos/british-gas.png' },
-  { name: 'Octopus Energy', logo: '/logos/octopus.png' },
-  { name: 'EDF Energy', logo: '/logos/edf.png' },
-  { name: 'E.ON Next', logo: '/logos/eon.png' },
-  { name: 'OVO Energy', logo: '/logos/ovo.png' },
-  { name: 'Scottish Power', logo: '/logos/scottish-power.png' },
-  { name: 'Crown Gas & Power', logo: '/logos/crown-gas-power.png' },
+const partners: { name: string; logo: StaticImageData }[] = [
+  { name: 'British Gas', logo: logoBritishGas },
+  { name: 'Octopus Energy', logo: logoOctopus },
+  { name: 'EDF Energy', logo: logoEdf },
+  { name: 'E.ON Next', logo: logoEon },
+  { name: 'OVO Energy', logo: logoOvo },
+  { name: 'Scottish Power', logo: logoScottishPower },
+  { name: 'Crown Gas & Power', logo: logoCrownGasPower },
 ];
 
 const containerVariants = {
@@ -171,7 +182,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
           </p>
            <div className="relative mt-6 w-full overflow-hidden">
             <motion.div 
-              className="flex"
+              className="flex items-center"
               animate={{
                 x: ['0%', '-100%'],
               }}
@@ -186,15 +197,13 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                   key={`${partner.name}-${index}`}
                   whileHover={{ y: -4, opacity: 1 }}
                   className="mx-8 flex-shrink-0"
-                  style={{ opacity: 0.8 }}
                 >
                   <Image
                     src={partner.logo}
                     alt={partner.name}
-                    width={158}
                     height={48}
                     className="object-contain h-12 w-auto"
-                    unoptimized
+                    unoptimized={true}
                   />
                 </motion.div>
               ))}
