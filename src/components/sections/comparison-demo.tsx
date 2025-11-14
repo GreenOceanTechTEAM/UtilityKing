@@ -198,7 +198,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
 
-    if (!isMulti) {
+    if (!isMulti && currentWizardStep.key !== 'billAvailable') {
+        setTimeout(() => {
+            handleNextStep();
+        }, 300);
+    } else if (currentWizardStep.key === 'billAvailable' && option === 'No') {
         setTimeout(() => {
             handleNextStep();
         }, 300);
@@ -349,7 +353,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <div className="space-y-3 w-full max-w-md">
                                         <div className={cn(
                                           "grid grid-cols-1 gap-3",
-                                          currentWizardStep.options.length > 1 && ![4, 7, 8].includes(currentWizardStep.step) && "sm:grid-cols-2",
+                                          currentWizardStep.options.length > 1 && ![4, 8].includes(currentWizardStep.step) && "sm:grid-cols-2",
                                           currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2",
                                           currentWizardStep.step === 8 && "sm:grid-cols-2"
                                           )}>
@@ -410,6 +414,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
                                                     <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                                                 </div>
+                                                <Button size="lg" className="w-full h-12 text-base mt-4" onClick={handleNextStep}>Next Step &rarr;</Button>
                                             </motion.div>
                                         )}
 
@@ -424,7 +429,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     onKeyDown={handleCustomSubmit}
                                                 />
                                             </div>
-                                            {currentWizardStep.helperText && <p className="text-sm text-muted-foreground">{currentWizardStep.helperText}</p>}
                                             {selections[currentWizardStep.key] && currentWizardStep.step !== 9 && (
                                                 <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
                                             )}
@@ -544,3 +548,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
