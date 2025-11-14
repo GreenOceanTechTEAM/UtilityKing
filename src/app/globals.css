@@ -87,6 +87,19 @@
     animation: glowBorder 4s infinite;
     z-index: -1;
   }
+  .shimmer-text {
+    background-image: linear-gradient(
+      -75deg,
+      hsl(var(--primary-foreground) / 0.5) 30%,
+      hsl(var(--primary-foreground)) 50%,
+      hsl(var(--primary-foreground) / 0.5) 70%
+    );
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    animation: shimmer 8s infinite;
+  }
 }
 
 @keyframes glowBorder {
@@ -97,5 +110,11 @@
   50% {
     box-shadow: 0 0 14px hsl(var(--accent));
     border-color: hsl(var(--accent));
+  }
+}
+
+@keyframes shimmer {
+  to {
+    background-position: 200% center;
   }
 }

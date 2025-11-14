@@ -5,7 +5,8 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 type TrustProofsProps = {
   id: string;
@@ -40,7 +41,6 @@ const partners = [
   { name: 'Partner 5', logo: PlaceHolderImages.find(p => p.id === 'logo-5') },
 ];
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
@@ -64,6 +64,76 @@ const itemVariants = {
   },
 };
 
+const starContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.3,
+    },
+  },
+};
+
+const starVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: {
+    scale: 1,
+    opacity: 1,
+    transition: { type: 'spring', stiffness: 200, damping: 10 }
+  },
+};
+
+
+const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimonials[0], index: number }) => {
+  const ref = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"],
+  });
+
+  const x = useTransform(scrollYProgress, [0, 1], [(index % 2 === 0 ? -1 : 1) * 40, 0]);
+
+  return (
+    <motion.div
+      ref={ref}
+      style={{ x }}
+      variants={itemVariants}
+    >
+      <Card className="flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+        <CardContent className="flex flex-1 flex-col justify-between p-6">
+          <div>
+              <motion.div
+                className="flex mb-2"
+                variants={starContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
+              >
+                  {[...Array(5)].map((_, i) => <motion.div key={i} variants={starVariants}><Star className="h-5 w-5 fill-accent text-accent" /></motion.div>)}
+              </motion.div>
+              <blockquote className="text-lg text-foreground">
+                  <p>"{testimonial.quote}"</p>
+              </blockquote>
+          </div>
+          <div className="mt-6 flex items-center">
+            {testimonial.avatar && (
+              <Avatar>
+                <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
+                <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+              </Avatar>
+            )}
+            <div className="ml-4">
+              <p className="font-semibold text-foreground">{testimonial.name}</p>
+              <p className="text-sm text-muted-foreground">{testimonial.location}</p>
+            </div>
+          </div>
+        </CardContent>
+      </Card>
+    </motion.div>
+  );
+};
+
 
 export default function TrustProofs({ id }: TrustProofsProps) {
   return (
@@ -84,33 +154,8 @@ export default function TrustProofs({ id }: TrustProofsProps) {
           viewport={{ once: true, amount: 0.2 }}
           className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {testimonials.map((testimonial) => (
-            <motion.div key={testimonial.name} variants={itemVariants}>
-              <Card className="flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
-                <CardContent className="flex flex-1 flex-col justify-between p-6">
-                  <div>
-                      <div className="flex mb-2">
-                          {[...Array(5)].map((_, i) => <Star key={i} className="h-5 w-5 fill-accent text-accent" />)}
-                      </div>
-                      <blockquote className="text-lg text-foreground">
-                          <p>"{testimonial.quote}"</p>
-                      </blockquote>
-                  </div>
-                  <div className="mt-6 flex items-center">
-                    {testimonial.avatar && (
-                      <Avatar>
-                        <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
-                        <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-                      </Avatar>
-                    )}
-                    <div className="ml-4">
-                      <p className="font-semibold text-foreground">{testimonial.name}</p>
-                      <p className="text-sm text-muted-foreground">{testimonial.location}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
           ))}
         </motion.div>
         <div className="mt-20">

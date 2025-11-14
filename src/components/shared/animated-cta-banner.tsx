@@ -53,7 +53,7 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
             "md:h-64 md:w-64"
           )}
         />
-        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl">
+        <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl shimmer-text">
           {title}
         </h2>
         <div className="mt-8">
