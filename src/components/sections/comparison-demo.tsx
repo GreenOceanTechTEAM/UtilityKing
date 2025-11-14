@@ -8,7 +8,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, Flame, ChevronLeft, ChevronRight, UploadCloud, CornerDownLeft } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -51,6 +51,7 @@ const wizardSteps = [
         title: "Heating Usage",
         aiMessage: "Does your premises use heating?",
         options: [{ label: "Yes" }, { label: "No" }],
+        skipIf: (selections: any) => selections.premisesType === 'Factory',
     },
     {
         step: 3,
@@ -58,7 +59,6 @@ const wizardSteps = [
         title: "Occupants",
         aiMessage: "How many people use this premises?",
         options: [{ label: "Under 5" }, { label: "Over 5" }],
-        skipIf: (selections: any) => selections.premisesType === 'Factory',
     },
     {
         step: 4,
@@ -77,33 +77,24 @@ const wizardSteps = [
     },
     {
         step: 5,
-        key: 'usageInputType',
+        key: 'usage',
         title: "Energy Usage",
         aiMessage: "How do you want to provide your energy usage?",
         options: [
             { label: "Consumption (kWh)" },
             { label: "Monthly Amount (£)" },
         ],
-        isInputTrigger: true,
+        isComplex: true,
     },
     {
         step: 6,
-        key: 'usageInputRaw',
-        title: "Energy Usage",
-        aiMessage: "Enter your energy usage details.",
-        isInput: true,
-        options: [],
-        dependsOn: 'usageInputType',
-    },
-    {
-        step: 7,
         key: 'billAvailable',
         title: "Bill Available",
         aiMessage: "Do you have your bill handy?",
         options: [{ label: "Yes" }, { label: "No" }],
     },
     {
-        step: 8,
+        step: 7,
         key: 'preferences',
         title: "Your Preferences",
         aiMessage: "What matters most to you?",
@@ -114,7 +105,7 @@ const wizardSteps = [
         isMultiSelect: true,
     },
     {
-        step: 9,
+        step: 8,
         key: 'postcode',
         title: "Postcode",
         aiMessage: "What’s your postcode?",
@@ -149,21 +140,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isTyping, setIsTyping] = useState(true);
 
   const activeWizardSteps = React.useMemo(() => {
-    let activeSteps = wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
-    
-    // Filter out input steps that don't have their trigger selected
-    activeSteps = activeSteps.filter(step => {
-        if(step.dependsOn) {
-            return !!selections[step.dependsOn];
-        }
-        return true;
-    });
-
-    return activeSteps;
+    return wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
   }, [selections]);
 
-  const currentVisibleStepConfig = activeWizardSteps.find(step => step.step === wizardSteps[currentStep]?.step);
-  const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === wizardSteps[currentStep]?.step);
+  const currentWizardStepConfig = wizardSteps[currentStep];
+  const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === currentWizardStepConfig?.step);
 
   useEffect(() => {
     setIsTyping(true);
@@ -175,8 +156,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     let nextStepIndex = currentStep + 1;
     while (nextStepIndex < wizardSteps.length) {
         const nextStepConfig = wizardSteps[nextStepIndex];
-        const shouldSkip = (nextStepConfig.skipIf && nextStepConfig.skipIf(selections)) || 
-                           (nextStepConfig.dependsOn && !selections[nextStepConfig.dependsOn]);
+        const shouldSkip = nextStepConfig.skipIf && nextStepConfig.skipIf(selections);
         if (!shouldSkip) {
             setCurrentStep(nextStepIndex);
             return;
@@ -189,8 +169,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     let prevStepIndex = currentStep - 1;
      while (prevStepIndex >= 0) {
         const prevStepConfig = wizardSteps[prevStepIndex];
-        const shouldSkip = (prevStepConfig.skipIf && prevStepConfig.skipIf(selections)) || 
-                           (prevStepConfig.dependsOn && !selections[prevStepConfig.dependsOn]);
+        const shouldSkip = prevStepConfig.skipIf && prevStepConfig.skipIf(selections);
         if (!shouldSkip) {
             setCurrentStep(prevStepIndex);
             return;
@@ -200,9 +179,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleSelect = (stepKey: string, option: string) => {
-    const currentWizardStep = wizardSteps[currentStep];
-    const isMulti = currentWizardStep.isMultiSelect;
-    const isInputTrigger = currentWizardStep.isInputTrigger;
+    const isMulti = currentWizardStepConfig.isMultiSelect;
 
     let newSelections;
 
@@ -219,19 +196,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    // Auto-advance only if it's a simple selection step
-    if (!isMulti && !isInputTrigger && currentWizardStep.key !== 'billAvailable') {
-        setTimeout(() => {
-            handleNextStep();
-        }, 300);
-    } else if (isInputTrigger) {
-         setTimeout(() => {
-            handleNextStep();
-        }, 300);
-    } else if (currentWizardStep.key === 'billAvailable' && option === 'No') {
-        setTimeout(() => {
-            handleNextStep();
-        }, 300);
+    if (!isMulti && !currentWizardStepConfig.isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
+        setTimeout(() => handleNextStep(), 300);
+    } else if (currentWizardStepConfig.key === 'billAvailable' && option === 'No') {
+        setTimeout(() => handleNextStep(), 300);
     }
   };
   
@@ -262,6 +230,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         return !!selection;
     }
     
+    if (step.key === 'usage') {
+        return !!selections.usage && !!selections.usageInputRaw;
+    }
+
     if(step.additionalOptions?.includes(selection)) {
         return true;
     }
@@ -274,7 +246,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: selections['usageInputRaw'] || 'Not specified',
+        usageData: `${selections['usage']}: ${selections['usageInputRaw']}` || 'Not specified',
         preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}. Premises: ${selections['premisesType']}, Occupants: ${selections['occupantsCategory']}`,
         location: selections['postcode'] || 'London'
     }
@@ -296,16 +268,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const progress = ((currentVisibleStepIndex + 1) / (activeWizardSteps.length)) * 100;
-  const currentWizardStep = wizardSteps[currentStep];
 
   const getPlaceholderForUsage = () => {
-    if (selections.usageInputType === 'Consumption (kWh)') {
+    if (selections.usage === 'Consumption (kWh)') {
         return "e.g., 2700 kWh/year";
     }
-    if (selections.usageInputType === 'Monthly Amount (£)') {
+    if (selections.usage === 'Monthly Amount (£)') {
         return "e.g., £75 per month";
     }
-    return "e.g., 2700 kWh/year or £75 per month";
+    return "";
   }
 
   return (
@@ -351,7 +322,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                     <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
                         <AnimatePresence mode="wait">
-                            {currentWizardStep && currentVisibleStepConfig &&
+                            {currentWizardStepConfig &&
                             <motion.div
                                 key={currentStep}
                                 variants={stepVariants}
@@ -366,12 +337,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     </div>
                                     <div>
                                         <p className="text-lg font-semibold text-card-foreground">
-                                          {currentWizardStep.title}
+                                          {currentWizardStepConfig.title}
                                         </p>
                                         <p className="text-base text-muted-foreground max-w-md mx-auto">
                                             {isTyping ? 
                                                 <span className="animate-pulse">...</span> : 
-                                                currentWizardStep.aiMessage
+                                                currentWizardStepConfig.aiMessage
                                             }
                                         </p>
                                     </div>
@@ -381,15 +352,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <div className="space-y-3 w-full max-w-md">
                                         <div className={cn(
                                           "grid grid-cols-1 gap-3",
-                                          currentWizardStep.options.length > 1 && ![4, 8].includes(currentWizardStep.step) && "sm:grid-cols-2",
-                                          currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2",
-                                          currentWizardStep.step === 8 && "sm:grid-cols-2"
+                                          currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                          currentWizardStepConfig.step === 4 && "max-h-[260px] overflow-y-auto pr-2"
                                           )}>
-                                            {currentWizardStep.options.map(option => {
+                                            {currentWizardStepConfig.options.map(option => {
                                                 const Icon = (option as any).icon;
-                                                const isSelected = currentWizardStep.isMultiSelect 
-                                                    ? (selections[currentWizardStep.key] || []).includes(option.label)
-                                                    : selections[currentWizardStep.key] === option.label;
+                                                const isSelected = currentWizardStepConfig.isMultiSelect 
+                                                    ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
+                                                    : selections[currentWizardStepConfig.key] === option.label;
 
                                                 return (
                                                     <motion.button
@@ -397,12 +367,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                         variants={pillVariants}
                                                         whileHover="hover"
                                                         whileTap="tap"
-                                                        onClick={() => handleSelect(currentWizardStep.key, option.label)}
+                                                        onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
                                                         className={cn(
                                                             "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
                                                             isSelected
                                                                 ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                                                            currentWizardStepConfig.options.length === 3 && "sm:col-span-2 odd:sm:col-span-1 last:sm:col-span-2"
                                                         )}
                                                     >
                                                         <div className="flex items-center justify-center gap-2">
@@ -413,16 +384,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     </motion.button>
                                                 )
                                             })}
-                                             {currentWizardStep.additionalOptions?.map(option => (
+                                             {currentWizardStepConfig.additionalOptions?.map(option => (
                                                 <motion.button
                                                     key={option}
                                                     variants={pillVariants}
                                                     whileHover="hover"
                                                     whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStep.key, option)}
+                                                    onClick={() => handleSelect(currentWizardStepConfig.key, option)}
                                                      className={cn(
                                                         "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
-                                                        selections[currentWizardStep.key] === option
+                                                        selections[currentWizardStepConfig.key] === option
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                     )}
@@ -432,7 +403,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             ))}
                                         </div>
 
-                                        {currentWizardStep.key === 'billAvailable' && selections.billAvailable === 'Yes' && (
+                                        {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === 'Yes' && (
                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
                                                 <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
                                                     <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
@@ -444,31 +415,43 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             </motion.div>
                                         )}
 
-                                        {currentWizardStep.isInput && (
-                                            <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                            <div className="relative">
-                                                <Input 
-                                                    placeholder={currentWizardStep.key === 'usageInputRaw' ? getPlaceholderForUsage() : (currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`)}
-                                                    className="h-12 text-base text-center"
-                                                    value={selections[currentWizardStep.key] || ''}
-                                                    onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
-                                                    onKeyDown={handleCustomSubmit}
-                                                    autoFocus
-                                                />
-                                            </div>
-                                            {selections[currentWizardStep.key] && currentWizardStep.step !== 9 && (
-                                                <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
-                                            )}
+                                        {currentWizardStepConfig.key === 'usage' && selections.usage && (
+                                            <motion.div initial={{opacity:0, y: 10}} animate={{opacity:1, y: 0}} transition={{delay: 0.2}} className="space-y-3">
+                                                <div className="relative">
+                                                    <Input 
+                                                        placeholder={getPlaceholderForUsage()}
+                                                        className="h-12 text-base text-center"
+                                                        value={selections['usageInputRaw'] || ''}
+                                                        onChange={(e) => handleCustomValueChange('usageInputRaw', e.target.value)}
+                                                        onKeyDown={handleCustomSubmit}
+                                                        autoFocus
+                                                    />
+                                                </div>
                                             </motion.div>
                                         )}
 
-                                        {currentWizardStep.isMultiSelect && isStepComplete(currentStep) && (
+                                        {currentWizardStepConfig.isInput && (
+                                            <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                <div className="relative">
+                                                    <Input 
+                                                        placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
+                                                        className="h-12 text-base text-center"
+                                                        value={selections[currentWizardStepConfig.key] || ''}
+                                                        onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
+                                                        onKeyDown={handleCustomSubmit}
+                                                        autoFocus
+                                                    />
+                                                </div>
+                                            </motion.div>
+                                        )}
+                                        
+                                        {(currentWizardStepConfig.isMultiSelect || currentWizardStepConfig.key === 'usage') && isStepComplete(currentStep) && (
                                              <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                                 <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
                                              </motion.div>
                                         )}
 
-                                        {currentWizardStep.key === 'postcode' && isStepComplete(currentStep) && !isLoading && (
+                                        {currentWizardStepConfig.key === 'postcode' && isStepComplete(currentStep) && !isLoading && (
                                             <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
                                                 <Button 
                                                     size="lg"
@@ -575,5 +558,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
