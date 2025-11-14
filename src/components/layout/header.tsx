@@ -10,6 +10,7 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
 import { ThemeSwitcher } from '../shared/theme-switcher';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import AnimatedLogo from '../shared/animated-logo';
 
 type Section = {
   id: string;
@@ -109,8 +110,7 @@ export default function Header({ sections }: HeaderProps) {
         />
         <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="#" className="flex items-center gap-2" prefetch={false}>
-            <Crown className="h-8 w-8 text-primary" />
-            <span className="hidden text-xl font-bold font-headline text-foreground sm:inline">Utility King AI</span>
+            <AnimatedLogo className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Nav */}
@@ -138,8 +138,7 @@ export default function Header({ sections }: HeaderProps) {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                     <nav className="flex flex-col h-full">
                         <Link href="#" className="flex items-center gap-2 mb-8" prefetch={false} onClick={() => setIsMobileMenuOpen(false)}>
-                            <Crown className="h-8 w-8 text-primary" />
-                            <span className="text-xl font-bold font-headline text-foreground">Utility King AI</span>
+                            <AnimatedLogo className="h-10 w-auto" />
                         </Link>
                         <div className="flex flex-col space-y-3">
                         {sections.map(({ id, name }) => {

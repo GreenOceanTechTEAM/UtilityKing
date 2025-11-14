@@ -1,5 +1,6 @@
 import { Crown, Facebook, Twitter, Linkedin } from 'lucide-react';
 import Link from 'next/link';
+import AnimatedLogo from '../shared/animated-logo';
 
 type FooterProps = {
   id: string;
@@ -12,8 +13,7 @@ export default function Footer({ id }: FooterProps) {
         <div className="xl:grid xl:grid-cols-3 xl:gap-8">
           <div className="space-y-8 xl:col-span-1">
              <Link href="#" className="flex items-center gap-2" prefetch={false}>
-              <Crown className="h-8 w-8 text-primary" />
-              <span className="text-2xl font-bold font-headline text-foreground">Utility King AI</span>
+              <AnimatedLogo className="h-10 w-auto" />
             </Link>
             <p className="text-sm text-muted-foreground">
               AI-powered utility comparisons to help you save time and money.
