@@ -2,13 +2,14 @@
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { motion, useAnimation, AnimatePresence } from 'framer-motion';
+import { motion, useAnimation } from 'framer-motion';
 import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
 import { ThemeSwitcher } from '../shared/theme-switcher';
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 type Section = {
   id: string;
@@ -62,26 +63,35 @@ export default function Header({ sections }: HeaderProps) {
   const NavLink = ({ id, name, icon: Icon }: { id: string; name: string; icon: React.ElementType }) => {
     const isActive = activeId === id;
     return (
-      <Link
-        href={`#${id}`}
-        className={cn(
-          "relative flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md",
-          isActive
-            ? "text-primary"
-            : "text-muted-foreground hover:text-foreground"
-        )}
-      >
-        <Icon className={cn("h-4 w-4", isActive ? 'text-primary' : 'text-muted-foreground/80')} />
-        <span className="hidden lg:inline">{name}</span>
-        {isActive && (
-          <motion.div
-            layoutId="active-nav-indicator-desktop"
-            className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
-            initial={false}
-            transition={{ type: 'spring', stiffness: 500, damping: 30 }}
-          />
-        )}
-      </Link>
+      <TooltipProvider>
+        <Tooltip>
+          <TooltipTrigger asChild>
+            <Link
+              href={`#${id}`}
+              className={cn(
+                "relative flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md",
+                isActive
+                  ? "text-primary"
+                  : "text-muted-foreground hover:text-foreground"
+              )}
+            >
+              <Icon className={cn("h-4 w-4", isActive ? 'text-primary' : 'text-muted-foreground/80')} />
+              <span className="hidden lg:inline">{name}</span>
+              {isActive && (
+                <motion.div
+                  layoutId="active-nav-indicator-desktop"
+                  className="absolute bottom-0 left-0 right-0 h-0.5 bg-primary"
+                  initial={false}
+                  transition={{ type: 'spring', stiffness: 500, damping: 30 }}
+                />
+              )}
+            </Link>
+          </TooltipTrigger>
+          <TooltipContent className="lg:hidden">
+            <p>{name}</p>
+          </TooltipContent>
+        </Tooltip>
+      </TooltipProvider>
     );
   };
 
