@@ -51,13 +51,13 @@
     {
       "id": "avatar-2",
       "description": "Headshot of a friendly-looking man in his 40s wearing glasses, in a professional setting.",
-      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc2MjkzNjY5NXww&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtYW4lMjBnbGFzc2VzfGVufDB8fHx8MTc2MjkzNjY5NXww&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "man glasses"
     },
     {
       "id": "avatar-3",
       "description": "Candid portrait of a young, happy woman with natural curly hair, smiling warmly.",
-      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlibrb-4.1.0&q=80&w=1080",
+      "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "curly hair"
     },
     {
@@ -98,7 +98,7 @@
     },
     {
       "id": "logo-crown-gas-power",
-      "description": "The official logo for Crown Gas &amp; Power supplier.",
+      "description": "The official logo for Crown Gas & Power supplier.",
       "imageUrl": "https://placehold.co/158x48/png?text=Crown+Gas+Power",
       "imageHint": "Crown Gas Power logo"
     }
