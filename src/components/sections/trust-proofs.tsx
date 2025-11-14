@@ -185,9 +185,9 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                 partner.logo && (
                   <motion.div
                     key={`${partner.name}-${index}`}
-                    whileHover={{ y: -4, opacity: 1, filter: "grayscale(0)" }}
+                    whileHover={{ y: -4, opacity: 1 }}
                     className="mx-8 flex-shrink-0"
-                    style={{ opacity: 0.6, filter: "grayscale(100%)" }}
+                    style={{ opacity: 0.8 }}
                   >
                     <Image
                       src={partner.logo.imageUrl}
