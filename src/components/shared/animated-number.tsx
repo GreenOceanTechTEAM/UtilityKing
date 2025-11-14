@@ -1,8 +1,55 @@
+
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useInView } from 'react-intersection-observer';
-import { motion, useAnimation, useSpring } from 'framer-motion';
+import { motion, useAnimation, useSpring, AnimatePresence } from 'framer-motion';
+
+const sparkleVariants = {
+  hidden: { scale: 0, opacity: 0 },
+  visible: (i: number) => ({
+    scale: [0, 1.2, 0],
+    opacity: [0, 1, 0],
+    transition: {
+      duration: 0.8,
+      delay: i * 0.1,
+      ease: "circOut"
+    }
+  })
+};
+
+const Sparkles = () => {
+  const sparkles = Array.from({ length: 4 });
+  const positions = [
+    { top: '-10%', left: '110%' },
+    { top: '20%', left: '-20%' },
+    { top: '80%', left: '120%' },
+    { top: '100%', left: '50%' },
+  ];
+  return (
+    <>
+      {sparkles.map((_, i) => (
+        <motion.div
+          key={i}
+          custom={i}
+          variants={sparkleVariants}
+          initial="hidden"
+          animate="visible"
+          style={{
+            position: 'absolute',
+            ...positions[i],
+            width: '10px',
+            height: '10px',
+            borderRadius: '50%',
+            backgroundColor: 'hsl(var(--accent))',
+            boxShadow: '0 0 8px hsl(var(--accent))'
+          }}
+        />
+      ))}
+    </>
+  );
+};
+
 
 type AnimatedNumberProps = {
   value: number;
@@ -11,6 +58,7 @@ type AnimatedNumberProps = {
 };
 
 export default function AnimatedNumber({ value, prefix = "", suffix = "" }: AnimatedNumberProps) {
+  const [showSparkles, setShowSparkles] = useState(false);
   const controls = useAnimation();
   const { ref, inView } = useInView({
     triggerOnce: true,
@@ -41,16 +89,32 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
             element.textContent = `${prefix}${latest.toFixed(value % 1 !== 0 ? 1 : 0)}${suffix}`;
         }
     });
-    return unsubscribe;
+
+    spring.on("animationEnd", () => {
+      setShowSparkles(true);
+      setTimeout(() => setShowSparkles(false), 1000);
+    });
+
+    return () => {
+        unsubscribe();
+        spring.on("animationEnd", () => {});
+    }
   }, [spring, prefix, suffix, value]);
 
 
   return (
     <motion.span
       ref={ref}
-      id={`animated-number-${value}`}
-      initial={{ opacity: 0, y: 20 }}
-      animate={controls}
-    />
+      className="relative inline-block"
+    >
+        <motion.span 
+          id={`animated-number-${value}`}
+          initial={{ opacity: 0, y: 20 }}
+          animate={controls}
+        />
+        <AnimatePresence>
+            {showSparkles && <Sparkles />}
+        </AnimatePresence>
+    </motion.span>
   );
 }
