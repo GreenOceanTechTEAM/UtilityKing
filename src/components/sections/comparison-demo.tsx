@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import * as React from 'react';
@@ -116,6 +117,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
     setCustomValues(prev => ({...prev, [stepKey]: value}));
+    // Also update selections for location to make it consistent
+    if (stepKey === 'location') {
+        setSelections(prev => ({...prev, [stepKey]: value}))
+    }
   }
 
   const handleNextStep = () => {
@@ -180,12 +185,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
               Let’s Find Your Best Energy Deal — Instantly
             </h2>
             <p className="mx-auto mt-4 text-lg text-muted-foreground">
-              Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
+             Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
             </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 items-start gap-12 justify-center">
-            <div className={cn("w-full max-w-2xl mx-auto", comparisonResult && !isLoading ? "lg:col-span-3" : "lg:col-span-5")}>
+        <div className="flex items-start justify-center gap-12">
+            <div className={cn("w-full max-w-2xl", comparisonResult && !isLoading ? "lg:col-span-3" : "")}>
                 <div className="rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     {/* Progress Bar and Step Title */}
                     <div className="mb-6 text-center">
@@ -270,7 +275,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                         </div>
 
                                         {selections[currentWizardStep.key] === 'Custom' && currentWizardStep.key !== 'location' && (
-                                          <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}}>
+                                          <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                             <Input 
                                                 placeholder={currentWizardStep.customPlaceholder}
                                                 className="h-12 text-base text-center"
@@ -285,11 +290,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 placeholder={currentWizardStep.customPlaceholder}
                                                 className="h-12 text-base text-center"
                                                 value={selections['location'] || ''}
-                                                onChange={(e) => handleSelect('location', e.target.value)}
+                                                onChange={(e) => handleCustomValueChange('location', e.target.value)}
                                             />
                                         )}
                                         {isStepComplete(currentStep) && currentStep < wizardSteps.length -1 && (
-                                            <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
+                                            <Button size="lg" className="w-full h-12 text-base mt-3" onClick={handleNextStep}>Next Step &rarr;</Button>
                                         )}
                                     </div>
                                 )}
@@ -297,7 +302,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </AnimatePresence>
                     </div>
 
-                    {isStepComplete(0) && isStepComplete(1) && isStepComplete(2) && !isLoading && (
+                    {isStepComplete(0) && isStepComplete(1) && isStepComplete(2) && !isLoading && !comparisonResult && (
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
                             <Button 
                                 size="lg"
@@ -333,7 +338,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </div>
 
             {comparisonResult && !isLoading && (
-                <div className="lg:col-span-2 w-full">
+                <div className="lg:col-span-2 w-full max-w-3xl">
                     <AnimatePresence>
                     <motion.div
                         key="results"
@@ -351,7 +356,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         <Carousel opts={{ align: "start" }} className="w-full mt-6">
                         <CarouselContent className="-ml-2">
                             {comparisonResult.recommendedPlans.map((plan, index) => (
-                            <CarouselItem key={index} className="md:basis-1/2 pl-2">
+                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-2">
                                 <motion.div
                                     custom={index}
                                     initial={{ opacity: 0, y: 20 }}
