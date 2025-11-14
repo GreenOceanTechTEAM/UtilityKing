@@ -65,7 +65,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
             initial={{ height: 0 }}
             whileInView={{ height: "100%" }}
             viewport={{ once: true, amount: 0.1 }}
-            transition={{ duration: 1.5, ease: "expo.out", delay: 0.5 }}
+            transition={{ duration: 1.5, ease: "easeOut", delay: 0.5 }}
             className="absolute left-8 top-0 w-px bg-border"
           />
 
@@ -86,7 +86,7 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                     initial={{ scale: 0 }}
                     whileInView={{ scale: 1 }}
                     viewport={{ once: true }}
-                    transition={{ ease: "expo.out", duration: 0.9, delay: index * 0.2 }}
+                    transition={{ ease: "easeOut", duration: 0.9, delay: index * 0.2 }}
                     className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg"
                    >
                      <motion.div 
