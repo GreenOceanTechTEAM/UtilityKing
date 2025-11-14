@@ -1,4 +1,5 @@
 
+
 "use client";
 
 import * as React from 'react';
@@ -8,7 +9,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud, MapPin } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -180,6 +181,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleSelect = (stepKey: string, option: string) => {
     const isMulti = currentWizardStepConfig.isMultiSelect;
+    const isComplex = currentWizardStepConfig.isComplex;
 
     let newSelections;
 
@@ -196,7 +198,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    if (!isMulti && !currentWizardStepConfig.isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
+    if (!isMulti && !isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
         setTimeout(() => handleNextStep(), 300);
     } else if (currentWizardStepConfig.key === 'billAvailable' && option === 'No') {
         setTimeout(() => handleNextStep(), 300);
@@ -232,6 +234,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     if (step.key === 'usage') {
         return !!selections.usage && !!selections.usageInputRaw;
+    }
+
+    if(step.key === 'billAvailable') {
+      return selections.billAvailable === 'Yes' || selections.billAvailable === 'No';
     }
 
     if(step.additionalOptions?.includes(selection)) {
@@ -320,7 +326,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         />
                     </div>
 
-                    <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
+                    <div className="relative min-h-[300px] overflow-y-auto flex flex-col items-center pr-2">
                         <AnimatePresence mode="wait">
                             {currentWizardStepConfig &&
                             <motion.div
@@ -329,7 +335,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
-                                className="absolute w-full flex flex-col items-center text-center"
+                                className="w-full flex flex-col items-center text-center"
                             >
                                 <div className="flex flex-col items-center text-center gap-3 mb-5">
                                     <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
@@ -373,7 +379,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                             isSelected
                                                                 ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                 : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                            currentWizardStepConfig.options.length === 3 && "sm:col-span-2 odd:sm:col-span-1 last:sm:col-span-2"
+                                                             (option as any).description && "items-start",
+                                                            currentWizardStepConfig.step === 1 && currentWizardStepConfig.options.length % 2 !== 0 && "last:sm:col-span-2",
                                                         )}
                                                     >
                                                         <div className="flex items-center justify-center gap-2">
@@ -445,9 +452,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             </motion.div>
                                         )}
                                         
-                                        {(currentWizardStepConfig.isMultiSelect || currentWizardStepConfig.key === 'usage') && isStepComplete(currentStep) && (
+                                        {(currentWizardStepConfig.isMultiSelect || currentWizardStepConfig.key === 'usage' || currentWizardStepConfig.isInput) && isStepComplete(currentStep) && currentWizardStepConfig.step < activeWizardSteps.length && (
                                              <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
+                                                <Button size="lg" className="w-full h-12 text-base mt-4" onClick={handleNextStep}>Next Step &rarr;</Button>
                                              </motion.div>
                                         )}
 
