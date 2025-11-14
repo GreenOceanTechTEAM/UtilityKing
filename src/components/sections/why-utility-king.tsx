@@ -1,5 +1,5 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '@/components/ui/card';
-import { Scale, Bot, CheckSquare, ShieldCheck, MousePointerClick } from 'lucide-react';
+import { Scale, Bot, CheckSquare, ShieldCheck, MousePointerClick, Users, Euro, Smile } from 'lucide-react';
 import AnimatedNumber from '../shared/animated-number';
 
 type WhyUtilityKingProps = {
@@ -35,9 +35,9 @@ const values = [
 ];
 
 const stats = [
-    { value: 10000, label: "Trusted UK Users", suffix: "+" },
-    { value: 284, label: "Average Annual Savings", prefix: "£" },
-    { value: 98, label: "Customer Satisfaction", suffix: "%" }
+    { value: 10000, label: "Trusted UK Users", suffix: "+", icon: <Users className="h-8 w-8 text-muted-foreground" /> },
+    { value: 284, label: "Average Annual Savings", prefix: "£", icon: <Euro className="h-8 w-8 text-muted-foreground" /> },
+    { value: 98, label: "Customer Satisfaction", suffix: "%", icon: <Smile className="h-8 w-8 text-muted-foreground" /> }
 ];
 
 export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
@@ -54,9 +54,24 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
         </div>
 
         <div className="mt-16 grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {values.map((value) => (
+          {values.slice(0, 3).map((value) => (
              <Card key={value.title} className="bg-transparent border-0 shadow-none hover:bg-muted/30 transition-colors">
-                 <CardHeader className="flex flex-row items-start gap-4">
+                 <CardHeader className="flex flex-row items-start gap-4 p-4">
+                    <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-accent">
+                        {value.icon}
+                    </div>
+                    <div>
+                        <CardTitle className="text-lg leading-6">{value.title}</CardTitle>
+                        <CardDescription className="mt-2 text-base">{value.description}</CardDescription>
+                    </div>
+                </CardHeader>
+            </Card>
+          ))}
+        </div>
+         <div className="mt-8 grid grid-cols-1 gap-8 md:grid-cols-2">
+          {values.slice(3).map((value) => (
+             <Card key={value.title} className="bg-transparent border-0 shadow-none hover:bg-muted/30 transition-colors md:col-start-1 md:last:col-start-2 lg:col-start-auto lg:last:col-start-auto">
+                 <CardHeader className="flex flex-row items-start gap-4 p-4">
                     <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-lg bg-primary/10 text-accent">
                         {value.icon}
                     </div>
@@ -70,16 +85,19 @@ export default function WhyUtilityKing({ id }: WhyUtilityKingProps) {
         </div>
         
         <div className="mt-20">
-             <div className="grid grid-cols-1 gap-px md:grid-cols-3 bg-border rounded-lg overflow-hidden">
+             <div className="grid grid-cols-1 gap-8 md:grid-cols-3">
                 {stats.map((stat) => (
-                    <div key={stat.label} className="bg-background text-center p-8">
-                        <p className="text-5xl font-bold font-headline text-primary">
+                    <Card key={stat.label} className="text-center transition-transform duration-300 hover:-translate-y-2 hover:shadow-lg">
+                      <CardContent className="flex flex-col items-center justify-center p-6">
+                        {stat.icon}
+                        <p className="text-5xl font-bold font-headline text-primary mt-4">
                             <AnimatedNumber value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
                         </p>
                         <p className="text-lg text-muted-foreground mt-2">
                             {stat.label}
                         </p>
-                    </div>
+                      </CardContent>
+                    </Card>
                 ))}
              </div>
         </div>

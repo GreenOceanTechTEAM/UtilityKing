@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Zap, Wifi, Smartphone, Thermometer, FileText } from 'lucide-react';
+import { cn } from '@/lib/utils';
 
 type ServicesSectionProps = {
   id: string;
@@ -65,7 +66,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="text-center">
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
-            All Your Utilities, Smarter
+            Find Savings in Every Corner of Your Home
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We help you find savings on more than just energy. Explore all the ways Utility King AI can help you save.
@@ -76,11 +77,22 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className={cn(
+            "mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3",
+            services.length % 3 === 2 ? "lg:grid-cols-3" : "",
+            services.length % 2 === 1 && services.length % 3 !== 1 ? "sm:grid-cols-2" : ""
+          )}
         >
-          {services.map((service) => (
-            <motion.div key={service.title} variants={itemVariants}>
-              <Card className="group transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+          {services.map((service, index) => (
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className={cn(
+                  "sm:last:col-span-2 lg:last:col-span-1", 
+                  { "lg:col-start-2": index === services.length - 1 && services.length % 3 === 1 }
+              )}
+            >
+              <Card className="group h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
                 <CardHeader className="p-6">
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
                     {service.icon}
