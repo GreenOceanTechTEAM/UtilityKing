@@ -5,6 +5,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { intelligentUtilityComparison, IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
+import { motion } from 'framer-motion';
 
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
@@ -25,6 +26,20 @@ const formSchema = z.object({
   preferences: z.string().min(5, "Tell us what's important (e.g., 'fastest internet, green energy')."),
   location: z.string().min(2, "Please enter your city or postcode."),
 });
+
+const formVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      type: 'spring',
+      stiffness: 100,
+      damping: 12
+    }
+  })
+}
 
 export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
@@ -68,71 +83,79 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 gap-16 lg:grid-cols-2 lg:items-start">
-          <div className="lg:sticky lg:top-24">
-            <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
+          <motion.div 
+            className="lg:sticky lg:top-24"
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.2 }}
+            transition={{ staggerChildren: 0.1 }}
+          >
+            <motion.h2 variants={formVariants} custom={0} className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
               Find a Better Deal Instantly
-            </h2>
-            <p className="mt-4 text-lg text-muted-foreground">
+            </motion.h2>
+            <motion.p variants={formVariants} custom={1} className="mt-4 text-lg text-muted-foreground">
               Enter your details below, and UKi will analyze your options to find the best deals for you.
-            </p>
-            <Card className="mt-8 shadow-lg">
-                <CardContent className="p-6">
-                    <Form {...form}>
-                    <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-                        <FormField
-                        control={form.control}
-                        name="usageData"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Usage</FormLabel>
-                            <FormControl>
-                                <Input placeholder="e.g., 3-bed house, 2 adults, heavy streaming" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <FormField
-                        control={form.control}
-                        name="preferences"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Preferences</FormLabel>
-                            <FormControl>
-                                <Input placeholder="e.g., Cheapest 12-month contract, 100% renewable" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <FormField
-                        control={form.control}
-                        name="location"
-                        render={({ field }) => (
-                            <FormItem>
-                            <FormLabel>Your Location</FormLabel>
-                            <FormControl>
-                                <Input placeholder="e.g., Manchester or M1 1AA" {...field} />
-                            </FormControl>
-                            <FormMessage />
-                            </FormItem>
-                        )}
-                        />
-                        <Button type="submit" className="w-full" disabled={isLoading}>
-                        {isLoading ? (
-                            <>
-                            <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                            Analyzing Deals...
-                            </>
-                        ) : (
-                            'Compare Now'
-                        )}
-                        </Button>
-                    </form>
-                    </Form>
-              </CardContent>
-            </Card>
-          </div>
+            </motion.p>
+            <motion.div variants={formVariants} custom={2}>
+              <Card className="mt-8 shadow-lg">
+                  <CardContent className="p-6">
+                      <Form {...form}>
+                      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+                          <FormField
+                          control={form.control}
+                          name="usageData"
+                          render={({ field }) => (
+                              <FormItem>
+                              <FormLabel>Your Usage</FormLabel>
+                              <FormControl>
+                                  <Input placeholder="e.g., 3-bed house, 2 adults, heavy streaming" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                              </FormItem>
+                          )}
+                          />
+                          <FormField
+                          control={form.control}
+                          name="preferences"
+                          render={({ field }) => (
+                              <FormItem>
+                              <FormLabel>Your Preferences</FormLabel>
+                              <FormControl>
+                                  <Input placeholder="e.g., Cheapest 12-month contract, 100% renewable" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                              </FormItem>
+                          )}
+                          />
+                          <FormField
+                          control={form.control}
+                          name="location"
+                          render={({ field }) => (
+                              <FormItem>
+                              <FormLabel>Your Location</FormLabel>
+                              <FormControl>
+                                  <Input placeholder="e.g., Manchester or M1 1AA" {...field} />
+                              </FormControl>
+                              <FormMessage />
+                              </FormItem>
+                          )}
+                          />
+                          <Button type="submit" className="w-full" disabled={isLoading}>
+                          {isLoading ? (
+                              <>
+                              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
+                              Analyzing Deals...
+                              </>
+                          ) : (
+                              'Compare Now'
+                          )}
+                          </Button>
+                      </form>
+                      </Form>
+                </CardContent>
+              </Card>
+            </motion.div>
+          </motion.div>
 
           <div className="min-h-[500px]">
             {isLoading && (

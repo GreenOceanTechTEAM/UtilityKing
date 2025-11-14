@@ -47,11 +47,20 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
         style={{ opacity }}
         className="relative z-10 flex h-full flex-col items-center justify-center text-center text-primary-foreground px-4"
       >
-        <div
+        <motion.div
           className={cn(
-            "absolute inset-0 m-auto h-48 w-48 animate-pulse rounded-full bg-accent/30 blur-3xl",
+            "absolute inset-0 m-auto h-48 w-48 rounded-full bg-accent/30 blur-3xl",
             "md:h-64 md:w-64"
           )}
+           animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.7, 1, 0.7],
+          }}
+          transition={{
+            duration: 4,
+            ease: "easeInOut",
+            repeat: Infinity,
+          }}
         />
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl shimmer-text">
           {title}
