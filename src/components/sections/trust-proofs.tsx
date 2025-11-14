@@ -11,12 +11,12 @@ import logoBritishGas from '@/assets/britishgas.jpg';
 import logoCrown from '@/assets/crown.png';
 import logoEdf from '@/assets/edf.jpg';
 import logoGulf from '@/assets/gulf.png';
-import logoHavenPower from '@/assets/haven-power.png';
+// import logoHavenPower from '@/assets/haven-power.png'; // Please rename 'haven power.png' to 'haven-power.png' and uncomment
 import logoNpower from '@/assets/npower.jpg';
 import logoOpus from '@/assets/opus.png';
-import logoOvo from '@/assets/ovo-energy.jpg';
+// import logoOvo from '@/assets/ovo-energy.jpg'; // Please rename 'ovo energy.jpg' to 'ovo-energy.jpg' and uncomment
 import logoPozitive from '@/assets/pozitive.png';
-import logoScottishPower from '@/assets/scottish-power.jpg';
+// import logoScottishPower from '@/assets/scottish-power.jpg'; // Please rename 'scottish power.jpg' to 'scottish-power.jpg' and uncomment
 import logoSse from '@/assets/sse.jpg';
 import logoYue from '@/assets/yue.jpg';
 
@@ -51,12 +51,12 @@ const partners: { name: string; logo: StaticImageData }[] = [
     { name: 'Crown Gas & Power', logo: logoCrown },
     { name: 'EDF Energy', logo: logoEdf },
     { name: 'Gulf Gas & Power', logo: logoGulf },
-    { name: 'Haven Power', logo: logoHavenPower },
+    // { name: 'Haven Power', logo: logoHavenPower }, // Uncomment after renaming file
     { name: 'npower', logo: logoNpower },
     { name: 'Opus Energy', logo: logoOpus },
-    { name: 'OVO Energy', logo: logoOvo },
+    // { name: 'OVO Energy', logo: logoOvo }, // Uncomment after renaming file
     { name: 'Pozitive Energy', logo: logoPozitive },
-    { name: 'Scottish Power', logo: logoScottishPower },
+    // { name: 'Scottish Power', logo: logoScottishPower }, // Uncomment after renaming file
     { name: 'SSE', logo: logoSse },
     { name: 'Yü Energy', logo: logoYue },
 ];
