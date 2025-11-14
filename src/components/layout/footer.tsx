@@ -75,6 +75,7 @@ export default function Footer({ id }: FooterProps) {
                   <ul className="mt-4 space-y-4">
                     <li><Link href="#compare" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Compare</Link></li>
                     <li><Link href="#faqs" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>FAQs</Link></li>
+                    <li><Link href="#contact" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Contact</Link></li>
                   </ul>
                 </div>
                 <div>

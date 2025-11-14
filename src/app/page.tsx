@@ -10,6 +10,7 @@ import TrustProofs from '@/components/sections/trust-proofs';
 import FAQs from '@/components/sections/faqs';
 import BlogPreview from '@/components/sections/blog-preview';
 import AboutSection from '@/components/sections/about-section';
+import ContactSection from '@/components/sections/contact-section';
 
 export default function Home() {
   const sections = [
@@ -53,8 +54,9 @@ export default function Home() {
           subtitle="Our AI assistant is here to help you 24/7."
           buttonText="Chat with UKi"
         />
+        <ContactSection id="contact" />
       </main>
-      <Footer id="contact" />
+      <Footer id="footer-contact" />
     </div>
   );
 }
