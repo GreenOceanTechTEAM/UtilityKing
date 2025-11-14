@@ -50,13 +50,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isFormSubmitted, setIsFormSubmitted] = useState(false);
   const { toast } = useToast();
 
-  const handleFormSubmit = async (values: { usage: string; preference: string; location: string; }) => {
+  const handleFormSubmit = async (values: { usage: string; preference: string; supplier: string; location: string; }) => {
     setIsLoading(true);
     setIsFormSubmitted(true);
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: values.usage,
+        usageData: `${values.usage}, current supplier ${values.supplier}`,
         preferences: values.preference,
         location: values.location
     }
@@ -87,7 +87,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 Find a Better Deal Instantly
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
-                Answer three simple questions. Let our AI find the perfect deal for you.
+                Answer a few simple questions. Let our AI find the perfect deal for you.
             </p>
         </div>
 
