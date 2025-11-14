@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import Link from 'next/link';
 import ParticleBackground from '../shared/particle-background';
+import { cn } from '@/lib/utils';
 
 type ConversationalHeroProps = {
   id: string;
@@ -133,7 +134,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" size="lg" className="h-12" disabled={isLoading}>
+                <Button type="submit" size="lg" className={cn("h-12", !isLoading && "glowing-btn-border")} disabled={isLoading}>
                   {isLoading ? (
                     <Loader2 className="h-5 w-5 animate-spin" />
                   ) : (

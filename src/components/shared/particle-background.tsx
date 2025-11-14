@@ -1,8 +1,8 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import Particles, { initParticlesEngine } from "@tsparticles/react";
-import { type Container } from "@tsparticles/engine";
-import { loadSlim } from "@tsparticles/slim"; 
+import { type Container, type ISourceOptions } from "@tsparticles/engine";
+import { loadSlim } from "@tsparticles/slim";
 import { useTheme } from "next-themes";
 
 const ParticleBackground = () => {
@@ -21,7 +21,7 @@ const ParticleBackground = () => {
     console.log(container);
   };
 
-  const options = useMemo(
+  const options: ISourceOptions = useMemo(
     () => ({
       background: {
         color: {
@@ -51,17 +51,17 @@ const ParticleBackground = () => {
           color: "hsl(var(--primary))",
           distance: 150,
           enable: true,
-          opacity: 0.3,
+          opacity: 0.2,
           width: 1,
         },
         move: {
-          direction: "none",
+          direction: "right",
           enable: true,
           outModes: {
-            default: "bounce",
+            default: "out",
           },
           random: false,
-          speed: 1,
+          speed: 0.3,
           straight: false,
         },
         number: {
@@ -90,7 +90,7 @@ const ParticleBackground = () => {
       <Particles
         id="tsparticles"
         particlesLoaded={particlesLoaded}
-        options={options as any}
+        options={options}
         className="absolute inset-0 z-[-2]"
       />
     );
