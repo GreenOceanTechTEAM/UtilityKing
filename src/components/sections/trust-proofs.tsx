@@ -5,8 +5,7 @@ import { Card, CardContent } from '@/components/ui/card';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { motion } from 'framer-motion';
 
 type TrustProofsProps = {
   id: string;
@@ -46,16 +45,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 18, opacity: 0, rotateX: -6 },
   visible: {
     y: 0,
     opacity: 1,
+    rotateX: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -69,65 +69,74 @@ const starContainerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
       delayChildren: 0.3,
     },
   },
 };
 
 const starVariants = {
-  hidden: { scale: 0, opacity: 0 },
+  hidden: { scale: 0, opacity: 0, color: "hsl(var(--muted))" },
   visible: {
     scale: 1,
     opacity: 1,
-    transition: { type: 'spring', stiffness: 200, damping: 10 }
+    color: "hsl(var(--accent))",
+    transition: { type: 'spring', stiffness: 200, damping: 10, duration: 0.45 }
   },
 };
 
+const logoContainerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { staggerChildren: 0.04, delayChildren: 0.2 },
+  },
+};
 
-const TestimonialCard = ({ testimonial, index }: { testimonial: typeof testimonials[0], index: number }) => {
-  const ref = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start end", "end start"],
-  });
+const logoVariants = {
+    hidden: { scale: 0.96, opacity: 0 },
+    visible: { scale: 1, opacity: 0.6, transition: { duration: 0.3 } },
+};
 
-  const x = useTransform(scrollYProgress, [0, 1], [(index % 2 === 0 ? -1 : 1) * 40, 0]);
-
+const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => {
   return (
     <motion.div
-      ref={ref}
-      style={{ x }}
       variants={itemVariants}
+      whileHover={{ y: -10 }}
+      transition={{ type: 'spring', stiffness: 300 }}
     >
-      <Card className="flex flex-col h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+      <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all">
         <CardContent className="flex flex-1 flex-col justify-between p-6">
           <div>
               <motion.div
                 className="flex mb-2"
                 variants={starContainerVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
               >
-                  {[...Array(5)].map((_, i) => <motion.div key={i} variants={starVariants}><Star className="h-5 w-5 fill-accent text-accent" /></motion.div>)}
+                  {[...Array(5)].map((_, i) => <motion.div key={i} variants={starVariants}><Star className="h-5 w-5 fill-current" /></motion.div>)}
               </motion.div>
               <blockquote className="text-lg text-foreground">
                   <p>"{testimonial.quote}"</p>
               </blockquote>
           </div>
-          <div className="mt-6 flex items-center">
+          <motion.div 
+            className="mt-6 flex items-center"
+            whileHover="hover"
+          >
             {testimonial.avatar && (
-              <Avatar>
-                <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
-                <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
-              </Avatar>
+              <motion.div
+                 variants={{ hover: { scale: 1.1 } }}
+              >
+                <Avatar>
+                  <AvatarImage src={testimonial.avatar.imageUrl} alt={testimonial.name} data-ai-hint={testimonial.avatar.imageHint} />
+                  <AvatarFallback>{testimonial.name.charAt(0)}</AvatarFallback>
+                </Avatar>
+              </motion.div>
             )}
             <div className="ml-4">
               <p className="font-semibold text-foreground">{testimonial.name}</p>
               <p className="text-sm text-muted-foreground">{testimonial.location}</p>
             </div>
-          </div>
+          </motion.div>
         </CardContent>
       </Card>
     </motion.div>
@@ -139,14 +148,20 @@ export default function TrustProofs({ id }: TrustProofsProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div
+            initial={{ opacity: 0, letterSpacing: "-0.05em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0em" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "power2.out" }}
+            className="text-center"
+        >
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Trusted by Thousands of Savers
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Don't just take our word for it. Here's what our users have to say about their experience.
           </p>
-        </div>
+        </motion.div>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -154,18 +169,29 @@ export default function TrustProofs({ id }: TrustProofsProps) {
           viewport={{ once: true, amount: 0.2 }}
           className="mt-12 grid gap-8 md:grid-cols-2 lg:grid-cols-3"
         >
-          {testimonials.map((testimonial, index) => (
-            <TestimonialCard key={testimonial.name} testimonial={testimonial} index={index} />
+          {testimonials.map((testimonial) => (
+            <TestimonialCard key={testimonial.name} testimonial={testimonial} />
           ))}
         </motion.div>
         <div className="mt-20">
           <p className="text-center text-base font-semibold text-muted-foreground">
             In partnership with the UK's leading providers
           </p>
-          <div className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-5 lg:mt-8">
+          <motion.div
+             variants={logoContainerVariants}
+             initial="hidden"
+             whileInView="visible"
+             viewport={{ once: true, amount: 0.5 }}
+             className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-5 lg:mt-8"
+          >
             {partners.map((partner) => (
               partner.logo && (
-                 <div key={partner.name} className="col-span-1 flex justify-center bg-background/50 p-8 grayscale opacity-60 transition-all hover:grayscale-0 hover:opacity-100">
+                 <motion.div
+                    key={partner.name}
+                    variants={logoVariants}
+                    whileHover={{ opacity: 1, y: -4 }}
+                    className="col-span-1 flex justify-center bg-background/50 p-8 grayscale transition-all hover:grayscale-0"
+                 >
                     <Image
                     src={partner.logo.imageUrl}
                     alt={partner.name}
@@ -174,10 +200,10 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                     className="object-contain"
                     data-ai-hint={partner.logo.imageHint}
                     />
-                </div>
+                </motion.div>
               )
             ))}
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

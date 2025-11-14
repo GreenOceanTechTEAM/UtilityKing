@@ -24,10 +24,10 @@ const iconMap: { [key: string]: React.ReactNode } = {
 };
 
 const analysisLines = [
-  "Analyzing your preferences...",
-  "Checking suppliers...",
-  "Calculating savings...",
-  "Finding the best deals for you...",
+  "Connecting to tariff database...",
+  "Fetching supplier data...",
+  "Running optimization model...",
+  "Evaluating 34,512 possible combinations...",
 ];
 
 const lineVariants = {
@@ -82,45 +82,47 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
+        <motion.div 
+          initial={{ y: 20, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
+          className="text-center mb-12"
+        >
             <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
                 Find a Better Deal Instantly
             </h2>
             <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
                 Answer a few simple questions. Let our AI find the perfect deal for you.
             </p>
-        </div>
+        </motion.div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
             <motion.div
-                initial={{ opacity: 1 }}
-                animate={{ opacity: isFormSubmitted ? 0.5 : 1 }}
-                className="transition-opacity duration-300"
+                initial={{ filter: "blur(0px)" }}
+                animate={{ filter: isLoading ? "blur(4px)" : "blur(0px)" }}
+                className="transition-all duration-500"
             >
               <AnimatePresence mode="wait">
-                {isFormSubmitted ? (
+                {isLoading ? (
                   <motion.div
                     key="analyzing"
                     className="flex flex-col items-center justify-center min-h-[350px] p-8"
                   >
-                    <Loader2 className="h-12 w-12 text-primary animate-spin mb-6" />
-                    <div className="relative h-6 w-full max-w-sm overflow-hidden text-center">
-                        <AnimatePresence>
-                           {analysisLines.map((line, index) => (
-                             <motion.p
-                                key={line}
-                                custom={index}
-                                initial="hidden"
-                                animate="visible"
-                                exit="exit"
-                                variants={lineVariants}
-                                className="absolute inset-0 text-lg text-muted-foreground"
-                                style={{ animationDelay: `${index * 1.5}s`, animationDuration: '1.5s' }}
-                              >
-                                {line}
-                              </motion.p>
-                           ))}
-                        </AnimatePresence>
+                    <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
+                        {analysisLines.map((line, index) => (
+                          <motion.p
+                            key={line}
+                            custom={index}
+                            initial="hidden"
+                            animate="visible"
+                            variants={lineVariants}
+                            className="absolute inset-0 text-sm text-muted-foreground"
+                            style={{ animationDelay: `${index * 1.5}s`, animationDuration: '1.5s' }}
+                          >
+                            {`> ${line}`}
+                          </motion.p>
+                        ))}
                     </div>
 
                   </motion.div>
@@ -141,10 +143,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             {comparisonResult && (
                 <motion.div
                     key="results"
-                    initial={{ opacity: 0, x: 50 }}
+                    initial={{ opacity: 0, x: 120 }}
                     animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: 50 }}
-                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                    exit={{ opacity: 0, x: 120 }}
+                    transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                     className="lg:mt-0 mt-8"
                 >
                     <div className='text-center mb-4'>
@@ -162,10 +164,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 animate={(i) => ({
                                     opacity: 1,
                                     y: 0,
-                                    transition: { delay: i * 0.15, type: 'spring', stiffness: 100 }
+                                    transition: { delay: 0.5 + i * 0.12, ease: "easeOut" }
                                 })}
                              >
-                                <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all">
+                                <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
                                 <CardHeader>
                                     <div className="flex items-start justify-between">
                                         <div>

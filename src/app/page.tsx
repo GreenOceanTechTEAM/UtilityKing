@@ -14,9 +14,10 @@ import AboutSection from '@/components/sections/about-section';
 export default function Home() {
   const sections = [
     { id: 'hero', name: 'Home' },
+    { id: 'how', name: 'How it Works' },
     { id: 'services', name: 'Services' },
-    { id: 'compare', name: 'Compare' },
     { id: 'why', name: 'Why Us' },
+    { id: 'compare', name: 'Compare' },
     { id: 'trust', name: 'Reviews' },
     { id: 'faqs', name: 'FAQs' },
     { id: 'blog', name: 'Blog' },

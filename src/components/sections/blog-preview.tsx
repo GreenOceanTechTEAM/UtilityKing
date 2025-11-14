@@ -33,19 +33,18 @@ const blogPosts = [
   }
 ];
 
-
 const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 16, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
@@ -57,19 +56,24 @@ const itemVariants = {
   },
 };
 
-
 export default function BlogPreview({ id }: BlogPreviewProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div
+            initial={{ opacity: 0, letterSpacing: "-0.05em" }}
+            whileInView={{ opacity: 1, letterSpacing: "0em" }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "power2.out" }}
+            className="text-center"
+        >
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             From Our Blog
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Get the latest tips, tricks, and insights on managing your utilities and saving money.
           </p>
-        </div>
+        </motion.div>
         <motion.div
           variants={containerVariants}
           initial="hidden"
@@ -79,9 +83,11 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
         >
           {blogPosts.map((post) => (
             <motion.div key={post.title} variants={itemVariants} className="flex">
-              <Card className="flex flex-col h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+              <Card className="group flex flex-col h-full overflow-hidden rounded-xl shadow-lg transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
                 {post.image && (
-                  <div className="aspect-video overflow-hidden">
+                  <motion.div className="aspect-video overflow-hidden" whileHover={{
+                    transform: "rotateY(-5deg) rotateX(5deg) scale(1.05)",
+                  }}>
                       <Image
                       src={post.image.imageUrl}
                       alt={post.image.description}
@@ -90,7 +96,7 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
                       data-ai-hint={post.image.imageHint}
                       className="h-full w-full object-cover"
                       />
-                  </div>
+                  </motion.div>
                 )}
                 <CardContent className="flex-1 p-6">
                   <Badge variant="secondary" className="mb-2">{post.category}</Badge>
@@ -101,9 +107,11 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
                   <Link href="#" className="group flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>
                     <span className="relative">
                       Read more
-                      <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                      <motion.span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-accent transition-transform duration-300 group-hover:scale-x-100" />
                     </span>
-                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
+                    <motion.div whileHover={{ x: 2 }}>
+                        <ArrowRight className="h-4 w-4" />
+                    </motion.div>
                   </Link>
                 </CardFooter>
               </Card>

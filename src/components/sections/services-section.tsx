@@ -47,21 +47,19 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.08,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0, rotateY: -15 },
+  hidden: { y: 18, opacity: 0 },
   visible: {
     y: 0,
     opacity: 1,
-    rotateY: 0,
     transition: {
-      type: "spring",
-      stiffness: 100,
-      damping: 12,
+      duration: 0.5,
+      ease: "power2.out",
     },
   },
 };
@@ -70,34 +68,48 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div 
+          className="text-center"
+          initial={{ opacity: 0, letterSpacing: "-0.05em" }}
+          whileInView={{ opacity: 1, letterSpacing: "0em" }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, ease: "power2.out" }}
+        >
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Find Savings in Every Corner of Your Home
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             We help you find savings on more than just energy. Explore all the ways Utility King AI can help you save.
           </p>
-        </div>
+        </motion.div>
         <motion.div
           variants={containerVariants}
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
+          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 [perspective:900px]"
         >
-          {services.map((service, index) => (
+          {services.map((service) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
+              whileHover={{
+                y: -8,
+                rotateX: '-6deg',
+                rotateY: '6deg',
+                boxShadow: '0px 8px 24px hsla(var(--primary), 0.15)',
+              }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
             >
-              <Card className="group h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
+              <Card className="group h-full transform transition-all duration-300">
                 <CardHeader className="p-6">
-                  <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                    <div className="transition-transform duration-300 group-hover:rotate-[-5deg]">
-                        {service.icon}
-                    </div>
-                  </div>
-                  <div className="transition-transform duration-300 group-hover:-translate-y-1">
+                  <motion.div
+                    whileHover={{ scale: 1.12, rotate: -5 }}
+                    transition={{ type: 'spring', stiffness: 300 }}
+                    className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                    {service.icon}
+                  </motion.div>
+                  <div>
                     <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
                     <CardDescription className="pt-2">{service.description}</CardDescription>
                   </div>

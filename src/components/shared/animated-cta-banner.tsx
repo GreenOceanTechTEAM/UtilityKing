@@ -26,6 +26,7 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
   });
 
   const y = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
+  const contentY = useTransform(scrollYProgress, [0.2, 0.8], ['20px', '-20px']);
   const opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
 
   return (
@@ -44,7 +45,7 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
       <div className="absolute inset-0 bg-primary/70" />
 
       <motion.div
-        style={{ opacity }}
+        style={{ opacity, y: contentY }}
         className="relative z-10 flex h-full flex-col items-center justify-center text-center text-primary-foreground px-4"
       >
         <motion.div
@@ -65,11 +66,17 @@ export default function AnimatedCTABanner({ id, type, title, buttonText, buttonL
         <h2 className="font-headline text-3xl font-bold tracking-tight sm:text-4xl lg:text-5xl shimmer-text">
           {title}
         </h2>
-        <div className="mt-8">
-            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90">
+        <motion.div
+          className="mt-8"
+          initial={{ scale: 0.98, opacity: 0 }}
+          whileInView={{ scale: 1, opacity: 1 }}
+          viewport={{ once: true, amount: 0.8 }}
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+        >
+            <Button asChild size="lg" variant="secondary" className="bg-accent text-accent-foreground hover:bg-accent/90 glowing-btn-border">
                 {buttonLink ? <Link href={buttonLink}>{buttonText}</Link> : <button>{buttonText}</button>}
             </Button>
-        </div>
+        </motion.div>
       </motion.div>
     </section>
   );

@@ -1,4 +1,3 @@
-
 "use client";
 
 import { motion } from 'framer-motion';
@@ -30,72 +29,45 @@ const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.3, delayChildren: 0.2 },
+    transition: { staggerChildren: 0.12, delayChildren: 0.2 },
   },
 };
 
 const itemVariants = {
-  hidden: { opacity: 0, x: -50, rotateY: -20 },
+  hidden: { opacity: 0, scale: 0.98 },
   visible: {
     opacity: 1,
-    x: 0,
-    rotateY: 0,
-    transition: { type: 'spring', stiffness: 50, damping: 15 },
-  },
-};
-
-const orbVariants = {
-  hidden: { scale: 0, opacity: 0 },
-  visible: {
     scale: 1,
-    opacity: 1,
-    transition: {
-      type: "spring",
-      stiffness: 260,
-      damping: 20,
-      delay: 0.3,
-    },
+    transition: { ease: [0.17, 0.67, 0.45, 1.35], duration: 0.5 },
   },
 };
-
 
 export default function HowItWorks({ id }: HowItWorksProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div 
+          initial={{y: 20, opacity: 0}}
+          whileInView={{y: 0, opacity: 1}}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{duration: 0.6}}
+          className="text-center"
+        >
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
             Saving Money is as Easy as 1-2-3
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Our streamlined process makes finding a better utility deal simpler than ever before.
           </p>
-        </div>
+        </motion.div>
         <div className="relative mt-20 max-w-2xl mx-auto">
           <motion.div
-            initial="hidden"
-            whileInView="visible"
+            initial={{ height: 0 }}
+            whileInView={{ height: "100%" }}
             viewport={{ once: true, amount: 0.1 }}
-            className="absolute left-8 top-0 h-full w-px bg-border"
-          >
-             <motion.div 
-                className="absolute left-1/2 -translate-x-1/2 h-3 w-3 rounded-full bg-accent shadow-[0_0_12px] shadow-accent"
-                style={{
-                    boxShadow: '0 0 12px hsl(var(--accent)), 0 0 20px hsl(var(--accent))'
-                }}
-                animate={{
-                    y: ['0%', '1000%', '2100%']
-                }}
-                transition={{
-                    duration: 3,
-                    ease: "easeInOut",
-                    repeat: Infinity,
-                    repeatDelay: 1,
-                    delay: 1,
-                }}
-             />
-
-          </motion.div>
+            transition={{ duration: 1.5, ease: "expo.out", delay: 0.5 }}
+            className="absolute left-8 top-0 w-px bg-border"
+          />
 
           <motion.div
             initial="hidden"
@@ -111,33 +83,34 @@ export default function HowItWorks({ id }: HowItWorksProps) {
                 className="relative pl-20"
               >
                   <motion.div 
-                    variants={orbVariants}
+                    initial={{ scale: 0 }}
+                    whileInView={{ scale: 1 }}
+                    viewport={{ once: true }}
+                    transition={{ ease: "expo.out", duration: 0.9, delay: index * 0.2 }}
                     className="absolute left-0 top-0 flex h-16 w-16 items-center justify-center rounded-full bg-background shadow-lg"
                    >
                      <motion.div 
-                        className="absolute inset-0 rounded-full"
-                        style={{
-                            boxShadow: '0 0 15px hsl(var(--accent) / 0.7)'
-                        }}
                         initial={{ scale: 1, opacity: 0 }}
-                        animate={{ scale: [1, 2, 1], opacity: [0, 0.7, 0] }}
+                        whileInView={{ scale: [1, 1.08, 1], opacity: [0, 1, 0] }}
+                        viewport={{ once: true }}
                         transition={{
-                            duration: 1.5,
-                            ease: "easeInOut",
-                            delay: 0.5 + index * 0.3,
-                            repeat: Infinity,
-                            repeatDelay: 3
+                            duration: 0.18,
+                            delay: 0.5 + index * 0.2
                         }}
                      />
                     <span className="relative font-headline text-2xl font-bold text-accent">{`0${index + 1}`}</span>
                   </motion.div>
-                  <div className="text-left">
+                  <motion.div 
+                     whileHover={{ y: -6 }}
+                     transition={{ type: 'spring', stiffness: 300 }}
+                     className="text-left"
+                  >
                     <div className="flex items-center gap-3">
                       {step.icon}
                       <h3 className="font-headline text-xl font-bold text-foreground">{step.title}</h3>
                     </div>
                     <p className="mt-2 text-muted-foreground">{step.description}</p>
-                  </div>
+                  </motion.div>
               </motion.div>
             ))}
           </motion.div>

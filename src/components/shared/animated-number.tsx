@@ -1,4 +1,3 @@
-
 "use client";
 
 import { useEffect, useState } from "react";
@@ -19,12 +18,12 @@ const sparkleVariants = {
 };
 
 const Sparkles = () => {
-  const sparkles = Array.from({ length: 4 });
+  const sparkles = Array.from({ length: 8 });
   const positions = [
-    { top: '-10%', left: '110%' },
-    { top: '20%', left: '-20%' },
-    { top: '80%', left: '120%' },
-    { top: '100%', left: '50%' },
+    { top: '-10%', left: '110%' }, { top: '20%', left: '-20%' },
+    { top: '80%', left: '120%' }, { top: '100%', left: '50%' },
+    { top: '0%', left: '0%' }, { top: '50%', left: '115%' },
+    { top: '110%', left: '80%' }, { top: '30%', left: '110%' },
   ];
   return (
     <>
@@ -37,7 +36,7 @@ const Sparkles = () => {
           animate="visible"
           style={{
             position: 'absolute',
-            ...positions[i],
+            ...positions[i % positions.length],
             width: '10px',
             height: '10px',
             borderRadius: '50%',
@@ -77,7 +76,7 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
       controls.start({
         opacity: 1,
         y: 0,
-        transition: { duration: 0.5 },
+        transition: { duration: 1.2, ease: "power1.out" },
       });
     }
   }, [inView, value, spring, controls]);
@@ -86,18 +85,29 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
     const unsubscribe = spring.on("change", (latest) => {
         const element = document.getElementById(`animated-number-${value}`);
         if (element) {
-            element.textContent = `${prefix}${latest.toFixed(value % 1 !== 0 ? 1 : 0)}${suffix}`;
+            element.textContent = `${prefix}${latest.toLocaleString('en-US', { maximumFractionDigits: 0 })}${suffix}`;
         }
     });
 
-    spring.on("animationEnd", () => {
+    const onComplete = () => {
       setShowSparkles(true);
-      setTimeout(() => setShowSparkles(false), 1000);
-    });
+      setTimeout(() => setShowSparkles(false), 300);
+    };
+
+    if (spring.get() === value) {
+      onComplete();
+    } else {
+      const unsubscribeComplete = spring.on("change", (latest) => {
+        if (latest >= value) {
+          onComplete();
+          unsubscribeComplete();
+        }
+      });
+      return () => unsubscribeComplete();
+    }
 
     return () => {
         unsubscribe();
-        spring.on("animationEnd", () => {});
     }
   }, [spring, prefix, suffix, value]);
 
