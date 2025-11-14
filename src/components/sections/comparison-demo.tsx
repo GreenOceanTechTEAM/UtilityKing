@@ -1,3 +1,4 @@
+
 "use client";
 
 import * as React from 'react';
@@ -36,6 +37,7 @@ const wizardSteps = [
     {
         step: 1,
         title: "Your Usage",
+        key: 'usage',
         aiMessage: "Tell me about your home size. This helps us estimate your energy demand accurately.",
         options: [
             { label: "Small Home", description: "1–2 bedrooms, light usage" },
@@ -43,10 +45,12 @@ const wizardSteps = [
             { label: "Large Home", description: "4+ bedrooms, heavy usage" }
         ],
         customOption: { label: "Custom", description: "Enter exact usage details" },
+        customPlaceholder: "e.g., 3-bed house, family of 4, electric heating"
     },
     {
         step: 2,
         title: "Your Preferences",
+        key: 'preferences',
         aiMessage: "What's most important to you? Cheapest rates, green energy, or a fixed plan?",
         options: [
             { label: "Cheapest", description: "Prioritize lowest cost" },
@@ -54,10 +58,12 @@ const wizardSteps = [
             { label: "Fixed Plan", description: "Lock in your rate" },
         ],
         customOption: { label: "Custom", description: "e.g., 'cheapest fixed green'" },
+        customPlaceholder: "e.g., 'no exit fees, 12 month fixed'"
     },
     {
         step: 3,
         title: "Your Location",
+        key: 'location',
         aiMessage: "Finally, where are you located? This helps us find deals specific to your area.",
         options: [],
         customOption: null,
@@ -86,6 +92,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: string }>({});
+  const [customValues, setCustomValues] = useState<{ [key: string]: string }>({});
   const [isTyping, setIsTyping] = useState(true);
 
   React.useEffect(() => {
@@ -98,7 +105,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const newSelections = { ...selections, [stepKey]: option };
     setSelections(newSelections);
 
-    if (stepKey !== 'location') {
+    if (option !== 'Custom' && stepKey !== 'location') {
         setTimeout(() => {
             if (currentStep < wizardSteps.length - 1) {
                 setCurrentStep(currentStep + 1);
@@ -107,19 +114,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
   
+  const handleCustomValueChange = (stepKey: string, value: string) => {
+    setCustomValues(prev => ({...prev, [stepKey]: value}));
+  }
+
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
   };
 
-  const handleLocationChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    handleSelect('location', e.target.value);
-  }
-
   const isStepComplete = (stepIndex: number) => {
     const step = wizardSteps[stepIndex];
-    return !!selections[step.title.toLowerCase().replace(' ', '')];
+    const selection = selections[step.key];
+    if (!selection) return false;
+    if (selection === 'Custom') {
+      return !!customValues[step.key];
+    }
+    if (step.key === 'location') {
+        return !!selections[step.key];
+    }
+    return true;
   }
 
   const handleFormSubmit = async () => {
@@ -127,9 +142,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: selections['yourusage'] || 'Medium Home',
-        preferences: selections['yourpreferences'] || 'Cheapest',
-        location: selections['yourlocation'] || 'London'
+        usageData: selections['usage'] === 'Custom' ? customValues['usage']! : selections['usage'] || 'Medium Home',
+        preferences: selections['preferences'] === 'Custom' ? customValues['preferences']! : selections['preferences'] || 'Cheapest',
+        location: selections['location'] || 'London'
     }
 
     try {
@@ -162,15 +177,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
           className="text-center mb-12 max-w-3xl mx-auto"
         >
             <h2 className="font-headline text-3xl tracking-tight md:text-[38px] font-bold text-foreground">
-                Let’s Find Your Best Energy Deal — Instantly
+              Let’s Find Your Best Energy Deal — Instantly
             </h2>
             <p className="mx-auto mt-4 text-lg text-muted-foreground">
-                Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
+              Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
             </p>
         </motion.div>
 
         <div className={cn(
-          "grid grid-cols-1 items-start gap-12",
+          "grid grid-cols-1 items-start gap-12 justify-center",
           comparisonResult && !isLoading && "lg:grid-cols-5"
         )}>
             <div className={cn(
@@ -227,10 +242,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     variants={pillVariants}
                                                     whileHover="hover"
                                                     whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStep.title.toLowerCase().replace(' ', ''), option.label)}
+                                                    onClick={() => handleSelect(currentWizardStep.key, option.label)}
                                                     className={cn(
                                                         "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                        selections[currentWizardStep.title.toLowerCase().replace(' ', '')] === option.label
+                                                        selections[currentWizardStep.key] === option.label
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                     )}
@@ -245,10 +260,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                      variants={pillVariants}
                                                      whileHover="hover"
                                                      whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStep.title.toLowerCase().replace(' ', ''), 'Custom')}
+                                                    onClick={() => handleSelect(currentWizardStep.key, 'Custom')}
                                                     className={cn(
                                                         "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                        selections[currentWizardStep.title.toLowerCase().replace(' ', '')] === 'Custom'
+                                                        currentWizardStep.options.length % 2 !== 0 ? "sm:col-span-2" : "",
+                                                        selections[currentWizardStep.key] === 'Custom'
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                     )}
@@ -258,12 +274,24 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 </motion.button>
                                             )}
                                         </div>
-                                         {currentWizardStep.title.toLowerCase() === 'your location' && (
+
+                                        {selections[currentWizardStep.key] === 'Custom' && currentWizardStep.key !== 'location' && (
+                                          <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}}>
                                             <Input 
                                                 placeholder={currentWizardStep.customPlaceholder}
-                                                className="h-12 text-base"
-                                                value={selections['yourlocation'] || ''}
-                                                onChange={handleLocationChange}
+                                                className="h-12 text-base text-center"
+                                                value={customValues[currentWizardStep.key] || ''}
+                                                onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
+                                            />
+                                          </motion.div>
+                                        )}
+
+                                         {currentWizardStep.key === 'location' && (
+                                            <Input 
+                                                placeholder={currentWizardStep.customPlaceholder}
+                                                className="h-12 text-base text-center"
+                                                value={selections['location'] || ''}
+                                                onChange={(e) => handleSelect('location', e.target.value)}
                                             />
                                         )}
                                         {isStepComplete(currentStep) && currentStep < wizardSteps.length -1 && (
@@ -275,7 +303,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </AnimatePresence>
                     </div>
 
-                    {isStepComplete(currentStep) && isStepComplete(0) && isStepComplete(1) && isStepComplete(2) && !isLoading && (
+                    {isStepComplete(0) && isStepComplete(1) && isStepComplete(2) && !isLoading && (
                         <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
                             <Button 
                                 size="lg"
@@ -380,3 +408,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
