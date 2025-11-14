@@ -2,7 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
-import { Zap, Wifi, Smartphone, Thermometer, FileText } from 'lucide-react';
+import { Zap, Wifi, Smartphone, Flame, Droplets, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
 type ServicesSectionProps = {
@@ -12,28 +12,33 @@ type ServicesSectionProps = {
 const services = [
   {
     icon: <Zap className="h-8 w-8" />,
-    title: "Energy Comparison",
-    description: "Compare gas and electricity prices from UK suppliers to find a cheaper tariff and lower your energy bills."
+    title: "Energy",
+    description: "Unlock cheaper electricity tariffs and slash your annual energy costs. Let UKi find you the best deal."
+  },
+  {
+    icon: <Flame className="h-8 w-8" />,
+    title: "Gas",
+    description: "Switch to a better gas supplier in minutes. We compare the market to find you big savings."
   },
   {
     icon: <Wifi className="h-8 w-8" />,
-    title: "Broadband Planner",
-    description: "Find faster, more reliable, and better-value broadband deals in your area, from standard to full-fibre."
+    title: "Broadband",
+    description: "From superfast fibre to budget-friendly plans, find the perfect broadband for your home."
   },
   {
     icon: <Smartphone className="h-8 w-8" />,
-    title: "Mobile Data Match",
-    description: "Analyze your data usage and find a mobile plan that gives you what you need without overpaying."
+    title: "Mobile",
+    description: "Get more data for your money. Compare the latest mobile deals from all major UK networks."
   },
   {
-    icon: <Thermometer className="h-8 w-8" />,
-    title: "Smart Meter Advice",
-    description: "Connect your smart meter data to get personalized insights and find tariffs that reward your usage patterns."
+    icon: <Droplets className="h-8 w-8" />,
+    title: "Water",
+    description: "Discover if you can switch your water supplier or get a water meter to reduce your bills."
   },
   {
-    icon: <FileText className="h-8 w-8" />,
-    title: "Bill Decoder",
-    description: "Upload or describe your bill, and our AI will break down the charges, identify savings, and check for errors."
+    icon: <ShieldCheck className="h-8 w-8" />,
+    title: "Insurance",
+    description: "Protect what matters most. Compare quotes for home, car, and travel insurance effortlessly."
   }
 ];
 
@@ -84,10 +89,6 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
             <motion.div
               key={service.title}
               variants={itemVariants}
-              className={cn(
-                  "sm:last-of-type:col-span-2 lg:last-of-type:col-span-1", 
-                  { "lg:col-start-2": index === services.length - 1 && services.length % 3 === 1 }
-              )}
             >
               <Card className="group h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
                 <CardHeader className="p-6">
