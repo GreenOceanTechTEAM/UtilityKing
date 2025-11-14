@@ -8,7 +8,7 @@ import { cn } from '@/lib/utils';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
-import { ThemeSwitcher } from '../shared/theme-switcher';
+import { ThemeSelector } from '../shared/theme-selector';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 type Section = {
@@ -123,7 +123,7 @@ export default function Header({ sections }: HeaderProps) {
           </nav>
           
           <div className="flex items-center gap-2">
-            <ThemeSwitcher />
+            <ThemeSelector />
             <Button asChild size="sm" className="hidden md:flex">
                 <Link href="#compare">Compare Now</Link>
             </Button>

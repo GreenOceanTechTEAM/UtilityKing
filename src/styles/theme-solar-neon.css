@@ -1,5 +1,5 @@
-@layer base {
-  :root {
+
+.theme-solar-neon {
     --background: 0 0% 98%;
     --foreground: 0 0% 10%;
     --card: 40 100% 95%;
@@ -24,9 +24,9 @@
     --chart-3: 152 65% 47%;
     --chart-4: 33 100% 50%;
     --chart-5: 0 100% 66%;
-  }
+}
 
-  .dark {
+.theme-solar-neon.dark {
     --background: 240 10% 4%;
     --foreground: 40 10% 95%;
     --card: 38 30% 8%;
@@ -51,5 +51,4 @@
     --chart-3: 152 65% 47%;
     --chart-4: 33 100% 50%;
     --chart-5: 0 100% 66%;
-  }
 }

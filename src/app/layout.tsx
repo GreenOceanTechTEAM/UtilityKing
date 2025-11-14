@@ -1,5 +1,7 @@
 import type { Metadata } from 'next';
 import './globals.css';
+import '@/styles/theme-solar-neon.css';
+import '@/styles/theme-aqua-tech.css';
 import { Toaster } from '@/components/ui/toaster';
 import { cn } from '@/lib/utils';
 import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar';
@@ -29,8 +31,9 @@ export default function RootLayout({
       <body className={cn('font-body antialiased')}>
         <ThemeProvider
           attribute="class"
-          defaultTheme="dark"
-          enableSystem
+          defaultTheme="theme-arctic"
+          enableSystem={false}
+          themes={['theme-arctic', 'theme-solar-neon', 'theme-aqua-tech']}
           disableTransitionOnChange
         >
           <ScrollProgressBar />

@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 @layer base {
-  :root {
+  .theme-arctic {
     --background: 216 100% 98.6%;
     --foreground: 213 80% 12%;
     --card: 220 100% 97%;
@@ -31,7 +31,7 @@
     --chart-5: 27 87% 67%;
   }
 
-  .dark {
+  .theme-arctic.dark {
     --background: 214 65% 11%;
     --foreground: 210 100% 99%;
     --card: 214 55% 15%;

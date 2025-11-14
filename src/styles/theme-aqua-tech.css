@@ -1,5 +1,5 @@
-@layer base {
-  :root {
+
+.theme-aqua-tech {
     --background: 180 100% 98%;
     --foreground: 194 61% 10%;
     --card: 180 100% 96%;
@@ -24,9 +24,9 @@
     --chart-3: 161 58% 57%;
     --chart-4: 194 61% 10%;
     --chart-5: 14 85% 67%;
-  }
+}
 
-  .dark {
+.theme-aqua-tech.dark {
     --background: 194 50% 8%;
     --foreground: 180 15% 96%;
     --card: 190 40% 12%;
@@ -51,5 +51,4 @@
     --chart-3: 161 58% 57%;
     --chart-4: 180 15% 96%;
     --chart-5: 14 85% 67%;
-  }
 }
