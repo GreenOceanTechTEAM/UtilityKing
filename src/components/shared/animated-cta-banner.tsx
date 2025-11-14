@@ -7,6 +7,7 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useRef } from 'react';
+import AnimatedGridPattern from './animated-grid-pattern';
 
 type AnimatedCTABannerProps = {
   id: string;
@@ -32,7 +33,7 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
 
   return (
     <section id={id} ref={targetRef} className="relative h-96 overflow-hidden">
-      {bannerImage && (
+      {type === 'quote' && bannerImage ? (
         <motion.div className="absolute inset-0 z-0" style={{ y }}>
           <Image
             src={bannerImage.imageUrl}
@@ -42,6 +43,8 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
             data-ai-hint={bannerImage.imageHint}
           />
         </motion.div>
+      ) : (
+        <AnimatedGridPattern />
       )}
       <div className="absolute inset-0 bg-primary/70" />
 
