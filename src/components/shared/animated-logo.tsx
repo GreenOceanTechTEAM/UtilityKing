@@ -37,18 +37,6 @@ const spikeVariants = {
   },
 };
 
-const glowVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: [0, 0.35, 0],
-    transition: {
-      duration: 0.4,
-      ease: 'easeOut',
-      delay: 1.2,
-    },
-  },
-};
-
 const textContainerVariants = {
     hidden: {},
     visible: {
@@ -70,18 +58,6 @@ const textLetterVariants = {
         },
     },
 };
-
-const dotVariants = {
-    hidden: { opacity: 0, scale: 0.5 },
-    visible: {
-        opacity: 1,
-        scale: [1, 1.2, 1], // Micro-pop bounce
-        transition: {
-            duration: 0.3,
-            ease: 'easeOut',
-        },
-    }
-}
 
 interface AnimatedLogoProps {
   className?: string;
@@ -106,50 +82,24 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
       animate={isInView ? 'visible' : 'hidden'}
       aria-label="Utility King AI Logo"
     >
-      {/* Glow Effect */}
       <defs>
-        <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur" />
-          <feMerge>
-            <feMergeNode in="coloredBlur" />
-            <feMergeNode in="SourceGraphic" />
-          </feMerge>
+        <filter id="logo-glow-filter" x="-50%" y="-50%" width="200%" height="200%">
+          <feGaussianBlur stdDeviation="2.5" result="coloredBlur" />
         </filter>
       </defs>
-      
-      <motion.g
-        style={{ filter: 'url(#glow)' }}
-        initial={{ opacity: 0 }}
-        animate={isInView ? {
-            opacity: [0, 0.5, 0],
-            transition: { duration: 1.5, delay: 1.2, ease: "easeInOut" }
-        } : {}}
-      >
-        <motion.g
-           animate={isInView ? {
-            opacity: [0, 0.15, 0],
-            transition: { duration: 1.5, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut", delay: 3 }
-          } : {}}
-        >
-          <g stroke="#3ca3ff" strokeWidth="1.5">
-            {/* Base Line */}
-            <motion.path d="M 2 20 H 58" />
-            {/* Spikes */}
-            <motion.path d="M 12 20 V 10" />
-            <motion.path d="M 30 20 V 2" />
-            <motion.path d="M 48 20 V 10" />
-          </g>
-        </motion.g>
-      </motion.g>
 
-      {/* Main Crown Shape */}
-      <g stroke="#3ca3ff" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
-        {/* Base Line */}
+      <motion.g
+        stroke="#3ca3ff" 
+        strokeWidth="1.5"
+        fill="none" 
+        strokeLinecap="round" 
+        strokeLinejoin="round"
+      >
+        {/* Main Crown Shape */}
         <motion.path
           d="M 2 20 H 58"
           variants={baseLineVariants}
         />
-        {/* Spikes */}
         <motion.path
           d="M 12 20 V 10"
           variants={{
@@ -171,7 +121,37 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
             visible: { ...spikeVariants.visible, transition: { ...spikeVariants.visible.transition, delay: 0.7 } }
           }}
         />
-      </g>
+        
+        {/* Glow Pulse Animation */}
+        <motion.g 
+          filter="url(#logo-glow-filter)"
+          initial={{ opacity: 0 }}
+          animate={isInView ? {
+            opacity: [0, 0.35, 0],
+            transition: { duration: 0.4, ease: "easeOut", delay: 1.2 }
+          } : {}}
+        >
+            <path d="M 2 20 H 58" />
+            <path d="M 12 20 V 10" />
+            <path d="M 30 20 V 2" />
+            <path d="M 48 20 V 10" />
+        </motion.g>
+
+        {/* Idle Loop Animation */}
+         <motion.g
+          filter="url(#logo-glow-filter)"
+          initial={{ opacity: 0 }}
+          animate={isInView ? {
+              opacity: [0, 0.15, 0],
+              transition: { duration: 1.5, repeat: Infinity, repeatDelay: 2.5, ease: "easeInOut", delay: 3 }
+          } : {}}
+        >
+            <path d="M 2 20 H 58" />
+            <path d="M 12 20 V 10" />
+            <path d="M 30 20 V 2" />
+            <path d="M 48 20 V 10" />
+        </motion.g>
+      </motion.g>
 
       {/* Brand Text */}
       <motion.text
