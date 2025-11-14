@@ -42,16 +42,17 @@ const containerVariants = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.2,
+      staggerChildren: 0.1,
     },
   },
 };
 
 const itemVariants = {
-  hidden: { y: 20, opacity: 0 },
+  hidden: { y: 20, opacity: 0, rotateY: -15 },
   visible: {
     y: 0,
     opacity: 1,
+    rotateY: 0,
     transition: {
       type: "spring",
       stiffness: 100,
@@ -77,28 +78,28 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true, amount: 0.2 }}
-          className={cn(
-            "mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3",
-            services.length % 3 === 2 ? "lg:grid-cols-3" : "",
-            services.length % 2 === 1 && services.length % 3 !== 1 ? "sm:grid-cols-2" : ""
-          )}
+          className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3"
         >
           {services.map((service, index) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
               className={cn(
-                  "sm:last:col-span-2 lg:last:col-span-1", 
+                  "sm:last-of-type:col-span-2 lg:last-of-type:col-span-1", 
                   { "lg:col-start-2": index === services.length - 1 && services.length % 3 === 1 }
               )}
             >
               <Card className="group h-full transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-primary/20 hover:border-primary/30">
                 <CardHeader className="p-6">
                   <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                    {service.icon}
+                    <div className="transition-transform duration-300 group-hover:rotate-[-5deg]">
+                        {service.icon}
+                    </div>
                   </div>
-                  <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
-                  <CardDescription className="pt-2">{service.description}</CardDescription>
+                  <div className="transition-transform duration-300 group-hover:-translate-y-1">
+                    <CardTitle className="font-headline text-xl">{service.title}</CardTitle>
+                    <CardDescription className="pt-2">{service.description}</CardDescription>
+                  </div>
                 </CardHeader>
               </Card>
             </motion.div>
