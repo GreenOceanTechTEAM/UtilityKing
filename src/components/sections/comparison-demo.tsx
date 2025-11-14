@@ -9,7 +9,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud, MapPin } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -181,7 +181,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleSelect = (stepKey: string, option: string) => {
     const isMulti = currentWizardStepConfig.isMultiSelect;
-    const isComplex = currentWizardStepConfig.isComplex;
 
     let newSelections;
 
@@ -198,8 +197,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    if (!isMulti && !isComplex && !currentWizardStepConfig.isInput) {
+    // Auto-advance only on simple, single-choice steps that are NOT the bill step
+    if (!isMulti && !currentWizardStepConfig.isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
         setTimeout(() => handleNextStep(), 300);
+    }
+
+    if (currentWizardStepConfig.key === 'billAvailable' && option === 'No') {
+      setTimeout(() => handleNextStep(), 300);
     }
   };
   
@@ -378,7 +382,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                 ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                 : "bg-background/50 hover:border-primary hover:bg-primary/5",
                                                              (option as any).description && "items-start",
-                                                            currentWizardStepConfig.key === 'premisesType' && "last:sm:col-span-2",
                                                         )}
                                                     >
                                                         <div className="flex items-center justify-center gap-2">
