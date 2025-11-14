@@ -33,7 +33,7 @@ const steps = [
   { 
     name: "location", 
     label: "Your Location:", 
-    options: ["Postcode"],
+    options: [],
     customPlaceholder: "e.g. SW1A 0AA"
   },
 ];
@@ -114,6 +114,10 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
 
   const handleCustomInputChange = (stepName: keyof typeof customInputs, value: string) => {
     setCustomInputs(prev => ({...prev, [stepName]: value}));
+    if (stepName === 'location') {
+      setSelections(prev => ({...prev, location: value}));
+    }
+
      if (currentStep < steps.length - 1 && value.length > 2 && stepName === steps[currentStep].name) {
         setTimeout(() => setCurrentStep(currentStep + 1), 300);
     }
@@ -126,6 +130,9 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
   };
 
   const getFinalValue = (stepName: keyof typeof selections) => {
+    if (stepName === 'location') {
+        return selections.location;
+    }
     if (selections[stepName] === "Custom") {
         return customInputs[stepName];
     }
@@ -156,50 +163,67 @@ export default function ComparisonForm({ onSubmit }: ComparisonFormProps) {
                         )}
                         <label className="font-semibold text-foreground text-lg">{step.label}</label>
                     </div>
-
-                    <div className={cn("grid gap-2 w-full", "grid-cols-2 sm:grid-cols-2 lg:grid-cols-4")}>
-                        {step.options.map(option => {
-                            const isSelected = selections[step.name as keyof typeof selections] === option;
-                            return (
+                    {step.name === 'location' ? (
+                       <motion.div 
+                            initial={{opacity: 0, height: 0, marginTop: 0}}
+                            animate={{opacity: 1, height: 'auto', marginTop: '1rem'}}
+                            exit={{opacity: 0, height: 0, marginTop: 0}}
+                            className="overflow-hidden"
+                        >
+                            <Input
+                                value={selections.location}
+                                onChange={(e) => handleCustomInputChange('location', e.target.value)}
+                                placeholder={step.customPlaceholder}
+                                className="h-10 transition-all duration-300 focus:ring-2 focus:ring-primary focus:ring-offset-2"
+                            />
+                        </motion.div>
+                    ) : (
+                        <>
+                        <div className={cn("grid gap-2 w-full", "grid-cols-2 sm:grid-cols-2 lg:grid-cols-4")}>
+                            {step.options.map(option => {
+                                const isSelected = selections[step.name as keyof typeof selections] === option;
+                                return (
+                                <Button
+                                    key={option}
+                                    variant={isSelected ? "default" : "outline"}
+                                    onClick={() => handleSelect(step.name as keyof typeof selections, option)}
+                                    className="rounded-full transition-all duration-200"
+                                >
+                                    <AnimatePresence>
+                                        {isSelected && <motion.div initial={{scale:0}} animate={{scale:1}}><Check className="mr-2 h-4 w-4" /></motion.div>}
+                                    </AnimatePresence>
+                                    {option}
+                                </Button>
+                                );
+                            })}
                             <Button
-                                key={option}
-                                variant={isSelected ? "default" : "outline"}
-                                onClick={() => handleSelect(step.name as keyof typeof selections, option)}
+                                variant={selections[step.name as keyof typeof selections] === "Custom" ? "default" : "outline"}
+                                onClick={() => handleCustomClick(step.name as keyof typeof showCustomInput)}
                                 className="rounded-full transition-all duration-200"
                             >
-                                <AnimatePresence>
-                                    {isSelected && <motion.div initial={{scale:0}} animate={{scale:1}}><Check className="mr-2 h-4 w-4" /></motion.div>}
-                                </AnimatePresence>
-                                {option}
+                                {selections[step.name as keyof typeof selections] === "Custom" ? <Check className="mr-2 h-4 w-4" /> : <Edit className="mr-2 h-4 w-4" />}
+                                Custom
                             </Button>
-                            );
-                        })}
-                         <Button
-                            variant={selections[step.name as keyof typeof selections] === "Custom" ? "default" : "outline"}
-                            onClick={() => handleCustomClick(step.name as keyof typeof showCustomInput)}
-                            className="rounded-full transition-all duration-200"
-                        >
-                            {selections[step.name as keyof typeof selections] === "Custom" ? <Check className="mr-2 h-4 w-4" /> : <Edit className="mr-2 h-4 w-4" />}
-                            Custom
-                        </Button>
-                    </div>
-                    
-                    <AnimatePresence>
-                        {showCustomInput[step.name as keyof typeof showCustomInput] && (
-                            <motion.div 
-                                initial={{opacity: 0, height: 0, marginTop: 0}}
-                                animate={{opacity: 1, height: 'auto', marginTop: '1rem'}}
-                                exit={{opacity: 0, height: 0, marginTop: 0}}
-                                className="overflow-hidden"
-                            >
-                                <CustomInput
-                                value={customInputs[step.name as keyof typeof customInputs]}
-                                onChange={(e) => handleCustomInputChange(step.name as keyof typeof customInputs, e.target.value)}
-                                placeholder={step.customPlaceholder}
-                                />
-                            </motion.div>
-                        )}
-                    </AnimatePresence>
+                        </div>
+                        
+                        <AnimatePresence>
+                            {showCustomInput[step.name as keyof typeof showCustomInput] && (
+                                <motion.div 
+                                    initial={{opacity: 0, height: 0, marginTop: 0}}
+                                    animate={{opacity: 1, height: 'auto', marginTop: '1rem'}}
+                                    exit={{opacity: 0, height: 0, marginTop: 0}}
+                                    className="overflow-hidden"
+                                >
+                                    <CustomInput
+                                    value={customInputs[step.name as keyof typeof customInputs]}
+                                    onChange={(e) => handleCustomInputChange(step.name as keyof typeof customInputs, e.target.value)}
+                                    placeholder={step.customPlaceholder}
+                                    />
+                                </motion.div>
+                            )}
+                        </AnimatePresence>
+                        </>
+                    )}
                 </motion.div>
                 )
             ))}
