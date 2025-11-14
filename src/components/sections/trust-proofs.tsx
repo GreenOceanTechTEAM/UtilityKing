@@ -152,7 +152,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
             initial={{ opacity: 0, letterSpacing: "-0.05em" }}
             whileInView={{ opacity: 1, letterSpacing: "0em" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, ease: "power2.out" }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
             className="text-center"
         >
           <h2 className="font-headline text-3xl font-bold tracking-tight text-foreground sm:text-4xl">
