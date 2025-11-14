@@ -1,17 +1,31 @@
 "use client";
 
 import { motion, useInView } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 import { cn } from '@/lib/utils';
 
-const svgVariants = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.1,
-    },
   },
+};
+
+const crownGroupVariants = {
+    hidden: { opacity: 0 },
+    visible: (i:boolean) => ({
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1,
+      },
+    }),
+    exit: {
+        opacity: 0,
+        transition: {
+            duration: 0.3,
+            delay: 0.3
+        }
+    }
 };
 
 const baseLineVariants = {
@@ -38,11 +52,12 @@ const spikeVariants = {
 };
 
 const textContainerVariants = {
-    hidden: {},
+    hidden: { opacity: 0 },
     visible: {
+        opacity: 1,
         transition: {
             staggerChildren: 0.04,
-            delayChildren: 1.5,
+            delay: 1.5,
         },
     },
 };
@@ -68,7 +83,20 @@ interface AnimatedLogoProps {
 export default function AnimatedLogo({ className, width = 180, height = 40 }: AnimatedLogoProps) {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, amount: 0.5 });
+  const [showText, setShowText] = useState(false);
   const text = "UtilityKing";
+
+  useEffect(() => {
+    let textTimer: NodeJS.Timeout;
+    if (isInView) {
+      textTimer = setTimeout(() => {
+        setShowText(true);
+      }, 1000); // Time until text starts appearing
+    }
+    return () => {
+      clearTimeout(textTimer);
+    };
+  }, [isInView]);
 
   return (
     <motion.svg
@@ -77,7 +105,7 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
       width={width}
       height={height}
       viewBox="0 0 180 40"
-      variants={svgVariants}
+      variants={containerVariants}
       initial="hidden"
       animate={isInView ? 'visible' : 'hidden'}
       aria-label="Utility King AI Logo"
@@ -89,7 +117,9 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
       </defs>
 
       <motion.g
-        stroke="#3ca3ff" 
+        variants={crownGroupVariants}
+        animate={isInView && !showText ? 'visible' : 'exit'}
+        stroke="hsl(var(--primary))"
         strokeWidth="1.5"
         fill="none" 
         strokeLinecap="round" 
@@ -155,7 +185,7 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
 
       {/* Brand Text */}
       <motion.text
-        x="68"
+        x="35"
         y="25"
         fontFamily="Space Grotesk, sans-serif"
         fontSize="16"
@@ -163,6 +193,8 @@ export default function AnimatedLogo({ className, width = 180, height = 40 }: An
         fill="hsl(var(--foreground))"
         letterSpacing="0.5"
         variants={textContainerVariants}
+        initial="hidden"
+        animate={showText ? "visible" : "hidden"}
       >
         {text.split('').map((char, index) => (
           <motion.tspan key={index} variants={textLetterVariants}>
