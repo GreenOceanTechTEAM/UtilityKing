@@ -34,14 +34,12 @@ const testimonials = [
 ];
 
 const partners = [
-  { name: 'Partner 1', logo: PlaceHolderImages.find(p => p.id === 'logo-1') },
-  { name: 'Partner 2', logo: PlaceHolderImages.find(p => p.id === 'logo-2') },
-  { name: 'Partner 3', logo: PlaceHolderImages.find(p => p.id === 'logo-3') },
-  { name: 'Partner 4', logo: PlaceHolderImages.find(p => p.id === 'logo-4') },
-  { name: 'Partner 5', logo: PlaceHolderImages.find(p => p.id === 'logo-5') },
-  { name: 'Partner 6', logo: PlaceHolderImages.find(p => p.id === 'logo-1') },
-  { name: 'Partner 7', logo: PlaceHolderImages.find(p => p.id === 'logo-2') },
-  { name: 'Partner 8', logo: PlaceHolderImages.find(p => p.id === 'logo-3') },
+  { name: 'British Gas', logo: PlaceHolderImages.find(p => p.id === 'logo-british-gas') },
+  { name: 'Octopus Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-octopus') },
+  { name: 'EDF Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-edf') },
+  { name: 'E.ON Next', logo: PlaceHolderImages.find(p => p.id === 'logo-eon') },
+  { name: 'OVO Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-ovo') },
+  { name: 'Scottish Power', logo: PlaceHolderImages.find(p => p.id === 'logo-scottish-power') },
 ];
 
 const containerVariants = {
@@ -175,7 +173,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
             <motion.div 
               className="flex"
               animate={{
-                x: ['0%', '-50%'],
+                x: ['0%', '-100%'],
               }}
               transition={{
                 ease: 'linear',

@@ -61,34 +61,40 @@
       "imageHint": "curly hair"
     },
     {
-      "id": "logo-1",
-      "description": "A minimalist, clean, and modern abstract geometric logo in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1557804506-669a67965ba0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhYnN0cmFjdCUyMGxvZ298ZW58MHx8fHwxNzYzMDE1NTcxfDA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "abstract logo"
+      "id": "logo-british-gas",
+      "description": "The official logo for British Gas energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1635545710116-ad48ab0be1f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwyfHxCcml0aXNoJTIwR2FzJTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "British Gas logo"
     },
     {
-      "id": "logo-2",
-      "description": "A sophisticated and simple wordmark logo on a dark background.",
-      "imageUrl": "https://images.unsplash.com/photo-1622547748225-3fc4abd2d67d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwbG9nb3xlbnwwfHx8fDE3NjI5NzQ2NjF8MA&ixlib=rb-4.1.0&q=80&w=1080",
-      "imageHint": "minimalist logo"
+      "id": "logo-octopus",
+      "description": "The official logo for Octopus Energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1589413794996-0c40d50d3458?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxPY3RvcHVzJTIwRW5lcmd5JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Octopus Energy logo"
     },
     {
-      "id": "logo-3",
-      "description": "A classic circular emblem logo with elegant typography, in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1522071820081-009f0129c71c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxlbWJsZW0lMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlibrb-4.1.0&q=80&w=1080",
-      "imageHint": "emblem logo"
+      "id": "logo-edf",
+      "description": "The official logo for EDF Energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1650829729301-96cd547131c0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxMHx8RURGJTIwRW5lcmd5JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "EDF Energy logo"
     },
     {
-      "id": "logo-4",
-      "description": "A stylized logo featuring a powerful animal silhouette, in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1579783902614-a3fb3927b6a5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxhbmltYWwlMjBsb2dvfGVufDB8fHx8MTc2MzAyNTc2Mnww&ixlibrb-4.1.0&q=80&w=1080",
-      "imageHint": "animal logo"
+      "id": "logo-eon",
+      "description": "The official logo for E.ON Next energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1643018048923-bfa2a3c6c0be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw4fHxFT04lMjBOZXh0JTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "EON Next logo"
     },
     {
-      "id": "logo-5",
-      "description": "A futuristic and sharp logo for a technology company, in grayscale.",
-      "imageUrl": "https://images.unsplash.com/photo-1519074002996-a69e7ac46a42?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHx0ZWNoJTIwbG9nb3xlbnwwfHx8fDE3NjMwMDE3NDZ8MA&ixlibrb-4.1.0&q=80&w=1080",
-      "imageHint": "tech logo"
+      "id": "logo-ovo",
+      "description": "The official logo for OVO Energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1617149302783-06f5f5dc0d03?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHw3fHxPVk8lMjBFbmVyZ3klMjBsb2dvfGVufDB8fHx8MTc2MzEyNDk4N3ww&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "OVO Energy logo"
+    },
+    {
+      "id": "logo-scottish-power",
+      "description": "The official logo for Scottish Power energy supplier.",
+      "imageUrl": "https://images.unsplash.com/photo-1654361831264-07a220a6bcfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxTY290dGlzaCUyMFBvd2VyJTIwbG9nb3xlbnwwfHx8fDE3NjMxMjQ5ODd8MA&ixlib=rb-4.1.0&q=80&w=1080",
+      "imageHint": "Scottish Power logo"
     }
   ]
 }
