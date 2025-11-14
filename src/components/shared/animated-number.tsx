@@ -76,7 +76,7 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
       controls.start({
         opacity: 1,
         y: 0,
-        transition: { duration: 1.2, ease: "power1.out" },
+        transition: { duration: 1.2, ease: "easeOut" },
       });
     }
   }, [inView, value, spring, controls]);
