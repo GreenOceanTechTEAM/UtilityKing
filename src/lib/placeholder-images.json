@@ -59,42 +59,6 @@
       "description": "Candid portrait of a young, happy woman with natural curly hair, smiling warmly.",
       "imageUrl": "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3NDE5ODJ8MHwxfHNlYXJjaHwxfHxjdXJseSUyMGhhaXJ8ZW58MHx8fHwxNzYzMDEzNTA4fDA&ixlib=rb-4.1.0&q=80&w=1080",
       "imageHint": "curly hair"
-    },
-    {
-      "id": "logo-british-gas",
-      "description": "Logo for British Gas",
-      "imageUrl": "https://images.unsplash.com/photo-1611599538311-34980a4c0182?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
-    },
-    {
-      "id": "logo-octopus",
-      "description": "Logo for Octopus Energy",
-      "imageUrl": "https://images.unsplash.com/photo-1632292220932-28a96e9c0b16?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
-    },
-    {
-      "id": "logo-edf",
-      "description": "Logo for EDF Energy",
-      "imageUrl": "https://images.unsplash.com/photo-1508873535684-277a3cbcc4e8?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
-    },
-    {
-      "id": "logo-eon",
-      "description": "Logo for E.ON Next",
-      "imageUrl": "https://images.unsplash.com/photo-1556740738-b6a63e27c4df?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
-    },
-    {
-      "id": "logo-ovo",
-      "description": "Logo for OVO Energy",
-      "imageUrl": "https://images.unsplash.com/photo-1556740758-90de374c12ad?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
-    },
-    {
-      "id": "logo-scottish-power",
-      "description": "Logo for Scottish Power",
-      "imageUrl": "https://images.unsplash.com/photo-1579548122080-c35161913393?q=80&w=400&h=150&auto=format&fit=crop",
-      "imageHint": "company logo"
     }
   ]
 }

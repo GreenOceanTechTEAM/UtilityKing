@@ -7,6 +7,20 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
+import logoBritishGas from '@/assets/britishgas.jpg';
+import logoCrown from '@/assets/crown.png';
+import logoEdf from '@/assets/edf.jpg';
+import logoGulf from '@/assets/gulf.png';
+import logoHavenPower from '@/assets/haven-power.png';
+import logoNpower from '@/assets/npower.jpg';
+import logoOpus from '@/assets/opus.png';
+import logoOvo from '@/assets/ovo-energy.jpg';
+import logoPozitive from '@/assets/pozitive.png';
+import logoScottishPower from '@/assets/scottish-power.jpg';
+import logoSse from '@/assets/sse.jpg';
+import logoYue from '@/assets/yue.jpg';
+
+
 type TrustProofsProps = {
   id: string;
 };
@@ -32,13 +46,19 @@ const testimonials = [
   }
 ];
 
-const partners = [
-  { name: 'British Gas', logo: PlaceHolderImages.find(p => p.id === 'logo-british-gas') },
-  { name: 'Octopus Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-octopus') },
-  { name: 'EDF Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-edf') },
-  { name: 'E.ON Next', logo: PlaceHolderImages.find(p => p.id === 'logo-eon') },
-  { name: 'OVO Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-ovo') },
-  { name: 'Scottish Power', logo: PlaceHolderImages.find(p => p.id === 'logo-scottish-power') },
+const partners: { name: string; logo: StaticImageData }[] = [
+    { name: 'British Gas', logo: logoBritishGas },
+    { name: 'Crown Gas & Power', logo: logoCrown },
+    { name: 'EDF Energy', logo: logoEdf },
+    { name: 'Gulf Gas & Power', logo: logoGulf },
+    { name: 'Haven Power', logo: logoHavenPower },
+    { name: 'npower', logo: logoNpower },
+    { name: 'Opus Energy', logo: logoOpus },
+    { name: 'OVO Energy', logo: logoOvo },
+    { name: 'Pozitive Energy', logo: logoPozitive },
+    { name: 'Scottish Power', logo: logoScottishPower },
+    { name: 'SSE', logo: logoSse },
+    { name: 'Yü Energy', logo: logoYue },
 ];
 
 const containerVariants = {
@@ -181,22 +201,18 @@ export default function TrustProofs({ id }: TrustProofsProps) {
               }}
             >
               {[...partners, ...partners].map((partner, index) => (
-                partner.logo && (
-                  <motion.div
-                    key={`${partner.name}-${index}`}
-                    whileHover={{ y: -4, opacity: 1 }}
-                    className="mx-8 flex-shrink-0"
-                  >
-                    <Image
-                      src={partner.logo.imageUrl}
-                      alt={partner.name}
-                      width={120}
-                      height={48}
-                      data-ai-hint={partner.logo.imageHint}
-                      className="object-contain h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
-                    />
-                  </motion.div>
-                )
+                <motion.div
+                  key={`${partner.name}-${index}`}
+                  whileHover={{ y: -4, opacity: 1 }}
+                  className="mx-8 flex-shrink-0"
+                >
+                  <Image
+                    src={partner.logo}
+                    alt={partner.name}
+                    height={48}
+                    className="object-contain h-12 w-auto opacity-70 hover:opacity-100 transition-opacity"
+                  />
+                </motion.div>
               ))}
             </motion.div>
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10"></div>
