@@ -98,8 +98,12 @@ export default function BlogPreview({ id }: BlogPreviewProps) {
                   <p className="mt-3 text-base text-muted-foreground">{post.excerpt}</p>
                 </CardContent>
                 <CardFooter className="p-6 pt-0">
-                  <Link href="#" className="flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>
-                    Read more <ArrowRight className="h-4 w-4" />
+                  <Link href="#" className="group flex items-center gap-2 font-semibold text-accent hover:text-accent/80" prefetch={false}>
+                    <span className="relative">
+                      Read more
+                      <span className="absolute bottom-0 left-0 h-0.5 w-full origin-left scale-x-0 transform bg-accent transition-transform duration-300 group-hover:scale-x-100" />
+                    </span>
+                    <ArrowRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-1" />
                   </Link>
                 </CardFooter>
               </Card>
