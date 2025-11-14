@@ -20,22 +20,9 @@ const themes = [
 ];
 
 export function ThemeSelector() {
-  const { setTheme, theme: activeTheme, resolvedTheme, themes: availableThemes } = useTheme()
+  const { setTheme, resolvedTheme, theme } = useTheme()
 
   const isDarkMode = resolvedTheme === 'dark';
-  const baseTheme = availableThemes.find(t => activeTheme?.startsWith(t)) || 'theme-arctic';
-
-  const handleThemeChange = (newBaseTheme: string) => {
-    const currentMode = isDarkMode ? '.dark' : '';
-    // next-themes handles the dark/light class, we just set the base theme name
-    setTheme(newBaseTheme);
-  };
-  
-  // Effect to apply the correct theme class on initial load and theme change
-  React.useEffect(() => {
-    // This logic is mostly handled by next-themes by setting the theme name.
-    // We just need to ensure the correct theme name is passed to `setTheme`.
-  }, [baseTheme, availableThemes]);
 
   return (
     <div className="flex items-center gap-2">
@@ -50,11 +37,11 @@ export function ThemeSelector() {
           {themes.map((themeItem) => (
             <DropdownMenuItem
               key={themeItem.theme}
-              onClick={() => handleThemeChange(themeItem.theme)}
-              className={cn("flex items-center justify-between", baseTheme === themeItem.theme && "font-bold")}
+              onClick={() => setTheme(themeItem.theme)}
+              className={cn("flex items-center justify-between", theme === themeItem.theme && "font-bold")}
             >
               {themeItem.name}
-              {baseTheme === themeItem.theme && <Check className="h-4 w-4" />}
+              {theme === themeItem.theme && <Check className="h-4 w-4" />}
             </DropdownMenuItem>
           ))}
         </DropdownMenuContent>
@@ -65,6 +52,7 @@ export function ThemeSelector() {
         size="icon"
         onClick={() => {
             const newMode = isDarkMode ? 'light' : 'dark';
+            // Set the mode, which next-themes will apply alongside the base theme class
             setTheme(newMode); 
         }}
       >
