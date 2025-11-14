@@ -1,3 +1,4 @@
+
 "use client";
 
 import { useState } from 'react';
@@ -108,8 +109,10 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     }
   }
   
-  const headlineText = "Compare UK Energy Deals in Seconds — Switch Smarter, Save More.";
-  const words = headlineText.split(" ");
+  const headlineLines = [
+    "Compare UK Energy Deals in Seconds",
+    "— Switch Smarter, Save More."
+  ];
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
@@ -122,10 +125,14 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                 variants={containerVariants}
                 className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-[60px] sm:leading-[1.08]"
             >
-                {words.map((word, index) => (
-                    <motion.span key={index} variants={wordVariants} className="inline-block mr-[0.25em]">
-                        {word}
-                    </motion.span>
+                {headlineLines.map((line, lineIndex) => (
+                  <span className="block" key={lineIndex}>
+                    {line.split(" ").map((word, wordIndex) => (
+                        <motion.span key={wordIndex} variants={wordVariants} className="inline-block mr-[0.25em]">
+                            {word}
+                        </motion.span>
+                    ))}
+                  </span>
                 ))}
             </motion.h1>
             <motion.p 
@@ -197,3 +204,5 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     </section>
   );
 }
+
+    
