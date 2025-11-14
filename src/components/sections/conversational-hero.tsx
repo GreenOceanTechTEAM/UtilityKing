@@ -119,8 +119,14 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial="hidden" animate="visible">
             <motion.div variants={subtitleVariants}>
-                <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm">
-                <Sparkles className="mr-2 h-4 w-4 text-accent" /> AI-Powered Comparisons
+                <Badge variant="secondary" className="mb-4 text-sm backdrop-blur-sm inline-flex items-center">
+                  <motion.div
+                    animate={{ y: [0, -4, 0] }}
+                    transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                  >
+                    <Sparkles className="mr-2 h-4 w-4 text-accent" />
+                  </motion.div>
+                   AI-Powered Comparisons
                 </Badge>
             </motion.div>
             <motion.h1 
