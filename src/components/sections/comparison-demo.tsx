@@ -173,7 +173,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             <div className="lg:col-span-3 w-full max-w-2xl mx-auto">
                 <div className="rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     {/* Progress Bar and Step Title */}
-                    <div className="mb-6">
+                    <div className="mb-6 text-center">
                         <p className="text-base font-medium text-foreground mb-2">Step {currentWizardStep.step} of {wizardSteps.length} &mdash; {currentWizardStep.title}</p>
                         <div className="w-full bg-primary/10 rounded-full h-2">
                             <motion.div 
@@ -195,7 +195,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 exit="exit"
                                 className="absolute w-full"
                             >
-                                <div className="flex items-start gap-3 mb-5">
+                                <div className="flex flex-col items-center text-center gap-3 mb-5">
                                     <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
                                         <Sparkles className="w-5 h-5" />
                                     </div>
@@ -203,7 +203,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                         <p className="text-base text-muted-foreground font-semibold text-card-foreground">
                                           {currentWizardStep.title}
                                         </p>
-                                        <p className="text-base text-muted-foreground">
+                                        <p className="text-base text-muted-foreground max-w-md mx-auto">
                                             {isTyping ? 
                                                 <span className="animate-pulse">...</span> : 
                                                 currentWizardStep.aiMessage
@@ -213,7 +213,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 </div>
                                 
                                 {!isTyping && (
-                                    <div className="space-y-3 pl-11">
+                                    <div className="space-y-3">
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             {currentWizardStep.options.map(option => (
                                                 <motion.button
@@ -374,3 +374,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
