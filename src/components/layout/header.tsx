@@ -22,6 +22,7 @@ type HeaderProps = {
 
 const iconMap: { [key: string]: React.ElementType } = {
   hero: Zap,
+  how: Settings,
   services: LayoutGrid,
   why: ThumbsUp,
   compare: BarChart3,
@@ -74,8 +75,7 @@ export default function Header({ sections }: HeaderProps) {
                   : "text-muted-foreground hover:text-foreground"
               )}
             >
-              <Icon className={cn("h-4 w-4", isActive ? 'text-primary' : 'text-muted-foreground/80')} />
-              <span className="hidden lg:inline">{name}</span>
+              <Icon className={cn("h-5 w-5", isActive ? 'text-primary' : 'text-muted-foreground/80')} />
               {isActive && (
                 <motion.div
                   layoutId="active-nav-indicator-desktop"
@@ -86,7 +86,7 @@ export default function Header({ sections }: HeaderProps) {
               )}
             </Link>
           </TooltipTrigger>
-          <TooltipContent className="lg:hidden">
+          <TooltipContent>
             <p>{name}</p>
           </TooltipContent>
         </Tooltip>
