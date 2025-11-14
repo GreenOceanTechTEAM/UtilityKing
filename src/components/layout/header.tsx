@@ -22,7 +22,6 @@ type HeaderProps = {
 
 const iconMap: { [key: string]: React.ElementType } = {
   hero: Zap,
-  how: Settings,
   services: LayoutGrid,
   why: ThumbsUp,
   compare: BarChart3,
@@ -125,7 +124,7 @@ export default function Header({ sections }: HeaderProps) {
           <div className="flex items-center gap-2">
             <ThemeSwitcher />
             <Button asChild size="sm" className="hidden md:flex">
-                <Link href="#contact">Get in Touch</Link>
+                <Link href="#compare">Compare Now</Link>
             </Button>
 
             {/* Mobile Nav */}
@@ -162,7 +161,7 @@ export default function Header({ sections }: HeaderProps) {
                         })}
                         </div>
                         <Button asChild className="mt-auto" onClick={() => setIsMobileMenuOpen(false)}>
-                            <Link href="#contact">Get in Touch</Link>
+                            <Link href="#compare">Compare Now</Link>
                         </Button>
                     </nav>
                 </SheetContent>
