@@ -14,7 +14,7 @@ import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import Link from 'next/link';
-import ParticleBackground from '../shared/particle-background';
+import EnergyGridBackground from '../shared/energy-grid-background';
 import { cn } from '@/lib/utils';
 
 type ConversationalHeroProps = {
@@ -113,7 +113,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
-      <ParticleBackground />
+      <EnergyGridBackground />
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
