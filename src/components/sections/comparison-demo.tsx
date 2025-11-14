@@ -169,8 +169,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </p>
         </motion.div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-12 items-start">
-            <div className="lg:col-span-3 w-full max-w-2xl mx-auto">
+        <div className={cn(
+          "grid grid-cols-1 items-start gap-12",
+          comparisonResult && !isLoading && "lg:grid-cols-5"
+        )}>
+            <div className={cn(
+                "w-full max-w-2xl mx-auto",
+                comparisonResult && !isLoading ? "lg:col-span-3" : "lg:col-span-5"
+            )}>
                 <div className="rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     {/* Progress Bar and Step Title */}
                     <div className="mb-6 text-center">
@@ -193,7 +199,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 initial="initial"
                                 animate="animate"
                                 exit="exit"
-                                className="absolute w-full"
+                                className="absolute w-full flex flex-col items-center text-center"
                             >
                                 <div className="flex flex-col items-center text-center gap-3 mb-5">
                                     <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
@@ -213,7 +219,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 </div>
                                 
                                 {!isTyping && (
-                                    <div className="space-y-3">
+                                    <div className="space-y-3 w-full max-w-md">
                                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                                             {currentWizardStep.options.map(option => (
                                                 <motion.button
@@ -304,7 +310,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 </div>
             </div>
 
-            <div className="lg:col-span-2 w-full">
+            <div className={cn("lg:col-span-2 w-full", !(comparisonResult && !isLoading) && "hidden")}>
                 <AnimatePresence>
                 {comparisonResult && !isLoading && (
                     <motion.div
@@ -374,5 +380,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
