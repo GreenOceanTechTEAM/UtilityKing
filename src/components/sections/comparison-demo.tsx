@@ -42,8 +42,8 @@ const wizardSteps = [
             { label: "Home", icon: Home },
             { label: "Office", icon: Building },
             { label: "Factory", icon: Factory },
+            { label: "Other", description: "e.g. Farm, Ranch", customOption: true },
         ],
-        customOption: { label: "Other", description: "e.g. Farm, Ranch" },
     },
     {
         step: 2,
@@ -198,16 +198,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
-    const newCustomValues = {...customValues, [stepKey]: value};
-    setCustomValues(newCustomValues);
-
-    const step = wizardSteps[currentStep];
-    if (step.isInput) {
-        setSelections(prev => ({...prev, [stepKey]: value}));
-    } else if (step.customOption?.label) {
-        const newSelections = {...selections, [stepKey]: step.customOption.label, [`${stepKey}Other`]: value };
-        setSelections(newSelections);
-    }
+    setSelections(prev => ({...prev, [stepKey]: value}));
   }
 
 
@@ -223,10 +214,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     if (step.isInput) {
         return !!selection;
-    }
-
-    if (step.customOption?.label && selection === step.customOption.label) {
-        return true;
     }
     
     if(step.additionalOptions?.includes(selection)) {
@@ -337,8 +324,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <div className="space-y-3 w-full max-w-md">
                                         <div className={cn(
                                           "grid grid-cols-1 gap-3",
-                                          currentWizardStep.options.length > 1 && currentWizardStep.step !== 4 && "sm:grid-cols-2",
-                                          currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2"
+                                          currentWizardStep.options.length > 1 && ![4, 7].includes(currentWizardStep.step) && "sm:grid-cols-2",
+                                          currentWizardStep.step === 4 && "max-h-[260px] overflow-y-auto pr-2 sm:grid-cols-2",
+                                          currentWizardStep.step === 7 && "sm:grid-cols-2"
                                           )}>
                                             {currentWizardStep.options.map(option => {
                                                 const Icon = (option as any).icon;
@@ -368,24 +356,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     </motion.button>
                                                 )
                                             })}
-                                            {currentWizardStep.customOption && (
-                                                <motion.button
-                                                     key="custom"
-                                                     variants={pillVariants}
-                                                     whileHover="hover"
-                                                     whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStep.key, currentWizardStep.customOption!.label)}
-                                                    className={cn(
-                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                        selections[currentWizardStep.key] === currentWizardStep.customOption.label
-                                                            ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                            : "bg-background/50 hover:border-primary hover:bg-primary/5"
-                                                    )}
-                                                >
-                                                   <span className="font-semibold">{currentWizardStep.customOption.label}</span>
-                                                    {currentWizardStep.customOption.description && <span className="text-sm block text-muted-foreground">{currentWizardStep.customOption.description}</span>}
-                                                </motion.button>
-                                            )}
                                              {currentWizardStep.additionalOptions?.map(option => (
                                                 <motion.button
                                                     key={option}
@@ -429,6 +399,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
                                             )}
                                             </motion.div>
+                                        )}
+
+                                        {currentWizardStep.isMultiSelect && isStepComplete(currentStep) && (
+                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
+                                             </motion.div>
                                         )}
 
                                         {currentWizardStep.key === 'postcode' && isStepComplete(currentStep) && !isLoading && (
@@ -537,9 +513,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-
-    
 
     
