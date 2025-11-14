@@ -8,6 +8,7 @@ import { Button } from '@/components/ui/button';
 import { cn } from '@/lib/utils';
 import { useRef } from 'react';
 import AnimatedGridPattern from './animated-grid-pattern';
+import EnergyGridBackground from './energy-grid-background';
 
 type AnimatedCTABannerProps = {
   id: string;
@@ -19,7 +20,6 @@ type AnimatedCTABannerProps = {
 };
 
 export default function AnimatedCTABanner({ id, type, title, subtitle, buttonText, buttonLink }: AnimatedCTABannerProps) {
-  const bannerImage = PlaceHolderImages.find(p => p.id === (type === 'quote' ? 'cta-banner-1' : 'cta-banner-2'));
   const targetRef = useRef<HTMLDivElement>(null);
   
   const { scrollYProgress } = useScroll({
@@ -27,22 +27,13 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
     offset: ["start end", "end start"],
   });
 
-  const y = useTransform(scrollYProgress, [0, 1], ['-20%', '20%']);
   const contentY = useTransform(scrollYProgress, [0.2, 0.8], ['20px', '-20px']);
   const opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
 
   return (
     <section id={id} ref={targetRef} className="relative h-96 overflow-hidden">
-      {type === 'quote' && bannerImage ? (
-        <motion.div className="absolute inset-0 z-0" style={{ y }}>
-          <Image
-            src={bannerImage.imageUrl}
-            alt={bannerImage.description}
-            fill
-            className="object-cover"
-            data-ai-hint={bannerImage.imageHint}
-          />
-        </motion.div>
+      {type === 'quote' ? (
+        <EnergyGridBackground />
       ) : (
         <AnimatedGridPattern />
       )}
