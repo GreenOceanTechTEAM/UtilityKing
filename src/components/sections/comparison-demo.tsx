@@ -2,20 +2,19 @@
 "use client";
 
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from '@/ai/flows/intelligent-utility-comparison';
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ArrowRight, Zap, Wifi, Smartphone, Loader2, Sparkles, Home, Building, Factory, Users, Flame, Bolt, Info, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '../ui/select';
 
 type ComparisonDemoProps = {
   id: string;
@@ -36,77 +35,72 @@ const analysisLines = [
 const wizardSteps = [
     {
         step: 1,
-        key: 'homeType',
-        title: "Your Home Setup",
-        aiMessage: "What best describes your home?",
+        key: 'premisesType',
+        title: "Premises Type",
+        aiMessage: "What type of premises do you want to compare?",
         options: [
-            { label: "Small Home", description: "1-2 beds", icon: Home },
-            { label: "Medium Home", description: "3 beds", icon: Home },
-            { label: "Large Home", description: "4+ beds", icon: Home },
+            { label: "Home", icon: Home },
+            { label: "Office", icon: Building },
+            { label: "Factory", icon: Factory },
         ],
-        customOption: { label: "Custom", description: "Enter exact details" },
+        customOption: { label: "Other", description: "Please specify your premises type" },
     },
     {
         step: 2,
-        key: 'occupants',
-        title: "People in the Home",
-        aiMessage: "How many people live in your home?",
-        options: [
-            { label: "1" }, { label: "2" }, { label: "3" }, { label: "4" }, { label: "5+" }
-        ],
+        key: 'usesHeating',
+        title: "Heating Usage",
+        aiMessage: "Does your premises use heating?",
+        options: [{ label: "Yes" }, { label: "No" }],
     },
     {
         step: 3,
-        key: 'heatingType',
-        title: "Your Heating Type",
-        aiMessage: "How do you heat your home?",
-        options: [
-            { label: "Gas heating", icon: Flame },
-            { label: "Electric heating", icon: Bolt },
-            { label: "Mixed", icon: Info },
-            { label: "Not sure", icon: Info },
-        ],
+        key: 'occupantsCategory',
+        title: "Occupants",
+        aiMessage: "How many people use this premises?",
+        options: [{ label: "Under 5" }, { label: "Over 5" }],
+        skipIf: (selections: any) => selections.premisesType === 'Factory',
     },
     {
         step: 4,
-        key: 'currentSupplier',
-        title: "Current Energy Supplier",
-        aiMessage: "Who supplies your energy right now?",
+        key: 'electricitySupplier',
+        title: "Electricity Supplier",
+        aiMessage: "Who is your electricity supplier?",
         options: [
-            { label: "Octopus" }, { label: "British Gas" }, { label: "EDF" },
-            { label: "E.ON Next" }, { label: "Ovo" }, { label: "Scottish Power" },
+            { label: "Octopus Energy" }, { label: "British Gas" }, { label: "EDF Energy" },
+            { label: "E.ON Next" }, { label: "Ovo Energy" }, { label: "Scottish Power" },
+            { label: "Shell Energy" }, { label: "SSE (Ovo)" }, { label: "So Energy" },
+            { label: "Ecotricity" }, { label: "Green Energy UK" }, { label: "Good Energy" },
+            { label: "Utility Warehouse" }, { label: "Outfox the Market" }, { label: "Boost" },
+            { label: "Co-op Energy" },
         ],
-        customOption: { label: "Other", description: "" },
+        customOption: { label: "Other Supplier", description: "Enter supplier name" },
+        additionalOptions: ["I Don’t Know"]
     },
     {
         step: 5,
-        key: 'tariffDetails',
-        title: "Tariff Details",
-        aiMessage: "Do you know your current tariff name?",
-        options: [
-            { label: "Yes, I know it" },
-            { label: "No" },
-        ],
+        key: 'usageInputRaw',
+        title: "Energy Usage",
+        aiMessage: "Enter your energy usage or monthly cost.",
+        isInput: true,
+        customPlaceholder: "e.g., 2700 kWh/year or £75 per month",
+        helperText: "Enter whatever you know — kWh, monthly bill, or both.",
+        options: [],
     },
     {
         step: 6,
-        key: 'usageMethod',
-        title: "Usage Method",
-        aiMessage: "What do you know about your usage?",
-        options: [
-            { label: "Annual usage (kWh)" },
-            { label: "Monthly bill amount (£)" },
-            { label: "I'm not sure" },
-        ],
+        key: 'billAvailable',
+        title: "Bill Available",
+        aiMessage: "Do you have your bill handy?",
+        options: [{ label: "Yes" }, { label: "No" }],
     },
     {
         step: 7,
         key: 'preferences',
         title: "Your Preferences",
-        aiMessage: "What matters most to you? (select up to 3)",
+        aiMessage: "What matters most to you?",
         options: [
-            { label: "Cheapest price" }, { label: "Fixed price stability" }, { label: "Flexible plans (no exit fees)" },
-            { label: "100% renewable" }, { label: "Smart meter compatible" }, { label: "Low standing charge" }, { label: "Fast switching" }
+            { label: "Cheapest price" }, { label: "Fixed rate contract" }, { label: "Flexible / no exit fees" },
+            { label: "100% renewable" }, { label: "Smart meter compatible" }, { label: "Fastest switching" }
         ],
         isMultiSelect: true,
     },
@@ -114,17 +108,13 @@ const wizardSteps = [
         step: 8,
         key: 'postcode',
         title: "Postcode",
-        aiMessage: "What's your postcode?",
+        aiMessage: "What’s your postcode?",
         isInput: true,
         customPlaceholder: "e.g., M1 1AA",
-    },
-    {
-        step: 9,
-        key: 'summary',
-        title: "AI Summary Review",
-        aiMessage: "Great — here’s what I’ve learned about your home…",
+        options: [],
     },
 ];
+
 
 const stepVariants = {
   initial: { opacity: 0, x: 50 },
@@ -150,28 +140,37 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [customValues, setCustomValues] = useState<{ [key: string]: string }>({});
   const [isTyping, setIsTyping] = useState(true);
 
-  React.useEffect(() => {
+  const activeWizardSteps = React.useMemo(() => {
+    return wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
+  }, [selections]);
+
+  const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === wizardSteps[currentStep].step);
+
+  useEffect(() => {
     setIsTyping(true);
     const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
     return () => clearTimeout(timer);
   }, [currentStep]);
 
-  const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'ArrowRight') {
-      handleNextStep();
-    } else if (event.key === 'ArrowLeft') {
-      handlePrevStep();
+  const handleNextStep = () => {
+    let nextStepIndex = currentStep + 1;
+    while (nextStepIndex < wizardSteps.length && wizardSteps[nextStepIndex].skipIf && wizardSteps[nextStepIndex].skipIf!(selections)) {
+      nextStepIndex++;
+    }
+    if (nextStepIndex < wizardSteps.length) {
+      setCurrentStep(nextStepIndex);
     }
   };
 
-  React.useEffect(() => {
-    const handleGlobalKeyDown = (e: KeyboardEvent) => handleKeyDown(e as any);
-    window.addEventListener('keydown', handleGlobalKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleGlobalKeyDown);
-    };
-  }, [currentStep, selections]);
-
+  const handlePrevStep = () => {
+    let prevStepIndex = currentStep - 1;
+    while (prevStepIndex > 0 && wizardSteps[prevStepIndex].skipIf && wizardSteps[prevStepIndex].skipIf!(selections)) {
+      prevStepIndex--;
+    }
+    if (prevStepIndex >= 0) {
+      setCurrentStep(prevStepIndex);
+    }
+  };
 
   const handleSelect = (stepKey: string, option: string) => {
     const currentWizardStep = wizardSteps[currentStep];
@@ -183,11 +182,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         const currentSelection = selections[stepKey] || [];
         if (currentSelection.includes(option)) {
             newSelections = { ...selections, [stepKey]: currentSelection.filter((item: string) => item !== option) };
-        } else if (currentSelection.length < 3) {
-            newSelections = { ...selections, [stepKey]: [...currentSelection, option] };
         } else {
-            toast({ title: "You can select up to 3 preferences." });
-            return;
+            newSelections = { ...selections, [stepKey]: [...currentSelection, option] };
         }
     } else {
         newSelections = { ...selections, [stepKey]: option };
@@ -203,41 +199,42 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
-    setCustomValues(prev => ({...prev, [stepKey]: value}));
-    if (wizardSteps[currentStep].isInput) {
+    const newCustomValues = {...customValues, [stepKey]: value};
+    setCustomValues(newCustomValues);
+
+    const step = wizardSteps[currentStep];
+    if (step.isInput) {
         setSelections(prev => ({...prev, [stepKey]: value}));
+    } else if (step.customOption?.label) {
+        const newSelections = {...selections, [stepKey]: step.customOption.label, [`${stepKey}Other`]: value };
+        setSelections(newSelections);
     }
   }
-
-  const handleNextStep = () => {
-    if (currentStep < wizardSteps.length - 1 && isStepComplete(currentStep)) {
-      setCurrentStep(currentStep + 1);
-    }
-  };
-
-  const handlePrevStep = () => {
-    if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
-    }
-  };
 
 
   const isStepComplete = (stepIndex: number) => {
     const step = wizardSteps[stepIndex];
+    if (!step) return false;
+    
     const selection = selections[step.key];
-    if (step.key === 'summary') return true;
-    if (!selection) return false;
 
     if (step.isMultiSelect) {
-        return selection.length > 0;
+        return selection && selection.length > 0;
     }
-    if (step.customOption && selection === step.customOption.label) {
-      return !!customValues[step.key];
-    }
+    
     if (step.isInput) {
-        return !!selections[step.key];
+        return !!selection;
     }
-    return true;
+
+    if (step.customOption?.label && selection === step.customOption.label) {
+        return !!customValues[step.key];
+    }
+    
+    if(step.additionalOptions?.includes(selection)) {
+        return true;
+    }
+
+    return !!selection;
   }
 
   const handleFormSubmit = async () => {
@@ -245,8 +242,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: `Home Type: ${selections['homeType'] || 'Not specified'}, Occupants: ${selections['occupants'] || 'Not specified'}, Heating: ${selections['heatingType'] || 'Not specified'}`,
-        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}, Current Supplier: ${selections['currentSupplier'] || 'Not specified'}, Tariff: ${selections['tariffDetails'] === 'Yes, I know it' ? customValues['tariffDetails'] : 'Unknown'}`,
+        usageData: selections['usageInputRaw'] || 'Not specified',
+        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}. Premises: ${selections['premisesType']}, Occupants: ${selections['occupantsCategory']}`,
         location: selections['postcode'] || 'London'
     }
 
@@ -266,7 +263,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const progress = ((currentStep) / (wizardSteps.length - 1)) * 100;
+  const progress = ((currentVisibleStepIndex + 1) / (activeWizardSteps.length)) * 100;
   const currentWizardStep = wizardSteps[currentStep];
 
   return (
@@ -288,43 +285,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         </motion.div>
 
         <div className="flex items-start justify-center gap-12">
-            <div className={cn("w-full max-w-2xl", comparisonResult && !isLoading ? "lg:col-span-3" : "")}>
+            <div className="w-full max-w-[560px]">
                 <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
                     
-                    <div className="absolute top-4 right-4 z-10 flex gap-2">
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={handlePrevStep}
-                        disabled={currentStep === 0}
-                        aria-label="Previous step"
-                      >
+                    <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
+                      <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
                         <ChevronLeft className="h-5 w-5" />
                       </Button>
-                      <Button
-                        variant="ghost"
-                        size="icon"
-                        onClick={handleNextStep}
-                        disabled={!isStepComplete(currentStep) || currentStep === wizardSteps.length - 1}
-                        aria-label="Next step"
-                      >
+                      <span className="text-sm font-medium text-muted-foreground">Step {currentVisibleStepIndex + 1} of {activeWizardSteps.length}</span>
+                      <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
                         <ChevronRight className="h-5 w-5" />
                       </Button>
                     </div>
 
-                    {currentStep !== (wizardSteps.length - 1) && (
-                        <div className="mb-6 text-center">
-                            <p className="text-base font-medium text-foreground mb-2">Step {currentWizardStep.step} of {wizardSteps.length-1} &mdash; {currentWizardStep.title}</p>
-                            <div className="w-full bg-primary/10 rounded-full h-2">
-                                <motion.div 
-                                    className="bg-primary h-2 rounded-full"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${progress}%`}}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                />
-                            </div>
-                        </div>
-                    )}
+                    <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
+                        <motion.div 
+                            className="bg-primary h-1 rounded-full"
+                            initial={{ width: 0 }}
+                            animate={{ width: `${progress}%`}}
+                            transition={{ duration: 0.5, ease: "easeInOut" }}
+                        />
+                    </div>
 
                     <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
                         <AnimatePresence mode="wait">
@@ -355,88 +336,108 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 
                                 {!isTyping && (
                                     <div className="space-y-3 w-full max-w-md">
-                                        {currentStep === wizardSteps.length - 1 ? (
-                                            <Card className="text-left bg-background/50 p-4">
-                                                <CardContent className="space-y-2 text-sm p-0">
-                                                    {Object.entries(selections).map(([key, value]) => {
-                                                        const step = wizardSteps.find(s => s.key === key);
-                                                        if (!step || !value) return null;
-                                                        const displayValue = Array.isArray(value) ? value.join(', ') : value;
-                                                        return (
-                                                            <div key={key}>
-                                                                <span className="font-semibold">{step.title}: </span>
-                                                                <span className="text-muted-foreground">{displayValue}</span>
-                                                            </div>
-                                                        );
-                                                    })}
-                                                </CardContent>
-                                            </Card>
-                                        ) : (
-                                            <>
-                                                <div className={cn("grid grid-cols-1 gap-3", currentWizardStep.options.length > 2 && "sm:grid-cols-2")}>
-                                                    {currentWizardStep.options.map(option => {
-                                                        const Icon = (option as any).icon;
-                                                        const isSelected = currentWizardStep.isMultiSelect 
-                                                            ? (selections[currentWizardStep.key] || []).includes(option.label)
-                                                            : selections[currentWizardStep.key] === option.label;
+                                        <div className={cn("grid grid-cols-1 gap-3", currentWizardStep.options.length > 1 && "sm:grid-cols-2")}>
+                                            {currentWizardStep.options.map(option => {
+                                                const Icon = (option as any).icon;
+                                                const isSelected = currentWizardStep.isMultiSelect 
+                                                    ? (selections[currentWizardStep.key] || []).includes(option.label)
+                                                    : selections[currentWizardStep.key] === option.label;
 
-                                                        return (
-                                                            <motion.button
-                                                                key={option.label}
-                                                                variants={pillVariants}
-                                                                whileHover="hover"
-                                                                whileTap="tap"
-                                                                onClick={() => handleSelect(currentWizardStep.key, option.label)}
-                                                                className={cn(
-                                                                    "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                                    isSelected
-                                                                        ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                        : "bg-background/50 hover:border-primary hover:bg-primary/5"
-                                                                )}
-                                                            >
-                                                                <div className="flex items-center justify-center gap-2">
-                                                                    {Icon && <Icon className="h-5 w-5" />}
-                                                                    <span className="font-semibold">{option.label}</span>
-                                                                </div>
-                                                                {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
-                                                            </motion.button>
-                                                        )
-                                                    })}
-                                                    {currentWizardStep.customOption && (
-                                                        <motion.button
-                                                             key="custom"
-                                                             variants={pillVariants}
-                                                             whileHover="hover"
-                                                             whileTap="tap"
-                                                            onClick={() => handleSelect(currentWizardStep.key, currentWizardStep.customOption.label)}
-                                                            className={cn(
-                                                                "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                                currentWizardStep.options.length % 2 !== 0 && "sm:col-span-2",
-                                                                selections[currentWizardStep.key] === currentWizardStep.customOption.label
-                                                                    ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                    : "bg-background/50 hover:border-primary hover:bg-primary/5"
-                                                            )}
-                                                        >
-                                                           <span className="font-semibold">{currentWizardStep.customOption.label}</span>
-                                                            {currentWizardStep.customOption.description && <span className="text-sm block text-muted-foreground">{currentWizardStep.customOption.description}</span>}
-                                                        </motion.button>
+                                                return (
+                                                    <motion.button
+                                                        key={option.label}
+                                                        variants={pillVariants}
+                                                        whileHover="hover"
+                                                        whileTap="tap"
+                                                        onClick={() => handleSelect(currentWizardStep.key, option.label)}
+                                                        className={cn(
+                                                            "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
+                                                            isSelected
+                                                                ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                        )}
+                                                    >
+                                                        <div className="flex items-center justify-center gap-2">
+                                                            {Icon && <Icon className="h-5 w-5" />}
+                                                            <span className="font-semibold">{option.label}</span>
+                                                        </div>
+                                                        {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
+                                                    </motion.button>
+                                                )
+                                            })}
+                                            {currentWizardStep.customOption && (
+                                                <motion.button
+                                                     key="custom"
+                                                     variants={pillVariants}
+                                                     whileHover="hover"
+                                                     whileTap="tap"
+                                                    onClick={() => handleSelect(currentWizardStep.key, currentWizardStep.customOption!.label)}
+                                                    className={cn(
+                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
+                                                        (currentWizardStep.options.length % 2 !== 0) && "sm:col-span-2",
+                                                        selections[currentWizardStep.key] === currentWizardStep.customOption.label
+                                                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                            : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                     )}
+                                                >
+                                                   <span className="font-semibold">{currentWizardStep.customOption.label}</span>
+                                                    {currentWizardStep.customOption.description && <span className="text-sm block text-muted-foreground">{currentWizardStep.customOption.description}</span>}
+                                                </motion.button>
+                                            )}
+                                             {currentWizardStep.additionalOptions?.map(option => (
+                                                <motion.button
+                                                    key={option}
+                                                    variants={pillVariants}
+                                                    whileHover="hover"
+                                                    whileTap="tap"
+                                                    onClick={() => handleSelect(currentWizardStep.key, option)}
+                                                     className={cn(
+                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
+                                                        selections[currentWizardStep.key] === option
+                                                            ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                            : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                    )}
+                                                >
+                                                    {option}
+                                                </motion.button>
+                                            ))}
+                                        </div>
+
+                                        {currentWizardStep.key === 'billAvailable' && selections.billAvailable === 'Yes' && (
+                                            <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
+                                                <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
+                                                    <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
+                                                    <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
+                                                    <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
+                                                    <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                                                 </div>
+                                            </motion.div>
+                                        )}
 
-                                                {( (currentWizardStep.customOption && selections[currentWizardStep.key] === currentWizardStep.customOption.label) || currentWizardStep.isInput || (currentWizardStep.key === 'tariffDetails' && selections[currentWizardStep.key] === 'Yes, I know it')) && (
-                                                  <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                    <Input 
-                                                        placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
-                                                        className="h-12 text-base text-center"
-                                                        value={customValues[currentWizardStep.key] || ''}
-                                                        onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
-                                                    />
-                                                     { (customValues[currentWizardStep.key] || (currentWizardStep.isInput && selections[currentWizardStep.key])) && (
-                                                      <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
-                                                    )}
-                                                  </motion.div>
-                                                )}
-                                            </>
+                                        {(selections[currentWizardStep.key] === currentWizardStep.customOption?.label || currentWizardStep.isInput) && (
+                                          <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                            <Input 
+                                                placeholder={currentWizardStep.customPlaceholder || `Enter ${currentWizardStep.title}`}
+                                                className="h-12 text-base text-center"
+                                                value={customValues[currentWizardStep.key] || ''}
+                                                onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
+                                            />
+                                            {currentWizardStep.helperText && <p className="text-sm text-muted-foreground">{currentWizardStep.helperText}</p>}
+                                             { ((customValues[currentWizardStep.key] && selections[currentWizardStep.key] === currentWizardStep.customOption?.label) || (currentWizardStep.isInput && selections[currentWizardStep.key])) && (
+                                              <Button size="lg" className="w-full h-12 text-base" onClick={handleNextStep}>Next Step &rarr;</Button>
+                                            )}
+                                          </motion.div>
+                                        )}
+                                        {currentWizardStep.key === 'postcode' && isStepComplete(currentStep) && !isLoading && (
+                                            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
+                                                <Button 
+                                                    size="lg"
+                                                    className="w-full mt-6 text-lg h-12 glowing-btn-border font-semibold" 
+                                                    onClick={handleFormSubmit}
+                                                >
+                                                    COMPARE ENERGY DEALS &rarr;
+                                                </Button>
+                                            </motion.div>
                                         )}
                                     </div>
                                 )}
@@ -444,21 +445,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </AnimatePresence>
                     </div>
 
-                    {currentStep === wizardSteps.length -1 && !isLoading && !comparisonResult && (
-                        <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
-                            <Button 
-                                size="lg"
-                                className="w-full mt-6 text-lg h-12 glowing-btn-border font-semibold" 
-                                onClick={handleFormSubmit}
-                            >
-                                Show My Best Deals &rarr;
-                            </Button>
-                        </motion.div>
-                    )}
                     {isLoading && (
-                         <div
-                            className="flex flex-col items-center justify-center min-h-[150px] p-8"
-                          >
+                         <div className="flex flex-col items-center justify-center min-h-[150px] p-8">
                             <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
                                 {analysisLines.map((line, index) => (
                                   <motion.p
@@ -473,14 +461,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                   </motion.p>
                                 ))}
                             </div>
-
                           </div>
                     )}
                 </div>
             </div>
-
-            {comparisonResult && !isLoading && (
-                <div className="lg:col-span-2 w-full max-w-3xl">
+        </div>
+         {comparisonResult && !isLoading && (
+                <div className="mt-16">
                     <AnimatePresence>
                     <motion.div
                         key="results"
@@ -488,14 +475,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 50 }}
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        className="lg:mt-0 mt-8"
                     >
-                        <div className='text-left mb-4'>
+                        <div className='text-center mb-4'>
                             <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
-                            <p className='text-muted-foreground'>{comparisonResult.comparisonSummary}</p>
+                            <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
                         </div>
 
-                        <Carousel opts={{ align: "start" }} className="w-full mt-6">
+                        <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
                         <CarouselContent className="-ml-2">
                             {comparisonResult.recommendedPlans.map((plan, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-2">
@@ -544,8 +530,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     </AnimatePresence>
                 </div>
             )}
-        </div>
       </div>
     </section>
   );
 }
+
+    
