@@ -8,6 +8,7 @@ import { ScrollProgressBar } from '@/components/layout/scroll-progress-bar';
 import ScrollToTop from '@/components/layout/scroll-to-top';
 import { ThemeProvider } from '@/components/shared/theme-provider';
 import Script from 'next/script';
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 export const metadata: Metadata = {
   title: 'Utility King AI',
@@ -66,6 +67,7 @@ export default function RootLayout({
           consent-storage-key="vapi_widget_consent"
         ></vapi-widget>
         <Script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async />
+        <SpeedInsights />
       </body>
     </html>
   );
