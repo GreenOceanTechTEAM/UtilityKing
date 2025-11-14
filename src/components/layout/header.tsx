@@ -10,7 +10,6 @@ import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
 import { ThemeSwitcher } from '../shared/theme-switcher';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import AnimatedLogo from '../shared/animated-logo';
 
 type Section = {
   id: string;
@@ -109,8 +108,10 @@ export default function Header({ sections }: HeaderProps) {
             className="absolute inset-0 w-full h-full border-b"
         />
         <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
-          <Link href="#" className="flex items-center gap-2" prefetch={false}>
-            <AnimatedLogo className="h-10 w-auto" />
+          <Link href="#" className="flex items-center" prefetch={false}>
+            <span className="font-headline text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+              UtilityKing
+            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -138,7 +139,9 @@ export default function Header({ sections }: HeaderProps) {
                 <SheetContent side="right" className="w-[300px] sm:w-[400px]">
                     <nav className="flex flex-col h-full">
                         <Link href="#" className="flex items-center gap-2 mb-8" prefetch={false} onClick={() => setIsMobileMenuOpen(false)}>
-                            <AnimatedLogo className="h-10 w-auto" />
+                            <span className="font-headline text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
+                              UtilityKing
+                            </span>
                         </Link>
                         <div className="flex flex-col space-y-3">
                         {sections.map(({ id, name }) => {
