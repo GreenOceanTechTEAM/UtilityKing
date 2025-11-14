@@ -42,7 +42,7 @@ const wizardSteps = [
             { label: "Home", icon: Home },
             { label: "Office", icon: Building },
             { label: "Factory", icon: Factory },
-            { label: "Other", description: "e.g. Farm, Ranch", customOption: true },
+            { label: "Other", description: "e.g. Farm, Ranch" },
         ],
     },
     {
@@ -84,6 +84,7 @@ const wizardSteps = [
             { label: "Consumption (kWh)" },
             { label: "Monthly Amount (£)" },
         ],
+        isInputTrigger: true,
     },
     {
         step: 6,
@@ -92,7 +93,7 @@ const wizardSteps = [
         aiMessage: "Enter your energy usage details.",
         isInput: true,
         options: [],
-        skipIf: (selections: any) => !selections.usageInputType,
+        dependsOn: 'usageInputType',
     },
     {
         step: 7,
@@ -148,9 +149,20 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isTyping, setIsTyping] = useState(true);
 
   const activeWizardSteps = React.useMemo(() => {
-    return wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
+    let activeSteps = wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
+    
+    // Filter out input steps that don't have their trigger selected
+    activeSteps = activeSteps.filter(step => {
+        if(step.dependsOn) {
+            return !!selections[step.dependsOn];
+        }
+        return true;
+    });
+
+    return activeSteps;
   }, [selections]);
 
+  const currentVisibleStepConfig = activeWizardSteps.find(step => step.step === wizardSteps[currentStep]?.step);
   const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === wizardSteps[currentStep]?.step);
 
   useEffect(() => {
@@ -161,27 +173,36 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleNextStep = () => {
     let nextStepIndex = currentStep + 1;
-    while (nextStepIndex < wizardSteps.length && wizardSteps[nextStepIndex].skipIf && wizardSteps[nextStepIndex].skipIf!(selections)) {
-      nextStepIndex++;
-    }
-    if (nextStepIndex < wizardSteps.length) {
-      setCurrentStep(nextStepIndex);
+    while (nextStepIndex < wizardSteps.length) {
+        const nextStepConfig = wizardSteps[nextStepIndex];
+        const shouldSkip = (nextStepConfig.skipIf && nextStepConfig.skipIf(selections)) || 
+                           (nextStepConfig.dependsOn && !selections[nextStepConfig.dependsOn]);
+        if (!shouldSkip) {
+            setCurrentStep(nextStepIndex);
+            return;
+        }
+        nextStepIndex++;
     }
   };
 
   const handlePrevStep = () => {
     let prevStepIndex = currentStep - 1;
-    while (prevStepIndex >= 0 && wizardSteps[prevStepIndex].skipIf && wizardSteps[prevStepIndex].skipIf!(selections)) {
-      prevStepIndex--;
-    }
-    if (prevStepIndex >= 0) {
-      setCurrentStep(prevStepIndex);
+     while (prevStepIndex >= 0) {
+        const prevStepConfig = wizardSteps[prevStepIndex];
+        const shouldSkip = (prevStepConfig.skipIf && prevStepConfig.skipIf(selections)) || 
+                           (prevStepConfig.dependsOn && !selections[prevStepConfig.dependsOn]);
+        if (!shouldSkip) {
+            setCurrentStep(prevStepIndex);
+            return;
+        }
+        prevStepIndex--;
     }
   };
 
   const handleSelect = (stepKey: string, option: string) => {
     const currentWizardStep = wizardSteps[currentStep];
     const isMulti = currentWizardStep.isMultiSelect;
+    const isInputTrigger = currentWizardStep.isInputTrigger;
 
     let newSelections;
 
@@ -197,9 +218,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     setSelections(newSelections);
-
-    if (!isMulti && currentWizardStep.key !== 'billAvailable') {
+    
+    // Auto-advance only if it's a simple selection step
+    if (!isMulti && !isInputTrigger && currentWizardStep.key !== 'billAvailable') {
         setTimeout(() => {
+            handleNextStep();
+        }, 300);
+    } else if (isInputTrigger) {
+         setTimeout(() => {
             handleNextStep();
         }, 300);
     } else if (currentWizardStep.key === 'billAvailable' && option === 'No') {
@@ -216,7 +242,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const handleCustomSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (e.key === 'Enter') {
       e.preventDefault();
-      handleNextStep();
+      if(isStepComplete(currentStep)){
+        handleNextStep();
+      }
     }
   };
 
@@ -323,7 +351,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                     <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
                         <AnimatePresence mode="wait">
-                            {currentWizardStep &&
+                            {currentWizardStep && currentVisibleStepConfig &&
                             <motion.div
                                 key={currentStep}
                                 variants={stepVariants}
@@ -362,8 +390,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 const isSelected = currentWizardStep.isMultiSelect 
                                                     ? (selections[currentWizardStep.key] || []).includes(option.label)
                                                     : selections[currentWizardStep.key] === option.label;
-
-                                                const isCustomOptionSelected = isSelected && option.customOption;
 
                                                 return (
                                                     <motion.button
@@ -427,6 +453,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     value={selections[currentWizardStep.key] || ''}
                                                     onChange={(e) => handleCustomValueChange(currentWizardStep.key, e.target.value)}
                                                     onKeyDown={handleCustomSubmit}
+                                                    autoFocus
                                                 />
                                             </div>
                                             {selections[currentWizardStep.key] && currentWizardStep.step !== 9 && (
