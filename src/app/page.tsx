@@ -15,7 +15,6 @@ export default function Home() {
   const sections = [
     { id: 'hero', name: 'Home' },
     { id: 'services', name: 'Services' },
-    { id: 'how', name: 'How It Works' },
     { id: 'compare', name: 'Compare' },
     { id: 'why', name: 'Why Us' },
     { id: 'trust', name: 'Reviews' },
@@ -28,10 +27,10 @@ export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Header sections={sections} />
+      <HowItWorks id="how" />
       <main className="flex-1">
         <ConversationalHero id="hero" />
         <ServicesSection id="services" />
-        <HowItWorks id="how" />
         <WhyUtilityKing id="why" />
         <ComparisonDemo id="compare" />
         <TrustProofs id="trust" />
