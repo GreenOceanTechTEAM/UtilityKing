@@ -27,9 +27,9 @@ export default function Home() {
   return (
     <div className="flex min-h-screen w-full flex-col">
       <Header sections={sections} />
-      <HowItWorks id="how" />
       <main className="flex-1">
         <ConversationalHero id="hero" />
+        <HowItWorks id="how" />
         <ServicesSection id="services" />
         <WhyUtilityKing id="why" />
         <ComparisonDemo id="compare" />
