@@ -185,7 +185,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </div>
                     </div>
 
-                    <div className="relative min-h-[300px] overflow-hidden">
+                    <div className="relative min-h-[300px] overflow-hidden flex flex-col items-center">
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={currentStep}
@@ -223,7 +223,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     whileTap="tap"
                                                     onClick={() => handleSelect(currentWizardStep.title.toLowerCase().replace(' ', ''), option.label)}
                                                     className={cn(
-                                                        "p-3 text-left rounded-lg border text-base font-medium transition-all duration-200",
+                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
                                                         selections[currentWizardStep.title.toLowerCase().replace(' ', '')] === option.label
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
@@ -241,7 +241,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                      whileTap="tap"
                                                     onClick={() => handleSelect(currentWizardStep.title.toLowerCase().replace(' ', ''), 'Custom')}
                                                     className={cn(
-                                                        "p-3 text-left rounded-lg border text-base font-medium transition-all duration-200",
+                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
                                                         selections[currentWizardStep.title.toLowerCase().replace(' ', '')] === 'Custom'
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
