@@ -27,8 +27,8 @@ const services = [
   },
   {
     icon: <Smartphone className="h-8 w-8" />,
-    title: "Mobile",
-    description: "Get more data for your money. Compare the latest mobile deals from all major UK networks."
+    title: "SIMs",
+    description: "Get more data for your money. Compare the latest SIM-only deals from all major UK networks."
   },
   {
     icon: <Droplets className="h-8 w-8" />,
