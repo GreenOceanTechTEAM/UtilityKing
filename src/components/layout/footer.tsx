@@ -19,13 +19,13 @@ export default function Footer({ id }: FooterProps) {
               AI-powered utility comparisons to help you save time and money.
             </p>
             <div className="flex space-x-6">
-              <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+              <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
                 <Facebook className="h-6 w-6" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+              <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
                 <Twitter className="h-6 w-6" />
               </Link>
-              <Link href="#" className="text-muted-foreground hover:text-foreground" prefetch={false}>
+              <Link href="#" className="text-muted-foreground transition-colors hover:text-primary" prefetch={false}>
                 <Linkedin className="h-6 w-6" />
               </Link>
             </div>
@@ -35,16 +35,16 @@ export default function Footer({ id }: FooterProps) {
               <div>
                 <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Services</h3>
                 <ul className="mt-4 space-y-4">
-                  <li><Link href="#services" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Energy</Link></li>
-                  <li><Link href="#services" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Broadband</Link></li>
-                  <li><Link href="#services" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Mobile</Link></li>
+                  <li><Link href="#services" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Energy</Link></li>
+                  <li><Link href="#services" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Broadband</Link></li>
+                  <li><Link href="#services" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Mobile</Link></li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Support</h3>
                 <ul className="mt-4 space-y-4">
-                  <li><Link href="#compare" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Compare</Link></li>
-                  <li><Link href="#faqs" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>FAQs</Link></li>
+                  <li><Link href="#compare" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Compare</Link></li>
+                  <li><Link href="#faqs" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>FAQs</Link></li>
                 </ul>
               </div>
             </div>
@@ -52,16 +52,16 @@ export default function Footer({ id }: FooterProps) {
               <div>
                 <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Company</h3>
                 <ul className="mt-4 space-y-4">
-                  <li><Link href="#about" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>About</Link></li>
-                  <li><Link href="#blog" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Blog</Link></li>
-                  <li><Link href="#" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Careers</Link></li>
+                  <li><Link href="#about" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>About</Link></li>
+                  <li><Link href="#blog" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Blog</Link></li>
+                  <li><Link href="#" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Careers</Link></li>
                 </ul>
               </div>
               <div className="mt-12 md:mt-0">
                 <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Legal</h3>
                 <ul className="mt-4 space-y-4">
-                  <li><Link href="#" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Privacy</Link></li>
-                  <li><Link href="#" className="text-base text-muted-foreground hover:text-foreground" prefetch={false}>Terms</Link></li>
+                  <li><Link href="#" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Privacy</Link></li>
+                  <li><Link href="#" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Terms</Link></li>
                 </ul>
               </div>
             </div>
