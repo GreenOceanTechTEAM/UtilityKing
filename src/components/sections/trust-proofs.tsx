@@ -6,6 +6,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { cn } from '@/lib/utils';
 
 type TrustProofsProps = {
   id: string;
@@ -38,6 +39,9 @@ const partners = [
   { name: 'Partner 3', logo: PlaceHolderImages.find(p => p.id === 'logo-3') },
   { name: 'Partner 4', logo: PlaceHolderImages.find(p => p.id === 'logo-4') },
   { name: 'Partner 5', logo: PlaceHolderImages.find(p => p.id === 'logo-5') },
+  { name: 'Partner 6', logo: PlaceHolderImages.find(p => p.id === 'logo-1') },
+  { name: 'Partner 7', logo: PlaceHolderImages.find(p => p.id === 'logo-2') },
+  { name: 'Partner 8', logo: PlaceHolderImages.find(p => p.id === 'logo-3') },
 ];
 
 const containerVariants = {
@@ -84,19 +88,6 @@ const starVariants = {
     color: "hsl(var(--accent))",
     transition: { type: 'spring', stiffness: 200, damping: 10, duration: 0.45 }
   },
-};
-
-const logoContainerVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.04, delayChildren: 0.2 },
-  },
-};
-
-const logoVariants = {
-    hidden: { scale: 0.96, opacity: 0 },
-    visible: { scale: 1, opacity: 0.6, transition: { duration: 0.3 } },
 };
 
 const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] }) => {
@@ -178,33 +169,41 @@ export default function TrustProofs({ id }: TrustProofsProps) {
           <p className="text-center text-base font-semibold text-muted-foreground">
             In partnership with the UK's leading providers
           </p>
-          <motion.div
-             variants={logoContainerVariants}
-             initial="hidden"
-             whileInView="visible"
-             viewport={{ once: true, amount: 0.5 }}
-             className="mt-6 grid grid-cols-2 gap-0.5 md:grid-cols-5 lg:mt-8"
-          >
-            {partners.map((partner) => (
-              partner.logo && (
-                 <motion.div
-                    key={partner.name}
-                    variants={logoVariants}
-                    whileHover={{ opacity: 1, y: -4 }}
-                    className="col-span-1 flex justify-center bg-background/50 p-8 grayscale transition-all hover:grayscale-0"
-                 >
+           <div className="relative mt-6 w-full overflow-hidden">
+            <motion.div 
+              className="flex"
+              animate={{
+                x: ['0%', '-50%'],
+              }}
+              transition={{
+                ease: 'linear',
+                duration: 40,
+                repeat: Infinity,
+              }}
+            >
+              {[...partners, ...partners].map((partner, index) => (
+                partner.logo && (
+                  <motion.div
+                    key={`${partner.name}-${index}`}
+                    whileHover={{ y: -4, opacity: 1 }}
+                    className="mx-8 flex-shrink-0 grayscale transition-all hover:grayscale-0"
+                    style={{ opacity: 0.6 }}
+                  >
                     <Image
-                    src={partner.logo.imageUrl}
-                    alt={partner.name}
-                    width={158}
-                    height={48}
-                    className="object-contain"
-                    data-ai-hint={partner.logo.imageHint}
+                      src={partner.logo.imageUrl}
+                      alt={partner.name}
+                      width={158}
+                      height={48}
+                      className="object-contain h-12 w-auto"
+                      data-ai-hint={partner.logo.imageHint}
                     />
-                </motion.div>
-              )
-            ))}
-          </motion.div>
+                  </motion.div>
+                )
+              ))}
+            </motion.div>
+            <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent"></div>
+            <div className="absolute inset-y-0 right-0 w-16 bg-gradient-to-l from-primary/5 to-transparent"></div>
+          </div>
         </div>
       </div>
     </section>
