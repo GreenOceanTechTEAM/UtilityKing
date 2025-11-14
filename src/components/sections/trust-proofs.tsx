@@ -7,17 +7,6 @@ import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
 
-// Import logos from the src/assets directory
-// IMPORTANT: You must ensure these image files exist in `src/assets/`
-import logoBritishGas from '@/assets/britishgas.jpg';
-import logoOctopus from '@/assets/octopus.jpg';
-import logoEdf from '@/assets/edf.jpg';
-import logoEon from '@/assets/eon.jpg';
-import logoOvo from '@/assets/ovo.jpg';
-import logoScottishPower from '@/assets/scottish-power.jpg';
-import logoCrownGasPower from '@/assets/crown-gas-power.jpg';
-
-
 type TrustProofsProps = {
   id: string;
 };
@@ -43,14 +32,13 @@ const testimonials = [
   }
 ];
 
-const partners: { name: string; logo: StaticImageData }[] = [
-  { name: 'British Gas', logo: logoBritishGas },
-  { name: 'Octopus Energy', logo: logoOctopus },
-  { name: 'EDF Energy', logo: logoEdf },
-  { name: 'E.ON Next', logo: logoEon },
-  { name: 'OVO Energy', logo: logoOvo },
-  { name: 'Scottish Power', logo: logoScottishPower },
-  { name: 'Crown Gas & Power', logo: logoCrownGasPower },
+const partners = [
+  { name: 'British Gas', logo: PlaceHolderImages.find(p => p.id === 'logo-british-gas') },
+  { name: 'Octopus Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-octopus') },
+  { name: 'EDF Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-edf') },
+  { name: 'E.ON Next', logo: PlaceHolderImages.find(p => p.id === 'logo-eon') },
+  { name: 'OVO Energy', logo: PlaceHolderImages.find(p => p.id === 'logo-ovo') },
+  { name: 'Scottish Power', logo: PlaceHolderImages.find(p => p.id === 'logo-scottish-power') },
 ];
 
 const containerVariants = {
@@ -193,19 +181,22 @@ export default function TrustProofs({ id }: TrustProofsProps) {
               }}
             >
               {[...partners, ...partners].map((partner, index) => (
-                <motion.div
-                  key={`${partner.name}-${index}`}
-                  whileHover={{ y: -4, opacity: 1 }}
-                  className="mx-8 flex-shrink-0"
-                >
-                  <Image
-                    src={partner.logo}
-                    alt={partner.name}
-                    height={48}
-                    className="object-contain h-12 w-auto"
-                    unoptimized={true}
-                  />
-                </motion.div>
+                partner.logo && (
+                  <motion.div
+                    key={`${partner.name}-${index}`}
+                    whileHover={{ y: -4, opacity: 1 }}
+                    className="mx-8 flex-shrink-0"
+                  >
+                    <Image
+                      src={partner.logo.imageUrl}
+                      alt={partner.name}
+                      width={120}
+                      height={48}
+                      data-ai-hint={partner.logo.imageHint}
+                      className="object-contain h-12 w-auto opacity-80 hover:opacity-100 transition-opacity"
+                    />
+                  </motion.div>
+                )
               ))}
             </motion.div>
             <div className="absolute inset-y-0 left-0 w-16 bg-gradient-to-r from-primary/5 to-transparent dark:from-primary/10"></div>
