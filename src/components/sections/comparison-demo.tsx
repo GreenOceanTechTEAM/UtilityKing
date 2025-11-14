@@ -39,14 +39,14 @@ const wizardSteps = [
         step: 1,
         title: "Your Usage",
         key: 'usage',
-        aiMessage: "Tell me about your home size. This helps us estimate your energy demand accurately.",
+        aiMessage: "Let's start with your property type. This helps us estimate your energy demand accurately.",
         options: [
-            { label: "Small Home", description: "1–2 bedrooms, light usage" },
-            { label: "Medium Home", description: "3 bedrooms, moderate usage" },
-            { label: "Large Home", description: "4+ bedrooms, heavy usage" }
+            { label: "Home", description: "For residential properties" },
+            { label: "Office", description: "For commercial office spaces" },
+            { label: "Factory", description: "For industrial sites" }
         ],
-        customOption: { label: "Custom", description: "Enter exact usage details" },
-        customPlaceholder: "e.g., 3-bed house, family of 4, electric heating"
+        customOption: { label: "Others", description: "Enter different property type" },
+        customPlaceholder: "e.g., Warehouse, retail shop"
     },
     {
         step: 2,
@@ -106,7 +106,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const newSelections = { ...selections, [stepKey]: option };
     setSelections(newSelections);
 
-    if (option !== 'Custom' && stepKey !== 'location') {
+    if (option !== 'Others' && option !== 'Custom' && stepKey !== 'location') {
         setTimeout(() => {
             if (currentStep < wizardSteps.length - 1) {
                 setCurrentStep(currentStep + 1);
@@ -117,7 +117,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
     setCustomValues(prev => ({...prev, [stepKey]: value}));
-    // Also update selections for location to make it consistent
     if (stepKey === 'location') {
         setSelections(prev => ({...prev, [stepKey]: value}))
     }
@@ -133,7 +132,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const step = wizardSteps[stepIndex];
     const selection = selections[step.key];
     if (!selection) return false;
-    if (selection === 'Custom') {
+    if (selection === 'Others' || selection === 'Custom') {
       return !!customValues[step.key];
     }
     if (step.key === 'location') {
@@ -147,7 +146,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setComparisonResult(null);
 
     const mappedValues = {
-        usageData: selections['usage'] === 'Custom' ? customValues['usage']! : selections['usage'] || 'Medium Home',
+        usageData: selections['usage'] === 'Others' ? customValues['usage']! : selections['usage'] || 'Home',
         preferences: selections['preferences'] === 'Custom' ? customValues['preferences']! : selections['preferences'] || 'Cheapest',
         location: selections['location'] || 'London'
     }
@@ -259,11 +258,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                      variants={pillVariants}
                                                      whileHover="hover"
                                                      whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStep.key, 'Custom')}
+                                                    onClick={() => handleSelect(currentWizardStep.key, currentWizardStep.customOption.label)}
                                                     className={cn(
                                                         "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
                                                         currentWizardStep.options.length % 2 !== 0 ? "sm:col-span-2" : "",
-                                                        selections[currentWizardStep.key] === 'Custom'
+                                                        selections[currentWizardStep.key] === currentWizardStep.customOption.label
                                                             ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                             : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                     )}
@@ -274,7 +273,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             )}
                                         </div>
 
-                                        {selections[currentWizardStep.key] === 'Custom' && currentWizardStep.key !== 'location' && (
+                                        {(selections[currentWizardStep.key] === 'Others' || selections[currentWizardStep.key] === 'Custom') && currentWizardStep.key !== 'location' && (
                                           <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                             <Input 
                                                 placeholder={currentWizardStep.customPlaceholder}
@@ -407,5 +406,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
