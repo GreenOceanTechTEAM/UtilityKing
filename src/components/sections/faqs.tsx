@@ -54,14 +54,20 @@ export default function FAQs({ id }: FaqsProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background">
       <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8">
-        <div className="text-center">
+        <motion.div
+            className="text-center"
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+        >
           <h2 className="font-headline text-3xl md:text-[34px] font-bold tracking-tight text-foreground">
             Frequently Asked Questions
           </h2>
           <p className="mx-auto mt-4 max-w-2xl text-lg text-muted-foreground">
             Have questions? We've got answers. Here are some of the most common things people ask.
           </p>
-        </div>
+        </motion.div>
         <motion.div
           initial="hidden"
           whileInView="visible"

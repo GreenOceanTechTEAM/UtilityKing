@@ -103,6 +103,9 @@ const TestimonialCard = ({ testimonial }: { testimonial: typeof testimonials[0] 
               <motion.div
                 className="flex mb-2"
                 variants={starContainerVariants}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true }}
               >
                   {[...Array(5)].map((_, i) => <motion.div key={i} variants={starVariants}><Star className="h-5 w-5 fill-current" /></motion.div>)}
               </motion.div>
