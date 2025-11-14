@@ -6,7 +6,6 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { PlaceHolderImages } from '@/lib/placeholder-images';
 import { Star } from 'lucide-react';
 import { motion } from 'framer-motion';
-import { cn } from '@/lib/utils';
 
 type TrustProofsProps = {
   id: string;
@@ -197,6 +196,7 @@ export default function TrustProofs({ id }: TrustProofsProps) {
                       height={48}
                       className="object-contain h-12 w-auto"
                       data-ai-hint={partner.logo.imageHint}
+                      unoptimized
                     />
                   </motion.div>
                 )
@@ -210,5 +210,3 @@ export default function TrustProofs({ id }: TrustProofsProps) {
     </section>
   );
 }
-
-    
