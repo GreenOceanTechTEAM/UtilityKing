@@ -32,9 +32,7 @@ export default function RootLayout({
         <ThemeProvider
           attribute="class"
           defaultTheme="theme-arctic"
-          enableSystem={false}
           themes={['theme-arctic', 'theme-solar-neon', 'theme-aqua-tech']}
-          disableTransitionOnChange
         >
           <ScrollProgressBar />
           {children}
