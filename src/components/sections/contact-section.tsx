@@ -81,6 +81,14 @@ export default function ContactSection({ id }: ContactSectionProps) {
   const handleNextStep = async () => {
     const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     
+    // For 'isBusiness', we don't need validation to proceed.
+    if (currentField === 'isBusiness') {
+      if (currentStep < activeSteps.length - 1) {
+        setCurrentStep(currentStep + 1);
+      }
+      return;
+    }
+
     let isValid = await form.trigger(currentField);
     
     if (isValid && currentStep < activeSteps.length - 1) {
@@ -160,12 +168,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
     if (!checked) {
       form.setValue('businessName', '', { shouldValidate: false });
     }
-    
-    setTimeout(() => {
-        if(currentStep === 2) {
-            setCurrentStep(currentStep + 1);
-        }
-    }, 100);
   }
 
   const handleTriggerMessageClick = (message: string) => {
@@ -186,19 +188,19 @@ export default function ContactSection({ id }: ContactSectionProps) {
                 transition={{ duration: 0.3 }}
                 className="w-full max-w-sm mx-auto flex flex-col items-center"
              >
-                <div 
+                <FormLabel
+                    htmlFor='is-business-checkbox'
                     className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm w-full cursor-pointer hover:bg-muted/50"
-                     onClick={() => handleIsBusinessChange(!isBusiness)}
                 >
                     <Checkbox
                         id="is-business-checkbox"
                         checked={isBusiness}
-                         onCheckedChange={handleIsBusinessChange}
+                        onCheckedChange={handleIsBusinessChange}
                     />
-                    <FormLabel htmlFor='is-business-checkbox' className="cursor-pointer font-normal text-base">
+                    <span className="font-normal text-base">
                         This is a business inquiry
-                    </FormLabel>
-                </div>
+                    </span>
+                </FormLabel>
              </motion.div>
         )
     }
@@ -333,5 +335,3 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
-
-    
