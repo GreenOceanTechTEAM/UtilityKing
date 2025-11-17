@@ -1,15 +1,18 @@
+
 "use client";
 
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
-import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu } from 'lucide-react';
+import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu, TestTube2 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { useScrollSpy } from '@/hooks/use-scroll-spy';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 import { Button } from '../ui/button';
 import { ThemeSelector } from '../shared/theme-selector';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from '../ui/dialog';
+import WebhookTestPage from '@/app/webhook-test/page';
 
 type Section = {
   id: string;
@@ -123,6 +126,31 @@ export default function Header({ sections }: HeaderProps) {
           </nav>
           
           <div className="flex items-center gap-2">
+            <Dialog>
+              <TooltipProvider>
+                <Tooltip>
+                  <TooltipTrigger asChild>
+                    <DialogTrigger asChild>
+                      <Button variant="outline" size="icon">
+                        <TestTube2 className="h-5 w-5 text-accent" />
+                      </Button>
+                    </DialogTrigger>
+                  </TooltipTrigger>
+                  <TooltipContent>
+                    <p>Test Webhook</p>
+                  </TooltipContent>
+                </Tooltip>
+              </TooltipProvider>
+              <DialogContent className="max-w-3xl">
+                <DialogHeader>
+                  <DialogTitle>Webhook Test Results</DialogTitle>
+                </DialogHeader>
+                <div className="mt-4 max-h-[60vh] overflow-y-auto">
+                   <WebhookTestPage />
+                </div>
+              </DialogContent>
+            </Dialog>
+
             <ThemeSelector />
             <Button asChild size="sm" className="hidden md:flex">
                 <Link href="#compare">Compare Now</Link>
