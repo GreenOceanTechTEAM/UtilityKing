@@ -12,9 +12,8 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase, Sparkles, ChevronLeft } from 'lucide-react';
+import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase, Sparkles, ChevronLeft, Home } from 'lucide-react';
 import { Card } from '@/components/ui/card';
-import { Checkbox } from '../ui/checkbox';
 import { cn } from '@/lib/utils';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
@@ -26,10 +25,12 @@ type ContactSectionProps = {
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   email: z.string().email("Please enter a valid email address."),
-  isBusiness: z.boolean().default(false),
+  inquiryType: z.enum(["Personal", "Business", "Other"], {
+    required_error: "You need to select an inquiry type.",
+  }),
   businessName: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters long.").max(500, "Message must be less than 500 characters."),
-}).refine(data => !data.isBusiness || (data.isBusiness && data.businessName && data.businessName.length > 0), {
+}).refine(data => data.inquiryType !== 'Business' || (data.inquiryType === 'Business' && data.businessName && data.businessName.length > 0), {
   message: "Business name is required for business inquiries",
   path: ["businessName"],
 });
@@ -41,10 +42,20 @@ const stepVariants = {
   exit: { opacity: 0, x: -50, transition: { duration: 0.3, ease: "easeIn" } }
 };
 
+const pillVariants = {
+  rest: { scale: 1 },
+  hover: { scale: 1.05, y: -2, boxShadow: '0px 5px 15px hsla(var(--primary), 0.2)' },
+  tap: { scale: 0.95 }
+};
+
 const steps = [
     { field: "name", title: "Let's start with your name.", placeholder: "John Doe", icon: User },
     { field: "email", title: "What's your email address?", placeholder: "john.doe@example.com", icon: Mail },
-    { field: "isBusiness", title: "Is this a business inquiry?", icon: Briefcase },
+    { field: "inquiryType", title: "What type of inquiry is this?", icon: Briefcase, options: [
+        { label: "Personal", icon: Home },
+        { label: "Business", icon: Building },
+        { label: "Other", icon: Sparkles }
+    ]},
     { field: "message", title: "How can we help you today?", placeholder: "Your message here...", icon: Send, isTextarea: true },
 ];
 
@@ -65,28 +76,28 @@ export default function ContactSection({ id }: ContactSectionProps) {
     defaultValues: {
       name: "",
       email: "",
-      isBusiness: false,
       businessName: "",
       message: "",
     },
     mode: "onChange"
   });
 
-  const isBusiness = form.watch("isBusiness");
+  const inquiryType = form.watch("inquiryType");
 
-  const activeSteps = isBusiness 
+  const activeSteps = inquiryType === 'Business'
     ? [...steps.slice(0,3), { field: "businessName", title: "What's your business name?", placeholder: "ACME Inc.", icon: Building }, ...steps.slice(3)] 
     : steps;
     
   const handleNextStep = async () => {
     const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     
-    // For 'isBusiness', we don't need validation to proceed.
-    if (currentField === 'isBusiness') {
-      if (currentStep < activeSteps.length - 1) {
-        setCurrentStep(currentStep + 1);
-      }
-      return;
+    // For 'inquiryType', we auto-advance.
+    if (currentField === 'inquiryType') {
+        const isValid = await form.trigger(currentField);
+        if (isValid && currentStep < activeSteps.length - 1) {
+            setTimeout(() => setCurrentStep(currentStep + 1), 300);
+        }
+        return;
     }
 
     let isValid = await form.trigger(currentField);
@@ -106,7 +117,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         const currentField = activeSteps[currentStep].field;
-        if (currentField !== 'message' && currentField !== 'isBusiness') {
+        if (currentField !== 'message') {
             handleNextStep();
         }
     }
@@ -163,11 +174,12 @@ export default function ContactSection({ id }: ContactSectionProps) {
   
   const progress = ((currentStep + 1) / activeSteps.length) * 100;
 
-  const handleIsBusinessChange = (checked: boolean) => {
-    form.setValue('isBusiness', checked, { shouldValidate: true });
-    if (!checked) {
-      form.setValue('businessName', '', { shouldValidate: false });
+  const handleSelectInquiryType = (value: "Personal" | "Business" | "Other") => {
+    form.setValue('inquiryType', value, { shouldValidate: true });
+    if(value !== 'Business') {
+        form.setValue('businessName', '', { shouldValidate: false });
     }
+    handleNextStep();
   }
 
   const handleTriggerMessageClick = (message: string) => {
@@ -178,29 +190,41 @@ export default function ContactSection({ id }: ContactSectionProps) {
     const stepConfig = activeSteps[currentStep];
     const Icon = stepConfig.icon;
     
-    if (stepConfig.field === 'isBusiness') {
+    if (stepConfig.field === 'inquiryType' && stepConfig.options) {
         return (
              <motion.div
-                key="isBusinessStep"
+                key="inquiryTypeStep"
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="w-full max-w-sm mx-auto flex flex-col items-center"
+                className="w-full max-w-sm mx-auto flex flex-col items-center gap-3"
              >
-                <FormLabel
-                    htmlFor='is-business-checkbox'
-                    className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm w-full cursor-pointer hover:bg-muted/50"
-                >
-                    <Checkbox
-                        id="is-business-checkbox"
-                        checked={isBusiness}
-                        onCheckedChange={handleIsBusinessChange}
-                    />
-                    <span className="font-normal text-base">
-                        This is a business inquiry
-                    </span>
-                </FormLabel>
+                {(stepConfig.options as {label: "Personal" | "Business" | "Other", icon: React.ElementType}[]).map(option => {
+                    const OptionIcon = option.icon;
+                    const isSelected = inquiryType === option.label;
+                    return (
+                        <motion.button
+                            key={option.label}
+                            type="button"
+                            variants={pillVariants}
+                            whileHover="hover"
+                            whileTap="tap"
+                            onClick={() => handleSelectInquiryType(option.label)}
+                            className={cn(
+                                "p-3 w-full rounded-lg border text-base font-medium transition-all duration-200",
+                                isSelected
+                                    ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                    : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                            )}
+                        >
+                            <div className="flex items-center justify-center gap-2">
+                                <OptionIcon className="h-5 w-5" />
+                                <span className="font-semibold">{option.label}</span>
+                            </div>
+                        </motion.button>
+                    )
+                })}
              </motion.div>
         )
     }
