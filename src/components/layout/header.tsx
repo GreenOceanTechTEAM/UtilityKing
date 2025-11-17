@@ -152,9 +152,12 @@ export default function Header({ sections }: HeaderProps) {
             </Dialog>
 
             <ThemeSelector />
-            <Button asChild size="sm" className="hidden md:flex">
-                <Link href="#compare">Compare Now</Link>
-            </Button>
+
+            <div className="hidden md:flex">
+                <Button asChild size="sm">
+                    <Link href="#compare">Compare Now</Link>
+                </Button>
+            </div>
 
             {/* Mobile Nav */}
             <div className="md:hidden">
