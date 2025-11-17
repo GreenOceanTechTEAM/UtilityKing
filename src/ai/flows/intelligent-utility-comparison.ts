@@ -49,16 +49,12 @@ const prompt = ai.definePrompt({
   name: 'intelligentUtilityComparisonPrompt',
   input: {schema: IntelligentUtilityComparisonInputSchema},
   output: {schema: IntelligentUtilityComparisonOutputSchema},
-  prompt: `You are an AI assistant that compares utility plans based on user data and preferences.
-  You will be given a list of pre-vetted, recommended plans from our live database. Your only job is to provide a friendly, conversational summary of the results.
-  Do not create your own recommendations. Your summary should highlight why the provided plans are a good fit for the user based on their stated preferences.
-  You must also pass through the recommended plans you were given, unmodified, in the 'recommendedPlans' field of your response.
+  prompt: `You are an AI assistant. Given the user's location, usage, and preferences, provide a conversational summary.
+  The actual plan recommendations will be provided separately. Your job is only to create the summary.
 
   User's Location: {{{location}}}
   User's Usage Data: {{{usageData}}}
   User's Preferences: {{{preferences}}}
-
-  JSON Output:
   `,
 });
 
@@ -69,9 +65,8 @@ const intelligentUtilityComparisonFlow = ai.defineFlow(
     outputSchema: IntelligentUtilityComparisonOutputSchema,
   },
   async input => {
-    // In a real RAG implementation, this is where we would call a tool
-    // to fetch live data based on the input.
-    // For now, we simulate the AI just creating a summary.
+    // This flow is now simplified and primarily for generating a summary if needed elsewhere.
+    // The main comparison logic in the UI does not use this AI call anymore.
     const {output} = await prompt(input);
     return output!;
   }

@@ -47,7 +47,6 @@ const analysisLines = [
 ];
 
 const wizardSteps = [
-    // --- PART 1 ---
     {
         step: 1,
         part: 1,
@@ -91,7 +90,6 @@ const wizardSteps = [
         aiMessage: "Do you prefer tariffs from 100% renewable energy suppliers?",
         options: [{ label: "Yes", icon: Leaf }, { label: "No" }],
     },
-    // --- PART 2 ---
     {
         step: 5,
         part: 2,
@@ -301,31 +299,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         
         const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
         
-        let finalResult: IntelligentUtilityComparisonOutput;
-
-        try {
-            const aiSummary = await intelligentUtilityComparison({
-                usageData: `Usage: ${requestBody.usage} kWh/year`,
-                preferences: `Preferences: ${requestBody.preferences.join(', ')}. Renewable: ${requestBody.renewable}.`,
-                location: requestBody.postcode,
-            });
-
-            finalResult = {
-                comparisonSummary: aiSummary.comparisonSummary,
-                recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
-            };
-        } catch (aiError) {
-            console.error("AI summary failed, proceeding with default summary:", aiError);
-            toast({
-                variant: "default",
-                title: "AI Assistant is Busy",
-                description: "Displaying live results directly. The AI summary is temporarily unavailable.",
-            });
-            finalResult = {
-                comparisonSummary: "Here are your personalized results based on the latest market data.",
-                recommendedPlans: unwrappedData.recommendedPlans || unwrappedData,
-            };
-        }
+        // Directly display results from the webhook
+        const finalResult: IntelligentUtilityComparisonOutput = {
+            comparisonSummary: "Here are your personalized results based on the latest market data.",
+            recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
+        };
 
         setComparisonResult(finalResult);
 
@@ -722,3 +700,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
