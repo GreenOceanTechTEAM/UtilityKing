@@ -69,16 +69,14 @@ export default function ContactSection({ id }: ContactSectionProps) {
   const isBusiness = form.watch("isBusiness");
 
   const handleNextStep = async () => {
-    const currentField = steps[currentStep].field as keyof z.infer<typeof formSchema>;
+    const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     let isValid = await form.trigger(currentField);
     
     if(currentField === 'isBusiness') {
-      // Always allow to proceed from the business checkbox step.
       isValid = true;
        if(isBusiness) {
          // If it is a business, just move to business name step
        } else {
-         // If not a business, skip business name and go to message
          setCurrentStep(currentStep + 2);
          return;
        }
@@ -122,6 +120,9 @@ export default function ContactSection({ id }: ContactSectionProps) {
     setIsLoading(true);
     
     try {
+      if (!firestore) {
+        throw new Error("Firestore is not initialized");
+      }
       const submissionsCollection = collection(firestore, 'contact_submissions');
       await addDoc(submissionsCollection, {
         ...values,
@@ -151,6 +152,20 @@ export default function ContactSection({ id }: ContactSectionProps) {
     : steps;
   const progress = ((currentStep + 1) / activeSteps.length) * 100;
 
+  const handleIsBusinessChange = (checked: boolean) => {
+    form.setValue('isBusiness', checked, { shouldValidate: true });
+    // This timeout gives the UI a moment to update before changing the step.
+    setTimeout(() => {
+        if (checked) {
+            // Move to the business name step
+            setCurrentStep(3);
+        } else {
+            // Skip business name and move to the message step
+            setCurrentStep(3); // This will now be the message step index in the 'not business' flow
+        }
+    }, 100);
+  }
+
   const renderStep = () => {
     const stepConfig = activeSteps[currentStep];
     const Icon = stepConfig.icon;
@@ -166,17 +181,12 @@ export default function ContactSection({ id }: ContactSectionProps) {
                 className="w-full max-w-sm mx-auto flex flex-col items-center"
              >
                 <div 
-                    onClick={() => {
-                        const newIsBusiness = !isBusiness;
-                        form.setValue('isBusiness', newIsBusiness, { shouldValidate: true });
-                    }}
+                    onClick={() => handleIsBusinessChange(!isBusiness)}
                     className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm cursor-pointer hover:bg-muted/50 w-full"
                 >
                     <Checkbox
                         checked={isBusiness}
-                        onCheckedChange={(checked) => {
-                            form.setValue('isBusiness', !!checked, { shouldValidate: true });
-                        }}
+                        onCheckedChange={(checked) => handleIsBusinessChange(!!checked)}
                     />
                     <FormLabel className="cursor-pointer font-normal text-base">
                         This is a business inquiry
@@ -260,7 +270,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
                 <div className="flex justify-end gap-4 pt-4">
                   {currentStep < activeSteps.length - 1 ? (
-                    <Button type="button" size="lg" onClick={handleNextStep} disabled={!form.getFieldState(activeSteps[currentStep].field as any).isDirty && !isBusiness}>
+                    <Button type="button" size="lg" onClick={handleNextStep} disabled={!form.getFieldState(activeSteps[currentStep].field as any).isDirty || activeSteps[currentStep].field === 'isBusiness'}>
                       Next
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -288,3 +298,5 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
+
+    
