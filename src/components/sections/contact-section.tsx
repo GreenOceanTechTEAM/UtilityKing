@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase, Sparkles } from 'lucide-react';
+import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase, Sparkles, ChevronLeft } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '../ui/checkbox';
 import { cn } from '@/lib/utils';
@@ -87,11 +87,18 @@ export default function ContactSection({ id }: ContactSectionProps) {
         setCurrentStep(currentStep + 1);
     }
   };
+
+  const handlePrevStep = () => {
+    if (currentStep > 0) {
+      setCurrentStep(currentStep - 1);
+    }
+  };
   
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
-        if (activeSteps[currentStep].field !== 'message') {
+        const currentField = activeSteps[currentStep].field;
+        if (currentField !== 'message' && currentField !== 'isBusiness') {
             handleNextStep();
         }
     }
@@ -105,6 +112,11 @@ export default function ContactSection({ id }: ContactSectionProps) {
         const fieldState = form.getFieldState(stepField);
         if(fieldState.invalid) {
           setCurrentStep(i);
+          toast({
+            variant: "destructive",
+            title: "Incomplete Field",
+            description: fieldState.error?.message,
+          });
           return;
         }
       }
@@ -145,10 +157,15 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   const handleIsBusinessChange = (checked: boolean) => {
     form.setValue('isBusiness', checked, { shouldValidate: true });
-    // Reset businessName if unchecked
     if (!checked) {
       form.setValue('businessName', '', { shouldValidate: false });
     }
+    
+    setTimeout(() => {
+        if(currentStep === 2) {
+            setCurrentStep(currentStep + 1);
+        }
+    }, 100);
   }
 
   const handleTriggerMessageClick = (message: string) => {
@@ -171,12 +188,12 @@ export default function ContactSection({ id }: ContactSectionProps) {
              >
                 <div 
                     className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm w-full cursor-pointer hover:bg-muted/50"
-                    onClick={() => handleIsBusinessChange(!isBusiness)}
+                     onClick={() => handleIsBusinessChange(!isBusiness)}
                 >
                     <Checkbox
                         id="is-business-checkbox"
                         checked={isBusiness}
-                        onCheckedChange={handleIsBusinessChange}
+                         onCheckedChange={handleIsBusinessChange}
                     />
                     <FormLabel htmlFor='is-business-checkbox' className="cursor-pointer font-normal text-base">
                         This is a business inquiry
@@ -279,9 +296,16 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     </AnimatePresence>
                 </div>
 
-                <div className="flex justify-end gap-4 pt-4">
+                <div className="flex justify-center items-center gap-4 pt-4">
+                  {currentStep > 0 && (
+                     <Button type="button" variant="outline" size="lg" onClick={handlePrevStep}>
+                      <ChevronLeft className="mr-2 h-4 w-4" />
+                      Back
+                    </Button>
+                  )}
+
                   {currentStep < activeSteps.length - 1 ? (
-                    <Button type="button" size="lg" onClick={handleNextStep} disabled={activeSteps[currentStep].field === 'isBusiness'}>
+                    <Button type="button" size="lg" onClick={handleNextStep}>
                       Next
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
@@ -309,3 +333,5 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
+
+    
