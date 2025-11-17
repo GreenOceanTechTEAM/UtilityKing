@@ -8,7 +8,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from '@/ai/flows/intelligent-utility-comparison';
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
@@ -23,6 +22,7 @@ import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
 
 type ComparisonDemoProps = {
   id: string;
@@ -299,7 +299,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         
         const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
         
-        // Directly display results from the webhook
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
             recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
@@ -700,6 +699,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-    
