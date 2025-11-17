@@ -16,27 +16,28 @@ export default function WebhookTestPage() {
   const [result, setResult] = useState<WebhookResult | null>(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  const webhookUrl = 'https://utilityking.co.uk/testreactasp.aspx';
+  // The proxy route in our Next.js app
+  const webhookUrl = '/api/webhook-proxy'; 
+  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx';
 
   useEffect(() => {
     const callWebhook = async () => {
       setIsLoading(true);
       try {
+        // The request is now made to our own backend
         const response = await fetch(webhookUrl, {
-          method: 'POST', // or 'GET' if that's what your endpoint expects
+          method: 'POST',
           headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
-          // You can add a body here if your endpoint requires it
-          // body: JSON.stringify({ test: 'true' }),
         });
 
         const status = response.status;
         const responseText = await response.text();
 
         if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${status}. Response: ${responseText}`);
+          throw new Error(`Proxy error! Status: ${status}. Response: ${responseText}`);
         }
         
         try {
@@ -44,7 +45,7 @@ export default function WebhookTestPage() {
           setResult({ data, error: null, status });
         } catch (parseError) {
           // Handle cases where response is not valid JSON
-          throw new Error(`Response was not valid JSON. Status: ${status}. Response: ${responseText}`);
+          setResult({ data: {rawResponse: responseText}, error: null, status });
         }
 
       } catch (error: any) {
@@ -63,17 +64,17 @@ export default function WebhookTestPage() {
         <CardHeader>
           <CardTitle className="flex items-center gap-2">
             <Server className="h-5 w-5" />
-            Webhook Connection Test
+            Webhook Proxy Test
           </CardTitle>
           <p className="text-sm text-muted-foreground">
-            Attempting to connect to: <code className="bg-muted px-1 py-0.5 rounded">{webhookUrl}</code>
+            Attempting to connect to: <code className="bg-muted px-1 py-0.5 rounded">{targetUrl}</code> via internal proxy.
           </p>
         </CardHeader>
         <CardContent>
           {isLoading && (
             <div className="flex items-center gap-3 text-lg text-muted-foreground">
               <Loader2 className="h-6 w-6 animate-spin" />
-              <span>Connecting to endpoint...</span>
+              <span>Connecting via proxy...</span>
             </div>
           )}
 
