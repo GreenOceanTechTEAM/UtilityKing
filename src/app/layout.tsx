@@ -9,6 +9,7 @@ import ScrollToTop from '@/components/layout/scroll-to-top';
 import { ThemeProvider } from '@/components/shared/theme-provider';
 import Script from 'next/script';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
   title: 'Utility King AI',
@@ -30,16 +31,18 @@ export default function RootLayout({
         <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:wght@400;500&display=swap" rel="stylesheet" />
       </head>
       <body className={cn('font-body antialiased')}>
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="theme-arctic"
-          themes={['theme-arctic', 'theme-solar-neon', 'theme-aqua-tech']}
-        >
-          <ScrollProgressBar />
-          {children}
-          <ScrollToTop />
-          <Toaster />
-        </ThemeProvider>
+        <FirebaseClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="theme-arctic"
+            themes={['theme-arctic', 'theme-solar-neon', 'theme-aqua-tech']}
+          >
+            <ScrollProgressBar />
+            {children}
+            <ScrollToTop />
+            <Toaster />
+          </ThemeProvider>
+        </FirebaseClientProvider>
         
         {/* @ts-ignore */}
         <vapi-widget

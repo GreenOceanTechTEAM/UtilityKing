@@ -16,6 +16,8 @@ import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase } from 'lu
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '../ui/checkbox';
 import { cn } from '@/lib/utils';
+import { useFirebase } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 type ContactSectionProps = {
   id: string;
@@ -27,10 +29,11 @@ const formSchema = z.object({
   isBusiness: z.boolean().default(false),
   businessName: z.string().optional(),
   message: z.string().min(10, "Message must be at least 10 characters long.").max(500, "Message must be less than 500 characters."),
-}).refine(data => !data.isBusiness || (data.isBusiness && data.businessName), {
+}).refine(data => !data.isBusiness || (data.isBusiness && data.businessName && data.businessName.length > 0), {
   message: "Business name is required for business inquiries",
   path: ["businessName"],
 });
+
 
 const stepVariants = {
   initial: { opacity: 0, x: 50 },
@@ -49,6 +52,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
   const { toast } = useToast();
+  const { firestore } = useFirebase();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -66,14 +70,27 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   const handleNextStep = async () => {
     const currentField = steps[currentStep].field as keyof z.infer<typeof formSchema>;
-    const isValid = await form.trigger(currentField);
+    let isValid = await form.trigger(currentField);
     
-    if(currentField === 'isBusiness' && isBusiness) {
-       const businessNameValid = await form.trigger('businessName');
-       if(!businessNameValid) return;
+    if(currentField === 'isBusiness') {
+      // Always allow to proceed from the business checkbox step.
+      isValid = true;
+       if(isBusiness) {
+         // If it is a business, just move to business name step
+       } else {
+         // If not a business, skip business name and go to message
+         setCurrentStep(currentStep + 2);
+         return;
+       }
+    }
+    
+    if (isBusiness && currentField === 'email') {
+        setCurrentStep(currentStep + 1);
+        return;
     }
 
-    if (isValid && currentStep < steps.length - 1) {
+
+    if (isValid && currentStep < activeSteps.length - 1) {
         setCurrentStep(currentStep + 1);
     }
   };
@@ -89,21 +106,49 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const isValid = await form.trigger();
-    if (!isValid) return;
+    if (!isValid) {
+      // Find the first invalid step and go to it
+      for(let i=0; i< activeSteps.length; i++) {
+        const stepField = activeSteps[i].field as keyof z.infer<typeof formSchema>;
+        const fieldState = form.getFieldState(stepField);
+        if(fieldState.invalid) {
+          setCurrentStep(i);
+          return;
+        }
+      }
+      return;
+    };
 
     setIsLoading(true);
-    console.log(values);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-    setIsLoading(false);
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. We'll get back to you shortly.",
-    });
-    form.reset();
-    setCurrentStep(0);
+    
+    try {
+      const submissionsCollection = collection(firestore, 'contact_submissions');
+      await addDoc(submissionsCollection, {
+        ...values,
+        createdAt: serverTimestamp(),
+      });
+
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. We'll get back to you shortly.",
+      });
+      form.reset();
+      setCurrentStep(0);
+    } catch (error) {
+       console.error("Error writing document: ", error);
+       toast({
+        variant: "destructive",
+        title: "Uh oh! Something went wrong.",
+        description: "There was a problem with your request.",
+       });
+    } finally {
+      setIsLoading(false);
+    }
   }
   
-  const activeSteps = isBusiness ? [...steps.slice(0,3), { field: "businessName", title: "What's your business name?", placeholder: "ACME Inc.", icon: Building }, ...steps.slice(3)] : steps;
+  const activeSteps = isBusiness 
+    ? [...steps.slice(0,3), { field: "businessName", title: "What's your business name?", placeholder: "ACME Inc.", icon: Building }, ...steps.slice(3)] 
+    : steps;
   const progress = ((currentStep + 1) / activeSteps.length) * 100;
 
   const renderStep = () => {
@@ -124,7 +169,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     onClick={() => {
                         const newIsBusiness = !isBusiness;
                         form.setValue('isBusiness', newIsBusiness, { shouldValidate: true });
-                        setTimeout(() => handleNextStep(), 100);
                     }}
                     className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm cursor-pointer hover:bg-muted/50 w-full"
                 >
@@ -132,10 +176,9 @@ export default function ContactSection({ id }: ContactSectionProps) {
                         checked={isBusiness}
                         onCheckedChange={(checked) => {
                             form.setValue('isBusiness', !!checked, { shouldValidate: true });
-                            if(!checked) setTimeout(() => handleNextStep(), 100);
                         }}
                     />
-                    <FormLabel className="cursor-pointer font-normal">
+                    <FormLabel className="cursor-pointer font-normal text-base">
                         This is a business inquiry
                     </FormLabel>
                 </div>
@@ -155,7 +198,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                             {stepConfig.isTextarea ? (
                                 <Textarea placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} rows={4} className="pl-10 text-base" />
                             ) : (
-                                <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base"/>
+                                <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base" autoFocus/>
                             )}
                         </div>
                     </FormControl>
@@ -217,7 +260,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
                 <div className="flex justify-end gap-4 pt-4">
                   {currentStep < activeSteps.length - 1 ? (
-                    <Button type="button" size="lg" onClick={handleNextStep} disabled={!form.formState.isValid}>
+                    <Button type="button" size="lg" onClick={handleNextStep} disabled={!form.getFieldState(activeSteps[currentStep].field as any).isDirty && !isBusiness}>
                       Next
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
