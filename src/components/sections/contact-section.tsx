@@ -12,7 +12,7 @@ import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { Form, FormControl, FormField, FormItem, FormMessage, FormLabel } from '@/components/ui/form';
 import { useToast } from '@/hooks/use-toast';
-import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase } from 'lucide-react';
+import { Loader2, Send, ChevronRight, User, Mail, Building, Briefcase, Sparkles } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Checkbox } from '../ui/checkbox';
 import { cn } from '@/lib/utils';
@@ -48,6 +48,12 @@ const steps = [
     { field: "message", title: "How can we help you today?", placeholder: "Your message here...", icon: Send, isTextarea: true },
 ];
 
+const triggerMessages = [
+    { text: "My bill is too high" },
+    { text: "My broadband is too slow" },
+    { text: "I'm having trouble switching" },
+];
+
 export default function ContactSection({ id }: ContactSectionProps) {
   const [isLoading, setIsLoading] = useState(false);
   const [currentStep, setCurrentStep] = useState(0);
@@ -75,14 +81,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
   const handleNextStep = async () => {
     const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     
-    if (currentField === 'isBusiness') {
-        const nextStepIndex = currentStep + 1;
-        if(nextStepIndex < activeSteps.length) {
-            setCurrentStep(nextStepIndex);
-        }
-        return;
-    }
-
     let isValid = await form.trigger(currentField);
     
     if (isValid && currentStep < activeSteps.length - 1) {
@@ -102,7 +100,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const isValid = await form.trigger();
     if (!isValid) {
-      // Find the first invalid step and go to it
       for(let i=0; i< activeSteps.length; i++) {
         const stepField = activeSteps[i].field as keyof z.infer<typeof formSchema>;
         const fieldState = form.getFieldState(stepField);
@@ -148,6 +145,14 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   const handleIsBusinessChange = (checked: boolean) => {
     form.setValue('isBusiness', checked, { shouldValidate: true });
+    // Reset businessName if unchecked
+    if (!checked) {
+      form.setValue('businessName', '', { shouldValidate: false });
+    }
+  }
+
+  const handleTriggerMessageClick = (message: string) => {
+    form.setValue('message', message, { shouldValidate: true });
   }
 
   const renderStep = () => {
@@ -158,14 +163,15 @@ export default function ContactSection({ id }: ContactSectionProps) {
         return (
              <motion.div
                 key="isBusinessStep"
-                initial={{ opacity: 0, height: 0 }}
-                animate={{ opacity: 1, height: 'auto' }}
-                exit={{ opacity: 0, height: 0 }}
-                transition={{ duration: 0.3, ease: 'easeInOut' }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                transition={{ duration: 0.3 }}
                 className="w-full max-w-sm mx-auto flex flex-col items-center"
              >
                 <div 
-                    className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm w-full"
+                    className="flex flex-row items-center space-x-3 space-y-0 rounded-md border p-4 shadow-sm w-full cursor-pointer hover:bg-muted/50"
+                    onClick={() => handleIsBusinessChange(!isBusiness)}
                 >
                     <Checkbox
                         id="is-business-checkbox"
@@ -234,7 +240,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     />
                 </div>
 
-                <div className="relative h-28 overflow-hidden">
+                <div className="relative h-[200px] overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
@@ -248,13 +254,34 @@ export default function ContactSection({ id }: ContactSectionProps) {
                                 <h3 className="text-lg font-semibold text-foreground">{activeSteps[currentStep].title}</h3>
                             </div>
                             {renderStep()}
+                            {activeSteps[currentStep].field === 'message' && (
+                              <motion.div 
+                                initial={{opacity: 0, y: 10}}
+                                animate={{opacity: 1, y: 0, transition: {delay: 0.3}}}
+                                className="flex flex-wrap gap-2 justify-center mt-4 max-w-sm mx-auto"
+                              >
+                                {triggerMessages.map(msg => (
+                                  <Button
+                                    key={msg.text}
+                                    type="button"
+                                    variant="outline"
+                                    size="sm"
+                                    className="text-xs h-auto py-1.5"
+                                    onClick={() => handleTriggerMessageClick(msg.text)}
+                                  >
+                                    <Sparkles className="w-3 h-3 mr-2 text-accent" />
+                                    {msg.text}
+                                  </Button>
+                                ))}
+                              </motion.div>
+                            )}
                         </motion.div>
                     </AnimatePresence>
                 </div>
 
                 <div className="flex justify-end gap-4 pt-4">
                   {currentStep < activeSteps.length - 1 ? (
-                    <Button type="button" size="lg" onClick={handleNextStep}>
+                    <Button type="button" size="lg" onClick={handleNextStep} disabled={activeSteps[currentStep].field === 'isBusiness'}>
                       Next
                       <ChevronRight className="ml-2 h-4 w-4" />
                     </Button>
