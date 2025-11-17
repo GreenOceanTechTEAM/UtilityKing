@@ -9,7 +9,7 @@ import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud, CalendarDays } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -36,9 +36,10 @@ const analysisLines = [
 const wizardSteps = [
     {
         step: 1,
+        part: 1,
         key: 'premisesType',
         title: "Premises Type",
-        aiMessage: "What type of premises do you want to compare?",
+        aiMessage: "First, what type of premises do you want to compare?",
         options: [
             { label: "Home", icon: Home },
             { label: "Office", icon: Building },
@@ -48,24 +49,10 @@ const wizardSteps = [
     },
     {
         step: 2,
-        key: 'usesHeating',
-        title: "Heating Usage",
-        aiMessage: "Does your premises use heating?",
-        options: [{ label: "Yes" }, { label: "No" }],
-    },
-    {
-        step: 3,
-        key: 'occupantsCategory',
-        title: "Occupants",
-        aiMessage: "How many people use this premises?",
-        options: [{ label: "Under 5" }, { label: "Over 5" }],
-        skipIf: (selections: any) => selections.premisesType === 'Factory',
-    },
-    {
-        step: 4,
+        part: 1,
         key: 'electricitySupplier',
-        title: "Electricity Supplier",
-        aiMessage: "Who is your electricity supplier?",
+        title: "Current Supplier",
+        aiMessage: "Who is your current electricity supplier?",
         options: [
             { label: "Octopus Energy" }, { label: "British Gas" }, { label: "EDF Energy" },
             { label: "E.ON Next" }, { label: "Ovo Energy" }, { label: "Scottish Power" },
@@ -77,7 +64,8 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 5,
+        step: 3,
+        part: 1,
         key: 'usage',
         title: "Energy Usage",
         aiMessage: "How do you want to provide your energy usage?",
@@ -87,18 +75,33 @@ const wizardSteps = [
         ],
         isComplex: true,
     },
-    {
-        step: 6,
+     {
+        step: 4,
+        part: 1,
         key: 'billAvailable',
-        title: "Bill Available",
-        aiMessage: "Do you have your bill handy?",
-        options: [{ label: "Yes" }, { label: "No" }],
+        title: "Upload a Bill",
+        aiMessage: "To be more accurate, do you have a recent bill handy?",
+        options: [{ label: "Yes, I'll upload it" }, { label: "No, I'll skip" }],
     },
     {
-        step: 7,
+        step: 5,
+        part: 2,
+        key: 'contractEndDate',
+        title: "Contract End Date",
+        aiMessage: "When does your current contract end?",
+        isInput: true,
+        inputType: "date",
+        customPlaceholder: "Select a date",
+        icon: CalendarDays,
+        options: [],
+        additionalOptions: ["Not sure"],
+    },
+    {
+        step: 6,
+        part: 2,
         key: 'preferences',
         title: "Your Preferences",
-        aiMessage: "What matters most to you?",
+        aiMessage: "Finally, what matters most to you in a new plan?",
         options: [
             { label: "Cheapest price" }, { label: "Fixed rate contract" }, { label: "Flexible / no exit fees" },
             { label: "100% renewable" }, { label: "Smart meter compatible" }, { label: "Fastest switching" }
@@ -106,7 +109,8 @@ const wizardSteps = [
         isMultiSelect: true,
     },
     {
-        step: 8,
+        step: 7,
+        part: 2,
         key: 'postcode',
         title: "Postcode",
         aiMessage: "What’s your postcode?",
@@ -143,9 +147,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps.filter(step => !step.skipIf || !step.skipIf(selections));
   }, [selections]);
-
+  
   const currentWizardStepConfig = wizardSteps[currentStep];
   const currentVisibleStepIndex = activeWizardSteps.findIndex(step => step.step === currentWizardStepConfig?.step);
+  const currentPart = currentWizardStepConfig?.part || 1;
+
+  const totalParts = Math.max(...wizardSteps.map(s => s.part));
+  const stepsInCurrentPart = activeWizardSteps.filter(s => s.part === currentPart).length;
+  const completedStepsInCurrentPart = activeWizardSteps.filter(s => s.part === currentPart && s.step <= (currentWizardStepConfig?.step || 0)).length;
 
   useEffect(() => {
     setIsTyping(true);
@@ -154,6 +163,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }, [currentStep]);
 
   const handleNextStep = () => {
+    // Logic for part 1 completion
+    if (currentPart === 1 && completedStepsInCurrentPart === stepsInCurrentPart) {
+      // Here we would save to Firestore for step 1
+      toast({ title: "Information Saved (Simulated)", description: "Moving to the next step." });
+    }
+
     let nextStepIndex = currentStep + 1;
     while (nextStepIndex < wizardSteps.length) {
         const nextStepConfig = wizardSteps[nextStepIndex];
@@ -197,13 +212,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    // Auto-advance only on simple, single-choice steps that are NOT the bill step
-    if (!isMulti && !currentWizardStepConfig.isComplex && !currentWizardStepConfig.isInput && currentWizardStepConfig.key !== 'billAvailable') {
-        setTimeout(() => handleNextStep(), 300);
-    }
-
-    if (currentWizardStepConfig.key === 'billAvailable' && option === 'No') {
-      setTimeout(() => handleNextStep(), 300);
+    if (!isMulti && !currentWizardStepConfig.isComplex && !currentWizardStepConfig.isInput) {
+        if (currentWizardStepConfig.key === 'billAvailable' && option === "No, I'll skip") {
+             setTimeout(() => handleNextStep(), 300);
+        } else if (currentWizardStepConfig.key !== 'billAvailable') {
+            setTimeout(() => handleNextStep(), 300);
+        }
     }
   };
   
@@ -231,6 +245,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.isInput) {
+        // For contract end date, allow "Not sure"
+        if(step.key === 'contractEndDate') {
+            return !!selection;
+        }
         return !!selection;
     }
     
@@ -239,7 +257,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
 
     if(step.key === 'billAvailable') {
-      return selections.billAvailable === 'Yes' || selections.billAvailable === 'No';
+      return selections.billAvailable === "Yes, I'll upload it" || selections.billAvailable === "No, I'll skip";
     }
 
     if(step.additionalOptions?.includes(selection)) {
@@ -253,13 +271,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
+    // Here we would save the second part of the data to Firestore.
+
     const mappedValues = {
         usageData: `${selections['usage']}: ${selections['usageInputRaw']}` || 'Not specified',
-        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}. Premises: ${selections['premisesType']}, Occupants: ${selections['occupantsCategory']}`,
+        preferences: `Preferences: ${(selections['preferences'] || []).join(', ') || 'Cheapest'}. Premises: ${selections['premisesType']}. Contract End: ${selections['contractEndDate'] || 'N/A'}`,
         location: selections['postcode'] || 'London'
     }
 
     try {
+      // This is where we'd make the request to our server with the collected info
       await new Promise(resolve => setTimeout(resolve, analysisLines.length * 800 + 500));
       const result = await intelligentUtilityComparison(mappedValues);
       setComparisonResult(result);
@@ -275,7 +296,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const progress = ((currentVisibleStepIndex + 1) / (activeWizardSteps.length)) * 100;
+  const progress = (completedStepsInCurrentPart / stepsInCurrentPart) * 100;
 
   const getPlaceholderForUsage = () => {
     if (selections.usage === 'Consumption (kWh)') {
@@ -286,6 +307,26 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     return "";
   }
+  
+  const getButtonText = () => {
+    if (currentPart === 1 && completedStepsInCurrentPart === stepsInCurrentPart) {
+      return "Save & Continue";
+    }
+    if (currentWizardStepConfig?.key === 'postcode' && isStepComplete(currentStep)) {
+      return "Compare Energy Deals";
+    }
+    return "Next Step";
+  }
+
+  const handlePrimaryAction = () => {
+    const buttonText = getButtonText();
+    if(buttonText === "Compare Energy Deals") {
+        handleFormSubmit();
+    } else {
+        handleNextStep();
+    }
+  }
+
 
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
@@ -313,7 +354,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                       <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
                         <ChevronLeft className="h-5 w-5" />
                       </Button>
-                      <span className="text-sm font-medium text-muted-foreground">Step {currentVisibleStepIndex + 1} of {activeWizardSteps.length}</span>
+                      <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
                       <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
                         <ChevronRight className="h-5 w-5" />
                       </Button>
@@ -411,7 +452,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             ))}
                                         </div>
 
-                                        {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === 'Yes' && (
+                                        {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
                                                 <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
                                                     <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
@@ -419,7 +460,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
                                                     <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                                                 </div>
-                                                <Button size="lg" className="w-full h-12 text-base mt-4" onClick={handleNextStep}>Next Step &rarr;</Button>
                                             </motion.div>
                                         )}
 
@@ -441,9 +481,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                         {currentWizardStepConfig.isInput && (
                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
                                                 <div className="relative">
+                                                    {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
                                                     <Input 
+                                                        type={currentWizardStepConfig.inputType || "text"}
                                                         placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                        className="h-12 text-base text-center"
+                                                        className="h-12 text-base text-center pl-10"
                                                         value={selections[currentWizardStepConfig.key] || ''}
                                                         onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
                                                         onKeyDown={handleCustomSubmit}
@@ -453,20 +495,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             </motion.div>
                                         )}
                                         
-                                        {(currentWizardStepConfig.isMultiSelect || currentWizardStepConfig.key === 'usage' || currentWizardStepConfig.isInput) && isStepComplete(currentStep) && currentWizardStepConfig.step < activeWizardSteps.length && (
-                                             <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                <Button size="lg" className="w-full h-12 text-base mt-4" onClick={handleNextStep}>Next Step &rarr;</Button>
-                                             </motion.div>
-                                        )}
-
-                                        {currentWizardStepConfig.key === 'postcode' && isStepComplete(currentStep) && !isLoading && (
-                                            <motion.div initial={{opacity: 0}} animate={{opacity: 1}} transition={{delay: 0.3}}>
+                                        {(isStepComplete(currentStep)) && (
+                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
                                                 <Button 
-                                                    size="lg"
-                                                    className="w-full mt-6 text-lg h-12 glowing-btn-border font-semibold" 
-                                                    onClick={handleFormSubmit}
+                                                    size="lg" 
+                                                    className="w-full h-12 text-base mt-4" 
+                                                    onClick={handlePrimaryAction}
+                                                    disabled={isLoading && getButtonText() === "Compare Energy Deals"}
                                                 >
-                                                    COMPARE ENERGY DEALS &rarr;
+                                                    {isLoading && getButtonText() === "Compare Energy Deals" ? <Loader2 className="animate-spin" /> : getButtonText()}
+                                                    {getButtonText() !== "Compare Energy Deals" && <ArrowRight className="ml-2 h-4 w-4" />}
                                                 </Button>
                                             </motion.div>
                                         )}
@@ -477,7 +515,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </AnimatePresence>
                     </div>
 
-                    {isLoading && (
+                    {isLoading && getButtonText() !== "Compare Energy Deals" && (
                          <div className="flex flex-col items-center justify-center min-h-[150px] p-8">
                             <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
                                 {analysisLines.map((line, index) => (
@@ -566,3 +604,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
