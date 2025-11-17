@@ -1,0 +1,124 @@
+/**
+ * @fileOverview Firestore Security Rules for Utility King AI.
+ *
+ * Core Philosophy:
+ * This ruleset enforces a strict user-ownership model for user-specific data
+ * (AI Comparisons) and provides public read access to static content.
+ *
+ * Data Structure:
+ * - /services/{serviceId}: Public collection of service data.
+ * - /value_propositions/{valuePropositionId}: Public collection of value proposition data.
+ * - /animated_cta_banners/{animatedCTABannerId}: Public collection of animated CTA banner data.
+ * - /users/{userId}: User profile data, accessible only to the user.
+ * - /users/{userId}/ai_comparisons/{aiComparisonId}: AI comparison data, accessible only to the owning user.
+ *
+ * Key Security Decisions:
+ * - Public read access to static collections (services, value_propositions, CTA banners).
+ * - Strict owner-only access to user profiles and AI comparisons.
+ * - Denormalization for Authorization: User ownership is enforced using path-based rules.
+ */
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    /**
+     * @description Allows anyone to read the list of services.  Only allows create, update, and delete operations to be performed if false.
+     * @path /services/{serviceId}
+     * @allow get, list: if true;
+     * @deny create, update, delete: if false;
+     * @principle Allows public read access to service data.
+     */
+    match /services/{serviceId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows anyone to read the list of value propositions.  Only allows create, update, and delete operations to be performed if false.
+     * @path /value_propositions/{valuePropositionId}
+     * @allow get, list: if true;
+     * @deny create, update, delete: if false;
+     * @principle Allows public read access to value proposition data.
+     */
+    match /value_propositions/{valuePropositionId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Allows anyone to read the list of animated CTA banners.  Only allows create, update, and delete operations to be performed if false.
+     * @path /animated_cta_banners/{animatedCTABannerId}
+     * @allow get, list: if true;
+     * @deny create, update, delete: if false;
+     * @principle Allows public read access to animated CTA banner data.
+     */
+    match /animated_cta_banners/{animatedCTABannerId} {
+      allow get, list: if true;
+      allow create, update, delete: if false;
+    }
+
+    /**
+     * @description Secures user profile data, allowing only the owner to read and write.
+     * @path /users/{userId}
+     * @allow get: if isOwner(userId);
+     * @allow list: if false;
+     * @allow create: if request.auth.uid == userId;
+     * @allow update: if isExistingOwner(userId);
+     * @allow delete: if isExistingOwner(userId);
+     * @principle Enforces document ownership for user profiles.
+     */
+    match /users/{userId} {
+      allow get: if isOwner(userId);
+      allow list: if false;
+      allow create: if request.auth.uid == userId;
+      allow update: if isExistingOwner(userId);
+      allow delete: if isExistingOwner(userId);
+    }
+
+    /**
+     * @description Secures AI comparison data, allowing only the owner (user) to read and write.
+     * @path /users/{userId}/ai_comparisons/{aiComparisonId}
+     * @allow get: if isOwner(userId);
+     * @allow list: if isOwner(userId);
+     * @allow create: if isOwner(userId) && request.resource.data.userId == userId;
+     * @allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+     * @allow delete: if isExistingOwner(userId);
+     * @principle Enforces document ownership for AI comparison data.
+     */
+    match /users/{userId}/ai_comparisons/{aiComparisonId} {
+      allow get: if isOwner(userId);
+      allow list: if isOwner(userId);
+      allow create: if isOwner(userId) && request.resource.data.userId == userId;
+      allow update: if isExistingOwner(userId) && request.resource.data.userId == resource.data.userId;
+      allow delete: if isExistingOwner(userId);
+    }
+
+    // --- Helper functions ---
+
+    /**
+     * @description Checks if the user is signed in.
+     * @returns {boolean} True if the user is signed in, false otherwise.
+     */
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    /**
+     * @description Checks if the requesting user is the owner of the resource based on the provided userId.
+     * @param {string} userId - The user ID to compare against the request's authentication UID.
+     * @returns {boolean} True if the user is the owner, false otherwise.
+     */
+    function isOwner(userId) {
+      return isSignedIn() && request.auth.uid == userId;
+    }
+
+     /**
+      * @description Checks if the requesting user is the owner of an existing document.
+      * @param {string} userId - The user ID to compare against the request's authentication UID.
+      * @returns {boolean} True if the user is the owner and the document exists, false otherwise.
+      */
+    function isExistingOwner(userId) {
+        return isOwner(userId) && resource != null;
+    }
+  }
+}

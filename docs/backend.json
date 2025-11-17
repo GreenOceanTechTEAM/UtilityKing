@@ -1,0 +1,254 @@
+{
+  "entities": {
+    "Service": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Service",
+      "type": "object",
+      "description": "Represents a service offered by Utility King AI, such as energy tariff switching or broadband plan matching.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the service."
+        },
+        "name": {
+          "type": "string",
+          "description": "The name of the service (e.g., 'Energy Tariff Switch')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the service."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon associated with the service."
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "description",
+        "icon"
+      ]
+    },
+    "ValueProposition": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "ValueProposition",
+      "type": "object",
+      "description": "Represents a value proposition offered by Utility King AI.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the value proposition."
+        },
+        "title": {
+          "type": "string",
+          "description": "The title of the value proposition (e.g., '100% impartial')."
+        },
+        "description": {
+          "type": "string",
+          "description": "A detailed description of the value proposition."
+        },
+        "icon": {
+          "type": "string",
+          "description": "Icon associated with the value proposition."
+        }
+      },
+      "required": [
+        "id",
+        "title",
+        "description",
+        "icon"
+      ]
+    },
+    "AIComparison": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AIComparison",
+      "type": "object",
+      "description": "Represents an AI-powered comparison of utility plans based on user input.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the AI comparison."
+        },
+        "userId": {
+          "type": "string",
+          "description": "Reference to User. (Relationship: User 1:N AIComparison)"
+        },
+        "userInput": {
+          "type": "string",
+          "description": "The user's input used for the comparison."
+        },
+        "comparisonResult": {
+          "type": "string",
+          "description": "The AI-generated comparison result."
+        },
+        "timestamp": {
+          "type": "string",
+          "description": "Timestamp of when the comparison was generated.",
+          "format": "date-time"
+        }
+      },
+      "required": [
+        "id",
+        "userId",
+        "userInput",
+        "comparisonResult",
+        "timestamp"
+      ]
+    },
+    "User": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "User",
+      "type": "object",
+      "description": "Represents a user of the Utility King AI platform.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the user."
+        },
+        "email": {
+          "type": "string",
+          "description": "User's email address.",
+          "format": "email"
+        },
+        "firstName": {
+          "type": "string",
+          "description": "User's first name."
+        },
+        "lastName": {
+          "type": "string",
+          "description": "User's last name."
+        }
+      },
+      "required": [
+        "id",
+        "email"
+      ]
+    },
+    "AnimatedCTABanner": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "AnimatedCTABanner",
+      "type": "object",
+      "description": "Represents a call to action banner with animations.",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique identifier for the CTA banner."
+        },
+        "type": {
+          "type": "string",
+          "description": "Type of CTA banner (e.g., 'quote', 'chat')."
+        },
+        "promptText": {
+          "type": "string",
+          "description": "The text prompt displayed on the banner."
+        },
+        "buttonText": {
+          "type": "string",
+          "description": "The text displayed on the call-to-action button."
+        }
+      },
+      "required": [
+        "id",
+        "type",
+        "promptText",
+        "buttonText"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "password",
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "structure": [
+      {
+        "path": "/services/{serviceId}",
+        "definition": {
+          "entityName": "Service",
+          "schema": {
+            "$ref": "#/backend/entities/Service"
+          },
+          "description": "Stores information about the services offered.  No user-specific authorization required.",
+          "params": [
+            {
+              "name": "serviceId",
+              "description": "The unique ID of the service."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/value_propositions/{valuePropositionId}",
+        "definition": {
+          "entityName": "ValueProposition",
+          "schema": {
+            "$ref": "#/backend/entities/ValueProposition"
+          },
+          "description": "Stores the value propositions offered by Utility King AI. No user-specific authorization required.",
+          "params": [
+            {
+              "name": "valuePropositionId",
+              "description": "The unique ID of the value proposition."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}/ai_comparisons/{aiComparisonId}",
+        "definition": {
+          "entityName": "AIComparison",
+          "schema": {
+            "$ref": "#/backend/entities/AIComparison"
+          },
+          "description": "Stores AI comparison data specific to a user. Authorization is based on path ownership.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The ID of the user."
+            },
+            {
+              "name": "aiComparisonId",
+              "description": "The ID of the AI comparison."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/users/{userId}",
+        "definition": {
+          "entityName": "User",
+          "schema": {
+            "$ref": "#/backend/entities/User"
+          },
+          "description": "Stores user profile data.  Authorization based on path ownership.",
+          "params": [
+            {
+              "name": "userId",
+              "description": "The unique ID of the user."
+            }
+          ]
+        }
+      },
+      {
+        "path": "/animated_cta_banners/{animatedCTABannerId}",
+        "definition": {
+          "entityName": "AnimatedCTABanner",
+          "schema": {
+            "$ref": "#/backend/entities/AnimatedCTABanner"
+          },
+          "description": "Stores data for animated call-to-action banners. No user-specific authorization required.",
+          "params": [
+            {
+              "name": "animatedCTABannerId",
+              "description": "The unique ID of the CTA banner."
+            }
+          ]
+        }
+      }
+    ],
+    "reasoning": "The Firestore data structure is designed to support the features of Utility King AI, focusing on authorization independence, clear access patterns, and efficient data retrieval. \n\n*   **/services collection:** Stores static service data (e.g., Energy Tariff Switch).  No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/value_propositions collection:** Stores static value proposition data (e.g., 100% impartial). No user-specific authorization is required, simplifying rules. QAPs are supported since there is no need for filtering based on user data.\n*   **/animated_cta_banners collection:** Stores static animated CTA banner data. No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/users/{userId}/ai_comparisons collection:** Stores user-specific AI comparison results. This structure follows the Path-Based Ownership access modeling, ensuring that only the user can access their comparisons. Authorization Independence is naturally achieved because access control is based solely on the path.  This directly supports QAPs as listing ai_comparisons is limited to a specific user.\n\nThis structure prioritizes security and scalability by:\n\n*   **Authorization Independence:** Avoiding `get()` calls in security rules. The `ai_comparisons` subcollection leverages path-based ownership, eliminating the need to fetch parent document data for authorization.\n*   **Clarity of Intent:** The structure makes authorization intent explicit by using path-based ownership for user-specific data.\n*   **DBAC:** Roles are managed implicitly by the Firestore structure, using `request.auth.uid` for authentication and path ownership for authorization.\n*   **QAPs:** The structure allows for secure listing operations by segregating user-specific data into subcollections with path-based ownership.\n*   **Invariants:** The structure supports data integrity by enforcing ownership and providing a clear structure for timestamps and denormalized data."
+  }
+}
