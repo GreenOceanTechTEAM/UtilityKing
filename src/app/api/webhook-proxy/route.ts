@@ -2,7 +2,7 @@
 import { NextResponse } from 'next/server';
 
 // This is the target URL of your .NET webhook
-const TARGET_URL = 'https://utilityking.co.uk/testreactasp.aspx';
+const TARGET_URL = 'https://utilityking.co.uk/ProjectService.aspx/reactasp';
 
 export async function POST(request: Request) {
   try {

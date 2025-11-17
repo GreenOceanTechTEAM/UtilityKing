@@ -18,7 +18,7 @@ export default function WebhookTestPage() {
 
   // The proxy route in our Next.js app
   const webhookUrl = '/api/webhook-proxy'; 
-  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx';
+  const targetUrl = 'https://utilityking.co.uk/ProjectService.aspx/reactasp';
 
   useEffect(() => {
     const callWebhook = async () => {
@@ -31,6 +31,7 @@ export default function WebhookTestPage() {
             'Content-Type': 'application/json',
             'Accept': 'application/json',
           },
+          body: JSON.stringify({}) // Sending an empty JSON object as the body
         });
 
         const status = response.status;
@@ -41,11 +42,13 @@ export default function WebhookTestPage() {
         }
         
         try {
+          // The response from ASP.NET Web Services is often wrapped in a 'd' property.
           const data = JSON.parse(responseText);
-          setResult({ data, error: null, status });
+          const unwrappedData = data.d ? JSON.parse(data.d) : data;
+          setResult({ data: unwrappedData, error: null, status });
         } catch (parseError) {
           // Handle cases where response is not valid JSON
-          setResult({ data: {rawResponse: responseText}, error: null, status });
+          setResult({ data: {rawResponse: responseText}, error: "Failed to parse JSON response.", status });
         }
 
       } catch (error: any) {
@@ -89,6 +92,11 @@ export default function WebhookTestPage() {
                   <pre className="mt-2 text-sm whitespace-pre-wrap break-all bg-destructive/5 p-3 rounded">
                     {result.error}
                   </pre>
+                   {result.data?.rawResponse && (
+                    <pre className="mt-2 text-sm whitespace-pre-wrap break-all bg-destructive/5 p-3 rounded">
+                      {`Raw Response:\n${result.data.rawResponse}`}
+                    </pre>
+                  )}
                 </div>
               ) : (
                 <div className="p-4 bg-primary/10 border border-primary/20 rounded-lg">
