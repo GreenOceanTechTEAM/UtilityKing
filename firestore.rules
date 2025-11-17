@@ -12,11 +12,12 @@
  * - /users/{userId}: User profile data, accessible only to the user.
  * - /users/{userId}/ai_comparisons/{aiComparisonId}: AI comparison data, accessible only to the owning user.
  * - /contact_submissions/{submissionId}: Publicly writable collection for contact form submissions.
+ * - /comparison_leads/{leadId}: Publicly writable collection for comparison tool leads.
  *
  * Key Security Decisions:
  * - Public read access to static collections (services, value_propositions, CTA banners).
  * - Strict owner-only access to user profiles and AI comparisons.
- * - Public create access for contact submissions, but no read/update/delete.
+ * - Public create access for contact submissions and comparison leads, but no read/update/delete.
  * - Denormalization for Authorization: User ownership is enforced using path-based rules.
  */
 rules_version = '2';
@@ -103,6 +104,18 @@ service cloud.firestore {
      * @principle Public write-only access for contact form.
      */
     match /contact_submissions/{submissionId} {
+      allow create: if true;
+      allow read, update, delete: if false;
+    }
+    
+    /**
+     * @description Allows anyone to submit comparison leads. No one can read, update, or delete leads through the client.
+     * @path /comparison_leads/{leadId}
+     * @allow create: if true;
+     * @allow read, update, delete: if false;
+     * @principle Public write-only access for comparison leads.
+     */
+    match /comparison_leads/{leadId} {
       allow create: if true;
       allow read, update, delete: if false;
     }

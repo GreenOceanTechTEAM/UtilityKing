@@ -5,21 +5,34 @@
 import * as React from 'react';
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useForm } from 'react-hook-form';
+import { zodResolver } from '@hookform/resolvers/zod';
+import * as z from 'zod';
 import { IntelligentUtilityComparisonOutput, intelligentUtilityComparison } from '@/ai/flows/intelligent-utility-comparison';
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, Users, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search } from 'lucide-react';
+import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
+import { useFirebase } from '@/firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 type ComparisonDemoProps = {
   id: string;
 };
+
+const leadSchema = z.object({
+    name: z.string().min(2, "Name must be at least 2 characters."),
+    email: z.string().email("Please enter a valid email address."),
+    phone: z.string().min(10, "Please enter a valid phone number."),
+});
 
 const iconMap: { [key: string]: React.ReactNode } = {
   "Energy": <Zap className="h-5 w-5 text-amber-500" />,
@@ -45,7 +58,9 @@ const wizardSteps = [
             { label: "Home", icon: Home },
             { label: "Office", icon: Building },
             { label: "Factory", icon: Factory },
-            { label: "Other", description: "e.g. Farm, Ranch" },
+            { label: "Farm" },
+            { label: "Ranch" },
+            { label: "Other" },
         ],
     },
     {
@@ -147,7 +162,10 @@ const AI_TYPING_DELAY = 1000;
 export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [isSavingLead, setIsSavingLead] = useState(false);
   const { toast } = useToast();
+  const { firestore } = useFirebase();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -157,6 +175,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return wizardSteps;
   }, []);
   
+  const leadForm = useForm<z.infer<typeof leadSchema>>({
+    resolver: zodResolver(leadSchema),
+    defaultValues: { name: '', email: '', phone: '' },
+  });
+
   const currentWizardStepConfig = wizardSteps[currentStep];
   const currentPart = currentWizardStepConfig?.part || 1;
 
@@ -173,10 +196,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }, [currentStep]);
 
   const handleNextStep = () => {
-    if (currentPart === 1 && currentStepWithinPart === stepsInCurrentPart) {
-      toast({ title: "Information Saved (Simulated)", description: "Moving to the next step." });
-    }
-
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     }
@@ -278,24 +297,46 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
+  const handlePrimaryAction = () => {
+    if(currentStep === wizardSteps.length -1 && isStepComplete(currentStep)) {
+        setIsLeadModalOpen(true);
+    } else {
+        handleNextStep();
+    }
+  }
+
+  const onLeadSubmit = async (values: z.infer<typeof leadSchema>) => {
+    if (!firestore) {
+        toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
+        return;
+    }
+    setIsSavingLead(true);
+    try {
+        const leadData = {
+            ...values,
+            comparisonInputs: selections,
+            createdAt: serverTimestamp(),
+        };
+        await addDoc(collection(firestore, 'comparison_leads'), leadData);
+        toast({ title: "Information Saved!", description: "Generating your personalized results now." });
+        setIsLeadModalOpen(false);
+        handleFormSubmit();
+    } catch (error) {
+        console.error("Failed to save lead:", error);
+        toast({ variant: "destructive", title: "Submission Failed", description: "Could not save your information. Please try again." });
+    } finally {
+        setIsSavingLead(false);
+    }
+  }
+
+
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
 
   const getButtonText = () => {
-    if (currentPart === 1 && currentStepWithinPart === stepsInCurrentPart) {
-      return "Save & Continue";
-    }
     if (currentWizardStepConfig?.step === wizardSteps.length && isStepComplete(currentStep)) {
       return "Compare Energy Deals";
     }
     return "Next Step";
-  }
-
-  const handlePrimaryAction = () => {
-    if(currentStep === wizardSteps.length -1 && isStepComplete(currentStep)) {
-        handleFormSubmit();
-    } else {
-        handleNextStep();
-    }
   }
 
 
@@ -494,6 +535,78 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 </div>
             </div>
         </div>
+
+        <Dialog open={isLeadModalOpen} onOpenChange={setIsLeadModalOpen}>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Almost there!</DialogTitle>
+                    <DialogDescription>
+                        Enter your details below to see your personalized savings and get a copy sent to your email.
+                    </DialogDescription>
+                </DialogHeader>
+                <Form {...leadForm}>
+                    <form onSubmit={leadForm.handleSubmit(onLeadSubmit)} className="space-y-4">
+                        <FormField
+                            control={leadForm.control}
+                            name="name"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Full Name</FormLabel>
+                                    <FormControl>
+                                        <div className="relative">
+                                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                            <Input placeholder="John Doe" {...field} className="pl-9" />
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <FormField
+                            control={leadForm.control}
+                            name="email"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Email Address</FormLabel>
+                                    <FormControl>
+                                        <div className="relative">
+                                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                            <Input type="email" placeholder="john.doe@example.com" {...field} className="pl-9" />
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                         <FormField
+                            control={leadForm.control}
+                            name="phone"
+                            render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Phone Number</FormLabel>
+                                    <FormControl>
+                                        <div className="relative">
+                                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                            <Input type="tel" placeholder="07123 456789" {...field} className="pl-9" />
+                                        </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                            )}
+                        />
+                        <Button type="submit" className="w-full" disabled={isSavingLead}>
+                            {isSavingLead ? (
+                                <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
+                            ) : (
+                                "See My Results"
+                            )}
+                        </Button>
+                    </form>
+                </Form>
+            </DialogContent>
+        </Dialog>
+
+
          {comparisonResult && !isLoading && (
                 <div className="mt-16">
                     <AnimatePresence>
@@ -562,7 +675,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-
-    
