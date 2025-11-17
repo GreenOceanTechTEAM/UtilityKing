@@ -272,38 +272,70 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
-    const renewablePref = selections['renewablePreference'] === 'Yes' ? '100% renewable' : 'No preference';
-    const preferences = [...(selections['preferences'] || []), renewablePref].join(', ') || 'Cheapest';
-
-    const mappedValues = {
-        usageData: `${selections['usage'] || 'Not specified'} kWh/year`,
-        preferences: `Preferences: ${preferences}. Premises: ${selections['premisesType']}. Contract End: ${selections['contractEndDate'] || 'N/A'}`,
-        location: selections['postcode'] || 'London'
-    }
+    const webhookUrl = '/api/webhook-proxy';
+    
+    const requestBody = {
+        postcode: selections['postcode'] || '',
+        supplier: selections['electricitySupplier'] || '',
+        usage: selections['usage'] || '',
+        endDate: selections['contractEndDate'] || '',
+        preferences: selections['preferences'] || [],
+        renewable: selections['renewablePreference'] || 'No'
+    };
 
     try {
-      await new Promise(resolve => setTimeout(resolve, analysisLines.length * 800 + 500));
-      const result = await intelligentUtilityComparison(mappedValues);
-      setComparisonResult(result);
+        const response = await fetch(webhookUrl, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json',
+            },
+            body: JSON.stringify(requestBody),
+        });
+
+        if (!response.ok) {
+            throw new Error(`Webhook call failed with status: ${response.status}`);
+        }
+
+        const resultData = await response.json();
+        
+        // ASP.NET Web Services often wrap results in a 'd' property.
+        const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
+        
+        // Pass the received data to the AI for summarization.
+        const aiSummary = await intelligentUtilityComparison({
+            usageData: `Usage: ${requestBody.usage} kWh/year`,
+            preferences: `Preferences: ${requestBody.preferences.join(', ')}. Renewable: ${requestBody.renewable}.`,
+            location: requestBody.postcode,
+        });
+
+        // Combine the AI summary with the plans from the webhook.
+        const finalResult = {
+            comparisonSummary: aiSummary.comparisonSummary,
+            recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
+        };
+
+        setComparisonResult(finalResult);
+
     } catch (error) {
-      console.error("Comparison failed:", error);
-      toast({
-        variant: "destructive",
-        title: "Comparison Failed",
-        description: "We couldn't generate comparisons at this time. Please try again later.",
-      });
+        console.error("Comparison failed:", error);
+        toast({
+            variant: "destructive",
+            title: "Comparison Failed",
+            description: "We couldn't generate comparisons at this time. Please try again later.",
+        });
     } finally {
-      setIsLoading(false);
+        setIsLoading(false);
     }
   };
 
   const handlePrimaryAction = () => {
-    if(currentStep === wizardSteps.length -1 && isStepComplete(currentStep)) {
-        setIsLeadModalOpen(true);
+    if (currentPart === totalParts && isStepComplete(currentStep)) {
+      setIsLeadModalOpen(true);
     } else {
-        handleNextStep();
+      handleNextStep();
     }
-  }
+  };
 
   const onLeadSubmit = async (values: z.infer<typeof leadSchema>) => {
     if (!firestore) {
@@ -333,10 +365,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
 
   const getButtonText = () => {
-    if (currentWizardStepConfig?.step === wizardSteps.length && isStepComplete(currentStep)) {
-      return "Compare Energy Deals";
+    if (currentPart < totalParts) {
+      return "Next Step";
     }
-    return "Next Step";
+    if (currentPart === totalParts && currentStep < wizardSteps.length -1) {
+      return "Next Step";
+    }
+    return "Compare Energy Deals";
   }
 
 
@@ -498,12 +533,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     size="lg" 
                                                     className="w-full h-12 text-base mt-4" 
                                                     onClick={handlePrimaryAction}
-                                                    disabled={isLoading && currentStep === wizardSteps.length -1}
+                                                    disabled={isLoading && currentPart === totalParts}
                                                 >
-                                                    {isLoading && currentStep === wizardSteps.length -1 ? <Loader2 className="animate-spin" /> : (
-                                                      currentStep === wizardSteps.length -1 ? "Compare Energy Deals" : getButtonText()
+                                                    {isLoading && currentPart === totalParts ? <Loader2 className="animate-spin" /> : (
+                                                      getButtonText()
                                                     )}
-                                                    {currentStep < wizardSteps.length - 1 && getButtonText() !== "Compare Energy Deals" && <ArrowRight className="ml-2 h-4 w-4" />}
+                                                    {currentPart < totalParts && <ArrowRight className="ml-2 h-4 w-4" />}
                                                 </Button>
                                             </motion.div>
                                         )}
@@ -514,7 +549,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </AnimatePresence>
                     </div>
 
-                    {isLoading && currentStep !== wizardSteps.length -1 && (
+                    {isLoading && (
                          <div className="flex flex-col items-center justify-center min-h-[150px] p-8">
                             <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
                                 {analysisLines.map((line, index) => (
@@ -624,7 +659,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                         <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
                         <CarouselContent className="-ml-2">
-                            {comparisonResult.recommendedPlans.map((plan, index) => (
+                            {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
                             <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-2">
                                 <motion.div
                                     custom={index}
@@ -675,3 +710,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
