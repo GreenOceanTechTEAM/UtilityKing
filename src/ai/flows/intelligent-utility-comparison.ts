@@ -58,7 +58,7 @@ const prompt = ai.definePrompt({
   Location: {{{location}}}
 
   Provide the comparison summary and the recommended plans in the following JSON format:
-  {{json examples=[{comparisonSummary: 'Comparison summary here', recommendedPlans: [{planName: 'Plan 1', provider: 'Provider A', price: 50.00, contractLength: '12 months', link: 'https://example.com/plan1'}]}]}}
+  {{json examples=[{"comparisonSummary": "Comparison summary here", "recommendedPlans": [{"planName": "Plan 1", "provider": "Provider A", "price": 50.00, "contractLength": "12 months", "link": "https://example.com/plan1"}]}]}}
   `,
 });
 
