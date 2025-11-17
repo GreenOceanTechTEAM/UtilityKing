@@ -29,7 +29,7 @@ const formSchema = z.object({
     required_error: "You need to select an inquiry type.",
   }),
   businessName: z.string().optional(),
-  message: z.string().min(10, "Message must be at least 10 characters long.").max(500, "Message must be less than 500 characters."),
+  message: z.string().min(10, "Message must be at least 10 characters.").max(500, "Message must be less than 500 characters."),
 }).refine(data => data.inquiryType !== 'Business' || (data.inquiryType === 'Business' && data.businessName && data.businessName.length > 0), {
   message: "Business name is required for business inquiries",
   path: ["businessName"],
@@ -231,6 +231,8 @@ export default function ContactSection({ id }: ContactSectionProps) {
         )
     }
 
+    const isMessageStep = stepConfig.field === 'message';
+
     return (
         <FormField
             control={form.control}
@@ -238,10 +240,33 @@ export default function ContactSection({ id }: ContactSectionProps) {
             render={({ field }) => (
                 <FormItem className="w-full max-w-sm mx-auto">
                     <FormControl>
-                         <div className="relative">
-                            <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                        <div className={cn("relative", isMessageStep && "space-y-4")}>
+                            {isMessageStep && (
+                                <motion.div 
+                                    initial={{opacity: 0, y: -10}}
+                                    animate={{opacity: 1, y: 0, transition: {delay: 0.3}}}
+                                    className="flex flex-wrap gap-2 justify-center"
+                                >
+                                    {triggerMessages.map(msg => (
+                                    <Button
+                                        key={msg.text}
+                                        type="button"
+                                        variant="outline"
+                                        size="sm"
+                                        className="text-xs h-auto py-1.5"
+                                        onClick={() => handleTriggerMessageClick(msg.text)}
+                                    >
+                                        <Sparkles className="w-3 h-3 mr-2 text-accent" />
+                                        {msg.text}
+                                    </Button>
+                                    ))}
+                                </motion.div>
+                            )}
+
+                            {!isMessageStep && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
+                            
                             {stepConfig.isTextarea ? (
-                                <Textarea placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} rows={4} className="pl-10 text-base" />
+                                <Textarea placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} rows={3} className="text-base" />
                             ) : (
                                 <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base" autoFocus/>
                             )}
@@ -299,27 +324,6 @@ export default function ContactSection({ id }: ContactSectionProps) {
                                 <h3 className="text-lg font-semibold text-foreground">{activeSteps[currentStep].title}</h3>
                             </div>
                             {renderStep()}
-                            {activeSteps[currentStep].field === 'message' && (
-                              <motion.div 
-                                initial={{opacity: 0, y: 10}}
-                                animate={{opacity: 1, y: 0, transition: {delay: 0.3}}}
-                                className="flex flex-wrap gap-2 justify-center mt-4 max-w-sm mx-auto"
-                              >
-                                {triggerMessages.map(msg => (
-                                  <Button
-                                    key={msg.text}
-                                    type="button"
-                                    variant="outline"
-                                    size="sm"
-                                    className="text-xs h-auto py-1.5"
-                                    onClick={() => handleTriggerMessageClick(msg.text)}
-                                  >
-                                    <Sparkles className="w-3 h-3 mr-2 text-accent" />
-                                    {msg.text}
-                                  </Button>
-                                ))}
-                              </motion.div>
-                            )}
                         </motion.div>
                     </AnimatePresence>
                 </div>
