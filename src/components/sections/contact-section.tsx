@@ -198,33 +198,35 @@ export default function ContactSection({ id }: ContactSectionProps) {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
                 transition={{ duration: 0.3 }}
-                className="w-full max-w-sm mx-auto flex flex-col items-center gap-3"
+                className="w-full max-w-sm mx-auto"
              >
-                {(stepConfig.options as {label: "Personal" | "Business" | "Other", icon: React.ElementType}[]).map(option => {
-                    const OptionIcon = option.icon;
-                    const isSelected = inquiryType === option.label;
-                    return (
-                        <motion.button
-                            key={option.label}
-                            type="button"
-                            variants={pillVariants}
-                            whileHover="hover"
-                            whileTap="tap"
-                            onClick={() => handleSelectInquiryType(option.label)}
-                            className={cn(
-                                "p-3 w-full rounded-lg border text-base font-medium transition-all duration-200",
-                                isSelected
-                                    ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                    : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                            )}
-                        >
-                            <div className="flex items-center justify-center gap-2">
-                                <OptionIcon className="h-5 w-5" />
-                                <span className="font-semibold">{option.label}</span>
-                            </div>
-                        </motion.button>
-                    )
-                })}
+                <div className="max-h-[150px] overflow-y-auto pr-2 flex flex-col items-center gap-3">
+                  {(stepConfig.options as {label: "Personal" | "Business" | "Other", icon: React.ElementType}[]).map(option => {
+                      const OptionIcon = option.icon;
+                      const isSelected = inquiryType === option.label;
+                      return (
+                          <motion.button
+                              key={option.label}
+                              type="button"
+                              variants={pillVariants}
+                              whileHover="hover"
+                              whileTap="tap"
+                              onClick={() => handleSelectInquiryType(option.label)}
+                              className={cn(
+                                  "p-3 w-full rounded-lg border text-base font-medium transition-all duration-200",
+                                  isSelected
+                                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                      : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                              )}
+                          >
+                              <div className="flex items-center justify-center gap-2">
+                                  <OptionIcon className="h-5 w-5" />
+                                  <span className="font-semibold">{option.label}</span>
+                              </div>
+                          </motion.button>
+                      )
+                  })}
+                </div>
              </motion.div>
         )
     }
@@ -283,7 +285,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     />
                 </div>
 
-                <div className="relative h-[200px] overflow-hidden">
+                <div className="relative h-[220px] sm:h-[200px] overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
