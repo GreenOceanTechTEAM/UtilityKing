@@ -20,8 +20,9 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, serverTimestamp } from 'firebase/firestore';
 import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
+import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 type ComparisonDemoProps = {
   id: string;
@@ -357,28 +358,34 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const onLeadSubmit = async (values: z.infer<typeof leadSchema>) => {
+  const onLeadSubmit = (values: z.infer<typeof leadSchema>) => {
     if (!firestore) {
-        toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
-        return;
+      toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
+      return;
     }
+    
     setIsSavingLead(true);
-    try {
-        const leadData = {
-            ...values,
-            comparisonInputs: selections,
-            createdAt: serverTimestamp(),
-        };
-        await addDoc(collection(firestore, 'comparison_leads'), leadData);
-        toast({ title: "Information Saved!", description: "Generating your personalized results now." });
-        setIsLeadModalOpen(false);
-        await handleFormSubmit();
-    } catch (error) {
-        console.error("Failed to save lead:", error);
-        toast({ variant: "destructive", title: "Submission Failed", description: "Could not save your information. Please try again." });
-    } finally {
-        setIsSavingLead(false);
-    }
+    
+    const leadData = {
+      ...values,
+      comparisonInputs: selections,
+      createdAt: serverTimestamp(),
+    };
+    
+    const leadsCollection = collection(firestore, 'comparison_leads');
+    
+    // Use the non-blocking update function.
+    // This function is designed to not be awaited and handles its own errors.
+    addDocumentNonBlocking(leadsCollection, leadData);
+
+    toast({ title: "Information Saved!", description: "Generating your personalized results now." });
+    
+    // Close the modal and proceed immediately.
+    setIsLeadModalOpen(false);
+    setIsSavingLead(false);
+    
+    // Start the comparison fetch, but don't block the UI thread.
+    handleFormSubmit();
   }
 
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
@@ -570,6 +577,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                 value={selections[currentWizardStepConfig.key] || ''}
                                                                 onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
                                                                 onKeyDown={handleCustomSubmit}
+                                                                autoFocus
                                                             />
                                                         </div>
                                                     </motion.div>
@@ -760,3 +768,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
