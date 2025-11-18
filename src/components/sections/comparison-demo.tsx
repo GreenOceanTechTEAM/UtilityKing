@@ -223,7 +223,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    // Auto-advance logic
     if (!isMulti && !currentWizardStepConfig.isInput) {
         if (currentWizardStepConfig.key === 'billAvailable' && option === "No, I'll skip") {
              setTimeout(() => handleNextStep(), 300);
@@ -232,8 +231,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         }
     }
 
-    if (currentWizardStepConfig.key === 'contractEndDate' && option === "Not sure") {
-      setTimeout(() => handlePrimaryAction(), 300);
+    if (currentWizardStepConfig.key === 'contractEndDate') {
+       if(option === "Not sure" || (selections[currentWizardStepConfig.key] && option !== "Not sure")) {
+         if (currentStep === wizardSteps.length -1) {
+            setTimeout(() => setIsLeadModalOpen(true), 300);
+         } else {
+            setTimeout(() => handleNextStep(), 300);
+         }
+       }
     }
   };
   
@@ -245,7 +250,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     if (e.key === 'Enter') {
       e.preventDefault();
       if(isStepComplete(currentStep)){
-        handleNextStep();
+        handlePrimaryAction();
       }
     }
   };
@@ -261,6 +266,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.isInput) {
+        if (step.key === 'contractEndDate') {
+            return !!selection || selections[step.key] === "Not sure";
+        }
         return !!selection;
     }
     
@@ -281,7 +289,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
-        endDate: selections['contractEndDate'] || '',
+        endDate: selections['contractEndDate'] === 'Not sure' ? '' : selections['contractEndDate'] || '',
         preferences: selections['preferences'] || [],
         renewable: selections['renewablePreference'] || 'No'
     };
@@ -347,7 +355,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         await addDoc(collection(firestore, 'comparison_leads'), leadData);
         toast({ title: "Information Saved!", description: "Generating your personalized results now." });
         setIsLeadModalOpen(false);
-        handleFormSubmit();
+        await handleFormSubmit();
     } catch (error) {
         console.error("Failed to save lead:", error);
         toast({ variant: "destructive", title: "Submission Failed", description: "Could not save your information. Please try again." });
@@ -387,162 +395,163 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         <div className="flex items-start justify-center gap-12">
             <div className="w-full max-w-[560px]">
-                <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg">
+                <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
                     
-                    <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
-                      <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
-                        <ChevronLeft className="h-5 w-5" />
-                      </Button>
-                      <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
-                      <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
-                        <ChevronRight className="h-5 w-5" />
-                      </Button>
-                    </div>
+                    {(!isLoading && !comparisonResult) && (
+                        <>
+                            <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
+                            <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
+                                <ChevronLeft className="h-5 w-5" />
+                            </Button>
+                            <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
+                            <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
+                                <ChevronRight className="h-5 w-5" />
+                            </Button>
+                            </div>
 
-                    <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
-                        <motion.div 
-                            className="bg-primary h-1 rounded-full"
-                            initial={{ width: 0 }}
-                            animate={{ width: `${progress}%`}}
-                            transition={{ duration: 0.5, ease: "easeInOut" }}
-                        />
-                    </div>
+                            <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
+                                <motion.div 
+                                    className="bg-primary h-1 rounded-full"
+                                    initial={{ width: 0 }}
+                                    animate={{ width: `${progress}%`}}
+                                    transition={{ duration: 0.5, ease: "easeInOut" }}
+                                />
+                            </div>
 
-                    <div className="relative h-[350px] overflow-y-auto flex flex-col items-center pr-2">
-                        <AnimatePresence mode="wait">
-                            {currentWizardStepConfig &&
-                            <motion.div
-                                key={currentStep}
-                                variants={stepVariants}
-                                initial="initial"
-                                animate="animate"
-                                exit="exit"
-                                className="w-full flex flex-col items-center text-center"
-                            >
-                                <div className="flex flex-col items-center text-center gap-3 mb-5">
-                                    <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
-                                        <Sparkles className="w-5 h-5" />
-                                    </div>
-                                    <div>
-                                        <p className="text-lg font-semibold text-card-foreground">
-                                          {currentWizardStepConfig.title}
-                                        </p>
-                                        <p className="text-base text-muted-foreground max-w-md mx-auto">
-                                            {isTyping ? 
-                                                <span className="animate-pulse">...</span> : 
-                                                currentWizardStepConfig.aiMessage
-                                            }
-                                        </p>
-                                    </div>
-                                </div>
-                                
-                                {!isTyping && (
-                                    <div className="space-y-3 w-full max-w-md">
-                                        <div className={cn(
-                                          "grid grid-cols-1 gap-3",
-                                          currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                          currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
-                                          )}>
-                                            {currentWizardStepConfig.options.map(option => {
-                                                const Icon = (option as any).icon;
-                                                const isSelected = currentWizardStepConfig.isMultiSelect 
-                                                    ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
-                                                    : selections[currentWizardStepConfig.key] === option.label;
-
-                                                return (
-                                                    <motion.button
-                                                        key={option.label}
-                                                        variants={pillVariants}
-                                                        whileHover="hover"
-                                                        whileTap="tap"
-                                                        onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
-                                                        className={cn(
-                                                            "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                            isSelected
-                                                                ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                             (option as any).description && "items-start",
-                                                        )}
-                                                    >
-                                                        <div className="flex items-center justify-center gap-2">
-                                                            {Icon && <Icon className="h-5 w-5" />}
-                                                            <span className="font-semibold">{option.label}</span>
-                                                        </div>
-                                                        {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
-                                                    </motion.button>
-                                                )
-                                            })}
-                                             {currentWizardStepConfig.additionalOptions?.map(option => (
-                                                <motion.button
-                                                    key={option}
-                                                    variants={pillVariants}
-                                                    whileHover="hover"
-                                                    whileTap="tap"
-                                                    onClick={() => handleSelect(currentWizardStepConfig.key, option)}
-                                                     className={cn(
-                                                        "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
-                                                        selections[currentWizardStepConfig.key] === option
-                                                            ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                            : "bg-background/50 hover:border-primary hover:bg-primary/5"
-                                                    )}
-                                                >
-                                                    {option}
-                                                </motion.button>
-                                            ))}
+                            <div className="relative h-[350px] overflow-y-auto flex flex-col items-center pr-2">
+                                <AnimatePresence mode="wait">
+                                    {currentWizardStepConfig &&
+                                    <motion.div
+                                        key={currentStep}
+                                        variants={stepVariants}
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                        className="w-full flex flex-col items-center text-center"
+                                    >
+                                        <div className="flex flex-col items-center text-center gap-3 mb-5">
+                                            <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+                                                <Sparkles className="w-5 h-5" />
+                                            </div>
+                                            <div>
+                                                <p className="text-lg font-semibold text-card-foreground">
+                                                {currentWizardStepConfig.title}
+                                                </p>
+                                                <p className="text-base text-muted-foreground max-w-md mx-auto">
+                                                    {isTyping ? 
+                                                        <span className="animate-pulse">...</span> : 
+                                                        currentWizardStepConfig.aiMessage
+                                                    }
+                                                </p>
+                                            </div>
                                         </div>
-
-                                        {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
-                                            <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
-                                                <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
-                                                    <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
-                                                    <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
-                                                    <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
-                                                    <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-                                                </div>
-                                            </motion.div>
-                                        )}
-
-                                        {currentWizardStepConfig.isInput && (
-                                            <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                <div className="relative">
-                                                    {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
-                                                    <Input 
-                                                        type={currentWizardStepConfig.inputType || "text"}
-                                                        placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                        className="h-12 text-base text-center pl-10"
-                                                        value={selections[currentWizardStepConfig.key] || ''}
-                                                        onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
-                                                        onKeyDown={handleCustomSubmit}
-                                                        autoFocus
-                                                    />
-                                                </div>
-                                            </motion.div>
-                                        )}
                                         
-                                        {(isStepComplete(currentStep)) && (
-                                            <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                <Button 
-                                                    size="lg" 
-                                                    className="w-full h-12 text-base mt-4" 
-                                                    onClick={handlePrimaryAction}
-                                                    disabled={isLoading && currentStep === wizardSteps.length -1}
-                                                >
-                                                    {isLoading && currentStep === wizardSteps.length -1 ? <Loader2 className="animate-spin" /> : (
-                                                      getButtonText()
-                                                    )}
-                                                    {currentStep < wizardSteps.length -1 && <ArrowRight className="ml-2 h-4 w-4" />}
-                                                </Button>
-                                            </motion.div>
+                                        {!isTyping && (
+                                            <div className="space-y-3 w-full max-w-md">
+                                                <div className={cn(
+                                                "grid grid-cols-1 gap-3",
+                                                currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                                currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
+                                                )}>
+                                                    {currentWizardStepConfig.options.map(option => {
+                                                        const Icon = (option as any).icon;
+                                                        const isSelected = currentWizardStepConfig.isMultiSelect 
+                                                            ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
+                                                            : selections[currentWizardStepConfig.key] === option.label;
+
+                                                        return (
+                                                            <motion.button
+                                                                key={option.label}
+                                                                variants={pillVariants}
+                                                                whileHover="hover"
+                                                                whileTap="tap"
+                                                                onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
+                                                                className={cn(
+                                                                    "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
+                                                                    isSelected
+                                                                        ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                        : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                                                                    (option as any).description && "items-start",
+                                                                )}
+                                                            >
+                                                                <div className="flex items-center justify-center gap-2">
+                                                                    {Icon && <Icon className="h-5 w-5" />}
+                                                                    <span className="font-semibold">{option.label}</span>
+                                                                </div>
+                                                                {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
+                                                            </motion.button>
+                                                        )
+                                                    })}
+                                                    {currentWizardStepConfig.additionalOptions?.map(option => (
+                                                        <motion.button
+                                                            key={option}
+                                                            variants={pillVariants}
+                                                            whileHover="hover"
+                                                            whileTap="tap"
+                                                            onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                            className={cn(
+                                                                "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
+                                                                selections[currentWizardStepConfig.key] === option
+                                                                    ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                    : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                            )}
+                                                        >
+                                                            {option}
+                                                        </motion.button>
+                                                    ))}
+                                                </div>
+
+                                                {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
+                                                    <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
+                                                        <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
+                                                            <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
+                                                            <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
+                                                            <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
+                                                            <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+
+                                                {currentWizardStepConfig.isInput && (
+                                                    <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                        <div className="relative">
+                                                            {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
+                                                            <Input 
+                                                                type={currentWizardStepConfig.inputType || "text"}
+                                                                placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
+                                                                className="h-12 text-base text-center pl-10"
+                                                                value={selections[currentWizardStepConfig.key] || ''}
+                                                                onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
+                                                                onKeyDown={handleCustomSubmit}
+                                                                autoFocus
+                                                            />
+                                                        </div>
+                                                    </motion.div>
+                                                )}
+                                                
+                                                {(isStepComplete(currentStep)) && (
+                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                        <Button 
+                                                            size="lg" 
+                                                            className="w-full h-12 text-base mt-4" 
+                                                            onClick={handlePrimaryAction}
+                                                        >
+                                                            {getButtonText()}
+                                                            <ArrowRight className="ml-2 h-4 w-4" />
+                                                        </Button>
+                                                    </motion.div>
+                                                )}
+                                            </div>
                                         )}
-                                    </div>
-                                )}
-                            </motion.div>
-                            }
-                        </AnimatePresence>
-                    </div>
+                                    </motion.div>
+                                    }
+                                </AnimatePresence>
+                            </div>
+                        </>
+                    )}
 
                     {isLoading && (
-                         <div className="flex flex-col items-center justify-center min-h-[150px] p-8">
+                         <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
                             <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
                                 {analysisLines.map((line, index) => (
                                   <motion.p
@@ -558,6 +567,71 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 ))}
                             </div>
                           </div>
+                    )}
+
+                    {comparisonResult && !isLoading && (
+                        <div className="mt-4">
+                            <AnimatePresence>
+                            <motion.div
+                                key="results"
+                                initial={{ opacity: 0, y: 50 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                exit={{ opacity: 0, y: 50 }}
+                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                            >
+                                <div className='text-center mb-4'>
+                                    <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
+                                    <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
+                                </div>
+
+                                <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
+                                <CarouselContent className="-ml-2">
+                                    {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
+                                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/1 pl-2">
+                                        <motion.div
+                                            custom={index}
+                                            initial={{ opacity: 0, y: 20 }}
+                                            animate={(i) => ({
+                                                opacity: 1,
+                                                y: 0,
+                                                transition: { delay: 0.5 + i * 0.12, ease: "easeOut" }
+                                            })}
+                                        >
+                                            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
+                                            <CardHeader>
+                                                <div className="flex items-start justify-between">
+                                                    <div>
+                                                        <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
+                                                        <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
+                                                    </div>
+                                                    {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
+                                                </div>
+                                            </CardHeader>
+                                            <CardContent className="flex-1 space-y-2">
+                                                <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
+                                                    £{plan.price.toFixed(2)}
+                                                    <span className="text-base font-normal text-muted-foreground">/year</span>
+                                                </div>
+                                                <p className="text-sm text-muted-foreground">
+                                                    Contract: <span className="font-semibold text-card-foreground">{plan.contractLength}</span>
+                                                </p>
+                                            </CardContent>
+                                            <CardFooter>
+                                                <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
+                                                    <Link href={plan.link} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                                </Button>
+                                            </CardFooter>
+                                            </Card>
+                                        </motion.div>
+                                    </CarouselItem>
+                                    ))}
+                                </CarouselContent>
+                                <CarouselPrevious className="hidden sm:flex -left-4" />
+                                <CarouselNext className="hidden sm:flex -right-4" />
+                                </Carousel>
+                            </motion.div>
+                            </AnimatePresence>
+                        </div>
                     )}
                 </div>
             </div>
@@ -633,73 +707,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </DialogContent>
         </Dialog>
 
-
-         {comparisonResult && !isLoading && (
-                <div className="mt-16">
-                    <AnimatePresence>
-                    <motion.div
-                        key="results"
-                        initial={{ opacity: 0, y: 50 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                        <div className='text-center mb-4'>
-                            <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
-                            <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
-                        </div>
-
-                        <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
-                        <CarouselContent className="-ml-2">
-                            {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
-                            <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/3 pl-2">
-                                <motion.div
-                                    custom={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={(i) => ({
-                                        opacity: 1,
-                                        y: 0,
-                                        transition: { delay: 0.5 + i * 0.12, ease: "easeOut" }
-                                    })}
-                                >
-                                    <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-                                    <CardHeader>
-                                        <div className="flex items-start justify-between">
-                                            <div>
-                                                <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                                                <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                                            </div>
-                                            {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                                        </div>
-                                    </CardHeader>
-                                    <CardContent className="flex-1 space-y-2">
-                                        <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                                            £{plan.price.toFixed(2)}
-                                            <span className="text-base font-normal text-muted-foreground">/year</span>
-                                        </div>
-                                        <p className="text-sm text-muted-foreground">
-                                            Contract: <span className="font-semibold text-card-foreground">{plan.contractLength}</span>
-                                        </p>
-                                    </CardContent>
-                                    <CardFooter>
-                                        <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
-                                            <Link href={plan.link} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                                        </Button>
-                                    </CardFooter>
-                                    </Card>
-                                </motion.div>
-                            </CarouselItem>
-                            ))}
-                        </CarouselContent>
-                        <CarouselPrevious className="hidden sm:flex -left-4" />
-                        <CarouselNext className="hidden sm:flex -right-4" />
-                        </Carousel>
-                    </motion.div>
-                    </AnimatePresence>
-                </div>
-            )}
       </div>
     </section>
   );
 }
 
+    
