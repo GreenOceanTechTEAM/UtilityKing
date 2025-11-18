@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // The target URL of your .NET WebMethod
-  const targetUrl = 'https://utilityking.co.uk/ProjectService.aspx/reactasp';
+  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
     // 1. Read the JSON body from the incoming Next.js client request.
