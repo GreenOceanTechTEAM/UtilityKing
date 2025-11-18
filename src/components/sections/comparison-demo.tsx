@@ -181,8 +181,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                 },
-                // The .NET ASMX WebMethod expects the payload to be wrapped in a root object
-                // whose property name matches the method's parameter name ('requestData').
                 body: JSON.stringify({ requestData: {} }),
             });
 
@@ -319,8 +317,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            // The .NET ASMX WebMethod expects the payload to be wrapped in a root object
-            // whose property name matches the method's parameter name ('requestData').
             body: JSON.stringify({ requestData: formData }),
         });
   
@@ -633,6 +629,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 <div className='text-center mb-4'>
                                     <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                                     <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
+                                    <p className="text-xs text-muted-foreground/80 mt-2">
+                                        Results sourced live from your .NET comparison engine.
+                                    </p>
                                 </div>
 
                                 <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
