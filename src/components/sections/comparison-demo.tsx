@@ -39,12 +39,6 @@ const iconMap: { [key: string]: React.ReactNode } = {
   "Mobile": <Zap className="h-5 w-5 text-green-500" />,
 };
 
-const analysisLines = [
-  "Analyzing 174 active tariffs in your region...",
-  "Matching to your preferences...",
-  "Identifying cheapest deals...",
-];
-
 const wizardSteps = [
     {
         step: 1,
@@ -221,12 +215,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    if (!isMulti && !currentWizardStepConfig.isInput) {
-        if (currentWizardStepConfig.key === 'billAvailable' && option === "No, I'll skip") {
-             setTimeout(() => handleNextStep(), 300);
-        } else if (currentWizardStepConfig.key !== 'billAvailable') {
-            setTimeout(() => handleNextStep(), 300);
-        }
+    const stepConfig = wizardSteps.find(s => s.key === stepKey);
+    if (stepConfig && !stepConfig.isMultiSelect && !stepConfig.isInput) {
+        setTimeout(() => handleNextStep(), 300);
     }
   };
   
@@ -253,14 +244,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         return selection && selection.length > 0;
     }
     
-    if (step.isInput) {
-        return !!selection;
-    }
-    
-    if(step.key === 'billAvailable') {
-      return selections.billAvailable === "Yes, I'll upload it" || selections.billAvailable === "No, I'll skip";
-    }
-    
     return !!selection;
   }
 
@@ -276,6 +259,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         usage: selections['usage'] || '',
         endDate: selections['contractEndDate'] || '',
     };
+
+    console.log("Sending data to proxy:", requestBody);
   
     try {
         const response = await fetch(proxyUrl, {
@@ -693,3 +678,4 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
