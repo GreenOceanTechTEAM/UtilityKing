@@ -201,7 +201,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -223,12 +223,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
+    // Auto-advance logic
     if (!isMulti && !currentWizardStepConfig.isInput) {
         if (currentWizardStepConfig.key === 'billAvailable' && option === "No, I'll skip") {
              setTimeout(() => handleNextStep(), 300);
         } else if (currentWizardStepConfig.key !== 'billAvailable') {
             setTimeout(() => handleNextStep(), 300);
         }
+    }
+
+    if (currentWizardStepConfig.key === 'contractEndDate' && option === "Not sure") {
+      setTimeout(() => handlePrimaryAction(), 300);
     }
   };
   
@@ -292,7 +297,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         });
 
         if (!response.ok) {
-            throw new Error(`Webhook call failed with status: ${response.status}`);
+            const errorText = await response.text();
+            throw new Error(`Webhook call failed with status: ${response.status}. Response: ${errorText}`);
         }
 
         const resultData = await response.json();
@@ -321,7 +327,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const handlePrimaryAction = () => {
     if (currentStep === wizardSteps.length - 1 && isStepComplete(currentStep)) {
       setIsLeadModalOpen(true);
-    } else {
+    } else if (isStepComplete(currentStep)) {
       handleNextStep();
     }
   };
@@ -696,3 +702,4 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
