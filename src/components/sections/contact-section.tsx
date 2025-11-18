@@ -268,7 +268,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                             {stepConfig.isTextarea ? (
                                 <Textarea placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} rows={3} className="text-base" />
                             ) : (
-                                <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base" autoFocus/>
+                                <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base" />
                             )}
                         </div>
                     </FormControl>

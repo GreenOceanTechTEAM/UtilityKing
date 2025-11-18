@@ -570,7 +570,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                 value={selections[currentWizardStepConfig.key] || ''}
                                                                 onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
                                                                 onKeyDown={handleCustomSubmit}
-                                                                autoFocus
                                                             />
                                                         </div>
                                                     </motion.div>
