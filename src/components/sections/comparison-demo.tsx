@@ -1,5 +1,4 @@
 
-
 "use client";
 
 import * as React from 'react';
@@ -233,7 +232,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
      if (currentWizardStepConfig.key === 'contractEndDate') {
        if (option === "Not sure" || (selections[currentWizardStepConfig.key] && option !== "Not sure")) {
          if (currentStep === wizardSteps.length - 1) {
-           setTimeout(() => setIsLeadModalOpen(true), 300);
+            // Do nothing, wait for user to click compare button
          } else {
            setTimeout(() => handleNextStep(), 300);
          }
@@ -266,7 +265,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     if (step.isInput) {
         if (step.key === 'contractEndDate') {
-            return !!selection || selections[step.key] === "Not sure";
+            return !!selection; // This can be the date or "Not sure"
         }
         return !!selection;
     }
@@ -281,9 +280,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const handleFormSubmit = async () => {
     setIsLoading(true);
     setComparisonResult(null);
-
-    // This is the direct URL to your .NET backend
-    const targetUrl = 'https://utilityking.co.uk/ProjectService.aspx/reactasp';
+  
+    // This is the local proxy URL in your Next.js app
+    const proxyUrl = '/api/webhook-proxy';
     
     const requestBody = {
         postcode: selections['postcode'] || '',
@@ -291,9 +290,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         usage: selections['usage'] || '',
         endDate: selections['contractEndDate'] === 'Not sure' ? '' : selections['contractEndDate'] || '',
     };
-
+  
     try {
-        const response = await fetch(targetUrl, {
+        const response = await fetch(proxyUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -301,24 +300,25 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             },
             body: JSON.stringify(requestBody),
         });
-
+  
         if (!response.ok) {
             const errorText = await response.text();
             throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
         }
-
+  
         const resultData = await response.json();
         
-        // ASP.NET Web Services wrap JSON responses in a 'd' property.
+        // ASP.NET Web Services often wrap JSON responses in a 'd' property.
+        // The proxy should handle this, but as a fallback:
         const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
             recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
         };
-
+  
         setComparisonResult(finalResult);
-
+  
     } catch (error: any) {
         console.error("Comparison failed:", error);
         toast({
@@ -354,7 +354,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         await addDoc(collection(firestore, 'comparison_leads'), leadData);
         toast({ title: "Information Saved!", description: "Generating your personalized results now." });
         setIsLeadModalOpen(false);
-        await handleFormSubmit();
+        await handleFormSubmit(); // This is the crucial call
     } catch (error) {
         console.error("Failed to save lead:", error);
         toast({ variant: "destructive", title: "Submission Failed", description: "Could not save your information. Please try again." });
@@ -710,7 +710,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-
-    
