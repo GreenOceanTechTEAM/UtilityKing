@@ -230,16 +230,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             setTimeout(() => handleNextStep(), 300);
         }
     }
-
-    if (currentWizardStepConfig.key === 'contractEndDate') {
-       if(option === "Not sure" || (selections[currentWizardStepConfig.key] && option !== "Not sure")) {
-         if (currentStep === wizardSteps.length -1) {
-            setTimeout(() => setIsLeadModalOpen(true), 300);
+     if (currentWizardStepConfig.key === 'contractEndDate') {
+       if (option === "Not sure" || (selections[currentWizardStepConfig.key] && option !== "Not sure")) {
+         if (currentStep === wizardSteps.length - 1) {
+           setTimeout(() => setIsLeadModalOpen(true), 300);
          } else {
-            setTimeout(() => handleNextStep(), 300);
+           setTimeout(() => handleNextStep(), 300);
          }
        }
-    }
+     }
   };
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
@@ -283,19 +282,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
-    const webhookUrl = '/api/webhook-proxy';
+    // This is the direct URL to your .NET backend
+    const targetUrl = 'https://utilityking.co.uk/ProjectService.aspx/reactasp';
     
     const requestBody = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
         endDate: selections['contractEndDate'] === 'Not sure' ? '' : selections['contractEndDate'] || '',
-        preferences: selections['preferences'] || [],
-        renewable: selections['renewablePreference'] || 'No'
     };
 
     try {
-        const response = await fetch(webhookUrl, {
+        const response = await fetch(targetUrl, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -306,11 +304,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`Webhook call failed with status: ${response.status}. Response: ${errorText}`);
+            throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
         }
 
         const resultData = await response.json();
         
+        // ASP.NET Web Services wrap JSON responses in a 'd' property.
         const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
         
         const finalResult: IntelligentUtilityComparisonOutput = {
@@ -320,12 +319,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         setComparisonResult(finalResult);
 
-    } catch (error) {
+    } catch (error: any) {
         console.error("Comparison failed:", error);
         toast({
             variant: "destructive",
             title: "Comparison Failed",
-            description: "We couldn't generate comparisons at this time. Please try again later.",
+            description: `We couldn't generate comparisons at this time. ${error.message}`,
         });
     } finally {
         setIsLoading(false);
@@ -711,5 +710,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
