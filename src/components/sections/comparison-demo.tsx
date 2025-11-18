@@ -137,7 +137,6 @@ const wizardSteps = [
         customPlaceholder: "Select a date",
         icon: CalendarDays,
         options: [],
-        additionalOptions: ["Not sure"],
     },
 ];
 
@@ -229,15 +228,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             setTimeout(() => handleNextStep(), 300);
         }
     }
-     if (currentWizardStepConfig.key === 'contractEndDate') {
-       if (option === "Not sure" || (selections[currentWizardStepConfig.key] && option !== "Not sure")) {
-         if (currentStep === wizardSteps.length - 1) {
-            // Do nothing, wait for user to click compare button
-         } else {
-           setTimeout(() => handleNextStep(), 300);
-         }
-       }
-     }
   };
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
@@ -264,9 +254,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.isInput) {
-        if (step.key === 'contractEndDate') {
-            return !!selection; // This can be the date or "Not sure"
-        }
         return !!selection;
     }
     
@@ -281,14 +268,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
   
-    // This is the local proxy URL in your Next.js app
     const proxyUrl = '/api/webhook-proxy';
     
     const requestBody = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
-        endDate: selections['contractEndDate'] === 'Not sure' ? '' : selections['contractEndDate'] || '',
+        endDate: selections['contractEndDate'] || '',
     };
   
     try {
@@ -307,9 +293,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         }
   
         const resultData = await response.json();
-        
-        // ASP.NET Web Services often wrap JSON responses in a 'd' property.
-        // The proxy should handle this, but as a fallback:
         const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
         
         const finalResult: IntelligentUtilityComparisonOutput = {
@@ -354,7 +337,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         await addDoc(collection(firestore, 'comparison_leads'), leadData);
         toast({ title: "Information Saved!", description: "Generating your personalized results now." });
         setIsLeadModalOpen(false);
-        await handleFormSubmit(); // This is the crucial call
+        await handleFormSubmit();
     } catch (error) {
         console.error("Failed to save lead:", error);
         toast({ variant: "destructive", title: "Submission Failed", description: "Could not save your information. Please try again." });
