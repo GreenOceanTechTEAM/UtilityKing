@@ -566,7 +566,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                             <Input 
                                                                 type={currentWizardStepConfig.inputType || "text"}
                                                                 placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                                className="h-12 text-base text-center pl-10"
+                                                                className="pl-10 h-12 text-base text-center"
                                                                 value={selections[currentWizardStepConfig.key] || ''}
                                                                 onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
                                                                 onKeyDown={handleCustomSubmit}
