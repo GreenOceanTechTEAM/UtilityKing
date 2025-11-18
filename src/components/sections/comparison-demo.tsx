@@ -20,9 +20,8 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
-import { collection, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
-import { addDocumentNonBlocking } from '@/firebase/non-blocking-updates';
 
 type ComparisonDemoProps = {
   id: string;
@@ -358,7 +357,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const onLeadSubmit = (values: z.infer<typeof leadSchema>) => {
+  async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
     if (!firestore) {
       toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
       return;
@@ -372,20 +371,24 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       createdAt: serverTimestamp(),
     };
     
-    const leadsCollection = collection(firestore, 'comparison_leads');
-    
-    // Use the non-blocking update function.
-    // This function is designed to not be awaited and handles its own errors.
-    addDocumentNonBlocking(leadsCollection, leadData);
+    try {
+      const leadsCollection = collection(firestore, 'comparison_leads');
+      await addDoc(leadsCollection, leadData);
 
-    toast({ title: "Information Saved!", description: "Generating your personalized results now." });
-    
-    // Close the modal and proceed immediately.
-    setIsLeadModalOpen(false);
-    setIsSavingLead(false);
-    
-    // Start the comparison fetch, but don't block the UI thread.
-    handleFormSubmit();
+      toast({ title: "Information Saved!", description: "Generating your personalized results now." });
+      
+      setIsLeadModalOpen(false);
+      handleFormSubmit();
+    } catch (error) {
+      console.error("Error saving lead:", error);
+      toast({
+        variant: "destructive",
+        title: "Save Failed",
+        description: "We couldn't save your information. Please try again.",
+      });
+    } finally {
+      setIsSavingLead(false);
+    }
   }
 
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
@@ -577,7 +580,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                 value={selections[currentWizardStepConfig.key] || ''}
                                                                 onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
                                                                 onKeyDown={handleCustomSubmit}
-                                                                autoFocus
                                                             />
                                                         </div>
                                                     </motion.div>
@@ -768,5 +770,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
