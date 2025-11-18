@@ -181,7 +181,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     'Content-Type': 'application/json',
                     'Accept': 'application/json',
                 },
-                body: JSON.stringify({}), // Send empty body for connection test
+                // The .NET ASMX WebMethod expects the payload to be wrapped in a root object
+                // whose property name matches the method's parameter name ('requestData').
+                body: JSON.stringify({ requestData: {} }),
             });
 
             if (!response.ok) {
@@ -301,13 +303,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
-    const requestBody = {
+    const formData = {
       postcode: selections['postcode'] || '',
       supplier: selections['electricitySupplier'] || '',
       usage: selections['usage'] || '',
       endDate: selections['contractEndDate'] || '',
     };
-    console.log('Sending data to proxy:', requestBody);
+    
+    console.log('Sending data to proxy:', formData);
   
     try {
         const response = await fetch('/api/webhook-proxy', {
@@ -316,7 +319,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 'Content-Type': 'application/json',
                 'Accept': 'application/json',
             },
-            body: JSON.stringify(requestBody),
+            // The .NET ASMX WebMethod expects the payload to be wrapped in a root object
+            // whose property name matches the method's parameter name ('requestData').
+            body: JSON.stringify({ requestData: formData }),
         });
   
         if (!response.ok) {
@@ -325,11 +330,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         }
   
         const resultData = await response.json();
-        const unwrappedData = resultData.d ? JSON.parse(resultData.d) : resultData;
+        // The data is doubly stringified, so we need to parse it twice.
+        // First parse is for the Next.js response, second is for the nested JSON from .NET.
+        const parsedInnerJson = JSON.parse(resultData.d);
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: unwrappedData.recommendedPlans || unwrappedData, 
+            recommendedPlans: parsedInnerJson.recommendedPlans || parsedInnerJson,
         };
   
         setComparisonResult(finalResult);
@@ -396,7 +403,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </div>
         )}
         {connectionStatus === 'success' && (
-            <motion.div initial={{opacity:0, scale:0.9}} animate={{opacity:1, scale:1}} className="flex flex-col items-center gap-3 text-lg text-green-600">
+            <motion.div initial={{opacity:0, scale:0.9}} animate={{opacity:1, scale:1}} className="flex flex-col items-center gap-3 text-green-600">
                 <CheckCircle className="h-10 w-10" />
                 <span className="font-semibold">Connection Successful!</span>
                 <p className="text-sm text-muted-foreground">The comparison wizard will now start.</p>
