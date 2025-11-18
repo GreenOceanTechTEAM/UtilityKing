@@ -201,7 +201,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -319,7 +319,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handlePrimaryAction = () => {
-    if (currentPart === totalParts && isStepComplete(currentStep)) {
+    if (currentStep === wizardSteps.length - 1 && isStepComplete(currentStep)) {
       setIsLeadModalOpen(true);
     } else {
       handleNextStep();
@@ -354,10 +354,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
 
   const getButtonText = () => {
-    if (currentPart < totalParts) {
-      return "Next Step";
-    }
-    if (currentPart === totalParts && currentStep < wizardSteps.length -1) {
+    if (currentStep < wizardSteps.length - 1) {
       return "Next Step";
     }
     return "Compare Energy Deals";
@@ -522,12 +519,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     size="lg" 
                                                     className="w-full h-12 text-base mt-4" 
                                                     onClick={handlePrimaryAction}
-                                                    disabled={isLoading && currentPart === totalParts}
+                                                    disabled={isLoading && currentStep === wizardSteps.length -1}
                                                 >
-                                                    {isLoading && currentPart === totalParts ? <Loader2 className="animate-spin" /> : (
+                                                    {isLoading && currentStep === wizardSteps.length -1 ? <Loader2 className="animate-spin" /> : (
                                                       getButtonText()
                                                     )}
-                                                    {currentPart < totalParts && <ArrowRight className="ml-2 h-4 w-4" />}
+                                                    {currentStep < wizardSteps.length -1 && <ArrowRight className="ml-2 h-4 w-4" />}
                                                 </Button>
                                             </motion.div>
                                         )}
