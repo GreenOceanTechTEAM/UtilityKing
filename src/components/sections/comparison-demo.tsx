@@ -149,6 +149,13 @@ const pillVariants = {
 
 const AI_TYPING_DELAY = 1000;
 
+const analysisLines = [
+    'Analyzing your postcode...',
+    'Comparing market tariffs...',
+    'Checking supplier rates...',
+    'Finalizing recommendations...',
+];
+
 export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
@@ -244,15 +251,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         return selection && selection.length > 0;
     }
     
+    if (step.key === 'contractEndDate') {
+        return !!selection;
+    }
+    
     return !!selection;
   }
 
   const handleFormSubmit = async () => {
     setIsLoading(true);
     setComparisonResult(null);
-  
-    const proxyUrl = '/api/webhook-proxy';
-    
+
     const requestBody = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
@@ -263,7 +272,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     console.log("Sending data to proxy:", requestBody);
   
     try {
-        const response = await fetch(proxyUrl, {
+        const response = await fetch('/api/webhook-proxy', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -678,4 +687,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
