@@ -22,6 +22,7 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
+import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
 
 type ComparisonDemoProps = {
   id: string;
@@ -161,7 +162,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isSavingLead, setIsSavingLead] = useState(false);
   const { toast } = useToast();
-  const { firestore } = useFirebase();
+  const { firestore, auth, user } = useFirebase();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -268,7 +269,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       endDate: selections['contractEndDate'] || '',
     };
     
-    console.log('Sending data to proxy:', formData);
+    console.log('Sending data to proxy:', { requestData: formData });
   
     try {
         const response = await fetch('/api/webhook-proxy', {
@@ -286,16 +287,33 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         }
   
         const resultData = await response.json();
-        // The data is doubly stringified, so we need to parse it twice.
-        // First parse is for the Next.js response, second is for the nested JSON from .NET.
         const parsedInnerJson = JSON.parse(resultData.d);
+
+        const plans = Array.isArray(parsedInnerJson) ? parsedInnerJson : [parsedInnerJson];
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: parsedInnerJson.recommendedPlans || parsedInnerJson,
+            recommendedPlans: plans.map((plan: any) => ({
+                planName: `Standing Charge: ${plan.standingcharge}p`,
+                provider: plan.supplier,
+                price: parseFloat(plan.yearlycost),
+                contractLength: `Unit Rate: ${plan.unitrate}p`,
+                link: '#',
+            })),
         };
   
         setComparisonResult(finalResult);
+
+        if (user && firestore) {
+          const comparisonData = {
+            userId: user.uid,
+            userInput: JSON.stringify(selections),
+            comparisonResult: JSON.stringify(finalResult),
+            timestamp: serverTimestamp(),
+          };
+          const comparisonsCollection = collection(firestore, `users/${user.uid}/ai_comparisons`);
+          await addDoc(comparisonsCollection, comparisonData);
+        }
   
     } catch (error: any) {
         console.error("Comparison failed:", error);
@@ -318,20 +336,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    if (!firestore) {
+    if (!firestore || !auth) {
       toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
       return;
     }
     
     setIsSavingLead(true);
     
-    const leadData = {
-      ...values,
-      comparisonInputs: selections,
-      createdAt: serverTimestamp(),
-    };
-    
     try {
+      let currentUser = user;
+      if (!currentUser) {
+          const userCredential = await initiateAnonymousSignIn(auth);
+          currentUser = userCredential.user;
+      }
+      
+      const leadData = {
+        ...values,
+        comparisonInputs: selections,
+        createdAt: serverTimestamp(),
+        userId: currentUser.uid,
+      };
+      
       const leadsCollection = collection(firestore, 'comparison_leads');
       await addDoc(leadsCollection, leadData);
 
@@ -339,6 +364,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       
       setIsLeadModalOpen(false);
       handleFormSubmit();
+
     } catch (error) {
       console.error("Error saving lead:", error);
       toast({
@@ -600,12 +626,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     <span className="text-base font-normal text-muted-foreground">/year</span>
                                                 </div>
                                                 <p className="text-sm text-muted-foreground">
-                                                    Contract: <span className="font-semibold text-card-foreground">{plan.contractLength}</span>
+                                                    {plan.contractLength}
                                                 </p>
                                             </CardContent>
                                             <CardFooter>
                                                 <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
-                                                    <Link href={plan.link} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
+                                                    <Link href={plan.link || '#'} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
                                                 </Button>
                                             </CardFooter>
                                             </Card>
@@ -698,6 +724,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
 
