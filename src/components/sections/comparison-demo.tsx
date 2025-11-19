@@ -166,44 +166,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
   const [isTyping, setIsTyping] = useState(true);
-  
-  const [connectionStatus, setConnectionStatus] = useState<'checking' | 'success' | 'error'>('checking');
-  const [connectionError, setConnectionError] = useState<string | null>(null);
-
-  useEffect(() => {
-    const checkConnection = async () => {
-        setConnectionStatus('checking');
-        setConnectionError(null);
-        try {
-            const response = await fetch('/api/webhook-proxy', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Accept': 'application/json',
-                },
-                body: JSON.stringify({ requestData: {} }),
-            });
-
-            if (!response.ok) {
-                const errorText = await response.text();
-                throw new Error(`Connection test failed: ${response.status} - ${errorText}`);
-            }
-            
-            const data = await response.json();
-            if(data) {
-                setConnectionStatus('success');
-            } else {
-                 throw new Error("Received an empty or invalid response from server.");
-            }
-
-        } catch (error: any) {
-            setConnectionStatus('error');
-            setConnectionError(error.message || 'An unknown error occurred while connecting to the comparison service.');
-        }
-    };
-
-    checkConnection();
-  }, []);
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -224,12 +186,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
 
   useEffect(() => {
-    if (connectionStatus === 'success') {
-        setIsTyping(true);
-        const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
-        return () => clearTimeout(timer);
-    }
-  }, [currentStep, connectionStatus]);
+    setIsTyping(true);
+    const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
+    return () => clearTimeout(timer);
+  }, [currentStep]);
 
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
@@ -400,36 +360,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return "Compare Energy Deals";
   }
 
-  const renderConnectionStatus = () => (
-     <div className="flex flex-col items-center justify-center min-h-[400px] p-8 text-center">
-        {connectionStatus === 'checking' && (
-            <div className="flex items-center gap-3 text-lg text-muted-foreground">
-                <Loader2 className="h-6 w-6 animate-spin" />
-                <span>Checking connection to comparison service...</span>
-            </div>
-        )}
-        {connectionStatus === 'success' && (
-            <motion.div initial={{opacity:0, scale:0.9}} animate={{opacity:1, scale:1}} className="flex flex-col items-center gap-3 text-green-600">
-                <CheckCircle className="h-10 w-10" />
-                <span className="font-semibold">Connection Successful!</span>
-                <p className="text-sm text-muted-foreground">The comparison wizard will now start.</p>
-            </motion.div>
-        )}
-        {connectionStatus === 'error' && (
-            <motion.div initial={{opacity:0, scale:0.9}} animate={{opacity:1, scale:1}} className="p-4 bg-destructive/10 border border-destructive/20 rounded-lg max-w-md">
-                <div className="flex items-center gap-3 text-destructive font-semibold">
-                    <AlertTriangle className="h-6 w-6" />
-                    <p>Connection Failed</p>
-                </div>
-                <p className="mt-2 text-sm text-left text-destructive/80">
-                    We could not establish a connection to the comparison service. This may be a temporary issue. Please try again later.
-                </p>
-                 {connectionError && <pre className="mt-2 text-xs whitespace-pre-wrap break-all bg-destructive/5 p-2 rounded text-left">{connectionError}</pre>}
-            </motion.div>
-        )}
-     </div>
-  );
-
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -452,9 +382,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             <div className="w-full max-w-[560px]">
                 <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
                     
-                    {connectionStatus !== 'success' && renderConnectionStatus()}
-                    
-                    {connectionStatus === 'success' && !isLoading && !comparisonResult && (
+                    {!isLoading && !comparisonResult && (
                         <>
                             <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
                             <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
@@ -770,6 +698,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
 
     
 
