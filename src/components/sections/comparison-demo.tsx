@@ -12,7 +12,8 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, Server, CheckCircle, AlertTriangle } from 'lucide-react';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -127,9 +128,8 @@ const wizardSteps = [
         key: 'contractEndDate',
         title: "Contract End Date",
         aiMessage: "When does your current contract end?",
-        isInput: true,
-        inputType: "date",
-        customPlaceholder: "Select a date",
+        isInput: false, // This will be handled by custom UI
+        isDateInput: true,
         icon: CalendarDays,
         options: [],
     },
@@ -223,7 +223,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setSelections(newSelections);
     
     const stepConfig = wizardSteps.find(s => s.key === stepKey);
-    if (stepConfig && !stepConfig.isMultiSelect && !stepConfig.isInput) {
+    if (stepConfig && !stepConfig.isMultiSelect && !stepConfig.isInput && !stepConfig.isDateInput) {
         setTimeout(() => handleNextStep(), 300);
     }
   };
@@ -252,7 +252,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.key === 'contractEndDate') {
-        return !!selection;
+        return !!selections.contractEndDay && !!selections.contractEndMonth && !!selections.contractEndYear;
     }
     
     return !!selection;
@@ -261,19 +261,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const handleFormSubmit = async () => {
     setIsLoading(true);
     setComparisonResult(null);
-
-    const rawEndDate = selections['contractEndDate'] || '';
-    let formattedEndDate = '';
-    if (rawEndDate) {
-        const [year, month, day] = rawEndDate.split('-');
-        formattedEndDate = `${day}/${month}/${year}`;
-    }
-
+    
     const formData = {
       postcode: selections['postcode'] || '',
       supplier: selections['electricitySupplier'] || '',
       usage: selections['usage'] || '',
-      endDate: formattedEndDate,
+      day: selections['contractEndDay'] || '',
+      month: selections['contractEndMonth'] || '',
+      year: selections['contractEndYear'] || '',
     };
     
     console.log('Sending data to proxy:', { requestData: formData });
@@ -392,6 +387,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     return "Compare Energy Deals";
   }
+
+  // For date dropdowns
+  const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
+  const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 10 }, (_, i) => (currentYear + i).toString());
 
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
@@ -544,6 +545,31 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                             />
                                                         </div>
                                                     </motion.div>
+                                                )}
+
+                                                {currentWizardStepConfig.isDateInput && (
+                                                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                    <div className="grid grid-cols-3 gap-2">
+                                                      <Select value={selections.contractEndDay || ''} onValueChange={(value) => handleCustomValueChange('contractEndDay', value)}>
+                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Day" /></SelectTrigger>
+                                                        <SelectContent>
+                                                          {days.map(day => <SelectItem key={day} value={day}>{day}</SelectItem>)}
+                                                        </SelectContent>
+                                                      </Select>
+                                                      <Select value={selections.contractEndMonth || ''} onValueChange={(value) => handleCustomValueChange('contractEndMonth', value)}>
+                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Month" /></SelectTrigger>
+                                                        <SelectContent>
+                                                          {months.map(month => <SelectItem key={month} value={month}>{month}</SelectItem>)}
+                                                        </SelectContent>
+                                                      </Select>
+                                                      <Select value={selections.contractEndYear || ''} onValueChange={(value) => handleCustomValueChange('contractEndYear', value)}>
+                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Year" /></SelectTrigger>
+                                                        <SelectContent>
+                                                          {years.map(year => <SelectItem key={year} value={year}>{year}</SelectItem>)}
+                                                        </SelectContent>
+                                                      </Select>
+                                                    </div>
+                                                  </motion.div>
                                                 )}
                                                 
                                                 {(isStepComplete(currentStep)) && (
@@ -731,3 +757,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
