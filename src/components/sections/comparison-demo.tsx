@@ -262,11 +262,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
+    const rawEndDate = selections['contractEndDate'] || '';
+    let formattedEndDate = '';
+    if (rawEndDate) {
+        const [year, month, day] = rawEndDate.split('-');
+        formattedEndDate = `${day}/${month}/${year}`;
+    }
+
     const formData = {
       postcode: selections['postcode'] || '',
       supplier: selections['electricitySupplier'] || '',
       usage: selections['usage'] || '',
-      endDate: selections['contractEndDate'] || '',
+      endDate: formattedEndDate,
     };
     
     console.log('Sending data to proxy:', { requestData: formData });
@@ -724,11 +731,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-
-    
-
-    
-
-    
