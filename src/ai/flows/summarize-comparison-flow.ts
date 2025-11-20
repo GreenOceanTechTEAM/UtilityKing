@@ -22,6 +22,7 @@ const PlanSchema = z.object({
 });
 
 const SummarizeComparisonInputSchema = z.object({
+  userName: z.string().describe("The name of the user for a personalized greeting."),
   selections: z.any().describe("The user's selections from the comparison wizard, including postcode and preferences."),
   results: z.array(PlanSchema).describe("The array of recommended utility plans from the comparison engine."),
 });
@@ -42,7 +43,9 @@ const prompt = ai.definePrompt({
   output: {schema: SummarizeComparisonOutputSchema},
   prompt: `You are UKi, an expert AI assistant specializing in UK utility markets. Your task is to provide a clear, concise, and helpful summary of energy tariff comparison results for a user.
 
-Analyze the provided data, which includes the user's wizard selections and the list of recommended plans.
+Analyze the provided data, which includes the user's name, their wizard selections, and the list of recommended plans.
+
+**User's Name:** {{{userName}}}
 
 **User's Selections:**
 \`\`\`json
@@ -54,8 +57,8 @@ Analyze the provided data, which includes the user's wizard selections and the l
 {{{json results}}}
 \`\`\`
 
-Based on this data, craft a conversational summary formatted in clean Markdown. Address the user directly. Your summary should:
-1.  Start with a friendly greeting.
+Based on this data, craft a conversational summary formatted in clean Markdown. Your summary should:
+1.  Start with a friendly, personalized greeting addressing the user by their name (e.g., "Hello, Jane!").
 2.  Acknowledge their key preferences (e.g., "I see you're looking for a fixed-rate plan...").
 3.  Use a Markdown heading like '### Key Findings'.
 4.  Use a bulleted list to highlight the most important deals. For each bullet point:
@@ -67,7 +70,7 @@ Based on this data, craft a conversational summary formatted in clean Markdown. 
 Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight. Ensure the output is clean Markdown with no extra characters or formatting issues.
 
 **Example Markdown Output Structure:**
-Hello! I've analyzed your results.
+Hello, {{{userName}}}! I've analyzed your results.
 
 ### Key Findings
 *   **Best Value:** The cheapest option is from **[Supplier]** at **£[Price]/year** for a [Length] contract. This is a great deal.

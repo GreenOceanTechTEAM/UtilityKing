@@ -285,6 +285,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summary, setSummary] = useState<SummarizeComparisonOutput | null>(null);
+  const [leadDetails, setLeadDetails] = useState<z.infer<typeof leadSchema> | null>(null);
 
   const [date, setDate] = React.useState<Date>()
 
@@ -310,17 +311,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }, [currentStep]);
 
   useEffect(() => {
-    if (!isGeneratingPdf || !pdfContainerRef.current) return;
+    if (!isGeneratingPdf) return;
 
     const generate = async () => {
         const pdfElement = pdfContainerRef.current;
         if (!pdfElement) return;
-
-        pdfElement.style.opacity = '1';
-        pdfElement.style.zIndex = '1000';
-        pdfElement.style.position = 'fixed';
-        pdfElement.style.top = '0';
-        pdfElement.style.left = '0';
         
         try {
             const canvas = await html2canvas(pdfElement, {
@@ -339,7 +334,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             const imgHeight = canvas.height;
             const ratio = imgWidth / imgHeight;
 
-            const contentWidth = pdfWidth - 20; // with margin
+            let contentWidth = pdfWidth - 20; // with margin
             let contentHeight = contentWidth / ratio;
             
             let heightLeft = contentHeight;
@@ -365,16 +360,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 description: "Sorry, we couldn't generate the PDF at this time."
             });
         } finally {
-            pdfElement.style.opacity = '0';
-            pdfElement.style.zIndex = '-1';
-            pdfElement.style.position = 'absolute';
-            pdfElement.style.top = 'auto';
-            pdfElement.style.left = '-9999px';
             setIsGeneratingPdf(false); // Reset state
         }
     };
+    
     // Use a short timeout to ensure the DOM has updated
-    setTimeout(generate, 100); 
+    const timer = setTimeout(generate, 500); 
+    return () => clearTimeout(timer);
 
   }, [isGeneratingPdf, toast]);
 
@@ -592,6 +584,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     setIsSavingLead(true);
+    setLeadDetails(values);
     
     try {
       // Ensure there is an authenticated user, even an anonymous one
@@ -629,12 +622,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }
 
   const handleSummarize = async () => {
-    if (!comparisonResult) return;
+    if (!comparisonResult || !leadDetails) return;
     setIsSummarizing(true);
     setSummary(null);
 
     try {
         const aiResult = await summarizeComparison({
+            userName: leadDetails.name,
             selections: selections,
             results: comparisonResult.recommendedPlans,
         });
@@ -756,6 +750,68 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         <div className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
+                
+                {isGeneratingPdf && (
+                    <div
+                        ref={pdfContainerRef}
+                        className="p-10"
+                        style={{ position: 'absolute', left: 0, top: 0, width: '800px', backgroundColor: 'white', zIndex: 10, opacity: 1, color: 'black' }}
+                    >
+                        <div className="text-center mb-6 border-b pb-4">
+                            <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
+                            <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
+                            {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
+                            {leadDetails && (
+                                <div className="text-xs text-gray-500 mt-2">
+                                    <p className="font-semibold">Generated for:</p>
+                                    <p>Name: {leadDetails.name}</p>
+                                    <p>Email: {leadDetails.email}</p>
+                                    <p>Phone: {leadDetails.phone}</p>
+                                </div>
+                            )}
+                        </div>
+                        
+                        {summary && (
+                            <div className="my-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
+                                <h3 className="font-headline text-xl font-bold text-gray-800 mb-2">AI Summary from UKi</h3>
+                                <ReactMarkdown className="prose prose-sm max-w-full text-base text-gray-800 whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
+                            </div>
+                        )}
+                        
+                        <div>
+                            {categorizedPlans && categorizedPlans.cheapest && (
+                                <div className="mb-6">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">Cheapest Deal</h3>
+                                    {renderPdfPlans([categorizedPlans.cheapest])}
+                                </div>
+                            )}
+                            {categorizedPlans && categorizedPlans.oneYear.length > 0 && (
+                                <div className="mb-6">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">1-Year Fixed Deals</h3>
+                                    {renderPdfPlans(categorizedPlans.oneYear)}
+                                </div>
+                            )}
+                            {categorizedPlans && categorizedPlans.twoYear.length > 0 && (
+                                <div className="mb-6">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Years Fixed Deals</h3>
+                                    {renderPdfPlans(categorizedPlans.twoYear)}
+                                </div>
+                            )}
+                            {categorizedPlans && categorizedPlans.threeYear.length > 0 && (
+                                <div className="mb-6">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Years Fixed Deals</h3>
+                                    {renderPdfPlans(categorizedPlans.threeYear)}
+                                </div>
+                            )}
+                            {categorizedPlans && categorizedPlans.fourPlusYear.length > 0 && (
+                                <div className="mb-6">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Years Fixed Deals</h3>
+                                    {renderPdfPlans(categorizedPlans.fourPlusYear)}
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                )}
                 
                 {!isLoading && !comparisonResult && (
                     <>
@@ -956,56 +1012,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-4"
                     >
-                         <div
-                            ref={pdfContainerRef}
-                            style={{ position: 'absolute', left: '-9999px', opacity: 0, zIndex: -1, width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
-                         >
-                            <div className="text-center mb-6 border-b pb-4">
-                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
-                                <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
-                                {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
-                            </div>
-                            
-                            {summary && (
-                                <div className="my-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2">AI Summary from UKi</h3>
-                                    <ReactMarkdown className="prose prose-sm max-w-full text-base text-gray-800 whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
-                                </div>
-                            )}
-                            
-                            <div>
-                                {categorizedPlans.cheapest && (
-                                    <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">Cheapest Deal</h3>
-                                        {renderPdfPlans([categorizedPlans.cheapest])}
-                                    </div>
-                                )}
-                                {categorizedPlans.oneYear.length > 0 && (
-                                    <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">1-Year Fixed Deals</h3>
-                                        {renderPdfPlans(categorizedPlans.oneYear)}
-                                    </div>
-                                )}
-                                {categorizedPlans.twoYear.length > 0 && (
-                                    <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Years Fixed Deals</h3>
-                                        {renderPdfPlans(categorizedPlans.twoYear)}
-                                    </div>
-                                )}
-                                {categorizedPlans.threeYear.length > 0 && (
-                                    <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Years Fixed Deals</h3>
-                                        {renderPdfPlans(categorizedPlans.threeYear)}
-                                    </div>
-                                )}
-                                {categorizedPlans.fourPlusYear.length > 0 && (
-                                    <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Years Fixed Deals</h3>
-                                        {renderPdfPlans(categorizedPlans.fourPlusYear)}
-                                    </div>
-                                )}
-                            </div>
-                        </div>
+
                         <div className='text-center mb-6'>
                             <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                             <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
@@ -1176,5 +1183,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
