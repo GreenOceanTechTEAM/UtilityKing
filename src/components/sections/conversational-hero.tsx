@@ -11,7 +11,6 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
-import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import EnergyGridBackground from '../shared/energy-grid-background';
@@ -135,7 +134,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     return () => clearTimeout(timeout);
   }, []);
 
-  async function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema,>) {
     setIsLoading(true);
     setAssistance(null);
     try {

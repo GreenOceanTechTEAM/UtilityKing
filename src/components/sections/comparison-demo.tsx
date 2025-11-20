@@ -314,7 +314,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -520,10 +520,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsSavingLead(true);
     
     try {
+      // Ensure there is an authenticated user, even an anonymous one
       let currentUser = user;
       if (!currentUser) {
-          const userCredential = await signInAnonymously(auth);
-          currentUser = userCredential.user;
+        const userCredential = await signInAnonymously(auth);
+        currentUser = userCredential.user;
       }
       
       const leadData = {
@@ -938,7 +939,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             style={{ position: 'absolute', left: '-9999px', width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
                          >
                             <div className="text-center mb-6 border-b pb-4">
-                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
+                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing AI</h2>
                                 <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
                                 {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
                             </div>

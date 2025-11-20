@@ -82,11 +82,17 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
   }, [inView, value, spring, controls]);
   
   useEffect(() => {
-    const unsubscribe = spring.on("change", (latest) => {
+    let animationFrameId: number;
+
+    const updateDOM = (latest: number) => {
         const element = document.getElementById(`animated-number-${value}`);
         if (element) {
             element.textContent = `${prefix}${latest.toLocaleString('en-US', { maximumFractionDigits: 0 })}${suffix}`;
         }
+    };
+    
+    const unsubscribe = spring.on("change", (latest) => {
+        animationFrameId = requestAnimationFrame(() => updateDOM(latest));
     });
 
     const onComplete = () => {
@@ -108,6 +114,7 @@ export default function AnimatedNumber({ value, prefix = "", suffix = "" }: Anim
 
     return () => {
         unsubscribe();
+        cancelAnimationFrame(animationFrameId);
     }
   }, [spring, prefix, suffix, value]);
 
