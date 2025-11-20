@@ -87,14 +87,6 @@ const wizardSteps = [
     {
         step: 2,
         part: 1,
-        key: 'billAvailable',
-        title: "Upload a Bill",
-        aiMessage: "To be more accurate, do you have a recent bill handy?",
-        options: [{ label: "Yes, I'll upload it" }, { label: "No, I'll skip" }],
-    },
-    {
-        step: 3,
-        part: 1,
         key: 'preferences',
         title: "Your Preferences",
         aiMessage: "What matters most to you in a new plan?",
@@ -105,7 +97,7 @@ const wizardSteps = [
         isMultiSelect: true,
     },
     {
-        step: 4,
+        step: 3,
         part: 1,
         key: 'renewablePreference',
         title: "Renewable Energy",
@@ -113,7 +105,7 @@ const wizardSteps = [
         options: [{ label: "Yes", icon: Leaf }, { label: "No" }],
     },
     {
-        step: 5,
+        step: 4,
         part: 2,
         key: 'postcode',
         title: "Postcode",
@@ -124,7 +116,7 @@ const wizardSteps = [
         icon: Search,
     },
     {
-        step: 6,
+        step: 5,
         part: 2,
         key: 'electricitySupplier',
         title: "Current Supplier",
@@ -140,7 +132,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 7,
+        step: 6,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -150,7 +142,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 8,
+        step: 7,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -565,7 +557,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
+                                            currentWizardStepConfig.step === 5 && "max-h-[260px] overflow-y-auto pr-2"
                                             )}>
                                                 {currentWizardStepConfig.options.map(option => {
                                                     const Icon = (option as any).icon;
@@ -614,17 +606,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     </motion.button>
                                                 ))}
                                             </div>
-
-                                            {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
-                                                <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
-                                                    <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
-                                                        <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
-                                                        <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
-                                                        <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
-                                                        <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-                                                    </div>
-                                                </motion.div>
-                                            )}
 
                                             {currentWizardStepConfig.isInput && (
                                                 <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
@@ -851,3 +832,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
