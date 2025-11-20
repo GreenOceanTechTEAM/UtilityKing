@@ -287,14 +287,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
-    // Ensure all required fields have a value, defaulting to an empty string.
     const formData = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
-        day: selections['contractEndDay'] || '',
-        month: selections['contractEndMonth'] || '',
-        year: selections['contractEndYear'] || '',
+        day: selections['contractEndDay'] || '1',
+        month: selections['contractEndMonth'] || '1',
+        year: selections['contractEndYear'] || new Date().getFullYear().toString(),
         email: "",
         mprn: "",
         business: "",
@@ -321,35 +320,32 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         const resultData = await response.json();
         
         let plansData: RecommendedPlan[];
+        let parsedInnerJson;
+        // The backend response is a stringified JSON inside the 'd' property.
         const parsedInnerJsonString = resultData.d;
 
         if (typeof parsedInnerJsonString === 'string') {
           // It's a double-encoded JSON string, parse it again.
-          const parsedInnerJson = JSON.parse(parsedInnerJsonString);
-          if (Array.isArray(parsedInnerJson)) {
+          parsedInnerJson = JSON.parse(parsedInnerJsonString);
+        } else {
+            // It might be already parsed.
+            parsedInnerJson = parsedInnerJsonString;
+        }
+
+        if (Array.isArray(parsedInnerJson)) {
             plansData = parsedInnerJson;
-          } else if (typeof parsedInnerJson === 'object' && parsedInnerJson !== null) {
+        } else if (typeof parsedInnerJson === 'object' && parsedInnerJson !== null) {
             // Handle case where a single object is returned
             plansData = [parsedInnerJson];
-          } else {
-             throw new Error("Parsed inner JSON is not an array or a single object.");
-          }
-        } else if (Array.isArray(parsedInnerJsonString)) {
-          // It's already an array.
-          plansData = parsedInnerJsonString;
-        } else if (typeof parsedInnerJsonString === 'object' && parsedInnerJsonString !== null) {
-            plansData = [parsedInnerJsonString];
-        }
-        else {
-            throw new Error("Invalid response format from backend.");
+        } else {
+            throw new Error("Parsed inner JSON is not an array or a single object.");
         }
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
             recommendedPlans: plansData.map((plan: RecommendedPlan) => {
-                const yearlyCostString = String(plan.yearlycost || '0');
-                const numericCostString = yearlyCostString.replace(/[^0-9.]/g, '');
-                const price = parseFloat(numericCostString);
+                const yearlyCostString = String(plan.yearlycost || '0').replace(/[^0-9.]/g, '');
+                const price = parseFloat(yearlyCostString);
                 
                 const features: string[] = [];
                 if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
@@ -736,11 +732,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     </div>
                                                 )}
                                             </CardContent>
-                                            <CardFooter>
-                                                <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
-                                                    <Link href={plan.link || '#'} target="_blank">Switch & Start Saving Today <ArrowRight className="ml-2 h-4 w-4" /></Link>
-                                                </Button>
-                                            </CardFooter>
                                             </Card>
                                         </motion.div>
                                     ))}
@@ -828,4 +819,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   );
 }
 
-    
