@@ -287,17 +287,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsLoading(true);
     setComparisonResult(null);
 
-    const { contractEndDay, contractEndMonth, contractEndYear } = selections;
-    const startDate = contractEndDay && contractEndMonth && contractEndYear
-      ? `${contractEndDay}/${contractEndMonth}/${contractEndYear}`
-      : "";
-
     // Ensure all required fields have a value, defaulting to an empty string.
     const formData = {
         postcode: selections['postcode'] || '',
-        supplier: selections['electricitySupplier'] || '',
-        usage: selections['usage'] || '',
-        startDate: startDate,
+        curGasSupply: selections['electricitySupplier'] || '',
+        eacGas: selections['usage'] || '',
+        day: selections['contractEndDay'] || '',
+        month: selections['contractEndMonth'] || '',
+        year: selections['contractEndYear'] || '',
         email: "",
         mprn: "",
         business: "",
@@ -323,13 +320,24 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         const resultData = await response.json();
         
-        // The backend returns a JSON string inside the 'd' property
+        let plansData: RecommendedPlan[];
         const parsedInnerJsonString = resultData.d;
-        if (!parsedInnerJsonString || typeof parsedInnerJsonString !== 'string') {
+
+        if (typeof parsedInnerJsonString === 'string') {
+          // It's a double-encoded JSON string, parse it again.
+          const parsedInnerJson = JSON.parse(parsedInnerJsonString);
+          // Now check if the result of THAT parse is an object with a recommendedPlans property
+          if (parsedInnerJson && Array.isArray(parsedInnerJson)) {
+            plansData = parsedInnerJson;
+          } else {
+            throw new Error("Parsed inner JSON is not an array.");
+          }
+        } else if (Array.isArray(parsedInnerJsonString)) {
+          // It's already an array.
+          plansData = parsedInnerJsonString;
+        } else {
             throw new Error("Invalid response format from backend.");
         }
-        
-        let plansData: RecommendedPlan[] = JSON.parse(parsedInnerJsonString);
         
         // Ensure plansData is always an array
         const plansArray = Array.isArray(plansData) ? plansData : [plansData];
@@ -818,4 +826,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   );
 }
 
-    
