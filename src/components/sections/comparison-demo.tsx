@@ -100,7 +100,7 @@ const wizardSteps = [
         aiMessage: "What matters most to you in a new plan?",
         options: [
             { label: "Cheapest price" }, { label: "Fixed rate contract" }, { label: "Flexible / no exit fees" },
-            { label: "Smart meter compatible" }, { label: "Fastest switching" }
+            { label: "Smart meter compatible" }, { label: "Fastest switching" }, { label: "Best customer service" }
         ],
         isMultiSelect: true,
     },
