@@ -308,6 +308,65 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return () => clearTimeout(timer);
   }, [currentStep]);
 
+  useEffect(() => {
+    // This effect triggers the PDF generation *after* the state has been updated
+    // and the component has re-rendered, ensuring the ref content is current.
+    if (pdfTimestamp && pdfContainerRef.current) {
+        const generatePdf = async () => {
+            const pdfElement = pdfContainerRef.current;
+            if (!pdfElement) return;
+
+            try {
+                const canvas = await html2canvas(pdfElement, {
+                    scale: 2,
+                    useCORS: true,
+                    backgroundColor: '#ffffff',
+                });
+                
+                const imgData = canvas.toDataURL('image/png');
+                
+                const pdf = new jsPDF('p', 'mm', 'a4');
+                const pdfWidth = pdf.internal.pageSize.getWidth();
+                const pdfHeight = pdf.internal.pageSize.getHeight();
+                
+                const canvasWidth = canvas.width;
+                const canvasHeight = canvas.height;
+                const canvasAspectRatio = canvasWidth / canvasHeight;
+
+                const contentWidth = pdfWidth - 20; // with margin
+                const contentHeight = contentWidth / canvasAspectRatio;
+
+                let heightLeft = contentHeight;
+                let position = 10; // top margin
+
+                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+                heightLeft -= (pdfHeight - 20);
+
+                while (heightLeft > 0) {
+                    position = position - (pdfHeight - 20);
+                    pdf.addPage();
+                    pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+                    heightLeft -= (pdfHeight - 20);
+                }
+
+                pdf.save('UtilityKing_Quote.pdf');
+            } catch (error) {
+                console.error("Failed to generate PDF:", error);
+                toast({
+                    variant: "destructive",
+                    title: "PDF Download Failed",
+                    description: "Sorry, we couldn't generate the PDF at this time."
+                });
+            } finally {
+                setIsLoading(false);
+                setPdfTimestamp(''); // Reset timestamp to allow future downloads
+            }
+        };
+
+        generatePdf();
+    }
+  }, [pdfTimestamp, toast]); // Dependency on pdfTimestamp
+
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -581,61 +640,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const handleDownloadPdf = async () => {
-    const pdfElement = pdfContainerRef.current;
-    if (!pdfElement) return;
-
+  const handleDownloadPdf = () => {
+    // This function now only sets the state to trigger the useEffect
     setIsLoading(true);
     setPdfTimestamp(new Date().toLocaleString());
-
-    // Needs a slight delay to allow React to render the hidden component with the new timestamp
-    setTimeout(async () => {
-        try {
-            const canvas = await html2canvas(pdfElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-            });
-            
-            const imgData = canvas.toDataURL('image/png');
-            
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-            
-            const canvasWidth = canvas.width;
-            const canvasHeight = canvas.height;
-            const canvasAspectRatio = canvasWidth / canvasHeight;
-            
-            const contentWidth = pdfWidth - 20; // with margin
-            const contentHeight = contentWidth / canvasAspectRatio;
-
-            let heightLeft = contentHeight;
-            let position = 10; // top margin
-
-            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-            heightLeft -= (pdfHeight - 20);
-
-            while (heightLeft > 0) {
-                position = position - (pdfHeight - 20);
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-                heightLeft -= (pdfHeight - 20);
-            }
-
-            pdf.save('UtilityKing_Quote.pdf');
-        } catch (error) {
-            console.error("Failed to generate PDF:", error);
-            toast({
-                variant: "destructive",
-                title: "PDF Download Failed",
-                description: "Sorry, we couldn't generate the PDF at this time."
-            });
-        } finally {
-            setIsLoading(false);
-        }
-    }, 100);
-};
+  };
 
   const categorizedPlans = useMemo((): CategorizedPlans | null => {
     if (!comparisonResult) return null;
@@ -968,19 +977,19 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 )}
                                 {categorizedPlans.twoYear.length > 0 && (
                                     <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Year Fixed Deals</h3>
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Years Fixed Deals</h3>
                                         {renderPdfPlans(categorizedPlans.twoYear)}
                                     </div>
                                 )}
                                 {categorizedPlans.threeYear.length > 0 && (
                                     <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Year Fixed Deals</h3>
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Years Fixed Deals</h3>
                                         {renderPdfPlans(categorizedPlans.threeYear)}
                                     </div>
                                 )}
                                 {categorizedPlans.fourPlusYear.length > 0 && (
                                     <div className="mb-6">
-                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Year Fixed Deals</h3>
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Years Fixed Deals</h3>
                                         {renderPdfPlans(categorizedPlans.fourPlusYear)}
                                     </div>
                                 )}
@@ -990,14 +999,32 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                             <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
                             <div className="mt-4 flex flex-wrap justify-center gap-2">
-                                <Button onClick={handleSummarize} disabled={isSummarizing} size={isMobile ? "icon" : "default"}>
-                                  <Sparkles className={cn("h-4 w-4", !isMobile && "mr-2")} />
-                                  {!isMobile && "Summarize with UKi"}
-                                </Button>
-                                <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size={isMobile ? "icon" : "default"}>
-                                    <Download className={cn("h-4 w-4", !isMobile && "mr-2")} />
-                                    {!isMobile && "Download Report"}
-                                </Button>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button onClick={handleSummarize} disabled={isSummarizing} size={isMobile ? "icon" : "default"}>
+                                            <Sparkles className={cn("h-4 w-4", !isMobile && "mr-2")} />
+                                            {!isMobile && "Summarize with UKi"}
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Summarize with UKi</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                                <TooltipProvider>
+                                     <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size={isMobile ? "icon" : "default"}>
+                                                <Download className={cn("h-4 w-4", !isMobile && "mr-2")} />
+                                                {!isMobile && "Download Report"}
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Download Report</p>
+                                        </TooltipContent>
+                                     </Tooltip>
+                                </TooltipProvider>
                             </div>
                         </div>
                         

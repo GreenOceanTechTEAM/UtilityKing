@@ -54,26 +54,26 @@ Analyze the provided data, which includes the user's wizard selections and the l
 {{{json results}}}
 \`\`\`
 
-Based on this data, craft a conversational summary formatted in Markdown. Address the user directly. Your summary should:
+Based on this data, craft a conversational summary formatted in clean Markdown. Address the user directly. Your summary should:
 1.  Start with a friendly greeting.
 2.  Acknowledge their key preferences (e.g., "I see you're looking for a fixed-rate plan...").
-3.  Use a Markdown heading like "### Key Findings".
+3.  Use a Markdown heading like '### Key Findings'.
 4.  Use a bulleted list to highlight the most important deals. For each bullet point:
     - Start with a bolded title (e.g., "**Your Top Pick:**").
     - Clearly state the supplier, annual cost, and contract length.
     - Provide a brief, insightful comment on why it's a good choice.
 5.  Provide a concluding sentence to encourage them to review the deals below.
 
-Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight.
+Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight. Ensure the output is clean Markdown with no extra characters or formatting issues.
 
 **Example Markdown Output Structure:**
-"Hello! I've analyzed your results.
+Hello! I've analyzed your results.
 
 ### Key Findings
 *   **Best Value:** The cheapest option is from **[Supplier]** at **£[Price]/year** for a [Length] contract. This is a great deal.
 *   **Long-Term Pick:** For more peace of mind, the 2-year fixed deal from **[Supplier]** is only slightly more.
 
-Please review the detailed plans below to make your choice."
+Please review the detailed plans below to make your choice.
 `,
 });
 
