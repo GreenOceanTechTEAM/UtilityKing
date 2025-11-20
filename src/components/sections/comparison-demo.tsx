@@ -2,13 +2,15 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useEffect, useMemo } from 'react';
+import { useState, useEffect, useMemo, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import ReactMarkdown from 'react-markdown';
-import { format } from "date-fns"
+import { format } from "date-fns";
+import jsPDF from 'jspdf';
+import html2canvas from 'html2canvas';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -16,7 +18,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -248,6 +250,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [summary, setSummary] = useState<SummarizeComparisonOutput | null>(null);
 
   const [date, setDate] = React.useState<Date>()
+
+  const resultsRef = useRef<HTMLDivElement>(null);
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -541,6 +545,53 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
+  const handleDownloadPdf = async () => {
+    if (!resultsRef.current) return;
+    setIsLoading(true);
+
+    try {
+        const canvas = await html2canvas(resultsRef.current, {
+            scale: 2, // Higher scale for better quality
+            useCORS: true,
+            backgroundColor: null, // Use transparent background
+        });
+        
+        const imgData = canvas.toDataURL('image/png');
+        
+        // A4 page is 210 x 297 mm
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const canvasAspectRatio = canvasWidth / canvasHeight;
+        
+        let imgWidth = pdfWidth - 20; // with margin
+        let imgHeight = imgWidth / canvasAspectRatio;
+
+        if (imgHeight > pdfHeight - 20) {
+            imgHeight = pdfHeight - 20;
+            imgWidth = imgHeight * canvasAspectRatio;
+        }
+
+        const x = (pdfWidth - imgWidth) / 2;
+        const y = 10;
+
+        pdf.addImage(imgData, 'PNG', x, y, imgWidth, imgHeight);
+        pdf.save('UtilityKing_Quote.pdf');
+    } catch (error) {
+        console.error("Failed to generate PDF:", error);
+        toast({
+            variant: "destructive",
+            title: "PDF Download Failed",
+            description: "Sorry, we couldn't generate the PDF at this time."
+        });
+    } finally {
+        setIsLoading(false);
+    }
+  };
+
   const categorizedPlans = useMemo((): CategorizedPlans | null => {
     if (!comparisonResult) return null;
     
@@ -583,50 +634,50 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
 
     return plans.map((plan, index) => (
-      <motion.div
-          key={`${category}-${index}`}
-          custom={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={(i) => ({
-              opacity: 1,
-              y: 0,
-              transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
-          })}
-      >
-          <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-              <CardHeader>
-                  <div className="flex items-start justify-between">
-                      <div>
-                          <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                          <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                          {plan.unitRate && (
-                            <p className="text-accent font-semibold text-lg mt-1">{plan.unitRate}</p>
-                          )}
-                      </div>
-                      {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                  </div>
-              </CardHeader>
-              <CardContent className="flex-1 space-y-4">
-                  <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                      £{plan.price.toFixed(2)}
-                      <span className="text-base font-normal text-muted-foreground">/year</span>
-                  </div>
-                  <p className="text-sm text-muted-foreground">
-                      {plan.contractLength}
-                  </p>
-                  {plan.features && plan.features.length > 0 && (
-                      <div className="space-y-2 pt-2 border-t">
-                          {plan.features.map(feature => (
-                              <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
-                                  <CheckCircle className="h-4 w-4 text-green-500" />
-                                  <span>{feature}</span>
-                              </div>
-                          ))}
-                      </div>
-                  )}
-              </CardContent>
-          </Card>
-      </motion.div>
+        <motion.div
+            key={`${category}-${index}`}
+            custom={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={(i) => ({
+                opacity: 1,
+                y: 0,
+                transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
+            })}
+        >
+            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
+                <CardHeader>
+                    <div className="flex items-start justify-between">
+                        <div>
+                            <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
+                            <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
+                            {plan.unitRate && (
+                              <p className="text-accent font-semibold text-xl mt-2">{plan.unitRate}</p>
+                            )}
+                        </div>
+                        {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
+                    </div>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                    <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
+                        £{plan.price.toFixed(2)}
+                        <span className="text-base font-normal text-muted-foreground">/year</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                        {plan.contractLength}
+                    </p>
+                    {plan.features && plan.features.length > 0 && (
+                        <div className="space-y-2 pt-2 border-t">
+                            {plan.features.map(feature => (
+                                <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <CheckCircle className="h-4 w-4 text-green-500" />
+                                    <span>{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
+        </motion.div>
     ));
 };
 
@@ -844,73 +895,75 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 )}
 
                 {comparisonResult && !isLoading && categorizedPlans && (
-                    <div className="mt-4">
-                        <AnimatePresence>
-                        <motion.div
-                            key="results"
-                            initial={{ opacity: 0, y: 50 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            exit={{ opacity: 0, y: 50 }}
-                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        >
-                            <div className='text-center mb-6'>
-                                <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
-                                <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
-                                <div className="mt-4 flex justify-center">
-                                    <Button onClick={handleSummarize} disabled={isSummarizing}>
-                                        {isSummarizing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-                                        Summarize with UKi
-                                    </Button>
-                                </div>
+                    <motion.div
+                        key="results"
+                        initial={{ opacity: 0, y: 50 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        exit={{ opacity: 0, y: 50 }}
+                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        className="mt-4"
+                        ref={resultsRef}
+                    >
+                        <div className='text-center mb-6'>
+                            <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
+                            <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
+                            <div className="mt-4 flex flex-wrap justify-center gap-2">
+                                <Button onClick={handleSummarize} disabled={isSummarizing}>
+                                    {isSummarizing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+                                    Summarize with UKi
+                                </Button>
+                                <Button onClick={handleDownloadPdf} variant="outline">
+                                    <Download className="mr-2 h-4 w-4" />
+                                    Download PDF
+                                </Button>
                             </div>
-                            
-                            {isSummarizing && (
-                                <div className="text-center my-4 text-muted-foreground">
-                                    <p>UKi is analyzing your results...</p>
-                                </div>
-                            )}
+                        </div>
+                        
+                        {isSummarizing && (
+                            <div className="text-center my-4 text-muted-foreground">
+                                <p>UKi is analyzing your results...</p>
+                            </div>
+                        )}
 
-                            {summary && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
-                                >
-                                    <ReactMarkdown className="prose prose-sm max-w-full text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
-                                </motion.div>
-                            )}
+                        {summary && (
+                            <motion.div
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
+                            >
+                                <ReactMarkdown className="prose prose-sm max-w-full text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
+                            </motion.div>
+                        )}
 
-                             <Tabs defaultValue="cheapest" className="w-full">
-                                <div className="overflow-x-auto sm:overflow-visible pb-2">
-                                    <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
-                                        <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
-                                        <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
-                                        <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
-                                        <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
-                                        <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
-                                    </TabsList>
-                                </div>
-                                <TabsContent value="cheapest" className="mt-4">
-                                     <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                        {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
-                                     </div>
-                                </TabsContent>
-                                <TabsContent value="1year" className="mt-4">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.oneYear, "1-year")}</div>
-                                </TabsContent>
-                                <TabsContent value="2year" className="mt-4">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.twoYear, "2-year")}</div>
-                                </TabsContent>
-                                <TabsContent value="3year" className="mt-4">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.threeYear, "3-year")}</div>
-                                </TabsContent>
-                                <TabsContent value="4plus" className="mt-4">
-                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.fourPlusYear, "4+ year")}</div>
-                                </TabsContent>
-                            </Tabs>
-                        </motion.div>
-                        </AnimatePresence>
-                    </div>
+                         <Tabs defaultValue="cheapest" className="w-full">
+                            <div className="overflow-x-auto sm:overflow-visible pb-2">
+                                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
+                                    <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
+                                    <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
+                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
+                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
+                                    <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
+                                </TabsList>
+                            </div>
+                            <TabsContent value="cheapest" className="mt-4">
+                                 <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+                                    {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
+                                 </div>
+                            </TabsContent>
+                            <TabsContent value="1year" className="mt-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.oneYear, "1-year")}</div>
+                            </TabsContent>
+                            <TabsContent value="2year" className="mt-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.twoYear, "2-year")}</div>
+                            </TabsContent>
+                            <TabsContent value="3year" className="mt-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.threeYear, "3-year")}</div>
+                            </TabsContent>
+                            <TabsContent value="4plus" className="mt-4">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.fourPlusYear, "4+ year")}</div>
+                            </TabsContent>
+                        </Tabs>
+                    </motion.div>
                 )}
             </div>
         </div>
@@ -1003,5 +1056,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
