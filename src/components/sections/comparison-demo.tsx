@@ -308,65 +308,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return () => clearTimeout(timer);
   }, [currentStep]);
 
-  useEffect(() => {
-    // This effect triggers the PDF generation *after* the state has been updated
-    // and the component has re-rendered, ensuring the ref content is current.
-    if (pdfTimestamp && pdfContainerRef.current) {
-        const generatePdf = async () => {
-            const pdfElement = pdfContainerRef.current;
-            if (!pdfElement) return;
-
-            try {
-                const canvas = await html2canvas(pdfElement, {
-                    scale: 2,
-                    useCORS: true,
-                    backgroundColor: '#ffffff',
-                });
-                
-                const imgData = canvas.toDataURL('image/png');
-                
-                const pdf = new jsPDF('p', 'mm', 'a4');
-                const pdfWidth = pdf.internal.pageSize.getWidth();
-                const pdfHeight = pdf.internal.pageSize.getHeight();
-                
-                const canvasWidth = canvas.width;
-                const canvasHeight = canvas.height;
-                const canvasAspectRatio = canvasWidth / canvasHeight;
-
-                const contentWidth = pdfWidth - 20; // with margin
-                const contentHeight = contentWidth / canvasAspectRatio;
-
-                let heightLeft = contentHeight;
-                let position = 10; // top margin
-
-                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-                heightLeft -= (pdfHeight - 20);
-
-                while (heightLeft > 0) {
-                    position = position - (pdfHeight - 20);
-                    pdf.addPage();
-                    pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-                    heightLeft -= (pdfHeight - 20);
-                }
-
-                pdf.save('UtilityKing_Quote.pdf');
-            } catch (error) {
-                console.error("Failed to generate PDF:", error);
-                toast({
-                    variant: "destructive",
-                    title: "PDF Download Failed",
-                    description: "Sorry, we couldn't generate the PDF at this time."
-                });
-            } finally {
-                setIsLoading(false);
-                setPdfTimestamp(''); // Reset timestamp to allow future downloads
-            }
-        };
-
-        generatePdf();
-    }
-  }, [pdfTimestamp, toast]); // Dependency on pdfTimestamp
-
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -640,11 +581,77 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  const handleDownloadPdf = () => {
-    // This function now only sets the state to trigger the useEffect
+  const handleDownloadPdf = async () => {
+    const pdfElement = pdfContainerRef.current;
+    if (!pdfElement) return;
+
     setIsLoading(true);
     setPdfTimestamp(new Date().toLocaleString());
-  };
+
+    // Temporarily make the element visible for capture
+    pdfElement.style.opacity = '1';
+    pdfElement.style.zIndex = '1000';
+    pdfElement.style.position = 'fixed';
+    pdfElement.style.top = '0';
+    pdfElement.style.left = '0';
+    
+    try {
+        const canvas = await html2canvas(pdfElement, {
+            scale: 2,
+            useCORS: true,
+            backgroundColor: '#ffffff',
+        });
+        
+        const imgData = canvas.toDataURL('image/png');
+        
+        const pdf = new jsPDF('p', 'mm', 'a4');
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        
+        const canvasWidth = canvas.width;
+        const canvasHeight = canvas.height;
+        const canvasAspectRatio = canvasWidth / canvasHeight;
+
+        const contentWidth = pdfWidth - 20; // with margin
+        let contentHeight = contentWidth / canvasAspectRatio;
+
+        let heightLeft = contentHeight;
+        let position = 10; // top margin
+
+        if (contentHeight > pdfHeight - 20) {
+          contentHeight = pdfHeight - 20;
+        }
+
+        pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+        heightLeft -= (pdfHeight - 20);
+
+        while (heightLeft > 0) {
+            position = position - pdfHeight; // Negative position for subsequent pages
+            pdf.addPage();
+            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentWidth / canvasAspectRatio);
+            heightLeft -= (pdfHeight - 20);
+        }
+
+        pdf.save('UtilityKing_Quote.pdf');
+    } catch (error) {
+        console.error("Failed to generate PDF:", error);
+        toast({
+            variant: "destructive",
+            title: "PDF Download Failed",
+            description: "Sorry, we couldn't generate the PDF at this time."
+        });
+    } finally {
+        // Hide the element again
+        pdfElement.style.opacity = '0';
+        pdfElement.style.zIndex = '-1';
+        pdfElement.style.position = 'absolute';
+        pdfElement.style.top = 'auto';
+        pdfElement.style.left = '-9999px';
+
+        setIsLoading(false);
+        setPdfTimestamp(''); // Reset timestamp to allow future downloads
+    }
+};
 
   const categorizedPlans = useMemo((): CategorizedPlans | null => {
     if (!comparisonResult) return null;
@@ -906,7 +913,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     </>
                 )}
 
-                {isLoading && (
+                {(isLoading && !comparisonResult) && (
                      <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
                         <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
                             <AnimatePresence>
@@ -947,7 +954,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     >
                          <div
                             ref={pdfContainerRef}
-                            style={{ position: 'absolute', left: '-9999px', width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
+                            style={{ position: 'absolute', left: '-9999px', opacity: 0, zIndex: -1, width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
                          >
                             <div className="text-center mb-6 border-b pb-4">
                                 <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
@@ -1165,5 +1172,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
