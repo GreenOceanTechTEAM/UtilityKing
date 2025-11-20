@@ -7,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
+import ReactMarkdown from 'react-markdown';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -279,7 +280,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleSelect = (stepKey: string, option: string) => {
-    if (stepKey === 'utilityType' && option === 'Electricity') {
+    if (stepKey === 'utilityType' && option !== 'Gas') {
         setIsComingSoonModalOpen(true);
         return;
     }
@@ -863,9 +864,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
+                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20 prose prose-sm max-w-full"
                                 >
-                                    <p className="text-base text-foreground whitespace-pre-wrap">{summary.summary}</p>
+                                    <ReactMarkdown>{summary.summary}</ReactMarkdown>
                                 </motion.div>
                             )}
 
@@ -990,5 +991,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    

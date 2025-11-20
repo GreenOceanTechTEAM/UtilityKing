@@ -28,7 +28,7 @@ const SummarizeComparisonInputSchema = z.object({
 export type SummarizeComparisonInput = z.infer<typeof SummarizeComparisonInputSchema>;
 
 const SummarizeComparisonOutputSchema = z.object({
-  summary: z.string().describe("A conversational, insightful summary of the comparison results, tailored to the user's inputs."),
+  summary: z.string().describe("A conversational, insightful summary of the comparison results, formatted in Markdown."),
 });
 export type SummarizeComparisonOutput = z.infer<typeof SummarizeComparisonOutputSchema>;
 
@@ -54,13 +54,25 @@ Analyze the provided data, which includes the user's wizard selections and the l
 {{{json results}}}
 \`\`\`
 
-Based on this data, craft a conversational summary. Address the user directly. Your summary should:
-1.  Acknowledge their key preferences (e.g., "I see you're looking for a fixed-rate plan...").
-2.  Highlight the absolute cheapest plan found and state its annual cost.
-3.  Point out any other noteworthy deals, such as the best 2-year fixed plan if it offers good value or a plan with excellent features if they prioritized that.
-4.  Provide a concluding sentence to encourage them to review the deals below.
+Based on this data, craft a conversational summary formatted in Markdown. Address the user directly. Your summary should:
+1.  Start with a friendly greeting.
+2.  Acknowledge their key preferences (e.g., "I see you're looking for a fixed-rate plan...").
+3.  Use a heading like "### Key Findings".
+4.  Use bullet points or a numbered list to highlight the most important deals:
+    -   The **absolute cheapest plan** found, stating its provider, annual cost, and contract length.
+    -   Another noteworthy deal, such as the best 2-year fixed plan or a plan with unique features.
+5.  Provide a concluding sentence to encourage them to review the deals below.
 
-Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight. For example: "The cheapest option is from [Supplier] at £[Price], which is a great value. However, for a longer-term peace of mind, the 2-year deal from [Supplier] is only slightly more expensive and locks in your rate."
+Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight.
+
+**Example Markdown Output Structure:**
+"Hello! I've analyzed your results.
+
+### Key Findings
+*   **Best Value:** The cheapest option is from **[Supplier]** at **£[Price]/year** for a [Length] contract. This is a great deal.
+*   **Long-Term Pick:** For more peace of mind, the 2-year fixed deal from **[Supplier]** is only slightly more.
+
+Please review the detailed plans below to make your choice."
 `,
 });
 
