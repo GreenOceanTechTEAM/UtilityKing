@@ -22,7 +22,7 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
-import { summarizeComparison, SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
+import { summarizeComparison, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
@@ -866,12 +866,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     animate={{ opacity: 1, y: 0 }}
                                     className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20 prose prose-sm max-w-full"
                                 >
-                                    <ReactMarkdown>{summary.summary}</ReactMarkdown>
+                                    <ReactMarkdown className="text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
                                 </motion.div>
                             )}
 
                              <Tabs defaultValue="cheapest" className="w-full">
-                                <TabsList className="grid w-full grid-cols-3 md:grid-cols-5">
+                                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
                                     <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
                                     <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
                                     <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
@@ -879,7 +879,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="cheapest" className="mt-4">
-                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                     <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                                         {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
                                      </div>
                                 </TabsContent>
@@ -991,3 +991,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
