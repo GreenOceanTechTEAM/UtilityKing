@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -13,7 +13,6 @@ import { Input } from '@/components/ui/input';
 import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form';
 import { Loader2, Sparkles } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '../ui/badge';
 import Link from 'next/link';
 import EnergyGridBackground from '../shared/energy-grid-background';
 import { cn } from '@/lib/utils';
@@ -27,6 +26,14 @@ const formSchema = z.object({
     message: "Please describe what you're looking for.",
   }),
 });
+
+const placeholders = [
+    "Compare British Gas vs. Octopus...",
+    "What's the cheapest fixed-rate tariff?",
+    "Find a 100% renewable energy plan.",
+    "Is my current plan a good deal?",
+    "Show me deals with no exit fees.",
+];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -82,6 +89,7 @@ const formVariants = {
 export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [currentPlaceholder, setCurrentPlaceholder] = useState("");
   const { toast } = useToast();
   
   const form = useForm<z.infer<typeof formSchema>>({
@@ -90,11 +98,49 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       userInput: "",
     },
   });
+  
+  useEffect(() => {
+    let currentPlaceholderIndex = 0;
+    let currentText = "";
+    let isDeleting = false;
+    let timeout: NodeJS.Timeout;
+
+    const type = () => {
+      const fullText = placeholders[currentPlaceholderIndex];
+      
+      if (isDeleting) {
+        currentText = fullText.substring(0, currentText.length - 1);
+      } else {
+        currentText = fullText.substring(0, currentText.length + 1);
+      }
+
+      setCurrentPlaceholder(currentText);
+
+      let typeSpeed = isDeleting ? 50 : 120;
+
+      if (!isDeleting && currentText === fullText) {
+        isDeleting = true;
+        typeSpeed = 2000; // Pause at end
+      } else if (isDeleting && currentText === "") {
+        isDeleting = false;
+        currentPlaceholderIndex = (currentPlaceholderIndex + 1) % placeholders.length;
+        typeSpeed = 500; // Pause before typing new
+      }
+
+      timeout = setTimeout(type, typeSpeed);
+    };
+
+    type();
+
+    return () => clearTimeout(timeout);
+  }, []);
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     setIsLoading(true);
     setAssistance(null);
     try {
+      // This AI call is now disconnected from the main button.
+      // You could re-connect it to a different button or trigger if needed.
       const result = await conversationalHeroAssistance(values);
       setAssistance(result);
     } catch (error) {
@@ -156,7 +202,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                         <FormControl>
                             <Input
                             type="text"
-                            placeholder="e.g., 'Find the cheapest deal near you'"
+                            placeholder={currentPlaceholder + '|'}
                             className="h-12 text-base text-foreground"
                             {...field}
                             />
@@ -165,12 +211,8 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
                         </FormItem>
                     )}
                     />
-                    <Button type="submit" size="lg" className={cn("h-12 text-base font-semibold tracking-tight", !isLoading && "glowing-btn-border")} disabled={isLoading}>
-                    {isLoading ? (
-                        <Loader2 className="h-5 w-5 animate-spin" />
-                    ) : (
-                        'Compare Tariffs Now'
-                    )}
+                    <Button asChild size="lg" className={cn("h-12 text-base font-semibold tracking-tight glowing-btn-border")}>
+                      <Link href="#compare">Compare Tariffs Now</Link>
                     </Button>
                 </form>
                 </Form>
@@ -204,5 +246,3 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     </section>
   );
 }
-
-    
