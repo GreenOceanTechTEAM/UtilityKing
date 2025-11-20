@@ -290,8 +290,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     // Ensure all required fields have a value, defaulting to an empty string.
     const formData = {
         postcode: selections['postcode'] || '',
-        curGasSupply: selections['electricitySupplier'] || '',
-        eacGas: selections['usage'] || '',
+        supplier: selections['electricitySupplier'] || '',
+        usage: selections['usage'] || '',
         day: selections['contractEndDay'] || '',
         month: selections['contractEndMonth'] || '',
         year: selections['contractEndYear'] || '',
@@ -302,7 +302,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         phone: "",
         pdfFileName: ""
     };
-
+    
     try {
         const response = await fetch('/api/webhook-proxy', {
             method: 'POST',
@@ -326,26 +326,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         if (typeof parsedInnerJsonString === 'string') {
           // It's a double-encoded JSON string, parse it again.
           const parsedInnerJson = JSON.parse(parsedInnerJsonString);
-          // Now check if the result of THAT parse is an object with a recommendedPlans property
-          if (parsedInnerJson && Array.isArray(parsedInnerJson)) {
+          if (Array.isArray(parsedInnerJson)) {
             plansData = parsedInnerJson;
+          } else if (typeof parsedInnerJson === 'object' && parsedInnerJson !== null) {
+            // Handle case where a single object is returned
+            plansData = [parsedInnerJson];
           } else {
-            throw new Error("Parsed inner JSON is not an array.");
+             throw new Error("Parsed inner JSON is not an array or a single object.");
           }
         } else if (Array.isArray(parsedInnerJsonString)) {
           // It's already an array.
           plansData = parsedInnerJsonString;
-        } else {
+        } else if (typeof parsedInnerJsonString === 'object' && parsedInnerJsonString !== null) {
+            plansData = [parsedInnerJsonString];
+        }
+        else {
             throw new Error("Invalid response format from backend.");
         }
         
-        // Ensure plansData is always an array
-        const plansArray = Array.isArray(plansData) ? plansData : [plansData];
-
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: plansArray.map((plan: RecommendedPlan) => {
-                // Safely parse the yearlycost string
+            recommendedPlans: plansData.map((plan: RecommendedPlan) => {
                 const yearlyCostString = String(plan.yearlycost || '0');
                 const numericCostString = yearlyCostString.replace(/[^0-9.]/g, '');
                 const price = parseFloat(numericCostString);
@@ -360,7 +361,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
                     price: !isNaN(price) ? price : 0,
                     contractLength: plan.duration ? `Duration: ${plan.duration}` : `Unit Rate: ${plan.unitrate || 'N/A'}`,
-                    link: '#', // Default link
+                    link: '#', 
                     features: features,
                 };
             }),
@@ -391,6 +392,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         setIsLoading(false);
     }
 };
+
 
   const handlePrimaryAction = () => {
     if (currentStep === wizardSteps.length - 1 && isStepComplete(currentStep)) {
@@ -826,3 +828,4 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   );
 }
 
+    
