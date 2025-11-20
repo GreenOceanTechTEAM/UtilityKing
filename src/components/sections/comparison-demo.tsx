@@ -475,31 +475,31 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </p>
         </motion.div>
         
-        <div className="space-y-8 mb-12">
-            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <BarChart3 className="w-6 h-6" />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <BarChart3 className="w-7 h-7" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-foreground">Live Market Data</h4>
+                    <h4 className="text-lg font-semibold text-foreground">Live Market Data</h4>
                     <p className="text-muted-foreground mt-1">We analyze hundreds of tariffs in real-time to find your best price.</p>
                 </div>
             </div>
-            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <ShieldCheck className="w-6 h-6" />
+            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <ShieldCheck className="w-7 h-7" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-foreground">100% Impartial & Secure</h4>
+                    <h4 className="text-lg font-semibold text-foreground">100% Impartial & Secure</h4>
                     <p className="text-muted-foreground mt-1">Our results are unbiased, and your data is always protected.</p>
                 </div>
             </div>
-            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
-                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <Smile className="w-6 h-6" />
+            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
+                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <Smile className="w-7 h-7" />
                 </div>
                 <div>
-                    <h4 className="font-semibold text-foreground">Effortless Switching</h4>
+                    <h4 className="text-lg font-semibold text-foreground">Effortless Switching</h4>
                     <p className="text-muted-foreground mt-1">Switch suppliers in minutes with no paperwork and no interruptions.</p>
                 </div>
             </div>
@@ -558,7 +558,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     </div>
                                     
                                     {!isTyping && (
-                                        <div className="space-y-3 w-full max-w-md">
+                                        <div className="space-y-3 w-full max-w-lg">
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
@@ -578,15 +578,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                             whileTap="tap"
                                                             onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
                                                             className={cn(
-                                                                "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
+                                                                "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
                                                                 isSelected
                                                                     ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                     : "bg-background/50 hover:border-primary hover:bg-primary/5",
                                                                 (option as any).description && "items-start",
                                                             )}
                                                         >
-                                                            <div className="flex items-center justify-center gap-2">
-                                                                {Icon && <Icon className="h-5 w-5" />}
+                                                            <div className="flex items-center justify-center gap-3">
+                                                                {Icon && <Icon className="h-6 w-6" />}
                                                                 <span className="font-semibold">{option.label}</span>
                                                             </div>
                                                             {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
@@ -601,7 +601,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                         whileTap="tap"
                                                         onClick={() => handleSelect(currentWizardStepConfig.key, option)}
                                                         className={cn(
-                                                            "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
+                                                            "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
                                                             selections[currentWizardStepConfig.key] === option
                                                                 ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                 : "bg-background/50 hover:border-primary hover:bg-primary/5"
