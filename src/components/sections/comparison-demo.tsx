@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -22,6 +22,8 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
+import Image from 'next/image';
+import { PlaceHolderImages } from '@/lib/placeholder-images';
 
 // Define the shape of a single plan coming from the backend
 interface RecommendedPlan {
@@ -192,6 +194,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
   const [isTyping, setIsTyping] = useState(true);
+  const sideImage = PlaceHolderImages.find(p => p.id === 'blog-post-1');
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -283,7 +286,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return !!selection;
   }
 
- const handleFormSubmit = async () => {
+  const handleFormSubmit = async () => {
     setIsLoading(true);
     setComparisonResult(null);
 
@@ -473,9 +476,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </p>
         </motion.div>
 
-        <div className="flex items-start justify-center gap-12">
-            <div className="w-full max-w-[560px]">
-                <div className="relative rounded-2xl p-6 sm:p-8 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
+            <div className="w-full">
+                <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
                     
                     {!isLoading && !comparisonResult && (
                         <>
@@ -498,7 +501,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 />
                             </div>
 
-                            <div className="relative h-[350px] overflow-y-auto flex flex-col items-center pr-2">
+                            <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
                                 <AnimatePresence mode="wait">
                                     {currentWizardStepConfig &&
                                     <motion.div
@@ -742,6 +745,55 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     )}
                 </div>
             </div>
+            <motion.div
+                className="hidden lg:block relative p-8 rounded-2xl"
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true, amount: 0.5 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            >
+                <div className="space-y-8">
+                    <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <BarChart3 className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-foreground">Live Market Data</h4>
+                            <p className="text-muted-foreground mt-1">We analyze hundreds of tariffs in real-time to find your best price.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <ShieldCheck className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-foreground">100% Impartial & Secure</h4>
+                            <p className="text-muted-foreground mt-1">Our results are unbiased, and your data is always protected.</p>
+                        </div>
+                    </div>
+                    <div className="flex items-start gap-4">
+                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                            <Smile className="w-6 h-6" />
+                        </div>
+                        <div>
+                            <h4 className="font-semibold text-foreground">Effortless Switching</h4>
+                            <p className="text-muted-foreground mt-1">Switch suppliers in minutes with no paperwork and no interruptions.</p>
+                        </div>
+                    </div>
+                </div>
+                 {sideImage && (
+                    <div className="mt-8 rounded-xl overflow-hidden shadow-lg">
+                        <Image
+                            src={sideImage.imageUrl}
+                            alt={sideImage.description}
+                            width={500}
+                            height={300}
+                            data-ai-hint={sideImage.imageHint}
+                            className="object-cover"
+                        />
+                    </div>
+                 )}
+            </motion.div>
         </div>
 
         <Dialog open={isLeadModalOpen} onOpenChange={setIsLeadModalOpen}>
@@ -818,4 +870,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
