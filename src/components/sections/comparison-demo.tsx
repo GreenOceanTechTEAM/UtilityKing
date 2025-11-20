@@ -2,19 +2,18 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
-import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import Link from 'next/link';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
@@ -22,8 +21,9 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
-import Image from 'next/image';
-import { PlaceHolderImages } from '@/lib/placeholder-images';
+import { summarizeComparison, SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+
 
 // Define the shape of a single plan coming from the backend
 interface RecommendedPlan {
@@ -42,6 +42,7 @@ interface RenderedPlan {
     planName: string;
     provider: string;
     price: number;
+    durationMonths: number;
     contractLength: string;
     link: string;
     features: string[];
@@ -49,6 +50,14 @@ interface RenderedPlan {
 interface IntelligentUtilityComparisonOutput {
     comparisonSummary: string;
     recommendedPlans: RenderedPlan[];
+}
+
+type CategorizedPlans = {
+    cheapest: RenderedPlan | null;
+    oneYear: RenderedPlan[];
+    twoYear: RenderedPlan[];
+    threeYear: RenderedPlan[];
+    fourPlusYear: RenderedPlan[];
 }
 
 
@@ -230,6 +239,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
   const [isTyping, setIsTyping] = useState(true);
 
+  const [isSummarizing, setIsSummarizing] = useState(false);
+  const [summary, setSummary] = useState<SummarizeComparisonOutput | null>(null);
+
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
   }, []);
@@ -262,7 +274,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -394,10 +406,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
                 if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
 
+                const duration = plan.duration?.replace(/[^0-9]/g, '') || '0';
+                const durationMonths = parseInt(duration, 10);
+
                 return {
                     provider: plan.supplier || 'Unknown Supplier',
                     planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
                     price: !isNaN(price) ? price : 0,
+                    durationMonths,
                     contractLength: plan.duration ? `Duration: ${plan.duration}` : `Unit Rate: ${plan.unitrate || 'N/A'}`,
                     link: '#', 
                     features: features,
@@ -482,6 +498,48 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   }
 
+  const handleSummarize = async () => {
+    if (!comparisonResult) return;
+    setIsSummarizing(true);
+    setSummary(null);
+
+    try {
+        const aiResult = await summarizeComparison({
+            selections: selections,
+            results: comparisonResult.recommendedPlans,
+        });
+        setSummary(aiResult);
+    } catch (error: any) {
+        console.error("AI summarization failed:", error);
+        toast({
+            variant: "destructive",
+            title: "AI Summary Failed",
+            description: `UKi couldn't generate a summary. ${error.message}`,
+        });
+    } finally {
+        setIsSummarizing(false);
+    }
+  };
+
+  const categorizedPlans = useMemo((): CategorizedPlans | null => {
+    if (!comparisonResult) return null;
+    
+    const plans = [...comparisonResult.recommendedPlans];
+    if (plans.length === 0) return { cheapest: null, oneYear: [], twoYear: [], threeYear: [], fourPlusYear: [] };
+
+    const sortedByPrice = plans.sort((a, b) => a.price - b.price);
+    const cheapest = sortedByPrice[0] ? { ...sortedByPrice[0] } : null;
+
+    return {
+        cheapest: cheapest,
+        oneYear: plans.filter(p => p.durationMonths === 12),
+        twoYear: plans.filter(p => p.durationMonths === 24),
+        threeYear: plans.filter(p => p.durationMonths === 36),
+        fourPlusYear: plans.filter(p => p.durationMonths > 36),
+    };
+  }, [comparisonResult]);
+
+
   const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
 
   const getButtonText = () => {
@@ -504,6 +562,56 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       "Checking for exclusive online-only deals...",
       "Finalizing your top recommendations...",
   ];
+
+  const renderPlans = (plans: RenderedPlan[], category: string) => {
+    if (!plans || plans.length === 0) {
+        return <p className="text-muted-foreground text-center col-span-full py-8">No {category} plans found for your criteria.</p>;
+    }
+
+    return plans.map((plan, index) => (
+        <motion.div
+            key={`${category}-${index}`}
+            custom={index}
+            initial={{ opacity: 0, y: 20 }}
+            animate={(i) => ({
+                opacity: 1,
+                y: 0,
+                transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
+            })}
+        >
+            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
+                <CardHeader>
+                    <div className="flex items-start justify-between">
+                        <div>
+                            <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
+                            <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
+                        </div>
+                        {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
+                    </div>
+                </CardHeader>
+                <CardContent className="flex-1 space-y-4">
+                    <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
+                        £{plan.price.toFixed(2)}
+                        <span className="text-base font-normal text-muted-foreground">/year</span>
+                    </div>
+                    <p className="text-sm text-muted-foreground">
+                        {plan.contractLength}
+                    </p>
+                    {plan.features && plan.features.length > 0 && (
+                        <div className="space-y-2 pt-2 border-t">
+                            {plan.features.map(feature => (
+                                <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                    <CheckCircle className="h-4 w-4 text-green-500" />
+                                    <span>{feature}</span>
+                                </div>
+                            ))}
+                        </div>
+                    )}
+                </CardContent>
+            </Card>
+        </motion.div>
+    ));
+};
 
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
@@ -724,7 +832,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                       </div>
                 )}
 
-                {comparisonResult && !isLoading && (
+                {comparisonResult && !isLoading && categorizedPlans && (
                     <div className="mt-4">
                         <AnimatePresence>
                         <motion.div
@@ -734,59 +842,59 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             exit={{ opacity: 0, y: 50 }}
                             transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         >
-                            <div className='text-center mb-4'>
+                            <div className='text-center mb-6'>
                                 <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                                 <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
-                                <p className="text-xs text-muted-foreground/80 mt-2">
-                                    Results sourced live from your .NET comparison engine.
-                                </p>
+                                <div className="mt-4 flex justify-center">
+                                    <Button onClick={handleSummarize} disabled={isSummarizing}>
+                                        {isSummarizing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
+                                        Summarize with UKi
+                                    </Button>
+                                </div>
                             </div>
+                            
+                            {isSummarizing && (
+                                <div className="text-center my-4 text-muted-foreground">
+                                    <p>UKi is analyzing your results...</p>
+                                </div>
+                            )}
 
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                                {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
-                                    <motion.div
-                                        key={index}
-                                        custom={index}
-                                        initial={{ opacity: 0, y: 20 }}
-                                        animate={(i) => ({
-                                            opacity: 1,
-                                            y: 0,
-                                            transition: { delay: 0.1 + i * 0.1, ease: "easeOut" }
-                                        })}
-                                    >
-                                        <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-                                        <CardHeader>
-                                            <div className="flex items-start justify-between">
-                                                <div>
-                                                    <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                                                    <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                                                </div>
-                                                {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                                            </div>
-                                        </CardHeader>
-                                        <CardContent className="flex-1 space-y-4">
-                                            <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                                                £{plan.price.toFixed(2)}
-                                                <span className="text-base font-normal text-muted-foreground">/year</span>
-                                            </div>
-                                            <p className="text-sm text-muted-foreground">
-                                                {plan.contractLength}
-                                            </p>
-                                            {plan.features && plan.features.length > 0 && (
-                                                <div className="space-y-2 pt-2 border-t">
-                                                    {plan.features.map(feature => (
-                                                        <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
-                                                            <CheckCircle className="h-4 w-4 text-green-500" />
-                                                            <span>{feature}</span>
-                                                        </div>
-                                                    ))}
-                                                </div>
-                                            )}
-                                        </CardContent>
-                                        </Card>
-                                    </motion.div>
-                                ))}
-                            </div>
+                            {summary && (
+                                <motion.div
+                                    initial={{ opacity: 0, y: 10 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
+                                >
+                                    <p className="text-base text-foreground whitespace-pre-wrap">{summary.summary}</p>
+                                </motion.div>
+                            )}
+
+                             <Tabs defaultValue="cheapest" className="w-full">
+                                <TabsList className="grid w-full grid-cols-3 md:grid-cols-5">
+                                    <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
+                                    <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
+                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
+                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
+                                    <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
+                                </TabsList>
+                                <TabsContent value="cheapest" className="mt-4">
+                                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
+                                     </div>
+                                </TabsContent>
+                                <TabsContent value="1year" className="mt-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.oneYear, "1-year")}</div>
+                                </TabsContent>
+                                <TabsContent value="2year" className="mt-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.twoYear, "2-year")}</div>
+                                </TabsContent>
+                                <TabsContent value="3year" className="mt-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.threeYear, "3-year")}</div>
+                                </TabsContent>
+                                <TabsContent value="4plus" className="mt-4">
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.fourPlusYear, "4+ year")}</div>
+                                </TabsContent>
+                            </Tabs>
                         </motion.div>
                         </AnimatePresence>
                     </div>

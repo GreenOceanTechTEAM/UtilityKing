@@ -4,3 +4,4 @@ config();
 import '@/ai/flows/conversational-hero-assistance.ts';
 import '@/ai/flows/persistent-ai-assistant.ts';
 import '@/ai/flows/intelligent-utility-comparison.ts';
+import '@/ai/flows/summarize-comparison-flow.ts';
