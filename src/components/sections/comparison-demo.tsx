@@ -314,7 +314,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -390,7 +390,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return !!selection;
   }
 
-  const handleFormSubmit = async () => {
+  const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsLoading(true);
     setComparisonResult(null);
 
@@ -401,11 +401,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         day: selections['contractEndDay'] || '1',
         month: selections['contractEndMonth'] || '1',
         year: selections['contractEndYear'] || new Date().getFullYear().toString(),
-        email: "",
+        email: leadData.email,
         mprn: "",
         business: "",
-        contactName: "",
-        phone: "",
+        contactName: leadData.name,
+        phone: leadData.phone,
         pdfFileName: ""
     };
     
@@ -484,6 +484,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             userInput: JSON.stringify(selections),
             comparisonResult: JSON.stringify(finalResult),
             timestamp: serverTimestamp(),
+            name: leadData.name,
+            email: leadData.email,
+            phone: leadData.phone,
           };
           const comparisonsCollection = collection(firestore, `users/${user.uid}/ai_comparisons`);
           await addDoc(comparisonsCollection, comparisonData);
@@ -540,7 +543,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       toast({ title: "Information Saved!", description: "Generating your personalized results now." });
       
       setIsLeadModalOpen(false);
-      handleFormSubmit();
+      handleFormSubmit(values);
 
     } catch (error) {
       console.error("Error saving lead:", error);
@@ -1150,3 +1153,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
