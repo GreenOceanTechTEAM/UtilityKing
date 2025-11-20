@@ -275,7 +275,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -403,6 +403,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 const price = parseFloat(yearlyCostString);
                 
                 const features: string[] = [];
+                if (plan.unitrate) features.push(`Unit Rate: ${plan.unitrate}`);
                 if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
                 if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
                 if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
@@ -415,7 +416,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
                     price: !isNaN(price) ? price : 0,
                     durationMonths,
-                    contractLength: plan.duration ? `Duration: ${plan.duration}` : `Unit Rate: ${plan.unitrate || 'N/A'}`,
+                    contractLength: plan.duration ? `Duration: ${plan.duration}` : 'Variable',
                     link: '#', 
                     features: features,
                 };
@@ -691,7 +692,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.step === 5 && "max-h-[260px] overflow-y-auto pr-2"
+                                            currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
                                             )}>
                                                 {currentWizardStepConfig.options.map(option => {
                                                     const Icon = (option as any).icon;
@@ -875,7 +876,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
                                     <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
                                     <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
-                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
+                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger
                                     <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="cheapest" className="mt-4">
@@ -991,5 +992,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
