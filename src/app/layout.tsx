@@ -10,6 +10,7 @@ import ScrollToTop from '@/components/layout/scroll-to-top';
 import { ThemeProvider } from '@/components/shared/theme-provider';
 import Script from 'next/script';
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { Analytics } from '@vercel/analytics/react';
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
@@ -72,6 +73,7 @@ export default function RootLayout({
         ></vapi-widget>
         <Script src="https://unpkg.com/@vapi-ai/client-sdk-react/dist/embed/widget.umd.js" async />
         <SpeedInsights />
+        <Analytics />
       </body>
     </html>
   );
