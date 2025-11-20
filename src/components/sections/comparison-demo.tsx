@@ -877,13 +877,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             )}
 
                              <Tabs defaultValue="cheapest" className="w-full">
-                                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-                                    <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
-                                    <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
-                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
-                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger
-                                    ><TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
-                                </TabsList>
+                                <div className="overflow-x-auto pb-2">
+                                    <TabsList className="inline-flex w-max">
+                                        <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
+                                        <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
+                                        <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
+                                        <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
+                                        <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
+                                    </TabsList>
+                                </div>
                                 <TabsContent value="cheapest" className="mt-4">
                                      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
                                         {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
