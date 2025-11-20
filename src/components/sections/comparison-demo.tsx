@@ -12,7 +12,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/componen
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -87,6 +87,17 @@ const wizardSteps = [
     {
         step: 2,
         part: 1,
+        key: 'utilityType',
+        title: "Utility Type",
+        aiMessage: "Which utility are you looking to compare?",
+        options: [
+            { label: "Gas", icon: Flame },
+            { label: "Electricity", icon: Zap },
+        ],
+    },
+    {
+        step: 3,
+        part: 1,
         key: 'preferences',
         title: "Your Preferences",
         aiMessage: "What matters most to you in a new plan?",
@@ -97,7 +108,7 @@ const wizardSteps = [
         isMultiSelect: true,
     },
     {
-        step: 3,
+        step: 4,
         part: 1,
         key: 'renewablePreference',
         title: "Renewable Energy",
@@ -105,7 +116,7 @@ const wizardSteps = [
         options: [{ label: "Yes", icon: Leaf }, { label: "No" }],
     },
     {
-        step: 4,
+        step: 5,
         part: 2,
         key: 'postcode',
         title: "Postcode",
@@ -116,7 +127,7 @@ const wizardSteps = [
         icon: Search,
     },
     {
-        step: 5,
+        step: 6,
         part: 2,
         key: 'electricitySupplier',
         title: "Current Supplier",
@@ -132,7 +143,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 6,
+        step: 7,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -142,7 +153,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 7,
+        step: 8,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -210,6 +221,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
   const [isSavingLead, setIsSavingLead] = useState(false);
   const { toast } = useToast();
   const { firestore, auth, user } = useFirebase();
@@ -255,6 +267,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleSelect = (stepKey: string, option: string) => {
+    if (stepKey === 'utilityType' && option === 'Electricity') {
+        setIsComingSoonModalOpen(true);
+        return;
+    }
+
     const isMulti = currentWizardStepConfig.isMultiSelect;
 
     let newSelections;
@@ -479,6 +496,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
   const currentYear = new Date().getFullYear();
   const years = Array.from({ length: 10 }, (_, i) => (currentYear + i).toString());
+  
+  const analysisLines = [
+      "Connecting to live pricing data...",
+      "Analyzing available tariffs in your area...",
+      "Calculating personalized annual cost estimates...",
+      "Checking for exclusive online-only deals...",
+      "Finalizing your top recommendations...",
+  ];
 
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
@@ -671,19 +696,30 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                 {isLoading && (
                      <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
-                        <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
-                            {analysisLines.map((line, index) => (
-                              <motion.p
-                                key={line}
-                                custom={index}
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0, transition: { delay: index * 0.8, duration: 0.5 } }}
-                                exit={{ opacity: 0, y: -10 }}
-                                className="absolute inset-0 text-sm text-muted-foreground"
-                              >
-                                {`> ${line}`}
-                              </motion.p>
-                            ))}
+                        <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
+                            <AnimatePresence>
+                                {analysisLines.map((line, index) => (
+                                <motion.p
+                                    key={line}
+                                    custom={index}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={(i) => ({
+                                        opacity: [0, 1, 1, 0],
+                                        y: [20, 0, 0, -20],
+                                        transition: {
+                                            delay: i * 2,
+                                            duration: 2,
+                                            times: [0, 0.1, 0.9, 1]
+                                        }
+                                    })}
+                                    exit={{ opacity: 0 }}
+                                    className="absolute inset-0 text-sm text-muted-foreground flex items-center gap-2"
+                                >
+                                    <Loader2 className="h-4 w-4 animate-spin text-accent" />
+                                    {line}
+                                </motion.p>
+                                ))}
+                            </AnimatePresence>
                         </div>
                       </div>
                 )}
@@ -825,6 +861,20 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </Button>
                     </form>
                 </Form>
+            </DialogContent>
+        </Dialog>
+
+        <Dialog open={isComingSoonModalOpen} onOpenChange={setIsComingSoonModalOpen}>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Great Things Are Coming!</DialogTitle>
+                    <DialogDescription>
+                        Our electricity comparison tool is currently under development. Stay tuned for updates! In the meantime, feel free to compare gas prices.
+                    </DialogDescription>
+                </DialogHeader>
+                <Button onClick={() => setIsComingSoonModalOpen(false)}>
+                    Got it!
+                </Button>
             </DialogContent>
         </Dialog>
 
