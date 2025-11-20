@@ -474,313 +474,304 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
              Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
             </p>
         </motion.div>
+        
+        <div className="space-y-8 mb-12">
+            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <BarChart3 className="w-6 h-6" />
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground">Live Market Data</h4>
+                    <p className="text-muted-foreground mt-1">We analyze hundreds of tariffs in real-time to find your best price.</p>
+                </div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <ShieldCheck className="w-6 h-6" />
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground">100% Impartial & Secure</h4>
+                    <p className="text-muted-foreground mt-1">Our results are unbiased, and your data is always protected.</p>
+                </div>
+            </div>
+            <div className="flex items-start gap-4 p-4 rounded-lg hover:bg-muted/30 transition-colors">
+                <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
+                    <Smile className="w-6 h-6" />
+                </div>
+                <div>
+                    <h4 className="font-semibold text-foreground">Effortless Switching</h4>
+                    <p className="text-muted-foreground mt-1">Switch suppliers in minutes with no paperwork and no interruptions.</p>
+                </div>
+            </div>
+        </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start">
-            <div className="w-full">
-                <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
-                    
-                    {!isLoading && !comparisonResult && (
-                        <>
-                            <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
-                            <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
-                                <ChevronLeft className="h-5 w-5" />
-                            </Button>
-                            <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
-                            <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
-                                <ChevronRight className="h-5 w-5" />
-                            </Button>
-                            </div>
+        <div className="w-full max-w-4xl mx-auto">
+            <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
+                
+                {!isLoading && !comparisonResult && (
+                    <>
+                        <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
+                        <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
+                            <ChevronLeft className="h-5 w-5" />
+                        </Button>
+                        <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
+                        <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
+                            <ChevronRight className="h-5 w-5" />
+                        </Button>
+                        </div>
 
-                            <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
-                                <motion.div 
-                                    className="bg-primary h-1 rounded-full"
-                                    initial={{ width: 0 }}
-                                    animate={{ width: `${progress}%`}}
-                                    transition={{ duration: 0.5, ease: "easeInOut" }}
-                                />
-                            </div>
+                        <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
+                            <motion.div 
+                                className="bg-primary h-1 rounded-full"
+                                initial={{ width: 0 }}
+                                animate={{ width: `${progress}%`}}
+                                transition={{ duration: 0.5, ease: "easeInOut" }}
+                            />
+                        </div>
 
-                            <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
-                                <AnimatePresence mode="wait">
-                                    {currentWizardStepConfig &&
-                                    <motion.div
-                                        key={currentStep}
-                                        variants={stepVariants}
-                                        initial="initial"
-                                        animate="animate"
-                                        exit="exit"
-                                        className="w-full flex flex-col items-center text-center"
-                                    >
-                                        <div className="flex flex-col items-center text-center gap-3 mb-5">
-                                            <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
-                                                <Sparkles className="w-5 h-5" />
-                                            </div>
-                                            <div>
-                                                <p className="text-lg font-semibold text-card-foreground">
-                                                {currentWizardStepConfig.title}
-                                                </p>
-                                                <p className="text-base text-muted-foreground max-w-md mx-auto">
-                                                    {isTyping ? 
-                                                        <span className="animate-pulse">...</span> : 
-                                                        currentWizardStepConfig.aiMessage
-                                                    }
-                                                </p>
-                                            </div>
+                        <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
+                            <AnimatePresence mode="wait">
+                                {currentWizardStepConfig &&
+                                <motion.div
+                                    key={currentStep}
+                                    variants={stepVariants}
+                                    initial="initial"
+                                    animate="animate"
+                                    exit="exit"
+                                    className="w-full flex flex-col items-center text-center"
+                                >
+                                    <div className="flex flex-col items-center text-center gap-3 mb-5">
+                                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+                                            <Sparkles className="w-5 h-5" />
                                         </div>
-                                        
-                                        {!isTyping && (
-                                            <div className="space-y-3 w-full max-w-md">
-                                                <div className={cn(
-                                                "grid grid-cols-1 gap-3",
-                                                currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                                currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
-                                                )}>
-                                                    {currentWizardStepConfig.options.map(option => {
-                                                        const Icon = (option as any).icon;
-                                                        const isSelected = currentWizardStepConfig.isMultiSelect 
-                                                            ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
-                                                            : selections[currentWizardStepConfig.key] === option.label;
+                                        <div>
+                                            <p className="text-lg font-semibold text-card-foreground">
+                                            {currentWizardStepConfig.title}
+                                            </p>
+                                            <p className="text-base text-muted-foreground max-w-md mx-auto">
+                                                {isTyping ? 
+                                                    <span className="animate-pulse">...</span> : 
+                                                    currentWizardStepConfig.aiMessage
+                                                }
+                                            </p>
+                                        </div>
+                                    </div>
+                                    
+                                    {!isTyping && (
+                                        <div className="space-y-3 w-full max-w-md">
+                                            <div className={cn(
+                                            "grid grid-cols-1 gap-3",
+                                            currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                            currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
+                                            )}>
+                                                {currentWizardStepConfig.options.map(option => {
+                                                    const Icon = (option as any).icon;
+                                                    const isSelected = currentWizardStepConfig.isMultiSelect 
+                                                        ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
+                                                        : selections[currentWizardStepConfig.key] === option.label;
 
-                                                        return (
-                                                            <motion.button
-                                                                key={option.label}
-                                                                variants={pillVariants}
-                                                                whileHover="hover"
-                                                                whileTap="tap"
-                                                                onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
-                                                                className={cn(
-                                                                    "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
-                                                                    isSelected
-                                                                        ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                        : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                                    (option as any).description && "items-start",
-                                                                )}
-                                                            >
-                                                                <div className="flex items-center justify-center gap-2">
-                                                                    {Icon && <Icon className="h-5 w-5" />}
-                                                                    <span className="font-semibold">{option.label}</span>
-                                                                </div>
-                                                                {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
-                                                            </motion.button>
-                                                        )
-                                                    })}
-                                                    {currentWizardStepConfig.additionalOptions?.map(option => (
+                                                    return (
                                                         <motion.button
-                                                            key={option}
+                                                            key={option.label}
                                                             variants={pillVariants}
                                                             whileHover="hover"
                                                             whileTap="tap"
-                                                            onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                            onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
                                                             className={cn(
-                                                                "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
-                                                                selections[currentWizardStepConfig.key] === option
+                                                                "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200",
+                                                                isSelected
                                                                     ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                    : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                                    : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                                                                (option as any).description && "items-start",
                                                             )}
                                                         >
-                                                            {option}
-                                                        </motion.button>
-                                                    ))}
-                                                </div>
-
-                                                {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
-                                                    <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
-                                                        <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
-                                                            <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
-                                                            <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
-                                                            <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
-                                                            <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
-                                                        </div>
-                                                    </motion.div>
-                                                )}
-
-                                                {currentWizardStepConfig.isInput && (
-                                                    <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                        <div className="relative">
-                                                            {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
-                                                            <Input 
-                                                                type={"text"}
-                                                                placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                                className="pl-10 h-12 text-base text-center"
-                                                                value={selections[currentWizardStepConfig.key] || ''}
-                                                                onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
-                                                                onKeyDown={handleCustomSubmit}
-                                                            />
-                                                        </div>
-                                                    </motion.div>
-                                                )}
-
-                                                {currentWizardStepConfig.isDateInput && (
-                                                  <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                    <div className="grid grid-cols-3 gap-2">
-                                                      <Select value={selections.contractEndDay || ''} onValueChange={(value) => handleCustomValueChange('contractEndDay', value)}>
-                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Day" /></SelectTrigger>
-                                                        <SelectContent>
-                                                          {days.map(day => <SelectItem key={day} value={day}>{day}</SelectItem>)}
-                                                        </SelectContent>
-                                                      </Select>
-                                                      <Select value={selections.contractEndMonth || ''} onValueChange={(value) => handleCustomValueChange('contractEndMonth', value)}>
-                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Month" /></SelectTrigger>
-                                                        <SelectContent>
-                                                          {months.map(month => <SelectItem key={month} value={month}>{month}</SelectItem>)}
-                                                        </SelectContent>
-                                                      </Select>
-                                                      <Select value={selections.contractEndYear || ''} onValueChange={(value) => handleCustomValueChange('contractEndYear', value)}>
-                                                        <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Year" /></SelectTrigger>
-                                                        <SelectContent>
-                                                          {years.map(year => <SelectItem key={year} value={year}>{year}</SelectItem>)}
-                                                        </SelectContent>
-                                                      </Select>
-                                                    </div>
-                                                  </motion.div>
-                                                )}
-                                                
-                                                {(isStepComplete(currentStep)) && (
-                                                    <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                        <Button 
-                                                            size="lg" 
-                                                            className="w-full h-12 text-base mt-4" 
-                                                            onClick={handlePrimaryAction}
-                                                        >
-                                                            {getButtonText()}
-                                                            <ArrowRight className="ml-2 h-4 w-4" />
-                                                        </Button>
-                                                    </motion.div>
-                                                )}
-                                            </div>
-                                        )}
-                                    </motion.div>
-                                    }
-                                </AnimatePresence>
-                            </div>
-                        </>
-                    )}
-
-                    {isLoading && (
-                         <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
-                            <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
-                                {analysisLines.map((line, index) => (
-                                  <motion.p
-                                    key={line}
-                                    custom={index}
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0, transition: { delay: index * 0.8, duration: 0.5 } }}
-                                    exit={{ opacity: 0, y: -10 }}
-                                    className="absolute inset-0 text-sm text-muted-foreground"
-                                  >
-                                    {`> ${line}`}
-                                  </motion.p>
-                                ))}
-                            </div>
-                          </div>
-                    )}
-
-                    {comparisonResult && !isLoading && (
-                        <div className="mt-4">
-                            <AnimatePresence>
-                            <motion.div
-                                key="results"
-                                initial={{ opacity: 0, y: 50 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 50 }}
-                                transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                            >
-                                <div className='text-center mb-4'>
-                                    <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
-                                    <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
-                                    <p className="text-xs text-muted-foreground/80 mt-2">
-                                        Results sourced live from your .NET comparison engine.
-                                    </p>
-                                </div>
-
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
-                                    {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
-                                        <motion.div
-                                            key={index}
-                                            custom={index}
-                                            initial={{ opacity: 0, y: 20 }}
-                                            animate={(i) => ({
-                                                opacity: 1,
-                                                y: 0,
-                                                transition: { delay: 0.1 + i * 0.1, ease: "easeOut" }
-                                            })}
-                                        >
-                                            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-                                            <CardHeader>
-                                                <div className="flex items-start justify-between">
-                                                    <div>
-                                                        <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                                                        <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                                                    </div>
-                                                    {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                                                </div>
-                                            </CardHeader>
-                                            <CardContent className="flex-1 space-y-4">
-                                                <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                                                    £{plan.price.toFixed(2)}
-                                                    <span className="text-base font-normal text-muted-foreground">/year</span>
-                                                </div>
-                                                <p className="text-sm text-muted-foreground">
-                                                    {plan.contractLength}
-                                                </p>
-                                                {plan.features && plan.features.length > 0 && (
-                                                    <div className="space-y-2 pt-2 border-t">
-                                                        {plan.features.map(feature => (
-                                                            <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
-                                                                <CheckCircle className="h-4 w-4 text-green-500" />
-                                                                <span>{feature}</span>
+                                                            <div className="flex items-center justify-center gap-2">
+                                                                {Icon && <Icon className="h-5 w-5" />}
+                                                                <span className="font-semibold">{option.label}</span>
                                                             </div>
-                                                        ))}
+                                                            {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
+                                                        </motion.button>
+                                                    )
+                                                })}
+                                                {currentWizardStepConfig.additionalOptions?.map(option => (
+                                                    <motion.button
+                                                        key={option}
+                                                        variants={pillVariants}
+                                                        whileHover="hover"
+                                                        whileTap="tap"
+                                                        onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                        className={cn(
+                                                            "p-3 text-center rounded-lg border text-base font-medium transition-all duration-200 sm:col-span-2",
+                                                            selections[currentWizardStepConfig.key] === option
+                                                                ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                        )}
+                                                    >
+                                                        {option}
+                                                    </motion.button>
+                                                ))}
+                                            </div>
+
+                                            {currentWizardStepConfig.key === 'billAvailable' && selections.billAvailable === "Yes, I'll upload it" && (
+                                                <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} className="w-full">
+                                                    <div className="relative border-2 border-dashed border-muted-foreground/50 rounded-lg p-8 flex flex-col items-center justify-center text-center hover:border-primary transition-colors duration-300">
+                                                        <UploadCloud className="h-12 w-12 text-muted-foreground/70 mb-4" />
+                                                        <p className="font-semibold text-foreground mb-1">Click to upload or drag and drop</p>
+                                                        <p className="text-sm text-muted-foreground">PNG, JPG, or PDF (max 5MB)</p>
+                                                        <Input type="file" className="absolute inset-0 w-full h-full opacity-0 cursor-pointer" />
                                                     </div>
-                                                )}
-                                            </CardContent>
-                                            </Card>
-                                        </motion.div>
-                                    ))}
-                                </div>
-                            </motion.div>
+                                                </motion.div>
+                                            )}
+
+                                            {currentWizardStepConfig.isInput && (
+                                                <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                    <div className="relative">
+                                                        {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
+                                                        <Input 
+                                                            type={"text"}
+                                                            placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
+                                                            className="pl-10 h-12 text-base text-center"
+                                                            value={selections[currentWizardStepConfig.key] || ''}
+                                                            onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
+                                                            onKeyDown={handleCustomSubmit}
+                                                        />
+                                                    </div>
+                                                </motion.div>
+                                            )}
+
+                                            {currentWizardStepConfig.isDateInput && (
+                                              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                <div className="grid grid-cols-3 gap-2">
+                                                  <Select value={selections.contractEndDay || ''} onValueChange={(value) => handleCustomValueChange('contractEndDay', value)}>
+                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Day" /></SelectTrigger>
+                                                    <SelectContent>
+                                                      {days.map(day => <SelectItem key={day} value={day}>{day}</SelectItem>)}
+                                                    </SelectContent>
+                                                  </Select>
+                                                  <Select value={selections.contractEndMonth || ''} onValueChange={(value) => handleCustomValueChange('contractEndMonth', value)}>
+                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Month" /></SelectTrigger>
+                                                    <SelectContent>
+                                                      {months.map(month => <SelectItem key={month} value={month}>{month}</SelectItem>)}
+                                                    </SelectContent>
+                                                  </Select>
+                                                  <Select value={selections.contractEndYear || ''} onValueChange={(value) => handleCustomValueChange('contractEndYear', value)}>
+                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Year" /></SelectTrigger>
+                                                    <SelectContent>
+                                                      {years.map(year => <SelectItem key={year} value={year}>{year}</SelectItem>)}
+                                                    </SelectContent>
+                                                  </Select>
+                                                </div>
+                                              </motion.div>
+                                            )}
+                                            
+                                            {(isStepComplete(currentStep)) && (
+                                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                    <Button 
+                                                        size="lg" 
+                                                        className="w-full h-12 text-base mt-4" 
+                                                        onClick={handlePrimaryAction}
+                                                    >
+                                                        {getButtonText()}
+                                                        <ArrowRight className="ml-2 h-4 w-4" />
+                                                    </Button>
+                                                </motion.div>
+                                            )}
+                                        </div>
+                                    )}
+                                </motion.div>
+                                }
                             </AnimatePresence>
                         </div>
-                    )}
-                </div>
+                    </>
+                )}
+
+                {isLoading && (
+                     <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
+                        <div className="relative h-20 w-full max-w-sm overflow-hidden text-left font-code">
+                            {analysisLines.map((line, index) => (
+                              <motion.p
+                                key={line}
+                                custom={index}
+                                initial={{ opacity: 0, y: 10 }}
+                                animate={{ opacity: 1, y: 0, transition: { delay: index * 0.8, duration: 0.5 } }}
+                                exit={{ opacity: 0, y: -10 }}
+                                className="absolute inset-0 text-sm text-muted-foreground"
+                              >
+                                {`> ${line}`}
+                              </motion.p>
+                            ))}
+                        </div>
+                      </div>
+                )}
+
+                {comparisonResult && !isLoading && (
+                    <div className="mt-4">
+                        <AnimatePresence>
+                        <motion.div
+                            key="results"
+                            initial={{ opacity: 0, y: 50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            exit={{ opacity: 0, y: 50 }}
+                            transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+                        >
+                            <div className='text-center mb-4'>
+                                <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
+                                <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
+                                <p className="text-xs text-muted-foreground/80 mt-2">
+                                    Results sourced live from your .NET comparison engine.
+                                </p>
+                            </div>
+
+                            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+                                {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
+                                    <motion.div
+                                        key={index}
+                                        custom={index}
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={(i) => ({
+                                            opacity: 1,
+                                            y: 0,
+                                            transition: { delay: 0.1 + i * 0.1, ease: "easeOut" }
+                                        })}
+                                    >
+                                        <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
+                                        <CardHeader>
+                                            <div className="flex items-start justify-between">
+                                                <div>
+                                                    <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
+                                                    <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
+                                                </div>
+                                                {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
+                                            </div>
+                                        </CardHeader>
+                                        <CardContent className="flex-1 space-y-4">
+                                            <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
+                                                £{plan.price.toFixed(2)}
+                                                <span className="text-base font-normal text-muted-foreground">/year</span>
+                                            </div>
+                                            <p className="text-sm text-muted-foreground">
+                                                {plan.contractLength}
+                                            </p>
+                                            {plan.features && plan.features.length > 0 && (
+                                                <div className="space-y-2 pt-2 border-t">
+                                                    {plan.features.map(feature => (
+                                                        <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                                            <CheckCircle className="h-4 w-4 text-green-500" />
+                                                            <span>{feature}</span>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </CardContent>
+                                        </Card>
+                                    </motion.div>
+                                ))}
+                            </div>
+                        </motion.div>
+                        </AnimatePresence>
+                    </div>
+                )}
             </div>
-            <motion.div
-                className="hidden lg:block relative p-8 rounded-2xl"
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.5 }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-            >
-                <div className="space-y-8">
-                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                            <BarChart3 className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h4 className="font-semibold text-foreground">Live Market Data</h4>
-                            <p className="text-muted-foreground mt-1">We analyze hundreds of tariffs in real-time to find your best price.</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                            <ShieldCheck className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h4 className="font-semibold text-foreground">100% Impartial & Secure</h4>
-                            <p className="text-muted-foreground mt-1">Our results are unbiased, and your data is always protected.</p>
-                        </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                        <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                            <Smile className="w-6 h-6" />
-                        </div>
-                        <div>
-                            <h4 className="font-semibold text-foreground">Effortless Switching</h4>
-                            <p className="text-muted-foreground mt-1">Switch suppliers in minutes with no paperwork and no interruptions.</p>
-                        </div>
-                    </div>
-                </div>
-            </motion.div>
         </div>
 
         <Dialog open={isLeadModalOpen} onOpenChange={setIsLeadModalOpen}>
@@ -857,3 +848,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
