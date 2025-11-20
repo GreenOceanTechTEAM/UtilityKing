@@ -691,9 +691,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         <div>
                             <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
                             <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                            {plan.unitRate && (
-                              <p className="text-accent font-semibold text-xl mt-2">{plan.unitRate}</p>
-                            )}
+                             <p className="text-accent font-semibold text-xl mt-2">{plan.unitRate}</p>
                         </div>
                         {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
                     </div>
@@ -939,7 +937,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             style={{ position: 'absolute', left: '-9999px', width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
                          >
                             <div className="text-center mb-6 border-b pb-4">
-                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing AI</h2>
+                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
                                 <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
                                 {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
                             </div>

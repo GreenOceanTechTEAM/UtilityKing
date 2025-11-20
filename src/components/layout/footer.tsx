@@ -38,7 +38,7 @@ export default function Footer({ id }: FooterProps) {
           <motion.div variants={itemVariants} className="space-y-4">
              <Link href="#" className="flex items-center justify-center" prefetch={false}>
                 <span className="font-headline text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                  UtilityKing AI
+                  UtilityKing
                 </span>
             </Link>
             <p className="text-sm text-muted-foreground max-w-md">
@@ -97,7 +97,7 @@ export default function Footer({ id }: FooterProps) {
           </motion.div>
         </div>
         <motion.div variants={itemVariants} className="mt-12 border-t border-border pt-8">
-          <p className="text-base text-muted-foreground text-center">&copy; {new Date().getFullYear()} Utility King AI. All rights reserved.</p>
+          <p className="text-base text-muted-foreground text-center">&copy; {new Date().getFullYear()} UtilityKing. All rights reserved.</p>
         </motion.div>
       </div>
     </motion.footer>

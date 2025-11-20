@@ -4,7 +4,7 @@
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "Service",
       "type": "object",
-      "description": "Represents a service offered by Utility King AI, such as energy tariff switching or broadband plan matching.",
+      "description": "Represents a service offered by UtilityKing, such as energy tariff switching or broadband plan matching.",
       "properties": {
         "id": {
           "type": "string",
@@ -34,7 +34,7 @@
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "ValueProposition",
       "type": "object",
-      "description": "Represents a value proposition offered by Utility King AI.",
+      "description": "Represents a value proposition offered by UtilityKing.",
       "properties": {
         "id": {
           "type": "string",
@@ -100,7 +100,7 @@
       "$schema": "http://json-schema.org/draft-07/schema#",
       "title": "User",
       "type": "object",
-      "description": "Represents a user of the Utility King AI platform.",
+      "description": "Represents a user of the UtilityKing platform.",
       "properties": {
         "id": {
           "type": "string",
@@ -253,7 +253,7 @@
           "schema": {
             "$ref": "#/backend/entities/ValueProposition"
           },
-          "description": "Stores the value propositions offered by Utility King AI. No user-specific authorization required.",
+          "description": "Stores the value propositions offered by UtilityKing. No user-specific authorization required.",
           "params": [
             {
               "name": "valuePropositionId",
@@ -347,8 +347,6 @@
         }
       }
     ],
-    "reasoning": "The Firestore data structure is designed to support the features of Utility King AI, focusing on authorization independence, clear access patterns, and efficient data retrieval. \n\n*   **/services collection:** Stores static service data (e.g., Energy Tariff Switch).  No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/value_propositions collection:** Stores static value proposition data (e.g., 100% impartial). No user-specific authorization is required, simplifying rules. QAPs are supported since there is no need for filtering based on user data.\n*   **/animated_cta_banners collection:** Stores static animated CTA banner data. No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/users/{userId}/ai_comparisons collection:** Stores user-specific AI comparison results. This structure follows the Path-Based Ownership access modeling, ensuring that only the user can access their comparisons. Authorization Independence is naturally achieved because access control is based solely on the path.  This directly supports QAPs as listing ai_comparisons is limited to a specific user.\n*   **/contact_submissions collection:** Stores contact form submissions. It is publicly writable so any user can send a message, but read/update/delete access is restricted for security.\n*   **/comparison_leads collection:** Stores leads from the comparison tool. It is publicly writable so any user can submit their details, but read/update/delete access is restricted for security.\n\nThis structure prioritizes security and scalability by:\n\n*   **Authorization Independence:** Avoiding `get()` calls in security rules. The `ai_comparisons` subcollection leverages path-based ownership, eliminating the need to fetch parent document data for authorization.\n*   **Clarity of Intent:** The structure makes authorization intent explicit by using path-based ownership for user-specific data.\n*   **DBAC:** Roles are managed implicitly by the Firestore structure, using `request.auth.uid` for authentication and path ownership for authorization.\n*   **QAPs:** The structure allows for secure listing operations by segregating user-specific data into subcollections with path-based ownership.\n*   **Invariants:** The structure supports data integrity by enforcing ownership and providing a clear structure for timestamps and denormalized data."
+    "reasoning": "The Firestore data structure is designed to support the features of UtilityKing, focusing on authorization independence, clear access patterns, and efficient data retrieval. \n\n*   **/services collection:** Stores static service data (e.g., Energy Tariff Switch).  No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/value_propositions collection:** Stores static value proposition data (e.g., 100% impartial). No user-specific authorization is required, simplifying rules. QAPs are supported since there is no need for filtering based on user data.\n*   **/animated_cta_banners collection:** Stores static animated CTA banner data. No user-specific authorization is required, simplifying rules.  QAPs are supported since there is no need for filtering based on user data.\n*   **/users/{userId}/ai_comparisons collection:** Stores user-specific AI comparison results. This structure follows the Path-Based Ownership access modeling, ensuring that only the user can access their comparisons. Authorization Independence is naturally achieved because access control is based solely on the path.  This directly supports QAPs as listing ai_comparisons is limited to a specific user.\n*   **/contact_submissions collection:** Stores contact form submissions. It is publicly writable so any user can send a message, but read/update/delete access is restricted for security.\n*   **/comparison_leads collection:** Stores leads from the comparison tool. It is publicly writable so any user can submit their details, but read/update/delete access is restricted for security.\n\nThis structure prioritizes security and scalability by:\n\n*   **Authorization Independence:** Avoiding `get()` calls in security rules. The `ai_comparisons` subcollection leverages path-based ownership, eliminating the need to fetch parent document data for authorization.\n*   **Clarity of Intent:** The structure makes authorization intent explicit by using path-based ownership for user-specific data.\n*   **DBAC:** Roles are managed implicitly by the Firestore structure, using `request.auth.uid` for authentication and path ownership for authorization.\n*   **QAPs:** The structure allows for secure listing operations by segregating user-specific data into subcollections with path-based ownership.\n*   **Invariants:** The structure supports data integrity by enforcing ownership and providing a clear structure for timestamps and denormalized data."
   }
 }
-
-    

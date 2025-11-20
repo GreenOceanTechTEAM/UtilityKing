@@ -111,7 +111,7 @@ export default function Header({ sections }: HeaderProps) {
         <div className="relative mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
           <Link href="#" className="flex items-center" prefetch={false}>
             <span className="font-headline text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-              UtilityKing AI
+              UtilityKing
             </span>
           </Link>
 
@@ -150,7 +150,7 @@ export default function Header({ sections }: HeaderProps) {
                     <nav className="flex flex-col h-full">
                         <Link href="#" className="flex items-center gap-2 mb-8" prefetch={false} onClick={() => setIsMobileMenuOpen(false)}>
                             <span className="font-headline text-xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">
-                              UtilityKing AI
+                              UtilityKing
                             </span>
                         </Link>
                         <div className="flex flex-col space-y-3">

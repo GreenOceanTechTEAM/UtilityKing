@@ -14,7 +14,7 @@ import { Analytics } from '@vercel/analytics/react';
 import { FirebaseClientProvider } from '@/firebase';
 
 export const metadata: Metadata = {
-  title: 'Utility King AI',
+  title: 'UtilityKing',
   description: 'AI-powered utility comparisons to help you save.',
 };
 
