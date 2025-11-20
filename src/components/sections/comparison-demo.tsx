@@ -292,11 +292,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       ? `${contractEndDay}/${contractEndMonth}/${contractEndYear}`
       : "";
 
+    // Ensure all required fields have a value, defaulting to an empty string.
     const formData = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
         startDate: startDate,
+        email: "",
+        mprn: "",
+        business: "",
+        contactName: "",
+        phone: "",
+        pdfFileName: ""
     };
 
     try {
@@ -316,16 +323,21 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         const resultData = await response.json();
         
+        // The backend returns a JSON string inside the 'd' property
         const parsedInnerJsonString = resultData.d;
         if (!parsedInnerJsonString || typeof parsedInnerJsonString !== 'string') {
             throw new Error("Invalid response format from backend.");
         }
         
-        let plans: RecommendedPlan[] = JSON.parse(parsedInnerJsonString);
+        let plansData: RecommendedPlan[] = JSON.parse(parsedInnerJsonString);
         
+        // Ensure plansData is always an array
+        const plansArray = Array.isArray(plansData) ? plansData : [plansData];
+
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: (Array.isArray(plans) ? plans : [plans]).map((plan: RecommendedPlan) => {
+            recommendedPlans: plansArray.map((plan: RecommendedPlan) => {
+                // Safely parse the yearlycost string
                 const yearlyCostString = String(plan.yearlycost || '0');
                 const numericCostString = yearlyCostString.replace(/[^0-9.]/g, '');
                 const price = parseFloat(numericCostString);
@@ -805,3 +817,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
