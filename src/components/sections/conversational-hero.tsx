@@ -166,7 +166,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
-          <motion.div initial="hidden" animate="visible" variants={containerVariants}>
+          <motion.div initial="hidden" animate="visible">
             <motion.h1 
                 variants={containerVariants}
                 className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-[60px] sm:leading-[1.08]"
