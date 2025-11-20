@@ -8,11 +8,14 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import ReactMarkdown from 'react-markdown';
+import { format } from "date-fns"
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
 import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
@@ -243,6 +246,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isSummarizing, setIsSummarizing] = useState(false);
   const [summary, setSummary] = useState<SummarizeComparisonOutput | null>(null);
 
+  const [date, setDate] = React.useState<Date>()
+
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
   }, []);
@@ -310,6 +315,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   
   const handleCustomValueChange = (stepKey: string, value: string) => {
     setSelections(prev => ({...prev, [stepKey]: value}));
+  }
+
+  const handleDateSelect = (selectedDate?: Date) => {
+    setDate(selectedDate)
+    if (selectedDate) {
+        setSelections(prev => ({
+            ...prev,
+            contractEndDay: format(selectedDate, "d"),
+            contractEndMonth: format(selectedDate, "M"),
+            contractEndYear: format(selectedDate, "yyyy"),
+        }));
+    }
   }
 
   const handleCustomSubmit = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -550,12 +567,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     return "Compare Energy Deals";
   }
-
-  // For date dropdowns
-  const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString());
-  const months = Array.from({ length: 12 }, (_, i) => (i + 1).toString());
-  const currentYear = new Date().getFullYear();
-  const years = Array.from({ length: 10 }, (_, i) => (currentYear + i).toString());
   
   const analysisLines = [
       "Connecting to live pricing data...",
@@ -749,27 +760,29 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             )}
 
                                             {currentWizardStepConfig.isDateInput && (
-                                              <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                <div className="grid grid-cols-3 gap-2">
-                                                  <Select value={selections.contractEndDay || ''} onValueChange={(value) => handleCustomValueChange('contractEndDay', value)}>
-                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Day" /></SelectTrigger>
-                                                    <SelectContent>
-                                                      {days.map(day => <SelectItem key={day} value={day}>{day}</SelectItem>)}
-                                                    </SelectContent>
-                                                  </Select>
-                                                  <Select value={selections.contractEndMonth || ''} onValueChange={(value) => handleCustomValueChange('contractEndMonth', value)}>
-                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Month" /></SelectTrigger>
-                                                    <SelectContent>
-                                                      {months.map(month => <SelectItem key={month} value={month}>{month}</SelectItem>)}
-                                                    </SelectContent>
-                                                  </Select>
-                                                  <Select value={selections.contractEndYear || ''} onValueChange={(value) => handleCustomValueChange('contractEndYear', value)}>
-                                                    <SelectTrigger className="h-12 text-base"><SelectValue placeholder="Year" /></SelectTrigger>
-                                                    <SelectContent>
-                                                      {years.map(year => <SelectItem key={year} value={year}>{year}</SelectItem>)}
-                                                    </SelectContent>
-                                                  </Select>
-                                                </div>
+                                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                                                <Popover>
+                                                  <PopoverTrigger asChild>
+                                                    <Button
+                                                      variant={"outline"}
+                                                      className={cn(
+                                                        "w-full justify-start text-left font-normal h-12 text-base",
+                                                        !date && "text-muted-foreground"
+                                                      )}
+                                                    >
+                                                      <CalendarDays className="mr-2 h-4 w-4" />
+                                                      {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                                    </Button>
+                                                  </PopoverTrigger>
+                                                  <PopoverContent className="w-auto p-0">
+                                                    <Calendar
+                                                      mode="single"
+                                                      selected={date}
+                                                      onSelect={handleDateSelect}
+                                                      initialFocus
+                                                    />
+                                                  </PopoverContent>
+                                                </Popover>
                                               </motion.div>
                                             )}
                                         </div>
@@ -984,5 +997,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
