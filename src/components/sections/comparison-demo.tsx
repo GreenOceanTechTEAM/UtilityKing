@@ -877,7 +877,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
                                     <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
                                     <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger
-                                    <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
+                                    ><TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
                                 </TabsList>
                                 <TabsContent value="cheapest" className="mt-4">
                                      <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
