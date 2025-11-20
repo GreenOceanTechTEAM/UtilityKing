@@ -290,6 +290,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const pdfContainerRef = useRef<HTMLDivElement>(null);
   const [pdfTimestamp, setPdfTimestamp] = useState('');
+  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -308,6 +309,75 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return () => clearTimeout(timer);
   }, [currentStep]);
 
+  useEffect(() => {
+    if (!isGeneratingPdf || !pdfContainerRef.current) return;
+
+    const generate = async () => {
+        const pdfElement = pdfContainerRef.current;
+        if (!pdfElement) return;
+
+        pdfElement.style.opacity = '1';
+        pdfElement.style.zIndex = '1000';
+        pdfElement.style.position = 'fixed';
+        pdfElement.style.top = '0';
+        pdfElement.style.left = '0';
+        
+        try {
+            const canvas = await html2canvas(pdfElement, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+            });
+            
+            const imgData = canvas.toDataURL('image/png');
+            
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = imgWidth / imgHeight;
+
+            const contentWidth = pdfWidth - 20; // with margin
+            let contentHeight = contentWidth / ratio;
+            
+            let heightLeft = contentHeight;
+            let position = 10; // top margin
+
+            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+            heightLeft -= (pdfHeight - 20);
+
+            while (heightLeft > 0) {
+                position = position - (pdfHeight - 20); // Move to next page content
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+                heightLeft -= (pdfHeight - 20);
+            }
+
+            pdf.save('UtilityKing_Quote.pdf');
+
+        } catch (error) {
+            console.error("Failed to generate PDF:", error);
+            toast({
+                variant: "destructive",
+                title: "PDF Download Failed",
+                description: "Sorry, we couldn't generate the PDF at this time."
+            });
+        } finally {
+            pdfElement.style.opacity = '0';
+            pdfElement.style.zIndex = '-1';
+            pdfElement.style.position = 'absolute';
+            pdfElement.style.top = 'auto';
+            pdfElement.style.left = '-9999px';
+            setIsGeneratingPdf(false); // Reset state
+        }
+    };
+    // Use a short timeout to ensure the DOM has updated
+    setTimeout(generate, 100); 
+
+  }, [isGeneratingPdf, toast]);
+
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
@@ -321,7 +391,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleSelect = (stepKey: string, option: string) => {
-    if (stepKey === 'utilityType' && option !== 'Gas') {
+    if (stepKey === 'utilityType' && option === 'Electricity') {
         setIsComingSoonModalOpen(true);
         return;
     }
@@ -544,7 +614,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       toast({ title: "Information Saved!", description: "Generating your personalized results now." });
       
       setIsLeadModalOpen(false);
-      handleFormSubmit(values);
+      await handleFormSubmit(values);
 
     } catch (error) {
       console.error("Error saving lead:", error);
@@ -582,76 +652,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleDownloadPdf = async () => {
-    const pdfElement = pdfContainerRef.current;
-    if (!pdfElement) return;
-
-    setIsLoading(true);
+    if (isGeneratingPdf) return;
     setPdfTimestamp(new Date().toLocaleString());
-
-    // Temporarily make the element visible for capture
-    pdfElement.style.opacity = '1';
-    pdfElement.style.zIndex = '1000';
-    pdfElement.style.position = 'fixed';
-    pdfElement.style.top = '0';
-    pdfElement.style.left = '0';
-    
-    try {
-        const canvas = await html2canvas(pdfElement, {
-            scale: 2,
-            useCORS: true,
-            backgroundColor: '#ffffff',
-        });
-        
-        const imgData = canvas.toDataURL('image/png');
-        
-        const pdf = new jsPDF('p', 'mm', 'a4');
-        const pdfWidth = pdf.internal.pageSize.getWidth();
-        const pdfHeight = pdf.internal.pageSize.getHeight();
-        
-        const canvasWidth = canvas.width;
-        const canvasHeight = canvas.height;
-        const canvasAspectRatio = canvasWidth / canvasHeight;
-
-        const contentWidth = pdfWidth - 20; // with margin
-        let contentHeight = contentWidth / canvasAspectRatio;
-
-        let heightLeft = contentHeight;
-        let position = 10; // top margin
-
-        if (contentHeight > pdfHeight - 20) {
-          contentHeight = pdfHeight - 20;
-        }
-
-        pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-        heightLeft -= (pdfHeight - 20);
-
-        while (heightLeft > 0) {
-            position = position - pdfHeight; // Negative position for subsequent pages
-            pdf.addPage();
-            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentWidth / canvasAspectRatio);
-            heightLeft -= (pdfHeight - 20);
-        }
-
-        pdf.save('UtilityKing_Quote.pdf');
-    } catch (error) {
-        console.error("Failed to generate PDF:", error);
-        toast({
-            variant: "destructive",
-            title: "PDF Download Failed",
-            description: "Sorry, we couldn't generate the PDF at this time."
-        });
-    } finally {
-        // Hide the element again
-        pdfElement.style.opacity = '0';
-        pdfElement.style.zIndex = '-1';
-        pdfElement.style.position = 'absolute';
-        pdfElement.style.top = 'auto';
-        pdfElement.style.left = '-9999px';
-
-        setIsLoading(false);
-        setPdfTimestamp(''); // Reset timestamp to allow future downloads
-    }
-};
+    setIsGeneratingPdf(true);
+  };
 
   const categorizedPlans = useMemo((): CategorizedPlans | null => {
     if (!comparisonResult) return null;
@@ -1022,7 +1026,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 <TooltipProvider>
                                      <Tooltip>
                                         <TooltipTrigger asChild>
-                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size={isMobile ? "icon" : "default"}>
+                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isGeneratingPdf} size={isMobile ? "icon" : "default"}>
                                                 <Download className={cn("h-4 w-4", !isMobile && "mr-2")} />
                                                 {!isMobile && "Download Report"}
                                             </Button>
@@ -1172,3 +1176,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
