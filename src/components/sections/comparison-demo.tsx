@@ -25,7 +25,7 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
-import { summarizeComparison, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
+import { summarizeComparison, type SummarizeComparisonInput, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 
@@ -870,15 +870,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 <motion.div
                                     initial={{ opacity: 0, y: 10 }}
                                     animate={{ opacity: 1, y: 0 }}
-                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20 prose prose-sm max-w-full"
+                                    className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
                                 >
-                                    <ReactMarkdown className="text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
+                                    <ReactMarkdown className="prose prose-sm max-w-full text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
                                 </motion.div>
                             )}
 
                              <Tabs defaultValue="cheapest" className="w-full">
-                                <div className="overflow-x-auto pb-2">
-                                    <TabsList className="inline-flex w-max">
+                                <div className="overflow-x-auto sm:overflow-visible pb-2">
+                                    <TabsList className="grid w-full grid-cols-2 sm:grid-cols-5">
                                         <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
                                         <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
                                         <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
