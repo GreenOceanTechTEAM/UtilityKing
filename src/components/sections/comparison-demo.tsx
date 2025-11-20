@@ -23,7 +23,7 @@ import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
-import { initiateAnonymousSignIn } from '@/firebase/non-blocking-login';
+import { signInAnonymously } from 'firebase/auth';
 
 type ComparisonDemoProps = {
   id: string;
@@ -258,21 +258,22 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return !!selection;
   }
 
-  const handleFormSubmit = async () => {
+ const handleFormSubmit = async () => {
     setIsLoading(true);
     setComparisonResult(null);
-    
+
+    const { contractEndDay, contractEndMonth, contractEndYear } = selections;
+    const startDate = contractEndDay && contractEndMonth && contractEndYear
+      ? `${contractEndDay}/${contractEndMonth}/${contractEndYear}`
+      : "";
+
     const formData = {
-      postcode: selections['postcode'] || '',
-      supplier: selections['electricitySupplier'] || '',
-      usage: selections['usage'] || '',
-      day: selections['contractEndDay'] || '',
-      month: selections['contractEndMonth'] || '',
-      year: selections['contractEndYear'] || '',
+        postcode: selections['postcode'] || '',
+        supplier: selections['electricitySupplier'] || '',
+        usage: selections['usage'] || '',
+        startDate: startDate,
     };
-    
-    console.log('Sending data to proxy:', { requestData: formData });
-  
+
     try {
         const response = await fetch('/api/webhook-proxy', {
             method: 'POST',
@@ -282,41 +283,55 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             },
             body: JSON.stringify({ requestData: formData }),
         });
-  
+
         if (!response.ok) {
             const errorText = await response.text();
             throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
         }
-  
-        const resultData = await response.json();
-        const parsedInnerJson = JSON.parse(resultData.d);
 
-        const plans = Array.isArray(parsedInnerJson) ? parsedInnerJson : [parsedInnerJson];
+        const resultData = await response.json();
+        
+        // The backend returns a stringified JSON array in the 'd' property.
+        const parsedInnerJsonString = resultData.d;
+        if (!parsedInnerJsonString || typeof parsedInnerJsonString !== 'string') {
+            throw new Error("Invalid response format from backend.");
+        }
+        
+        const plans = JSON.parse(parsedInnerJsonString);
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: plans.map((plan: any) => ({
-                planName: `Standing Charge: ${plan.standingcharge}p`,
-                provider: plan.supplier,
-                price: parseFloat(plan.yearlycost),
-                contractLength: `Unit Rate: ${plan.unitrate}p`,
-                link: '#',
-            })),
+            recommendedPlans: (Array.isArray(plans) ? plans : [plans]).map((plan: any) => {
+                // Safely parse yearlycost, default to 0 if invalid
+                const yearlyCostString = String(plan.yearlycost || '0');
+                const numericCostString = yearlyCostString.replace(/[^0-9.]/g, '');
+                const price = parseFloat(numericCostString);
+
+                return {
+                    planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
+                    provider: plan.supplier || 'Unknown Supplier',
+                    price: !isNaN(price) ? price : 0,
+                    contractLength: `Unit Rate: ${plan.unitrate || 'N/A'}`,
+                    link: '#', // Default link
+                };
+            }),
         };
-  
+
         setComparisonResult(finalResult);
 
+        // Save to Firestore after successful fetch and processing
         if (user && firestore) {
           const comparisonData = {
             userId: user.uid,
             userInput: JSON.stringify(selections),
-            comparisonResult: JSON.stringify(finalResult),
+            comparisonResult: JSON.stringify(finalResult), // Store the processed result
             timestamp: serverTimestamp(),
           };
           const comparisonsCollection = collection(firestore, `users/${user.uid}/ai_comparisons`);
           await addDoc(comparisonsCollection, comparisonData);
+          console.log("Comparison result saved to Firestore.");
         }
-  
+
     } catch (error: any) {
         console.error("Comparison failed:", error);
         toast({
@@ -327,7 +342,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     } finally {
         setIsLoading(false);
     }
-  };
+};
 
   const handlePrimaryAction = () => {
     if (currentStep === wizardSteps.length - 1 && isStepComplete(currentStep)) {
@@ -348,7 +363,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     try {
       let currentUser = user;
       if (!currentUser) {
-          const userCredential = await initiateAnonymousSignIn(auth);
+          const userCredential = await signInAnonymously(auth);
           currentUser = userCredential.user;
       }
       
@@ -536,7 +551,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                         <div className="relative">
                                                             {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
                                                             <Input 
-                                                                type={currentWizardStepConfig.inputType || "text"}
+                                                                type={"text"}
                                                                 placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
                                                                 className="pl-10 h-12 text-base text-center"
                                                                 value={selections[currentWizardStepConfig.key] || ''}
@@ -630,17 +645,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     </p>
                                 </div>
 
-                                <Carousel opts={{ align: "start" }} className="w-full mt-6 max-w-4xl mx-auto">
-                                <CarouselContent className="-ml-2">
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
                                     {Array.isArray(comparisonResult.recommendedPlans) && comparisonResult.recommendedPlans.map((plan, index) => (
-                                    <CarouselItem key={index} className="md:basis-1/2 lg:basis-1/1 pl-2">
                                         <motion.div
+                                            key={index}
                                             custom={index}
                                             initial={{ opacity: 0, y: 20 }}
                                             animate={(i) => ({
                                                 opacity: 1,
                                                 y: 0,
-                                                transition: { delay: 0.5 + i * 0.12, ease: "easeOut" }
+                                                transition: { delay: 0.1 + i * 0.1, ease: "easeOut" }
                                             })}
                                         >
                                             <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
@@ -669,12 +683,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             </CardFooter>
                                             </Card>
                                         </motion.div>
-                                    </CarouselItem>
                                     ))}
-                                </CarouselContent>
-                                <CarouselPrevious className="hidden sm:flex -left-4" />
-                                <CarouselNext className="hidden sm:flex -right-4" />
-                                </Carousel>
+                                </div>
                             </motion.div>
                             </AnimatePresence>
                         </div>
