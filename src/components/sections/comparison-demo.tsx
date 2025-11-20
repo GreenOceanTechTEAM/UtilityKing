@@ -50,6 +50,7 @@ interface RenderedPlan {
     contractLength: string;
     link: string;
     features: string[];
+    unitRate: string | undefined;
 }
 interface IntelligentUtilityComparisonOutput {
     comparisonSummary: string;
@@ -420,7 +421,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 const price = parseFloat(yearlyCostString);
                 
                 const features: string[] = [];
-                if (plan.unitrate) features.push(`Unit Rate: ${plan.unitrate}`);
                 if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
                 if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
                 if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
@@ -431,6 +431,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 return {
                     provider: plan.supplier || 'Unknown Supplier',
                     planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
+                    unitRate: plan.unitrate ? `Unit Rate: ${plan.unitrate}` : undefined,
                     price: !isNaN(price) ? price : 0,
                     durationMonths,
                     contractLength: plan.duration ? `Duration: ${plan.duration}` : 'Variable',
@@ -582,47 +583,50 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
 
     return plans.map((plan, index) => (
-        <motion.div
-            key={`${category}-${index}`}
-            custom={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={(i) => ({
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
-            })}
-        >
-            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-                <CardHeader>
-                    <div className="flex items-start justify-between">
-                        <div>
-                            <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                            <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                        </div>
-                        {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                    </div>
-                </CardHeader>
-                <CardContent className="flex-1 space-y-4">
-                    <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                        £{plan.price.toFixed(2)}
-                        <span className="text-base font-normal text-muted-foreground">/year</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                        {plan.contractLength}
-                    </p>
-                    {plan.features && plan.features.length > 0 && (
-                        <div className="space-y-2 pt-2 border-t">
-                            {plan.features.map(feature => (
-                                <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
-                                    <CheckCircle className="h-4 w-4 text-green-500" />
-                                    <span>{feature}</span>
-                                </div>
-                            ))}
-                        </div>
-                    )}
-                </CardContent>
-            </Card>
-        </motion.div>
+      <motion.div
+          key={`${category}-${index}`}
+          custom={index}
+          initial={{ opacity: 0, y: 20 }}
+          animate={(i) => ({
+              opacity: 1,
+              y: 0,
+              transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
+          })}
+      >
+          <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
+              <CardHeader>
+                  <div className="flex items-start justify-between">
+                      <div>
+                          <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
+                          <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
+                          {plan.unitRate && (
+                            <p className="text-accent font-semibold text-lg mt-1">{plan.unitRate}</p>
+                          )}
+                      </div>
+                      {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
+                  </div>
+              </CardHeader>
+              <CardContent className="flex-1 space-y-4">
+                  <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
+                      £{plan.price.toFixed(2)}
+                      <span className="text-base font-normal text-muted-foreground">/year</span>
+                  </div>
+                  <p className="text-sm text-muted-foreground">
+                      {plan.contractLength}
+                  </p>
+                  {plan.features && plan.features.length > 0 && (
+                      <div className="space-y-2 pt-2 border-t">
+                          {plan.features.map(feature => (
+                              <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                  <CheckCircle className="h-4 w-4 text-green-500" />
+                                  <span>{feature}</span>
+                              </div>
+                          ))}
+                      </div>
+                  )}
+              </CardContent>
+          </Card>
+      </motion.div>
     ));
 };
 
@@ -999,3 +1003,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
