@@ -542,7 +542,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }, [comparisonResult]);
 
 
-  const progress = (currentStepWithinPart / stepsInCurrentPart) * 100;
+  const progress = (currentStep / (wizardSteps.length -1)) * 100;
 
   const getButtonText = () => {
     if (currentStep < wizardSteps.length - 1) {
@@ -640,16 +640,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 
                 {!isLoading && !comparisonResult && (
                     <>
-                        <div className="absolute top-4 right-4 z-10 flex gap-2 items-center">
-                        <Button variant="ghost" size="icon" onClick={handlePrevStep} disabled={currentStep === 0} aria-label="Previous step">
-                            <ChevronLeft className="h-5 w-5" />
-                        </Button>
-                        <span className="text-sm font-medium text-muted-foreground">Part {currentPart} of {totalParts}</span>
-                        <Button variant="ghost" size="icon" onClick={handleNextStep} disabled={!isStepComplete(currentStep) || currentStep >= wizardSteps.length -1} aria-label="Next step">
-                            <ChevronRight className="h-5 w-5" />
-                        </Button>
-                        </div>
-
                         <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
                             <motion.div 
                                 className="bg-primary h-1 rounded-full"
@@ -782,24 +772,26 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 </div>
                                               </motion.div>
                                             )}
-                                            
-                                            {(isStepComplete(currentStep)) && (
-                                                <motion.div initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: 'auto' }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                    <Button 
-                                                        size="lg" 
-                                                        className="w-full h-12 text-base mt-4" 
-                                                        onClick={handlePrimaryAction}
-                                                    >
-                                                        {getButtonText()}
-                                                        <ArrowRight className="ml-2 h-4 w-4" />
-                                                    </Button>
-                                                </motion.div>
-                                            )}
                                         </div>
                                     )}
                                 </motion.div>
                                 }
                             </AnimatePresence>
+                        </div>
+                         <div className="flex justify-center items-center gap-4 pt-4 mt-4 border-t">
+                            <Button type="button" variant="outline" size="lg" onClick={handlePrevStep} disabled={currentStep === 0}>
+                              <ChevronLeft className="mr-2 h-4 w-4" />
+                              Back
+                            </Button>
+                            <Button 
+                                type="button"
+                                size="lg" 
+                                onClick={handlePrimaryAction}
+                                disabled={!isStepComplete(currentStep)}
+                            >
+                                {getButtonText()}
+                                <ArrowRight className="ml-2 h-4 w-4" />
+                            </Button>
                         </div>
                     </>
                 )}
@@ -992,3 +984,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
