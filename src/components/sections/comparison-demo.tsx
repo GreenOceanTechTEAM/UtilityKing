@@ -29,6 +29,7 @@ import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { signInAnonymously } from 'firebase/auth';
 import { summarizeComparison, type SummarizeComparisonInput, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
+import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 
 
 // Define the shape of a single plan coming from the backend
@@ -232,96 +233,38 @@ const DynamicHook = () => {
     );
 };
 
-const PdfContent: React.FC<{
-    summary: SummarizeComparisonOutput | null;
-    categorizedPlans: CategorizedPlans;
-    timestamp: string;
-}> = ({ summary, categorizedPlans, timestamp }) => {
+const renderPdfPlans = (plans: RenderedPlan[]) => {
+    if (!plans || plans.length === 0) {
+        return null;
+    }
 
-    const renderPdfPlans = (plans: RenderedPlan[]) => {
-        if (!plans || plans.length === 0) {
-            return null;
-        }
-
-        return plans.map((plan, index) => (
-            <div key={`pdf-${plan.provider}-${index}`} className="p-4 border border-gray-200 rounded-lg bg-white mb-4">
-                <div className="flex items-start justify-between">
-                    <div>
-                        <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-800 rounded-full mb-2 inline-block">{plan.provider}</span>
-                        <h4 className="text-lg font-semibold text-gray-900">{plan.planName}</h4>
-                        {plan.unitRate && (
-                            <p className="text-blue-600 font-semibold text-xl mt-2">{plan.unitRate}</p>
-                        )}
-                    </div>
-                </div>
-                <div className="mt-4">
-                    <div className="text-3xl font-bold text-gray-900">
-                        £{plan.price.toFixed(2)}
-                        <span className="text-base font-normal text-gray-600">/year</span>
-                    </div>
-                    <p className="text-sm text-gray-500 mt-1">{plan.contractLength}</p>
-                    {plan.features && plan.features.length > 0 && (
-                        <div className="space-y-1 pt-2 mt-2 border-t">
-                            {plan.features.map(feature => (
-                                <p key={feature} className="text-xs text-gray-600">{feature}</p>
-                            ))}
-                        </div>
+    return plans.map((plan, index) => (
+        <div key={`pdf-${plan.provider}-${index}`} className="p-4 border border-gray-200 rounded-lg bg-white mb-4">
+            <div className="flex items-start justify-between">
+                <div>
+                    <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-800 rounded-full mb-2 inline-block">{plan.provider}</span>
+                    <h4 className="text-lg font-semibold text-gray-900">{plan.planName}</h4>
+                    {plan.unitRate && (
+                        <p className="text-blue-600 font-semibold text-xl mt-2">{plan.unitRate}</p>
                     )}
                 </div>
             </div>
-        ));
-    };
-
-    return (
-        // This container will be positioned off-screen
-        <div style={{ position: 'absolute', left: '-9999px', width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}>
-            <div className="text-center mb-6 border-b pb-4">
-                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
-                <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
-                <p className="text-xs text-gray-400 mt-1">Generated on: {timestamp}</p>
-            </div>
-            
-            {summary && (
-                <div className="my-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
-                     <h3 className="font-headline text-xl font-bold text-gray-800 mb-2">AI Summary from UKi</h3>
-                    <ReactMarkdown className="prose prose-sm max-w-full text-base text-gray-800 whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
+            <div className="mt-4">
+                <div className="text-3xl font-bold text-gray-900">
+                    £{plan.price.toFixed(2)}
+                    <span className="text-base font-normal text-gray-600">/year</span>
                 </div>
-            )}
-            
-            <div>
-                {categorizedPlans.cheapest && (
-                    <div className="mb-6">
-                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">Cheapest Deal</h3>
-                        {renderPdfPlans([categorizedPlans.cheapest])}
-                    </div>
-                )}
-                {categorizedPlans.oneYear.length > 0 && (
-                    <div className="mb-6">
-                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">1-Year Fixed Deals</h3>
-                        {renderPdfPlans(categorizedPlans.oneYear)}
-                    </div>
-                )}
-                {categorizedPlans.twoYear.length > 0 && (
-                    <div className="mb-6">
-                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Year Fixed Deals</h3>
-                        {renderPdfPlans(categorizedPlans.twoYear)}
-                    </div>
-                )}
-                 {categorizedPlans.threeYear.length > 0 && (
-                    <div className="mb-6">
-                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Year Fixed Deals</h3>
-                        {renderPdfPlans(categorizedPlans.threeYear)}
-                    </div>
-                )}
-                {categorizedPlans.fourPlusYear.length > 0 && (
-                    <div className="mb-6">
-                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Year Fixed Deals</h3>
-                        {renderPdfPlans(categorizedPlans.fourPlusYear)}
+                <p className="text-sm text-gray-500 mt-1">{plan.contractLength}</p>
+                {plan.features && plan.features.length > 0 && (
+                    <div className="space-y-1 pt-2 mt-2 border-t">
+                        {plan.features.map(feature => (
+                            <p key={feature} className="text-xs text-gray-600">{feature}</p>
+                        ))}
                     </div>
                 )}
             </div>
         </div>
-    );
+    ));
 };
 
 
@@ -343,7 +286,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const [date, setDate] = React.useState<Date>()
 
-  const pdfContentRef = useRef<HTMLDivElement>(null);
+  const pdfContainerRef = useRef<HTMLDivElement>(null);
   const [pdfTimestamp, setPdfTimestamp] = useState('');
 
   const activeWizardSteps = React.useMemo(() => {
@@ -371,7 +314,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -523,7 +466,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 return {
                     provider: plan.supplier || 'Unknown Supplier',
                     planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
-                    unitRate: plan.unitrate ? `Unit Rate: ${plan.unitrate}` : undefined,
+                    unitRate: `Unit Rate: ${plan.unitrate || 'N/A'}`,
                     price: !isNaN(price) ? price : 0,
                     durationMonths,
                     contractLength: plan.duration ? `Duration: ${plan.duration}` : 'Variable',
@@ -634,7 +577,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleDownloadPdf = async () => {
-    const pdfElement = pdfContentRef.current;
+    const pdfElement = pdfContainerRef.current;
     if (!pdfElement) return;
 
     setIsLoading(true);
@@ -747,7 +690,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         <div>
                             <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
                             <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                             {plan.unitRate && (
+                            {plan.unitRate && (
                               <p className="text-accent font-semibold text-xl mt-2">{plan.unitRate}</p>
                             )}
                         </div>
@@ -990,21 +933,84 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                         className="mt-4"
                     >
-                         <div ref={pdfContentRef}>
-                            <PdfContent categorizedPlans={categorizedPlans} summary={summary} timestamp={pdfTimestamp} />
+                         <div
+                            ref={pdfContainerRef}
+                            style={{ position: 'absolute', left: '-9999px', width: '800px', backgroundColor: 'white', padding: '20px', color: 'black' }}
+                         >
+                            <div className="text-center mb-6 border-b pb-4">
+                                <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
+                                <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
+                                {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
+                            </div>
+                            
+                            {summary && (
+                                <div className="my-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
+                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2">AI Summary from UKi</h3>
+                                    <ReactMarkdown className="prose prose-sm max-w-full text-base text-gray-800 whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
+                                </div>
+                            )}
+                            
+                            <div>
+                                {categorizedPlans.cheapest && (
+                                    <div className="mb-6">
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">Cheapest Deal</h3>
+                                        {renderPdfPlans([categorizedPlans.cheapest])}
+                                    </div>
+                                )}
+                                {categorizedPlans.oneYear.length > 0 && (
+                                    <div className="mb-6">
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">1-Year Fixed Deals</h3>
+                                        {renderPdfPlans(categorizedPlans.oneYear)}
+                                    </div>
+                                )}
+                                {categorizedPlans.twoYear.length > 0 && (
+                                    <div className="mb-6">
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Year Fixed Deals</h3>
+                                        {renderPdfPlans(categorizedPlans.twoYear)}
+                                    </div>
+                                )}
+                                {categorizedPlans.threeYear.length > 0 && (
+                                    <div className="mb-6">
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Year Fixed Deals</h3>
+                                        {renderPdfPlans(categorizedPlans.threeYear)}
+                                    </div>
+                                )}
+                                {categorizedPlans.fourPlusYear.length > 0 && (
+                                    <div className="mb-6">
+                                        <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Year Fixed Deals</h3>
+                                        {renderPdfPlans(categorizedPlans.fourPlusYear)}
+                                    </div>
+                                )}
+                            </div>
                         </div>
                         <div className='text-center mb-6'>
                             <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                             <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
                             <div className="mt-4 flex flex-wrap justify-center gap-2">
-                                <Button onClick={handleSummarize} disabled={isSummarizing}>
-                                    {isSummarizing ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Sparkles className="mr-2 h-4 w-4" />}
-                                    Summarize with UKi
-                                </Button>
-                                <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading}>
-                                    {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : <Download className="mr-2 h-4 w-4" />}
-                                    Download PDF
-                                </Button>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button onClick={handleSummarize} disabled={isSummarizing} size="icon">
+                                                {isSummarizing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Summarize with UKi</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
+                                <TooltipProvider>
+                                    <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size="icon">
+                                                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Download PDF</p>
+                                        </TooltipContent>
+                                    </Tooltip>
+                                </TooltipProvider>
                             </div>
                         </div>
                         
