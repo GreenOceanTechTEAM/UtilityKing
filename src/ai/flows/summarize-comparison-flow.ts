@@ -57,10 +57,11 @@ Analyze the provided data, which includes the user's wizard selections and the l
 Based on this data, craft a conversational summary formatted in Markdown. Address the user directly. Your summary should:
 1.  Start with a friendly greeting.
 2.  Acknowledge their key preferences (e.g., "I see you're looking for a fixed-rate plan...").
-3.  Use a heading like "### Key Findings".
-4.  Use bullet points or a numbered list to highlight the most important deals:
-    -   The **absolute cheapest plan** found, stating its provider, annual cost, and contract length.
-    -   Another noteworthy deal, such as the best 2-year fixed plan or a plan with unique features.
+3.  Use a Markdown heading like "### Key Findings".
+4.  Use a bulleted list to highlight the most important deals. For each bullet point:
+    - Start with a bolded title (e.g., "**Your Top Pick:**").
+    - Clearly state the supplier, annual cost, and contract length.
+    - Provide a brief, insightful comment on why it's a good choice.
 5.  Provide a concluding sentence to encourage them to review the deals below.
 
 Keep the tone helpful, expert, and reassuring. Do not simply list the plans; provide insight.

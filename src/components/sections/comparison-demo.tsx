@@ -30,6 +30,7 @@ import { signInAnonymously } from 'firebase/auth';
 import { summarizeComparison, type SummarizeComparisonInput, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 
 // Define the shape of a single plan coming from the backend
@@ -276,6 +277,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [isSavingLead, setIsSavingLead] = useState(false);
   const { toast } = useToast();
   const { firestore, auth, user } = useFirebase();
+  const isMobile = useIsMobile();
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -314,7 +316,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -458,7 +460,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
                 if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
                 if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
-                if (plan.unitrate) features.push(`Unit Rate: ${plan.unitrate}`);
 
                 const duration = plan.duration?.replace(/[^0-9]/g, '') || '0';
                 const durationMonths = parseInt(duration, 10);
@@ -471,7 +472,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     durationMonths,
                     contractLength: plan.duration ? `Duration: ${plan.duration}` : 'Variable',
                     link: '#', 
-                    features: [],
+                    features,
                 };
             }),
         };
@@ -524,7 +525,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     try {
       // Ensure there is an authenticated user, even an anonymous one
-      let currentUser = user;
+      let currentUser = auth.currentUser;
       if (!currentUser) {
         const userCredential = await signInAnonymously(auth);
         currentUser = userCredential.user;
@@ -989,30 +990,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
                             <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
                             <div className="mt-4 flex flex-wrap justify-center gap-2">
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Button onClick={handleSummarize} disabled={isSummarizing} size="icon">
-                                                {isSummarizing ? <Loader2 className="h-4 w-4 animate-spin" /> : <Sparkles className="h-4 w-4" />}
-                                            </Button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>Summarize with UKi</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size="icon">
-                                                {isLoading ? <Loader2 className="h-4 w-4 animate-spin" /> : <Download className="h-4 w-4" />}
-                                            </Button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>Download PDF</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
+                                <Button onClick={handleSummarize} disabled={isSummarizing} size={isMobile ? "icon" : "default"}>
+                                  <Sparkles className={cn("h-4 w-4", !isMobile && "mr-2")} />
+                                  {!isMobile && "Summarize with UKi"}
+                                </Button>
+                                <Button onClick={handleDownloadPdf} variant="outline" disabled={isLoading} size={isMobile ? "icon" : "default"}>
+                                    <Download className={cn("h-4 w-4", !isMobile && "mr-2")} />
+                                    {!isMobile && "Download Report"}
+                                </Button>
                             </div>
                         </div>
                         
@@ -1037,8 +1022,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
                                     <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
                                     <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
-                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Year</TabsTrigger>
-                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Year</TabsTrigger>
+                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Years</TabsTrigger>
+                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Years</TabsTrigger>
                                     <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
                                 </TabsList>
                             </div>
