@@ -162,11 +162,10 @@ const wizardSteps = [
     },
 ];
 
-const analysisLines = [
-    'Analyzing your postcode...',
-    'Comparing market tariffs...',
-    'Checking supplier rates...',
-    'Finalizing recommendations...',
+const dynamicHooks = [
+    "Analyze hundreds of tariffs in real-time.",
+    "100% impartial and secure results.",
+    "Switch suppliers in minutes, hassle-free."
 ];
 
 const stepVariants = {
@@ -182,6 +181,38 @@ const pillVariants = {
 };
 
 const AI_TYPING_DELAY = 1000;
+
+const DynamicHook = () => {
+    const [index, setIndex] = useState(0);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setIndex((prevIndex) => (prevIndex + 1) % dynamicHooks.length);
+        }, 3000); // Change text every 3 seconds
+        return () => clearInterval(interval);
+    }, []);
+
+    return (
+        <div className="relative h-8 mb-12 text-center flex items-center justify-center">
+            <AnimatePresence mode="wait">
+                <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0, y: -10 }}
+                    transition={{ duration: 0.5 }}
+                    className="absolute inset-0 flex items-center justify-center"
+                >
+                    <p className="text-lg text-muted-foreground font-medium flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5 text-accent" />
+                        {dynamicHooks[index]}
+                    </p>
+                </motion.div>
+            </AnimatePresence>
+        </div>
+    );
+};
+
 
 export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
@@ -465,7 +496,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
           whileInView={{ y: 0, opacity: 1 }}
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center mb-12 max-w-3xl mx-auto"
+          className="text-center mb-6 max-w-3xl mx-auto"
         >
             <h2 className="font-headline text-3xl tracking-tight md:text-[38px] font-bold text-foreground">
               Let’s Find Your Best Energy Deal — Instantly
@@ -475,35 +506,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             </p>
         </motion.div>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <BarChart3 className="w-7 h-7" />
-                </div>
-                <div>
-                    <h4 className="text-lg font-semibold text-foreground">Live Market Data</h4>
-                    <p className="text-muted-foreground mt-1">We analyze hundreds of tariffs in real-time to find your best price.</p>
-                </div>
-            </div>
-            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <ShieldCheck className="w-7 h-7" />
-                </div>
-                <div>
-                    <h4 className="text-lg font-semibold text-foreground">100% Impartial & Secure</h4>
-                    <p className="text-muted-foreground mt-1">Our results are unbiased, and your data is always protected.</p>
-                </div>
-            </div>
-            <div className="flex flex-col items-center text-center gap-4 p-6 rounded-2xl bg-card/40 border border-border/20 hover:bg-card/80 hover:border-primary/20 transition-all hover:shadow-lg">
-                <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-primary/10 text-primary flex items-center justify-center">
-                    <Smile className="w-7 h-7" />
-                </div>
-                <div>
-                    <h4 className="text-lg font-semibold text-foreground">Effortless Switching</h4>
-                    <p className="text-muted-foreground mt-1">Switch suppliers in minutes with no paperwork and no interruptions.</p>
-                </div>
-            </div>
-        </div>
+        <DynamicHook />
 
         <div className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
@@ -848,5 +851,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
