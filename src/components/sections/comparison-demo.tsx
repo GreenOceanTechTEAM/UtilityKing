@@ -194,7 +194,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
   const [isTyping, setIsTyping] = useState(true);
-  const sideImage = PlaceHolderImages.find(p => p.id === 'blog-post-1');
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -781,18 +780,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         </div>
                     </div>
                 </div>
-                 {sideImage && (
-                    <div className="mt-8 rounded-xl overflow-hidden shadow-lg">
-                        <Image
-                            src={sideImage.imageUrl}
-                            alt={sideImage.description}
-                            width={500}
-                            height={300}
-                            data-ai-hint={sideImage.imageHint}
-                            className="object-cover"
-                        />
-                    </div>
-                 )}
             </motion.div>
         </div>
 
