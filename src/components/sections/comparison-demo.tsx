@@ -9,11 +9,10 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 
 import { Card, CardContent, CardHeader, CardTitle, CardFooter } from '@/components/ui/card';
-import { Carousel, CarouselContent, CarouselItem, CarouselNext, CarouselPrevious } from "@/components/ui/carousel";
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import { Badge } from '../ui/badge';
@@ -22,8 +21,34 @@ import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { IntelligentUtilityComparisonOutput } from '@/ai/flows/intelligent-utility-comparison';
 import { signInAnonymously } from 'firebase/auth';
+
+// Define the shape of a single plan coming from the backend
+interface RecommendedPlan {
+    supplier: string;
+    standingcharge: string;
+    unitrate: string;
+    yearlycost: string;
+    duration?: string;
+    nightrate?: string;
+    offpeakrate?: string;
+    eveningweekendrate?: string;
+}
+
+// Define the shape of the data used for rendering in the component
+interface RenderedPlan {
+    planName: string;
+    provider: string;
+    price: number;
+    contractLength: string;
+    link: string;
+    features: string[];
+}
+interface IntelligentUtilityComparisonOutput {
+    comparisonSummary: string;
+    recommendedPlans: RenderedPlan[];
+}
+
 
 type ComparisonDemoProps = {
   id: string;
@@ -291,40 +316,43 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         const resultData = await response.json();
         
-        // The backend returns a stringified JSON array in the 'd' property.
         const parsedInnerJsonString = resultData.d;
         if (!parsedInnerJsonString || typeof parsedInnerJsonString !== 'string') {
             throw new Error("Invalid response format from backend.");
         }
         
-        const plans = JSON.parse(parsedInnerJsonString);
+        let plans: RecommendedPlan[] = JSON.parse(parsedInnerJsonString);
         
         const finalResult: IntelligentUtilityComparisonOutput = {
             comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: (Array.isArray(plans) ? plans : [plans]).map((plan: any) => {
-                // Safely parse yearlycost, default to 0 if invalid
+            recommendedPlans: (Array.isArray(plans) ? plans : [plans]).map((plan: RecommendedPlan) => {
                 const yearlyCostString = String(plan.yearlycost || '0');
                 const numericCostString = yearlyCostString.replace(/[^0-9.]/g, '');
                 const price = parseFloat(numericCostString);
+                
+                const features: string[] = [];
+                if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
+                if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
+                if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
 
                 return {
-                    planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
                     provider: plan.supplier || 'Unknown Supplier',
+                    planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
                     price: !isNaN(price) ? price : 0,
-                    contractLength: `Unit Rate: ${plan.unitrate || 'N/A'}`,
+                    contractLength: plan.duration ? `Duration: ${plan.duration}` : `Unit Rate: ${plan.unitrate || 'N/A'}`,
                     link: '#', // Default link
+                    features: features,
                 };
             }),
         };
-
+        
         setComparisonResult(finalResult);
 
-        // Save to Firestore after successful fetch and processing
         if (user && firestore) {
           const comparisonData = {
             userId: user.uid,
             userInput: JSON.stringify(selections),
-            comparisonResult: JSON.stringify(finalResult), // Store the processed result
+            comparisonResult: JSON.stringify(finalResult),
             timestamp: serverTimestamp(),
           };
           const comparisonsCollection = collection(firestore, `users/${user.uid}/ai_comparisons`);
@@ -667,7 +695,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
                                                 </div>
                                             </CardHeader>
-                                            <CardContent className="flex-1 space-y-2">
+                                            <CardContent className="flex-1 space-y-4">
                                                 <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
                                                     £{plan.price.toFixed(2)}
                                                     <span className="text-base font-normal text-muted-foreground">/year</span>
@@ -675,6 +703,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                 <p className="text-sm text-muted-foreground">
                                                     {plan.contractLength}
                                                 </p>
+                                                {plan.features && plan.features.length > 0 && (
+                                                    <div className="space-y-2 pt-2 border-t">
+                                                        {plan.features.map(feature => (
+                                                            <div key={feature} className="flex items-center gap-2 text-xs text-muted-foreground">
+                                                                <CheckCircle className="h-4 w-4 text-green-500" />
+                                                                <span>{feature}</span>
+                                                            </div>
+                                                        ))}
+                                                    </div>
+                                                )}
                                             </CardContent>
                                             <CardFooter>
                                                 <Button asChild className="w-full bg-accent text-accent-foreground hover:bg-accent/90 text-base font-semibold">
@@ -767,5 +805,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
