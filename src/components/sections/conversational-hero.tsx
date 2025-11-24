@@ -6,7 +6,7 @@ import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { conversationalHeroAssistance, ConversationalHeroAssistanceOutput } from '@/ai/flows/conversational-hero-assistance';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -32,6 +32,13 @@ const placeholders = [
     "Find a 100% renewable energy plan.",
     "Is my current plan a good deal?",
     "Show me deals with no exit fees.",
+];
+
+const headlines = [
+  "Stop Overpaying on Energy—Instantly.",
+  "Unlock Hidden Savings on Your Bills.",
+  "One Search. All Suppliers. Zero Hassle.",
+  "The UK's Smartest Energy Switch is Here."
 ];
 
 const containerVariants = {
@@ -89,6 +96,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [assistance, setAssistance] = useState<ConversationalHeroAssistanceOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [currentPlaceholder, setCurrentPlaceholder] = useState("");
+  const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
   const { toast } = useToast();
   
   const form = useForm<z.infer<typeof formSchema>>({
@@ -98,6 +106,14 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
     },
   });
   
+  useEffect(() => {
+    const headlineInterval = setInterval(() => {
+      setCurrentHeadlineIndex(prevIndex => (prevIndex + 1) % headlines.length);
+    }, 5000); // Change headline every 5 seconds
+
+    return () => clearInterval(headlineInterval);
+  }, []);
+
   useEffect(() => {
     let currentPlaceholderIndex = 0;
     let currentText = "";
@@ -153,11 +169,6 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       setIsLoading(false);
     }
   }
-  
-  const headlineLines = [
-    "Compare UK Energy Deals in Seconds",
-    "— Switch Smarter, Save More."
-  ];
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
@@ -166,20 +177,24 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
       
       <div className="container relative z-10 mx-auto px-4 text-center">
           <motion.div initial="hidden" animate="visible">
-            <motion.h1 
-                variants={containerVariants}
-                className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-[60px] sm:leading-[1.08]"
-            >
-                {headlineLines.map((line, lineIndex) => (
-                  <span className="block" key={lineIndex}>
-                    {line.split(" ").map((word, wordIndex) => (
-                        <motion.span key={wordIndex} variants={wordVariants} className="inline-block mr-[0.25em]">
-                            {word}
-                        </motion.span>
-                    ))}
-                  </span>
-                ))}
-            </motion.h1>
+             <div className="relative h-20 sm:h-24 lg:h-28">
+              <AnimatePresence mode="wait">
+                <motion.h1
+                  key={currentHeadlineIndex}
+                  variants={containerVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  className="font-headline text-4xl font-bold tracking-tighter text-foreground sm:text-6xl lg:text-[60px] sm:leading-[1.08] absolute inset-0"
+                >
+                  {headlines[currentHeadlineIndex].split(" ").map((word, wordIndex) => (
+                    <motion.span key={wordIndex} variants={wordVariants} className="inline-block mr-[0.25em]">
+                      {word}
+                    </motion.span>
+                  ))}
+                </motion.h1>
+              </AnimatePresence>
+            </div>
             <motion.p 
                 variants={subtitleVariants}
                 className="mt-6 max-w-xl mx-auto text-lg md:text-xl leading-relaxed text-muted-foreground"
