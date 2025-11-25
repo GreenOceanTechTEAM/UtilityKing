@@ -310,7 +310,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     />
                 </div>
 
-                <div className="relative h-[220px] sm:h-[200px] overflow-hidden">
+                <div className="relative h-[180px] sm:h-[160px] overflow-hidden">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
@@ -365,3 +365,5 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
+
+    
