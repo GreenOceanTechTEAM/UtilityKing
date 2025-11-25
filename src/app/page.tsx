@@ -57,7 +57,7 @@ export default function Home() {
           <HowItWorks id="how" />
           <ServicesSection id="services" />
           <WhyUtilityKing id="why" />
-          <ComparisonDemo id="compare" onReset={setComparisonReset} />
+          <ComparisonDemo id="compare" />
           <TrustProofs id="trust" />
           <AnimatedCTABanner
             id="cta-banner-1"

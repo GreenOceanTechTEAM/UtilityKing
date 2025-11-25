@@ -2,7 +2,7 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useEffect, useMemo, useRef } from 'react';
+import { useState, useEffect, useMemo, useRef, useContext } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -31,6 +31,7 @@ import { summarizeComparison, type SummarizeComparisonInput, type SummarizeCompa
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
 import { useIsMobile } from '@/hooks/use-mobile';
+import { ComparisonResetContext } from '@/app/page';
 
 
 // Define the shape of a single plan coming from the backend
@@ -72,7 +73,6 @@ type CategorizedPlans = {
 
 type ComparisonDemoProps = {
   id: string;
-  onReset?: () => void;
 };
 
 const leadSchema = z.object({
@@ -311,7 +311,7 @@ const renderPdfPlans = (plans: RenderedPlan[]) => {
 };
 
 
-export default function ComparisonDemo({ id, onReset }: ComparisonDemoProps) {
+export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
@@ -320,6 +320,7 @@ export default function ComparisonDemo({ id, onReset }: ComparisonDemoProps) {
   const { toast } = useToast();
   const { firestore, auth, user } = useFirebase();
   const isMobile = useIsMobile();
+  const resetComparison = useContext(ComparisonResetContext);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -357,7 +358,7 @@ export default function ComparisonDemo({ id, onReset }: ComparisonDemoProps) {
     setLeadDetails(null);
     setDate(undefined);
     leadForm.reset({ name: '', email: '', phone: '' });
-    if(onReset) onReset();
+    if(resetComparison) resetComparison();
   };
 
   useEffect(() => {
