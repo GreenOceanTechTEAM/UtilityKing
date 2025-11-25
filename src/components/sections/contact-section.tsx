@@ -331,7 +331,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     />
                 </div>
 
-                <div className="relative h-[180px] sm:h-[160px] overflow-hidden">
+                <div className="relative min-h-[160px] flex items-center justify-center">
                     <AnimatePresence mode="wait">
                         <motion.div
                             key={currentStep}
@@ -357,6 +357,13 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     </Button>
                   )}
 
+                  {currentStep < activeSteps.length -1 && (
+                      <Button type="button" size="lg" onClick={handleNextStep}>
+                          Next
+                          <ChevronRight className="ml-2 h-4 w-4" />
+                      </Button>
+                  )}
+
                   {currentStep === activeSteps.length - 1 && (
                     <Button type="submit" size="lg" disabled={isLoading}>
                       {isLoading ? (
@@ -380,4 +387,3 @@ export default function ContactSection({ id }: ContactSectionProps) {
       </div>
     </section>
   );
-}
