@@ -387,3 +387,4 @@ export default function ContactSection({ id }: ContactSectionProps) {
       </div>
     </section>
   );
+}
