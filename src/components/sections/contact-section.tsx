@@ -79,7 +79,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
       businessName: "",
       message: "",
     },
-    mode: "onChange"
+    mode: "onBlur" // Validate on blur to enable auto-advance
   });
 
   const inquiryType = form.watch("inquiryType");
@@ -91,7 +91,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
   const handleNextStep = async () => {
     const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     
-    // For 'inquiryType', we auto-advance.
+    // For 'inquiryType', we auto-advance on selection.
     if (currentField === 'inquiryType') {
         const isValid = await form.trigger(currentField);
         if (isValid && currentStep < activeSteps.length - 1) {
@@ -100,6 +100,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
         return;
     }
 
+    // For other fields, trigger validation and advance if valid.
     let isValid = await form.trigger(currentField);
     
     if (isValid && currentStep < activeSteps.length - 1) {
@@ -117,11 +118,19 @@ export default function ContactSection({ id }: ContactSectionProps) {
     if (e.key === 'Enter' && !e.shiftKey) {
         e.preventDefault();
         const currentField = activeSteps[currentStep].field;
+        // Don't auto-advance on Enter for the final textarea
         if (currentField !== 'message') {
             handleNextStep();
         }
     }
   };
+
+  const handleBlur = () => {
+    const currentField = activeSteps[currentStep].field;
+    if (currentField !== 'message' && currentField !== 'inquiryType') {
+      handleNextStep();
+    }
+  }
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
     const isValid = await form.trigger();
@@ -266,9 +275,21 @@ export default function ContactSection({ id }: ContactSectionProps) {
                             {!isMessageStep && <Icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
                             
                             {stepConfig.isTextarea ? (
-                                <Textarea placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} rows={3} className="text-base" />
+                                <Textarea 
+                                    placeholder={stepConfig.placeholder} 
+                                    {...field} 
+                                    onKeyDown={handleKeyDown} 
+                                    rows={3} 
+                                    className="text-base" 
+                                />
                             ) : (
-                                <Input placeholder={stepConfig.placeholder} {...field} onKeyDown={handleKeyDown} className="pl-10 h-12 text-base" />
+                                <Input 
+                                    placeholder={stepConfig.placeholder} 
+                                    {...field} 
+                                    onKeyDown={handleKeyDown} 
+                                    onBlur={handleBlur}
+                                    className="pl-10 h-12 text-base" 
+                                />
                             )}
                         </div>
                     </FormControl>
@@ -336,12 +357,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     </Button>
                   )}
 
-                  {currentStep < activeSteps.length - 1 ? (
-                    <Button type="button" size="lg" onClick={handleNextStep}>
-                      Next
-                      <ChevronRight className="ml-2 h-4 w-4" />
-                    </Button>
-                  ) : (
+                  {currentStep === activeSteps.length - 1 && (
                     <Button type="submit" size="lg" disabled={isLoading}>
                       {isLoading ? (
                         <>
@@ -365,5 +381,3 @@ export default function ContactSection({ id }: ContactSectionProps) {
     </section>
   );
 }
-
-    
