@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -36,7 +37,7 @@ const imageVariants = {
     }
 }
 
-export default function AboutSection({ id }: AboutSectionProps) {
+export function AboutSection({ id }: AboutSectionProps) {
   const image = PlaceHolderImages.find(p => p.id === "about-team");
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({

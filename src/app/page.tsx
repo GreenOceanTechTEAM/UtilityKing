@@ -13,7 +13,7 @@ import ComparisonDemo from '@/components/sections/comparison-demo';
 import TrustProofs from '@/components/sections/trust-proofs';
 import FAQs from '@/components/sections/faqs';
 import BlogPreview from '@/components/sections/blog-preview';
-import AboutSection from '@/components/sections/about-section';
+import { AboutSection } from '@/components/sections/about-section';
 import ContactSection from '@/components/sections/contact-section';
 
 // Create a context to hold the reset function
