@@ -1,3 +1,4 @@
+
 "use client";
 
 import Image from 'next/image';
@@ -9,6 +10,7 @@ import { cn } from '@/lib/utils';
 import { useRef } from 'react';
 import AnimatedGridPattern from './animated-grid-pattern';
 import EnergyGridBackground from './energy-grid-background';
+import { usePrefersReducedMotion } from '@/hooks/use-prefers-reduced-motion';
 
 type AnimatedCTABannerProps = {
   id: string;
@@ -21,6 +23,7 @@ type AnimatedCTABannerProps = {
 
 export default function AnimatedCTABanner({ id, type, title, subtitle, buttonText, buttonLink }: AnimatedCTABannerProps) {
   const targetRef = useRef<HTMLDivElement>(null);
+  const prefersReducedMotion = usePrefersReducedMotion();
   
   const { scrollYProgress } = useScroll({
     target: targetRef,
@@ -33,7 +36,7 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
   return (
     <section id={id} ref={targetRef} className="relative h-96 overflow-hidden">
       {type === 'quote' ? (
-        <EnergyGridBackground />
+        !prefersReducedMotion ? <EnergyGridBackground /> : <div className="absolute inset-0 z-[-2] bg-gradient-to-br from-primary/20 via-transparent to-transparent" />
       ) : (
         <AnimatedGridPattern />
       )}

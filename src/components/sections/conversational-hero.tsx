@@ -15,6 +15,7 @@ import { useToast } from '@/hooks/use-toast';
 import Link from 'next/link';
 import EnergyGridBackground from '../shared/energy-grid-background';
 import { cn } from '@/lib/utils';
+import { usePrefersReducedMotion } from '@/hooks/use-prefers-reduced-motion';
 
 type ConversationalHeroProps = {
   id: string;
@@ -98,6 +99,7 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
   const [currentPlaceholder, setCurrentPlaceholder] = useState("");
   const [currentHeadlineIndex, setCurrentHeadlineIndex] = useState(0);
   const { toast } = useToast();
+  const prefersReducedMotion = usePrefersReducedMotion();
   
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -172,7 +174,11 @@ export default function ConversationalHero({ id }: ConversationalHeroProps) {
 
   return (
     <section id={id} className="relative flex h-[90vh] min-h-[700px] items-center justify-center overflow-hidden">
-      <EnergyGridBackground />
+      {!prefersReducedMotion ? (
+        <EnergyGridBackground />
+      ) : (
+        <div className="absolute inset-0 z-[-2] bg-gradient-to-br from-primary/20 via-transparent to-transparent" />
+      )}
       <div className="absolute inset-0 z-[-1] bg-gradient-to-t from-background via-background/80 to-transparent" />
       
       <div className="container relative z-10 mx-auto px-4 text-center">
