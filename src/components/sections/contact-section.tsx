@@ -125,10 +125,13 @@ export default function ContactSection({ id }: ContactSectionProps) {
     }
   };
 
-  const handleBlur = () => {
-    const currentField = activeSteps[currentStep].field;
+  const handleBlur = async () => {
+    const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
     if (currentField !== 'message' && currentField !== 'inquiryType') {
-      handleNextStep();
+      const isValid = await form.trigger(currentField);
+      if (isValid) {
+        handleNextStep();
+      }
     }
   }
 
@@ -357,7 +360,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                     </Button>
                   )}
 
-                  {currentStep < activeSteps.length -1 && (
+                  {currentStep < activeSteps.length - 1 && (
                       <Button type="button" size="lg" onClick={handleNextStep}>
                           Next
                           <ChevronRight className="ml-2 h-4 w-4" />
