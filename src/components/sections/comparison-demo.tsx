@@ -331,6 +331,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [leadDetails, setLeadDetails] = useState<z.infer<typeof leadSchema> | null>(null);
 
   const [date, setDate] = React.useState<Date>()
+  const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const pdfContainerRef = useRef<HTMLDivElement>(null);
   const [pdfTimestamp, setPdfTimestamp] = useState('');
@@ -435,7 +436,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -473,7 +474,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }
 
   const handleDateSelect = (selectedDate?: Date) => {
-    setDate(selectedDate)
+    setDate(selectedDate);
     if (selectedDate) {
         setSelections(prev => ({
             ...prev,
@@ -481,6 +482,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             contractEndMonth: format(selectedDate, "M"),
             contractEndYear: format(selectedDate, "yyyy"),
         }));
+        setIsCalendarOpen(false); // Close popover on select
         setTimeout(() => handleNextStep(), 300);
     }
   }
@@ -982,7 +984,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
                                             {currentWizardStepConfig.isDateInput && (
                                               <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
-                                                <Popover>
+                                                <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                                                   <PopoverTrigger asChild>
                                                     <Button
                                                       variant={"outline"}
