@@ -18,7 +18,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -72,6 +72,7 @@ type CategorizedPlans = {
 
 type ComparisonDemoProps = {
   id: string;
+  onReset?: () => void;
 };
 
 const leadSchema = z.object({
@@ -310,7 +311,7 @@ const renderPdfPlans = (plans: RenderedPlan[]) => {
 };
 
 
-export default function ComparisonDemo({ id }: ComparisonDemoProps) {
+export default function ComparisonDemo({ id, onReset }: ComparisonDemoProps) {
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
@@ -344,6 +345,20 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   });
 
   const currentWizardStepConfig = wizardSteps[currentStep];
+
+  const handleReset = () => {
+    setComparisonResult(null);
+    setIsLoading(false);
+    setIsLeadModalOpen(false);
+    setIsSavingLead(false);
+    setCurrentStep(0);
+    setSelections({});
+    setSummary(null);
+    setLeadDetails(null);
+    setDate(undefined);
+    leadForm.reset({ name: '', email: '', phone: '' });
+    if(onReset) onReset();
+  };
 
   useEffect(() => {
     setIsTyping(true);
@@ -1081,6 +1096,19 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                         </TooltipTrigger>
                                         <TooltipContent>
                                             <p>Download Report</p>
+                                        </TooltipContent>
+                                     </Tooltip>
+                                </TooltipProvider>
+                                <TooltipProvider>
+                                     <Tooltip>
+                                        <TooltipTrigger asChild>
+                                            <Button onClick={handleReset} variant="outline" size={isMobile ? "icon" : "default"}>
+                                                <RefreshCw className={cn("h-4 w-4", !isMobile && "mr-2")} />
+                                                {!isMobile && "Start New Comparison"}
+                                            </Button>
+                                        </TooltipTrigger>
+                                        <TooltipContent>
+                                            <p>Start New Comparison</p>
                                         </TooltipContent>
                                      </Tooltip>
                                 </TooltipProvider>

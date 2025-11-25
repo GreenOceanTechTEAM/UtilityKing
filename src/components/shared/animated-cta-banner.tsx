@@ -19,9 +19,10 @@ type AnimatedCTABannerProps = {
   subtitle: string;
   buttonText: string;
   buttonLink?: string;
+  onClick?: () => void;
 };
 
-export default function AnimatedCTABanner({ id, type, title, subtitle, buttonText, buttonLink }: AnimatedCTABannerProps) {
+export default function AnimatedCTABanner({ id, type, title, subtitle, buttonText, buttonLink, onClick }: AnimatedCTABannerProps) {
   const targetRef = useRef<HTMLDivElement>(null);
   const prefersReducedMotion = usePrefersReducedMotion();
   
@@ -32,6 +33,12 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
 
   const contentY = useTransform(scrollYProgress, [0.2, 0.8], ['20px', '-20px']);
   const opacity = useTransform(scrollYProgress, [0.2, 0.5, 0.8], [0, 1, 0]);
+
+  const handleButtonClick = () => {
+    if(onClick) {
+      onClick();
+    }
+  }
 
   return (
     <section id={id} ref={targetRef} className="relative h-96 overflow-hidden">
@@ -72,7 +79,7 @@ export default function AnimatedCTABanner({ id, type, title, subtitle, buttonTex
           viewport={{ once: true, amount: 0.8 }}
           transition={{ duration: 0.5, ease: 'easeOut' }}
         >
-            <Button asChild size="lg" variant="secondary" className="text-lg font-semibold">
+            <Button asChild size="lg" variant="secondary" className="text-lg font-semibold" onClick={handleButtonClick}>
                 {buttonLink ? <Link href={buttonLink}>{buttonText}</Link> : <button>{buttonText}</button>}
             </Button>
         </motion.div>

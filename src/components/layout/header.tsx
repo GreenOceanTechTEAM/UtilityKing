@@ -1,7 +1,7 @@
 
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import Link from 'next/link';
 import { motion, useAnimation } from 'framer-motion';
 import { Crown, Zap, Settings, LayoutGrid, ThumbsUp, BarChart3, ShieldCheck, Newspaper, HelpCircle, User, Mail, Menu } from 'lucide-react';
@@ -11,6 +11,7 @@ import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription, SheetTr
 import { Button } from '../ui/button';
 import { ThemeSelector } from '../shared/theme-selector';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
+import { ComparisonResetContext } from '@/app/page';
 
 type Section = {
   id: string;
@@ -37,6 +38,8 @@ const iconMap: { [key: string]: React.ElementType } = {
 export default function Header({ sections }: HeaderProps) {
   const [scrolled, setScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const resetComparison = useContext(ComparisonResetContext);
+
 
   const sectionIds = sections.map(s => s.id);
   const activeId = useScrollSpy(sectionIds, {
@@ -63,12 +66,19 @@ export default function Header({ sections }: HeaderProps) {
 
   const NavLink = ({ id, name, icon: Icon }: { id: string; name: string; icon: React.ElementType }) => {
     const isActive = activeId === id;
+    const handleNavClick = () => {
+      if (id === 'compare' && resetComparison) {
+        resetComparison();
+      }
+    };
+
     return (
       <TooltipProvider>
         <Tooltip>
           <TooltipTrigger asChild>
             <Link
               href={`#${id}`}
+              onClick={handleNavClick}
               className={cn(
                 "relative flex items-center gap-2 px-3 py-2 text-sm font-medium transition-colors duration-300 rounded-md",
                 isActive
@@ -94,6 +104,17 @@ export default function Header({ sections }: HeaderProps) {
       </TooltipProvider>
     );
   };
+
+  const handleCompareNowClick = () => {
+    if (resetComparison) {
+        resetComparison();
+    }
+    const compareSection = document.getElementById('compare');
+    if (compareSection) {
+        compareSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
 
   return (
       <motion.header
@@ -127,7 +148,7 @@ export default function Header({ sections }: HeaderProps) {
             <ThemeSelector />
 
             <div className="hidden md:flex">
-                <Button asChild size="sm">
+                <Button asChild size="sm" onClick={handleCompareNowClick}>
                     <Link href="#compare">Compare Now</Link>
                 </Button>
             </div>
@@ -156,11 +177,17 @@ export default function Header({ sections }: HeaderProps) {
                         <div className="flex flex-col space-y-3">
                         {sections.map(({ id, name }) => {
                             const Icon = iconMap[id] || HelpCircle;
+                            const handleMobileLinkClick = () => {
+                                if (id === 'compare' && resetComparison) {
+                                    resetComparison();
+                                }
+                                setIsMobileMenuOpen(false);
+                            };
                             return (
                                 <Link
                                     key={id}
                                     href={`#${id}`}
-                                    onClick={() => setIsMobileMenuOpen(false)}
+                                    onClick={handleMobileLinkClick}
                                     className={cn(
                                         "flex items-center gap-3 rounded-md p-3 text-lg font-medium transition-colors",
                                         activeId === id ? 'bg-accent text-accent-foreground' : 'text-muted-foreground hover:bg-muted'
@@ -172,7 +199,10 @@ export default function Header({ sections }: HeaderProps) {
                             );
                         })}
                         </div>
-                        <Button asChild className="mt-auto" onClick={() => setIsMobileMenuOpen(false)}>
+                        <Button asChild className="mt-auto" onClick={() => {
+                            handleCompareNowClick();
+                            setIsMobileMenuOpen(false);
+                        }}>
                             <Link href="#compare">Compare Now</Link>
                         </Button>
                     </nav>

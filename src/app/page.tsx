@@ -1,3 +1,7 @@
+
+"use client";
+
+import React, { useRef, useCallback } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import ConversationalHero from '@/components/sections/conversational-hero';
@@ -12,6 +16,9 @@ import BlogPreview from '@/components/sections/blog-preview';
 import AboutSection from '@/components/sections/about-section';
 import ContactSection from '@/components/sections/contact-section';
 
+// Create a context to hold the reset function
+export const ComparisonResetContext = React.createContext<(() => void) | null>(null);
+
 export default function Home() {
   const sections = [
     { id: 'hero', name: 'Home' },
@@ -25,38 +32,56 @@ export default function Home() {
     { id: 'about', name: 'About' },
     { id: 'contact', name: 'Contact' },
   ];
+  
+  // A ref to hold the reset function from the ComparisonDemo component
+  const comparisonResetRef = useRef<() => void | null>(null);
+
+  // A stable callback that will be provided to the ComparisonDemo component
+  const setComparisonReset = useCallback((resetFn: () => void) => {
+    comparisonResetRef.current = resetFn;
+  }, []);
+
+  // A stable function to be passed down through context
+  const triggerReset = useCallback(() => {
+    if (comparisonResetRef.current) {
+      comparisonResetRef.current();
+    }
+  }, []);
 
   return (
-    <div className="flex min-h-screen w-full flex-col">
-      <Header sections={sections} />
-      <main className="flex-1">
-        <ConversationalHero id="hero" />
-        <HowItWorks id="how" />
-        <ServicesSection id="services" />
-        <WhyUtilityKing id="why" />
-        <ComparisonDemo id="compare" />
-        <TrustProofs id="trust" />
-        <AnimatedCTABanner
-          id="cta-banner-1"
-          type="quote"
-          title="Compare Live UK Energy Prices — Get Your Smart Quote Today"
-          subtitle="Energy prices change daily. Grab today’s lowest deal before rates increase again."
-          buttonText="Check My Best Price"
-          buttonLink="#compare"
-        />
-        <FAQs id="faqs" />
-        <BlogPreview id="blog" />
-        <AboutSection id="about" />
-        <AnimatedCTABanner
-          id="cta-banner-2"
-          type="chat"
-          title="Not sure where to start? Ask UKi live."
-          subtitle="Our AI assistant is here to help you 24/7."
-          buttonText="Chat with UKi"
-        />
-        <ContactSection id="contact" />
-      </main>
-      <Footer id="footer-contact" />
-    </div>
+    <ComparisonResetContext.Provider value={triggerReset}>
+      <div className="flex min-h-screen w-full flex-col">
+        <Header sections={sections} />
+        <main className="flex-1">
+          <ConversationalHero id="hero" />
+          <HowItWorks id="how" />
+          <ServicesSection id="services" />
+          <WhyUtilityKing id="why" />
+          <ComparisonDemo id="compare" onReset={setComparisonReset} />
+          <TrustProofs id="trust" />
+          <AnimatedCTABanner
+            id="cta-banner-1"
+            type="quote"
+            title="Compare Live UK Energy Prices — Get Your Smart Quote Today"
+            subtitle="Energy prices change daily. Grab today’s lowest deal before rates increase again."
+            buttonText="Check My Best Price"
+            buttonLink="#compare"
+            onClick={triggerReset}
+          />
+          <FAQs id="faqs" />
+          <BlogPreview id="blog" />
+          <AboutSection id="about" />
+          <AnimatedCTABanner
+            id="cta-banner-2"
+            type="chat"
+            title="Not sure where to start? Ask UKi live."
+            subtitle="Our AI assistant is here to help you 24/7."
+            buttonText="Chat with UKi"
+          />
+          <ContactSection id="contact" />
+        </main>
+        <Footer id="footer-contact" />
+      </div>
+    </ComparisonResetContext.Provider>
   );
 }
