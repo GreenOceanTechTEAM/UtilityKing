@@ -1,6 +1,8 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
+import Link from 'next/link';
 import { Card, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Zap, Wifi, Smartphone, Flame, Droplets, ShieldCheck } from 'lucide-react';
 import { cn } from '@/lib/utils';
@@ -13,32 +15,38 @@ const services = [
   {
     icon: <Zap className="h-8 w-8" />,
     title: "Electricity",
-    description: "Find cheaper fixed, variable, and renewable electricity tariffs from trusted UK suppliers."
+    description: "Find cheaper fixed, variable, and renewable electricity tariffs from trusted UK suppliers.",
+    link: "/energy"
   },
   {
     icon: <Flame className="h-8 w-8" />,
     title: "Gas",
-    description: "Compare competitive gas prices and dual-fuel bundles available in your region."
+    description: "Compare competitive gas prices and dual-fuel bundles available in your region.",
+    link: "/gas"
   },
   {
     icon: <Wifi className="h-8 w-8" />,
     title: "Broadband",
-    description: "Discover faster, more reliable broadband plans — and stop paying for speeds you don’t need."
+    description: "Discover faster, more reliable broadband plans — and stop paying for speeds you don’t need.",
+    link: "/broadband"
   },
   {
     icon: <Smartphone className="h-8 w-8" />,
     title: "Mobile / SIM",
-    description: "Save money on SIM-only, unlimited, and flexible contract plans."
+    description: "Save money on SIM-only, unlimited, and flexible contract plans.",
+    link: "/mobile"
   },
   {
     icon: <Droplets className="h-8 w-8" />,
     title: "Water",
-    description: "Uncover ways to reduce water charges with smart usage insights and regional provider options."
+    description: "Uncover ways to reduce water charges with smart usage insights and regional provider options.",
+    link: "/water"
   },
   {
     icon: <ShieldCheck className="h-8 w-8" />,
     title: "Insurance",
-    description: "Lower your home, boiler, and appliance cover costs with transparent, unbiased comparisons."
+    description: "Lower your home, boiler, and appliance cover costs with transparent, unbiased comparisons.",
+    link: "/insurance"
   }
 ];
 
@@ -90,32 +98,34 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 [perspective:900px]"
         >
           {services.map((service) => (
-            <motion.div
-              key={service.title}
-              variants={itemVariants}
-              whileHover={{
-                y: -8,
-                rotateX: '-6deg',
-                rotateY: '6deg',
-                boxShadow: '0px 8px 24px hsla(var(--primary), 0.15)',
-              }}
-              transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            >
-              <Card className="group h-full transform transition-all duration-300">
-                <CardHeader className="p-6">
-                  <motion.div
-                    whileHover={{ scale: 1.12, rotate: -5 }}
-                    transition={{ type: 'spring', stiffness: 300 }}
-                    className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                    {service.icon}
-                  </motion.div>
-                  <div>
-                    <CardTitle className="font-body text-lg font-semibold">{service.title}</CardTitle>
-                    <CardDescription className="pt-2 text-base leading-relaxed">{service.description}</CardDescription>
-                  </div>
-                </CardHeader>
-              </Card>
-            </motion.div>
+            <Link href={service.link} key={service.title} className="flex" prefetch={false}>
+                <motion.div
+                variants={itemVariants}
+                whileHover={{
+                    y: -8,
+                    rotateX: '-6deg',
+                    rotateY: '6deg',
+                    boxShadow: '0px 8px 24px hsla(var(--primary), 0.15)',
+                }}
+                transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                className="w-full"
+                >
+                <Card className="group h-full transform transition-all duration-300">
+                    <CardHeader className="p-6">
+                    <motion.div
+                        whileHover={{ scale: 1.12, rotate: -5 }}
+                        transition={{ type: 'spring', stiffness: 300 }}
+                        className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                        {service.icon}
+                    </motion.div>
+                    <div>
+                        <CardTitle className="font-body text-lg font-semibold">{service.title}</CardTitle>
+                        <CardDescription className="pt-2 text-base leading-relaxed">{service.description}</CardDescription>
+                    </div>
+                    </CardHeader>
+                </Card>
+                </motion.div>
+            </Link>
           ))}
         </motion.div>
       </div>
