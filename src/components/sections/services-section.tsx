@@ -103,7 +103,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
               variants={itemVariants}
               className="flex"
             >
-              <Link href={service.link} className="w-full h-full" prefetch={false}>
+              <Link href={service.link} className="w-full h-full" prefetch={true}>
                 <motion.div
                   whileHover={{
                       y: -8,
