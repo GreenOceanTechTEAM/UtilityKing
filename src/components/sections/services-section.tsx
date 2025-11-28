@@ -98,34 +98,39 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 [perspective:900px]"
         >
           {services.map((service) => (
-            <Link href={service.link} key={service.title} className="flex" prefetch={false}>
+            <motion.div
+              key={service.title}
+              variants={itemVariants}
+              className="flex"
+            >
+              <Link href={service.link} className="w-full h-full" prefetch={false}>
                 <motion.div
-                variants={itemVariants}
-                whileHover={{
-                    y: -8,
-                    rotateX: '-6deg',
-                    rotateY: '6deg',
-                    boxShadow: '0px 8px 24px hsla(var(--primary), 0.15)',
-                }}
-                transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                className="w-full"
+                  whileHover={{
+                      y: -8,
+                      rotateX: '-6deg',
+                      rotateY: '6deg',
+                      boxShadow: '0px 8px 24px hsla(var(--primary), 0.15)',
+                  }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="w-full h-full"
                 >
-                <Card className="group h-full transform transition-all duration-300">
-                    <CardHeader className="p-6">
-                    <motion.div
-                        whileHover={{ scale: 1.12, rotate: -5 }}
-                        transition={{ type: 'spring', stiffness: 300 }}
-                        className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
-                        {service.icon}
-                    </motion.div>
-                    <div>
-                        <CardTitle className="font-body text-lg font-semibold">{service.title}</CardTitle>
-                        <CardDescription className="pt-2 text-base leading-relaxed">{service.description}</CardDescription>
-                    </div>
-                    </CardHeader>
-                </Card>
+                  <Card className="group h-full transform transition-all duration-300">
+                      <CardHeader className="p-6">
+                      <motion.div
+                          whileHover={{ scale: 1.12, rotate: -5 }}
+                          transition={{ type: 'spring', stiffness: 300 }}
+                          className="mb-4 flex h-16 w-16 items-center justify-center rounded-xl bg-primary/10 text-primary transition-colors duration-300 group-hover:bg-primary group-hover:text-primary-foreground">
+                          {service.icon}
+                      </motion.div>
+                      <div>
+                          <CardTitle className="font-body text-lg font-semibold">{service.title}</CardTitle>
+                          <CardDescription className="pt-2 text-base leading-relaxed">{service.description}</CardDescription>
+                      </div>
+                      </CardHeader>
+                  </Card>
                 </motion.div>
-            </Link>
+              </Link>
+            </motion.div>
           ))}
         </motion.div>
       </div>
