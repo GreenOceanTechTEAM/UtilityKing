@@ -35,7 +35,7 @@ const howItWorks = [
   {
     icon: <BarChart3 className="h-8 w-8 text-accent" />,
     title: "Compare Gas Tariffs",
-    description We'll show you a clear, easy-to-understand list of the best gas deals available to you."
+    description: "We'll show you a clear, easy-to-understand list of the best gas deals available to you."
   },
   {
     icon: <Smile className="h-8 w-8 text-accent" />,
