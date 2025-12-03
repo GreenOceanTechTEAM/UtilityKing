@@ -526,10 +526,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         year: selections['contractEndYear'] || new Date().getFullYear().toString(),
         email: leadData.email,
         mprn: "",
-        business: "",
+        business: selections['premisesType'] || "Home",
         contactName: leadData.name,
         phone: leadData.phone,
-        pdfFileName: ""
+        pdfFileName: "",
+        allSelections: selections,
     };
     
     try {
@@ -637,47 +638,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    if (!firestore || !auth) {
-      toast({ variant: "destructive", title: "Connection Error", description: "Could not connect to the database." });
-      return;
-    }
-    
-    setIsSavingLead(true);
-    setLeadDetails(values);
-    
-    try {
-      // Ensure there is an authenticated user, even an anonymous one
-      let currentUser = auth.currentUser;
-      if (!currentUser) {
-        const userCredential = await signInAnonymously(auth);
-        currentUser = userCredential.user;
-      }
-      
-      const leadData = {
-        ...values,
-        comparisonInputs: selections,
-        createdAt: serverTimestamp(),
-        userId: currentUser.uid,
-      };
-      
-      const leadsCollection = collection(firestore, 'comparison_leads');
-      await addDoc(leadsCollection, leadData);
-
-      toast({ title: "Information Saved!", description: "Generating your personalized results now." });
-      
-      setIsLeadModalOpen(false);
-      await handleFormSubmit(values);
-
-    } catch (error) {
-      console.error("Error saving lead:", error);
-      toast({
-        variant: "destructive",
-        title: "Save Failed",
-        description: "We couldn't save your information. Please try again.",
-      });
-    } finally {
-      setIsSavingLead(false);
-    }
+    // This function will now only trigger the backend call
+    // Storing in firestore is removed as per the new requirement
+    setIsLeadModalOpen(false);
+    await handleFormSubmit(values);
   }
 
   const handleSummarize = async () => {
@@ -1255,3 +1219,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
