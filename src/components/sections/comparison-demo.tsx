@@ -9,8 +9,6 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import ReactMarkdown from 'react-markdown';
 import { format } from "date-fns";
-import jsPDF from 'jspdf';
-import html2canvas from 'html2canvas';
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
@@ -368,65 +366,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return () => clearTimeout(timer);
   }, [currentStep]);
 
-  useEffect(() => {
-    if (!isGeneratingPdf) return;
-
-    const generate = async () => {
-        const pdfElement = pdfContainerRef.current;
-        if (!pdfElement) return;
-        
-        try {
-            const canvas = await html2canvas(pdfElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-            });
-            
-            const imgData = canvas.toDataURL('image/png');
-            
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-            
-            const imgWidth = canvas.width;
-            const imgHeight = canvas.height;
-            const ratio = imgWidth / imgHeight;
-
-            let contentWidth = pdfWidth - 20; // with margin
-            let contentHeight = contentWidth / ratio;
-            
-            let heightLeft = contentHeight;
-            let position = 10; // top margin
-
-            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-            heightLeft -= (pdfHeight - 20);
-
-            while (heightLeft > 0) {
-                position = position - (pdfHeight - 20); // Move to next page content
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-                heightLeft -= (pdfHeight - 20);
-            }
-
-            pdf.save('UtilityKing_Quote.pdf');
-
-        } catch (error) {
-            console.error("Failed to generate PDF:", error);
-            toast({
-                variant: "destructive",
-                title: "PDF Download Failed",
-                description: "Sorry, we couldn't generate the PDF at this time."
-            });
-        } finally {
-            setIsGeneratingPdf(false); // Reset state
-        }
-    };
-    
-    // Use a short timeout to ensure the DOM has updated
-    const timer = setTimeout(generate, 500); 
-    return () => clearTimeout(timer);
-
-  }, [isGeneratingPdf, toast]);
 
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
@@ -436,7 +375,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -638,11 +577,37 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    // This function will now only trigger the backend call
-    // Storing in firestore is removed as per the new requirement
-    setIsLeadModalOpen(false);
-    await handleFormSubmit(values);
+    setLeadDetails(values);
+    setIsSavingLead(true);
+
+    try {
+        if (!firestore) throw new Error("Firestore not available");
+
+        // Use anonymous sign-in if no user is logged in
+        if (!user) {
+            await signInAnonymously(auth);
+        }
+
+        // The onAuthStateChanged listener will update the user object,
+        // but we can proceed optimistically. The data saving part will happen in handleFormSubmit
+        // which now gets called after this.
+        
+        // This function will now only trigger the backend call
+        setIsLeadModalOpen(false);
+        await handleFormSubmit(values);
+
+    } catch (error: any) {
+        console.error("Error saving lead:", error);
+        toast({
+            variant: "destructive",
+            title: "Could not save details",
+            description: `There was a problem saving your information: ${error.message}`,
+        });
+    } finally {
+        setIsSavingLead(false);
+    }
   }
+
 
   const handleSummarize = async () => {
     if (!comparisonResult || !leadDetails) return;
@@ -670,9 +635,70 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleDownloadPdf = async () => {
     if (isGeneratingPdf) return;
+
     setPdfTimestamp(new Date().toLocaleString());
     setIsGeneratingPdf(true);
+
+    // Dynamically import libraries only when needed
+    const { default: jsPDF } = await import('jspdf');
+    const { default: html2canvas } = await import('html2canvas');
+
+    // Use a timeout to ensure the DOM has updated with the content to render
+    setTimeout(async () => {
+        const pdfElement = pdfContainerRef.current;
+        if (!pdfElement) {
+            setIsGeneratingPdf(false);
+            return;
+        };
+
+        try {
+            const canvas = await html2canvas(pdfElement, {
+                scale: 2,
+                useCORS: true,
+                backgroundColor: '#ffffff',
+            });
+            
+            const imgData = canvas.toDataURL('image/png');
+            
+            const pdf = new jsPDF('p', 'mm', 'a4');
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = imgWidth / imgHeight;
+
+            let contentWidth = pdfWidth - 20; // with margin
+            let contentHeight = contentWidth / ratio;
+            
+            let heightLeft = contentHeight;
+            let position = 10; // top margin
+
+            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+            heightLeft -= (pdfHeight - 20);
+
+            while (heightLeft > 0) {
+                position = position - (pdfHeight - 20); // Move to next page content
+                pdf.addPage();
+                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
+                heightLeft -= (pdfHeight - 20);
+            }
+
+            pdf.save('UtilityKing_Quote.pdf');
+
+        } catch (error) {
+            console.error("Failed to generate PDF:", error);
+            toast({
+                variant: "destructive",
+                title: "PDF Download Failed",
+                description: "Sorry, we couldn't generate the PDF at this time."
+            });
+        } finally {
+            setIsGeneratingPdf(false);
+        }
+    }, 500);
   };
+
 
   const categorizedPlans = useMemo((): CategorizedPlans | null => {
     if (!comparisonResult) return null;
@@ -778,7 +804,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     <div
                         ref={pdfContainerRef}
                         className="p-10"
-                        style={{ position: 'absolute', left: 0, top: 0, width: '800px', backgroundColor: 'white', zIndex: 10, opacity: 1, color: 'black' }}
+                        style={{ position: 'absolute', left: -9999, top: 0, width: '800px', backgroundColor: 'white', zIndex: -1, opacity: 1, color: 'black' }}
                     >
                         <div className="text-center mb-6 border-b pb-4">
                             <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
@@ -1219,5 +1245,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
