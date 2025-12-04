@@ -85,7 +85,7 @@ export default function Footer({ id }: FooterProps) {
                 <div>
                   <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Company</h3>
                   <ul className="mt-4 space-y-4">
-                    <li><a href="/about.html" target="_blank" rel="noopener noreferrer" className="text-base text-muted-foreground transition-colors hover:text-primary">About</a></li>
+                    <li><Link href="/about" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>About</Link></li>
                     <li><Link href="/blog" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Blog</Link></li>
                     <li><Link href="/careers" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Careers</Link></li>
                   </ul>
@@ -107,4 +107,3 @@ export default function Footer({ id }: FooterProps) {
     </motion.footer>
   );
 }
-
