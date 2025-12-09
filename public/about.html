@@ -9,7 +9,7 @@
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="/img/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,6 +211,7 @@
             height: 100%;
             width: 100%
         }
+
         @charset "UTF-8";
 
 
@@ -1773,6 +1774,7 @@
         .slideOutUp {
             animation-name: slideOutUp
         }
+
         :root {
             --bs-blue: #0d6efd;
             --bs-indigo: #6610f2;
@@ -14092,7 +14094,7 @@
         .service-item {
             position: relative;
             height: 300px;
-            padding: 0 30px;
+            padding: 0 20px;
             transition: .5s;
         }
 
@@ -14249,11 +14251,7 @@
             z-index: 99;
         }
 
-        .bg-header {
-            background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(/img/hero99.jpg) center center no-repeat;
-            background-size: cover;
 
-        }
 
         .link-animated a {
             transition: .5s;
@@ -14268,36 +14266,452 @@
                 margin-bottom: -75px;
             }
         }
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .bg-header {
+            background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/hero99.jpg) center top no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .typed-cursor {
+            font-size: 3.5rem;
+            color: #ffd166;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .typed-cursor {
+                font-size: 2.5rem;
+            }
+        }
+
+        .typed-text {
+            font-size: 50rem;
+            color: #ffd166;
+            animation: blink 1s infinite;
+        }
     </style>
+
+    <style>
+        /* RESET */
+
+
+        /* FIXED HERO CONTAINER */
+        .hero-section {
+           
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e6f2ff; /* Lighter blue background */
+            overflow: hidden;
+            z-index: 1;
+            perspective: 1000px;
+        }
+
+        /* WAVY GRID ANIMATION CONTAINER */
+        .wavy-grid-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(60deg) scale(1.5);
+            transform-style: preserve-3d;
+        }
+
+        /* INDIVIDUAL GRID LINES */
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(137, 207, 240, 0.6); /* Light Blue */
+            box-shadow: 0 0 5px rgba(137, 207, 240, 0.4);
+        }
+
+        /* HORIZONTAL LINES - THE WAVES */
+        .h-line {
+            left: 0;
+            animation: waveMove 4s ease-in-out infinite;
+        }
+
+        /* VERTICAL LINES - FOR THE GRID EFFECT */
+        .v-line {
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(137, 207, 240, 0.4);
+            transform: translateZ(-50px); /* Push them back slightly */
+        }
+
+        /* Generate multiple lines with different delays for the wave effect */
+        .h-line:nth-child(1) {
+            top: 10%;
+            animation-delay: 0s;
+        }
+
+        .h-line:nth-child(2) {
+            top: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .h-line:nth-child(3) {
+            top: 30%;
+            animation-delay: 0.4s;
+        }
+
+        .h-line:nth-child(4) {
+            top: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .h-line:nth-child(5) {
+            top: 50%;
+            animation-delay: 0.8s;
+        }
+
+        .h-line:nth-child(6) {
+            top: 60%;
+            animation-delay: 1.0s;
+        }
+
+        .h-line:nth-child(7) {
+            top: 70%;
+            animation-delay: 1.2s;
+        }
+
+        .h-line:nth-child(8) {
+            top: 80%;
+            animation-delay: 1.4s;
+        }
+
+        .h-line:nth-child(9) {
+            top: 90%;
+            animation-delay: 1.6s;
+        }
+
+        .v-line:nth-child(10) {
+            left: 10%;
+        }
+
+        .v-line:nth-child(11) {
+            left: 20%;
+        }
+
+        .v-line:nth-child(12) {
+            left: 30%;
+        }
+
+        .v-line:nth-child(13) {
+            left: 40%;
+        }
+
+        .v-line:nth-child(14) {
+            left: 50%;
+        }
+
+        .v-line:nth-child(15) {
+            left: 60%;
+        }
+
+        .v-line:nth-child(16) {
+            left: 70%;
+        }
+
+        .v-line:nth-child(17) {
+            left: 80%;
+        }
+
+        .v-line:nth-child(18) {
+            left: 90%;
+        }
+
+
+        @keyframes waveMove {
+            0%, 100% {
+                transform: translateZ(0px) translateY(0px);
+            }
+
+            50% {
+                transform: translateZ(80px) translateY(-30px);
+            }
+        }
+
+        /* MAIN TEXT */
+        h1.hero-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 16vw; /* Massive */
+            color: transparent;
+            -webkit-text-stroke: 5px #89CFF0; /*Light Blue Outline*/
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            z-index: 10;
+            position: relative;
+            line-height: 0.8;
+            transition: all 0.1s;
+            font-weight: 900;
+        }
+
+        /* HUD ELEMENTS (Decorations) - Updated Color */
+        .hud-cross {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 5;
+        }
+
+            .hud-cross::before, .hud-cross::after {
+                content: '';
+                position: absolute;
+                background: #89CFF0; /* Light Blue */
+            }
+
+            .hud-cross::before {
+                width: 100%;
+                height: 2px;
+                top: 9px;
+                left: 0;
+            }
+
+            .hud-cross::after {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 9px;
+            }
+
+        .tl {
+            top: 40px;
+            left: 40px;
+        }
+
+        .tr {
+            top: 40px;
+            right: 40px;
+        }
+
+        .bl {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .br {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .tech-data {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;           
+            color: #89CFF0;
+            letter-spacing: 2px;
+            z-index: 20; /* Increased to sit above animation for clicking */
+            font-weight: 600;
+            background-color: darkblue;
+            color: white;
+            padding: 5px 30px;
+        }
+
+            .tech-data a {
+                color: white;
+                text-decoration: none;
+               
+            }
+        /* SCROLLABLE CONTENT */
+        .content-block {
+            position: relative;
+            z-index: 20;
+            margin-top: 100vh;
+            background: #fff;
+            color: #222;
+            min-height: 100vh;
+            border-top: 10px solid #89CFF0; /* Light Blue Stripe */
+            box-shadow: 0 -20px 50px rgba(137, 207, 240, 0.2);
+        }
+
+        .inner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #0B1E38;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #555;
+        }
+    </style>
+
 </head>
 
 <body>
 
 
 
-    <div class="container-fluid position-relative p-0">
+    <!--<div class="container-fluid position-relative p-0">
         <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
             <div class="row py-5">
                 <div class="col-12  text-center">
                     <h1 class="display-4 text-white animated zoomIn">About Us</h1>
-                    <a href="index.html" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a  class="h5 text-white">About</a>
+
                 </div>
             </div>
         </div>
+    </div>-->
+    <!--<nav class="container mt-3 mb-3">
+        <a href="https://utilityking.co.uk" class="logo d-flex align-items-center">
+            <img src="/img/logo.png" alt="brand logo" width="300" height="60">
+        </a>
+
+    </nav>-->
+    <!--<div class="container  position-relative p-0">
+        <div class="container  py-5 bg-header" style="margin-bottom: 50px; height: 200px;background:skyblue">
+
+    <div id="threejs-container"></div>
+    <div class="row  content-wrapper">
+                <div class="col-12 text-center">
+                    <h1 class="text-dark">
+                        <span id="typed-text"></span>
+                    </h1>
+                    <div class="mb-3">
+                        <a href="https://utilityking.co.uk" class="h5 text-dark text-decoration-underline fw-semi-bold ">Home</a>
+                        <a href="" class="h5 text-dark fw-bold">  /  About</a>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+    </div>-->
+
+    <div class="hero-section" id="hero">
+        <div class="wavy-grid-container">
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+        </div>
+
+        <div class="hud-cross tl"></div>
+        <div class="hud-cross tr"></div>
+        <div class="hud-cross bl"></div>
+        <div class="hud-cross br"></div>
+        <div class="tech-data">
+            <a href="https://www.utilityking.co.uk"><i class="fas fa-home"></i> HOME</a>
+        </div>
+
+
+        <h1 class="hero-text" id="megaText">ABOUT US</h1>
     </div>
-
-
-
-    <div class="container py-2 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="row g-5">
+    <div class="container py-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row d-flex align-items-center  g-5">
             <div class="col-lg-7">
-                <div class="section-title position-relative pb-3 mb-5">
+                <div class="section-title position-relative pb-3 mb-2">
                     <h5 class="fw-bold text-primary text-uppercase">About Us</h5>
                     <h1 class="mb-0">Discover our mission, vision and commitment to assist you</h1>
                 </div>
-                <p class="mb-4">Each year we help thousands of people in the UK compare and purchase utilities, insurance and other financial products for their businesses. But we are more than just a comparison website. While we offer an initial comparison service, most of our customers choose to speak to one of our trained consultants to help them pick the most suitable provider and plans for them. We help our customers' hassles by taking care of the entire process – right from the initial comparison till the completion of the process. It will just take you a minute to get in touch with our experts at <strong>UTILITY KING</strong>, but in return, you get to enjoy maximum savings on your utility bills. Contact us today!</p>
+                <p class="mb-4">Each year we help thousands of people in the UK compare and purchase utilities, insurance and other financial products for their businesses. But we are more than just a comparison website. While we offer an initial comparison service, most of our customers choose to speak to one of our trained consultants to help them pick the most suitable provider and plans for them. We help our customers' hassles by taking care of the entire process – right from the initial comparison till the completion of the process. It will just take you a minute to get in touch with our experts at <strong>UTILITY KING</strong>, but in return, you get to enjoy maximum savings on your utility bills.</p>
                 <div class="row g-0 mb-3">
                     <div class="col-sm-6 wow zoomIn" data-wow-delay="0.2s">
                         <h5 class="mb-3 fw-bold"><i class="fa fa-check text-primary me-3"></i>Performing market research</h5>
@@ -14308,26 +14722,51 @@
                         <h5 class="mb-3 fw-bold"><i class="fa fa-check text-primary me-3"></i>Strategic planning</h5>
                     </div>
                 </div>
-                <div class="d-flex align-items-center  wow fadeIn" data-wow-delay="0.6s">
-                    <!--<div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
+                <!--<div class="d-flex align-items-center  wow fadeIn" data-wow-delay="0.6s">
+                    <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
                         <i class="fa fa-phone-alt text-white"></i>
-                    </div>-->
-                    <!--<div class="ps-4">
+                    </div>
+                    <div class="ps-4">
                         <h5 class="mb-2">Do you have any questions?</h5>
                         <h4 class="text-primary mb-0">+012 345 6789</h4>
-                    </div>-->
-                </div>
-                <a href="/contact.html" class="btn btn-primary py-3 px-5 fs-6 mt-2 wow zoomIn" data-wow-delay="0.9s">Connect With Us &rarr;</a>
+                    </div>
+                </div>-->
+                <!--<a href="/contact.html" class="btn btn-primary py-3 px-5 fs-6 mt-2 wow zoomIn" data-wow-delay="0.9s">Connect With Us &rarr;</a>-->
+
             </div>
-            <div class="col-lg-5" style="min-height: 500px;">
-                <div class="position-relative h-100">
-                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="/img/about.jpg" style="object-fit: cover;">
+            <div class="col-lg-5">
+                <!--<div class="position-relative h-100">
+                    <img class="position-absolute w-100 h-100 rounded wow zoomIn" data-wow-delay="0.9s" src="img/about.jpg" style="object-fit: cover;">
+                </div>-->
+                <!-- Stats -->
+                <div class="stats">
+                    <div class="stat-card fade-in">
+                        <i class="fas fa-comments stat-icon"></i>
+                        <div class="stat-number text-primary">95%</div>
+                        <div class="stat-label fw-bold">Client Satisfaction</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.1s">
+                        <i class="fas fa-users stat-icon"></i>
+                        <div class="stat-number text-primary">10,000+</div>
+                        <div class="stat-label fw-bold">Businesses Helped</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.2s">
+                        <i class="fas fa-bolt stat-icon"></i>
+                        <div class="stat-number text-primary">96%</div>
+                        <div class="stat-label fw-bold">Business Growth</div>
+                    </div>
+                    <div class="stat-card fade-in" style="animation-delay: 0.3s">
+                        <i class="fas fa-headset stat-icon"></i>
+                        <div class="stat-number text-primary">24/7</div>
+                        <div class="stat-label fw-bold">Support Available</div>
+                    </div>
                 </div>
+
             </div>
         </div>
     </div>
 
-  
+
 
     <div class="container py-5 wow fadeInUp" data-wow-delay="0.1s">
         <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
@@ -14346,7 +14785,7 @@
                     </div>
 
                     <h4 class="mb-3">Our Aim is to Save Expenses</h4>
-                    <p class="m-0">Utility costs is a large part of any business’s expenses. We at UTILITY KING aim to help decrease these costs by offering excellent services on different utilities you use. We search the entire UK market to find you the best prices on all your utilities to make it easier for you to compare, pick and purchase.</p>
+                    <p class="m-0">Utility costs make up a significant portion of any business’s expenses, and <strong>UTILITY KING</strong> is here to help reduce them. We provide top-tier services across all your essential utilities. By searching the entire UK market, we find the best available prices.</p>
 
                 </div>
             </div>
@@ -14359,7 +14798,7 @@
                         </div>
                     </div>
                     <h4 class="mb-3">Compare, Switch & Save</h4>
-                    <p class="m-0"><strong>UTILITY KING</strong> is one of the leading comparisons and switching companies that allow business owners to compare prices on various products and services. We have helped companies save money on energy, telecom, water, insurance and other services. We can help you in taking the best deals in advance available in the market. All of the advantages are convenient, helpful and comprehensive services.</p>
+                    <p class="m-0"><strong>UTILITY KING</strong> is a top comparison and switching platform that helps business owners evaluate prices across multiple products and services. We’ve enabled companies to cut costs on energy, telecom, water, insurance, and more. </p>
 
                 </div>
             </div>
@@ -14372,7 +14811,7 @@
                         </div>
                     </div>
                     <h4 class="mb-3">Team of Experts & Professionals</h4>
-                    <p class="m-0">We are not brokers. We will not push you into buying a particular product from a specific provider. Our team is knowledgeable, skilled and experienced who can help your business save on the monthly bills. We provide you with the most personalized deals so you can save time, money and effort while getting the maximum value for your money.</p>
+                    <p class="m-0"><strong>UTILITY KING</strong> is not a broker, and we don’t push specific products. Our experienced team focuses on helping your business reduce monthly costs by offering tailored deals that save you time, money, and effort, ensuring the best value for your investment.</p>
 
                 </div>
             </div>
@@ -14396,64 +14835,73 @@
 
     </div>
 
-   
 
-    <div class="container py-2 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="row g-5">
-            <div class="col-lg-6">
-                <div class="section-title position-relative pb-3 mb-5">
+
+    <div class="container  py-4 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="row">
+            <div class="col-12">
+                <div class="section-title text-center position-relative pb-3 mb-3 mx-auto" style="max-width: 600px;">
                     <h5 class="fw-bold text-primary text-uppercase">Why Choose Us</h5>
                     <h1 class="mb-0">About UtilityKing: Your Utility Solutions Provider</h1>
                 </div>
+
                 <p class="mb-4">Over the years, we have grown as a company in the UK. Our founders saw a huge gap in the market for an honest and transparent service that helps businesses find utility tariffs for them. We are building our reputation on the values of superior customer services along with the determination to go above and beyond to provide value to our clients. Allow us to do all the research and hard work for you by doing in-depth research on all major product and service providers. We help you save on your expenses by providing you with quotes from all the top providers in the UK.</p>
-              
+                <div class="bg-header py-4 text-center text-dark" style="background: skyblue">
+                    <h3 class="text-dark">Need help?</h3>
+                    <p>Do you have any query? Our support team is ready to assist you.</p>
+                    <a href="contact.html" class="btn" style="background-color:darkblue;color:white;font-weight:bold">
+                        <i class="fas fa-comments"></i> CONTACT US
+                    </a>
+                </div>
             </div>
-            <div class="col-lg-6" style="min-height: 500px;">
+
+            <!--<div class="col-lg-6 d-flex align-items-center">
                 <div class="row g-2">
                     <div class="col-sm-6">
                         <div class="service-item  rounded d-flex flex-column align-items-center justify-content-center   text-center border border-info border-3  h-100 mb-5 wow zoomIn" data-wow-delay="0.3s">
-                           
 
-                            <h4 class="mb-3">95%</h4>
-                            <p class="m-0 fs-5 text-primary">Client Satisfaction</p>
+
+                            <h4 class="mb-3 fw-bold">95%</h4>
+                            <p class="m-0 fs-4 text-primary">Client Satisfaction</p>
 
                         </div>
                     </div>
                     <div class="col-sm-6 ">
                         <div class="service-item  rounded d-flex flex-column align-items-center justify-content-center text-center border border-info border-3  h-100 mb-5 wow zoomIn" data-wow-delay="0.3s">
 
-                            <h4 class="mb-3">50K</h4>
-                            <p class="m-0 fs-5 text-primary">Services Provide</p>
+                            <h4 class="mb-3 fw-bold">10K+</h4>
+                            <p class="m-0 fs-4 text-primary">Services Provide</p>
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="service-item  rounded d-flex flex-column align-items-center justify-content-center  text-center border border-info border-3  h-100 mb-5 wow zoomIn" data-wow-delay="0.3s">
 
-                            <h4 class="mb-3">96%</h4>
-                            <p class="m-0 fs-5 text-primary">Business Growth</p>
+                            <h4 class="mb-3 fw-bold">96%</h4>
+                            <p class="m-0 fs-4 text-primary">Business Growth</p>
 
                         </div>
                     </div>
                     <div class="col-sm-6">
                         <div class="service-item  rounded d-flex flex-column align-items-center justify-content-center  text-center border border-info border-3  h-100 mb-5 wow zoomIn" data-wow-delay="0.3s">
 
-                            <h4 class="mb-3">200+</h4>
-                            <p class="m-0 fs-5 text-primary">Team Members</p>
+                            <h4 class="mb-3 fw-bold">200+</h4>
+                            <p class="m-0 fs-4 text-primary">Team Members</p>
 
                         </div>
                     </div>
 
                 </div>
-            </div>
+            </div>-->
         </div>
     </div>
- 
 
-   
+
+
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script>
         !function (a, b) { if ("function" == typeof define && define.amd) define(["module", "exports"], b); else if ("undefined" != typeof exports) b(module, exports); else { var c = { exports: {} }; b(c, c.exports), a.WOW = c.exports } }(this, function (a, b) { "use strict"; function c(a, b) { if (!(a instanceof b)) throw new TypeError("Cannot call a class as a function") } function d(a, b) { return b.indexOf(a) >= 0 } function e(a, b) { for (var c in b) if (null == a[c]) { var d = b[c]; a[c] = d } return a } function f(a) { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(a) } function g(a) { var b = arguments.length <= 1 || void 0 === arguments[1] ? !1 : arguments[1], c = arguments.length <= 2 || void 0 === arguments[2] ? !1 : arguments[2], d = arguments.length <= 3 || void 0 === arguments[3] ? null : arguments[3], e = void 0; return null != document.createEvent ? (e = document.createEvent("CustomEvent"), e.initCustomEvent(a, b, c, d)) : null != document.createEventObject ? (e = document.createEventObject(), e.eventType = a) : e.eventName = a, e } function h(a, b) { null != a.dispatchEvent ? a.dispatchEvent(b) : b in (null != a) ? a[b]() : "on" + b in (null != a) && a["on" + b]() } function i(a, b, c) { null != a.addEventListener ? a.addEventListener(b, c, !1) : null != a.attachEvent ? a.attachEvent("on" + b, c) : a[b] = c } function j(a, b, c) { null != a.removeEventListener ? a.removeEventListener(b, c, !1) : null != a.detachEvent ? a.detachEvent("on" + b, c) : delete a[b] } function k() { return "innerHeight" in window ? window.innerHeight : document.documentElement.clientHeight } Object.defineProperty(b, "__esModule", { value: !0 }); var l, m, n = function () { function a(a, b) { for (var c = 0; c < b.length; c++) { var d = b[c]; d.enumerable = d.enumerable || !1, d.configurable = !0, "value" in d && (d.writable = !0), Object.defineProperty(a, d.key, d) } } return function (b, c, d) { return c && a(b.prototype, c), d && a(b, d), b } }(), o = window.WeakMap || window.MozWeakMap || function () { function a() { c(this, a), this.keys = [], this.values = [] } return n(a, [{ key: "get", value: function (a) { for (var b = 0; b < this.keys.length; b++) { var c = this.keys[b]; if (c === a) return this.values[b] } } }, { key: "set", value: function (a, b) { for (var c = 0; c < this.keys.length; c++) { var d = this.keys[c]; if (d === a) return this.values[c] = b, this } return this.keys.push(a), this.values.push(b), this } }]), a }(), p = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (m = l = function () { function a() { c(this, a), "undefined" != typeof console && null !== console && (console.warn("MutationObserver is not supported by your browser."), console.warn("WOW.js cannot detect dom mutations, please call .sync() after loading new content.")) } return n(a, [{ key: "observe", value: function () { } }]), a }(), l.notSupported = !0, m), q = window.getComputedStyle || function (a) { var b = /(\-([a-z]){1})/g; return { getPropertyValue: function (c) { "float" === c && (c = "styleFloat"), b.test(c) && c.replace(b, function (a, b) { return b.toUpperCase() }); var d = a.currentStyle; return (null != d ? d[c] : void 0) || null } } }, r = function () { function a() { var b = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0]; c(this, a), this.defaults = { boxClass: "wow", animateClass: "animated", offset: 0, mobile: !0, live: !0, callback: null, scrollContainer: null, resetAnimation: !0 }, this.animate = function () { return "requestAnimationFrame" in window ? function (a) { return window.requestAnimationFrame(a) } : function (a) { return a() } }(), this.vendors = ["moz", "webkit"], this.start = this.start.bind(this), this.resetAnimation = this.resetAnimation.bind(this), this.scrollHandler = this.scrollHandler.bind(this), this.scrollCallback = this.scrollCallback.bind(this), this.scrolled = !0, this.config = e(b, this.defaults), null != b.scrollContainer && (this.config.scrollContainer = document.querySelector(b.scrollContainer)), this.animationNameCache = new o, this.wowEvent = g(this.config.boxClass) } return n(a, [{ key: "init", value: function () { this.element = window.document.documentElement, d(document.readyState, ["interactive", "complete"]) ? this.start() : i(document, "DOMContentLoaded", this.start), this.finished = [] } }, { key: "start", value: function () { var a = this; if (this.stopped = !1, this.boxes = [].slice.call(this.element.querySelectorAll("." + this.config.boxClass)), this.all = this.boxes.slice(0), this.boxes.length) if (this.disabled()) this.resetStyle(); else for (var b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; this.applyStyle(c, !0) } if (this.disabled() || (i(this.config.scrollContainer || window, "scroll", this.scrollHandler), i(window, "resize", this.scrollHandler), this.interval = setInterval(this.scrollCallback, 50)), this.config.live) { var d = new p(function (b) { for (var c = 0; c < b.length; c++)for (var d = b[c], e = 0; e < d.addedNodes.length; e++) { var f = d.addedNodes[e]; a.doSync(f) } }); d.observe(document.body, { childList: !0, subtree: !0 }) } } }, { key: "stop", value: function () { this.stopped = !0, j(this.config.scrollContainer || window, "scroll", this.scrollHandler), j(window, "resize", this.scrollHandler), null != this.interval && clearInterval(this.interval) } }, { key: "sync", value: function () { p.notSupported && this.doSync(this.element) } }, { key: "doSync", value: function (a) { if ("undefined" != typeof a && null !== a || (a = this.element), 1 === a.nodeType) { a = a.parentNode || a; for (var b = a.querySelectorAll("." + this.config.boxClass), c = 0; c < b.length; c++) { var e = b[c]; d(e, this.all) || (this.boxes.push(e), this.all.push(e), this.stopped || this.disabled() ? this.resetStyle() : this.applyStyle(e, !0), this.scrolled = !0) } } } }, { key: "show", value: function (a) { return this.applyStyle(a), a.className = a.className + " " + this.config.animateClass, null != this.config.callback && this.config.callback(a), h(a, this.wowEvent), this.config.resetAnimation && (i(a, "animationend", this.resetAnimation), i(a, "oanimationend", this.resetAnimation), i(a, "webkitAnimationEnd", this.resetAnimation), i(a, "MSAnimationEnd", this.resetAnimation)), a } }, { key: "applyStyle", value: function (a, b) { var c = this, d = a.getAttribute("data-wow-duration"), e = a.getAttribute("data-wow-delay"), f = a.getAttribute("data-wow-iteration"); return this.animate(function () { return c.customStyle(a, b, d, e, f) }) } }, { key: "resetStyle", value: function () { for (var a = 0; a < this.boxes.length; a++) { var b = this.boxes[a]; b.style.visibility = "visible" } } }, { key: "resetAnimation", value: function (a) { if (a.type.toLowerCase().indexOf("animationend") >= 0) { var b = a.target || a.srcElement; b.className = b.className.replace(this.config.animateClass, "").trim() } } }, { key: "customStyle", value: function (a, b, c, d, e) { return b && this.cacheAnimationName(a), a.style.visibility = b ? "hidden" : "visible", c && this.vendorSet(a.style, { animationDuration: c }), d && this.vendorSet(a.style, { animationDelay: d }), e && this.vendorSet(a.style, { animationIterationCount: e }), this.vendorSet(a.style, { animationName: b ? "none" : this.cachedAnimationName(a) }), a } }, { key: "vendorSet", value: function (a, b) { for (var c in b) if (b.hasOwnProperty(c)) { var d = b[c]; a["" + c] = d; for (var e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; a["" + f + c.charAt(0).toUpperCase() + c.substr(1)] = d } } } }, { key: "vendorCSS", value: function (a, b) { for (var c = q(a), d = c.getPropertyCSSValue(b), e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; d = d || c.getPropertyCSSValue("-" + f + "-" + b) } return d } }, { key: "animationName", value: function (a) { var b = void 0; try { b = this.vendorCSS(a, "animation-name").cssText } catch (c) { b = q(a).getPropertyValue("animation-name") } return "none" === b ? "" : b } }, { key: "cacheAnimationName", value: function (a) { return this.animationNameCache.set(a, this.animationName(a)) } }, { key: "cachedAnimationName", value: function (a) { return this.animationNameCache.get(a) } }, { key: "scrollHandler", value: function () { this.scrolled = !0 } }, { key: "scrollCallback", value: function () { if (this.scrolled) { this.scrolled = !1; for (var a = [], b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; if (c) { if (this.isVisible(c)) { this.show(c); continue } a.push(c) } } this.boxes = a, this.boxes.length || this.config.live || this.stop() } } }, { key: "offsetTop", value: function (a) { for (; void 0 === a.offsetTop;)a = a.parentNode; for (var b = a.offsetTop; a.offsetParent;)a = a.offsetParent, b += a.offsetTop; return b } }, { key: "isVisible", value: function (a) { var b = a.getAttribute("data-wow-offset") || this.config.offset, c = this.config.scrollContainer && this.config.scrollContainer.scrollTop || window.pageYOffset, d = c + Math.min(this.element.clientHeight, k()) - b, e = this.offsetTop(a), f = e + a.clientHeight; return d >= e && f >= c } }, { key: "disabled", value: function () { return !this.config.mobile && f(navigator.userAgent) } }]), a }(); b["default"] = r, a.exports = b["default"] });
         !function (n) { "function" == typeof define && define.amd ? define(["jquery"], function (e) { return n(e) }) : "object" == typeof module && "object" == typeof module.exports ? exports = n(require("jquery")) : n(jQuery) }(function (n) { function e(n) { var e = 7.5625, t = 2.75; return n < 1 / t ? e * n * n : n < 2 / t ? e * (n -= 1.5 / t) * n + .75 : n < 2.5 / t ? e * (n -= 2.25 / t) * n + .9375 : e * (n -= 2.625 / t) * n + .984375 } void 0 !== n.easing && (n.easing.jswing = n.easing.swing); var t = Math.pow, u = Math.sqrt, r = Math.sin, i = Math.cos, a = Math.PI, c = 1.70158, o = 1.525 * c, s = 2 * a / 3, f = 2 * a / 4.5; n.extend(n.easing, { def: "easeOutQuad", swing: function (e) { return n.easing[n.easing.def](e) }, easeInQuad: function (n) { return n * n }, easeOutQuad: function (n) { return 1 - (1 - n) * (1 - n) }, easeInOutQuad: function (n) { return n < .5 ? 2 * n * n : 1 - t(-2 * n + 2, 2) / 2 }, easeInCubic: function (n) { return n * n * n }, easeOutCubic: function (n) { return 1 - t(1 - n, 3) }, easeInOutCubic: function (n) { return n < .5 ? 4 * n * n * n : 1 - t(-2 * n + 2, 3) / 2 }, easeInQuart: function (n) { return n * n * n * n }, easeOutQuart: function (n) { return 1 - t(1 - n, 4) }, easeInOutQuart: function (n) { return n < .5 ? 8 * n * n * n * n : 1 - t(-2 * n + 2, 4) / 2 }, easeInQuint: function (n) { return n * n * n * n * n }, easeOutQuint: function (n) { return 1 - t(1 - n, 5) }, easeInOutQuint: function (n) { return n < .5 ? 16 * n * n * n * n * n : 1 - t(-2 * n + 2, 5) / 2 }, easeInSine: function (n) { return 1 - i(n * a / 2) }, easeOutSine: function (n) { return r(n * a / 2) }, easeInOutSine: function (n) { return -(i(a * n) - 1) / 2 }, easeInExpo: function (n) { return 0 === n ? 0 : t(2, 10 * n - 10) }, easeOutExpo: function (n) { return 1 === n ? 1 : 1 - t(2, -10 * n) }, easeInOutExpo: function (n) { return 0 === n ? 0 : 1 === n ? 1 : n < .5 ? t(2, 20 * n - 10) / 2 : (2 - t(2, -20 * n + 10)) / 2 }, easeInCirc: function (n) { return 1 - u(1 - t(n, 2)) }, easeOutCirc: function (n) { return u(1 - t(n - 1, 2)) }, easeInOutCirc: function (n) { return n < .5 ? (1 - u(1 - t(2 * n, 2))) / 2 : (u(1 - t(-2 * n + 2, 2)) + 1) / 2 }, easeInElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : -t(2, 10 * n - 10) * r((10 * n - 10.75) * s) }, easeOutElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : t(2, -10 * n) * r((10 * n - .75) * s) + 1 }, easeInOutElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : n < .5 ? -(t(2, 20 * n - 10) * r((20 * n - 11.125) * f)) / 2 : t(2, -20 * n + 10) * r((20 * n - 11.125) * f) / 2 + 1 }, easeInBack: function (n) { return (c + 1) * n * n * n - c * n * n }, easeOutBack: function (n) { return 1 + (c + 1) * t(n - 1, 3) + c * t(n - 1, 2) }, easeInOutBack: function (n) { return n < .5 ? t(2 * n, 2) * (7.189819 * n - o) / 2 : (t(2 * n - 2, 2) * ((o + 1) * (2 * n - 2) + o) + 2) / 2 }, easeInBounce: function (n) { return 1 - e(1 - n) }, easeOutBounce: e, easeInOutBounce: function (n) { return n < .5 ? (1 - e(1 - 2 * n)) / 2 : (1 + e(2 * n - 1)) / 2 } }) });
@@ -14595,6 +15043,183 @@
 
 
     </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Typed.js
+            setTimeout(function () {
+                new Typed('#typed-text', {
+                    strings: ['About Us'],
+                    typeSpeed: 80,
+                    startDelay: 300,
+                    showCursor: false,
+                    cursorChar: '|',
+                    loop: false,
+
+                });
+            }, 500);
+
+            // Initialize Three.js
+            initThreeJS();
+        });
+
+        function initThreeJS() {
+            // Get container
+            const container = document.getElementById('threejs-container');
+
+            // Create scene
+            const scene = new THREE.Scene();
+
+            // Create camera
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 5;
+
+            // Create renderer
+            const renderer = new THREE.WebGLRenderer({
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+            container.appendChild(renderer.domElement);
+
+            // Create abstract shapes
+            const shapes = [];
+            const colors = [0x4cc9f0, 0x4361ee, 0x3a0ca3, 0x7209b7, 0xf72585];
+
+            // Create multiple floating shapes
+            for (let i = 0; i < 15; i++) {
+                let geometry;
+
+                // Different shapes
+                switch (Math.floor(Math.random() * 4)) {
+                    case 0:
+                        geometry = new THREE.IcosahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 1:
+                        geometry = new THREE.TorusGeometry(
+                            Math.random() * 0.3 + 0.1,
+                            Math.random() * 0.1 + 0.05,
+                            8, 20
+                        );
+                        break;
+                    case 2:
+                        geometry = new THREE.OctahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 3:
+                        geometry = new THREE.TorusKnotGeometry(
+                            Math.random() * 0.2 + 0.1,
+                            Math.random() * 0.05 + 0.02,
+                            64, 8, 2, 3
+                        );
+                        break;
+                }
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    transparent: true,
+                    opacity: 0.3,
+                    shininess: 100
+                });
+
+                const shape = new THREE.Mesh(geometry, material);
+
+                // Random position
+                shape.position.x = (Math.random() - 0.5) * 10;
+                shape.position.y = (Math.random() - 0.5) * 6;
+                shape.position.z = (Math.random() - 0.5) * 10;
+
+                // Store rotation speed
+                shape.userData = {
+                    rotationSpeedX: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedY: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedZ: (Math.random() - 0.5) * 0.02,
+                    floatSpeed: Math.random() * 0.02 + 0.01
+                };
+
+                scene.add(shape);
+                shapes.push(shape);
+            }
+
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Handle window resize
+            window.addEventListener('resize', function () {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Animate shapes
+                shapes.forEach(shape => {
+                    shape.rotation.x += shape.userData.rotationSpeedX;
+                    shape.rotation.y += shape.userData.rotationSpeedY;
+                    shape.rotation.z += shape.userData.rotationSpeedZ;
+
+                    // Floating motion
+                    shape.position.y += Math.sin(Date.now() * 0.001 * shape.userData.floatSpeed) * 0.002;
+                });
+
+                // Rotate camera slightly
+                camera.position.x = Math.sin(Date.now() * 0.0005) * 2;
+                camera.position.y = Math.cos(Date.now() * 0.0003) * 1;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const text = document.getElementById('megaText');
+
+            // 1. Fill the text with light blue as we scroll
+            // It starts transparent with outline, turns solid blue
+            let fillPercentage = Math.min(100, scrollY / 3);
+
+            // 2. Fade out text after it fills
+            let opacity = 1;
+            if (scrollY > 300) {
+                opacity = 1 - ((scrollY - 300) / 300);
+            }
+            if (opacity < 0) opacity = 0;
+
+            // 3. Parallax Movement (Text moves up slower than scroll)
+            let translateY = scrollY * 0.5;
+
+            // Apply Styles
+            text.style.transform = `translateY(-${translateY}px)`;
+            text.style.opacity = opacity;           
+            // Dynamic Stroke to Fill transition
+            // Using the light blue color #89CFF0
+            if (scrollY < 300) {
+                text.style.color = `rgba(137, 207, 240, ${scrollY / 300})`;
+            } else {
+                text.style.color = '#89CFF0';
+            }
+           
+        });
+    </script>
+
+
 </body>
 
 </html>
