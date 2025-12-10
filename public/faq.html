@@ -1,0 +1,1533 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FAQ | UtilityKing</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary-color: #0f172a;
+            --accent-color: #3b82f6;
+            --light-color: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+            --success-color: #10b981;
+            --warning-color: #f59e0b;
+            --danger-color: #ef4444;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+        }
+
+        body {
+           
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            color: var(--primary-color);
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+        }
+
+            .nav-link:hover {
+                color: var(--primary-color);
+                background: var(--gray-100);
+            }
+
+            .nav-link.active {
+                color: var(--primary-color);
+                background: var(--gray-100);
+            }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: 4rem 2rem;
+            background: linear-gradient(135deg, #0d2b4e 0%, #1a3d6c 100%);
+            border-radius: var(--radius);
+            color: white;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+
+        .search-box {
+            max-width: 600px;
+            margin: 2rem auto 0;
+            position: relative;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 1.25rem 1.5rem 1.25rem 3.5rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow-lg);
+            transition: var(--transition);
+        }
+
+            .search-input:focus {
+                outline: none;
+                box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.3), var(--shadow-xl);
+                transform: translateY(-2px);
+            }
+
+        .search-icon {
+            position: absolute;
+            left: 1.5rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray-600);
+            font-size: 1.25rem;
+        }
+
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 4rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 2rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        /* FAQ Layout */
+        .faq-layout {
+            display: grid;
+            grid-template-columns: 280px 1fr;
+            gap: 3rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            position: sticky;
+            top: 120px;
+            height: fit-content;
+        }
+
+        .category-list {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+        }
+
+        .category-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: var(--secondary-color);
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--gray-100);
+        }
+
+        .category-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 1rem;
+            margin-bottom: 0.5rem;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: var(--transition);
+            color: var(--gray-700);
+            text-decoration: none;
+        }
+
+            .category-item:hover {
+                background: var(--gray-100);
+                color: var(--primary-color);
+                transform: translateX(5px);
+            }
+
+            .category-item.active {
+                background: var(--primary-color);
+                color: white;
+            }
+
+        .category-icon {
+            font-size: 1.25rem;
+        }
+
+        .contact-card {
+            background: linear-gradient(135deg, var(--primary-color) 0%, var(--accent-color) 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            margin-top: 2rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+            .contact-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1rem;
+                text-transform: uppercase;
+            }
+            .contact-card p {
+               color:#fff;
+            }
+
+        .contact-btn {
+            display: inline-block;
+            background: white;
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1rem;
+            transition: var(--transition);
+        }
+
+            .contact-btn:hover {
+                transform: translateY(-2px);
+                box-shadow: var(--shadow);
+            }
+
+        /* FAQ Content */
+        .faq-content {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--gray-200);
+            overflow: hidden;
+        }
+
+        .faq-header {
+            padding: 2rem;
+            border-bottom: 1px solid var(--gray-200);
+            background: var(--gray-100);
+        }
+
+            .faq-header h2 {
+                font-size: 1.75rem;
+                color: var(--secondary-color);
+                margin-bottom: 0.5rem;
+                text-transform: uppercase;
+            }
+
+        .faq-count {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        .faq-list {
+            padding: 1rem;
+        }
+
+        /* FAQ Item */
+        .faq-item {
+            border: 1px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+            .faq-item:hover {
+                border-color: var(--primary-color);
+                box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
+            }
+
+            .faq-item.active {
+                border-color: var(--primary-color);
+                box-shadow: 0 4px 20px rgba(37, 99, 235, 0.15);
+            }
+
+        .faq-question {
+            padding: 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: pointer;
+            background: white;
+            transition: var(--transition);
+        }
+
+        .faq-item.active .faq-question {
+            background: var(--gray-50);
+        }
+
+        .question-text {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+            flex: 1;
+            padding-right: 1rem;
+        }
+
+        .question-meta {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .category-badge {
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+        .toggle-icon {
+            color: var(--gray-500);
+            font-size: 1.25rem;
+            transition: var(--transition);
+            min-width: 24px;
+        }
+
+        .faq-item.active .toggle-icon {
+            transform: rotate(180deg);
+            color: var(--primary-color);
+        }
+
+        .faq-answer {
+            padding: 0 1.5rem;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 0 1.5rem 1.5rem;
+            max-height: 1000px;
+        }
+
+        .answer-content {
+            color: var(--gray-700);
+            line-height: 1.8;
+        }
+
+            .answer-content p {
+                margin-bottom: 1rem;
+            }
+
+            .answer-content ul, .answer-content ol {
+                margin-left: 1.5rem;
+                margin-bottom: 1rem;
+            }
+
+        .feature-list {
+            background: var(--gray-50);
+            padding: 1rem;
+            border-radius: 8px;
+            margin: 1rem 0;
+        }
+
+            .feature-list li {
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+
+            .feature-list i {
+                color: var(--success-color);
+            }
+
+        .helpful-buttons {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid var(--gray-200);
+        }
+
+        .helpful-btn {
+            padding: 0.5rem 1.5rem;
+            border: 1px solid var(--gray-300);
+            border-radius: 50px;
+            background: white;
+            color: var(--gray-700);
+            cursor: pointer;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+            .helpful-btn:hover {
+                background: var(--gray-100);
+                border-color: var(--gray-400);
+            }
+
+            .helpful-btn.helpful:hover {
+                background: var(--success-color);
+                color: white;
+                border-color: var(--success-color);
+            }
+
+            .helpful-btn.not-helpful:hover {
+                background: var(--danger-color);
+                color: white;
+                border-color: var(--danger-color);
+            }
+
+        /* Footer */
+        .footer {
+            margin-top: 5rem;
+            background: var(--secondary-color);
+            color: white;
+            padding: 4rem 2rem;
+            border-radius: var(--radius);
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: white;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+            .footer-links li {
+                margin-bottom: 0.75rem;
+            }
+
+            .footer-links a {
+                color: var(--gray-300);
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+                .footer-links a:hover {
+                    color: white;
+                    padding-left: 5px;
+                }
+
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-700);
+            color: var(--gray-400);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .faq-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .sidebar {
+                position: static;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.75rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 1rem;
+            }
+
+            .hero {
+                padding: 3rem 1rem;
+            }
+
+                .hero h1 {
+                    font-size: 2.25rem;
+                }
+
+            .nav-links {
+                display: none;
+            }
+
+            .stats {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out;
+        }
+
+        /* Utility Classes */
+        .hidden {
+            display: none;
+        }
+
+        .highlight {
+            background: linear-gradient(120deg, #bfdbfe 0%, #bfdbfe 100%);
+            background-repeat: no-repeat;
+            background-size: 100% 0.4em;
+            background-position: 0 88%;
+        }
+
+        .bg-header {
+            background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/hero99.jpg) center top no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .typed-cursor {
+            font-size: 3.5rem;
+            color: #ffd166;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .typed-cursor {
+                font-size: 2.5rem;
+            }
+          
+        }
+
+        .display-1 {
+            font-size: calc(1.625rem + 4.5vw);
+            font-weight: 800;
+            line-height: 1.2
+        }
+
+        .text-center {
+            text-align: center
+        }
+
+        .text-dark {
+            color: #091E3E !important
+        }
+
+        @media (min-width: 1200px) {
+            .display-1 {
+                font-size: 5rem
+            }
+        }
+
+        .mb-4 {
+            margin-bottom: 10px;
+            font-size: 18px;
+        }
+
+        .category-heading {
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            font-size:26px;
+        }
+
+        ul li {
+            list-style-position: inside;
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        /* RESET */
+
+
+        /* FIXED HERO CONTAINER */
+        .hero-section {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e6f2ff; /* Lighter blue background */
+            overflow: hidden;
+            z-index: 1;
+            perspective: 1000px;
+        }
+
+        /* WAVY GRID ANIMATION CONTAINER */
+        .wavy-grid-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(60deg) scale(1.5);
+            transform-style: preserve-3d;
+        }
+
+        /* INDIVIDUAL GRID LINES */
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(137, 207, 240, 0.6); /* Light Blue */
+            box-shadow: 0 0 5px rgba(137, 207, 240, 0.4);
+        }
+
+        /* HORIZONTAL LINES - THE WAVES */
+        .h-line {
+            left: 0;
+            animation: waveMove 4s ease-in-out infinite;
+        }
+
+        /* VERTICAL LINES - FOR THE GRID EFFECT */
+        .v-line {
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(137, 207, 240, 0.4);
+            transform: translateZ(-50px); /* Push them back slightly */
+        }
+
+        /* Generate multiple lines with different delays for the wave effect */
+        .h-line:nth-child(1) {
+            top: 10%;
+            animation-delay: 0s;
+        }
+
+        .h-line:nth-child(2) {
+            top: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .h-line:nth-child(3) {
+            top: 30%;
+            animation-delay: 0.4s;
+        }
+
+        .h-line:nth-child(4) {
+            top: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .h-line:nth-child(5) {
+            top: 50%;
+            animation-delay: 0.8s;
+        }
+
+        .h-line:nth-child(6) {
+            top: 60%;
+            animation-delay: 1.0s;
+        }
+
+        .h-line:nth-child(7) {
+            top: 70%;
+            animation-delay: 1.2s;
+        }
+
+        .h-line:nth-child(8) {
+            top: 80%;
+            animation-delay: 1.4s;
+        }
+
+        .h-line:nth-child(9) {
+            top: 90%;
+            animation-delay: 1.6s;
+        }
+
+        .v-line:nth-child(10) {
+            left: 10%;
+        }
+
+        .v-line:nth-child(11) {
+            left: 20%;
+        }
+
+        .v-line:nth-child(12) {
+            left: 30%;
+        }
+
+        .v-line:nth-child(13) {
+            left: 40%;
+        }
+
+        .v-line:nth-child(14) {
+            left: 50%;
+        }
+
+        .v-line:nth-child(15) {
+            left: 60%;
+        }
+
+        .v-line:nth-child(16) {
+            left: 70%;
+        }
+
+        .v-line:nth-child(17) {
+            left: 80%;
+        }
+
+        .v-line:nth-child(18) {
+            left: 90%;
+        }
+
+
+        @keyframes waveMove {
+            0%, 100% {
+                transform: translateZ(0px) translateY(0px);
+            }
+
+            50% {
+                transform: translateZ(80px) translateY(-30px);
+            }
+        }
+
+        /* MAIN TEXT */
+        h1.hero-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11vw; /* Massive */
+            color: transparent;
+            -webkit-text-stroke: 3px #89CFF0; /*Light Blue Outline*/
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            z-index: 10;
+            position: relative;
+            line-height: 0.8;
+            transition: all 0.1s;
+            font-weight: 900;
+        }
+
+        /* HUD ELEMENTS (Decorations) - Updated Color */
+        .hud-cross {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 5;
+        }
+
+            .hud-cross::before, .hud-cross::after {
+                content: '';
+                position: absolute;
+                background: #89CFF0; /* Light Blue */
+            }
+
+            .hud-cross::before {
+                width: 100%;
+                height: 2px;
+                top: 9px;
+                left: 0;
+            }
+
+            .hud-cross::after {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 9px;
+            }
+
+        .tl {
+            top: 40px;
+            left: 40px;
+        }
+
+        .tr {
+            top: 40px;
+            right: 40px;
+        }
+
+        .bl {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .br {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .tech-data {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #89CFF0;
+            letter-spacing: 2px;
+            z-index: 20; /* Increased to sit above animation for clicking */
+            font-weight: 600;
+            background-color: darkblue;
+            color: white;
+            padding: 5px 30px;
+        }
+
+            .tech-data a {
+                color: white;
+                text-decoration: none;
+            }
+        /* SCROLLABLE CONTENT */
+        .content-block {
+            position: relative;
+            z-index: 20;
+            margin-top: 100vh;
+            background: #fff;
+            color: #222;
+            min-height: 100vh;
+            border-top: 10px solid #89CFF0; /* Light Blue Stripe */
+            box-shadow: 0 -20px 50px rgba(137, 207, 240, 0.2);
+        }
+
+        .inner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #0B1E38;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #555;
+        }
+        ul
+        {
+            list-style:none;
+            text-decoration:none;
+        }
+
+            ul li a {
+                text-decoration: none;
+                color:var(--primary-color);
+            }
+    </style>
+</head>
+<body>
+
+
+    <div class="hero-section" id="hero">
+        <div class="wavy-grid-container">
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+        </div>
+
+        <div class="hud-cross tl"></div>
+        <div class="hud-cross tr"></div>
+        <div class="hud-cross bl"></div>
+        <div class="hud-cross br"></div>
+        <div class="tech-data">
+            <a href="https://www.utilityking.co.uk"><i class="fas fa-home"></i> HOME</a>
+        </div>
+
+
+        <h1 class="hero-text" id="megaText">CUSTOMER FAQ</h1>
+    </div>
+    <div class="container">
+
+
+        <!-- Stats -->
+        <div class="stats">
+            <div class="stat-card fade-in">
+                <i class="fas fa-question-circle stat-icon"></i>
+                <div class="stat-number">150+</div>
+                <div class="stat-label">Questions Answered</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.1s">
+                <i class="fas fa-users stat-icon"></i>
+                <div class="stat-number">10,000+</div>
+                <div class="stat-label">Businesses Helped</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.2s">
+                <i class="fas fa-bolt stat-icon"></i>
+                <div class="stat-number">96%</div>
+                <div class="stat-label">Business Growth</div>
+            </div>
+            <div class="stat-card fade-in" style="animation-delay: 0.3s">
+                <i class="fas fa-headset stat-icon"></i>
+                <div class="stat-number">24/7</div>
+                <div class="stat-label">Support Available</div>
+            </div>
+        </div>
+
+        <!-- FAQ Layout -->
+        <div class="faq-layout">
+
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <h2 class="category-heading">Categories</h2>
+                <div class="link-animated d-flex flex-column justify-content-start">
+                    <ul>
+                        <li class="mb-4">
+
+                            <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  Energy</a>
+
+                        </li>
+                        <li class="mb-4">
+                            <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  Broadband</a>
+                        </li>
+                        <li class="mb-4">
+
+                            <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  Mobile</a>
+                        </li>
+                        <li class="mb-4">
+
+                            <a class="h5 fw-semi-bold bg-light rounded py-2 px-3 mb-2" href="#"><i class="fa fa-arrow-circle-right" aria-hidden="true"></i>  Water</a>
+                        </li>
+                    </ul>
+
+
+
+                </div>
+
+
+                <div class="contact-card">
+                    <h3>Need help?</h3>
+                    <p>Can't find what you're looking for? Our support team is ready to assist you.</p>
+                    <a href="contact.html" class="contact-btn">
+                        <i class="fas fa-comments"></i> Contact Us
+                    </a>
+                </div>
+            </aside>
+            <!-- FAQ Content -->
+            <main class="faq-content">
+                <div class="faq-header">
+                    <h2>Frequently Asked Questions</h2>
+
+                </div>
+
+                <div class="faq-list">
+                    <!-- FAQ Item 1 -->
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <div class="question-text">Why switch gas and electricity providers?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>You may compare gas and electricity costs separately, even though dual fuel is a common option to keep your energy in one package. You might perhaps uncover new bargains that give further savings by evaluating energy tariffs independently. Nobody likes to pay their bills too much in debt. Finding excellent bargains on affordable gas and electricity is simple with our energy comparison tool.</p>
+
+
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="faq-item" data-category="switching">
+                        <div class="faq-question">
+                            <div class="question-text">Can I save money by switching energy suppliers?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>You'll probably save money when you switch energy providers if you haven't done it in more than a year. The majority of gas and electricity providers give new customers significant discounts for the first 12 months. You will, however, be required to pay the usual fee after this discounted term expires, which is frequently substantially higher. A consumer who switches from a regular tariff to a more affordable one might save up to $500. Switching is simple.</p>
+
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="faq-item" data-category="business">
+                        <div class="faq-question">
+                            <div class="question-text">Can I compare gas and electricity separately?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>You may compare gas and electricity costs separately, even though dual fuel is a common option to keep your energy in one package. You might perhaps uncover new bargains that give further savings by evaluating energy tariffs independently. Nobody likes to pay their bills too much in debt. Finding excellent bargains on affordable gas and electricity is simple with our energy comparison tool.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="faq-item" data-category="billing">
+                        <div class="faq-question">
+                            <div class="question-text">What information do I need to switch energy supplier?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Just your zip code and a current electricity bill are required to change energy providers. If you don't have access to a physical copy of your bills, you might be able to discover the details you need by checking your emails or by visiting the website or mobile app of your energy provider.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="faq-item" data-category="contract">
+                        <div class="faq-question">
+                            <div class="question-text">What is the difference between fixed and variable-rate tariffs?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>A "fixed price" electricity tariff guarantees that the cost of your gas and electricity units won't fluctuate throughout the course of the contract. Your energy cost may change during the course of the plan if it is variable. If your provider announces a price increase while you're on a fixed pricing plan, your rates won't change.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 6 -->
+                    <div class="faq-item" data-category="technical">
+                        <div class="faq-question">
+                            <div class="question-text">Can I change my electricity supplier if I have a smart meter?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>The presence of a smart meter has no bearing on your ability to switch energy providers because all smart meters communicate in the same "language," regardless of who provides your electricity. The option to select between interval and non-interval services will remain available. However, the product plans and offers could fluctuate among various electrical providers. All of our dual fuel and electricity clients must adhere to this.</p>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Additional FAQ Items (Collapsed by default) -->
+                    <div class="faq-item" data-category="general">
+                        <div class="faq-question">
+                            <div class="question-text">I'm moving home. How can I switch gas and electricity?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>Finding a better price on your gas and electricity is a terrific opportunity when you move. The current energy provider will frequently start what is known as a "deemed contract" when you move into your new house. You might want to start looking around as soon as possible to find a better deal, as this can be one of the most expensive tariffs.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="faq-item" data-category="switching">
+                        <div class="faq-question">
+                            <div class="question-text">How often do energy prices change?</div>
+                            <div class="question-meta">
+                                <i class="fas fa-chevron-down toggle-icon"></i>
+                            </div>
+                        </div>
+                        <div class="faq-answer">
+                            <div class="answer-content">
+                                <p>The price per kilowatt-hour is continually fluctuating as a result of the high expenses associated with producing and supplying power. There will still be fluctuation, but you may lock your tariff for a while by signing up for a fixed tariff energy plan.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+            </main>
+
+        </div>
+
+
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        // FAQ Toggle Functionality
+        document.querySelectorAll('.faq-question').forEach(question => {
+            question.addEventListener('click', () => {
+                const faqItem = question.closest('.faq-item');
+                const isActive = faqItem.classList.contains('active');
+
+                // Close all FAQ items
+                document.querySelectorAll('.faq-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+
+                // If it wasn't active, open it
+                if (!isActive) {
+                    faqItem.classList.add('active');
+                }
+            });
+        });
+
+        // Category Filtering
+        document.querySelectorAll('.category-item').forEach(category => {
+            category.addEventListener('click', (e) => {
+                e.preventDefault();
+
+                // Update active category
+                document.querySelectorAll('.category-item').forEach(item => {
+                    item.classList.remove('active');
+                });
+                category.classList.add('active');
+
+                const selectedCategory = category.dataset.category;
+                const faqItems = document.querySelectorAll('.faq-item');
+                let visibleCount = 0;
+
+                // Show/hide FAQ items based on category
+                faqItems.forEach(item => {
+                    if (selectedCategory === 'all' || item.dataset.category === selectedCategory) {
+                        item.style.display = 'block';
+                        visibleCount++;
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+
+                // Update visible count
+                document.getElementById('visible-count').textContent = visibleCount;
+            });
+        });
+
+        // Search Functionality
+        const searchInput = document.querySelector('.search-input');
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            const faqItems = document.querySelectorAll('.faq-item');
+            let visibleCount = 0;
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.question-text').textContent.toLowerCase();
+                const answer = item.querySelector('.answer-content').textContent.toLowerCase();
+
+                if (question.includes(searchTerm) || answer.includes(searchTerm)) {
+                    item.style.display = 'block';
+                    visibleCount++;
+
+                    // Highlight matching text
+                    if (searchTerm.length > 2) {
+                        const regex = new RegExp(`(${searchTerm})`, 'gi');
+                        const highlightedQuestion = question.replace(regex, '<span class="highlight">$1</span>');
+                        item.querySelector('.question-text').innerHTML = highlightedQuestion;
+                    }
+                } else {
+                    item.style.display = 'none';
+                }
+            });
+
+            document.getElementById('visible-count').textContent = visibleCount;
+        });
+
+        // Helpful Buttons
+        document.querySelectorAll('.helpful-btn').forEach(button => {
+            button.addEventListener('click', function () {
+                const countElement = this.querySelector('i').nextSibling;
+                const countText = countElement.textContent;
+                const count = parseInt(countText.match(/\d+/)[0]);
+
+                // Update count
+                countElement.textContent = countText.replace(/\d+/, count + 1);
+
+                // Visual feedback
+                this.style.transform = 'scale(1.1)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+
+                // Change color on click
+                if (this.classList.contains('helpful')) {
+                    this.style.backgroundColor = 'var(--success-color)';
+                    this.style.color = 'white';
+                    this.style.borderColor = 'var(--success-color)';
+                } else {
+                    this.style.backgroundColor = 'var(--danger-color)';
+                    this.style.color = 'white';
+                    this.style.borderColor = 'var(--danger-color)';
+                }
+            });
+        });
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements for animation
+        document.querySelectorAll('.stat-card, .faq-item').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize with all FAQ items visible
+        document.getElementById('visible-count').textContent =
+            document.querySelectorAll('.faq-item').length;
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Typed.js
+            setTimeout(function () {
+                new Typed('#typed-text', {
+                    strings: ['FAQs'],
+                    typeSpeed: 80,
+                    startDelay: 300,
+                    showCursor: false,
+                    cursorChar: '|',
+                    loop: false,
+
+                });
+            }, 500);
+
+            // Initialize Three.js
+            initThreeJS();
+        });
+
+        function initThreeJS() {
+            // Get container
+            const container = document.getElementById('threejs-container');
+
+            // Create scene
+            const scene = new THREE.Scene();
+
+            // Create camera
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 5;
+
+            // Create renderer
+            const renderer = new THREE.WebGLRenderer({
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+            container.appendChild(renderer.domElement);
+
+            // Create abstract shapes
+            const shapes = [];
+            const colors = [0x4cc9f0, 0x4361ee, 0x3a0ca3, 0x7209b7, 0xf72585];
+
+            // Create multiple floating shapes
+            for (let i = 0; i < 15; i++) {
+                let geometry;
+
+                // Different shapes
+                switch (Math.floor(Math.random() * 4)) {
+                    case 0:
+                        geometry = new THREE.IcosahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 1:
+                        geometry = new THREE.TorusGeometry(
+                            Math.random() * 0.3 + 0.1,
+                            Math.random() * 0.1 + 0.05,
+                            8, 20
+                        );
+                        break;
+                    case 2:
+                        geometry = new THREE.OctahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 3:
+                        geometry = new THREE.TorusKnotGeometry(
+                            Math.random() * 0.2 + 0.1,
+                            Math.random() * 0.05 + 0.02,
+                            64, 8, 2, 3
+                        );
+                        break;
+                }
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    transparent: true,
+                    opacity: 0.3,
+                    shininess: 100
+                });
+
+                const shape = new THREE.Mesh(geometry, material);
+
+                // Random position
+                shape.position.x = (Math.random() - 0.5) * 10;
+                shape.position.y = (Math.random() - 0.5) * 6;
+                shape.position.z = (Math.random() - 0.5) * 10;
+
+                // Store rotation speed
+                shape.userData = {
+                    rotationSpeedX: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedY: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedZ: (Math.random() - 0.5) * 0.02,
+                    floatSpeed: Math.random() * 0.02 + 0.01
+                };
+
+                scene.add(shape);
+                shapes.push(shape);
+            }
+
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Handle window resize
+            window.addEventListener('resize', function () {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Animate shapes
+                shapes.forEach(shape => {
+                    shape.rotation.x += shape.userData.rotationSpeedX;
+                    shape.rotation.y += shape.userData.rotationSpeedY;
+                    shape.rotation.z += shape.userData.rotationSpeedZ;
+
+                    // Floating motion
+                    shape.position.y += Math.sin(Date.now() * 0.001 * shape.userData.floatSpeed) * 0.002;
+                });
+
+                // Rotate camera slightly
+                camera.position.x = Math.sin(Date.now() * 0.0005) * 2;
+                camera.position.y = Math.cos(Date.now() * 0.0003) * 1;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const text = document.getElementById('megaText');
+
+            // 1. Fill the text with light blue as we scroll
+            // It starts transparent with outline, turns solid blue
+            let fillPercentage = Math.min(100, scrollY / 3);
+
+            // 2. Fade out text after it fills
+            let opacity = 1;
+            if (scrollY > 300) {
+                opacity = 1 - ((scrollY - 300) / 300);
+            }
+            if (opacity < 0) opacity = 0;
+
+            // 3. Parallax Movement (Text moves up slower than scroll)
+            let translateY = scrollY * 0.5;
+
+            // Apply Styles
+            text.style.transform = `translateY(-${translateY}px)`;
+            text.style.opacity = opacity;
+            // Dynamic Stroke to Fill transition
+            // Using the light blue color #89CFF0
+            if (scrollY < 300) {
+                text.style.color = `rgba(137, 207, 240, ${scrollY / 300})`;
+            } else {
+                text.style.color = '#89CFF0';
+            }
+
+        });
+    </script>
+</body>
+</html>

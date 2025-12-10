@@ -1,3 +1,4 @@
+
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
@@ -28,6 +29,26 @@ const nextConfig = {
       {
         source: '/about',
         destination: '/about.html',
+      },
+      {
+        source: '/contact',
+        destination: '/contact.html',
+      },
+      {
+        source: '/careers',
+        destination: '/career.html',
+      },
+      {
+        source: '/terms',
+        destination: '/terms.html',
+      },
+      {
+        source: '/privacy',
+        destination: '/privacy.html',
+      },
+      {
+        source: '/faqs',
+        destination: '/faq.html',
       },
     ]
   },

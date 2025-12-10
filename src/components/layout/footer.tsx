@@ -78,7 +78,7 @@ export default function Footer({ id }: FooterProps) {
                   <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Support</h3>
                   <ul className="mt-4 space-y-4">
                     <li><Link href="/#compare" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>Compare</Link></li>
-                    <li><Link href="/#faqs" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={false}>FAQs</Link></li>
+                    <li><Link href="/faqs" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>FAQs</Link></li>
                     <li><Link href="/contact" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Contact</Link></li>
                   </ul>
                 </div>

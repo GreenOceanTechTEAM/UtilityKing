@@ -1,0 +1,779 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms and Conditions | UtilityKing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f8f9fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        header {
+            background: linear-gradient(135deg, #0d2b4e 0%, #1a3d6c 100%);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo-icon {
+            margin-right: 10px;
+            font-size: 32px;
+        }
+
+        .page-title {
+            font-size: 40px;
+            margin-bottom: 10px;
+        }
+
+        .last-updated {
+            font-size: 18px;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .main-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .sidebar {
+            flex: 0 0 280px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: fit-content;
+            position: sticky;
+            top: 20px;
+        }
+
+        .content {
+            flex: 1;
+            min-width: 300px;
+            background-color: white;
+            border-radius: 8px;
+            padding: 30px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .nav-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1e3c72;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .nav-links {
+            list-style: none;
+        }
+
+            .nav-links li {
+                margin-bottom: 12px;
+            }
+
+            .nav-links a {
+                text-decoration: none;
+                color: #555;
+                padding: 8px 0;
+                display: block;
+                border-left: 3px solid transparent;
+                padding-left: 15px;
+                transition: all 0.3s ease;
+            }
+
+                .nav-links a:hover {
+                    color: #1e3c72;
+                    border-left-color: #1e3c72;
+                    background-color: #f8f9ff;
+                }
+
+        .section {
+            margin-bottom: 40px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid #eee;
+        }
+
+            .section:last-of-type {
+                border-bottom: none;
+                margin-bottom: 0;
+                padding-bottom: 0;
+            }
+
+        .section-title {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: #1e3c72;
+            display: flex;
+            align-items: center;
+        }
+
+        .section-icon {
+            margin-right: 10px;
+            font-size: 22px;
+        }
+
+        .section-content p {
+            margin-bottom: 15px;
+        }
+
+        .criteria-list, .fee-list {
+            list-style-position: inside;
+            margin-left: 20px;
+            margin-bottom: 20px;
+        }
+
+            .criteria-list li, .fee-list li {
+                margin-bottom: 10px;
+                padding-left: 5px;
+            }
+
+        .highlight-box {
+            background-color: #f8f9ff;
+            border-left: 4px solid #1e3c72;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .fee-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        }
+
+            .fee-table th, .fee-table td {
+                padding: 15px;
+                text-align: left;
+                border-bottom: 1px solid #eee;
+            }
+
+            .fee-table th {
+                background-color: #f8f9ff;
+                font-weight: 600;
+                color: #1e3c72;
+            }
+
+            .fee-table tr:hover {
+                background-color: #f8f9ff;
+            }
+
+        footer {
+            margin-top: 60px;
+            background-color: #2a5298;
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .contact-info {
+            margin-top: 20px;
+            font-size: 14px;
+            opacity: 0.9;
+        }
+
+        .back-to-top {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+
+            .back-to-top:hover {
+                background-color: rgba(255, 255, 255, 0.2);
+            }
+
+        @media (max-width: 768px) {
+            .sidebar {
+                position: static;
+                flex: 0 0 100%;
+            }
+
+            .content {
+                padding: 20px;
+            }
+
+            .page-title {
+                font-size: 28px;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* RESET */
+
+
+        /* FIXED HERO CONTAINER */
+        .hero-section {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e6f2ff; /* Lighter blue background */
+            overflow: hidden;
+            z-index: 1;
+            perspective: 1000px;
+        }
+
+        /* WAVY GRID ANIMATION CONTAINER */
+        .wavy-grid-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(60deg) scale(1.5);
+            transform-style: preserve-3d;
+        }
+
+        /* INDIVIDUAL GRID LINES */
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(137, 207, 240, 0.6); /* Light Blue */
+            box-shadow: 0 0 5px rgba(137, 207, 240, 0.4);
+        }
+
+        /* HORIZONTAL LINES - THE WAVES */
+        .h-line {
+            left: 0;
+            animation: waveMove 4s ease-in-out infinite;
+        }
+
+        /* VERTICAL LINES - FOR THE GRID EFFECT */
+        .v-line {
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(137, 207, 240, 0.4);
+            transform: translateZ(-50px); /* Push them back slightly */
+        }
+
+        /* Generate multiple lines with different delays for the wave effect */
+        .h-line:nth-child(1) {
+            top: 10%;
+            animation-delay: 0s;
+        }
+
+        .h-line:nth-child(2) {
+            top: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .h-line:nth-child(3) {
+            top: 30%;
+            animation-delay: 0.4s;
+        }
+
+        .h-line:nth-child(4) {
+            top: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .h-line:nth-child(5) {
+            top: 50%;
+            animation-delay: 0.8s;
+        }
+
+        .h-line:nth-child(6) {
+            top: 60%;
+            animation-delay: 1.0s;
+        }
+
+        .h-line:nth-child(7) {
+            top: 70%;
+            animation-delay: 1.2s;
+        }
+
+        .h-line:nth-child(8) {
+            top: 80%;
+            animation-delay: 1.4s;
+        }
+
+        .h-line:nth-child(9) {
+            top: 90%;
+            animation-delay: 1.6s;
+        }
+
+        .v-line:nth-child(10) {
+            left: 10%;
+        }
+
+        .v-line:nth-child(11) {
+            left: 20%;
+        }
+
+        .v-line:nth-child(12) {
+            left: 30%;
+        }
+
+        .v-line:nth-child(13) {
+            left: 40%;
+        }
+
+        .v-line:nth-child(14) {
+            left: 50%;
+        }
+
+        .v-line:nth-child(15) {
+            left: 60%;
+        }
+
+        .v-line:nth-child(16) {
+            left: 70%;
+        }
+
+        .v-line:nth-child(17) {
+            left: 80%;
+        }
+
+        .v-line:nth-child(18) {
+            left: 90%;
+        }
+
+
+        @keyframes waveMove {
+            0%, 100% {
+                transform: translateZ(0px) translateY(0px);
+            }
+
+            50% {
+                transform: translateZ(80px) translateY(-30px);
+            }
+        }
+
+        /* MAIN TEXT */
+        h1.hero-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 11vw; /* Massive */
+            color: transparent;
+            -webkit-text-stroke: 3px #89CFF0; /*Light Blue Outline*/
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            z-index: 10;
+            position: relative;
+            line-height: 0.8;
+            transition: all 0.1s;
+            font-weight: 900;
+        }
+
+        /* HUD ELEMENTS (Decorations) - Updated Color */
+        .hud-cross {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 5;
+        }
+
+            .hud-cross::before, .hud-cross::after {
+                content: '';
+                position: absolute;
+                background: #89CFF0; /* Light Blue */
+            }
+
+            .hud-cross::before {
+                width: 100%;
+                height: 2px;
+                top: 9px;
+                left: 0;
+            }
+
+            .hud-cross::after {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 9px;
+            }
+
+        .tl {
+            top: 40px;
+            left: 40px;
+        }
+
+        .tr {
+            top: 40px;
+            right: 40px;
+        }
+
+        .bl {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .br {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .tech-data {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #89CFF0;
+            letter-spacing: 2px;
+            z-index: 20; /* Increased to sit above animation for clicking */
+            font-weight: 600;
+            background-color: darkblue;
+            color: white;
+            padding: 5px 30px;
+        }
+
+            .tech-data a {
+                color: white;
+                text-decoration: none;
+            }
+        /* SCROLLABLE CONTENT */
+        .content-block {
+            position: relative;
+            z-index: 20;
+            margin-top: 100vh;
+            background: #fff;
+            color: #222;
+            min-height: 100vh;
+            border-top: 10px solid #89CFF0; /* Light Blue Stripe */
+            box-shadow: 0 -20px 50px rgba(137, 207, 240, 0.2);
+        }
+
+        .inner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #0B1E38;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #555;
+        }
+
+        ul {
+            list-style: none;
+            text-decoration: none;
+        }
+
+            ul li a {
+                text-decoration: none;
+                color: var(--primary-color);
+            }
+    </style>
+</head>
+<body>
+
+    <div class="hero-section" id="hero">
+        <div class="wavy-grid-container">
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+        </div>
+
+        <div class="hud-cross tl"></div>
+        <div class="hud-cross tr"></div>
+        <div class="hud-cross bl"></div>
+        <div class="hud-cross br"></div>
+        <div class="tech-data">
+            <a href="https://www.utilityking.co.uk"><i class="fas fa-home"></i> HOME</a>
+        </div>
+
+
+        <h1 class="hero-text" id="megaText">TERMS OF USE</h1>
+    </div>
+    <div class="container">
+        <div class="last-updated"><strong>Updated July 2021</strong></div><br />
+        <div class="main-content">
+
+            <nav class="sidebar">
+                <h3 class="nav-title">Contents</h3>
+                <ul class="nav-links">
+                    <li><a href="#service-overview">Price Comparison/Switching Services</a></li>
+                    <li><a href="#eligibility">Eligibility Criteria</a></li>
+                    <li><a href="#service-provision">Service Provision</a></li>
+                    <li><a href="#quotations">Quotations & Contracts</a></li>
+                    <li><a href="#guarantee">No Guarantee</a></li>
+                    <li><a href="#charges">Charges</a></li>
+                    <li><a href="#duplicate">Duplicate Contract Fees</a></li>
+                    <li><a href="#tenancy">Change of Tenancy</a></li>
+                </ul>
+            </nav>
+
+            <main class="content">
+                <section id="service-overview" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-exchange-alt"></i></span>
+                        Price Comparison/Switching Services
+                    </h2>
+                    <div class="section-content">
+                        <p>The Utility King provides a price comparison/switching service to UK businesses. There are certain eligibility criteria mandated for this service.</p>
+                    </div>
+                </section>
+
+                <section id="eligibility" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-check-circle"></i></span>
+                        Eligibility Criteria
+                    </h2>
+                    <div class="section-content">
+                        <ul class="criteria-list">
+                            <li>The business should be based out of the UK</li>
+                            <li>More than 18 years of age in case of a sole trader</li>
+                            <li>Meet the credit score eligibility or criteria, if any</li>
+                        </ul>
+                        <p>We reserve the right to deny services to any customer based on our discretion.</p>
+                    </div>
+                </section>
+
+                <section id="service-provision" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-handshake"></i></span>
+                        Service Provision
+                    </h2>
+                    <div class="section-content">
+                        <p>In case the customer agrees to use our services, then Utility King will use its reasonable activities to find, negotiate, and fix competitive energy prices. Energy prices are procured from a panel of energy suppliers using supplier provided books.</p>
+                    </div>
+                </section>
+
+                <section id="quotations" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-file-contract"></i></span>
+                        Quotations & Contracts
+                    </h2>
+                    <div class="section-content">
+                        <p>The provision of a quotation by a supplier through Utility King does not include an offer to the customer and will come with individual supplier terms and agreements.</p>
+                        <div class="highlight-box">
+                            <p>Suppose the customer accepts a given quotation and a contract is initiated between customer and supplier. In that case, the contract is binding, and the customer is not permitted to disapprove of the said acceptance.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="guarantee" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-shield-alt"></i></span>
+                        No Guarantee
+                    </h2>
+                    <div class="section-content">
+                        <p>Utility King does not guarantee the quality of services operated by suppliers or the prices that come up in the quotations.</p>
+                        <p>Due to the constant fluctuation in Energy prices, we cannot guarantee any quote that can be considered the lowest.</p>
+                    </div>
+                </section>
+
+                <section id="charges" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-pound-sign"></i></span>
+                        Charges
+                    </h2>
+                    <div class="section-content">
+                        <p>Utility King gets a commission for fixing and finalizing contracts between customers and energy suppliers.</p>
+                    </div>
+                </section>
+
+                <section id="duplicate" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-copy"></i></span>
+                        Duplicate Contract Fees
+                    </h2>
+                    <div class="section-content">
+                        <p>In case of a scenario where the customer enters into a contract with a given supplier and uses Utility King Services, then this contract stands as legally binding for both parties.</p>
+                        <p>If a new contract is being initiated with another supplier and the contract is being fixed by Utility King, but the contract does not materialize, then it will not receive any fees. Utility King will incur the loss.</p>
+                    </div>
+                </section>
+
+                <section id="tenancy" class="section">
+                    <h2 class="section-title">
+                        <span class="section-icon"><i class="fas fa-building"></i></span>
+                        Change of Tenancy Notifications and Fees
+                    </h2>
+                    <div class="section-content">
+                        <p>There might be a scenario where the customer enters into a contract through Utility King but decides to change premises. If the change of premises is decided within the middle of the contract, then the contract will stand null and void. It shall be known as a change of tenancy or COT.</p>
+
+                        <p>In case of failure to notify Utility King, a penalty fee or loss will be incurred and would be liable to be paid by the supplier.</p>
+
+                        <table class="fee-table">
+                            <thead>
+                                <tr>
+                                    <th>Contract Completion</th>
+                                    <th>Fee</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>If the customer has completed more than 50% of the contract term</td>
+                                    <td>£250</td>
+                                </tr>
+                                <tr>
+                                    <td>If the term completed is less than 50% of the contract term</td>
+                                    <td>£500</td>
+                                </tr>
+                            </tbody>
+                        </table>
+
+                        <p>However, taking into consideration exceptional circumstances, Utility King might waive off both charges. However, it must not be considered fit for a waiver in each case.</p>
+                    </div>
+                </section>
+            </main>
+        </div>
+    </div>
+
+
+    <script>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 20,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Back to top button functionality
+        document.querySelector('.back-to-top').addEventListener('click', function (e) {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Highlight current section in navigation
+        const sections = document.querySelectorAll('.section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', function () {
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                    link.style.color = '#1e3c72';
+                    link.style.borderLeftColor = '#1e3c72';
+                    link.style.backgroundColor = '#f8f9ff';
+                }
+            });
+        });
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const text = document.getElementById('megaText');
+
+            // 1. Fill the text with light blue as we scroll
+            // It starts transparent with outline, turns solid blue
+            let fillPercentage = Math.min(100, scrollY / 3);
+
+            // 2. Fade out text after it fills
+            let opacity = 1;
+            if (scrollY > 300) {
+                opacity = 1 - ((scrollY - 300) / 300);
+            }
+            if (opacity < 0) opacity = 0;
+
+            // 3. Parallax Movement (Text moves up slower than scroll)
+            let translateY = scrollY * 0.5;
+
+            // Apply Styles
+            text.style.transform = `translateY(-${translateY}px)`;
+            text.style.opacity = opacity;
+            // Dynamic Stroke to Fill transition
+            // Using the light blue color #89CFF0
+            if (scrollY < 300) {
+                text.style.color = `rgba(137, 207, 240, ${scrollY / 300})`;
+            } else {
+                text.style.color = '#89CFF0';
+            }
+
+        });
+    </script>
+</body>
+</html>

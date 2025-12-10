@@ -3,13 +3,13 @@
 
 <head>
     <meta charset="utf-8">
-    <title>Contact Us to Find the Best Deals for Your Business Utilities</title>
+    <title>Get in Touch via Utility King for Expert Energy Solutions</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <meta content="Free HTML Templates" name="keywords">
     <meta content="Free HTML Templates" name="description">
 
     <!-- Favicon -->
-    <link href="/img/favicon.ico" rel="icon">
+    <link href="img/favicon.ico" rel="icon">
 
     <!-- Google Web Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -14093,7 +14093,7 @@
         .service-item {
             position: relative;
             height: 300px;
-            padding: 0 30px;
+            padding: 0 20px;
             transition: .5s;
         }
 
@@ -14250,10 +14250,7 @@
             z-index: 99;
         }
 
-        .bg-header {
-            background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/hero99.jpg) center center no-repeat;
-            background-size: cover;
-        }
+
 
         .link-animated a {
             transition: .5s;
@@ -14268,67 +14265,443 @@
                 margin-bottom: -75px;
             }
         }
+        /* Stats */
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 1rem;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-200);
+        }
+
+            .stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .stat-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--secondary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+
+        .bg-header {
+            background: linear-gradient(rgba(9, 30, 62, .7), rgba(9, 30, 62, .7)), url(../img/hero99.jpg) center top no-repeat;
+            background-size: cover;
+            background-attachment: fixed;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            display: grid;
+            place-items: center;
+        }
+
+        #threejs-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .content-wrapper {
+            position: relative;
+            z-index: 2;
+        }
+
+        .typed-cursor {
+            font-size: 3.5rem;
+            color: #ffd166;
+            animation: blink 1s infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: 0;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .display-4 {
+                font-size: 2.5rem;
+            }
+
+            .typed-cursor {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+
+    <style>
+        /* RESET */
+
+
+        /* FIXED HERO CONTAINER */
+        .hero-section {
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 50vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #e6f2ff; /* Lighter blue background */
+            overflow: hidden;
+            z-index: 1;
+            perspective: 1000px;
+        }
+
+        /* WAVY GRID ANIMATION CONTAINER */
+        .wavy-grid-container {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform: rotateX(60deg) scale(1.5);
+            transform-style: preserve-3d;
+        }
+
+        /* INDIVIDUAL GRID LINES */
+        .grid-line {
+            position: absolute;
+            width: 100%;
+            height: 1px;
+            background: rgba(137, 207, 240, 0.6); /* Light Blue */
+            box-shadow: 0 0 5px rgba(137, 207, 240, 0.4);
+        }
+
+        /* HORIZONTAL LINES - THE WAVES */
+        .h-line {
+            left: 0;
+            animation: waveMove 4s ease-in-out infinite;
+        }
+
+        /* VERTICAL LINES - FOR THE GRID EFFECT */
+        .v-line {
+            top: 0;
+            width: 1px;
+            height: 100%;
+            background: rgba(137, 207, 240, 0.4);
+            transform: translateZ(-50px); /* Push them back slightly */
+        }
+
+        /* Generate multiple lines with different delays for the wave effect */
+        .h-line:nth-child(1) {
+            top: 10%;
+            animation-delay: 0s;
+        }
+
+        .h-line:nth-child(2) {
+            top: 20%;
+            animation-delay: 0.2s;
+        }
+
+        .h-line:nth-child(3) {
+            top: 30%;
+            animation-delay: 0.4s;
+        }
+
+        .h-line:nth-child(4) {
+            top: 40%;
+            animation-delay: 0.6s;
+        }
+
+        .h-line:nth-child(5) {
+            top: 50%;
+            animation-delay: 0.8s;
+        }
+
+        .h-line:nth-child(6) {
+            top: 60%;
+            animation-delay: 1.0s;
+        }
+
+        .h-line:nth-child(7) {
+            top: 70%;
+            animation-delay: 1.2s;
+        }
+
+        .h-line:nth-child(8) {
+            top: 80%;
+            animation-delay: 1.4s;
+        }
+
+        .h-line:nth-child(9) {
+            top: 90%;
+            animation-delay: 1.6s;
+        }
+
+        .v-line:nth-child(10) {
+            left: 10%;
+        }
+
+        .v-line:nth-child(11) {
+            left: 20%;
+        }
+
+        .v-line:nth-child(12) {
+            left: 30%;
+        }
+
+        .v-line:nth-child(13) {
+            left: 40%;
+        }
+
+        .v-line:nth-child(14) {
+            left: 50%;
+        }
+
+        .v-line:nth-child(15) {
+            left: 60%;
+        }
+
+        .v-line:nth-child(16) {
+            left: 70%;
+        }
+
+        .v-line:nth-child(17) {
+            left: 80%;
+        }
+
+        .v-line:nth-child(18) {
+            left: 90%;
+        }
+
+
+        @keyframes waveMove {
+            0%, 100% {
+                transform: translateZ(0px) translateY(0px);
+            }
+
+            50% {
+                transform: translateZ(80px) translateY(-30px);
+            }
+        }
+
+        /* MAIN TEXT */
+        h1.hero-text {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14vw; /* Massive */
+            color: transparent;
+            -webkit-text-stroke: 3px #89CFF0; /*Light Blue Outline*/
+            text-transform: uppercase;
+            letter-spacing: -5px;
+            z-index: 10;
+            position: relative;
+            line-height: 0.8;
+            transition: all 0.1s;
+            font-weight: 900;
+        }
+
+        /* HUD ELEMENTS (Decorations) - Updated Color */
+        .hud-cross {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            z-index: 5;
+        }
+
+            .hud-cross::before, .hud-cross::after {
+                content: '';
+                position: absolute;
+                background: #89CFF0; /* Light Blue */
+            }
+
+            .hud-cross::before {
+                width: 100%;
+                height: 2px;
+                top: 9px;
+                left: 0;
+            }
+
+            .hud-cross::after {
+                width: 2px;
+                height: 100%;
+                top: 0;
+                left: 9px;
+            }
+
+        .tl {
+            top: 40px;
+            left: 40px;
+        }
+
+        .tr {
+            top: 40px;
+            right: 40px;
+        }
+
+        .bl {
+            bottom: 40px;
+            left: 40px;
+        }
+
+        .br {
+            bottom: 40px;
+            right: 40px;
+        }
+
+        .tech-data {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.2rem;
+            color: #89CFF0;
+            letter-spacing: 2px;
+            z-index: 20; /* Increased to sit above animation for clicking */
+            font-weight: 600;
+            background-color: darkblue;
+            color: white;
+            padding: 5px 30px;
+        }
+
+            .tech-data a {
+                color: white;
+                text-decoration: none;
+            }
+        /* SCROLLABLE CONTENT */
+        .content-block {
+            position: relative;
+            z-index: 20;
+            margin-top: 100vh;
+            background: #fff;
+            color: #222;
+            min-height: 100vh;
+            border-top: 10px solid #89CFF0; /* Light Blue Stripe */
+            box-shadow: 0 -20px 50px rgba(137, 207, 240, 0.2);
+        }
+
+        .inner-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        h2 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 4rem;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+            color: #0B1E38;
+        }
+
+        p {
+            font-size: 1.3rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            font-family: 'Segoe UI', sans-serif;
+            color: #555;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Navbar Start -->
-    <div class="container-fluid position-relative p-0">
 
-        <div class="container-fluid bg-primary py-5 bg-header" style="margin-bottom: 90px;">
-            <div class="row py-5">
-                <div class="col-12 pt-lg-5 mt-lg-5 text-center">
-                    <h1 class="display-4 text-white animated zoomIn">Contact Us</h1>
-                    <a href="index.html" class="h5 text-white">Home</a>
-                    <i class="far fa-circle text-white px-2"></i>
-                    <a href="contact.html" class="h5 text-white">Contact</a>
-                </div>
-            </div>
+    <div class="hero-section" id="hero">
+        <div class="wavy-grid-container">
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+            <div class="grid-line h-line"></div>
+
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
+            <div class="grid-line v-line"></div>
         </div>
+
+        <div class="hud-cross tl"></div>
+        <div class="hud-cross tr"></div>
+        <div class="hud-cross bl"></div>
+        <div class="hud-cross br"></div>
+        <div class="tech-data">
+            <a href="https://www.utilityking.co.uk"><i class="fas fa-home"></i> HOME</a>
+        </div>
+
+
+        <h1 class="hero-text" id="megaText">CONTACT US</h1>
     </div>
-    <!-- Navbar End -->
     <!-- Contact Start -->
-    <div class="container-fluid py-5 wow fadeInUp" data-wow-delay="0.1s">
-        <div class="container py-5">
+    <div class="container-fluid py-2 wow fadeInUp" data-wow-delay="0.1s">
+        <div class="container py-2">
             <div class="section-title text-center position-relative pb-3 mb-5 mx-auto" style="max-width: 600px;">
-                <h5 class="fw-bold text-primary text-uppercase">Contact Us</h5>
+                <h5 class="fw-bold text-primary text-uppercase">Get in touch with us</h5>
                 <h1 class="mb-0">If You Have Any Query, Feel Free To Contact Us</h1>
             </div>
-            <div class="row g-5 mb-5">
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.1s">
+            <div class="row g-2 mb-5">
+                <!--<div class="col-lg-4">
+                    <div class="h-100 border border-info border-3 p-4 d-flex flex-column  wow fadeIn" data-wow-delay="0.1s">
                         <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
                             <i class="fa fa-phone-alt text-white"></i>
                         </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Call to ask any question</h5>
-                            <h4 class="text-primary mb-0">+012 345 6789</h4>
+                        <div class="mt-2">
+                            <h5 class="mb-2">Call Us</h5>
+                            <h4 class="text-primary mb-0">+22 654 7903</h4>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.4s">
+                </div>-->
+                <div class="col-sm-6">
+                    <div class="h-100 border border-info border-3 p-4 d-flex flex-column  wow fadeIn" data-wow-delay="0.1s">
                         <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-envelope-open text-white"></i>
+                            <i class="fa fa-envelope-open text-white fs-4"></i>
                         </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Email to get free quote</h5>
+                        <div class="mt-2">
+                            <h5 class="mb-2 fw-bold">Email Us</h5>
                             <h4 class="text-primary mb-0">info@utilityking.co.uk</h4>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <div class="d-flex align-items-center wow fadeIn" data-wow-delay="0.8s">
+                <div class="col-sm-6">
+                    <div class="h-100 border border-info border-3 p-4 d-flex flex-column   wow fadeIn" data-wow-delay="0.1s">
                         <div class="bg-primary d-flex align-items-center justify-content-center rounded" style="width: 60px; height: 60px;">
-                            <i class="fa fa-map-marker-alt text-white"></i>
+                            <i class="fa fa-map-marker-alt text-white fs-4"></i>
                         </div>
-                        <div class="ps-4">
-                            <h5 class="mb-2">Visit our office</h5>
-                            <h4 class="text-primary mb-0">Ground Floor, Acuity, 13-15 Wheeler Gate, Nottingham, England, NG1 2NA</h4>
+                        <div class="mt-2">
+                            <h5 class="mb-2 fw-bold">Visit our office</h5>
+                            <h4 class="text-primary mb-0">
+                                71-75 Shelton Street ,Covent Garden , London, WC2H 9JQ
+                            </h4>
                         </div>
                     </div>
                 </div>
+
+
             </div>
             <div class="row g-5">
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.3s">
@@ -14341,23 +14714,31 @@
                                 <input type="email" class="form-control border-0 bg-light px-4" placeholder="Your Email" style="height: 55px;">
                             </div>
                             <div class="col-12">
-                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Subject" style="height: 55px;">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Phone" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Your Businessname" style="height: 55px;">
+                            </div>
+                            <div class="col-12">
+                                <input type="text" class="form-control border-0 bg-light px-4" placeholder="Enquiry Type" style="height: 55px;">
                             </div>
                             <div class="col-12">
                                 <textarea class="form-control border-0 bg-light px-4 py-3" rows="4" placeholder="Message"></textarea>
                             </div>
                             <div class="col-12">
-                                <button class="btn btn-primary w-100 py-3" type="submit">Send Message</button>
+
+                                <button class="btn  fs-5   w-100 py-3 wow zoomIn" data-wow-delay="0.9s" type="submit" style="color:white;background-color:darkblue">SEND MESSAGE <i class="fa fa-arrow-circle-right" aria-hidden="true"></i></button>
                             </div>
                         </div>
                     </form>
                 </div>
                 <div class="col-lg-6 wow slideInUp" data-wow-delay="0.6s">
                     <iframe class="position-relative rounded w-100 h-100"
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2404.095253353495!2d-1.1519782236399035!3d52.95368997216654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4879c3d35091ca27%3A0x63354erferf6!2s13%20Wheeler%20Gate%2C%20Nottingham%20NG1%202NA%2C%20UK!5e0!3m2!1sen!2sin!4v1703138843936!5m2!1sen!2sin"
+                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2482.976315723797!2d-0.12803772311029246!3d51.513650510246386!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x487604ccc2a68281%3A0x70980f5450862f57!2s71-75%20Shelton%20St%2C%20London%20WC2H%209UB%2C%20UK!5e0!3m2!1sen!2sin!4v1751281636894!5m2!1sen!2sin"
                             frameborder="0" style="min-height: 350px; border:0;" allowfullscreen="" aria-hidden="false"
                             tabindex="0"></iframe>
                 </div>
+               
             </div>
         </div>
     </div>
@@ -14365,7 +14746,10 @@
     <!-- JavaScript Libraries -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-    <script>!function (a, b) { if ("function" == typeof define && define.amd) define(["module", "exports"], b); else if ("undefined" != typeof exports) b(module, exports); else { var c = { exports: {} }; b(c, c.exports), a.WOW = c.exports } }(this, function (a, b) { "use strict"; function c(a, b) { if (!(a instanceof b)) throw new TypeError("Cannot call a class as a function") } function d(a, b) { return b.indexOf(a) >= 0 } function e(a, b) { for (var c in b) if (null == a[c]) { var d = b[c]; a[c] = d } return a } function f(a) { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(a) } function g(a) { var b = arguments.length <= 1 || void 0 === arguments[1] ? !1 : arguments[1], c = arguments.length <= 2 || void 0 === arguments[2] ? !1 : arguments[2], d = arguments.length <= 3 || void 0 === arguments[3] ? null : arguments[3], e = void 0; return null != document.createEvent ? (e = document.createEvent("CustomEvent"), e.initCustomEvent(a, b, c, d)) : null != document.createEventObject ? (e = document.createEventObject(), e.eventType = a) : e.eventName = a, e } function h(a, b) { null != a.dispatchEvent ? a.dispatchEvent(b) : b in (null != a) ? a[b]() : "on" + b in (null != a) && a["on" + b]() } function i(a, b, c) { null != a.addEventListener ? a.addEventListener(b, c, !1) : null != a.attachEvent ? a.attachEvent("on" + b, c) : a[b] = c } function j(a, b, c) { null != a.removeEventListener ? a.removeEventListener(b, c, !1) : null != a.detachEvent ? a.detachEvent("on" + b, c) : delete a[b] } function k() { return "innerHeight" in window ? window.innerHeight : document.documentElement.clientHeight } Object.defineProperty(b, "__esModule", { value: !0 }); var l, m, n = function () { function a(a, b) { for (var c = 0; c < b.length; c++) { var d = b[c]; d.enumerable = d.enumerable || !1, d.configurable = !0, "value" in d && (d.writable = !0), Object.defineProperty(a, d.key, d) } } return function (b, c, d) { return c && a(b.prototype, c), d && a(b, d), b } }(), o = window.WeakMap || window.MozWeakMap || function () { function a() { c(this, a), this.keys = [], this.values = [] } return n(a, [{ key: "get", value: function (a) { for (var b = 0; b < this.keys.length; b++) { var c = this.keys[b]; if (c === a) return this.values[b] } } }, { key: "set", value: function (a, b) { for (var c = 0; c < this.keys.length; c++) { var d = this.keys[c]; if (d === a) return this.values[c] = b, this } return this.keys.push(a), this.values.push(b), this } }]), a }(), p = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (m = l = function () { function a() { c(this, a), "undefined" != typeof console && null !== console && (console.warn("MutationObserver is not supported by your browser."), console.warn("WOW.js cannot detect dom mutations, please call .sync() after loading new content.")) } return n(a, [{ key: "observe", value: function () { } }]), a }(), l.notSupported = !0, m), q = window.getComputedStyle || function (a) { var b = /(\-([a-z]){1})/g; return { getPropertyValue: function (c) { "float" === c && (c = "styleFloat"), b.test(c) && c.replace(b, function (a, b) { return b.toUpperCase() }); var d = a.currentStyle; return (null != d ? d[c] : void 0) || null } } }, r = function () { function a() { var b = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0]; c(this, a), this.defaults = { boxClass: "wow", animateClass: "animated", offset: 0, mobile: !0, live: !0, callback: null, scrollContainer: null, resetAnimation: !0 }, this.animate = function () { return "requestAnimationFrame" in window ? function (a) { return window.requestAnimationFrame(a) } : function (a) { return a() } }(), this.vendors = ["moz", "webkit"], this.start = this.start.bind(this), this.resetAnimation = this.resetAnimation.bind(this), this.scrollHandler = this.scrollHandler.bind(this), this.scrollCallback = this.scrollCallback.bind(this), this.scrolled = !0, this.config = e(b, this.defaults), null != b.scrollContainer && (this.config.scrollContainer = document.querySelector(b.scrollContainer)), this.animationNameCache = new o, this.wowEvent = g(this.config.boxClass) } return n(a, [{ key: "init", value: function () { this.element = window.document.documentElement, d(document.readyState, ["interactive", "complete"]) ? this.start() : i(document, "DOMContentLoaded", this.start), this.finished = [] } }, { key: "start", value: function () { var a = this; if (this.stopped = !1, this.boxes = [].slice.call(this.element.querySelectorAll("." + this.config.boxClass)), this.all = this.boxes.slice(0), this.boxes.length) if (this.disabled()) this.resetStyle(); else for (var b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; this.applyStyle(c, !0) } if (this.disabled() || (i(this.config.scrollContainer || window, "scroll", this.scrollHandler), i(window, "resize", this.scrollHandler), this.interval = setInterval(this.scrollCallback, 50)), this.config.live) { var d = new p(function (b) { for (var c = 0; c < b.length; c++)for (var d = b[c], e = 0; e < d.addedNodes.length; e++) { var f = d.addedNodes[e]; a.doSync(f) } }); d.observe(document.body, { childList: !0, subtree: !0 }) } } }, { key: "stop", value: function () { this.stopped = !0, j(this.config.scrollContainer || window, "scroll", this.scrollHandler), j(window, "resize", this.scrollHandler), null != this.interval && clearInterval(this.interval) } }, { key: "sync", value: function () { p.notSupported && this.doSync(this.element) } }, { key: "doSync", value: function (a) { if ("undefined" != typeof a && null !== a || (a = this.element), 1 === a.nodeType) { a = a.parentNode || a; for (var b = a.querySelectorAll("." + this.config.boxClass), c = 0; c < b.length; c++) { var e = b[c]; d(e, this.all) || (this.boxes.push(e), this.all.push(e), this.stopped || this.disabled() ? this.resetStyle() : this.applyStyle(e, !0), this.scrolled = !0) } } } }, { key: "show", value: function (a) { return this.applyStyle(a), a.className = a.className + " " + this.config.animateClass, null != this.config.callback && this.config.callback(a), h(a, this.wowEvent), this.config.resetAnimation && (i(a, "animationend", this.resetAnimation), i(a, "oanimationend", this.resetAnimation), i(a, "webkitAnimationEnd", this.resetAnimation), i(a, "MSAnimationEnd", this.resetAnimation)), a } }, { key: "applyStyle", value: function (a, b) { var c = this, d = a.getAttribute("data-wow-duration"), e = a.getAttribute("data-wow-delay"), f = a.getAttribute("data-wow-iteration"); return this.animate(function () { return c.customStyle(a, b, d, e, f) }) } }, { key: "resetStyle", value: function () { for (var a = 0; a < this.boxes.length; a++) { var b = this.boxes[a]; b.style.visibility = "visible" } } }, { key: "resetAnimation", value: function (a) { if (a.type.toLowerCase().indexOf("animationend") >= 0) { var b = a.target || a.srcElement; b.className = b.className.replace(this.config.animateClass, "").trim() } } }, { key: "customStyle", value: function (a, b, c, d, e) { return b && this.cacheAnimationName(a), a.style.visibility = b ? "hidden" : "visible", c && this.vendorSet(a.style, { animationDuration: c }), d && this.vendorSet(a.style, { animationDelay: d }), e && this.vendorSet(a.style, { animationIterationCount: e }), this.vendorSet(a.style, { animationName: b ? "none" : this.cachedAnimationName(a) }), a } }, { key: "vendorSet", value: function (a, b) { for (var c in b) if (b.hasOwnProperty(c)) { var d = b[c]; a["" + c] = d; for (var e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; a["" + f + c.charAt(0).toUpperCase() + c.substr(1)] = d } } } }, { key: "vendorCSS", value: function (a, b) { for (var c = q(a), d = c.getPropertyCSSValue(b), e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; d = d || c.getPropertyCSSValue("-" + f + "-" + b) } return d } }, { key: "animationName", value: function (a) { var b = void 0; try { b = this.vendorCSS(a, "animation-name").cssText } catch (c) { b = q(a).getPropertyValue("animation-name") } return "none" === b ? "" : b } }, { key: "cacheAnimationName", value: function (a) { return this.animationNameCache.set(a, this.animationName(a)) } }, { key: "cachedAnimationName", value: function (a) { return this.animationNameCache.get(a) } }, { key: "scrollHandler", value: function () { this.scrolled = !0 } }, { key: "scrollCallback", value: function () { if (this.scrolled) { this.scrolled = !1; for (var a = [], b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; if (c) { if (this.isVisible(c)) { this.show(c); continue } a.push(c) } } this.boxes = a, this.boxes.length || this.config.live || this.stop() } } }, { key: "offsetTop", value: function (a) { for (; void 0 === a.offsetTop;)a = a.parentNode; for (var b = a.offsetTop; a.offsetParent;)a = a.offsetParent, b += a.offsetTop; return b } }, { key: "isVisible", value: function (a) { var b = a.getAttribute("data-wow-offset") || this.config.offset, c = this.config.scrollContainer && this.config.scrollContainer.scrollTop || window.pageYOffset, d = c + Math.min(this.element.clientHeight, k()) - b, e = this.offsetTop(a), f = e + a.clientHeight; return d >= e && f >= c } }, { key: "disabled", value: function () { return !this.config.mobile && f(navigator.userAgent) } }]), a }(); b["default"] = r, a.exports = b["default"] });
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        !function (a, b) { if ("function" == typeof define && define.amd) define(["module", "exports"], b); else if ("undefined" != typeof exports) b(module, exports); else { var c = { exports: {} }; b(c, c.exports), a.WOW = c.exports } }(this, function (a, b) { "use strict"; function c(a, b) { if (!(a instanceof b)) throw new TypeError("Cannot call a class as a function") } function d(a, b) { return b.indexOf(a) >= 0 } function e(a, b) { for (var c in b) if (null == a[c]) { var d = b[c]; a[c] = d } return a } function f(a) { return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(a) } function g(a) { var b = arguments.length <= 1 || void 0 === arguments[1] ? !1 : arguments[1], c = arguments.length <= 2 || void 0 === arguments[2] ? !1 : arguments[2], d = arguments.length <= 3 || void 0 === arguments[3] ? null : arguments[3], e = void 0; return null != document.createEvent ? (e = document.createEvent("CustomEvent"), e.initCustomEvent(a, b, c, d)) : null != document.createEventObject ? (e = document.createEventObject(), e.eventType = a) : e.eventName = a, e } function h(a, b) { null != a.dispatchEvent ? a.dispatchEvent(b) : b in (null != a) ? a[b]() : "on" + b in (null != a) && a["on" + b]() } function i(a, b, c) { null != a.addEventListener ? a.addEventListener(b, c, !1) : null != a.attachEvent ? a.attachEvent("on" + b, c) : a[b] = c } function j(a, b, c) { null != a.removeEventListener ? a.removeEventListener(b, c, !1) : null != a.detachEvent ? a.detachEvent("on" + b, c) : delete a[b] } function k() { return "innerHeight" in window ? window.innerHeight : document.documentElement.clientHeight } Object.defineProperty(b, "__esModule", { value: !0 }); var l, m, n = function () { function a(a, b) { for (var c = 0; c < b.length; c++) { var d = b[c]; d.enumerable = d.enumerable || !1, d.configurable = !0, "value" in d && (d.writable = !0), Object.defineProperty(a, d.key, d) } } return function (b, c, d) { return c && a(b.prototype, c), d && a(b, d), b } }(), o = window.WeakMap || window.MozWeakMap || function () { function a() { c(this, a), this.keys = [], this.values = [] } return n(a, [{ key: "get", value: function (a) { for (var b = 0; b < this.keys.length; b++) { var c = this.keys[b]; if (c === a) return this.values[b] } } }, { key: "set", value: function (a, b) { for (var c = 0; c < this.keys.length; c++) { var d = this.keys[c]; if (d === a) return this.values[c] = b, this } return this.keys.push(a), this.values.push(b), this } }]), a }(), p = window.MutationObserver || window.WebkitMutationObserver || window.MozMutationObserver || (m = l = function () { function a() { c(this, a), "undefined" != typeof console && null !== console && (console.warn("MutationObserver is not supported by your browser."), console.warn("WOW.js cannot detect dom mutations, please call .sync() after loading new content.")) } return n(a, [{ key: "observe", value: function () { } }]), a }(), l.notSupported = !0, m), q = window.getComputedStyle || function (a) { var b = /(\-([a-z]){1})/g; return { getPropertyValue: function (c) { "float" === c && (c = "styleFloat"), b.test(c) && c.replace(b, function (a, b) { return b.toUpperCase() }); var d = a.currentStyle; return (null != d ? d[c] : void 0) || null } } }, r = function () { function a() { var b = arguments.length <= 0 || void 0 === arguments[0] ? {} : arguments[0]; c(this, a), this.defaults = { boxClass: "wow", animateClass: "animated", offset: 0, mobile: !0, live: !0, callback: null, scrollContainer: null, resetAnimation: !0 }, this.animate = function () { return "requestAnimationFrame" in window ? function (a) { return window.requestAnimationFrame(a) } : function (a) { return a() } }(), this.vendors = ["moz", "webkit"], this.start = this.start.bind(this), this.resetAnimation = this.resetAnimation.bind(this), this.scrollHandler = this.scrollHandler.bind(this), this.scrollCallback = this.scrollCallback.bind(this), this.scrolled = !0, this.config = e(b, this.defaults), null != b.scrollContainer && (this.config.scrollContainer = document.querySelector(b.scrollContainer)), this.animationNameCache = new o, this.wowEvent = g(this.config.boxClass) } return n(a, [{ key: "init", value: function () { this.element = window.document.documentElement, d(document.readyState, ["interactive", "complete"]) ? this.start() : i(document, "DOMContentLoaded", this.start), this.finished = [] } }, { key: "start", value: function () { var a = this; if (this.stopped = !1, this.boxes = [].slice.call(this.element.querySelectorAll("." + this.config.boxClass)), this.all = this.boxes.slice(0), this.boxes.length) if (this.disabled()) this.resetStyle(); else for (var b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; this.applyStyle(c, !0) } if (this.disabled() || (i(this.config.scrollContainer || window, "scroll", this.scrollHandler), i(window, "resize", this.scrollHandler), this.interval = setInterval(this.scrollCallback, 50)), this.config.live) { var d = new p(function (b) { for (var c = 0; c < b.length; c++)for (var d = b[c], e = 0; e < d.addedNodes.length; e++) { var f = d.addedNodes[e]; a.doSync(f) } }); d.observe(document.body, { childList: !0, subtree: !0 }) } } }, { key: "stop", value: function () { this.stopped = !0, j(this.config.scrollContainer || window, "scroll", this.scrollHandler), j(window, "resize", this.scrollHandler), null != this.interval && clearInterval(this.interval) } }, { key: "sync", value: function () { p.notSupported && this.doSync(this.element) } }, { key: "doSync", value: function (a) { if ("undefined" != typeof a && null !== a || (a = this.element), 1 === a.nodeType) { a = a.parentNode || a; for (var b = a.querySelectorAll("." + this.config.boxClass), c = 0; c < b.length; c++) { var e = b[c]; d(e, this.all) || (this.boxes.push(e), this.all.push(e), this.stopped || this.disabled() ? this.resetStyle() : this.applyStyle(e, !0), this.scrolled = !0) } } } }, { key: "show", value: function (a) { return this.applyStyle(a), a.className = a.className + " " + this.config.animateClass, null != this.config.callback && this.config.callback(a), h(a, this.wowEvent), this.config.resetAnimation && (i(a, "animationend", this.resetAnimation), i(a, "oanimationend", this.resetAnimation), i(a, "webkitAnimationEnd", this.resetAnimation), i(a, "MSAnimationEnd", this.resetAnimation)), a } }, { key: "applyStyle", value: function (a, b) { var c = this, d = a.getAttribute("data-wow-duration"), e = a.getAttribute("data-wow-delay"), f = a.getAttribute("data-wow-iteration"); return this.animate(function () { return c.customStyle(a, b, d, e, f) }) } }, { key: "resetStyle", value: function () { for (var a = 0; a < this.boxes.length; a++) { var b = this.boxes[a]; b.style.visibility = "visible" } } }, { key: "resetAnimation", value: function (a) { if (a.type.toLowerCase().indexOf("animationend") >= 0) { var b = a.target || a.srcElement; b.className = b.className.replace(this.config.animateClass, "").trim() } } }, { key: "customStyle", value: function (a, b, c, d, e) { return b && this.cacheAnimationName(a), a.style.visibility = b ? "hidden" : "visible", c && this.vendorSet(a.style, { animationDuration: c }), d && this.vendorSet(a.style, { animationDelay: d }), e && this.vendorSet(a.style, { animationIterationCount: e }), this.vendorSet(a.style, { animationName: b ? "none" : this.cachedAnimationName(a) }), a } }, { key: "vendorSet", value: function (a, b) { for (var c in b) if (b.hasOwnProperty(c)) { var d = b[c]; a["" + c] = d; for (var e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; a["" + f + c.charAt(0).toUpperCase() + c.substr(1)] = d } } } }, { key: "vendorCSS", value: function (a, b) { for (var c = q(a), d = c.getPropertyCSSValue(b), e = 0; e < this.vendors.length; e++) { var f = this.vendors[e]; d = d || c.getPropertyCSSValue("-" + f + "-" + b) } return d } }, { key: "animationName", value: function (a) { var b = void 0; try { b = this.vendorCSS(a, "animation-name").cssText } catch (c) { b = q(a).getPropertyValue("animation-name") } return "none" === b ? "" : b } }, { key: "cacheAnimationName", value: function (a) { return this.animationNameCache.set(a, this.animationName(a)) } }, { key: "cachedAnimationName", value: function (a) { return this.animationNameCache.get(a) } }, { key: "scrollHandler", value: function () { this.scrolled = !0 } }, { key: "scrollCallback", value: function () { if (this.scrolled) { this.scrolled = !1; for (var a = [], b = 0; b < this.boxes.length; b++) { var c = this.boxes[b]; if (c) { if (this.isVisible(c)) { this.show(c); continue } a.push(c) } } this.boxes = a, this.boxes.length || this.config.live || this.stop() } } }, { key: "offsetTop", value: function (a) { for (; void 0 === a.offsetTop;)a = a.parentNode; for (var b = a.offsetTop; a.offsetParent;)a = a.offsetParent, b += a.offsetTop; return b } }, { key: "isVisible", value: function (a) { var b = a.getAttribute("data-wow-offset") || this.config.offset, c = this.config.scrollContainer && this.config.scrollContainer.scrollTop || window.pageYOffset, d = c + Math.min(this.element.clientHeight, k()) - b, e = this.offsetTop(a), f = e + a.clientHeight; return d >= e && f >= c } }, { key: "disabled", value: function () { return !this.config.mobile && f(navigator.userAgent) } }]), a }(); b["default"] = r, a.exports = b["default"] });
         !function (n) { "function" == typeof define && define.amd ? define(["jquery"], function (e) { return n(e) }) : "object" == typeof module && "object" == typeof module.exports ? exports = n(require("jquery")) : n(jQuery) }(function (n) { function e(n) { var e = 7.5625, t = 2.75; return n < 1 / t ? e * n * n : n < 2 / t ? e * (n -= 1.5 / t) * n + .75 : n < 2.5 / t ? e * (n -= 2.25 / t) * n + .9375 : e * (n -= 2.625 / t) * n + .984375 } void 0 !== n.easing && (n.easing.jswing = n.easing.swing); var t = Math.pow, u = Math.sqrt, r = Math.sin, i = Math.cos, a = Math.PI, c = 1.70158, o = 1.525 * c, s = 2 * a / 3, f = 2 * a / 4.5; n.extend(n.easing, { def: "easeOutQuad", swing: function (e) { return n.easing[n.easing.def](e) }, easeInQuad: function (n) { return n * n }, easeOutQuad: function (n) { return 1 - (1 - n) * (1 - n) }, easeInOutQuad: function (n) { return n < .5 ? 2 * n * n : 1 - t(-2 * n + 2, 2) / 2 }, easeInCubic: function (n) { return n * n * n }, easeOutCubic: function (n) { return 1 - t(1 - n, 3) }, easeInOutCubic: function (n) { return n < .5 ? 4 * n * n * n : 1 - t(-2 * n + 2, 3) / 2 }, easeInQuart: function (n) { return n * n * n * n }, easeOutQuart: function (n) { return 1 - t(1 - n, 4) }, easeInOutQuart: function (n) { return n < .5 ? 8 * n * n * n * n : 1 - t(-2 * n + 2, 4) / 2 }, easeInQuint: function (n) { return n * n * n * n * n }, easeOutQuint: function (n) { return 1 - t(1 - n, 5) }, easeInOutQuint: function (n) { return n < .5 ? 16 * n * n * n * n * n : 1 - t(-2 * n + 2, 5) / 2 }, easeInSine: function (n) { return 1 - i(n * a / 2) }, easeOutSine: function (n) { return r(n * a / 2) }, easeInOutSine: function (n) { return -(i(a * n) - 1) / 2 }, easeInExpo: function (n) { return 0 === n ? 0 : t(2, 10 * n - 10) }, easeOutExpo: function (n) { return 1 === n ? 1 : 1 - t(2, -10 * n) }, easeInOutExpo: function (n) { return 0 === n ? 0 : 1 === n ? 1 : n < .5 ? t(2, 20 * n - 10) / 2 : (2 - t(2, -20 * n + 10)) / 2 }, easeInCirc: function (n) { return 1 - u(1 - t(n, 2)) }, easeOutCirc: function (n) { return u(1 - t(n - 1, 2)) }, easeInOutCirc: function (n) { return n < .5 ? (1 - u(1 - t(2 * n, 2))) / 2 : (u(1 - t(-2 * n + 2, 2)) + 1) / 2 }, easeInElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : -t(2, 10 * n - 10) * r((10 * n - 10.75) * s) }, easeOutElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : t(2, -10 * n) * r((10 * n - .75) * s) + 1 }, easeInOutElastic: function (n) { return 0 === n ? 0 : 1 === n ? 1 : n < .5 ? -(t(2, 20 * n - 10) * r((20 * n - 11.125) * f)) / 2 : t(2, -20 * n + 10) * r((20 * n - 11.125) * f) / 2 + 1 }, easeInBack: function (n) { return (c + 1) * n * n * n - c * n * n }, easeOutBack: function (n) { return 1 + (c + 1) * t(n - 1, 3) + c * t(n - 1, 2) }, easeInOutBack: function (n) { return n < .5 ? t(2 * n, 2) * (7.189819 * n - o) / 2 : (t(2 * n - 2, 2) * ((o + 1) * (2 * n - 2) + o) + 2) / 2 }, easeInBounce: function (n) { return 1 - e(1 - n) }, easeOutBounce: e, easeInOutBounce: function (n) { return n < .5 ? (1 - e(1 - 2 * n)) / 2 : (1 + e(2 * n - 1)) / 2 } }) });
 
         !function () { "use strict"; function t(o) { if (!o) throw new Error("No options passed to Waypoint constructor"); if (!o.element) throw new Error("No element option passed to Waypoint constructor"); if (!o.handler) throw new Error("No handler option passed to Waypoint constructor"); this.key = "waypoint-" + e, this.options = t.Adapter.extend({}, t.defaults, o), this.element = this.options.element, this.adapter = new t.Adapter(this.element), this.callback = o.handler, this.axis = this.options.horizontal ? "horizontal" : "vertical", this.enabled = this.options.enabled, this.triggerPoint = null, this.group = t.Group.findOrCreate({ name: this.options.group, axis: this.axis }), this.context = t.Context.findOrCreateByElement(this.options.context), t.offsetAliases[this.options.offset] && (this.options.offset = t.offsetAliases[this.options.offset]), this.group.add(this), this.context.add(this), i[this.key] = this, e += 1 } var e = 0, i = {}; t.prototype.queueTrigger = function (t) { this.group.queueTrigger(this, t) }, t.prototype.trigger = function (t) { this.enabled && this.callback && this.callback.apply(this, t) }, t.prototype.destroy = function () { this.context.remove(this), this.group.remove(this), delete i[this.key] }, t.prototype.disable = function () { return this.enabled = !1, this }, t.prototype.enable = function () { return this.context.refresh(), this.enabled = !0, this }, t.prototype.next = function () { return this.group.next(this) }, t.prototype.previous = function () { return this.group.previous(this) }, t.invokeAll = function (t) { var e = []; for (var o in i) e.push(i[o]); for (var n = 0, r = e.length; r > n; n++)e[n][t]() }, t.destroyAll = function () { t.invokeAll("destroy") }, t.disableAll = function () { t.invokeAll("disable") }, t.enableAll = function () { t.Context.refreshAll(); for (var e in i) i[e].enabled = !0; return this }, t.refreshAll = function () { t.Context.refreshAll() }, t.viewportHeight = function () { return window.innerHeight || document.documentElement.clientHeight }, t.viewportWidth = function () { return document.documentElement.clientWidth }, t.adapters = [], t.defaults = { context: window, continuous: !0, enabled: !0, group: "default", horizontal: !1, offset: 0 }, t.offsetAliases = { "bottom-in-view": function () { return this.context.innerHeight() - this.adapter.outerHeight() }, "right-in-view": function () { return this.context.innerWidth() - this.adapter.outerWidth() } }, window.Waypoint = t }(), function () { "use strict"; function t(t) { window.setTimeout(t, 1e3 / 60) } function e(t) { this.element = t, this.Adapter = n.Adapter, this.adapter = new this.Adapter(t), this.key = "waypoint-context-" + i, this.didScroll = !1, this.didResize = !1, this.oldScroll = { x: this.adapter.scrollLeft(), y: this.adapter.scrollTop() }, this.waypoints = { vertical: {}, horizontal: {} }, t.waypointContextKey = this.key, o[t.waypointContextKey] = this, i += 1, n.windowContext || (n.windowContext = !0, n.windowContext = new e(window)), this.createThrottledScrollHandler(), this.createThrottledResizeHandler() } var i = 0, o = {}, n = window.Waypoint, r = window.onload; e.prototype.add = function (t) { var e = t.options.horizontal ? "horizontal" : "vertical"; this.waypoints[e][t.key] = t, this.refresh() }, e.prototype.checkEmpty = function () { var t = this.Adapter.isEmptyObject(this.waypoints.horizontal), e = this.Adapter.isEmptyObject(this.waypoints.vertical), i = this.element == this.element.window; t && e && !i && (this.adapter.off(".waypoints"), delete o[this.key]) }, e.prototype.createThrottledResizeHandler = function () { function t() { e.handleResize(), e.didResize = !1 } var e = this; this.adapter.on("resize.waypoints", function () { e.didResize || (e.didResize = !0, n.requestAnimationFrame(t)) }) }, e.prototype.createThrottledScrollHandler = function () { function t() { e.handleScroll(), e.didScroll = !1 } var e = this; this.adapter.on("scroll.waypoints", function () { (!e.didScroll || n.isTouch) && (e.didScroll = !0, n.requestAnimationFrame(t)) }) }, e.prototype.handleResize = function () { n.Context.refreshAll() }, e.prototype.handleScroll = function () { var t = {}, e = { horizontal: { newScroll: this.adapter.scrollLeft(), oldScroll: this.oldScroll.x, forward: "right", backward: "left" }, vertical: { newScroll: this.adapter.scrollTop(), oldScroll: this.oldScroll.y, forward: "down", backward: "up" } }; for (var i in e) { var o = e[i], n = o.newScroll > o.oldScroll, r = n ? o.forward : o.backward; for (var s in this.waypoints[i]) { var a = this.waypoints[i][s]; if (null !== a.triggerPoint) { var l = o.oldScroll < a.triggerPoint, h = o.newScroll >= a.triggerPoint, p = l && h, u = !l && !h; (p || u) && (a.queueTrigger(r), t[a.group.id] = a.group) } } } for (var c in t) t[c].flushTriggers(); this.oldScroll = { x: e.horizontal.newScroll, y: e.vertical.newScroll } }, e.prototype.innerHeight = function () { return this.element == this.element.window ? n.viewportHeight() : this.adapter.innerHeight() }, e.prototype.remove = function (t) { delete this.waypoints[t.axis][t.key], this.checkEmpty() }, e.prototype.innerWidth = function () { return this.element == this.element.window ? n.viewportWidth() : this.adapter.innerWidth() }, e.prototype.destroy = function () { var t = []; for (var e in this.waypoints) for (var i in this.waypoints[e]) t.push(this.waypoints[e][i]); for (var o = 0, n = t.length; n > o; o++)t[o].destroy() }, e.prototype.refresh = function () { var t, e = this.element == this.element.window, i = e ? void 0 : this.adapter.offset(), o = {}; this.handleScroll(), t = { horizontal: { contextOffset: e ? 0 : i.left, contextScroll: e ? 0 : this.oldScroll.x, contextDimension: this.innerWidth(), oldScroll: this.oldScroll.x, forward: "right", backward: "left", offsetProp: "left" }, vertical: { contextOffset: e ? 0 : i.top, contextScroll: e ? 0 : this.oldScroll.y, contextDimension: this.innerHeight(), oldScroll: this.oldScroll.y, forward: "down", backward: "up", offsetProp: "top" } }; for (var r in t) { var s = t[r]; for (var a in this.waypoints[r]) { var l, h, p, u, c, d = this.waypoints[r][a], f = d.options.offset, w = d.triggerPoint, y = 0, g = null == w; d.element !== d.element.window && (y = d.adapter.offset()[s.offsetProp]), "function" == typeof f ? f = f.apply(d) : "string" == typeof f && (f = parseFloat(f), d.options.offset.indexOf("%") > -1 && (f = Math.ceil(s.contextDimension * f / 100))), l = s.contextScroll - s.contextOffset, d.triggerPoint = Math.floor(y + l - f), h = w < s.oldScroll, p = d.triggerPoint >= s.oldScroll, u = h && p, c = !h && !p, !g && u ? (d.queueTrigger(s.backward), o[d.group.id] = d.group) : !g && c ? (d.queueTrigger(s.forward), o[d.group.id] = d.group) : g && s.oldScroll >= d.triggerPoint && (d.queueTrigger(s.forward), o[d.group.id] = d.group) } } return n.requestAnimationFrame(function () { for (var t in o) o[t].flushTriggers() }), this }, e.findOrCreateByElement = function (t) { return e.findByElement(t) || new e(t) }, e.refreshAll = function () { for (var t in o) o[t].refresh() }, e.findByElement = function (t) { return o[t.waypointContextKey] }, window.onload = function () { r && r(), e.refreshAll() }, n.requestAnimationFrame = function (e) { var i = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame || t; i.call(window, e) }, n.Context = e }(), function () { "use strict"; function t(t, e) { return t.triggerPoint - e.triggerPoint } function e(t, e) { return e.triggerPoint - t.triggerPoint } function i(t) { this.name = t.name, this.axis = t.axis, this.id = this.name + "-" + this.axis, this.waypoints = [], this.clearTriggerQueues(), o[this.axis][this.name] = this } var o = { vertical: {}, horizontal: {} }, n = window.Waypoint; i.prototype.add = function (t) { this.waypoints.push(t) }, i.prototype.clearTriggerQueues = function () { this.triggerQueues = { up: [], down: [], left: [], right: [] } }, i.prototype.flushTriggers = function () { for (var i in this.triggerQueues) { var o = this.triggerQueues[i], n = "up" === i || "left" === i; o.sort(n ? e : t); for (var r = 0, s = o.length; s > r; r += 1) { var a = o[r]; (a.options.continuous || r === o.length - 1) && a.trigger([i]) } } this.clearTriggerQueues() }, i.prototype.next = function (e) { this.waypoints.sort(t); var i = n.Adapter.inArray(e, this.waypoints), o = i === this.waypoints.length - 1; return o ? null : this.waypoints[i + 1] }, i.prototype.previous = function (e) { this.waypoints.sort(t); var i = n.Adapter.inArray(e, this.waypoints); return i ? this.waypoints[i - 1] : null }, i.prototype.queueTrigger = function (t, e) { this.triggerQueues[e].push(t) }, i.prototype.remove = function (t) { var e = n.Adapter.inArray(t, this.waypoints); e > -1 && this.waypoints.splice(e, 1) }, i.prototype.first = function () { return this.waypoints[0] }, i.prototype.last = function () { return this.waypoints[this.waypoints.length - 1] }, i.findOrCreate = function (t) { return o[t.axis][t.name] || new i(t) }, n.Group = i }(), function () { "use strict"; function t(t) { this.$element = e(t) } var e = window.jQuery, i = window.Waypoint; e.each(["innerHeight", "innerWidth", "off", "offset", "on", "outerHeight", "outerWidth", "scrollLeft", "scrollTop"], function (e, i) { t.prototype[i] = function () { var t = Array.prototype.slice.call(arguments); return this.$element[i].apply(this.$element, t) } }), e.each(["extend", "inArray", "isEmptyObject"], function (i, o) { t[o] = e[o] }), i.adapters.push({ name: "jquery", Adapter: t }), i.Adapter = t }(), function () { "use strict"; function t(t) { return function () { var i = [], o = arguments[0]; return t.isFunction(arguments[0]) && (o = t.extend({}, arguments[1]), o.handler = arguments[0]), this.each(function () { var n = t.extend({}, o, { element: this }); "string" == typeof n.context && (n.context = t(this).closest(n.context)[0]), i.push(new e(n)) }), i } } var e = window.Waypoint; window.jQuery && (window.jQuery.fn.waypoint = t(window.jQuery)), window.Zepto && (window.Zepto.fn.waypoint = t(window.Zepto)) }();
@@ -14502,6 +14886,182 @@
             });
 
         })(jQuery);
+
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            // Initialize Typed.js
+            setTimeout(function () {
+                new Typed('#typed-text', {
+                    strings: ['Contact Us'],
+                    typeSpeed: 80,
+                    startDelay: 300,
+                    showCursor: false,
+                    cursorChar: '|',
+                    loop: false,
+
+                });
+            }, 500);
+
+            // Initialize Three.js
+            initThreeJS();
+        });
+
+        function initThreeJS() {
+            // Get container
+            const container = document.getElementById('threejs-container');
+
+            // Create scene
+            const scene = new THREE.Scene();
+
+            // Create camera
+            const camera = new THREE.PerspectiveCamera(
+                75,
+                container.clientWidth / container.clientHeight,
+                0.1,
+                1000
+            );
+            camera.position.z = 5;
+
+            // Create renderer
+            const renderer = new THREE.WebGLRenderer({
+                alpha: true,
+                antialias: true
+            });
+            renderer.setSize(container.clientWidth, container.clientHeight);
+            renderer.setClearColor(0x000000, 0); // Transparent background
+            container.appendChild(renderer.domElement);
+
+            // Create abstract shapes
+            const shapes = [];
+            const colors = [0x4cc9f0, 0x4361ee, 0x3a0ca3, 0x7209b7, 0xf72585];
+
+            // Create multiple floating shapes
+            for (let i = 0; i < 15; i++) {
+                let geometry;
+
+                // Different shapes
+                switch (Math.floor(Math.random() * 4)) {
+                    case 0:
+                        geometry = new THREE.IcosahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 1:
+                        geometry = new THREE.TorusGeometry(
+                            Math.random() * 0.3 + 0.1,
+                            Math.random() * 0.1 + 0.05,
+                            8, 20
+                        );
+                        break;
+                    case 2:
+                        geometry = new THREE.OctahedronGeometry(Math.random() * 0.3 + 0.1);
+                        break;
+                    case 3:
+                        geometry = new THREE.TorusKnotGeometry(
+                            Math.random() * 0.2 + 0.1,
+                            Math.random() * 0.05 + 0.02,
+                            64, 8, 2, 3
+                        );
+                        break;
+                }
+
+                const material = new THREE.MeshPhongMaterial({
+                    color: colors[Math.floor(Math.random() * colors.length)],
+                    transparent: true,
+                    opacity: 0.3,
+                    shininess: 100
+                });
+
+                const shape = new THREE.Mesh(geometry, material);
+
+                // Random position
+                shape.position.x = (Math.random() - 0.5) * 10;
+                shape.position.y = (Math.random() - 0.5) * 6;
+                shape.position.z = (Math.random() - 0.5) * 10;
+
+                // Store rotation speed
+                shape.userData = {
+                    rotationSpeedX: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedY: (Math.random() - 0.5) * 0.02,
+                    rotationSpeedZ: (Math.random() - 0.5) * 0.02,
+                    floatSpeed: Math.random() * 0.02 + 0.01
+                };
+
+                scene.add(shape);
+                shapes.push(shape);
+            }
+
+            // Add lights
+            const ambientLight = new THREE.AmbientLight(0xffffff, 0.3);
+            scene.add(ambientLight);
+
+            const directionalLight = new THREE.DirectionalLight(0xffffff, 0.5);
+            directionalLight.position.set(5, 5, 5);
+            scene.add(directionalLight);
+
+            // Handle window resize
+            window.addEventListener('resize', function () {
+                camera.aspect = container.clientWidth / container.clientHeight;
+                camera.updateProjectionMatrix();
+                renderer.setSize(container.clientWidth, container.clientHeight);
+            });
+
+            // Animation loop
+            function animate() {
+                requestAnimationFrame(animate);
+
+                // Animate shapes
+                shapes.forEach(shape => {
+                    shape.rotation.x += shape.userData.rotationSpeedX;
+                    shape.rotation.y += shape.userData.rotationSpeedY;
+                    shape.rotation.z += shape.userData.rotationSpeedZ;
+
+                    // Floating motion
+                    shape.position.y += Math.sin(Date.now() * 0.001 * shape.userData.floatSpeed) * 0.002;
+                });
+
+                // Rotate camera slightly
+                camera.position.x = Math.sin(Date.now() * 0.0005) * 2;
+                camera.position.y = Math.cos(Date.now() * 0.0003) * 1;
+                camera.lookAt(scene.position);
+
+                renderer.render(scene, camera);
+            }
+
+            animate();
+        }
+    </script>
+    <script>
+        window.addEventListener('scroll', () => {
+            const scrollY = window.scrollY;
+            const text = document.getElementById('megaText');
+
+            // 1. Fill the text with light blue as we scroll
+            // It starts transparent with outline, turns solid blue
+            let fillPercentage = Math.min(100, scrollY / 3);
+
+            // 2. Fade out text after it fills
+            let opacity = 1;
+            if (scrollY > 300) {
+                opacity = 1 - ((scrollY - 300) / 300);
+            }
+            if (opacity < 0) opacity = 0;
+
+            // 3. Parallax Movement (Text moves up slower than scroll)
+            let translateY = scrollY * 0.5;
+
+            // Apply Styles
+            text.style.transform = `translateY(-${translateY}px)`;
+            text.style.opacity = opacity;
+            // Dynamic Stroke to Fill transition
+            // Using the light blue color #89CFF0
+            if (scrollY < 300) {
+                text.style.color = `rgba(137, 207, 240, ${scrollY / 300})`;
+            } else {
+                text.style.color = '#89CFF0';
+            }
+
+        });
     </script>
 </body>
 
