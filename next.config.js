@@ -23,6 +23,14 @@ const nextConfig = {
       },
     ],
   },
+  async rewrites() {
+    return [
+      {
+        source: '/about',
+        destination: '/about.html',
+      },
+    ]
+  },
 };
 
 module.exports = nextConfig;
