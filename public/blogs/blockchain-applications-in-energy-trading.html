@@ -1,0 +1,945 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockchain in Energy Trading: Transforming Business Transactions | UtilityKing</title>
+    <meta name="description" content="Discover how blockchain technology revolutionizes energy trading for businesses. Secure, transparent P2P energy transactions with smart contracts and UtilityKing.">
+    <meta name="keywords" content="blockchain energy trading, smart contracts energy, P2P energy trading, decentralized energy, UtilityKing blockchain">
+    <link rel="canonical" href="https://utilityking.co.uk/blockchain-applications-in-energy-trading" />
+    <link rel="alternate" href="https://utilityking.co.uk/blockchain-applications-in-energy-trading/" hreflang="en" />
+    <link rel="alternate" href="https://utilityking.co.uk/blockchain-applications-in-energy-trading/" hreflang="x-default" />
+    <script src="/layout/scripts/jquery.min.js"></script>
+    <script src="/js/headerfooter.js"></script>
+    <script src="/js/script.js"></script>
+    <style>
+        :root {
+            --primary: #1e3a5f;
+            --secondary: #4a6fa5;
+            --accent: #00d4aa;
+            --light: #f8f9fa;
+            --dark: #0f1c2e;
+            --text: #2c3e50;
+            --text-light: #6c757d;
+            --border: #e9ecef;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            line-height: 1.7;
+            color: var(--text);
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.1"><polygon points="1000,100 1000,0 0,100"/></svg>');
+                background-size: cover;
+            }
+
+        .hero-content {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 700;
+            color:#fff;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            opacity: 0.95;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn {
+            display: inline-block;
+            background: var(--accent);
+            color: var(--dark);
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 6px 20px rgba(0, 212, 170, 0.3);
+            text-decoration: none;
+        }
+
+            .btn:hover {
+                background: #00b894;
+                transform: translateY(-3px);
+                box-shadow: 0 8px 25px rgba(0, 212, 170, 0.4);
+            }
+
+        /* Content Sections */
+        section {
+            padding: 10px 0;
+        }
+
+        .section-card {
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            padding: 50px;
+            margin-bottom: 40px;
+            transition: var(--transition);
+            border-left: 5px solid var(--accent);
+        }
+
+            .section-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+        h2 {
+            font-size: 2.3rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 4px;
+                background: var(--accent);
+                border-radius: 2px;
+            }
+
+        h3 {
+            font-size: 1.6rem;
+            margin: 2rem 0 1rem;
+            color: var(--primary);
+        }
+
+        h4 {
+            font-size: 1.3rem;
+            margin: 1.5rem 0 0.8rem;
+            color: var(--secondary);
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .highlight-box::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 200%;
+                background: rgba(255, 255, 255, 0.1);
+                transform: rotate(30deg);
+            }
+
+        .highlight-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Content Lists */
+        .content-list {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+            .content-list li {
+                margin-bottom: 15px;
+                padding-left: 40px;
+                position: relative;
+                font-size: 1.1rem;
+            }
+
+                .content-list li::before {
+                    content: '✓';
+                    position: absolute;
+                    left: 0;
+                    top: -2px;
+                    width: 28px;
+                    height: 28px;
+                    background: var(--accent);
+                    color: var(--dark);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 0.9rem;
+                }
+
+        /* Fact Box */
+        .fact-box {
+            background: #e8f6f3;
+            border-left: 5px solid var(--accent);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+
+            .fact-box::before {
+                content: '🔗';
+                position: absolute;
+                left: 25px;
+                top: 25px;
+                font-size: 1.5rem;
+            }
+
+        .fact-content {
+            margin-left: 50px;
+        }
+
+        .fact-box strong {
+            color: var(--primary);
+        }
+
+        /* Key Takeaway */
+        .key-takeaway {
+            background: #ebf5fb;
+            border-left: 5px solid var(--secondary);
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 var(--radius) var(--radius) 0;
+            position: relative;
+        }
+
+            .key-takeaway::before {
+                content: '💡';
+                position: absolute;
+                left: 25px;
+                top: 25px;
+                font-size: 1.5rem;
+            }
+
+        .takeaway-content {
+            margin-left: 50px;
+        }
+
+        .key-takeaway strong {
+            color: var(--primary);
+        }
+
+        /* Blockchain Feature */
+        .blockchain-feature {
+            background: linear-gradient(135deg, #1e3a5f 0%, #2c5282 100%);
+            color: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            margin: 25px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .blockchain-feature::before {
+                content: '⛓️';
+                position: absolute;
+                right: 20px;
+                top: 20px;
+                font-size: 3rem;
+                opacity: 0.2;
+            }
+
+        .blockchain-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Process Diagram */
+        .process-diagram {
+            background: #f8f9fa;
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .process-step {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            padding: 15px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .step-number {
+            background: var(--accent);
+            color: var(--dark);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        /* Topics Grid */
+        .topics-section {
+            background: white;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            gap: 25px;
+            margin-top: 50px;
+        }
+
+        .topic-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: 25px;
+            border-radius: var(--radius);
+            background: var(--light);
+            transition: var(--transition);
+            text-decoration: none;
+            color: inherit;
+            height: 100%;
+        }
+
+            .topic-card:hover {
+                background: #e3f2fd;
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        .topic-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .topic-card h3 {
+            font-size: 1.2rem;
+            margin: 0 0 10px;
+            color: var(--dark);
+        }
+
+        .topic-card p {
+            font-size: 0.95rem;
+            margin: 0;
+            color: var(--text-light);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            text-align: center;
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100" fill="%23ffffff" opacity="0.05"><polygon points="0,0 1000,100 1000,0"/></svg>');
+                background-size: cover;
+            }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-section h2 {
+            color: white;
+            font-size: 2.5rem;
+        }
+
+            .cta-section h2::after {
+                background: var(--accent);
+                left: 50%;
+                transform: translateX(-50%);
+            }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            opacity: 0.95;
+        }
+
+        .cta-message {
+            font-style: italic;
+            margin-top: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            font-size: 1.1rem;
+        }
+
+     
+
+        /* Responsive Design */
+        @media screen and (max-width: 992px) {
+            .topics-grid {
+                grid-template-columns: 1fr 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            nav ul {
+                gap: 15px;
+            }
+        }
+
+        @media screen and (max-width: 768px) {
+          
+
+            .hero {
+                padding: 80px 0;
+            }
+
+                .hero h1 {
+                    font-size: 2.2rem;
+                }
+
+                .hero p {
+                    font-size: 1.1rem;
+                }
+
+            section {
+                padding: 70px 0;
+            }
+
+            .section-card {
+                padding: 30px;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .topics-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+
+        @media screen and (max-width: 576px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 1.9rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+
+            .btn {
+                padding: 14px 30px;
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="headermenudetail"></div>
+    <div id="mobilesidebar"></div>
+
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Blockchain Applications in Energy Trading</h1>
+                <p>Transforming Energy Transactions for Businesses with Secure, Transparent Technology</p>
+                <a href="/getquote" class="btn btn-white fw-bold">Get Energy Quote</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction">
+        <div class="container">
+            <div class="section-card">
+                <h2>Introduction: How Blockchain is Revolutionizing Energy Trading</h2>
+                <p>As the energy sector undergoes a major digital transformation, businesses are looking for secure, efficient, and transparent ways to trade energy. Blockchain technology is emerging as a game-changer in energy trading, enabling peer-to-peer transactions, real-time settlement, and decentralized energy markets.</p>
+                <p>At UtilityKing, we help businesses understand and implement blockchain-based energy trading solutions to optimize costs, enhance security, and improve transaction efficiency.</p>
+
+                <div class="highlight-box">
+                    <div class="highlight-content">
+                        <h3 style="color: white;">In this guide, you'll learn:</h3>
+                        <ul class="content-list">
+                            <li>What blockchain energy trading is and how it works</li>
+                            <li>The key benefits of blockchain for businesses in the energy sector</li>
+                            <li>How decentralized energy markets and peer-to-peer trading function</li>
+                            <li>Smart contracts and their role in automating energy transactions</li>
+                            <li>How UtilityKing helps businesses integrate blockchain-based energy solutions</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-weight: 600;">If your business wants to reduce transaction costs, improve transparency, and future-proof energy procurement, this guide is for you!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Topics Section -->
+    <section id="topics" class="topics-section">
+        <div class="container">
+            <div class="section-card">
+                <h2>Topics Covered in This Guide</h2>
+                <p>Navigate through our comprehensive guide on blockchain energy trading solutions</p>
+
+                <div class="topics-grid">
+                    <a href="#blockchain-definition" class="topic-card">
+                        <div class="topic-icon">📈</div>
+                        <h3>Blockchain Energy Trading</h3>
+                        <p>Understanding decentralized transactions</p>
+                    </a>
+
+                    <a href="#benefits" class="topic-card">
+                        <div class="topic-icon">⚡</div>
+                        <h3>Blockchain Benefits</h3>
+                        <p>Cost savings and security</p>
+                    </a>
+
+                    <a href="#p2p" class="topic-card">
+                        <div class="topic-icon">🔄</div>
+                        <h3>P2P Energy Trading</h3>
+                        <p>Direct transactions</p>
+                    </a>
+
+                    <a href="#smart-contracts" class="topic-card">
+                        <div class="topic-icon">📊</div>
+                        <h3>Smart Contracts</h3>
+                        <p>Automated settlements</p>
+                    </a>
+
+                    <a href="#renewable" class="topic-card">
+                        <div class="topic-icon">📢</div>
+                        <h3>Blockchain & Renewables</h3>
+                        <p>Green energy trading</p>
+                    </a>
+
+                    <a href="#partnership" class="topic-card">
+                        <div class="topic-icon">🏆</div>
+                        <h3>Why UtilityKing</h3>
+                        <p>Expert integration</p>
+                    </a>
+                </div>
+
+                <p style="text-align: center; margin-top: 40px; font-weight: 600;">If you want to streamline energy transactions with blockchain, keep reading!</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blockchain Definition Section -->
+    <section id="blockchain-definition">
+        <div class="container">
+            <div class="section-card">
+                <h2>What is Blockchain Energy Trading?</h2>
+                <p>Blockchain energy trading is a decentralized, transparent, and secure method for buying and selling electricity. It removes the need for intermediaries like utilities and brokers by enabling direct transactions between producers and consumers.</p>
+
+                <div class="blockchain-feature">
+                    <div class="blockchain-content">
+                        <h3 style="color: white;">How Blockchain Works in Energy Trading:</h3>
+                        <ul class="content-list">
+                            <li><strong>Distributed Ledger Technology (DLT)</strong> – Records all transactions securely and transparently</li>
+                            <li><strong>Smart Contracts</strong> – Automates energy trade execution and settlements</li>
+                            <li><strong>Peer-to-Peer (P2P) Energy Trading</strong> – Allows businesses and individuals to buy and sell power directly</li>
+                            <li><strong>Tokenized Energy Markets</strong> – Uses blockchain tokens to represent energy credits for easy trade</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> The global blockchain in energy market is projected to grow at a CAGR of 50% by 2030, highlighting its increasing adoption.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <div class="takeaway-content">
+                        <p><strong>Key Takeaway:</strong> Blockchain energy trading enhances security, efficiency, and decentralization in electricity markets.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section id="benefits">
+        <div class="container">
+            <div class="section-card">
+                <h2>The Key Benefits of Blockchain in Energy Trading</h2>
+                <p>Blockchain offers multiple advantages for businesses seeking cost efficiency and secure energy transactions.</p>
+
+                <h3>1. Cost Savings & Lower Transaction Fees</h3>
+                <ul class="content-list">
+                    <li>Eliminates middlemen and brokerage fees in energy transactions</li>
+                    <li>Reduces administrative and settlement costs for businesses</li>
+                </ul>
+
+                <h3>2. Enhanced Transparency & Security</h3>
+                <ul class="content-list">
+                    <li>Every transaction is recorded on a secure ledger, preventing fraud and manipulation</li>
+                    <li>Provides real-time verification of energy purchases</li>
+                </ul>
+
+                <h3>3. Faster Energy Settlements</h3>
+                <ul class="content-list">
+                    <li>Smart contracts automate payments, ensuring immediate execution</li>
+                    <li>Reduces delays in energy billing and contract disputes</li>
+                </ul>
+
+                <h3>4. Empowering Renewable Energy Producers</h3>
+                <ul class="content-list">
+                    <li>Enables local energy trading, allowing businesses to buy directly from solar and wind power producers</li>
+                    <li>Supports decentralized green energy markets</li>
+                </ul>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> Businesses using blockchain-based energy trading cut transaction costs by up to 40% compared to traditional methods.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <div class="takeaway-content">
+                        <p><strong>Key Takeaway:</strong> Blockchain makes energy trading more cost-effective, secure, and efficient.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- P2P Trading Section -->
+    <section id="p2p">
+        <div class="container">
+            <div class="section-card">
+                <h2>How Peer-to-Peer Energy Trading Works with Blockchain</h2>
+                <p>Blockchain enables peer-to-peer (P2P) energy trading, allowing businesses to buy electricity directly from local producers instead of traditional utility companies.</p>
+
+                <div class="process-diagram">
+                    <h3 style="color: var(--primary); margin-top: 0;">P2P Energy Trading Process:</h3>
+
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <div>
+                            <h4>Energy Generation</h4>
+                            <p>Renewable energy producers (solar, wind, etc.) generate excess power</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <div>
+                            <h4>Direct Sales</h4>
+                            <p>They sell surplus energy directly to other businesses or consumers using blockchain</p>
+                        </div>
+                    </div>
+
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <div>
+                            <h4>Smart Contract Execution</h4>
+                            <p>Smart contracts manage the transaction, pricing, and settlement instantly</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Benefits of P2P Energy Trading:</h3>
+                <ul class="content-list">
+                    <li>Eliminates third-party markups and transaction fees</li>
+                    <li>Increases local energy security and grid efficiency</li>
+                    <li>Enables dynamic energy pricing based on real-time demand and supply</li>
+                </ul>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> Businesses that participate in P2P energy trading networks can reduce electricity expenses by 15-30% annually.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <div class="takeaway-content">
+                        <p><strong>Key Takeaway:</strong> Blockchain-powered P2P trading provides businesses with direct access to affordable and sustainable energy.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Smart Contracts Section -->
+    <section id="smart-contracts">
+        <div class="container">
+            <div class="section-card">
+                <h2>Smart Contracts & Automated Energy Settlements</h2>
+                <p>Smart contracts are self-executing agreements stored on the blockchain that automatically process energy transactions without manual intervention.</p>
+
+                <h3>How Smart Contracts Improve Energy Transactions:</h3>
+                <ul class="content-list">
+                    <li>Eliminate the need for paperwork and intermediaries</li>
+                    <li>Ensure automatic settlement once energy is delivered</li>
+                    <li>Reduce human errors, fraud, and delayed payments</li>
+                </ul>
+
+                <div class="blockchain-feature">
+                    <div class="blockchain-content">
+                        <h3 style="color: white;">Example of a Blockchain Smart Contract in Energy Trading:</h3>
+                        <div class="process-diagram" style="background: rgba(255,255,255,0.1); border-color: var(--accent);">
+                            <div class="process-step" style="background: rgba(255,255,255,0.2);">
+                                <div class="step-number">1</div>
+                                <div>
+                                    <h4 style="color: white;">Agreement</h4>
+                                    <p style="color: white; margin: 0;">A business agrees to buy 1,000 kWh of renewable energy from a solar producer</p>
+                                </div>
+                            </div>
+
+                            <div class="process-step" style="background: rgba(255,255,255,0.2);">
+                                <div class="step-number">2</div>
+                                <div>
+                                    <h4 style="color: white;">Verification</h4>
+                                    <p style="color: white; margin: 0;">The smart contract verifies the energy production and matches supply with demand</p>
+                                </div>
+                            </div>
+
+                            <div class="process-step" style="background: rgba(255,255,255,0.2);">
+                                <div class="step-number">3</div>
+                                <div>
+                                    <h4 style="color: white;">Payment</h4>
+                                    <p style="color: white; margin: 0;">Payment is automatically processed once the energy is delivered</p>
+                                </div>
+                            </div>
+
+                            <div class="process-step" style="background: rgba(255,255,255,0.2);">
+                                <div class="step-number">4</div>
+                                <div>
+                                    <h4 style="color: white;">Record</h4>
+                                    <p style="color: white; margin: 0;">Both parties receive a secure, immutable transaction record</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> Smart contract automation can reduce administrative energy trading costs by up to 70%.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <div class="takeaway-content">
+                        <p><strong>Key Takeaway:</strong> Smart contracts ensure fast, secure, and cost-efficient energy settlements.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Renewable Section -->
+    <section id="renewable">
+        <div class="container">
+            <div class="section-card">
+                <h2>How Blockchain Supports Renewable Energy & Sustainability</h2>
+                <p>Blockchain enables businesses to transition toward greener energy procurement by making renewable energy transactions more accessible and transparent.</p>
+
+                <h3>1. Energy Attribute Certificates (EACs) & Carbon Credits</h3>
+                <ul class="content-list">
+                    <li>Blockchain ensures real-time tracking of renewable energy purchases</li>
+                    <li>Enables businesses to verify green energy usage and earn sustainability credits</li>
+                </ul>
+
+                <h3>2. Decentralized Renewable Energy Markets</h3>
+                <ul class="content-list">
+                    <li>Businesses can buy clean energy directly from renewable producers</li>
+                    <li>Reduces reliance on fossil fuel-generated electricity</li>
+                </ul>
+
+                <h3>3. Grid Decentralization & Local Energy Networks</h3>
+                <ul class="content-list">
+                    <li>Enables localized microgrid trading, reducing grid congestion</li>
+                    <li>Allows businesses to store and trade surplus green energy</li>
+                </ul>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> Businesses integrating blockchain with renewable energy reduce carbon emissions by up to 50% while lowering energy procurement costs.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <div class="takeaway-content">
+                        <p><strong>Key Takeaway:</strong> Blockchain facilitates clean energy trading, supporting businesses in achieving sustainability goals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partnership Section -->
+    <section id="partnership">
+        <div class="container">
+            <div class="section-card">
+                <h2>Why UtilityKing is the Best Partner for Blockchain-Based Energy Solutions</h2>
+                <p>Here's why thousands of UK businesses trust UtilityKing:</p>
+
+                <ul class="content-list">
+                    <li><strong>Expert consultation</strong> on blockchain energy trading solutions</li>
+                    <li><strong>Integration of smart contracts</strong> for automated energy transactions</li>
+                    <li><strong>Access to decentralized P2P energy trading networks</strong></li>
+                    <li><strong>Renewable energy procurement</strong> with real-time tracking and verification</li>
+                    <li><strong>End-to-end blockchain-based energy contract management</strong></li>
+                </ul>
+
+                <div class="fact-box">
+                    <div class="fact-content">
+                        <p><strong>Fact:</strong> 90% of businesses that work with UtilityKing reduce energy transaction costs and improve procurement efficiency with blockchain solutions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section id="cta" class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2>Transform Your Business Energy Trading with Blockchain!</h2>
+                <p>With energy markets evolving rapidly, now is the best time to implement blockchain-based solutions for secure, transparent, and cost-efficient energy trading.</p>
+
+                <div class="cta-message">
+                    <p>Message from UtilityKing: "We help businesses revolutionize energy transactions using blockchain—let's future-proof your energy strategy today!" 🚀</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <input type="text" id="txtOtpSend" style="display: none" />
+    <input type="text" id="txtOtpSendDateTime" style="display: none" />
+    <input type="text" id="txtregcode" style="display: none" />
+    <input type="text" id="txtregType" style="display: none" />
+    <div id="footerdetail"> </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to navigation items on scroll
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+
+            let current = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (scrollY >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

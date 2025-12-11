@@ -1,0 +1,713 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta title="EV Charging Infrastructure for Businesses | Complete Guide | UtilityKing" />
+    <meta data-rh="true" name="description" content="Complete guide to EV charging infrastructure for businesses. Learn about charger types, installation planning, financial benefits, government grants, and how UtilityKing helps businesses implement cost-effective EV charging solutions for fleets and customers." />
+    <meta name="keywords" content="EV charging infrastructure, business EV charging, electric vehicle charging, fleet electrification, EV charger installation, workplace charging, commercial EV charging, UtilityKing, EV charging grants, EV charging ROI, electric fleet charging, smart charging solutions" />
+    <title>EV Charging Infrastructure for Businesses | UtilityKing</title>
+    <link rel="canonical" href="https://utilityking.co.uk/developing-ev-charging-infrastructure" />
+    <link rel="alternate" href="https://utilityking.co.uk/developing-ev-charging-infrastructure/" hreflang="en" />
+    <link rel="alternate" href="https://utilityking.co.uk/developing-ev-charging-infrastructure/" hreflang="x-default" />
+    <script src="/layout/scripts/jquery.min.js"></script>
+    <script src="/js/headerfooter.js"></script>
+    <script src="/js/script.js"></script>
+    <style>
+        :root {
+            --primary: #1a6d38;
+            --primary-dark: #0f5427;
+            --secondary: #2c3e50;
+            --accent: #f39c12;
+            --light: #f8f9fa;
+            --dark: #343a40;
+            --gray: #6c757d;
+            --light-gray: #e9ecef;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            color: var(--dark);
+            line-height: 1.6;
+            background-color: #f5f7f9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+   
+
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+           
+        }
+
+            .logo span {
+                color: var(--accent);
+               
+            }
+
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 1.5rem;
+        }
+
+        /* Navigation */
+        .nav-container {
+            background-color: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+        }
+
+        .guide-nav {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            padding: 1rem 0;
+        }
+
+        .nav-item {
+            margin: 0 10px;
+        }
+
+        .nav-link {
+            color: var(--secondary);
+            text-decoration: none;
+            font-weight: 600;
+            padding: 8px 16px;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+
+            .nav-link:hover {
+                background-color: var(--light-gray);
+                color: var(--primary);
+            }
+
+        /* Main Content */
+        main {
+            padding: 3rem 0;
+        }
+
+        .section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+            .section:hover {
+                transform: translateY(-5px);
+            }
+
+        .section-title {
+            color: var(--primary);
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--light-gray);
+            display: flex;
+            align-items: center;
+        }
+
+            .section-title::before {
+                content: "";
+                display: inline-block;
+                width: 8px;
+                height: 30px;
+                background-color: var(--primary);
+                margin-right: 12px;
+                border-radius: 4px;
+            }
+
+        .highlight-box {
+            background-color: var(--light);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 4px 4px 0;
+        }
+
+        .fact-box {
+            background-color: #e8f5e9;
+            border: 1px solid var(--primary);
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+            .fact-box::before {
+                content: "📢 Fact:";
+                font-weight: bold;
+                color: var(--primary);
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+        .key-takeaway {
+            background-color: #e3f2fd;
+            border: 1px solid #2196f3;
+            border-radius: 6px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            position: relative;
+        }
+
+            .key-takeaway::before {
+                content: "🔹 Key Takeaway:";
+                font-weight: bold;
+                color: #1565c0;
+                display: block;
+                margin-bottom: 0.5rem;
+            }
+
+        /* Lists */
+        ul {
+            padding-left: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        .check-list li::marker {
+            color: var(--primary);
+            content: "✅ ";
+        }
+
+        .bullet-list li::marker {
+            color: var(--primary);
+            content: "✔ ";
+        }
+
+        /* Introduction Section */
+        .intro {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: linear-gradient(rgba(255,255,255,0.9), rgba(255,255,255,0.9)), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%231a6d38" opacity="0.05"/></svg>');
+            border-radius: 8px;
+        }
+
+            .intro h1 {
+                font-size: 2.2rem;
+                color: var(--secondary);
+                margin-bottom: 1.5rem;
+            }
+
+            .intro p {
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin: 0 auto 2rem;
+            }
+
+        .guide-links {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .guide-link {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            width: 100%;
+        }
+
+            .guide-link:hover {
+                color: var(--primary);
+            }
+
+            .guide-link::before {
+                content: "✅";
+                margin-right: 12px;
+                font-size: 1.2rem;
+            }
+
+        /* Types Section */
+        .charger-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .charger-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: transform 0.3s ease;
+        }
+
+            .charger-card:hover {
+                transform: translateY(-5px);
+            }
+
+        .charger-title {
+            color: var(--primary);
+            font-size: 1.4rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .charger-title::before {
+                content: "⚡";
+                margin-right: 8px;
+            }
+
+        /* Steps Section */
+        .steps {
+            counter-reset: step-counter;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 2rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background-color: var(--primary);
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            margin-right: 1rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+        /* Benefits Section */
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .benefit-card {
+            background-color: var(--light);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+
+        .benefit-title {
+            color: var(--primary);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+        }
+
+            .benefit-title::before {
+                content: "💰";
+                margin-right: 8px;
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            border-radius: 8px;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-top: 1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+            .cta-button:hover {
+                background-color: #e67e22;
+                transform: translateY(-3px);
+                box-shadow: 0 6px 15px rgba(0,0,0,0.2);
+            }
+
+        /* Footer */
+      
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .section {
+                padding: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+
+            .intro h1 {
+                font-size: 1.8rem;
+            }
+
+            .charger-types, .benefits-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .guide-nav {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .nav-item {
+                margin: 5px 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="headermenudetail"></div>
+    <div id="mobilesidebar"></div>    
+        <div class="container text-center">            
+            <h1 class="mt-3">Developing EV Charging Infrastructure for Businesses</h1>
+            <p>A Complete Guide to Supporting Electric Fleets and Customers</p>
+        </div>
+    <div class="nav-container">
+        <nav class="container guide-nav">
+            <div class="nav-item"><a href="#introduction" class="nav-link text-primary fw-bold">Introduction</a></div>
+            <div class="nav-item"><a href="#types" class="nav-link text-primary fw-bold">Charger Types</a></div>
+            <div class="nav-item"><a href="#planning" class="nav-link text-primary fw-bold">Planning & Implementation</a></div>
+            <div class="nav-item"><a href="#benefits" class="nav-link text-primary fw-bold">Financial Benefits</a></div>
+            <div class="nav-item"><a href="#incentives" class="nav-link text-primary fw-bold">Government Incentives</a></div>
+            <div class="nav-item"><a href="#partner" class="nav-link text-primary fw-bold">Why UtilityKing</a></div>
+        </nav>
+    </div>
+
+    <main class="container">
+        <section id="introduction" class="section intro">
+            <h1>Why Businesses Need to Invest in EV Charging Infrastructure</h1>
+            <p>With electric vehicle (EV) adoption increasing, businesses must develop reliable EV charging infrastructure to support fleet electrification, employee EV usage, and customer demand for charging points. Whether transitioning to an electric fleet or providing charging services for employees and customers, implementing an efficient charging network is a strategic move that enhances cost savings, sustainability, and competitiveness.</p>
+
+            <div class="highlight-box">
+                <p>At UtilityKing, we help businesses plan, install, and optimize EV charging solutions, ensuring maximum efficiency and return on investment (ROI).</p>
+            </div>
+
+            <p>In this guide, you'll learn:</p>
+
+            <div class="guide-links">
+                <a href="#critical" class="guide-link">Why EV charging infrastructure is critical for businesses</a>
+                <a href="#types" class="guide-link">The different types of EV chargers and which ones businesses should install</a>
+                <a href="#planning" class="guide-link">How to plan an EV charging network for fleets, employees, and customers</a>
+                <a href="#benefits" class="guide-link">The financial benefits of EV charging, including government incentives and cost savings</a>
+                <a href="#partner" class="guide-link">How UtilityKing helps businesses develop a cost-effective EV charging strategy</a>
+            </div>
+
+            <p style="margin-top: 2rem;">If you want to prepare your business for the EV revolution, support sustainable transport, and cut operational costs, this guide is for you!</p>
+        </section>
+
+        <section id="critical" class="section">
+            <h2 class="section-title">The Growing Demand for EV Charging Infrastructure in Businesses</h2>
+            <p>The UK government has set a target to ban petrol and diesel car sales by 2030, accelerating the shift to electric mobility. Businesses must install EV chargers to stay ahead of regulatory changes and meet customer and employee expectations.</p>
+
+            <h3 style="margin: 1.5rem 0 1rem 0; color: var(--secondary);">Key Market Trends Driving Business EV Charging Adoption</h3>
+            <ul class="bullet-list">
+                <li><strong>Surging EV Sales:</strong> More than one in five new vehicles sold in the UK is electric.</li>
+                <li><strong>Government Net Zero Goals:</strong> Businesses must reduce transport-related carbon emissions.</li>
+                <li><strong>Corporate Sustainability & ESG Commitments:</strong> Many companies aim to electrify fleets and support EV-driving employees.</li>
+                <li><strong>Customer Demand for Charging:</strong> Businesses offering public charging stations attract more customers and improve brand reputation.</li>
+            </ul>
+
+            <div class="fact-box">
+                By 2030, the UK will need 10 times more EV chargers to meet demand, making early adoption a competitive advantage.
+            </div>
+
+            <div class="key-takeaway">
+                Installing EV chargers now ensures long-term cost savings, compliance, and enhanced business appeal.
+            </div>
+        </section>
+
+        <section id="types" class="section">
+            <h2 class="section-title">Types of EV Chargers & Choosing the Right Solution for Your Business</h2>
+            <p>Before installing EV charging stations, businesses must understand the different charger types and select the most suitable option.</p>
+
+            <div class="charger-types">
+                <div class="charger-card">
+                    <h3 class="charger-title">Slow Chargers (AC Charging – 3-7 kW)</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Best For:</strong> Overnight charging for business fleets, employee parking, and residential buildings.</li>
+                        <li><strong>Charging Time:</strong> 6-12 hours for a full charge.</li>
+                        <li><strong>Installation Cost:</strong> Lower than fast or rapid chargers.</li>
+                    </ul>
+                </div>
+
+                <div class="charger-card">
+                    <h3 class="charger-title">Fast Chargers (AC Charging – 7-22 kW)</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Best For:</strong> Workplace charging and retail locations where vehicles are parked for a few hours.</li>
+                        <li><strong>Charging Time:</strong> 3-6 hours for a full charge.</li>
+                        <li><strong>Installation Cost:</strong> Moderate—ideal for most business applications.</li>
+                    </ul>
+                </div>
+
+                <div class="charger-card">
+                    <h3 class="charger-title">Rapid Chargers (DC Charging – 50-350 kW)</h3>
+                    <ul class="bullet-list">
+                        <li><strong>Best For:</strong> Fleet depots, public charging stations, and highway service locations.</li>
+                        <li><strong>Charging Time:</strong> 80% charge in 20-40 minutes.</li>
+                        <li><strong>Installation Cost:</strong> Higher due to grid connection requirements, but ideal for businesses needing quick turnaround times.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                Businesses that install a mix of fast and rapid chargers ensure better energy management and meet diverse customer needs.
+            </div>
+
+            <div class="key-takeaway">
+                Choosing the right chargers depends on business location, energy demand, and fleet usage patterns.
+            </div>
+        </section>
+
+        <section id="planning" class="section">
+            <h2 class="section-title">How to Plan & Implement an EV Charging Network</h2>
+            <p>Installing EV charging stations requires strategic planning to ensure cost-effectiveness and maximum usage efficiency.</p>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Assess Business Needs & Charging Demand</h3>
+                        <ul class="bullet-list">
+                            <li>Evaluate fleet charging needs, employee EV adoption, and customer charging demand.</li>
+                            <li>Consider future expansion potential when planning station capacity.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Choose the Right Charging Technology</h3>
+                        <ul class="bullet-list">
+                            <li>Determine if slow, fast, or rapid chargers fit your operational requirements.</li>
+                            <li>Implement smart charging systems for energy optimization and cost reduction.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Evaluate Site Selection & Power Requirements</h3>
+                        <ul class="bullet-list">
+                            <li>Select locations with easy accessibility and minimal grid connection costs.</li>
+                            <li>Work with UtilityKing to assess energy requirements and optimize grid connections.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">4</div>
+                    <div class="step-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Secure Government Grants & Funding</h3>
+                        <ul class="bullet-list">
+                            <li>Apply for the Workplace Charging Scheme (WCS) to cover up to 75% of installation costs.</li>
+                            <li>Explore additional grants for fleet charging hubs and commercial properties.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">5</div>
+                    <div class="step-content">
+                        <h3 style="color: var(--secondary); margin-bottom: 0.5rem;">Install & Monitor Charging Stations</h3>
+                        <ul class="bullet-list">
+                            <li>Use smart EV charging platforms to track energy consumption, optimize costs, and monitor user behavior.</li>
+                            <li>Offer charging access to employees and customers with payment solutions for public stations.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                Businesses that plan charging infrastructure correctly cut EV energy costs by up to 30% and ensure future scalability.
+            </div>
+
+            <div class="key-takeaway">
+                A well-planned EV charging network ensures efficiency, lower costs, and long-term sustainability.
+            </div>
+        </section>
+
+        <section id="benefits" class="section">
+            <h2 class="section-title">Financial Benefits & ROI of Business EV Charging</h2>
+            <p>EV charging isn't just about supporting sustainability—it's a profitable investment for businesses.</p>
+
+            <div class="benefits-grid">
+                <div class="benefit-card">
+                    <h3 class="text-primary">Cost Savings for Fleet Operations</h3>
+                    <ul class="bullet-list">
+                        <li>EVs cost 50-60% less per mile compared to diesel/petrol vehicles.</li>
+                        <li>Smart charging solutions optimize energy costs and reduce peak demand charges.</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3 class="text-primary">Revenue Generation from Public Charging</h3>
+                    <ul class="bullet-list">
+                        <li>Businesses offering paid public charging create new revenue streams.</li>
+                        <li>Locations with EV chargers see increased foot traffic and customer retention.</li>
+                    </ul>
+                </div>
+
+                <div class="benefit-card">
+                    <h3 class="text-primary">Government Tax Incentives & Grants</h3>
+                    <ul class="bullet-list">
+                        <li>Grants cover up to 75% of charger installation costs.</li>
+                        <li>Businesses receive capital allowances and tax relief for EV infrastructure investment.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                Businesses that install EV chargers recover their investment within 3-5 years through cost savings and additional revenue.
+            </div>
+
+            <div class="key-takeaway">
+                Installing EV chargers leads to financial benefits, operational efficiency, and increased customer engagement.
+            </div>
+        </section>
+
+        <section id="incentives" class="section">
+            <h2 class="section-title">Government Incentives & Grants for EV Charging Infrastructure</h2>
+            <ul class="bullet-list">
+                <li><strong>Workplace Charging Scheme (WCS)</strong> – Covers 75% of charger installation costs, up to £350 per charge point.</li>
+                <li><strong>EV Infrastructure Grant</strong> – Up to £15,000 for small businesses installing multiple charge points.</li>
+                <li><strong>Rapid Charging Fund</strong> – Funding for high-power chargers at fleet depots & commercial hubs.</li>
+                <li><strong>Super Deduction Tax Relief</strong> – Businesses can claim up to 130% tax relief on EV infrastructure investments.</li>
+            </ul>
+
+            <div class="fact-box">
+                Businesses that leverage government incentives save an average of £10,000 per EV charging project.
+            </div>
+
+            <div class="key-takeaway">
+                Government grants significantly reduce the upfront cost of EV charging infrastructure, making adoption more affordable.
+            </div>
+        </section>
+
+        <section id="partner" class="section">
+            <h2 class="section-title">Why UtilityKing is the Best Partner for Business EV Charging Solutions</h2>
+            <p>Here's why thousands of UK businesses trust UtilityKing:</p>
+
+            <ul class="check-list">
+                <li>Expert consultation on selecting and installing EV charging stations.</li>
+                <li>Assistance in securing government grants & tax incentives.</li>
+                <li>Smart energy management for optimized EV charging costs.</li>
+                <li>Turnkey EV infrastructure installation & ongoing maintenance support.</li>
+            </ul>
+
+            <div class="fact-box">
+                90% of businesses that partner with UtilityKing for EV charging solutions reduce energy costs and maximize grant funding.
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title text-white">Future-Proof Your Business with EV Charging Solutions from UtilityKing!</h2>
+            <p>With EV adoption rising, now is the time to install EV charging stations and support the transition to electric mobility.</p>
+           
+            <div style="margin-top: 2rem; font-style: italic;">
+                "We help businesses build EV charging infrastructure while cutting costs—let's future-proof your fleet today!" 🚀
+            </div>
+        </section>
+
+    </main>
+
+
+    <input type="text" id="txtOtpSend" style="display: none" />
+    <input type="text" id="txtOtpSendDateTime" style="display: none" />
+    <input type="text" id="txtregcode" style="display: none" />
+    <input type="text" id="txtregType" style="display: none" />
+    <div id="footerdetail"> </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Add active class to current section in navigation
+        window.addEventListener('scroll', function () {
+            const sections = document.querySelectorAll('.section');
+            const navLinks = document.querySelectorAll('.nav-link');
+
+            let currentSection = '';
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 150;
+                const sectionHeight = section.clientHeight;
+
+                if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
+                    currentSection = '#' + section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>

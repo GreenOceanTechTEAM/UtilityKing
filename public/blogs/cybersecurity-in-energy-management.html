@@ -1,0 +1,1210 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity in Energy Management Systems | UtilityKing</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <meta name="description" content="UtilityKing cybersecurity solutions protect energy infrastructure from cyber threats. AI threat detection, block chain security for smart grids and IoT systems.">
+    <meta name="keywords" content="energy cybersecurity, smart grid protection, IoT security, utility cybersecurity, AI energy security, block chain energy systems">
+    <title>Insurance Solutions for Renewable Energy Investments | UtilityKing</title>
+    <link rel="canonical" href="https://utilityking.co.uk/cybersecurity-in-energy-management" />
+    <link rel="alternate" href="https://utilityking.co.uk/cybersecurity-in-energy-management/" hreflang="en" />
+    <link rel="alternate" href="https://utilityking.co.uk/cybersecurity-in-energy-management/" hreflang="x-default" />
+    <script src="/layout/scripts/jquery.min.js"></script>
+    <script src="/js/headerfooter.js"></script>
+    <script src="/js/script.js"></script>
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --primary-light: #3b82f6;
+            --secondary: #7c3aed;
+            --accent: #f59e0b;
+            --dark: #0f172a;
+            --darker: #020617;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --border-radius: 12px;
+            --border-radius-lg: 20px;
+            --box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            --box-shadow-lg: 0 20px 40px rgba(0,0,0,0.15);
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --gradient: linear-gradient(135deg, var(--primary), var(--secondary));
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Segoe UI', system-ui, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.7;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+     
+
+        .nav-buttons {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            border: none;
+            cursor: pointer;
+           
+        }
+        .cta-button:hover{
+           color:#FFF;
+        }
+          
+
+      
+
+        /* Mobile Menu Sidebar */
+        .mobile-menu {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--dark);
+        }
+
+        .sidebar {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 320px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0,0,0,0.1);
+            z-index: 2000;
+            transition: var(--transition);
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .sidebar.active {
+                right: 0;
+            }
+
+        .sidebar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .close-sidebar {
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+        }
+
+        .sidebar-links {
+            list-style: none;
+            flex: 1;
+        }
+
+            .sidebar-links li {
+                margin-bottom: 1.5rem;
+            }
+
+            .sidebar-links a {
+                text-decoration: none;
+                color: var(--dark);
+                font-weight: 500;
+                font-size: 1.1rem;
+                transition: var(--transition);
+                display: block;
+                padding: 0.5rem 0;
+            }
+
+                .sidebar-links a:hover {
+                    color: var(--primary);
+                    transform: translateX(5px);
+                }
+
+        .sidebar-footer {
+            padding-top: 2rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.5);
+            z-index: 1500;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+            .overlay.active {
+                opacity: 1;
+                visibility: visible;
+            }
+
+        /* Hero Section */
+        .hero {
+            padding: 1.5rem;
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                width: 600px;
+                height: 600px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+                top: -300px;
+                right: -200px;
+                z-index: 0;
+            }
+
+            .hero::after {
+                content: '';
+                position: absolute;
+                width: 400px;
+                height: 400px;
+                border-radius: 50%;
+                background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(236, 72, 153, 0.1) 100%);
+                bottom: -200px;
+                left: -100px;
+                z-index: 0;
+            }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+
+        .hero-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.2);
+            color: #93c5fd;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            color: white;
+            line-height: 1.2;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
+            max-width: 90%;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #94a3b8;
+        }
+
+        .hero-card {
+            width: 100%;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: var(--border-radius-lg);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+            .hero-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: var(--gradient);
+            }
+
+        /* Content Sections */
+        .content-section {
+            padding: 1rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            display: inline-block;
+            background: rgba(37, 99, 235, 0.1);
+            color: var(--primary);
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-size: 2.8rem;
+            color: var(--darker);
+            margin-bottom: 1.5rem;
+            font-weight: 800;
+        }
+
+        .section-description {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.1rem;
+        }
+
+        /* Content Cards */
+        .content-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+        }
+
+            .content-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--box-shadow-lg);
+            }
+
+            .content-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: var(--gradient);
+            }
+
+        .card-icon {
+            width: 70px;
+            height: 70px;
+            background: var(--gradient);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .content-card h3 {
+            margin-bottom: 1rem;
+            color: var(--darker);
+            font-size: 1.5rem;
+        }
+
+        .content-card p {
+            color: var(--gray);
+            margin-bottom: 1.5rem;
+        }
+
+        .fact-box {
+            background: #e8f4fd;
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+
+            .fact-box strong {
+                color: var(--primary);
+            }
+
+        .key-takeaway {
+            background: #f0f9ff;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--primary);
+        }
+
+            .key-takeaway strong {
+                color: var(--primary-dark);
+            }
+
+        /* Risk Grid */
+        .risks-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .risk-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .risk-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--box-shadow-lg);
+            }
+
+            .risk-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: var(--danger);
+            }
+
+        .risk-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(239, 68, 68, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--danger);
+            font-size: 1.5rem;
+        }
+
+        .risk-card h3 {
+            margin-bottom: 1rem;
+            color: var(--darker);
+        }
+
+        .risk-card p {
+            color: var(--gray);
+        }
+
+        /* Best Practices */
+        .practices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .practice-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .practice-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--box-shadow-lg);
+            }
+
+            .practice-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: var(--success);
+            }
+
+        .practice-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(16, 185, 129, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--success);
+            font-size: 1.5rem;
+        }
+
+        .practice-card h3 {
+            margin-bottom: 1rem;
+            color: var(--darker);
+        }
+
+        .practice-card p {
+            color: var(--gray);
+        }
+
+        /* Technology Section */
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .tech-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: var(--border-radius-lg);
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .tech-card:hover {
+                transform: translateY(-10px);
+                box-shadow: var(--box-shadow-lg);
+            }
+
+            .tech-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 4px;
+                height: 100%;
+                background: var(--secondary);
+            }
+
+        .tech-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(124, 58, 237, 0.1);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1.5rem;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        .tech-card h3 {
+            margin-bottom: 1rem;
+            color: var(--darker);
+        }
+
+        .tech-card p {
+            color: var(--gray);
+        }
+
+        /* Steps Section */
+        .steps {
+            margin: 3rem 0;
+        }
+
+        .step {
+            display: flex;
+            margin-bottom: 2.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: var(--gradient);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 1.5rem;
+            flex-shrink: 0;
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+
+        .step-content {
+            flex: 1;
+        }
+
+            .step-content h3 {
+                margin-bottom: 1rem;
+                color: var(--darker);
+            }
+
+            .step-content p {
+                color: var(--gray);
+            }
+
+        /* Why UtilityKing Section */
+        .why-us {
+            background: linear-gradient(135deg, var(--secondary), var(--primary));
+            color: white;
+            padding: 5rem 2rem;
+            border-radius: var(--border-radius-lg);
+            margin: 2rem 0;
+        }
+
+            .why-us .section-title {
+                color: white;
+                border-bottom-color: var(--accent);
+            }
+
+        .features-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .features-list li {
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: flex-start;
+            }
+
+                .features-list li:before {
+                    content: "✓";
+                    background-color: var(--accent);
+                    color: white;
+                    width: 24px;
+                    height: 24px;
+                    border-radius: 50%;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    margin-right: 10px;
+                    flex-shrink: 0;
+                }
+
+        /* Final CTA Section */
+        .final-cta {
+            text-align: center;
+            padding: 5rem 2rem;
+            background: linear-gradient(rgba(15, 23, 42, 0.9), rgba(15, 23, 42, 0.9)), url('https://images.unsplash.com/photo-1550751827-4bd374c3f58b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center/cover;
+            color: white;
+            border-radius: var(--border-radius-lg);
+            margin: 2rem 0;
+        }
+
+            .final-cta h2 {
+                font-size: 2.8rem;
+                margin-bottom: 1.5rem;
+                color:#fff;
+            }
+
+            .final-cta p {
+                font-size: 1.2rem;
+                max-width: 700px;
+                margin: 0 auto 2rem;
+                color: #cbd5e1;
+            }
+
+        /* Footer */
+        footer {
+            background: var(--darker);
+            color: white;
+            padding: 5rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        .footer-column h3 {
+            margin-bottom: 1.5rem;
+            color: white;
+            font-size: 1.2rem;
+        }
+
+        .footer-links {
+            list-style: none;
+        }
+
+            .footer-links li {
+                margin-bottom: 0.8rem;
+            }
+
+            .footer-links a {
+                color: #94a3b8;
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+                .footer-links a:hover {
+                    color: white;
+                }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #334155;
+            color: #94a3b8;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+            .social-links a {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                width: 40px;
+                height: 40px;
+                background: rgba(255,255,255,0.1);
+                border-radius: 50%;
+                color: white;
+                text-decoration: none;
+                transition: var(--transition);
+            }
+
+                .social-links a:hover {
+                    background: var(--primary);
+                    transform: translateY(-3px);
+                }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text {
+                padding-right: 0;
+                margin-bottom: 3rem;
+            }
+
+            .hero p {
+                max-width: 100%;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links, .nav-buttons {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2.2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div id="headermenudetail"></div>
+    <div id="mobilesidebar"></div>
+
+    <!-- Mobile Sidebar -->
+    <div class="sidebar">
+        <div class="sidebar-header">
+            <a href="#" class="logo">
+                <i class="fas fa-bolt logo-icon"></i>
+                UtilityKing
+            </a>
+            <div class="close-sidebar">
+                <i class="fas fa-times"></i>
+            </div>
+        </div>
+        <ul class="sidebar-links">
+            <li><a href="#introduction">Introduction</a></li>
+            <li><a href="#threats">Cyber Threats</a></li>
+            <li><a href="#risks">Key Risks</a></li>
+            <li><a href="#practices">Best Practices</a></li>
+            <li><a href="#solutions">Solutions</a></li>
+        </ul>
+        <div class="sidebar-footer">
+            <a href="#" class="secondary-button" style="display: block; text-align: center; margin-bottom: 1rem;">Sign In</a>
+            <a href="#cta" class="cta-button" style="display: block; text-align: center;">Get Consultation</a>
+        </div>
+    </div>
+    <div class="overlay"></div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-shield-alt"></i> Critical Infrastructure Protection
+                    </div>
+                    <h1>Cyber Security in Energy Management Systems</h1>
+                    <p>Safeguarding Energy Infrastructure Against Cyber Threats in an Increasingly Digital World</p>
+                    <div class="hero-buttons">
+                        <a href="/getquote" class="cta-button">Get Energy Quote</a>
+                      
+                    </div>
+                   
+                </div>
+                <div class="hero-image">
+                    <div class="hero-card">
+                      <img src="/img/blog-1.jpg" alt="cyber protection" width="600" height="400" class="img-fluid m-auto"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section id="introduction" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Why Cyber security is Crucial</div>
+                <h2 class="section-title">Protecting Energy Management Systems</h2>
+                <p class="section-description">As businesses become increasingly reliant on digital energy management, cyber security threats pose a growing risk to critical infrastructure.</p>
+            </div>
+            <div class="content-card">
+                <div class="d-flex align-items-center gap-2">
+                    <div class="card-icon">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <h3>The Growing Cyber Threat Landscape</h3>
+                    </div>
+                    <p>With the rise of AI-driven automation, real-time energy monitoring, and remote energy control systems, cyber security in energy management has never been more important. Cyber-attacks targeting smart grids, power plants, and IoT-connected energy networks can lead to massive disruptions, financial losses, and security breaches.</p>
+
+                    <div class="fact-box">
+                        <strong>Fact:</strong> The UK government reported a 300% increase in cyber threats targeting energy systems over the last five years.
+                    </div>
+
+                    <p>Businesses must implement robust cyber security strategies to safeguard their critical energy assets from hackers, malware, and cyber espionage. At UtilityKing, we help businesses secure their energy infrastructure by integrating cutting-edge cybersecurity solutions, real-time monitoring, and risk mitigation strategies.</p>
+
+                    <div class="key-takeaway">
+                        <strong>Key Takeaway:</strong> As energy infrastructure becomes more digitalized, businesses must prioritize cyber security to prevent attacks and disruptions.
+                    </div>
+                </div>
+            </div>
+    </section>
+
+    <!-- Cyber Threats Section -->
+    <section id="threats" class="content-section" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">The Growing Threat</div>
+                <h2 class="section-title">Cyber-attacks on Energy Systems</h2>
+                <p class="section-description">With the rise of smart grids, IoT-enabled devices, and cloud-based energy management, the energy sector has become a prime target for cybercriminals.</p>
+            </div>
+            <div class="content-card">
+                <h3>Why Cyber Threats to Energy Systems Are Increasing</h3>
+
+                <div class="risks-grid">
+                    <div class="risk-card">
+                        <div class="risk-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3>Increased Digitization</h3>
+                        <p>More businesses are shifting to AI-powered energy automation, creating new vulnerabilities in previously isolated systems.</p>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h3>Ransomware & Cyber-attacks</h3>
+                        <p>Hackers target energy networks to disrupt critical infrastructure and demand substantial ransom payments from organizations.</p>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-icon">
+                            <i class="fas fa-globe"></i>
+                        </div>
+                        <h3>Nation-State Attacks</h3>
+                        <p>Cyber espionage and geopolitical tensions lead to state-sponsored hacking of energy systems for strategic advantage.</p>
+                    </div>
+
+                    <div class="risk-card">
+                        <div class="risk-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>IoT Security Gaps</h3>
+                        <p>Unsecured smart meters, sensors, and controllers make energy systems vulnerable to widespread hacking attempts.</p>
+                    </div>
+                </div>
+
+                <div class="key-takeaway">
+                    <strong>Key Takeaway:</strong> Proactive cyber security measures are essential to protect increasingly interconnected energy infrastructure from sophisticated threats.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Risks Section -->
+    <section id="risks" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Understanding Vulnerabilities</div>
+                <h2 class="section-title">Key Cyber security Risks in Energy Management</h2>
+                <p class="section-description">Energy management systems face multiple cyber security challenges that can lead to data breaches, operational shutdowns, and financial losses.</p>
+            </div>
+
+            <div class="risks-grid">
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <i class="fas fa-bug"></i>
+                    </div>
+                    <h3>Malware & Ransomware Attacks</h3>
+                    <p>Hackers infiltrate energy networks with sophisticated malware to disable or control power grids and renewable energy systems. Ransomware attacks encrypt critical energy management systems, forcing businesses to pay large sums to regain control.</p>
+                </div>
+
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Phishing & Social Engineering</h3>
+                    <p>Energy employees are frequently targeted with sophisticated phishing emails designed to steal login credentials. Attackers use fake IT support calls and deceptive links to gain unauthorized access to critical systems.</p>
+                </div>
+
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <h3>IoT Device Vulnerabilities</h3>
+                    <p>Unprotected smart meters, sensors, and control systems create easy entry points for hackers seeking access to energy networks. Weak authentication protocols and outdated firmware significantly increase the risk of cyber breaches.</p>
+                </div>
+
+                <div class="risk-card">
+                    <div class="risk-icon">
+                        <i class="fas fa-cloud"></i>
+                    </div>
+                    <h3>Cloud & Data Security Risks</h3>
+                    <p>Many businesses use cloud-based energy management platforms, which can be vulnerable to sophisticated hacking attempts and data leaks. Cybercriminals can exploit misconfigured cloud storage to access sensitive energy consumption data.</p>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <strong>Fact:</strong> 90% of cyber-attacks on energy systems target IoT-connected devices and unsecured cloud applications.
+            </div>
+
+            <div class="key-takeaway">
+                <strong>Key Takeaway:</strong> Businesses must address these critical risks by implementing strong, multi-layered security measures across their entire energy network infrastructure.
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section id="practices" class="content-section" style="background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Proactive Protection</div>
+                <h2 class="section-title">Best Practices for Energy System Cyber security</h2>
+                <p class="section-description">Businesses must implement multi-layered cyber security strategies to safeguard their energy systems from evolving cyber threats.</p>
+            </div>
+
+            <div class="practices-grid">
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-user-lock"></i>
+                    </div>
+                    <h3>Strong Access Controls</h3>
+                    <p>Implement multi-factor authentication (MFA) for all energy management system logins and role-based access control (RBAC) to limit access to critical infrastructure based on job responsibilities.</p>
+                </div>
+
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-wifi"></i>
+                    </div>
+                    <h3>Secure IoT Devices</h3>
+                    <p>Regularly update firmware and software to patch security vulnerabilities in smart meters and controllers. Use encrypted communication protocols to protect data transmitted between IoT devices.</p>
+                </div>
+
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h3>Regular Security Audits</h3>
+                    <p>Conduct comprehensive cyber security audits and risk assessments to identify potential security gaps in energy infrastructure. Run penetration testing and vulnerability scans to detect weaknesses.</p>
+                </div>
+
+                <div class="practice-card">
+                    <div class="practice-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <h3>AI Threat Detection</h3>
+                    <p>Implement AI-driven monitoring tools to detect unusual activity patterns in energy systems. AI can predict and prevent cyber-attacks before they cause significant damage to operations.</p>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <strong>Fact:</strong> Businesses that use AI-based threat detection reduce cyber security risks by up to 80% compared to traditional security measures.
+            </div>
+
+            <div class="key-takeaway">
+                <strong>Key Takeaway:</strong> A proactive, multi-layered cyber security strategy minimizes threats and ensures secure, uninterrupted energy management operations.
+            </div>
+        </div>
+    </section>
+
+    <!-- Technology Solutions Section -->
+    <section id="solutions" class="content-section">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Advanced Protection</div>
+                <h2 class="section-title">AI & Block chain in Energy Cyber security</h2>
+                <p class="section-description">Emerging technologies such as AI and block chain are revolutionizing energy cyber security with enhanced threat detection and secure transaction capabilities.</p>
+            </div>
+
+            <div class="tech-grid">
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h3>AI-Powered Cyber security</h3>
+                    <p>AI continuously monitors network traffic for cyber threats across energy systems. Advanced algorithms can automatically block suspicious activity in real-time, dramatically reducing response time to potential breaches.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-link"></i>
+                    </div>
+                    <h3>Block chain for Energy Transactions</h3>
+                    <p>Block chain creates tamper-proof digital records of energy transactions and grid operations. This technology enhances security in peer-to-peer energy trading and smart grid management systems.</p>
+                </div>
+
+                <div class="tech-card">
+                    <div class="tech-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <h3>Smart Contracts Security</h3>
+                    <p>Automate energy procurement and billing processes with encrypted smart contract transactions. This approach significantly reduces the risk of fraud and unauthorized access to sensitive energy data.</p>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <strong>Fact:</strong> Businesses that integrate AI and block chain into energy security frameworks experience 40% fewer cyber incidents and faster threat response times.
+            </div>
+
+            <div class="key-takeaway">
+                <strong>Key Takeaway:</strong> AI and block chain technologies significantly strengthen cyber security by enhancing threat detection capabilities, improving authentication processes, and ensuring transaction security.
+            </div>
+        </div>
+    </section>
+
+    <!-- Implementation Section -->
+    <section class="content-section" style="background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);">
+        <div class="container">
+            <div class="section-header">
+                <div class="section-subtitle">Taking Action</div>
+                <h2 class="section-title">Implementing Cyber-Resilient Energy Systems</h2>
+                <p class="section-description">Follow these essential steps to build a robust cybersecurity framework for your energy management infrastructure.</p>
+            </div>
+
+            <div class="steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Conduct a Cybersecurity Risk Assessment</h3>
+                        <p>Identify weak points in energy infrastructure and IoT device security gaps. Implement security patches and system updates regularly to address vulnerabilities before they can be exploited.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Upgrade to AI-Driven Threat Detection</h3>
+                        <p>Use machine learning algorithms to detect and prevent cyber threats in real time. AI analyzes behavioral patterns across the network to identify and prevent unauthorized access attempts before they cause damage.</p>
+                    </div>
+                </div>
+
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Secure Energy Data with Encryption & Block chain</h3>
+                        <p>Encrypt all energy management data both at rest and in transit to prevent interception and hacking attempts. Use block chain technology for tamper-proof energy transaction verification and audit trails.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="fact-box">
+                <strong>Fact:</strong> Businesses that implement cyber-resilient energy security frameworks experience fewer service disruptions and significantly lower cyber-attack recovery costs.
+            </div>
+
+            <div class="key-takeaway">
+                <strong>Key Takeaway:</strong> Building a comprehensive, cyber-secure energy system protects businesses from operational disruptions, financial losses, and reputational damage.
+            </div>
+        </div>
+    </section>
+
+    <!-- Why UtilityKing Section -->
+    <section class="why-us">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Why UtilityKing for Energy Cyber security?</h2>
+                <p class="section-description" style="color: rgba(255,255,255,0.8);">Here's why thousands of UK businesses trust UtilityKing to protect their critical energy infrastructure.</p>
+            </div>
+
+            <ul class="features-list">
+                <li>Expert cybersecurity risk assessments for energy systems and infrastructure</li>
+                <li>Integration of AI-driven cybersecurity tools for real-time threat detection and response</li>
+                <li>Block chain-based energy security solutions for secure transactions and data integrity</li>
+                <li>Comprehensive IoT device protection and multi-layered access control systems</li>
+                <li>24/7 monitoring and cybersecurity support for energy infrastructure</li>
+            </ul>
+
+            <div class="fact-box" style="background-color: rgba(255,255,255,0.2); border-left-color: var(--accent); margin-top: 1.5rem;">
+                <strong class="text-white">Fact:</strong> 90% of businesses that partner with UtilityKing experience improved cybersecurity protection for their energy management systems within the first six months.
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA Section -->
+    <section id="cta" class="final-cta">
+        <div class="container">
+            <h2>Secure Your Energy Systems Against Cyber Threats</h2>
+            <p>With cyber threats on the rise, now is the best time to implement robust cybersecurity strategies to protect your critical energy infrastructure from potentially devastating attacks.</p>
+            <a href="/contact-us" class="cta-button">Feel Free To Contact Us</a>
+            <p style="margin-top: 1.5rem; font-style: italic;">"We help businesses safeguard energy infrastructure against cyber threats—let's secure your energy management system today!"</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <input type="text" id="txtOtpSend" style="display: none" />
+    <input type="text" id="txtOtpSendDateTime" style="display: none" />
+    <input type="text" id="txtregcode" style="display: none" />
+    <input type="text" id="txtregType" style="display: none" />
+    <div id="footerdetail"> </div>
+
+    <script>
+        // Mobile Sidebar Toggle
+        document.querySelector('.mobile-menu').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.add('active');
+            document.querySelector('.overlay').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        });
+
+        document.querySelector('.close-sidebar').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        document.querySelector('.overlay').addEventListener('click', function () {
+            document.querySelector('.sidebar').classList.remove('active');
+            document.querySelector('.overlay').classList.remove('active');
+            document.body.style.overflow = 'auto';
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function () {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.1)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+                header.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
+            }
+        });
+    </script>
+</body>
+</html>
