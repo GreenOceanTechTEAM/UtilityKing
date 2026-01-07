@@ -475,8 +475,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         const dbResult = await dbResponse.json();
 
-        setBackendMessage(dbResult.d);
-
         if (dbResponse.ok && dbResult.d === "Success") {
             setSubmissionStatus('success');
             toast({
@@ -494,7 +492,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         }
     } catch (error: any) {
         setSubmissionStatus('fail');
-        setBackendMessage(error.message);
         console.error("Error submitting form:", error);
         toast({
             variant: "destructive",
@@ -889,5 +886,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
 
 
