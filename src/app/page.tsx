@@ -1,7 +1,7 @@
 
 "use client";
 
-import React, { useRef, useCallback } from 'react';
+import React, { useRef, useCallback, useState } from 'react';
 import Header from '@/components/layout/header';
 import Footer from '@/components/layout/footer';
 import ConversationalHero from '@/components/sections/conversational-hero';
@@ -33,15 +33,13 @@ export default function Home() {
     { id: 'contact', name: 'Contact' },
   ];
   
-  // A ref to hold the reset function from the ComparisonDemo component
+  const [premisesType, setPremisesType] = useState('Home');
   const comparisonResetRef = useRef<() => void | null>(null);
 
-  // A stable callback that will be provided to the ComparisonDemo component
   const setComparisonReset = useCallback((resetFn: () => void) => {
     comparisonResetRef.current = resetFn;
   }, []);
 
-  // A stable function to be passed down through context
   const triggerReset = useCallback(() => {
     if (comparisonResetRef.current) {
       comparisonResetRef.current();
@@ -54,7 +52,7 @@ export default function Home() {
         <Header sections={sections} />
         <main className="flex-1">
           <ConversationalHero id="hero" />
-          <HowItWorks id="how" />
+          <HowItWorks id="how" premisesType={premisesType}/>
           <ServicesSection id="services" />
           <WhyUtilityKing id="why" />
           <ComparisonDemo id="compare" />

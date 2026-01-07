@@ -1,3 +1,4 @@
+
 "use client";
 
 import { motion } from 'framer-motion';
@@ -5,25 +6,8 @@ import { FileText, BarChart3, Smile } from 'lucide-react';
 
 type HowItWorksProps = {
   id: string;
+  premisesType?: string;
 };
-
-const steps = [
-  {
-    icon: <FileText className="h-8 w-8 text-accent" />,
-    title: "Tell Us About Your Home",
-    description: "Share your energy usage, home type, and preferences. No sensitive details needed — just enough for accurate comparison."
-  },
-  {
-    icon: <BarChart3 className="h-8 w-8 text-accent" />,
-    title: "Compare Live Deals Instantly",
-    description: "We analyze the latest electricity and gas tariffs available, ranking them by price, contract length, provider rating, and renewal fit."
-  },
-  {
-    icon: <Smile className="h-8 w-8 text-accent" />,
-    title: "Switch Online & Start Saving",
-    description: "Pick your ideal deal and switch in minutes — no phone calls, no paperwork, no disruption to your supply."
-  }
-];
 
 const containerVariants = {
   hidden: { opacity: 0 },
@@ -43,7 +27,25 @@ const itemVariants = {
   },
 };
 
-export default function HowItWorks({ id }: HowItWorksProps) {
+export default function HowItWorks({ id, premisesType = "Home" }: HowItWorksProps) {
+  const steps = [
+    {
+      icon: <FileText className="h-8 w-8 text-accent" />,
+      title: `Tell Us About Your ${premisesType}`,
+      description: "Share your energy usage, home type, and preferences. No sensitive details needed — just enough for accurate comparison."
+    },
+    {
+      icon: <BarChart3 className="h-8 w-8 text-accent" />,
+      title: "Compare Live Deals Instantly",
+      description: "We analyze the latest electricity and gas tariffs available, ranking them by price, contract length, provider rating, and renewal fit."
+    },
+    {
+      icon: <Smile className="h-8 w-8 text-accent" />,
+      title: "Switch Online & Start Saving",
+      description: "Pick your ideal deal and switch in minutes — no phone calls, no paperwork, no disruption to your supply."
+    }
+  ];
+
   return (
     <section id={id} className="py-16 sm:py-24 bg-primary/5 dark:bg-primary/10">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

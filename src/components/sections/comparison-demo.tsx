@@ -115,25 +115,13 @@ const wizardSteps = [
     {
         step: 3,
         part: 1,
-        key: 'preferences',
-        title: "Your Preferences",
-        aiMessage: "What matters most to you in a new plan?",
-        options: [
-            { label: "Cheapest price" }, { label: "Fixed rate contract" }, { label: "Flexible / no exit fees" },
-            { label: "Smart meter compatible" }, { label: "Fastest switching" }, { label: "Best customer service" }
-        ],
-        isMultiSelect: true,
-    },
-    {
-        step: 4,
-        part: 1,
         key: 'renewablePreference',
         title: "Renewable Energy",
         aiMessage: "Do you prefer tariffs from 100% renewable energy suppliers?",
         options: [{ label: "Yes", icon: Leaf }, { label: "No" }],
     },
     {
-        step: 5,
+        step: 4,
         part: 2,
         key: 'postcode',
         title: "Postcode",
@@ -144,7 +132,7 @@ const wizardSteps = [
         icon: Search,
     },
     {
-        step: 6,
+        step: 5,
         part: 2,
         key: 'electricitySupplier',
         title: "Current Supplier",
@@ -201,7 +189,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 7,
+        step: 6,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -211,7 +199,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 8,
+        step: 7,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -319,6 +307,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const { firestore, auth, user } = useFirebase();
   const isMobile = useIsMobile();
   const resetComparison = useContext(ComparisonResetContext);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
+  const [backendMessage, setBackendMessage] = useState('');
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -356,6 +346,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setSummary(null);
     setLeadDetails(null);
     setDate(undefined);
+    setSubmissionStatus('idle');
+    setBackendMessage('');
     leadForm.reset({ name: '', email: '', phone: '' });
     if(resetComparison) resetComparison();
   };
@@ -370,6 +362,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const handleNextStep = () => {
     if (currentStep < wizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
+    } else {
+        handlePrimaryAction();
     }
   };
 
@@ -454,7 +448,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsLoading(true);
-    setComparisonResult(null);
+    setSubmissionStatus('idle');
 
     const formData = {
         postcode: selections['postcode'] || '',
@@ -473,94 +467,35 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     };
     
     try {
-        const response = await fetch('/api/webhook-proxy', {
+        const dbResponse = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Accept': 'application/json',
-            },
+            headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requestData: formData }),
         });
 
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`API call failed with status: ${response.status}. Response: ${errorText}`);
-        }
+        const dbResult = await dbResponse.json();
 
-        const resultData = await response.json();
-        
-        let plansData: RecommendedPlan[];
-        let parsedInnerJson;
-        // The backend response is a stringified JSON inside the 'd' property.
-        const parsedInnerJsonString = resultData.d;
+        setBackendMessage(dbResult.d);
 
-        if (typeof parsedInnerJsonString === 'string') {
-          // It's a double-encoded JSON string, parse it again.
-          parsedInnerJson = JSON.parse(parsedInnerJsonString);
+        if (dbResponse.ok && dbResult.d === "Success") {
+            setSubmissionStatus('success');
+            toast({
+                title: "Details Sent!",
+                description: "Your information has been sent successfully.",
+            });
         } else {
-            // It might be already parsed.
-            parsedInnerJson = parsedInnerJsonString;
+            setSubmissionStatus('fail');
+            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+            throw new Error("Failed to save lead to .NET backend.");
         }
-
-        if (Array.isArray(parsedInnerJson)) {
-            plansData = parsedInnerJson;
-        } else if (typeof parsedInnerJson === 'object' && parsedInnerJson !== null) {
-            // Handle case where a single object is returned
-            plansData = [parsedInnerJson];
-        } else {
-            throw new Error("Parsed inner JSON is not an array or a single object.");
-        }
-        
-        const finalResult: IntelligentUtilityComparisonOutput = {
-            comparisonSummary: "Here are your personalized results based on the latest market data.",
-            recommendedPlans: plansData.map((plan: RecommendedPlan) => {
-                const yearlyCostString = String(plan.yearlycost || '0').replace(/[^0-9.]/g, '');
-                const price = parseFloat(yearlyCostString);
-                
-                const features: string[] = [];
-                if (plan.nightrate) features.push(`Night Rate: ${plan.nightrate}`);
-                if (plan.offpeakrate) features.push(`Off-Peak Rate: ${plan.offpeakrate}`);
-                if (plan.eveningweekendrate) features.push(`Evening/Weekend Rate: ${plan.eveningweekendrate}`);
-
-                const duration = plan.duration?.replace(/[^0-9]/g, '') || '0';
-                const durationMonths = parseInt(duration, 10);
-
-                return {
-                    provider: plan.supplier || 'Unknown Supplier',
-                    planName: `Standing Charge: ${plan.standingcharge || 'N/A'}`,
-                    unitRate: `Unit Rate: ${plan.unitrate || 'N/A'}`,
-                    price: !isNaN(price) ? price : 0,
-                    durationMonths,
-                    contractLength: plan.duration ? `Duration: ${plan.duration}` : 'Variable',
-                    link: '#', 
-                    features,
-                };
-            }),
-        };
-        
-        setComparisonResult(finalResult);
-
-        if (user && firestore) {
-          const comparisonData = {
-            userId: user.uid,
-            userInput: JSON.stringify(selections),
-            comparisonResult: JSON.stringify(finalResult),
-            timestamp: serverTimestamp(),
-            name: leadData.name,
-            email: leadData.email,
-            phone: leadData.phone,
-          };
-          const comparisonsCollection = collection(firestore, `users/${user.uid}/ai_comparisons`);
-          await addDoc(comparisonsCollection, comparisonData);
-          console.log("Comparison result saved to Firestore.");
-        }
-
     } catch (error: any) {
-        console.error("Comparison failed:", error);
+        setSubmissionStatus('fail');
+        setBackendMessage(error.message);
+        console.error("Error submitting form:", error);
         toast({
             variant: "destructive",
-            title: "Comparison Failed",
-            description: `We couldn't generate comparisons at this time. ${error.message}`,
+            title: "Submission Failed",
+            description: `We couldn't save your details at this time. ${error.message}`,
         });
     } finally {
         setIsLoading(false);
@@ -583,16 +518,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     try {
         if (!firestore) throw new Error("Firestore not available");
 
-        // Use anonymous sign-in if no user is logged in
         if (!user) {
             await signInAnonymously(auth);
         }
-
-        // The onAuthStateChanged listener will update the user object,
-        // but we can proceed optimistically. The data saving part will happen in handleFormSubmit
-        // which now gets called after this.
         
-        // This function will now only trigger the backend call
         setIsLeadModalOpen(false);
         await handleFormSubmit(values);
 
@@ -608,124 +537,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   }
 
-
-  const handleSummarize = async () => {
-    if (!comparisonResult || !leadDetails) return;
-    setIsSummarizing(true);
-    setSummary(null);
-
-    try {
-        const aiResult = await summarizeComparison({
-            userName: leadDetails.name,
-            selections: selections,
-            results: comparisonResult.recommendedPlans,
-        });
-        setSummary(aiResult);
-    } catch (error: any) {
-        console.error("AI summarization failed:", error);
-        toast({
-            variant: "destructive",
-            title: "AI Summary Failed",
-            description: `UKi couldn't generate a summary. ${error.message}`,
-        });
-    } finally {
-        setIsSummarizing(false);
-    }
-  };
-
-  const handleDownloadPdf = async () => {
-    if (isGeneratingPdf) return;
-
-    setPdfTimestamp(new Date().toLocaleString());
-    setIsGeneratingPdf(true);
-
-    // Dynamically import libraries only when needed
-    const { default: jsPDF } = await import('jspdf');
-    const { default: html2canvas } = await import('html2canvas');
-
-    // Use a timeout to ensure the DOM has updated with the content to render
-    setTimeout(async () => {
-        const pdfElement = pdfContainerRef.current;
-        if (!pdfElement) {
-            setIsGeneratingPdf(false);
-            return;
-        };
-
-        try {
-            const canvas = await html2canvas(pdfElement, {
-                scale: 2,
-                useCORS: true,
-                backgroundColor: '#ffffff',
-            });
-            
-            const imgData = canvas.toDataURL('image/png');
-            
-            const pdf = new jsPDF('p', 'mm', 'a4');
-            const pdfWidth = pdf.internal.pageSize.getWidth();
-            const pdfHeight = pdf.internal.pageSize.getHeight();
-            
-            const imgWidth = canvas.width;
-            const imgHeight = canvas.height;
-            const ratio = imgWidth / imgHeight;
-
-            let contentWidth = pdfWidth - 20; // with margin
-            let contentHeight = contentWidth / ratio;
-            
-            let heightLeft = contentHeight;
-            let position = 10; // top margin
-
-            pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-            heightLeft -= (pdfHeight - 20);
-
-            while (heightLeft > 0) {
-                position = position - (pdfHeight - 20); // Move to next page content
-                pdf.addPage();
-                pdf.addImage(imgData, 'PNG', 10, position, contentWidth, contentHeight);
-                heightLeft -= (pdfHeight - 20);
-            }
-
-            pdf.save('UtilityKing_Quote.pdf');
-
-        } catch (error) {
-            console.error("Failed to generate PDF:", error);
-            toast({
-                variant: "destructive",
-                title: "PDF Download Failed",
-                description: "Sorry, we couldn't generate the PDF at this time."
-            });
-        } finally {
-            setIsGeneratingPdf(false);
-        }
-    }, 500);
-  };
-
-
-  const categorizedPlans = useMemo((): CategorizedPlans | null => {
-    if (!comparisonResult) return null;
-    
-    const plans = [...comparisonResult.recommendedPlans];
-    if (plans.length === 0) return { cheapest: null, oneYear: [], twoYear: [], threeYear: [], fourPlusYear: [] };
-
-    const sortedByPrice = plans.sort((a, b) => a.price - b.price);
-    const cheapest = sortedByPrice[0] ? { ...sortedByPrice[0] } : null;
-
-    return {
-        cheapest: cheapest,
-        oneYear: plans.filter(p => p.durationMonths === 12),
-        twoYear: plans.filter(p => p.durationMonths === 24),
-        threeYear: plans.filter(p => p.durationMonths === 36),
-        fourPlusYear: plans.filter(p => p.durationMonths > 36),
-    };
-  }, [comparisonResult]);
-
-
   const progress = (currentStep / (wizardSteps.length -1)) * 100;
 
   const getButtonText = () => {
     if (currentStep < wizardSteps.length - 1) {
-      return "Next Step";
+      return "Continue";
     }
-    return "Compare Energy Deals";
+    return "Get My Quote";
   }
   
   const analysisLines = [
@@ -735,47 +553,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
       "Checking for exclusive online-only deals...",
       "Finalizing your top recommendations...",
   ];
-
-  const renderPlans = (plans: RenderedPlan[], category: string) => {
-    if (!plans || plans.length === 0) {
-        return <p className="text-muted-foreground text-center col-span-full py-8">No {category} plans found for your criteria.</p>;
-    }
-
-    return plans.map((plan, index) => (
-        <motion.div
-            key={`${category}-${index}`}
-            custom={index}
-            initial={{ opacity: 0, y: 20 }}
-            animate={(i) => ({
-                opacity: 1,
-                y: 0,
-                transition: { delay: 0.1 + i * 0.08, ease: "easeOut" }
-            })}
-        >
-            <Card className="flex flex-col h-full bg-card border-border hover:border-primary/80 hover:shadow-lg transition-all hover:-translate-y-1">
-                <CardHeader>
-                    <div className="flex items-start justify-between">
-                        <div>
-                            <Badge variant="secondary" className="mb-2">{plan.provider}</Badge>
-                            <CardTitle className="text-lg font-semibold text-foreground">{plan.planName}</CardTitle>
-                             <p className="text-accent font-semibold text-xl mt-2">{plan.unitRate}</p>
-                        </div>
-                        {iconMap[plan.provider] || <Zap className="h-5 w-5 text-amber-500" />}
-                    </div>
-                </CardHeader>
-                <CardContent className="flex-1 space-y-4">
-                    <div className="font-headline text-3xl md:text-[40px] font-bold text-foreground tracking-tight">
-                        £{plan.price.toFixed(2)}
-                        <span className="text-base font-normal text-muted-foreground">/year</span>
-                    </div>
-                    <p className="text-sm text-muted-foreground">
-                        {plan.contractLength}
-                    </p>
-                </CardContent>
-            </Card>
-        </motion.div>
-    ));
-};
 
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
@@ -799,70 +576,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         <div className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
-                
-                {isGeneratingPdf && (
-                    <div
-                        ref={pdfContainerRef}
-                        className="p-10"
-                        style={{ position: 'absolute', left: -9999, top: 0, width: '800px', backgroundColor: 'white', zIndex: -1, opacity: 1, color: 'black' }}
-                    >
-                        <div className="text-center mb-6 border-b pb-4">
-                            <h2 className="font-headline text-2xl font-bold text-blue-600">UtilityKing</h2>
-                            <p className="text-sm text-gray-500">Your Personalised Energy Quote</p>
-                            {pdfTimestamp && <p className="text-xs text-gray-400 mt-1">Generated on: {pdfTimestamp}</p>}
-                            {leadDetails && (
-                                <div className="text-xs text-gray-500 mt-2">
-                                    <p className="font-semibold">Generated for:</p>
-                                    <p>Name: {leadDetails.name}</p>
-                                    <p>Email: {leadDetails.email}</p>
-                                    <p>Phone: {leadDetails.phone}</p>
-                                </div>
-                            )}
-                        </div>
-                        
-                        {summary && (
-                            <div className="my-6 p-4 rounded-lg bg-blue-50 border border-blue-200">
-                                <h3 className="font-headline text-xl font-bold text-gray-800 mb-2">AI Summary from UKi</h3>
-                                <ReactMarkdown className="prose prose-sm max-w-full text-base text-gray-800 whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
-                            </div>
-                        )}
-                        
-                        <div>
-                            {categorizedPlans && categorizedPlans.cheapest && (
-                                <div className="mb-6">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">Cheapest Deal</h3>
-                                    {renderPdfPlans([categorizedPlans.cheapest])}
-                                </div>
-                            )}
-                            {categorizedPlans && categorizedPlans.oneYear.length > 0 && (
-                                <div className="mb-6">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">1-Year Fixed Deals</h3>
-                                    {renderPdfPlans(categorizedPlans.oneYear)}
-                                </div>
-                            )}
-                            {categorizedPlans && categorizedPlans.twoYear.length > 0 && (
-                                <div className="mb-6">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">2-Years Fixed Deals</h3>
-                                    {renderPdfPlans(categorizedPlans.twoYear)}
-                                </div>
-                            )}
-                            {categorizedPlans && categorizedPlans.threeYear.length > 0 && (
-                                <div className="mb-6">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">3-Years Fixed Deals</h3>
-                                    {renderPdfPlans(categorizedPlans.threeYear)}
-                                </div>
-                            )}
-                            {categorizedPlans && categorizedPlans.fourPlusYear.length > 0 && (
-                                <div className="mb-6">
-                                    <h3 className="font-headline text-xl font-bold text-gray-800 mb-2 border-b pb-1">4+ Years Fixed Deals</h3>
-                                    {renderPdfPlans(categorizedPlans.fourPlusYear)}
-                                </div>
-                            )}
-                        </div>
-                    </div>
-                )}
-                
-                {!isLoading && !comparisonResult && (
+                                
+                {!isLoading && submissionStatus === 'idle' && (
                     <>
                         <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
                             <motion.div 
@@ -906,7 +621,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.step === 6 && "max-h-[260px] overflow-y-auto pr-2"
+                                            currentWizardStepConfig.step === 5 && "max-h-[260px] overflow-y-auto pr-2"
                                             )}>
                                                 {currentWizardStepConfig.options.map(option => {
                                                     const Icon = (option as any).icon;
@@ -1012,7 +727,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             <Button 
                                 type="button"
                                 size="lg" 
-                                onClick={handlePrimaryAction}
+                                onClick={handleNextStep}
                                 disabled={!isStepComplete(currentStep)}
                             >
                                 {getButtonText()}
@@ -1022,7 +737,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     </>
                 )}
 
-                {(isLoading && !comparisonResult) && (
+                {isLoading && (
                      <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
                         <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
                             <AnimatePresence>
@@ -1052,106 +767,36 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                       </div>
                 )}
 
-                {comparisonResult && !isLoading && categorizedPlans && (
+                {submissionStatus !== 'idle' && !isLoading && (
                     <motion.div
-                        key="results"
-                        initial={{ opacity: 0, y: 50 }}
+                        key="thank-you"
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: 50 }}
-                        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-                        className="mt-4"
+                        className="flex flex-col items-center justify-center min-h-[400px] text-center p-8"
                     >
+                        <motion.div
+                            initial={{ scale: 0 }}
+                            animate={{ scale: 1 }}
+                            transition={{ type: 'spring', delay: 0.2 }}
+                            className="w-20 h-20 rounded-full flex items-center justify-center bg-green-100 text-green-600 mb-6"
+                        >
+                            <CheckCircle className="w-12 h-12" />
+                        </motion.div>
+                        <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary mb-4">
+                           Backend Response:
+                        </h3>
 
-                        <div className='text-center mb-6'>
-                            <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary">Your Cheapest Energy Deals</h3>
-                            <p className='text-muted-foreground max-w-2xl mx-auto'>{comparisonResult.comparisonSummary}</p>
-                            <div className="mt-4 flex flex-wrap justify-center gap-2">
-                                <TooltipProvider>
-                                    <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Button onClick={handleSummarize} disabled={isSummarizing} size={isMobile ? "icon" : "default"}>
-                                            <Sparkles className={cn("h-4 w-4", !isMobile && "mr-2")} />
-                                            {!isMobile && "Summarize with UKi"}
-                                            </Button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>Summarize with UKi</p>
-                                        </TooltipContent>
-                                    </Tooltip>
-                                </TooltipProvider>
-                                <TooltipProvider>
-                                     <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Button onClick={handleDownloadPdf} variant="outline" disabled={isGeneratingPdf} size={isMobile ? "icon" : "default"}>
-                                                <Download className={cn("h-4 w-4", !isMobile && "mr-2")} />
-                                                {!isMobile && "Download Report"}
-                                            </Button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>Download Report</p>
-                                        </TooltipContent>
-                                     </Tooltip>
-                                </TooltipProvider>
-                                <TooltipProvider>
-                                     <Tooltip>
-                                        <TooltipTrigger asChild>
-                                            <Button onClick={handleReset} variant="outline" size={isMobile ? "icon" : "default"}>
-                                                <RefreshCw className={cn("h-4 w-4", !isMobile && "mr-2")} />
-                                                {!isMobile && "Start New Comparison"}
-                                            </Button>
-                                        </TooltipTrigger>
-                                        <TooltipContent>
-                                            <p>Start New Comparison</p>
-                                        </TooltipContent>
-                                     </Tooltip>
-                                </TooltipProvider>
-                            </div>
+                        <div className='text-center my-4 p-4 rounded-lg bg-gray-100 dark:bg-gray-800 border'>
+                            <p className="font-mono text-lg">{backendMessage}</p>
                         </div>
-                        
-                        {isSummarizing && (
-                            <div className="text-center my-4 text-muted-foreground">
-                                <p>UKi is analyzing your results...</p>
-                            </div>
-                        )}
 
-                        {summary && (
-                            <motion.div
-                                initial={{ opacity: 0, y: 10 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                className="my-6 p-4 rounded-lg bg-primary/10 border border-primary/20"
-                            >
-                                <ReactMarkdown className="prose prose-sm max-w-full text-base text-foreground whitespace-pre-wrap">{summary.summary}</ReactMarkdown>
-                            </motion.div>
-                        )}
-
-                         <Tabs defaultValue="cheapest" className="w-full">
-                            <div className="overflow-x-auto sm:overflow-visible pb-2">
-                                <TabsList className="grid w-full grid-cols-2 sm:grid-cols-3 md:grid-cols-5">
-                                    <TabsTrigger value="cheapest" disabled={!categorizedPlans.cheapest}>Cheapest</TabsTrigger>
-                                    <TabsTrigger value="1year" disabled={categorizedPlans.oneYear.length === 0}>1 Year</TabsTrigger>
-                                    <TabsTrigger value="2year" disabled={categorizedPlans.twoYear.length === 0}>2 Years</TabsTrigger>
-                                    <TabsTrigger value="3year" disabled={categorizedPlans.threeYear.length === 0}>3 Years</TabsTrigger>
-                                    <TabsTrigger value="4plus" disabled={categorizedPlans.fourPlusYear.length === 0}>4+ Years</TabsTrigger>
-                                </TabsList>
-                            </div>
-                            <TabsContent value="cheapest" className="mt-4">
-                                 <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
-                                    {categorizedPlans.cheapest ? renderPlans([categorizedPlans.cheapest], "cheapest") : <p>No plans found.</p>}
-                                 </div>
-                            </TabsContent>
-                            <TabsContent value="1year" className="mt-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.oneYear, "1-year")}</div>
-                            </TabsContent>
-                            <TabsContent value="2year" className="mt-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.twoYear, "2-year")}</div>
-                            </TabsContent>
-                            <TabsContent value="3year" className="mt-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.threeYear, "3-year")}</div>
-                            </TabsContent>
-                            <TabsContent value="4plus" className="mt-4">
-                                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">{renderPlans(categorizedPlans.fourPlusYear, "4+ year")}</div>
-                            </TabsContent>
-                        </Tabs>
+                        <p className="max-w-xl text-lg text-muted-foreground">
+                          Thank you, {leadDetails?.name}! The best offers with complete rate charts and a personalized quote are on the way to your inbox.
+                        </p>
+                        <Button onClick={handleReset} className="mt-8">
+                            <RefreshCw className="mr-2 h-4 w-4" />
+                            Start New Comparison
+                        </Button>
                     </motion.div>
                 )}
             </div>
@@ -1245,3 +890,4 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
