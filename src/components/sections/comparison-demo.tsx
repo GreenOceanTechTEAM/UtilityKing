@@ -481,12 +481,16 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             setSubmissionStatus('success');
             toast({
                 title: "Details Sent!",
-                description: "Your information has been sent successfully.",
+                description: dbResult.d,
             });
         } else {
             setSubmissionStatus('fail');
             console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            throw new Error("Failed to save lead to .NET backend.");
+            toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: dbResult.d || 'Could not save details at this time.',
+            });
         }
     } catch (error: any) {
         setSubmissionStatus('fail');
@@ -783,15 +787,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             <CheckCircle className="w-12 h-12" />
                         </motion.div>
                         <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary mb-4">
-                           Backend Response:
+                           Thank You, {leadDetails?.name}!
                         </h3>
-
-                        <div className='text-center my-4 p-4 rounded-lg bg-gray-100 dark:bg-gray-800 border'>
-                            <p className="font-mono text-lg">{backendMessage}</p>
-                        </div>
-
                         <p className="max-w-xl text-lg text-muted-foreground">
-                          Thank you, {leadDetails?.name}! The best offers with complete rate charts and a personalized quote are on the way to your inbox.
+                          The best offers with complete rate charts and a personalized quote are on the way to your inbox.
                         </p>
                         <Button onClick={handleReset} className="mt-8">
                             <RefreshCw className="mr-2 h-4 w-4" />
@@ -890,4 +889,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
 
