@@ -8,15 +8,15 @@ export async function POST(request: NextRequest) {
   try {
     const requestBody = await request.json();
 
-    // The .NET WebMethod expects the payload directly, not wrapped in 'requestData'.
+    // The .NET WebMethod expects the payload to be wrapped in an object
+    // with a key that matches the method's parameter name ('requestData').
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            // API key header might still be needed depending on the live endpoint's security
             'X-API-KEY': process.env.DOTNET_API_KEY || '', 
         },
-        body: JSON.stringify(requestBody),
+        body: JSON.stringify({ requestData: requestBody }),
     });
     
     if (!apiResponse.ok) {
