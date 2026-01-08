@@ -472,12 +472,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
         const dbResult = await response.json();
 
-        if (response.ok && dbResult.d && dbResult.d.toLowerCase().includes('success')) {
+        if (response.ok && dbResult.d && dbResult.d === "1") {
             setSubmissionStatus('success');
-            setBackendMessage(dbResult.d);
+            setBackendMessage("Success: Data received by .NET backend.");
             toast({
                 title: "Submission Successful",
-                description: dbResult.d,
+                description: "Your information has been sent successfully.",
             });
             setShowThankYou(true);
         } else {
@@ -869,6 +869,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
 
   
+
+    
 
     
 
