@@ -447,9 +447,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
-    setIsLoading(true);
-    setSubmissionStatus('idle');
-    setBackendMessage('');
+    setIsSavingLead(true);
 
     const formData = {
         postcode: selections['postcode'] || '',
@@ -465,69 +463,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     };
     
     try {
-        const dbResponse = await fetch('/api/webhook-proxy-db', {
+        const response = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ requestData: formData }),
         });
 
-        const dbResultText = await dbResponse.text();
-        // The .NET backend returns a string inside a JSON object: {"d":"Success..."}
-        // We need to parse it to get the inner string.
-        try {
-            const dbResult = JSON.parse(dbResultText);
-            const message = dbResult.d || 'No response message.';
-            setBackendMessage(message);
-
-            if (message.toLowerCase().includes('success')) {
-                setSubmissionStatus('success');
-                toast({
-                    title: "Details Sent!",
-                    description: message,
-                });
-                setShowThankYou(true);
-            } else {
-                setSubmissionStatus('fail');
-                console.error("Failed to save lead to .NET backend. Response:", message);
-                toast({
-                    variant: "destructive",
-                    title: "Submission Failed",
-                    description: `Backend response: ${message}`,
-                });
-            }
-        } catch (parseError) {
-             // If the response is not JSON (e.g., just a string "Success..."), use it directly.
-             const message = dbResultText;
-             setBackendMessage(message);
-             if (message.toLowerCase().includes('success')) {
-                 setSubmissionStatus('success');
-                 toast({
-                    title: "Details Sent!",
-                    description: message,
-                });
-                 setShowThankYou(true);
-             } else {
-                setSubmissionStatus('fail');
-                console.error("Failed to parse backend response or it indicates failure:", message);
-                toast({
-                    variant: "destructive",
-                    title: "Submission Failed",
-                    description: `Backend response: ${message}`,
-                });
-             }
-        }
+        const result = await response.json();
+        const message = result.d || "No message from backend.";
         
+        alert(message);
+        
+        if (response.ok && message.toLowerCase().includes('success')) {
+           handleReset();
+        }
+
     } catch (error: any) {
-        setSubmissionStatus('fail');
-        setBackendMessage(`Error: ${error.message}`);
         console.error("Failed to fetch from proxy:", error);
-        toast({
-            variant: "destructive",
-            title: "Network Error",
-            description: `We couldn't reach the server. ${error.message}`,
-        });
+        alert(`An error occurred: ${error.message}`);
     } finally {
-        setIsLoading(false);
+        setIsSavingLead(false);
+        setIsLeadModalOpen(false);
     }
 };
 
@@ -542,23 +498,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
     setLeadDetails(values);
-    setIsSavingLead(true);
-
-    try {
-        // We will call the main submission logic here
-        await handleFormSubmit(values);
-        
-        // Only close modal if submission was successful
-        if (submissionStatus === 'success' || (backendMessage && backendMessage.toLowerCase().includes('success'))) {
-            setIsLeadModalOpen(false);
-        }
-        
-    } catch (error: any) {
-        console.error("Error during lead submission process:", error);
-        // Toast is handled inside handleFormSubmit
-    } finally {
-        setIsSavingLead(false);
-    }
+    await handleFormSubmit(values);
   }
 
   const progress = (currentStep / (wizardSteps.length -1)) * 100;
@@ -751,7 +691,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             <Button 
                                 type="button"
                                 size="lg" 
-                                onClick={handleNextStep}
+                                onClick={handlePrimaryAction}
                                 disabled={!isStepComplete(currentStep)}
                             >
                                 {getButtonText()}
@@ -918,3 +858,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
 
   
+
+    
