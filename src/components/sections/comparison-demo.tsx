@@ -371,7 +371,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -448,6 +448,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsSavingLead(true);
+    setLeadDetails(leadData);
 
     const formData = {
         postcode: selections['postcode'] || '',
@@ -461,7 +462,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         utilityType: selections['utilityType'] || '',
         renewablePreference: selections['renewablePreference'] || 'No',
     };
-    
+
     try {
         const response = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
@@ -469,18 +470,33 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             body: JSON.stringify({ requestData: formData }),
         });
 
-        const result = await response.json();
-        const message = result.d || "No message from backend.";
-        
-        alert(message);
-        
-        if (response.ok && message.toLowerCase().includes('success')) {
-           handleReset();
-        }
+        const dbResult = await response.json();
 
+        if (response.ok && dbResult.d && dbResult.d.toLowerCase().includes('success')) {
+            setSubmissionStatus('success');
+            setBackendMessage(dbResult.d);
+            toast({
+                title: "Submission Successful",
+                description: dbResult.d,
+            });
+            setShowThankYou(true);
+        } else {
+            setSubmissionStatus('fail');
+            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+            toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: dbResult.d || "An unknown error occurred.",
+            });
+        }
     } catch (error: any) {
+        setSubmissionStatus('fail');
         console.error("Failed to fetch from proxy:", error);
-        alert(`An error occurred: ${error.message}`);
+        toast({
+            variant: "destructive",
+            title: "Network Error",
+            description: "Could not connect to the server. Please try again later.",
+        });
     } finally {
         setIsSavingLead(false);
         setIsLeadModalOpen(false);
@@ -497,7 +513,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    setLeadDetails(values);
     await handleFormSubmit(values);
   }
 
@@ -750,12 +765,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                            Thank You, {leadDetails?.name}!
                         </h3>
                         <p className="max-w-xl text-lg text-muted-foreground">
-                          The best offers with complete rate charts and a personalized quote are on the way to your inbox.
+                          Your submission has been received. We will be in touch with you shortly.
                         </p>
-                        <div className="mt-4 p-4 bg-muted/50 rounded-lg text-left w-full max-w-lg">
-                            <h4 className="font-semibold text-foreground">Backend Response:</h4>
-                            <p className="text-sm text-muted-foreground font-code break-words">{backendMessage}</p>
-                        </div>
                         <Button onClick={handleReset} className="mt-8">
                             <RefreshCw className="mr-2 h-4 w-4" />
                             Start New Comparison
@@ -858,5 +869,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
 
   
+
+    
 
     
