@@ -471,26 +471,52 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             body: JSON.stringify({ requestData: formData }),
         });
 
-        const dbResult = await dbResponse.json();
+        const dbResultText = await dbResponse.text();
+        // The .NET backend returns a string inside a JSON object: {"d":"Success..."}
+        // We need to parse it to get the inner string.
+        try {
+            const dbResult = JSON.parse(dbResultText);
+            const message = dbResult.d || 'No response message.';
+            setBackendMessage(message);
 
-        setBackendMessage(dbResult.d || 'No response message.');
-
-        if (dbResult.d && dbResult.d.toLowerCase().includes('success')) {
-            setSubmissionStatus('success');
-            toast({
-                title: "Details Sent!",
-                description: dbResult.d,
-            });
-            setShowThankYou(true);
-        } else {
-            setSubmissionStatus('fail');
-            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: `Backend response: ${dbResult.d || 'Unknown error'}`,
-            });
+            if (message.toLowerCase().includes('success')) {
+                setSubmissionStatus('success');
+                toast({
+                    title: "Details Sent!",
+                    description: message,
+                });
+                setShowThankYou(true);
+            } else {
+                setSubmissionStatus('fail');
+                console.error("Failed to save lead to .NET backend. Response:", message);
+                toast({
+                    variant: "destructive",
+                    title: "Submission Failed",
+                    description: `Backend response: ${message}`,
+                });
+            }
+        } catch (parseError) {
+             // If the response is not JSON (e.g., just a string "Success..."), use it directly.
+             const message = dbResultText;
+             setBackendMessage(message);
+             if (message.toLowerCase().includes('success')) {
+                 setSubmissionStatus('success');
+                 toast({
+                    title: "Details Sent!",
+                    description: message,
+                });
+                 setShowThankYou(true);
+             } else {
+                setSubmissionStatus('fail');
+                console.error("Failed to parse backend response or it indicates failure:", message);
+                toast({
+                    variant: "destructive",
+                    title: "Submission Failed",
+                    description: `Backend response: ${message}`,
+                });
+             }
         }
+        
     } catch (error: any) {
         setSubmissionStatus('fail');
         setBackendMessage(`Error: ${error.message}`);
@@ -890,3 +916,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
 
     
+
+  
