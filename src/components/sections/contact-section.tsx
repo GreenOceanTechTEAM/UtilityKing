@@ -1,6 +1,7 @@
 
 "use client";
 
+import * as React from 'react';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
@@ -48,7 +49,7 @@ const pillVariants = {
   tap: { scale: 0.95 }
 };
 
-const steps = [
+const baseSteps = [
     { field: "name", title: "Let's start with your name.", placeholder: "John Doe", icon: User },
     { field: "email", title: "What's your email address?", placeholder: "john.doe@example.com", icon: Mail },
     { field: "inquiryType", title: "What type of inquiry is this?", icon: Briefcase, options: [
@@ -58,6 +59,14 @@ const steps = [
     ]},
     { field: "message", title: "How can we help you today?", placeholder: "Your message here...", icon: Send, isTextarea: true },
 ];
+
+const businessNameStep = {
+    field: "businessName",
+    title: "What's your business name?",
+    placeholder: "ACME Inc.",
+    icon: Building
+};
+
 
 const triggerMessages = [
     { text: "My bill is too high" },
@@ -76,6 +85,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
     defaultValues: {
       name: "",
       email: "",
+      inquiryType: undefined,
       businessName: "",
       message: "",
     },
@@ -84,9 +94,14 @@ export default function ContactSection({ id }: ContactSectionProps) {
 
   const inquiryType = form.watch("inquiryType");
 
-  const activeSteps = inquiryType === 'Business'
-    ? [...steps.slice(0,3), { field: "businessName", title: "What's your business name?", placeholder: "ACME Inc.", icon: Building }, ...steps.slice(3)] 
-    : steps;
+  const activeSteps = React.useMemo(() => {
+    if (inquiryType === 'Business') {
+      const steps = [...baseSteps];
+      steps.splice(3, 0, businessNameStep); // Insert business name step after inquiry type
+      return steps;
+    }
+    return baseSteps;
+  }, [inquiryType]);
     
   const handleNextStep = async () => {
     const currentField = activeSteps[currentStep].field as keyof z.infer<typeof formSchema>;
@@ -163,6 +178,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
       const submissionsCollection = collection(firestore, 'contact_submissions');
       await addDoc(submissionsCollection, {
         ...values,
+        isBusiness: values.inquiryType === 'Business',
         createdAt: serverTimestamp(),
       });
 

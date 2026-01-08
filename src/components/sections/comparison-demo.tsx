@@ -16,7 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -79,12 +79,6 @@ const leadSchema = z.object({
     phone: z.string().min(10, "Please enter a valid phone number."),
 });
 
-const iconMap: { [key: string]: React.ReactNode } = {
-  "Energy": <Zap className="h-5 w-5 text-amber-500" />,
-  "Broadband": <Zap className="h-5 w-5 text-blue-500" />,
-  "Mobile": <Zap className="h-5 w-5 text-green-500" />,
-};
-
 const wizardSteps = [
     {
         step: 1,
@@ -101,8 +95,20 @@ const wizardSteps = [
             { label: "Other" },
         ],
     },
-    {
+     {
         step: 2,
+        part: 1,
+        key: 'businessName',
+        title: "Business Name",
+        aiMessage: "What is the name of your business?",
+        isInput: true,
+        customPlaceholder: "e.g., ACME Inc.",
+        icon: Briefcase,
+        options: [],
+        condition: (selections: any) => selections.premisesType && selections.premisesType !== 'Home'
+    },
+    {
+        step: 3,
         part: 1,
         key: 'utilityType',
         title: "Utility Type",
@@ -113,7 +119,7 @@ const wizardSteps = [
         ],
     },
     {
-        step: 3,
+        step: 4,
         part: 1,
         key: 'renewablePreference',
         title: "Renewable Energy",
@@ -121,7 +127,7 @@ const wizardSteps = [
         options: [{ label: "Yes", icon: Leaf }, { label: "No" }],
     },
     {
-        step: 4,
+        step: 5,
         part: 2,
         key: 'postcode',
         title: "Postcode",
@@ -132,7 +138,7 @@ const wizardSteps = [
         icon: Search,
     },
     {
-        step: 5,
+        step: 6,
         part: 2,
         key: 'electricitySupplier',
         title: "Current Supplier",
@@ -189,7 +195,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 6,
+        step: 7,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -199,7 +205,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 7,
+        step: 8,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -327,15 +333,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   
 
   const activeWizardSteps = React.useMemo(() => {
-    return wizardSteps;
-  }, []);
+    return wizardSteps.filter(step => !step.condition || step.condition(selections));
+  }, [selections]);
   
   const leadForm = useForm<z.infer<typeof leadSchema>>({
     resolver: zodResolver(leadSchema),
     defaultValues: { name: '', email: '', phone: '' },
   });
 
-  const currentWizardStepConfig = wizardSteps[currentStep];
+  const currentWizardStepConfig = activeWizardSteps[currentStep];
 
   const handleReset = () => {
     setComparisonResult(null);
@@ -362,7 +368,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
 
   const handleNextStep = () => {
-    if (currentStep < wizardSteps.length - 1) {
+    if (currentStep < activeWizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
     } else {
         handlePrimaryAction();
@@ -371,7 +377,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -398,7 +404,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     
     setSelections(newSelections);
     
-    const stepConfig = wizardSteps.find(s => s.key === stepKey);
+    const stepConfig = activeWizardSteps.find(s => s.key === stepKey);
     if (stepConfig && !stepConfig.isMultiSelect && !stepConfig.isInput && !stepConfig.isDateInput) {
         setTimeout(() => handleNextStep(), 300);
     }
@@ -430,7 +436,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const isStepComplete = (stepIndex: number) => {
-    const step = wizardSteps[stepIndex];
+    const step = activeWizardSteps[stepIndex];
     if (!step) return false;
     
     const selection = selections[step.key];
@@ -447,12 +453,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   }
 
   const handleFormSubmit = (leadData: z.infer<typeof leadSchema>) => {
-    // 1. Immediately update UI for an "instant" experience
     setLeadDetails(leadData);
     setIsLeadModalOpen(false);
     setShowThankYou(true);
     
-    // 2. Prepare data for the background submission
     let contractDate: Date | null = null;
     let day = '', month = '', year = '';
 
@@ -474,46 +478,57 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         month: month,
         year: year,
         premisesType: selections['premisesType'] || 'Home',
+        business: selections['businessName'] || (selections['premisesType'] === 'Home' ? 'Personal' : 'Business'),
         renewablePreference: selections['renewablePreference'] || 'No',
         utilityType: selections['utilityType'] || 'Gas',
         email: leadData.email,
-        business: selections['premisesType'] === 'Home' ? 'Personal' : 'Business',
         contactName: leadData.name,
         phone: leadData.phone,
     };
 
-    // 3. Fire-and-forget the request to the backend
     fetch('/api/webhook-proxy-db', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formData),
     })
     .then(async (response) => {
-        if (response.ok) {
-            const dbResult = await response.json();
-            if (dbResult.d === "1") {
-                console.log("Lead successfully saved to backend.");
-                // Optionally show a silent success toast
-                toast({
-                    title: "Quote Request Sent",
-                    description: "We've received your details and will be in touch shortly.",
-                });
-            } else {
-                 console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            }
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`Backend error: ${errorText}`);
+        }
+        return response.json();
+    })
+    .then((dbResult) => {
+        if (dbResult.d === "1") {
+            setSubmissionStatus('success');
+             toast({
+                title: "Quotation Request Confirmed",
+                description: "Your details have been sent successfully.",
+            });
         } else {
-             console.error("Failed to save lead. Server responded with status:", response.status);
+             setSubmissionStatus('fail');
+             console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+             toast({
+                variant: "destructive",
+                title: "Submission Failed",
+                description: `The server responded with an issue: ${dbResult.d}`,
+            });
         }
     })
     .catch((error) => {
-        // Handle network errors silently as the user has already seen the success message
+        setSubmissionStatus('fail');
         console.error("Error submitting form in background:", error);
+        toast({
+            variant: "destructive",
+            title: "Network Error",
+            description: "Could not connect to the server. Please try again later.",
+        });
     });
 };
 
 
   const handlePrimaryAction = () => {
-    if (currentStep === wizardSteps.length - 1 && isStepComplete(currentStep)) {
+    if (currentStep === activeWizardSteps.length - 1 && isStepComplete(currentStep)) {
       setIsLeadModalOpen(true);
     } else if (isStepComplete(currentStep)) {
       handleNextStep();
@@ -524,10 +539,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     handleFormSubmit(values);
   }
 
-  const progress = (currentStep / (wizardSteps.length -1)) * 100;
+  const progress = (currentStep / (activeWizardSteps.length -1)) * 100;
 
   const getButtonText = () => {
-    if (currentStep < wizardSteps.length - 1) {
+    if (currentStep < activeWizardSteps.length - 1) {
       return "Continue";
     }
     return "Get My Quote";
@@ -608,7 +623,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.step === 5 && "max-h-[260px] overflow-y-auto pr-2"
+                                            currentWizardStepConfig.key === 'electricitySupplier' && "max-h-[260px] overflow-y-auto pr-2"
                                             )}>
                                                 {currentWizardStepConfig.options.map(option => {
                                                     const Icon = (option as any).icon;
@@ -872,3 +887,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
