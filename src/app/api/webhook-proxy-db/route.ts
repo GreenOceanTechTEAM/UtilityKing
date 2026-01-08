@@ -2,33 +2,32 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  // The target URL of your .NET page
-  const targetUrl = 'https://utilityking.co.uk/api.aspx';
+  // The target URL of your .NET WebMethod
+  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
     const requestBody = await request.json();
 
-    // The entire body, including the 'requestData' wrapper, is sent.
-    // The C# backend will now parse this from the request stream.
+    // The .NET WebMethod expects the payload directly, not wrapped in 'requestData'.
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-API-KEY': process.env.DOTNET_API_KEY || '',
+            // API key header might still be needed depending on the live endpoint's security
+            'X-API-KEY': process.env.DOTNET_API_KEY || '', 
         },
         body: JSON.stringify(requestBody),
     });
     
     if (!apiResponse.ok) {
         const errorDetails = await apiResponse.text();
-        // The .NET page now returns plain text on error
+        console.error('Error from .NET backend:', errorDetails);
         return NextResponse.json({ d: `Error: ${errorDetails}` }, { status: apiResponse.status });
     }
 
-    // The .NET page now returns a simple string on success
-    const resultText = await apiResponse.text();
-    // We wrap it in the { d: "..." } structure that the frontend expects
-    return NextResponse.json({ d: resultText });
+    // Forward the response from the .NET backend.
+    const result = await apiResponse.json();
+    return NextResponse.json(result);
 
   } catch (error: any) {
     console.error('Error in db webhook proxy:', error);

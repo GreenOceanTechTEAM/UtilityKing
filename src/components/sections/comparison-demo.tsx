@@ -307,8 +307,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const { firestore, auth, user } = useFirebase();
   const isMobile = useIsMobile();
   const resetComparison = useContext(ComparisonResetContext);
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
-  const [backendMessage, setBackendMessage] = useState('');
+  const [showThankYou, setShowThankYou] = useState(false);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -346,8 +345,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setSummary(null);
     setLeadDetails(null);
     setDate(undefined);
-    setSubmissionStatus('idle');
-    setBackendMessage('');
+    setShowThankYou(false);
     leadForm.reset({ name: '', email: '', phone: '' });
     if(resetComparison) resetComparison();
   };
@@ -448,7 +446,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsLoading(true);
-    setSubmissionStatus('idle');
 
     const formData = {
         postcode: selections['postcode'] || '',
@@ -470,29 +467,24 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         const dbResponse = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ requestData: formData }),
+            body: JSON.stringify(formData), // Send formData directly
         });
 
         const dbResult = await dbResponse.json();
 
-        if (dbResponse.ok && dbResult.d === "Success") {
-            setSubmissionStatus('success');
+        if (dbResponse.ok) {
             toast({
                 title: "Details Sent!",
-                description: dbResult.d,
+                description: "Your information has been sent successfully.",
             });
         } else {
-            setSubmissionStatus('fail');
-            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            toast({
+             toast({
                 variant: "destructive",
                 title: "Submission Failed",
                 description: dbResult.d || 'Could not save details at this time.',
             });
         }
     } catch (error: any) {
-        setSubmissionStatus('fail');
-        console.error("Error submitting form:", error);
         toast({
             variant: "destructive",
             title: "Submission Failed",
@@ -500,6 +492,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         });
     } finally {
         setIsLoading(false);
+        setShowThankYou(true);
     }
 };
 
@@ -578,7 +571,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         <div className="w-full max-w-4xl mx-auto">
             <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
                                 
-                {!isLoading && submissionStatus === 'idle' && (
+                {!showThankYou && !isLoading && (
                     <>
                         <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
                             <motion.div 
@@ -768,7 +761,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                       </div>
                 )}
 
-                {submissionStatus !== 'idle' && !isLoading && (
+                {showThankYou && !isLoading && (
                     <motion.div
                         key="thank-you"
                         initial={{ opacity: 0, y: 20 }}
@@ -886,6 +879,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-
-
