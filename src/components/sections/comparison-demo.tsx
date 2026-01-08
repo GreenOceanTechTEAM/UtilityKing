@@ -446,11 +446,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     return !!selection;
   }
 
-  const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
-    setIsSavingLead(true);
+  const handleFormSubmit = (leadData: z.infer<typeof leadSchema>) => {
+    // 1. Immediately update UI for an "instant" experience
     setLeadDetails(leadData);
-
-    let contractDate = null;
+    setIsLeadModalOpen(false);
+    setShowThankYou(true);
+    
+    // 2. Prepare data for the background submission
+    let contractDate: Date | null = null;
     let day = '', month = '', year = '';
 
     if (selections['contractEndDate']) {
@@ -460,7 +463,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         year = String(contractDate.getFullYear());
     }
 
-    // Ensure usage is only numbers
     const usageValue = selections['usage'] || '';
     const numericUsage = usageValue.match(/\d+/g)?.join('') || '';
 
@@ -480,44 +482,33 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         phone: leadData.phone,
     };
 
-    try {
-        const response = await fetch('/api/webhook-proxy-db', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData),
-        });
-
-        const dbResult = await response.json();
-
-        // The .NET backend returns { d: "1" } on success.
-        if (response.ok && dbResult.d === "1") {
-            setSubmissionStatus('success');
-            toast({
-                title: "Submission Successful",
-                description: "Your information has been sent.",
-            });
-            setShowThankYou(true);
+    // 3. Fire-and-forget the request to the backend
+    fetch('/api/webhook-proxy-db', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+    })
+    .then(async (response) => {
+        if (response.ok) {
+            const dbResult = await response.json();
+            if (dbResult.d === "1") {
+                console.log("Lead successfully saved to backend.");
+                // Optionally show a silent success toast
+                toast({
+                    title: "Quote Request Sent",
+                    description: "We've received your details and will be in touch shortly.",
+                });
+            } else {
+                 console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+            }
         } else {
-            setSubmissionStatus('fail');
-            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: `There was a problem with your request. Backend response: ${dbResult.d}`,
-            });
+             console.error("Failed to save lead. Server responded with status:", response.status);
         }
-    } catch (error: any) {
-        setSubmissionStatus('fail');
-        console.error("Failed to fetch from proxy:", error);
-        toast({
-            variant: "destructive",
-            title: "Network Error",
-            description: "Could not connect to the server. Please try again later.",
-        });
-    } finally {
-        setIsSavingLead(false);
-        setIsLeadModalOpen(false);
-    }
+    })
+    .catch((error) => {
+        // Handle network errors silently as the user has already seen the success message
+        console.error("Error submitting form in background:", error);
+    });
 };
 
 
@@ -530,7 +521,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    await handleFormSubmit(values);
+    handleFormSubmit(values);
   }
 
   const progress = (currentStep / (wizardSteps.length -1)) * 100;
@@ -782,7 +773,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                            Thank You, {leadDetails?.name}!
                         </h3>
                         <p className="max-w-xl text-lg text-muted-foreground">
-                          Your submission has been received. We will be in touch with you shortly.
+                          Your tailored quotation with rates is on the way. You will receive an email shortly.
                         </p>
                         <Button onClick={handleReset} className="mt-8">
                             <RefreshCw className="mr-2 h-4 w-4" />
@@ -881,5 +872,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
