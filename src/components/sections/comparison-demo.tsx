@@ -371,7 +371,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -457,9 +457,9 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         contractEndDate: selections['contractEndDate'] || new Date().toISOString().split('T')[0],
         premisesType: selections['premisesType'] || 'Home',
         renewablePreference: selections['renewablePreference'] || 'No',
-        utilityType: selections['utilityType'] || '',
+        utilityType: selections['utilityType'] || 'Gas',
         email: leadData.email,
-        business: selections['premisesType'] || "Home",
+        business: selections['premisesType'] === 'Home' ? 'Personal' : 'Business',
         contactName: leadData.name,
         phone: leadData.phone,
     };
@@ -471,23 +471,27 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             body: JSON.stringify(formData),
         });
 
-        const result = await response.json();
-        
-        toast({
-            title: "Backend Response",
-            description: result.message || "No message received.",
-        });
+        const dbResult = await response.json();
 
-        if (response.ok) {
+        // The .NET backend returns { d: "1" } on success.
+        if (response.ok && dbResult.d === "1") {
+            setSubmissionStatus('success');
+            toast({
+                title: "Submission Successful",
+                description: "Your information has been sent.",
+            });
             setShowThankYou(true);
         } else {
-             toast({
+            setSubmissionStatus('fail');
+            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+            toast({
                 variant: "destructive",
                 title: "Submission Failed",
-                description: result.message || "An unknown error occurred.",
+                description: `There was a problem with your request. Backend response: ${dbResult.d}`,
             });
         }
     } catch (error: any) {
+        setSubmissionStatus('fail');
         console.error("Failed to fetch from proxy:", error);
         toast({
             variant: "destructive",

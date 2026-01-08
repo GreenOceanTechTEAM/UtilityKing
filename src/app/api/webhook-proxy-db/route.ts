@@ -2,31 +2,33 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  // The target URL of your new, dedicated API endpoint
-  const targetUrl = 'https://utilityking.co.uk/api/lead';
+  // The exact target URL of your .NET WebMethod
+  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
     const requestBody = await request.json();
 
-    // Forward the request to the new .NET API endpoint
+    // The .NET WebMethod expects the data to be wrapped in a 'requestData' object.
+    const payload = {
+      requestData: requestBody
+    };
+
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            // Add any necessary auth headers here, like an API key
             'X-API-KEY': process.env.DOTNET_API_KEY || 'your_secure_api_key_here',
         },
-        body: JSON.stringify(requestBody), // Send the body directly
+        body: JSON.stringify(payload),
     });
     
-    // Check if the external API call was successful
     if (!apiResponse.ok) {
-        const errorDetails = await apiResponse.text();
-        console.error('Error from .NET backend:', errorDetails);
-        // Return a structured error response
-        return NextResponse.json({ message: `Error from backend: ${errorDetails}` }, { status: apiResponse.status });
+        const errorText = await apiResponse.text();
+        console.error(`Error from .NET backend (${apiResponse.status}):`, errorText);
+        return NextResponse.json({ message: `Error from backend: ${errorText}` }, { status: apiResponse.status });
     }
 
-    // Assuming the backend returns JSON on success
     const resultJson = await apiResponse.json();
     return NextResponse.json(resultJson);
 
