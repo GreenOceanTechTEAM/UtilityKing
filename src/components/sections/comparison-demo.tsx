@@ -371,7 +371,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -455,12 +455,13 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
         contractEndDate: selections['contractEndDate'] || new Date().toISOString().split('T')[0],
+        premisesType: selections['premisesType'] || 'Home',
+        renewablePreference: selections['renewablePreference'] || 'No',
+        utilityType: selections['utilityType'] || '',
         email: leadData.email,
         business: selections['premisesType'] || "Home",
         contactName: leadData.name,
         phone: leadData.phone,
-        utilityType: selections['utilityType'] || '',
-        renewablePreference: selections['renewablePreference'] || 'No',
     };
 
     try {
@@ -470,27 +471,23 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             body: JSON.stringify(formData),
         });
 
-        const dbResult = await response.json();
+        const result = await response.json();
         
         toast({
             title: "Backend Response",
-            description: dbResult.d,
+            description: result.message || "No message received.",
         });
 
-        if (response.ok && dbResult.d && dbResult.d.toLowerCase().includes("success")) {
-            setSubmissionStatus('success');
+        if (response.ok) {
             setShowThankYou(true);
         } else {
-            setSubmissionStatus('fail');
-            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-            toast({
+             toast({
                 variant: "destructive",
                 title: "Submission Failed",
-                description: dbResult.d || "An unknown error occurred.",
+                description: result.message || "An unknown error occurred.",
             });
         }
     } catch (error: any) {
-        setSubmissionStatus('fail');
         console.error("Failed to fetch from proxy:", error);
         toast({
             variant: "destructive",
