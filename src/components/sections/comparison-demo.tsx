@@ -450,11 +450,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsSavingLead(true);
     setLeadDetails(leadData);
 
+    let contractDate = null;
+    if (selections['contractEndDate']) {
+        contractDate = new Date(selections['contractEndDate']);
+    }
+
     const formData = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
-        contractEndDate: selections['contractEndDate'] || new Date().toISOString().split('T')[0],
+        day: contractDate ? String(contractDate.getDate()) : '',
+        month: contractDate ? String(contractDate.getMonth() + 1) : '',
+        year: contractDate ? String(contractDate.getFullYear()) : '',
         premisesType: selections['premisesType'] || 'Home',
         renewablePreference: selections['renewablePreference'] || 'No',
         utilityType: selections['utilityType'] || 'Gas',
@@ -865,3 +872,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
