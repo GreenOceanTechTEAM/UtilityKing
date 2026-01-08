@@ -13,7 +13,8 @@ export async function POST(request: NextRequest) {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
-            'X-API-KEY': process.env.DOTNET_API_KEY || '', 
+            'X-API-KEY': process.env.DOTNET_API_KEY || 'your_secure_api_key_here',
+            'x-api-request': 'true', // Add custom header
         },
         body: JSON.stringify(requestBody),
     });
