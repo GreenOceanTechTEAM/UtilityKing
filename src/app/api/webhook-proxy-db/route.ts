@@ -2,35 +2,36 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  // The target URL of your .NET WebMethod
-  const targetUrl = 'https://utilityking.co.uk/api.aspx/reactaspentrydb';
+  // The target URL of your .NET page
+  const targetUrl = 'https://utilityking.co.uk/api.aspx';
 
   try {
     const requestBody = await request.json();
 
+    // The entire body, including the 'requestData' wrapper, is sent.
+    // The C# backend will now parse this from the request stream.
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-API-KEY': process.env.DOTNET_API_KEY || '',
         },
-        body: JSON.stringify(requestBody.requestData),
+        body: JSON.stringify(requestBody),
     });
     
     if (!apiResponse.ok) {
         const errorDetails = await apiResponse.text();
-        const errorMessage = `Failed to communicate with .NET backend. Status: ${apiResponse.status}. Details: ${errorDetails}`;
-        // ASP.NET WebMethods can return complex error objects. We send back a JSON
-        // object that mimics the expected { d: "..." } structure but contains the error.
-        return NextResponse.json({ d: `Error: ${errorMessage}` }, { status: apiResponse.status });
+        // The .NET page now returns plain text on error
+        return NextResponse.json({ d: `Error: ${errorDetails}` }, { status: apiResponse.status });
     }
 
-    const result = await apiResponse.json();
-    return NextResponse.json(result);
+    // The .NET page now returns a simple string on success
+    const resultText = await apiResponse.text();
+    // We wrap it in the { d: "..." } structure that the frontend expects
+    return NextResponse.json({ d: resultText });
 
   } catch (error: any) {
     console.error('Error in db webhook proxy:', error);
-    // Ensure the response format is consistent even for internal proxy errors.
     return NextResponse.json(
         { d: `An internal error occurred in the proxy: ${error.message}` },
         { status: 500 }
