@@ -3,20 +3,19 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // The target URL of your .NET WebMethod
-  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx/reactasp';
+  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx';
 
   try {
     const requestBody = await request.json();
 
-    // The .NET WebMethod expects the payload to be wrapped in an object
-    // with a key that matches the method's parameter name ('requestData').
+    // The .NET endpoint will now read the raw request body directly.
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
             'X-API-KEY': process.env.DOTNET_API_KEY || '', 
         },
-        body: JSON.stringify({ requestData: requestBody }),
+        body: JSON.stringify(requestBody),
     });
     
     if (!apiResponse.ok) {
@@ -26,8 +25,9 @@ export async function POST(request: NextRequest) {
     }
 
     // Forward the response from the .NET backend.
-    const result = await apiResponse.json();
-    return NextResponse.json(result);
+    const resultText = await apiResponse.text();
+    // The backend now returns plain text, so we wrap it in the expected object structure.
+    return NextResponse.json({ d: resultText });
 
   } catch (error: any) {
     console.error('Error in db webhook proxy:', error);

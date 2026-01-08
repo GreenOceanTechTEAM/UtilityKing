@@ -324,7 +324,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const [pdfTimestamp, setPdfTimestamp] = useState('');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
-  const [backendMessage, setBackendMessage] = useState('');
+  
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -349,7 +349,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setDate(undefined);
     setShowThankYou(false);
     setSubmissionStatus('idle');
-    setBackendMessage('');
+    
     leadForm.reset({ name: '', email: '', phone: '' });
     if(resetComparison) resetComparison();
   };
@@ -371,7 +371,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -467,18 +467,18 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         const response = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ requestData: formData }),
+            body: JSON.stringify(formData),
         });
 
         const dbResult = await response.json();
+        
+        toast({
+            title: "Backend Response",
+            description: dbResult.d,
+        });
 
-        if (response.ok && dbResult.d && dbResult.d === "1") {
+        if (response.ok && dbResult.d && dbResult.d.toLowerCase().includes("success")) {
             setSubmissionStatus('success');
-            setBackendMessage("Success: Data received by .NET backend.");
-            toast({
-                title: "Submission Successful",
-                description: "Your information has been sent successfully.",
-            });
             setShowThankYou(true);
         } else {
             setSubmissionStatus('fail');
@@ -864,14 +864,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-
-    
-
-  
-
-    
-
-    
-
-    
