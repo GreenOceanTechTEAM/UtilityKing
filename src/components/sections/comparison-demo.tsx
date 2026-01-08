@@ -195,7 +195,7 @@ const wizardSteps = [
         title: "Energy Usage",
         aiMessage: "What's your yearly consumption in kWh?",
         isInput: true,
-        customPlaceholder: "e.g., 2700 kWh/year",
+        customPlaceholder: "e.g., 2700",
         options: [],
     },
     {
@@ -451,17 +451,26 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setLeadDetails(leadData);
 
     let contractDate = null;
+    let day = '', month = '', year = '';
+
     if (selections['contractEndDate']) {
         contractDate = new Date(selections['contractEndDate']);
+        day = String(contractDate.getDate());
+        month = String(contractDate.getMonth() + 1);
+        year = String(contractDate.getFullYear());
     }
+
+    // Ensure usage is only numbers
+    const usageValue = selections['usage'] || '';
+    const numericUsage = usageValue.match(/\d+/g)?.join('') || '';
 
     const formData = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
-        usage: selections['usage'] || '',
-        day: contractDate ? String(contractDate.getDate()) : '',
-        month: contractDate ? String(contractDate.getMonth() + 1) : '',
-        year: contractDate ? String(contractDate.getFullYear()) : '',
+        usage: numericUsage,
+        day: day,
+        month: month,
+        year: year,
         premisesType: selections['premisesType'] || 'Home',
         renewablePreference: selections['renewablePreference'] || 'No',
         utilityType: selections['utilityType'] || 'Gas',
@@ -663,7 +672,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     <div className="relative">
                                                         {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
                                                         <Input 
-                                                            type={"text"}
+                                                            type={currentWizardStepConfig.key === 'usage' ? 'number' : 'text'}
                                                             placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
                                                             className="pl-10 h-12 text-base text-center"
                                                             value={selections[currentWizardStepConfig.key] || ''}
