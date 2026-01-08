@@ -323,6 +323,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const pdfContainerRef = useRef<HTMLDivElement>(null);
   const [pdfTimestamp, setPdfTimestamp] = useState('');
   const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
+  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
+  const [backendMessage, setBackendMessage] = useState('');
 
   const activeWizardSteps = React.useMemo(() => {
     return wizardSteps;
@@ -346,6 +348,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setLeadDetails(null);
     setDate(undefined);
     setShowThankYou(false);
+    setSubmissionStatus('idle');
+    setBackendMessage('');
     leadForm.reset({ name: '', email: '', phone: '' });
     if(resetComparison) resetComparison();
   };
@@ -367,7 +371,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -409,9 +413,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     if (selectedDate) {
         setSelections(prev => ({
             ...prev,
-            contractEndDay: format(selectedDate, "d"),
-            contractEndMonth: format(selectedDate, "M"),
-            contractEndYear: format(selectedDate, "yyyy"),
+            contractEndDate: format(selectedDate, "yyyy-MM-dd"),
         }));
         setIsCalendarOpen(false); // Close popover on select
         setTimeout(() => handleNextStep(), 300);
@@ -438,7 +440,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.key === 'contractEndDate') {
-        return !!selections.contractEndDay && !!selections.contractEndMonth && !!selections.contractEndYear;
+        return !!selections.contractEndDate;
     }
     
     return !!selection;
@@ -446,53 +448,60 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsLoading(true);
+    setSubmissionStatus('idle');
+    setBackendMessage('');
 
     const formData = {
         postcode: selections['postcode'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: selections['usage'] || '',
-        day: selections['contractEndDay'] || '1',
-        month: selections['contractEndMonth'] || '1',
-        year: selections['contractEndYear'] || new Date().getFullYear().toString(),
+        contractEndDate: selections['contractEndDate'] || new Date().toISOString().split('T')[0],
         email: leadData.email,
-        mprn: "",
         business: selections['premisesType'] || "Home",
         contactName: leadData.name,
         phone: leadData.phone,
-        pdfFileName: "",
-        allSelections: selections,
+        utilityType: selections['utilityType'] || '',
+        renewablePreference: selections['renewablePreference'] || 'No',
     };
     
     try {
         const dbResponse = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData), // Send formData directly
+            body: JSON.stringify({ requestData: formData }),
         });
 
         const dbResult = await dbResponse.json();
 
-        if (dbResponse.ok) {
+        setBackendMessage(dbResult.d || 'No response message.');
+
+        if (dbResult.d && dbResult.d.toLowerCase().includes('success')) {
+            setSubmissionStatus('success');
             toast({
                 title: "Details Sent!",
-                description: "Your information has been sent successfully.",
+                description: dbResult.d,
             });
+            setShowThankYou(true);
         } else {
-             toast({
+            setSubmissionStatus('fail');
+            console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+            toast({
                 variant: "destructive",
                 title: "Submission Failed",
-                description: dbResult.d || 'Could not save details at this time.',
+                description: `Backend response: ${dbResult.d || 'Unknown error'}`,
             });
         }
     } catch (error: any) {
+        setSubmissionStatus('fail');
+        setBackendMessage(`Error: ${error.message}`);
+        console.error("Failed to fetch from proxy:", error);
         toast({
             variant: "destructive",
-            title: "Submission Failed",
-            description: `We couldn't save your details at this time. ${error.message}`,
+            title: "Network Error",
+            description: `We couldn't reach the server. ${error.message}`,
         });
     } finally {
         setIsLoading(false);
-        setShowThankYou(true);
     }
 };
 
@@ -510,22 +519,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setIsSavingLead(true);
 
     try {
-        if (!firestore) throw new Error("Firestore not available");
-
-        if (!user) {
-            await signInAnonymously(auth);
+        // We will call the main submission logic here
+        await handleFormSubmit(values);
+        
+        // Only close modal if submission was successful
+        if (submissionStatus === 'success' || (backendMessage && backendMessage.toLowerCase().includes('success'))) {
+            setIsLeadModalOpen(false);
         }
         
-        setIsLeadModalOpen(false);
-        await handleFormSubmit(values);
-
     } catch (error: any) {
-        console.error("Error saving lead:", error);
-        toast({
-            variant: "destructive",
-            title: "Could not save details",
-            description: `There was a problem saving your information: ${error.message}`,
-        });
+        console.error("Error during lead submission process:", error);
+        // Toast is handled inside handleFormSubmit
     } finally {
         setIsSavingLead(false);
     }
@@ -782,6 +786,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                         <p className="max-w-xl text-lg text-muted-foreground">
                           The best offers with complete rate charts and a personalized quote are on the way to your inbox.
                         </p>
+                        <div className="mt-4 p-4 bg-muted/50 rounded-lg text-left w-full max-w-lg">
+                            <h4 className="font-semibold text-foreground">Backend Response:</h4>
+                            <p className="text-sm text-muted-foreground font-code break-words">{backendMessage}</p>
+                        </div>
                         <Button onClick={handleReset} className="mt-8">
                             <RefreshCw className="mr-2 h-4 w-4" />
                             Start New Comparison
@@ -879,3 +887,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+
+    
