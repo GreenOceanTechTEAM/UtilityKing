@@ -67,12 +67,10 @@ export default function Footer({ id }: FooterProps) {
                   <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Services</h3>
                   <ul className="mt-4 space-y-4">
                     <li><Link href="/energy" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Energy</Link></li>
-                    <li><Link href="/gas" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Gas</Link></li>
                     <li><Link href="/broadband" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Broadband</Link></li>
                     <li><Link href="/mobile" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Mobile</Link></li>
                     <li><Link href="/water" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Water</Link></li>
-                    <li><Link href="/insurance" className="text-base text-muted-foreground transition-colors hover:text-primary" prefetch={true}>Insurance</Link></li>
-                  </ul>
+                    </ul>
                 </div>
                 <div>
                   <h3 className="text-sm font-semibold tracking-wider uppercase text-foreground">Support</h3>
