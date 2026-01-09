@@ -1,0 +1,1321 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile SIM Solutions | UTILITY KING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4a5568;
+            --secondary: #805ad5;
+            --accent: #4299e1;
+            --success: #48bb78;
+            --warning: #ed8936;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gradient: linear-gradient(135deg, #805ad5 0%, #4299e1 100%);
+            --gradient-light: linear-gradient(135deg, rgba(128, 90, 213, 0.1) 0%, rgba(66, 153, 225, 0.1) 100%);
+            --gradient-dark: linear-gradient(135deg, #6b46c1 0%, #3182ce 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.12);
+            --radius: 12px;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ENHANCED HERO SECTION - Advanced Animation */
+        .hero-section {
+            position: relative;
+            height: 70vh;
+            min-height: 800px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #1a202c 0%, #2d3748 50%, #4a5568 100%);
+            border-bottom-left-radius: 30px;
+            border-bottom-right-radius: 30px;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        /* Abstract Network Background */
+        .network-background {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        /* Floating Connection Nodes */
+        .connection-node {
+            position: absolute;
+            width: 12px;
+            height: 12px;
+            background: var(--accent);
+            border-radius: 50%;
+            filter: drop-shadow(0 0 10px currentColor);
+            animation: pulseNode 2s infinite ease-in-out;
+        }
+
+        .node-1 {
+            top: 20%;
+            left: 15%;
+            color: var(--secondary);
+            animation-delay: 0s;
+        }
+
+        .node-2 {
+            top: 40%;
+            right: 20%;
+            color: var(--accent);
+            animation-delay: 0.5s;
+        }
+
+        .node-3 {
+            bottom: 30%;
+            left: 25%;
+            color: #805ad5;
+            animation-delay: 1s;
+        }
+
+        .node-4 {
+            top: 60%;
+            right: 30%;
+            color: #4299e1;
+            animation-delay: 1.5s;
+        }
+
+        .node-5 {
+            bottom: 40%;
+            right: 15%;
+            color: var(--secondary);
+            animation-delay: 2s;
+        }
+
+        @keyframes pulseNode {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.7;
+            }
+
+            50% {
+                transform: scale(1.8);
+                opacity: 1;
+                box-shadow: 0 0 25px currentColor;
+            }
+        }
+
+        /* Animated Connection Lines */
+        .connection-line {
+            position: absolute;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--accent), transparent);
+            transform-origin: left center;
+            animation: linePulse 3s infinite ease-in-out;
+        }
+
+        .line-1 {
+            top: 20%;
+            left: 15%;
+            width: 200px;
+            transform: rotate(30deg);
+            animation-delay: 0s;
+        }
+
+        .line-2 {
+            top: 40%;
+            right: 20%;
+            width: 180px;
+            transform: rotate(-20deg);
+            animation-delay: 0.3s;
+        }
+
+        .line-3 {
+            bottom: 30%;
+            left: 25%;
+            width: 220px;
+            transform: rotate(15deg);
+            animation-delay: 0.6s;
+        }
+
+        @keyframes linePulse {
+            0%, 100% {
+                opacity: 0.3;
+                width: 0;
+            }
+
+            50% {
+                opacity: 0.8;
+                width: 200px;
+            }
+        }
+
+        /* Floating Geometric Shapes */
+        .floating-shape {
+            position: absolute;
+            background: rgba(128, 90, 213, 0.1);
+            border: 2px solid rgba(128, 90, 213, 0.3);
+            backdrop-filter: blur(5px);
+            animation: floatShape 25s infinite ease-in-out;
+        }
+
+        .shape-1 {
+            width: 120px;
+            height: 120px;
+            top: 15%;
+            right: 10%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 0s;
+            animation-duration: 30s;
+        }
+
+        .shape-2 {
+            width: 180px;
+            height: 180px;
+            bottom: 15%;
+            left: 10%;
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            animation-delay: 5s;
+            animation-duration: 35s;
+            background: rgba(66, 153, 225, 0.1);
+            border-color: rgba(66, 153, 225, 0.3);
+        }
+
+        .shape-3 {
+            width: 100px;
+            height: 100px;
+            top: 60%;
+            right: 25%;
+            border-radius: 50%;
+            animation-delay: 10s;
+            animation-duration: 25s;
+        }
+
+        @keyframes floatShape {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+            }
+
+            25% {
+                transform: translate(60px, -40px) rotate(90deg);
+            }
+
+            50% {
+                transform: translate(-50px, 30px) rotate(180deg);
+            }
+
+            75% {
+                transform: translate(30px, 50px) rotate(270deg);
+            }
+        }
+
+        /* Signal Wave Animation */
+        .signal-wave {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 30%, rgba(128, 90, 213, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(66, 153, 225, 0.15) 0%, transparent 50%), radial-gradient(circle at 40% 80%, rgba(128, 90, 213, 0.1) 0%, transparent 50%), radial-gradient(circle at 70% 20%, rgba(66, 153, 225, 0.1) 0%, transparent 50%);
+            animation: wavePulse 8s infinite ease-in-out;
+        }
+
+        @keyframes wavePulse {
+            0%, 100% {
+                opacity: 0.3;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(1.05);
+            }
+        }
+
+        /* Hero Content */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            width: 100%;
+            padding: 50px;
+            background: rgba(26, 32, 44, 0.85);
+            backdrop-filter: blur(15px);
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            text-align: center;
+          
+        }
+
+        .launch-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 14px 32px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(128, 90, 213, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: badgeFloat 4s infinite ease-in-out;
+        }
+
+            .launch-badge::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                animation: shine 3s infinite;
+            }
+
+        @keyframes badgeFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 25px;
+            background: linear-gradient(to right, #ffffff, #e9d8fd, #c2e7ff);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 20px rgba(128, 90, 213, 0.3);
+            animation: titleGlow 4s infinite alternate;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 4px 20px rgba(128, 90, 213, 0.3), 0 0 60px rgba(66, 153, 225, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 4px 30px rgba(128, 90, 213, 0.5), 0 0 80px rgba(66, 153, 225, 0.4), 0 0 100px rgba(66, 153, 225, 0.2);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 3vw, 1.4rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, rgba(128, 90, 213, 0.15), rgba(66, 153, 225, 0.1));
+            border-radius: 20px;
+            padding: 30px;
+            border-left: 5px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            animation: highlightFloat 6s infinite ease-in-out;
+        }
+
+            .hero-highlight::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.08), transparent);
+                animation: slideShine 6s infinite linear;
+            }
+
+        @keyframes highlightFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        .hero-highlight p {
+            font-size: clamp(1.1rem, 2.5vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+        }
+
+        .uk-emphasis {
+            color: #ffcc00;
+            font-weight: 700;
+            text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            animation: emphasisPulse 2s infinite alternate;
+        }
+
+        @keyframes emphasisPulse {
+            0% {
+                text-shadow: 0 0 15px rgba(255, 204, 0, 0.5);
+            }
+
+            100% {
+                text-shadow: 0 0 25px rgba(255, 204, 0, 0.8), 0 0 40px rgba(255, 204, 0, 0.3);
+            }
+        }
+
+        /* Signal Icons */
+        .signal-icon {
+            position: absolute;
+            font-size: 4rem;
+            color: rgba(128, 90, 213, 0.15);
+            z-index: 2;
+            animation: signalFloat 20s infinite ease-in-out;
+        }
+
+        .signal-1 {
+            top: 20%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .signal-2 {
+            bottom: 20%;
+            right: 10%;
+            animation-delay: 7s;
+        }
+
+        @keyframes signalFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg);
+                opacity: 0.15;
+            }
+
+            25% {
+                transform: translate(80px, -50px) rotate(90deg);
+                opacity: 0.25;
+            }
+
+            50% {
+                transform: translate(-60px, 60px) rotate(180deg);
+                opacity: 0.15;
+            }
+
+            75% {
+                transform: translate(50px, 40px) rotate(270deg);
+                opacity: 0.25;
+            }
+        }
+
+        /* Content Section */
+        .content-section {
+            padding: 80px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 2.5rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+            .section-title::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 80px;
+                height: 4px;
+                background: var(--gradient);
+                border-radius: 2px;
+            }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px 30px;
+            box-shadow: var(--shadow);
+            text-align: center;
+            transition: var(--transition);
+            border-top: 5px solid transparent;
+            border-image: var(--gradient);
+            border-image-slice: 1;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        .feature-card h3 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .feature-card p {
+            color: var(--dark);
+            font-size: 1rem;
+        }
+
+        /* Services Section */
+        .services-section {
+            background: var(--gradient-light);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 60px 0;
+            box-shadow: var(--shadow);
+        }
+
+        .service-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+            .service-item:last-child {
+                margin-bottom: 0;
+                padding-bottom: 0;
+                border-bottom: none;
+            }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 25px;
+            flex-shrink: 0;
+            color: var(--secondary);
+            font-size: 1.5rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .service-content h4 {
+            font-size: 1.4rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        /* Benefits Section */
+        .benefits-section {
+            margin: 60px 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));           
+            gap: 30px;
+            margin-top: 40px;
+            
+        }
+
+        .benefit-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px 10px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+            .benefit-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .benefit-card h4 {
+                font-size: 1.3rem;
+                color: var(--secondary);
+                margin-bottom: 15px;
+                display: flex;
+                align-items: center;
+            }
+
+                .benefit-card h4 i {
+                    margin-right: 10px;
+                    color: var(--accent);
+                }
+
+        /* Plans Table */
+        .plans-section {
+            margin: 80px 0;
+        }
+
+        .plan-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .plan-tab {
+            padding: 12px 28px;
+            background: white;
+            border: 2px solid var(--light);
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--dark);
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+            .plan-tab.active {
+                background: var(--gradient);
+                color: white;
+                border-color: var(--secondary);
+            }
+
+        .plan-table {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+        }
+
+        .plan-header {
+            background: var(--gradient);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+
+            .plan-header h3 {
+                font-size: 1.8rem;
+                margin-bottom: 5px;
+            }
+
+            .plan-header p {
+                opacity: 0.9;
+                font-size: 1rem;
+                color: white;
+            }
+
+        .plan-content {
+            padding: 0;
+        }
+
+        .plan-row {
+            display: grid;
+            grid-template-columns: 1fr 2fr 1fr 1fr;
+            padding: 20px 30px;
+            border-bottom: 1px solid #f0f0f0;
+            align-items: center;
+        }
+
+            .plan-row.header {
+                font-weight: 700;
+                background: #f8f9fa;
+                color: var(--primary);
+            }
+
+            .plan-row:last-child {
+                border-bottom: none;
+            }
+
+        .tick {
+            color: var(--success);
+            font-size: 1.2rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 80px 0;
+            border-radius: var(--radius);
+            margin-top: 80px;
+            text-align: center;
+            box-shadow: var(--shadow-heavy);
+        }
+
+        .cta-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 2.5rem;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 40px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: white;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--secondary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+                background: #f8f8f8;
+            }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            .hero-section {
+                height: 50vh;
+                min-height: 500px;
+            }
+
+            .hero-content {
+                padding: 40px;
+                margin: 0 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+                min-height: 500px;
+                padding: 60px 0;
+            }
+
+            .hero-content {
+                padding: 35px 25px;
+                margin: 0 20px;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.2rem;
+            }
+
+            .launch-badge {
+                font-size: 1rem;
+                padding: 12px 28px;
+                margin-bottom: 30px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .plan-row {
+                grid-template-columns: 1fr;
+                gap: 15px;
+                text-align: center;
+            }
+
+                .plan-row.header {
+                    display: none;
+                }
+
+            .service-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .service-icon {
+                margin-right: 0;
+                margin-bottom: 20px;
+            }
+
+            .cta-section {
+                padding: 50px 20px;
+            }
+
+            .cta-title {
+                font-size: 2rem;
+            }
+
+            /* Hide some complex animations on mobile */
+            .connection-line,
+            .floating-shape {
+                display: none;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                min-height: 450px;
+                padding: 40px 0;
+            }
+
+            .hero-content {
+                padding: 30px 20px;
+                margin: 0 15px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+            }
+
+            .hero-highlight {
+                padding: 25px;
+            }
+
+                .hero-highlight p {
+                    font-size: 1rem;
+                }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        /* Typography */
+        p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Enhanced Premium Hero Section -->
+    <section class="hero-section">
+        <!-- Network Background Animation -->
+        <div class="network-background">
+            <div class="signal-wave"></div>
+
+            <!-- Connection Nodes -->
+            <div class="connection-node node-1"></div>
+            <div class="connection-node node-2"></div>
+            <div class="connection-node node-3"></div>
+            <div class="connection-node node-4"></div>
+            <div class="connection-node node-5"></div>
+
+            <!-- Connection Lines -->
+            <div class="connection-line line-1"></div>
+            <div class="connection-line line-2"></div>
+            <div class="connection-line line-3"></div>
+
+            <!-- Floating Shapes -->
+            <div class="floating-shape shape-1"></div>
+            <div class="floating-shape shape-2"></div>
+            <div class="floating-shape shape-3"></div>
+        </div>
+
+        <!-- Signal Icons -->
+        <div class="signal-icon signal-1">
+            <i class="fas fa-satellite-dish"></i>
+        </div>
+
+        <div class="signal-icon signal-2">
+            <i class="fas fa-signal"></i>
+        </div>
+      
+        <div class="container">
+            <div class="hero-content">
+                <div class="launch-badge fade-in">
+                    <i class="fas fa-rocket"></i> Launching Soon...
+                </div>
+
+                <h1 class="hero-title fade-in">
+                    Premium Mobile SIM Solutions
+                </h1>
+
+                <p class="hero-subtitle fade-in">
+                    Experience the next generation of mobile connectivity with our comprehensive range of SIM plans designed for both businesses and individuals
+                </p>
+
+                <div class="hero-highlight fade-in">
+                    <p>
+                        Our mobile SIMs come with a wide variety of features to help you get the most out of your mobile experience in the UK. From lightning-fast 5G to flexible contracts, we provide solutions that keep you connected wherever you go.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <div class="container">
+            <!-- Key Features -->
+            <div class="text-center mb-4">
+                <h2 class="section-title fade-in">Our Mobile SIM Features</h2>
+                <p class="fade-in" style="max-width: 800px; margin: 0 auto; font-size: 1.2rem;">
+                    Discover the comprehensive features that make our mobile SIM plans stand out from the competition
+                </p>
+            </div>
+
+            <div class="features-grid fade-in">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>5G Availability</h3>
+                    <p>The latest & greatest that mobile data has to offer, get up to 1gig download speeds with 5G technology for seamless connectivity.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-infinity"></i>
+                    </div>
+                    <h3>Unlimited Data</h3>
+                    <p>All our contracts come with unlimited texts & minutes as standard. We offer from 2GB all the way up to unlimited data packages.</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-globe-europe"></i>
+                    </div>
+                    <h3>Roam Like At Home</h3>
+                    <p>We offer Roam Like At Home packages so you can use your UK allowances while travelling in the EU, at no extra cost!</p>
+                </div>
+
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <h3>Flexible Contracts</h3>
+                    <p>Need a quick contract? Want to avoid the hassle of starting a new contract? We offer 30 day to 3 year contracts.</p>
+                </div>
+            </div>
+
+            <!-- Telecom Solutions -->
+            <div class="services-section fade-in">
+                <h2 class="section-title fade-in" style="color: var(--secondary);">Telecom Solutions Overview</h2>
+
+                <div class="service-item fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Comprehensive Telecom Services</h4>
+                        <p><span class="uk-emphasis">UtilityKing</span> offers a comprehensive range of telecom services designed to keep you connected at all times. From landline solutions for businesses to mobile plans for individuals, we provide reliable and cost-effective communication options that meet your needs.</p>
+                    </div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-briefcase"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Business Telecom Plans</h4>
+                        <p>Our business telecom plans are tailored to suit the communication needs of small to medium-sized enterprises. Enjoy competitive rates, flexible contracts, and exceptional customer service to keep your business running smoothly.</p>
+                    </div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-mobile-alt"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Mobile SIM Plans for Businesses</h4>
+                        <p>Stay connected on the go with <span class="uk-emphasis">UtilityKing's</span> mobile SIM plans. Whether you need data-rich plans for your employees or simple voice and text options, we've got you covered with customizable packages that fit your business requirements.</p>
+                    </div>
+                </div>
+
+                <div class="service-item fade-in">
+                    <div class="service-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="service-content">
+                        <h4>Individual Mobile SIM Plans</h4>
+                        <p>Looking for a reliable mobile SIM plan that offers great value? <span class="uk-emphasis">UtilityKing</span> provides a range of options for individual users, including unlimited data, talk, and text plans. Choose the plan that suits your lifestyle and enjoy uninterrupted connectivity.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Benefits Section -->
+            <div class="benefits-section fade-in">
+                <h2 class="section-title fade-in text-center">Why Choose Our Mobile Solutions</h2>
+
+                <div class="benefits-grid">
+                    <div class="benefit-card">
+                        <h4><i class="fas fa-pound-sign"></i> Competitive Pricing</h4>
+                        <p><span class="uk-emphasis">UtilityKing</span> offers some of the most competitive rates in the market, ensuring that you get the best value for your money. Whether you're a business or an individual, our plans are designed to save you money while keeping you connected.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <h4><i class="fas fa-file-contract"></i> Flexible Contracts</h4>
+                        <p>We understand that your needs can change, which is why we offer flexible contracts that allow you to adjust your plan as your business or personal needs evolve. No long-term commitments or hidden fees—just straightforward, flexible options.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <h4><i class="fas fa-satellite"></i> Reliable Network Coverage</h4>
+                        <p>Enjoy reliable network coverage across the UK with <span class="uk-emphasis">UtilityKing</span>. Our telecom and mobile services are backed by a robust network infrastructure, ensuring that you stay connected wherever you are.</p>
+                    </div>
+
+                    <div class="benefit-card">
+                        <h4><i class="fas fa-headset"></i> 24/7 Customer Support</h4>
+                        <p>Our dedicated customer support team is available 24/7 to assist you with any questions or issues. Whether you need help with your telecom setup or have questions about your mobile plan, we're here to help.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Plans Section -->
+            <div class="plans-section fade-in">
+                <h2 class="section-title fade-in text-center">Our Mobile Plans</h2>
+                <p class="text-center fade-in" style="max-width: 800px; margin: 0 auto 40px; font-size: 1.2rem;">
+                    Compare our range of mobile plans from top network providers
+                </p>
+
+                <div class="plan-tabs">
+                    <div class="plan-tab active" data-plan="three">Three</div>
+                    <div class="plan-tab" data-plan="o2">O2</div>
+                    <div class="plan-tab" data-plan="vodafone">Vodafone</div>
+                </div>
+
+                <!-- Three Plans -->
+                <div class="plan-table" id="three-plan">
+                    <div class="plan-header">
+                        <h3><i class="fas fa-check-circle tick"></i> Three Network Plans</h3>
+                        <p>Unlimited minutes, texts, and data with flexible contract terms</p>
+                    </div>
+                    <div class="plan-content">
+                        <div class="plan-row header">
+                            <div>Plan</div>
+                            <div>Description</div>
+                            <div>Term</div>
+                            <div>Price</div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Three</div>
+                            <div>Unlimited Mins, Texts, Data</div>
+                            <div>30 Day</div>
+                            <div><strong>£19.00</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Three</div>
+                            <div>Unlimited Mins, Texts, Data</div>
+                            <div>12 Month</div>
+                            <div><strong>£17.00</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Three</div>
+                            <div>Unlimited Mins, Texts, Data</div>
+                            <div>24 Month</div>
+                            <div><strong>£15.00</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- O2 Plans -->
+                <div class="plan-table" id="o2-plan" style="display: none;">
+                    <div class="plan-header">
+                        <h3><i class="fas fa-check-circle tick"></i> O2 Network Plans</h3>
+                        <p>Small Business SIMO plans with varying data allowances</p>
+                    </div>
+                    <div class="plan-content">
+                        <div class="plan-row header">
+                            <div>Plan</div>
+                            <div>Description</div>
+                            <div>Term</div>
+                            <div>Price</div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> O2</div>
+                            <div>O2 Small Business SIMO 2GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£12.50</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> O2</div>
+                            <div>O2 Small Business SIMO 6GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£14.50</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> O2</div>
+                            <div>O2 Small Business SIMO 20GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£15.50</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> O2</div>
+                            <div>O2 Small Business SIMO 50GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£18.00</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> O2</div>
+                            <div>O2 Small Business SIMO Unlimited*</div>
+                            <div>30 Day</div>
+                            <div><strong>£20.00</strong></div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vodafone Plans -->
+                <div class="plan-table" id="vodafone-plan" style="display: none;">
+                    <div class="plan-header">
+                        <h3><i class="fas fa-check-circle tick"></i> Vodafone Network Plans</h3>
+                        <p>Red Extra plans with varying data packages</p>
+                    </div>
+                    <div class="plan-content">
+                        <div class="plan-row header">
+                            <div>Plan</div>
+                            <div>Description</div>
+                            <div>Term</div>
+                            <div>Price</div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Vodafone</div>
+                            <div>VF Red Extra 1GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£8.99</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Vodafone</div>
+                            <div>VF Red Extra 2GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£13.65</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Vodafone</div>
+                            <div>VF Red Extra 6GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£16.57</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Vodafone</div>
+                            <div>VF Red Extra 24GB</div>
+                            <div>30 Day</div>
+                            <div><strong>£18.79</strong></div>
+                        </div>
+                        <div class="plan-row">
+                            <div><i class="fas fa-check tick"></i> Vodafone</div>
+                            <div>VF Red Unlimited Max*</div>
+                            <div>30 Day</div>
+                            <div><strong>£28.32</strong></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <h2 class="cta-title fade-in">Get In Touch With Us</h2>
+            <p class="cta-subtitle fade-in">
+                We offer a free, no-obligation cost comparison service. During this process, we will also present technology upgrade options to future-proof your business with the intended Openreach PSTN network switch-off coming in 2025.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 50px 0;">
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: var(--radius); text-align: left;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: white;"><i class="fas fa-chart-line"></i> Free Cost Comparison</h4>
+                    <p style="opacity: 0.9;color:whitesmoke">Get a comprehensive analysis of your current mobile costs versus our competitive plans</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: var(--radius); text-align: left;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: white;"><i class="fas fa-cogs"></i> Technology Upgrade</h4>
+                    <p style="opacity: 0.9; color: whitesmoke">Prepare for the PSTN switch-off in 2025 with our future-proof technology solutions</p>
+                </div>
+
+                <div style="background: rgba(255, 255, 255, 0.1); padding: 30px; border-radius: var(--radius); text-align: left;">
+                    <h4 style="font-size: 1.3rem; margin-bottom: 15px; color: white;"><i class="fas fa-user-tie"></i> Expert Consultation</h4>
+                    <p style="opacity: 0.9; color: whitesmoke">Personalized advice from our telecom experts to optimize your mobile strategy</p>
+                </div>
+            </div>
+
+            <a class="cta-button fade-in" href="/contact.html">
+                Feel Free To Contact Us <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Add fade-in animations on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+
+            // Plan tabs functionality
+            const planTabs = document.querySelectorAll('.plan-tab');
+            const planTables = {
+                'three': document.getElementById('three-plan'),
+                'o2': document.getElementById('o2-plan'),
+                'vodafone': document.getElementById('vodafone-plan')
+            };
+
+            planTabs.forEach(tab => {
+                tab.addEventListener('click', function () {
+                    // Remove active class from all tabs
+                    planTabs.forEach(t => t.classList.remove('active'));
+
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+
+                    // Hide all plan tables
+                    Object.values(planTables).forEach(table => {
+                        table.style.display = 'none';
+                    });
+
+                    // Show selected plan table
+                    const planType = this.getAttribute('data-plan');
+                    planTables[planType].style.display = 'block';
+                });
+            });
+
+            // Interactive hero effects
+            const heroSection = document.querySelector('.hero-section');
+            const nodes = document.querySelectorAll('.connection-node');
+            const shapes = document.querySelectorAll('.floating-shape');
+
+            heroSection.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 20;
+                const y = (e.clientY / window.innerHeight - 0.5) * 20;
+
+                // Move nodes slightly
+                nodes.forEach((node, index) => {
+                    const speed = (index + 1) * 0.2;
+                    node.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
+                });
+
+                // Move shapes opposite direction for parallax
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.3;
+                    shape.style.transform += ` translate(${x * -speed}px, ${y * -speed}px)`;
+                });
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                nodes.forEach(node => {
+                    node.style.transform = '';
+                });
+                shapes.forEach(shape => {
+                    shape.style.transform = '';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

@@ -31,7 +31,53 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        /* Hero Section */
+        .hero {
+            padding: 4rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
 
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #e0e7ff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
+            max-width: 90%;
+        }
+
+        
         body {
             color: var(--dark);
             line-height: 1.6;
@@ -405,11 +451,24 @@
 </head>
 <body>
     <div id="headermenudetail"></div>
-    <div id="mobilesidebar"></div>    
-        <div class="container text-center">            
-            <h1 class="mt-3">Developing EV Charging Infrastructure for Businesses</h1>
-            <p>A Complete Guide to Supporting Electric Fleets and Customers</p>
+    <div id="mobilesidebar"></div>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-exchange-alt"></i> EV Charging Analysis
+                    </div>
+                    <h1>Developing EV Charging Infrastructure for Businesses</h1>
+                    <p>A Complete Guide to Supporting Electric Fleets and Customers</p>
+                    <a href="/contact.html" class="cta-button" style="background: white; color: var(--primary);">Contact Us</a>
+
+                </div>
+            </div>
         </div>
+    </section>
+
     <div class="nav-container">
         <nav class="container guide-nav">
             <div class="nav-item"><a href="#introduction" class="nav-link text-primary fw-bold">Introduction</a></div>
@@ -652,7 +711,7 @@
         <section class="cta-section">
             <h2 class="cta-title text-white">Future-Proof Your Business with EV Charging Solutions from UtilityKing!</h2>
             <p>With EV adoption rising, now is the time to install EV charging stations and support the transition to electric mobility.</p>
-           
+
             <div style="margin-top: 2rem; font-style: italic;">
                 "We help businesses build EV charging infrastructure while cutting costs—let's future-proof your fleet today!" 🚀
             </div>

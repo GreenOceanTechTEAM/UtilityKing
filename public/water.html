@@ -1,0 +1,1352 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Business Water Solutions | UTILITY KING</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a365d;
+            --secondary: #3182ce;
+            --accent: #38b2ac;
+            --light: #f7fafc;
+            --dark: #2d3748;
+            --gradient: linear-gradient(135deg, #3182ce 0%, #38b2ac 100%);
+            --gradient-light: linear-gradient(135deg, rgba(49, 130, 206, 0.1) 0%, rgba(56, 178, 172, 0.1) 100%);
+            --gradient-dark: linear-gradient(135deg, #2c5282 0%, #319795 100%);
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --shadow-heavy: 0 20px 40px rgba(0, 0, 0, 0.15);
+            --radius: 16px;
+            --transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--dark);
+            background-color: #f8fafc;
+            line-height: 1.6;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            width: 100%;
+        }
+
+        /* FULL SCREEN ANIMATED HERO SECTION */
+        .hero-section {
+            position: relative;
+            min-height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            background: linear-gradient(135deg, #0f1a30 0%, #1a365d 50%, #2c5282 100%);
+            isolation: isolate;
+        }
+
+        /* Animated Water Background */
+        .water-animation {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            overflow: hidden;
+        }
+
+        /* Water Layer Effect */
+        .water-layer {
+            position: absolute;
+            width: 200%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(49, 130, 206, 0.1) 0%, rgba(56, 178, 172, 0.15) 25%, rgba(49, 130, 206, 0.1) 50%, rgba(56, 178, 172, 0.15) 75%, rgba(49, 130, 206, 0.1) 100%);
+            animation: waterFlow 20s infinite linear;
+            opacity: 0.4;
+        }
+
+        .layer-1 {
+            top: 20%;
+            height: 40%;
+            animation-delay: 0s;
+            filter: blur(20px);
+        }
+
+        .layer-2 {
+            top: 40%;
+            height: 30%;
+            animation-delay: 5s;
+            filter: blur(15px);
+            opacity: 0.3;
+        }
+
+        .layer-3 {
+            bottom: 20%;
+            height: 50%;
+            animation-delay: 10s;
+            filter: blur(25px);
+            opacity: 0.2;
+        }
+
+        @keyframes waterFlow {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* Floating Water Droplets */
+        .water-droplet {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle at 30% 30%, rgba(56, 178, 172, 0.3), transparent 70%);
+            border-radius: 50%;
+            filter: blur(40px);
+            animation: dropletFloat 30s infinite ease-in-out;
+        }
+
+        .droplet-1 {
+            top: 15%;
+            left: 10%;
+            animation-delay: 0s;
+            width: 150px;
+            height: 150px;
+            background: radial-gradient(circle at 30% 30%, rgba(49, 130, 206, 0.4), transparent 70%);
+        }
+
+        .droplet-2 {
+            top: 60%;
+            right: 15%;
+            animation-delay: 10s;
+            width: 200px;
+            height: 200px;
+            background: radial-gradient(circle at 70% 30%, rgba(56, 178, 172, 0.3), transparent 70%);
+        }
+
+        .droplet-3 {
+            bottom: 20%;
+            left: 20%;
+            animation-delay: 20s;
+            width: 180px;
+            height: 180px;
+        }
+
+        @keyframes dropletFloat {
+            0%, 100% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            25% {
+                transform: translate(100px, -60px) scale(1.1);
+            }
+
+            50% {
+                transform: translate(-80px, 80px) scale(0.9);
+            }
+
+            75% {
+                transform: translate(60px, 40px) scale(1.05);
+            }
+        }
+
+        /* Abstract Water Shapes */
+        .water-shape {
+            position: absolute;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+            animation: shapeMorph 25s infinite ease-in-out;
+            backdrop-filter: blur(10px);
+        }
+
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            top: 10%;
+            right: 10%;
+            border-radius: 63% 37% 54% 46% / 55% 48% 52% 45%;
+            animation-delay: 0s;
+            background: rgba(49, 130, 206, 0.05);
+        }
+
+        .shape-2 {
+            width: 250px;
+            height: 250px;
+            bottom: 15%;
+            left: 10%;
+            border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+            animation-delay: 8s;
+            background: rgba(56, 178, 172, 0.05);
+        }
+
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            top: 40%;
+            left: 20%;
+            border-radius: 50%;
+            animation-delay: 16s;
+            background: rgba(49, 130, 206, 0.05);
+        }
+
+        @keyframes shapeMorph {
+            0%, 100% {
+                border-radius: 40% 60% 60% 40% / 60% 30% 70% 40%;
+                transform: rotate(0deg);
+            }
+
+            25% {
+                border-radius: 70% 30% 30% 70% / 70% 70% 30% 30%;
+                transform: rotate(90deg);
+            }
+
+            50% {
+                border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+                transform: rotate(180deg);
+            }
+
+            75% {
+                border-radius: 60% 40% 30% 70% / 40% 60% 40% 60%;
+                transform: rotate(270deg);
+            }
+        }
+
+        /* HERO CONTENT - CENTERED FOR ALL DEVICES */
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 1000px;
+            width: calc(100% - 20px); /* Full width minus padding */
+            height:100%;
+            padding: 10px;
+            background: rgba(15, 26, 48, 0.85);
+            backdrop-filter: blur(20px) saturate(180%);
+            border-radius: 32px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            /* Centering */
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 16px 36px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(49, 130, 206, 0.4);
+            position: relative;
+            overflow: hidden;
+            animation: badgeFloat 4s infinite ease-in-out;
+        }
+
+            .hero-badge::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+                animation: shine 3s infinite;
+            }
+
+        @keyframes badgeFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-8px);
+            }
+        }
+
+        @keyframes shine {
+            0% {
+                left: -100%;
+            }
+
+            100% {
+                left: 100%;
+            }
+        }
+
+        .hero-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(3rem, 6vw, 4.5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+            background: linear-gradient(to right, #ffffff, #c2e7ff, #b2f5ea);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 4px 20px rgba(49, 130, 206, 0.3), 0 0 60px rgba(56, 178, 172, 0.2);
+            animation: titleGlow 4s infinite alternate;
+            text-align: center;
+            width: 100%;
+        }
+
+        @keyframes titleGlow {
+            0% {
+                text-shadow: 0 4px 20px rgba(49, 130, 206, 0.3), 0 0 60px rgba(56, 178, 172, 0.2);
+            }
+
+            100% {
+                text-shadow: 0 4px 30px rgba(49, 130, 206, 0.5), 0 0 80px rgba(56, 178, 172, 0.4), 0 0 100px rgba(56, 178, 172, 0.2);
+            }
+        }
+
+        .hero-subtitle {
+            font-size: clamp(1.3rem, 3vw, 1.6rem);
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
+            margin-bottom: 40px;
+            max-width: 700px;
+            text-align: center;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-highlight {
+            background: linear-gradient(135deg, rgba(49, 130, 206, 0.2), rgba(56, 178, 172, 0.15));
+            border-radius: 24px;
+            padding: 40px;
+            border-left: 5px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            animation: highlightFloat 6s infinite ease-in-out;
+            width: 100%;
+            max-width: 900px;
+        }
+
+            .hero-highlight::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+                animation: slideShine 6s infinite linear;
+            }
+
+        @keyframes highlightFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes slideShine {
+            0% {
+                transform: translateX(-100%);
+            }
+
+            100% {
+                transform: translateX(100%);
+            }
+        }
+
+        .hero-highlight p {
+            font-size: clamp(1.1rem, 2.5vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.95);
+            line-height: 1.7;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .uk-emphasis {
+            color: #ffd700;
+            font-weight: 700;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            animation: emphasisPulse 2s infinite alternate;
+        }
+
+        @keyframes emphasisPulse {
+            0% {
+                text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            }
+
+            100% {
+                text-shadow: 0 0 30px rgba(255, 215, 0, 0.8), 0 0 50px rgba(255, 215, 0, 0.3);
+            }
+        }
+
+        /* Water Icons */
+        .water-icon {
+            position: absolute;
+            font-size: 5rem;
+            color: rgba(255, 255, 255, 0.08);
+            z-index: 2;
+            animation: iconFloat 25s infinite ease-in-out;
+        }
+
+        .icon-1 {
+            top: 20%;
+            left: 5%;
+            animation-delay: 0s;
+        }
+
+        .icon-2 {
+            bottom: 25%;
+            right: 8%;
+            animation-delay: 12s;
+        }
+
+        @keyframes iconFloat {
+            0%, 100% {
+                transform: translate(0, 0) rotate(0deg) scale(1);
+                opacity: 0.08;
+            }
+
+            25% {
+                transform: translate(120px, -80px) rotate(90deg) scale(1.1);
+                opacity: 0.12;
+            }
+
+            50% {
+                transform: translate(-100px, 100px) rotate(180deg) scale(0.9);
+                opacity: 0.08;
+            }
+
+            75% {
+                transform: translate(80px, 60px) rotate(270deg) scale(1.05);
+                opacity: 0.12;
+            }
+        }
+
+        /* Scroll Indicator */
+        .scroll-indicator {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+            text-align: center;
+            animation: bounce 2s infinite;
+            cursor: pointer;
+        }
+
+            .scroll-indicator i {
+                display: block;
+                font-size: 1.5rem;
+                margin-bottom: 8px;
+            }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateX(-50%) translateY(0);
+            }
+
+            40% {
+                transform: translateX(-50%) translateY(-10px);
+            }
+
+            60% {
+                transform: translateX(-50%) translateY(-5px);
+            }
+        }
+
+        /* CONTENT SECTIONS */
+        .content-section {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(2rem, 4vw, 3rem);
+            color: var(--secondary);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+            .section-title::after {
+                content: "";
+                position: absolute;
+                bottom: -15px;
+                left: 0;
+                width: 100px;
+                height: 5px;
+                background: var(--gradient);
+                border-radius: 3px;
+            }
+
+        /* CARD LAYOUT - 3 CARDS PER ROW FOR DESKTOP & TABLET */
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border-top: 5px solid var(--accent);
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+                border-top-color: var(--secondary);
+            }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--gradient-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            font-size: 2.2rem;
+            color: var(--secondary);
+            transition: var(--transition);
+        }
+
+        .card:hover .card-icon {
+            background: var(--gradient);
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .card h3 {
+            font-family: 'Source Serif Pro', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+
+        .card p {
+            color: var(--dark);
+            line-height: 1.7;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .card-features {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+            .card-features li {
+                padding: 8px 0;
+                padding-left: 28px;
+                position: relative;
+                color: var(--dark);
+            }
+
+                .card-features li::before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    color: var(--accent);
+                    font-weight: bold;
+                }
+
+        .card-button {
+            display: inline-block;
+            background: var(--gradient);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            text-align: center;
+            margin-top: 20px;
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+            .card-button:hover {
+                background: transparent;
+                border-color: var(--secondary);
+                color: var(--secondary);
+                transform: translateY(-3px);
+            }
+
+        /* Feature Lists */
+        .feature-list {
+            list-style-type: none;
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+            .feature-list li {
+                padding: 15px 0;
+                padding-left: 50px;
+                position: relative;
+                font-size: 1.1rem;
+                color: var(--dark);
+                line-height: 1.6;
+            }
+
+                .feature-list li::before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    top: 15px;
+                    width: 35px;
+                    height: 35px;
+                    background: var(--gradient);
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                    font-size: 1.2rem;
+                }
+
+        /* Highlight Section */
+        .highlight-box {
+            background: linear-gradient(135deg, #edf7ff 0%, #f0fff4 100%);
+            border-radius: var(--radius);
+            padding: 60px;
+            margin: 80px 0;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+            border-left: 8px solid var(--accent);
+        }
+
+        .highlight-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(1.8rem, 4vw, 2.5rem);
+            color: var(--primary);
+            margin-bottom: 30px;
+        }
+
+        /* Process Steps - 3 cards per row */
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 40px 30px;
+            background: var(--gradient-light);
+            border-radius: var(--radius);
+            transition: var(--transition);
+        }
+
+            .process-step:hover {
+                background: var(--gradient);
+                color: white;
+                transform: translateY(-5px);
+            }
+
+                .process-step:hover .step-number,
+                .process-step:hover h4,
+                .process-step:hover p {
+                    color: white;
+                }
+
+            .process-step .step-number {
+                width: 70px;
+                height: 70px;
+                background: var(--gradient);
+                color: white;
+                border-radius: 50%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                font-size: 2rem;
+                font-weight: bold;
+                transition: var(--transition);
+            }
+
+            .process-step h4 {
+                font-size: 1.4rem;
+                color: var(--primary);
+                margin-bottom: 15px;
+                transition: var(--transition);
+            }
+
+            .process-step p {
+                color: var(--dark);
+                transition: var(--transition);
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--gradient-dark);
+            color: white;
+            padding: 100px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        .cta-title {
+            font-family: 'Source Serif Pro', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            color: white;
+            margin-bottom: 25px;
+        }
+
+        .cta-subtitle {
+            font-size: 1.3rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 50px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* CTA Cards - 3 per row */
+        .cta-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 60px 0;
+        }
+
+        .cta-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 40px 30px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+        }
+
+            .cta-card:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+                border-color: rgba(255, 255, 255, 0.3);
+            }
+
+            .cta-card h3 {
+                font-size: 1.4rem;
+                margin-bottom: 15px;
+                color: white;
+            }
+
+            .cta-card p {
+                color: rgba(255, 255, 255, 0.9);
+            }
+
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: var(--secondary);
+            padding: 20px 45px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px) scale(1.05);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+                background: #f8f8f8;
+            }
+
+        /* RESPONSIVE DESIGN - FIXED CENTERING */
+        /* For tablets (768px to 1024px) - 3 cards per row */
+        @media (max-width: 1024px) {
+            .hero-section {
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                width: calc(100% - 40px);
+                max-width: 900px;
+                padding: 50px 40px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .content-section {
+                padding: 80px 0;
+            }
+
+            .card-grid,
+            .process-grid,
+            .cta-cards {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 25px;
+            }
+
+            .card {
+                padding: 35px 25px;
+            }
+
+            .hero-title {
+                font-size: clamp(2.5rem, 5vw, 3.5rem);
+            }
+
+            .hero-subtitle {
+                font-size: clamp(1.2rem, 2.5vw, 1.4rem);
+            }
+        }
+
+        /* For mobile (below 768px) - stack cards */
+        @media (max-width: 768px) {
+            .hero-section {
+                height: auto;
+                min-height: 100vh;
+                padding: 20px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-content {
+                width: calc(100% - 30px);
+                padding: 40px 25px;
+                margin: 0 auto;
+                border-radius: 24px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+                text-align: center;
+            }
+
+            .hero-subtitle {
+                font-size: 1.3rem;
+                text-align: center;
+            }
+
+            .hero-badge {
+                font-size: 1rem;
+                padding: 14px 30px;
+                margin-bottom: 30px;
+                text-align: center;
+            }
+
+            .hero-highlight {
+                padding: 30px 25px;
+                width: 100%;
+            }
+
+                .hero-highlight p {
+                    text-align: center;
+                }
+
+            .content-section {
+                padding: 60px 0;
+            }
+
+            /* Stack cards on mobile */
+            .card-grid,
+            .process-grid,
+            .cta-cards {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .feature-list {
+                grid-template-columns: 1fr;
+                gap: 15px;
+            }
+
+                .feature-list li {
+                    padding-left: 45px;
+                    font-size: 1rem;
+                }
+
+            .highlight-box {
+                padding: 30px;
+                margin: 40px 0;
+            }
+
+            .cta-section {
+                padding: 70px 0;
+            }
+
+            .cta-title {
+                font-size: 2.2rem;
+            }
+
+            /* Simplify animations on mobile */
+            .water-droplet,
+            .water-shape {
+                display: none;
+            }
+
+            .water-layer {
+                filter: blur(10px);
+                opacity: 0.2;
+            }
+        }
+
+        /* For small mobile devices */
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 15px;
+                min-height: 90vh;
+            }
+
+            .hero-content {
+                width: calc(100% - 20px);
+                padding: 30px 20px;
+                margin: 0 auto;
+                border-radius: 20px;
+            }
+
+            .hero-title {
+                font-size: 2rem;
+                line-height: 1.2;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+                margin-bottom: 30px;
+                line-height: 1.5;
+            }
+
+            .hero-highlight {
+                padding: 25px 20px;
+            }
+
+                .hero-highlight p {
+                    font-size: 1rem;
+                    line-height: 1.6;
+                }
+
+            .card {
+                padding: 30px 20px;
+            }
+
+            .cta-button {
+                padding: 18px 35px;
+                font-size: 1.1rem;
+                width: 100%;
+                max-width: 300px;
+            }
+
+            .cta-card {
+                padding: 30px 20px;
+            }
+
+            .scroll-indicator {
+                bottom: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        /* Typography */
+        p {
+            font-size: 1.1rem;
+            color: var(--dark);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Source Serif Pro', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        /* Utility Classes */
+        .text-center {
+            text-align: center;
+        }
+
+        .mb-4 {
+            margin-bottom: 2rem;
+        }
+
+        .mt-4 {
+            margin-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- FULL SCREEN ANIMATED HERO SECTION -->
+    <section class="hero-section">
+        <!-- Water Animation Background -->
+        <div class="water-animation">
+            <div class="water-layer layer-1"></div>
+            <div class="water-layer layer-2"></div>
+            <div class="water-layer layer-3"></div>
+
+            <div class="water-droplet droplet-1"></div>
+            <div class="water-droplet droplet-2"></div>
+            <div class="water-droplet droplet-3"></div>
+
+            <div class="water-shape shape-1"></div>
+            <div class="water-shape shape-2"></div>
+            <div class="water-shape shape-3"></div>
+        </div>
+
+        <!-- Water Icons -->
+        <div class="water-icon icon-1">
+            <i class="fas fa-tint"></i>
+        </div>
+
+        <div class="water-icon icon-2">
+            <i class="fas fa-water"></i>
+        </div>
+
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge fade-in">
+                    <i class="fas fa-tint"></i> Business Water Solutions
+                </div>
+
+                <h1 class="hero-title fade-in">
+                    Optimize Your Business Water Management
+                </h1>
+
+                <p class="hero-subtitle fade-in">
+                    Premium consulting services to reduce operational costs and maximize profit margins through strategic water supplier management
+                </p>
+
+                <div class="hero-highlight fade-in">
+                    <p>
+                        Rely on <span class="uk-emphasis">UTILITY KING</span> to help you with the best business water switchover for better cost management and greater profit margins. We are your dedicated consulting partner helping you in every step of your business. Together, we will script better stories for your business and ensure more profitable outcomes even in a highly complex market environment.
+                    </p>
+                    <p style="margin-top: 15px; font-weight: 500;">
+                        Get in touch with our experts to discuss your needs!
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="scroll-indicator fade-in">
+            <i class="fas fa-chevron-down"></i>
+            <span>Scroll to Explore</span>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="content-section">
+        <div class="container">
+            <!-- Section 1: 3 Cards in a Row -->
+            <h2 class="highlight-title text-center">Our Comprehensive Services</h2>
+            <p class="text-center fade-in" style="max-width: 800px; margin: 0 auto 50px;">
+                We provide end-to-end water management solutions tailored to your business needs
+            </p>
+
+            <div class="card-grid">
+                <div class="card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <h3>Cost Analysis</h3>
+                    <p>Detailed analysis of your current water expenses and identification of cost-saving opportunities through supplier comparison and contract optimization.</p>
+                    <ul class="card-features">
+                        <li>Current usage analysis</li>
+                        <li>Market rate comparison</li>
+                        <li>Contract review</li>
+                    </ul>
+                    <a href="#" class="card-button">Learn More</a>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <h3>Supplier Switching</h3>
+                    <p>Seamless transition to better water suppliers with minimal disruption to your business operations. We handle all paperwork and coordination.</p>
+                    <ul class="card-features">
+                        <li>Supplier vetting</li>
+                        <li>Transition management</li>
+                        <li>Post-switch support</li>
+                    </ul>
+                    <a href="#" class="card-button">Start Switch</a>
+                </div>
+
+                <div class="card fade-in">
+                    <div class="card-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h3>Usage Optimization</h3>
+                    <p>Implement strategies to reduce water consumption and improve efficiency through advanced monitoring systems and behavioral changes.</p>
+                    <ul class="card-features">
+                        <li>Efficiency audits</li>
+                        <li>Monitoring systems</li>
+                        <li>Staff training</li>
+                    </ul>
+                    <a href="#" class="card-button">Optimize Now</a>
+                </div>
+            </div>
+
+            <!-- Section 2: Why Choose Us - 3 Cards -->
+            <div class="highlight-box fade-in">
+                <h2 class="highlight-title text-center">Why Choose UTILITY KING?</h2>
+                <p class="text-center" style="font-size: 1.2rem; margin-bottom: 50px;">
+                    We stand out from the competition with our comprehensive approach and proven results
+                </p>
+
+                <div class="card-grid">
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-award"></i>
+                        </div>
+                        <h3>Industry Expertise</h3>
+                        <p>15+ years of experience in utility management with deep knowledge of UK water market regulations and supplier networks.</p>
+                        <ul class="card-features">
+                            <li>Market insights</li>
+                            <li>Regulatory knowledge</li>
+                            <li>Supplier relationships</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-handshake"></i>
+                        </div>
+                        <h3>Client Partnership</h3>
+                        <p>We work as an extension of your team, providing ongoing support and advice beyond the initial supplier switch.</p>
+                        <ul class="card-features">
+                            <li>Dedicated account manager</li>
+                            <li>Regular reviews</li>
+                            <li>Continuous optimization</li>
+                        </ul>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-icon">
+                            <i class="fas fa-chart-pie"></i>
+                        </div>
+                        <h3>Proven Results</h3>
+                        <p>Average 25% cost reduction for our clients with documented case studies and transparent reporting on all savings achieved.</p>
+                        <ul class="card-features">
+                            <li>Cost reduction</li>
+                            <li>Case studies</li>
+                            <li>Transparent reporting</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Section 3: Our Process - 3 Steps in a Row -->
+            <h2 class="highlight-title text-center">Our Simple 3-Step Process</h2>
+
+            <div class="process-grid">
+                <div class="process-step fade-in">
+                    <div class="step-number">1</div>
+                    <h4>Assessment</h4>
+                    <p>We analyze your current water usage, costs, and contracts to understand your specific needs and opportunities.</p>
+                </div>
+
+                <div class="process-step fade-in">
+                    <div class="step-number">2</div>
+                    <h4>Comparison</h4>
+                    <p>We compare multiple suppliers based on price, service quality, and contract terms to find your best match.</p>
+                </div>
+
+                <div class="process-step fade-in">
+                    <div class="step-number">3</div>
+                    <h4>Implementation</h4>
+                    <p>We manage the entire switching process from start to finish, ensuring a smooth transition with no disruption.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-content">
+                <h2 class="cta-title fade-in">Ready to Reduce Your Water Costs?</h2>
+                <p class="cta-subtitle fade-in">
+                    Join hundreds of businesses that have already saved thousands with our water management solutions
+                </p>
+
+                <div class="cta-cards fade-in">
+                    <div class="cta-card">
+                        <h3><i class="fas fa-clock"></i> Quick Start</h3>
+                        <p>Begin saving in as little as 48 hours with our expedited assessment process</p>
+                    </div>
+
+                    <div class="cta-card">
+                        <h3><i class="fas fa-shield-alt"></i> Risk-Free</h3>
+                        <p>No upfront costs - we only succeed when you save money on your water bills</p>
+                    </div>
+
+                    <div class="cta-card">
+                        <h3><i class="fas fa-users"></i> Expert Team</h3>
+                        <p>Access to our team of water management specialists throughout your journey</p>
+                    </div>
+                </div>
+
+                <a class="cta-button fade-in" href="/contact.html">
+                   Feel Free To Contact us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Add fade-in animations on scroll
+        document.addEventListener('DOMContentLoaded', function () {
+            const fadeElements = document.querySelectorAll('.fade-in');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            fadeElements.forEach(el => {
+                el.style.opacity = 0;
+                el.style.transform = 'translateY(30px)';
+                el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                observer.observe(el);
+            });
+
+            // Generate water particles
+            const waterAnimation = document.querySelector('.water-animation');
+            const particleCount = 60;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('div');
+                particle.classList.add('water-particle');
+
+                // Random properties
+                const left = Math.random() * 100;
+                const top = Math.random() * 100;
+                const size = Math.random() * 4 + 2;
+                const delay = Math.random() * 15;
+                const duration = Math.random() * 10 + 15;
+
+                particle.style.left = `${left}%`;
+                particle.style.top = `${top}%`;
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.animationDelay = `${delay}s`;
+                particle.style.animationDuration = `${duration}s`;
+
+                // Random opacity
+                particle.style.opacity = Math.random() * 0.4 + 0.3;
+
+                waterAnimation.appendChild(particle);
+            }
+
+            // Interactive mouse effects
+            const heroSection = document.querySelector('.hero-section');
+            const droplets = document.querySelectorAll('.water-droplet');
+            const shapes = document.querySelectorAll('.water-shape');
+
+            heroSection.addEventListener('mousemove', (e) => {
+                const x = (e.clientX / window.innerWidth - 0.5) * 30;
+                const y = (e.clientY / window.innerHeight - 0.5) * 30;
+
+                // Move droplets
+                droplets.forEach((droplet, index) => {
+                    const speed = (index + 1) * 0.3;
+                    droplet.style.transform += ` translate(${x * speed}px, ${y * speed}px)`;
+                });
+
+                // Move shapes opposite direction for parallax
+                shapes.forEach((shape, index) => {
+                    const speed = (index + 1) * 0.4;
+                    shape.style.transform += ` translate(${x * -speed}px, ${y * -speed}px)`;
+                });
+            });
+
+            heroSection.addEventListener('mouseleave', () => {
+                droplets.forEach(droplet => {
+                    droplet.style.transform = '';
+                });
+                shapes.forEach(shape => {
+                    shape.style.transform = '';
+                });
+            });
+
+            // Scroll to content when clicking indicator
+            document.querySelector('.scroll-indicator').addEventListener('click', () => {
+                document.querySelector('.content-section').scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>

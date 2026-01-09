@@ -26,11 +26,70 @@
             --gray: #6c757d;
             --light-gray: #e9ecef;
         }
+        /* Hero Section */
+        .hero {
+            padding: 4rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
+            color: white;
+            
+            overflow: hidden;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #e0e7ff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
+            max-width: 90%;
+        }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
+        .cta-button {
+            background: var(--gradient);
+            color: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            }
         /* Navigation */
         .nav-container {
             background-color: white;
@@ -176,9 +235,27 @@
 
     <div id="headermenudetail"></div>
     <div id="mobilesidebar"></div>
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-exchange-alt"></i> Key planning considerations
+                    </div>
+                    <h1>Why Businesses Should Invest in Decentralized Energy</h1>
+                    <p>With rising energy costs, grid instability, and sustainability goals tightening across industries, decentralized energy generation offers a strategic path for forward-thinking businesses. UtilityKing specializes in the design, installation, and optimization of on-site systems that empower your organization with control, reliability, and savings.</p>
+
+                    <a href="/contact.html" class="cta-button" style="background: white; color: var(--primary);">Contact Us</a>
+
+                </div>
+            </div>
+        </div>
+    </section>
     <div class="nav-container">
+
+
         <nav class="container guide-nav">
-            <div class="nav-item"><a href="#introduction" class="nav-link text-primary fw-bold fs-6 mb-3">Introduction</a></div>
+
             <div class="nav-item"><a href="#whatisdecentralizedenergy" class="nav-link text-primary fw-bold fs-6 mb-3">Decentralized Energy</a></div>
             <div class="nav-item"><a href="#benefits" class="nav-link text-primary fw-bold fs-6 mb-3">Benefits of On-Site Energy</a></div>
             <div class="nav-item"><a href="#considerations" class="nav-link text-primary fw-bold fs-6 mb-3">Key Considerations</a></div>
@@ -189,21 +266,7 @@
     </div>
     <main>
 
-        <section id="introduction">
-            <h2>🔹 Introduction: Why Businesses Should Invest in Decentralized Energy</h2>
-            <p>With rising energy costs, grid instability, and sustainability goals tightening across industries, decentralized energy generation offers a strategic path for forward-thinking businesses. UtilityKing specializes in the design, installation, and optimization of on-site systems that empower your organization with control, reliability, and savings.</p>
 
-            <div class="highlight">
-                <strong>What You’ll Learn:</strong>
-                <ul>
-                    <li>✅ What decentralized energy generation is</li>
-                    <li>✅ Financial and operational benefits</li>
-                    <li>✅ Key planning considerations</li>
-                    <li>✅ Role of battery storage</li>
-                    <li>✅ How UtilityKing supports your transition</li>
-                </ul>
-            </div>
-        </section>
 
         <section id="whatisdecentralizedenergy">
             <h2>📈 What is Decentralized Energy Generation?</h2>

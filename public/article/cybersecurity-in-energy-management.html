@@ -54,7 +54,22 @@
             line-height: 1.7;
             overflow-x: hidden;
         }
-
+        .cta-button {
+            background: #fff;
+            color: #000;
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;            
+            font-weight: 600;
+            transition: var(--transition);
+            width:fit-content;
+        }
+            .cta-button a {
+                text-decoration: none;
+            }
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 8px 20px rgba(37, 99, 235, 0.4);
+            }
         .container {
             width: 100%;
             max-width: 1280px;
@@ -70,20 +85,7 @@
             gap: 1rem;
         }
 
-        .cta-button {
-            background: var(--gradient);
-            color: white;
-            padding: 0.8rem 1.8rem;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            border: none;
-            cursor: pointer;
-           
-        }
-        .cta-button:hover{
-           color:#FFF;
-        }
+        .
           
 
       
@@ -795,10 +797,7 @@
                 font-size: 2.2rem;
             }
 
-            .cta-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
+           
         }
     </style>
 </head>
@@ -842,15 +841,14 @@
                     </div>
                     <h1>Cyber Security in Energy Management Systems</h1>
                     <p>Safeguarding Energy Infrastructure Against Cyber Threats in an Increasingly Digital World</p>
-                    <div class="hero-buttons">
-                        <a href="/getquote" class="cta-button">Get Energy Quote</a>
-                      
+                    <div class="cta-button">
+                        <a href="/contact.html" >Contact Us</a>
                     </div>
                    
                 </div>
                 <div class="hero-image">
                     <div class="hero-card">
-                      <img src="/img/blog-1.jpg" alt="cyber protection" width="600" height="400" class="img-fluid m-auto"/>
+                      <img src="https://utilityking.co.uk/reactimg/blog-1.jpg" alt="cyber protection" width="600" height="400" class="img-fluid m-auto"/>
                     </div>
                 </div>
             </div>
@@ -1162,7 +1160,7 @@
         <div class="container">
             <h2>Secure Your Energy Systems Against Cyber Threats</h2>
             <p>With cyber threats on the rise, now is the best time to implement robust cybersecurity strategies to protect your critical energy infrastructure from potentially devastating attacks.</p>
-            <a href="/contact-us" class="cta-button">Feel Free To Contact Us</a>
+            <a href="/contact.html" class="cta-button">Feel Free To Contact Us</a>
             <p style="margin-top: 1.5rem; font-style: italic;">"We help businesses safeguard energy infrastructure against cyber threats—let's secure your energy management system today!"</p>
         </div>
     </section>

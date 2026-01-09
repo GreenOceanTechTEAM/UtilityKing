@@ -10,9 +10,8 @@
     <link rel="canonical" href="https://utilityking.co.uk/solutions-for-renewable-energy-investments" />
     <link rel="alternate" href="https://utilityking.co.uk/solutions-for-renewable-energy-investments/" hreflang="en" />
     <link rel="alternate" href="https://utilityking.co.uk/solutions-for-renewable-energy-investments/" hreflang="x-default" />
-    <script src="/layout/scripts/jquery.min.js"></script>
-    <script src="/js/headerfooter.js"></script>
-    <script src="/js/script.js"></script>
+  
+   
     <style>
         :root {
             --primary: #2E8B57;
@@ -47,29 +46,52 @@
             padding: 0 20px;
         }
 
-       
+
         /* Hero Section */
         .hero {
-            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/images/solutioninvestment.webp') no-repeat center center/cover;
+            padding: 4rem;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3730a3 100%);
             color: white;
-            padding: 5rem 0;
-            text-align: center;
+            position: relative;
+            overflow: hidden;
         }
 
-            .hero h1 {
-                font-size: 2.8rem;
-                margin-bottom: 1rem;
-                max-width: 800px;
-                margin-left: auto;
-                margin-right: auto;
-                color:#fff;
-            }
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
 
-            .hero p {
-                font-size: 1.2rem;
-                max-width: 700px;
-                margin: 0 auto 2rem;
-            }
+        .hero-text {
+            flex: 1;
+            padding-right: 3rem;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: #e0e7ff;
+            padding: 0.5rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+            font-weight: 800;
+            color: #fff;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2.5rem;
+            color: #cbd5e1;
+            max-width: 90%;
+        }
 
         .cta-button {
             display: inline-block;
@@ -109,7 +131,7 @@
 
         .benefits-grid, .risks-grid, .coverage-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(0px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
             gap: 1.5rem;
             margin-top: 1.5rem;
         }
@@ -273,13 +295,23 @@
     <div id="headermenudetail"></div>
     <div id="mobilesidebar"></div>
     <!-- Hero Section -->
+    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
-            <h1>Insurance Solutions for Renewable Energy Investments</h1>
-            <p>Protecting Sustainable Energy Projects with Tailored Coverage</p>
-            <a href="/getquote" class="btn btn-white fw-bold">Get Energy Quote</a>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="hero-badge">
+                        <i class="fas fa-exchange-alt"></i> Ensures Stable Energy Production
+                    </div>
+                    <h1>Solutions for Renewable Energy Investments</h1>
+                    <p>Protecting Sustainable Energy Projects with Tailored Coverage</p>
+                    <a href="/contact.html" class="cta-button" style="background: white; color: var(--primary);">Contact Us</a>
+
+                </div>
+            </div>
         </div>
     </section>
+   
 
     <main class="container">
         <!-- Introduction Section -->
@@ -490,7 +522,7 @@
             </ul>
 
             <div class="fact-box" style="background-color: rgba(255,255,255,0.2); border-left-color: var(--accent); margin-top: 1.5rem;">
-                <strong  class="text-white">Fact:</strong> 90% of businesses that partner with UtilityKing for energy insurance solutions reduce financial risk and improve project security.
+                <b class="text-white">Fact:</b> 90% of businesses that partner with UtilityKing for energy insurance solutions reduce financial risk and improve project security.
             </div>
         </section>
 
@@ -498,17 +530,16 @@
         <section id="consultation" class="final-cta">
             <h2>Protect Your Renewable Energy Investments with UtilityKing!</h2>
             <p>With renewable energy investments increasing, now is the best time to secure insurance coverage for financial protection and long-term stability.</p>
-            <a href="/contact-us" class="cta-button">Feel Free to Contact Us</a>
+
+            <a href="/contact.html" style="padding:12px 25px; background:#fff; color:#000; border-radius:30px;
+font-weight:bold; text-decoration:none; border:2px solid #000;
+box-shadow:0 4px 10px rgba(0,0,0,0.2); transition:0.3s;"
+               onmouseover="this.style.background='#000'; this.style.color='#fff';"
+               onmouseout="this.style.background='#fff'; this.style.color='#000';" class="btn btn-white fw-bold">Feel Free to Contact Us</a>
             <p style="margin-top: 1.5rem; font-style: italic;">"We help businesses safeguard renewable energy investments with tailored insurance solutions—let's protect your clean energy future today!"</p>
         </section>
     </main>
 
-    <!-- Footer -->
-    <input type="text" id="txtOtpSend" style="display: none" />
-    <input type="text" id="txtOtpSendDateTime" style="display: none" />
-    <input type="text" id="txtregcode" style="display: none" />
-    <input type="text" id="txtregType" style="display: none" />
-    <div id="footerdetail"> </div>
 </body>
 </html>
 
