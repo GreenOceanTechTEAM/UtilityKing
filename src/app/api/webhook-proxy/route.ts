@@ -3,7 +3,7 @@ import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
   // The target URL of your .NET WebMethod
-  const targetUrl = 'https://utilityking.co.uk/testreactasp.aspx/reactasp';
+  const targetUrl = 'https://server.utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
     // In a real production environment, you would forward the request.
