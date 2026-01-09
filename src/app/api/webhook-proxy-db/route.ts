@@ -2,7 +2,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
-  const targetUrl = 'https://server.utilityking.co.uk/testreactasp.aspx/reactasp';
+  const targetUrl = 'http://server.utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
     const requestBody = await request.json();
