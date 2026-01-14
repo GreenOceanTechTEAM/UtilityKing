@@ -494,7 +494,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         day: day,
         month: month,
         year: year,
-        business: selections['businessName'] || selections['premisesType'] || 'Home',
+        business: selections['businessName'] || selections['premisesType'] || '',
         email: leadData.email,
         contactName: leadData.name,
         phone: leadData.phone,
@@ -903,3 +903,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
