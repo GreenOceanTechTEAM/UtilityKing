@@ -494,13 +494,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         day: day,
         month: month,
         year: year,
-        premisesType: selections['premisesType'] || 'Home',
-        business: selections['businessName'] || (selections['premisesType'] === 'Home' ? 'Personal' : 'Business'),
-        renewablePreference: selections['renewablePreference'] || 'No',
-        utilityType: selections['utilityType'] || 'Gas',
+        business: selections['businessName'] || selections['premisesType'] || 'Home',
         email: leadData.email,
         contactName: leadData.name,
         phone: leadData.phone,
+        pdfFileName: `UK-quote-${leadData.name.replace(/\s/g, '-')}-${Date.now()}.pdf`,
+        allSelections: selections,
     };
 
     fetch('/api/webhook-proxy-db', {
@@ -905,4 +904,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   );
 }
 
+    
     
