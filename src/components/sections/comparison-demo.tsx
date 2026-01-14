@@ -141,8 +141,8 @@ const wizardSteps = [
         step: 6,
         part: 2,
         key: 'mpr',
-        title: "MPR Number",
-        aiMessage: "What's your Meter Point Reference (MPR)? You can find it on your gas bill.",
+        title: "MPR Number (Optional)",
+        aiMessage: "What's your Meter Point Reference (MPR)? You can find it on your gas bill or skip this step.",
         isInput: true,
         customPlaceholder: "e.g., 1234567890",
         options: [],
@@ -388,7 +388,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -449,6 +449,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const isStepComplete = (stepIndex: number) => {
     const step = activeWizardSteps[stepIndex];
     if (!step) return false;
+  
+    // Make MPR step optional
+    if (step.key === 'mpr') {
+      return true;
+    }
     
     const selection = selections[step.key];
 
@@ -901,4 +906,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 }
 
     
+    
+
     
