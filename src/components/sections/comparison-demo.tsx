@@ -151,9 +151,9 @@ const wizardSteps = [
     {
         step: 7,
         part: 2,
-        key: 'electricitySupplier',
+        key: 'supplier',
         title: "Current Supplier",
-        aiMessage: "Who is your current electricity supplier?",
+        aiMessage: "Who is your current supplier?",
         options: [
           { label: "British Gas" },
           { label: "British Gas Renewables" },
@@ -489,7 +489,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const formData = {
         postcode: selections['postcode'] || '',
         mprn: selections['mpr'] || '',
-        supplier: selections['electricitySupplier'] || '',
+        supplier: selections['supplier'] || '',
         usage: numericUsage,
         day: day,
         month: month,
@@ -640,7 +640,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.key === 'electricitySupplier' && "max-h-[260px] overflow-y-auto pr-2"
+                                            currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
                                             )}>
                                                 {currentWizardStepConfig.options.map(option => {
                                                     const Icon = (option as any).icon;
@@ -904,10 +904,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-    
-
-    
 
     
