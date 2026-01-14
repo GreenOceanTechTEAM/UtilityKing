@@ -509,7 +509,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     fetch('/api/webhook-proxy-db', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ requestData: formData }),
+        body: JSON.stringify(formData),
     })
     .then(async (response) => {
         if (!response.ok) {
@@ -527,11 +527,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             });
         } else {
              setSubmissionStatus('fail');
-             console.error("Failed to save lead to .NET backend. Response:", dbResult ? dbResult.d : 'undefined');
+             console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
              toast({
                 variant: "destructive",
                 title: "Submission Failed",
-                description: `The server responded with an issue: ${dbResult ? dbResult.d : 'No response data'}`,
+                description: `The server responded with an issue: ${dbResult.d || 'No response data'}`,
             });
         }
     })

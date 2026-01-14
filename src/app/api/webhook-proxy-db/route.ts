@@ -2,24 +2,33 @@
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function POST(request: NextRequest) {
+  // The target URL of your .NET WebMethod
   const targetUrl = 'https://server.utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
+    // 1. Get the request body from the incoming Next.js request.
     const requestBody = await request.json();
 
-    const payload = {
-      requestData: requestBody
+    // 2. The backend expects the data to be wrapped in a specific structure.
+    // The incoming `requestBody` from the frontend is already the `ComparisonRequestData` object.
+    // The C# WebMethod `reactasp` expects an object with a `requestData` key.
+    const payloadForBackend = {
+        requestData: requestBody
     };
 
+    // 3. Make the fetch call to the .NET backend.
     const apiResponse = await fetch(targetUrl, {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
+            // It's good practice to secure your backend endpoint with a key.
             'X-API-KEY': process.env.DOTNET_API_KEY || 'your_secure_api_key_here',
         },
-        body: JSON.stringify(payload),
+        // 4. Send the correctly structured payload.
+        body: JSON.stringify(payloadForBackend),
     });
     
+    // 5. Handle the response from the .NET backend.
     if (!apiResponse.ok) {
         const errorText = await apiResponse.text();
         console.error(`Error from .NET backend (${apiResponse.status}):`, errorText);
@@ -29,6 +38,7 @@ export async function POST(request: NextRequest) {
 
     const resultJson = await apiResponse.json();
     
+    // 6. Return the backend's response to the frontend client.
     return NextResponse.json(resultJson);
 
   } catch (error: any) {
@@ -39,5 +49,3 @@ export async function POST(request: NextRequest) {
     );
   }
 }
-
-    
