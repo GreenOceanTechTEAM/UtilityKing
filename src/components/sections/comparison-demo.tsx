@@ -16,7 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -140,6 +140,17 @@ const wizardSteps = [
     {
         step: 6,
         part: 2,
+        key: 'mpr',
+        title: "MPR Number",
+        aiMessage: "What's your Meter Point Reference (MPR)? You can find it on your gas bill.",
+        isInput: true,
+        customPlaceholder: "e.g., 1234567890",
+        options: [],
+        icon: Hash,
+    },
+    {
+        step: 7,
+        part: 2,
         key: 'electricitySupplier',
         title: "Current Supplier",
         aiMessage: "Who is your current electricity supplier?",
@@ -195,7 +206,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 7,
+        step: 8,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -205,7 +216,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 8,
+        step: 9,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -377,7 +388,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -472,6 +483,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
     const formData = {
         postcode: selections['postcode'] || '',
+        mpr: selections['mpr'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: numericUsage,
         day: day,
@@ -489,7 +501,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     fetch('/api/webhook-proxy-db', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ requestData: formData }),
     })
     .then(async (response) => {
         if (!response.ok) {
@@ -888,4 +900,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   );
 }
 
+    
     
