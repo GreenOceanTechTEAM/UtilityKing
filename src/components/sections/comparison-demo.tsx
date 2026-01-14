@@ -477,10 +477,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     let day = '', month = '', year = '';
 
     if (selections['contractEndDate']) {
-        contractDate = new Date(selections['contractEndDate']);
-        day = String(contractDate.getDate());
-        month = String(contractDate.getMonth() + 1);
-        year = String(contractDate.getFullYear());
+        try {
+            contractDate = new Date(selections['contractEndDate']);
+            day = String(contractDate.getDate());
+            month = String(contractDate.getMonth() + 1);
+            year = String(contractDate.getFullYear());
+        } catch (e) {
+            console.error("Invalid date format for contract end date");
+        }
     }
 
     const usageValue = selections['usage'] || '';
@@ -490,15 +494,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         postcode: selections['postcode'] || '',
         mprn: selections['mpr'] || '',
         supplier: selections['supplier'] || '',
-        usage: numericUsage,
+        usage: numericUsage || '',
         day: day,
         month: month,
         year: year,
         business: selections['businessName'] || selections['premisesType'] || '',
-        email: leadData.email,
-        contactName: leadData.name,
-        phone: leadData.phone,
-        pdfFileName: `UK-quote-${leadData.name.replace(/\s/g, '-')}-${Date.now()}.pdf`,
+        email: leadData.email || '',
+        contactName: leadData.name || '',
+        phone: leadData.phone || '',
+        pdfFileName: `UK-quote-${(leadData.name || 'user').replace(/\s/g, '-')}-${Date.now()}.pdf`,
         allSelections: selections,
     };
 
@@ -515,7 +519,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
         return response.json();
     })
     .then((dbResult) => {
-        if (dbResult.d === "1") {
+        if (dbResult && dbResult.d === "1") {
             setSubmissionStatus('success');
              toast({
                 title: "Quotation Request Confirmed",
@@ -523,11 +527,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             });
         } else {
              setSubmissionStatus('fail');
-             console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
+             console.error("Failed to save lead to .NET backend. Response:", dbResult ? dbResult.d : 'undefined');
              toast({
                 variant: "destructive",
                 title: "Submission Failed",
-                description: `The server responded with an issue: ${dbResult.d}`,
+                description: `The server responded with an issue: ${dbResult ? dbResult.d : 'No response data'}`,
             });
         }
     })
@@ -903,5 +907,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
