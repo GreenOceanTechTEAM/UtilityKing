@@ -484,7 +484,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
 
     const usageValue = selections['usage'] || '';
-    const numericUsage = usageValue.match(/\d+/g)?.join('') || '';
+    const numericUsage = usageValue.toString().match(/\d+/g)?.join('') || '';
 
     const formData = {
         postcode: selections['postcode'] || '',
@@ -903,6 +903,3 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
-
-    
-    
