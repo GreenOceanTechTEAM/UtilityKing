@@ -488,7 +488,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
     const formData = {
         postcode: selections['postcode'] || '',
-        mpr: selections['mpr'] || '',
+        mprn: selections['mpr'] || '',
         supplier: selections['electricitySupplier'] || '',
         usage: numericUsage,
         day: day,
@@ -906,6 +906,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 }
 
     
+    
+
     
 
     
