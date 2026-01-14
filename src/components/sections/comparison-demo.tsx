@@ -16,7 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash, Info } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -77,6 +77,7 @@ const leadSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
     email: z.string().email("Please enter a valid email address."),
     phone: z.string().min(10, "Please enter a valid phone number."),
+    businessName: z.string().optional(),
 });
 
 const wizardSteps = [
@@ -349,7 +350,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   
   const leadForm = useForm<z.infer<typeof leadSchema>>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { name: '', email: '', phone: '' },
+    defaultValues: { name: '', email: '', phone: '', businessName: '' },
   });
 
   const currentWizardStepConfig = activeWizardSteps[currentStep];
@@ -388,7 +389,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -425,7 +426,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setSelections(prev => ({...prev, [stepKey]: value}));
   }
 
-  const handleDateSelect = (selectedDate?: Date) => {
+  const handleDateSelect = (selectedDate?: Date, skip: boolean = false) => {
+    if (skip) {
+        setDate(undefined);
+        setSelections(prev => ({...prev, contractEndDate: ''}));
+        setIsCalendarOpen(false);
+        setTimeout(() => handleNextStep(), 300);
+        return;
+    }
+
     setDate(selectedDate);
     if (selectedDate) {
         setSelections(prev => ({
@@ -462,7 +471,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
     
     if (step.key === 'contractEndDate') {
-        return !!selections.contractEndDate;
+        // Allow skipping this step
+        return true;
     }
     
     return !!selection;
@@ -476,7 +486,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     let contractDate: Date | null = null;
     let day = '', month = '', year = '';
 
-    if (selections['contractEndDate']) {
+    if (selections['contractEndDate'] && selections['contractEndDate'].length > 0) {
         try {
             contractDate = new Date(selections['contractEndDate']);
             day = String(contractDate.getDate());
@@ -486,15 +496,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             console.error("Invalid date format for contract end date");
         }
     }
-
-    const usageValue = selections['usage'] || '';
-    const numericUsage = usageValue.toString().match(/\d+/g)?.join('') || '';
+    
+    const numericUsage = (selections['usage'] || '').toString().match(/\d+/g)?.join('') || '';
 
     const formData = {
         postcode: selections['postcode'] || '',
         mprn: selections['mpr'] || '',
         supplier: selections['supplier'] || '',
-        usage: numericUsage || '',
+        usage: numericUsage,
         day: day,
         month: month,
         year: year,
@@ -640,6 +649,17 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                     
                                     {!isTyping && (
                                         <div className="space-y-3 w-full max-w-lg">
+                                            {(currentWizardStepConfig.key === 'mpr' || currentWizardStepConfig.key === 'contractEndDate') && (
+                                                <motion.div
+                                                    initial={{ opacity: 0, y: -10 }}
+                                                    animate={{ opacity: 1, y: 0 }}
+                                                    className="flex items-center justify-center gap-2 text-sm text-accent bg-accent/10 p-2 rounded-md mb-4"
+                                                >
+                                                    <Info className="h-4 w-4" />
+                                                    <span>You can find this on your latest bill.</span>
+                                                </motion.div>
+                                            )}
+
                                             <div className={cn(
                                             "grid grid-cols-1 gap-3",
                                             currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
@@ -710,7 +730,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                             )}
 
                                             {currentWizardStepConfig.isDateInput && (
-                                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }}>
+                                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-3">
                                                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                                                   <PopoverTrigger asChild>
                                                     <Button
@@ -728,11 +748,14 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                     <Calendar
                                                       mode="single"
                                                       selected={date}
-                                                      onSelect={handleDateSelect}
+                                                      onSelect={(d) => handleDateSelect(d)}
                                                       initialFocus
                                                     />
                                                   </PopoverContent>
                                                 </Popover>
+                                                 <Button variant="ghost" className="w-full" onClick={() => handleDateSelect(undefined, true)}>
+                                                    Proceed without a date
+                                                </Button>
                                               </motion.div>
                                             )}
                                         </div>
@@ -877,6 +900,24 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 </FormItem>
                             )}
                         />
+                         {selections.premisesType && selections.premisesType !== 'Home' && (
+                            <FormField
+                                control={leadForm.control}
+                                name="businessName"
+                                render={({ field }) => (
+                                <FormItem>
+                                    <FormLabel>Business Name (Optional)</FormLabel>
+                                    <FormControl>
+                                    <div className="relative">
+                                        <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                                        <Input placeholder="ACME Inc." {...field} className="pl-9" />
+                                    </div>
+                                    </FormControl>
+                                    <FormMessage />
+                                </FormItem>
+                                )}
+                            />
+                        )}
                         <Button type="submit" className="w-full" disabled={isSavingLead}>
                             {isSavingLead ? (
                                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
@@ -907,3 +948,5 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     </section>
   );
 }
+
+    
