@@ -16,7 +16,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash, Info } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash, Info, PoundSterling, RefreshCcw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
@@ -96,7 +96,7 @@ const wizardSteps = [
             { label: "Other" },
         ],
     },
-     {
+    {
         step: 2,
         part: 1,
         key: 'businessName',
@@ -142,15 +142,28 @@ const wizardSteps = [
         step: 6,
         part: 2,
         key: 'mpr',
-        title: "MPR Number (Optional)",
+        title: "MPR Number (Gas) (Optional)",
         aiMessage: "What's your Meter Point Reference (MPR)? You can find it on your gas bill or skip this step.",
         isInput: true,
         customPlaceholder: "e.g., 1234567890",
         options: [],
         icon: Hash,
+        condition: (selections: any) => selections.utilityType === 'Gas'
+    },
+     {
+        step: 7,
+        part: 2,
+        key: 'mpan',
+        title: "Supply Number (Electricity)",
+        aiMessage: "What's your 21-digit Supply Number (MPAN)? You can find it on your electricity bill.",
+        isInput: true,
+        customPlaceholder: "e.g., 12 345 678 9101 2345 6789",
+        options: [],
+        icon: Hash,
+        condition: (selections: any) => selections.utilityType === 'Electricity'
     },
     {
-        step: 7,
+        step: 8,
         part: 2,
         key: 'supplier',
         title: "Current Supplier",
@@ -207,7 +220,7 @@ const wizardSteps = [
         additionalOptions: ["I Don’t Know"]
     },
     {
-        step: 8,
+        step: 9,
         part: 2,
         key: 'usage',
         title: "Energy Usage",
@@ -217,7 +230,7 @@ const wizardSteps = [
         options: [],
     },
     {
-        step: 9,
+        step: 10,
         part: 2,
         key: 'contractEndDate',
         title: "Contract End Date",
@@ -270,8 +283,8 @@ const DynamicHook = () => {
                     transition={{ duration: 0.5 }}
                     className="absolute inset-0 flex items-center justify-center"
                 >
-                    <p className="text-lg text-muted-foreground font-medium flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5 text-accent" />
+                    <p className="text-xl text-muted-foreground font-medium flex items-center gap-2">
+                        <CheckCircle className="w-6 h-6 text-accent" />
                         {dynamicHooks[index]}
                     </p>
                 </motion.div>
@@ -316,6 +329,7 @@ const renderPdfPlans = (plans: RenderedPlan[]) => {
 
 
 export default function ComparisonDemo({ id }: ComparisonDemoProps) {
+  const [view, setView] = useState<'start' | 'form'>('start');
   const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
@@ -367,16 +381,19 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     setDate(undefined);
     setShowThankYou(false);
     setSubmissionStatus('idle');
+    setView('start');
     
     leadForm.reset({ name: '', email: '', phone: '' });
     if(resetComparison) resetComparison();
   };
 
   useEffect(() => {
-    setIsTyping(true);
-    const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
-    return () => clearTimeout(timer);
-  }, [currentStep]);
+    if (view === 'form') {
+        setIsTyping(true);
+        const timer = setTimeout(() => setIsTyping(false), AI_TYPING_DELAY);
+        return () => clearTimeout(timer);
+    }
+  }, [currentStep, view]);
 
 
   const handleNextStep = () => {
@@ -389,16 +406,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
   const handleSelect = (stepKey: string, option: string) => {
-    if (stepKey === 'utilityType' && option === 'Electricity') {
-        setIsComingSoonModalOpen(true);
-        return;
-    }
-
     const isMulti = currentWizardStepConfig.isMultiSelect;
 
     let newSelections;
@@ -458,12 +470,20 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   const isStepComplete = (stepIndex: number) => {
     const step = activeWizardSteps[stepIndex];
     if (!step) return false;
-  
-    // Make MPR step optional
-    if (step.key === 'mpr') {
-      return true;
-    }
     
+    if (step.key === 'mpr' && selections.utilityType === 'Gas') {
+      return true; // MPR is optional for Gas
+    }
+     if (step.key === 'mpan' && selections.utilityType === 'Electricity') {
+      const selection = selections[step.key];
+      return !!selection; // MPAN is mandatory for Electricity
+    }
+
+    if (step.key === 'businessName' && selections.premisesType !== 'Home') {
+      const selection = selections[step.key];
+      return !!selection; // Business name is mandatory if not home
+    }
+
     const selection = selections[step.key];
 
     if (step.isMultiSelect) {
@@ -588,265 +608,296 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   return (
     <section id={id} className="py-16 sm:py-24 bg-background overflow-hidden">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-        <motion.div 
-          initial={{ y: 20, opacity: 0 }}
-          whileInView={{ y: 0, opacity: 1 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center mb-6 max-w-3xl mx-auto"
-        >
-            <h2 className="font-headline text-3xl tracking-tight md:text-[38px] font-bold text-foreground">
-              Let’s Find Your Best Energy Deal — Instantly
-            </h2>
-            <p className="mx-auto mt-4 text-lg text-muted-foreground">
-             Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
-            </p>
-        </motion.div>
         
-        <DynamicHook />
-
         <div className="w-full max-w-4xl mx-auto">
-            <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px]">
-                                
-                {!showThankYou && !isLoading && (
-                    <>
-                        <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
-                            <motion.div 
-                                className="bg-primary h-1 rounded-full"
-                                initial={{ width: 0 }}
-                                animate={{ width: `${progress}%`}}
-                                transition={{ duration: 0.5, ease: "easeInOut" }}
-                            />
-                        </div>
-
-                        <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
-                            <AnimatePresence mode="wait">
-                                {currentWizardStepConfig &&
-                                <motion.div
-                                    key={currentStep}
-                                    variants={stepVariants}
-                                    initial="initial"
-                                    animate="animate"
-                                    exit="exit"
-                                    className="w-full flex flex-col items-center text-center"
-                                >
-                                    <div className="flex flex-col items-center text-center gap-3 mb-5">
-                                        <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
-                                            <Sparkles className="w-5 h-5" />
-                                        </div>
-                                        <div>
-                                            <p className="text-lg font-semibold text-card-foreground">
-                                            {currentWizardStepConfig.title}
-                                            </p>
-                                            <p className="text-base text-muted-foreground max-w-md mx-auto">
-                                                {isTyping ? 
-                                                    <span className="animate-pulse">...</span> : 
-                                                    currentWizardStepConfig.aiMessage
-                                                }
-                                            </p>
-                                        </div>
-                                    </div>
-                                    
-                                    {!isTyping && (
-                                        <div className="space-y-3 w-full max-w-lg">
-                                            {(currentWizardStepConfig.key === 'mpr' || currentWizardStepConfig.key === 'contractEndDate') && (
-                                                <motion.div
-                                                    initial={{ opacity: 0, y: -10 }}
-                                                    animate={{ opacity: 1, y: 0 }}
-                                                    className="flex items-center justify-center gap-2 text-sm text-accent bg-accent/10 p-2 rounded-md mb-4"
-                                                >
-                                                    <Info className="h-4 w-4" />
-                                                    <span>You can find this on your latest bill.</span>
-                                                </motion.div>
-                                            )}
-
-                                            <div className={cn(
-                                            "grid grid-cols-1 gap-3",
-                                            currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                            currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
-                                            )}>
-                                                {currentWizardStepConfig.options.map(option => {
-                                                    const Icon = (option as any).icon;
-                                                    const isSelected = currentWizardStepConfig.isMultiSelect 
-                                                        ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
-                                                        : selections[currentWizardStepConfig.key] === option.label;
-
-                                                    return (
-                                                        <motion.button
-                                                            key={option.label}
-                                                            variants={pillVariants}
-                                                            whileHover="hover"
-                                                            whileTap="tap"
-                                                            onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
-                                                            className={cn(
-                                                                "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
-                                                                isSelected
-                                                                    ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                    : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                                (option as any).description && "items-start",
-                                                            )}
-                                                        >
-                                                            <div className="flex items-center justify-center gap-3">
-                                                                {Icon && <Icon className="h-6 w-6" />}
-                                                                <span className="font-semibold">{option.label}</span>
-                                                            </div>
-                                                            {(option as any).description && <span className="text-sm block text-muted-foreground">{(option as any).description}</span>}
-                                                        </motion.button>
-                                                    )
-                                                })}
-                                                {currentWizardStepConfig.additionalOptions?.map(option => (
-                                                    <motion.button
-                                                        key={option}
-                                                        variants={pillVariants}
-                                                        whileHover="hover"
-                                                        whileTap="tap"
-                                                        onClick={() => handleSelect(currentWizardStepConfig.key, option)}
-                                                        className={cn(
-                                                            "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
-                                                            selections[currentWizardStepConfig.key] === option
-                                                                ? "bg-primary text-primary-foreground border-primary shadow-md"
-                                                                : "bg-background/50 hover:border-primary hover:bg-primary/5"
-                                                        )}
-                                                    >
-                                                        {option}
-                                                    </motion.button>
-                                                ))}
-                                            </div>
-
-                                            {currentWizardStepConfig.isInput && (
-                                                <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                    <div className="relative">
-                                                        {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
-                                                        <Input 
-                                                            type={currentWizardStepConfig.key === 'usage' ? 'number' : 'text'}
-                                                            placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                            className="pl-10 h-12 text-base text-center"
-                                                            value={selections[currentWizardStepConfig.key] || ''}
-                                                            onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
-                                                            onKeyDown={handleCustomSubmit}
-                                                        />
-                                                    </div>
-                                                </motion.div>
-                                            )}
-
-                                            {currentWizardStepConfig.isDateInput && (
-                                              <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
-                                                  <PopoverTrigger asChild>
-                                                    <Button
-                                                      variant={"outline"}
-                                                      className={cn(
-                                                        "w-full justify-start text-left font-normal h-12 text-base",
-                                                        !date && "text-muted-foreground"
-                                                      )}
-                                                    >
-                                                      <CalendarDays className="mr-2 h-4 w-4" />
-                                                      {date ? format(date, "PPP") : <span>Pick a date</span>}
-                                                    </Button>
-                                                  </PopoverTrigger>
-                                                  <PopoverContent className="w-auto p-0">
-                                                    <Calendar
-                                                      mode="single"
-                                                      selected={date}
-                                                      onSelect={(d) => handleDateSelect(d)}
-                                                      initialFocus
-                                                    />
-                                                  </PopoverContent>
-                                                </Popover>
-                                                 <Button variant="ghost" className="w-full" onClick={() => handleDateSelect(undefined, true)}>
-                                                    Proceed without a date
-                                                </Button>
-                                              </motion.div>
-                                            )}
-                                        </div>
-                                    )}
-                                </motion.div>
-                                }
-                            </AnimatePresence>
-                        </div>
-                         <div className="flex justify-center items-center gap-4 pt-4 mt-4 border-t">
-                            <Button type="button" variant="outline" size="lg" onClick={handlePrevStep} disabled={currentStep === 0}>
-                              <ChevronLeft className="mr-2 h-4 w-4" />
-                              Back
-                            </Button>
-                            <Button 
-                                type="button"
-                                size="lg" 
-                                onClick={handlePrimaryAction}
-                                disabled={!isStepComplete(currentStep)}
-                            >
-                                {getButtonText()}
-                                <ArrowRight className="ml-2 h-4 w-4" />
-                            </Button>
-                        </div>
-                    </>
-                )}
-
-                {isLoading && (
-                     <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
-                        <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
-                            <AnimatePresence>
-                                {analysisLines.map((line, index) => (
-                                <motion.p
-                                    key={line}
-                                    custom={index}
-                                    initial={{ opacity: 0, y: 20 }}
-                                    animate={(i) => ({
-                                        opacity: [0, 1, 1, 0],
-                                        y: [20, 0, 0, -20],
-                                        transition: {
-                                            delay: i * 2,
-                                            duration: 2,
-                                            times: [0, 0.1, 0.9, 1]
-                                        }
-                                    })}
-                                    exit={{ opacity: 0 }}
-                                    className="absolute inset-0 text-sm text-muted-foreground flex items-center gap-2"
-                                >
-                                    <Loader2 className="h-4 w-4 animate-spin text-accent" />
-                                    {line}
-                                </motion.p>
-                                ))}
-                            </AnimatePresence>
-                        </div>
-                      </div>
-                )}
-
-                {showThankYou && !isLoading && (
+            <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px] flex items-center justify-center">
+                
+                <AnimatePresence mode="wait">
+                  {view === 'start' ? (
                     <motion.div
-                        key="thank-you"
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className="flex flex-col items-center justify-center min-h-[400px] text-center p-8"
+                      key="start"
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      exit={{ opacity: 0, y: -20 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="text-center flex flex-col items-center justify-center w-full max-w-3xl"
                     >
-                        <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
-                            transition={{ type: 'spring', delay: 0.2 }}
-                            className="w-20 h-20 rounded-full flex items-center justify-center bg-green-100 text-green-600 mb-6"
+                      <h2 className="font-headline text-4xl tracking-tight md:text-5xl font-bold text-foreground">
+                        Let’s Find Your Best Energy Deal — Instantly
+                      </h2>
+                      <p className="mx-auto mt-6 text-xl text-muted-foreground">
+                       Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
+                      </p>
+                      
+                      <DynamicHook />
+                      
+                      <motion.div
+                        initial={{ scale: 0.9, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.4, duration: 0.5 }}
+                      >
+                        <Button
+                          size="lg"
+                          className="text-lg font-semibold h-16 px-12"
+                          onClick={() => setView('form')}
                         >
-                            <CheckCircle className="w-12 h-12" />
-                        </motion.div>
-                        <h3 className="font-headline text-2xl md:text-3xl font-bold text-primary mb-4">
-                           Thank You, {leadDetails?.name}!
-                        </h3>
-                        <p className="max-w-xl text-lg text-muted-foreground">
-                          Your tailored quotation with rates is on the way. You will receive an email shortly.
-                        </p>
-                        <Button onClick={handleReset} className="mt-8">
-                            <RefreshCw className="mr-2 h-4 w-4" />
-                            Start New Comparison
+                          <Zap className="mr-3 h-6 w-6" />
+                          Start Comparison
                         </Button>
+                      </motion.div>
                     </motion.div>
-                )}
+                  ) : (
+                    <motion.div
+                      key="form"
+                      initial={{ opacity: 0, scale: 0.98 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      exit={{ opacity: 0, scale: 0.98 }}
+                      transition={{ duration: 0.5, ease: 'easeInOut' }}
+                      className="w-full"
+                    >
+                      {!showThankYou && !isLoading && (
+                          <>
+                              <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
+                                  <motion.div 
+                                      className="bg-primary h-1 rounded-full"
+                                      initial={{ width: 0 }}
+                                      animate={{ width: `${progress}%`}}
+                                      transition={{ duration: 0.5, ease: "easeInOut" }}
+                                  />
+                              </div>
+
+                              <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
+                                  <AnimatePresence mode="wait">
+                                      {currentWizardStepConfig &&
+                                      <motion.div
+                                          key={currentStep}
+                                          variants={stepVariants}
+                                          initial="initial"
+                                          animate="animate"
+                                          exit="exit"
+                                          className="w-full flex flex-col items-center text-center"
+                                      >
+                                          <div className="flex flex-col items-center text-center gap-3 mb-5">
+                                              <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+                                                  <Sparkles className="w-5 h-5" />
+                                              </div>
+                                              <div>
+                                                  <p className="text-xl font-semibold text-card-foreground">
+                                                  {currentWizardStepConfig.title}
+                                                  </p>
+                                                  <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                                                      {isTyping ? 
+                                                          <span className="animate-pulse">...</span> : 
+                                                          currentWizardStepConfig.aiMessage
+                                                      }
+                                                  </p>
+                                              </div>
+                                          </div>
+                                          
+                                          {!isTyping && (
+                                              <div className="space-y-3 w-full max-w-lg">
+                                                  {(currentWizardStepConfig.key === 'mpr' || currentWizardStepConfig.key === 'mpan') && (
+                                                      <motion.div
+                                                          initial={{ opacity: 0, y: -10 }}
+                                                          animate={{ opacity: 1, y: 0 }}
+                                                          className="flex items-center justify-center gap-2 text-base text-accent bg-accent/10 p-2 rounded-md mb-4"
+                                                      >
+                                                          <Info className="h-5 w-5" />
+                                                          <span>You can find this on your latest bill.</span>
+                                                      </motion.div>
+                                                  )}
+
+                                                  <div className={cn(
+                                                  "grid grid-cols-1 gap-3",
+                                                  currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                                  currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
+                                                  )}>
+                                                      {currentWizardStepConfig.options.map(option => {
+                                                          const Icon = (option as any).icon;
+                                                          const isSelected = currentWizardStepConfig.isMultiSelect 
+                                                              ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
+                                                              : selections[currentWizardStepConfig.key] === option.label;
+
+                                                          return (
+                                                              <motion.button
+                                                                  key={option.label}
+                                                                  variants={pillVariants}
+                                                                  whileHover="hover"
+                                                                  whileTap="tap"
+                                                                  onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
+                                                                  className={cn(
+                                                                      "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
+                                                                      isSelected
+                                                                          ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                          : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                                                                      (option as any).description && "items-start",
+                                                                  )}
+                                                              >
+                                                                  <div className="flex items-center justify-center gap-3">
+                                                                      {Icon && <Icon className="h-6 w-6" />}
+                                                                      <span className="font-semibold">{option.label}</span>
+                                                                  </div>
+                                                                  {(option as any).description && <span className="text-base block text-muted-foreground">{(option as any).description}</span>}
+                                                              </motion.button>
+                                                          )
+                                                      })}
+                                                      {currentWizardStepConfig.additionalOptions?.map(option => (
+                                                          <motion.button
+                                                              key={option}
+                                                              variants={pillVariants}
+                                                              whileHover="hover"
+                                                              whileTap="tap"
+                                                              onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                              className={cn(
+                                                                  "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
+                                                                  selections[currentWizardStepConfig.key] === option
+                                                                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                      : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                              )}
+                                                          >
+                                                              {option}
+                                                          </motion.button>
+                                                      ))}
+                                                  </div>
+
+                                                  {currentWizardStepConfig.isInput && (
+                                                      <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                          <div className="relative">
+                                                              {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
+                                                              <Input 
+                                                                  type={currentWizardStepConfig.key === 'usage' ? 'number' : 'text'}
+                                                                  placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
+                                                                  className="pl-10 h-12 text-lg text-center"
+                                                                  value={selections[currentWizardStepConfig.key] || ''}
+                                                                  onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
+                                                                  onKeyDown={handleCustomSubmit}
+                                                              />
+                                                          </div>
+                                                      </motion.div>
+                                                  )}
+
+                                                  {currentWizardStepConfig.isDateInput && (
+                                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                      <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                                                        <PopoverTrigger asChild>
+                                                          <Button
+                                                            variant={"outline"}
+                                                            className={cn(
+                                                              "w-full justify-start text-left font-normal h-12 text-lg",
+                                                              !date && "text-muted-foreground"
+                                                            )}
+                                                          >
+                                                            <CalendarDays className="mr-2 h-4 w-4" />
+                                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                                          </Button>
+                                                        </PopoverTrigger>
+                                                        <PopoverContent className="w-auto p-0">
+                                                          <Calendar
+                                                            mode="single"
+                                                            selected={date}
+                                                            onSelect={(d) => handleDateSelect(d)}
+                                                            initialFocus
+                                                          />
+                                                        </PopoverContent>
+                                                      </Popover>
+                                                      <Button variant="ghost" className="w-full text-lg h-12" onClick={() => handleDateSelect(undefined, true)}>
+                                                          Proceed without a date
+                                                      </Button>
+                                                    </motion.div>
+                                                  )}
+                                              </div>
+                                          )}
+                                      </motion.div>
+                                      }
+                                  </AnimatePresence>
+                              </div>
+                              <div className="flex justify-center items-center gap-4 pt-4 mt-4 border-t">
+                                  <Button type="button" variant="outline" size="lg" onClick={handlePrevStep} disabled={currentStep === 0} className="text-lg h-12">
+                                    <ChevronLeft className="mr-2 h-5 w-5" />
+                                    Back
+                                  </Button>
+                                  <Button 
+                                      type="button"
+                                      size="lg" 
+                                      onClick={handlePrimaryAction}
+                                      disabled={!isStepComplete(currentStep)}
+                                      className="text-lg h-12"
+                                  >
+                                      {getButtonText()}
+                                      <ArrowRight className="ml-2 h-5 w-5" />
+                                  </Button>
+                              </div>
+                          </>
+                      )}
+
+                      {isLoading && (
+                          <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
+                              <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
+                                  <AnimatePresence>
+                                      {analysisLines.map((line, index) => (
+                                      <motion.p
+                                          key={line}
+                                          custom={index}
+                                          initial={{ opacity: 0, y: 20 }}
+                                          animate={(i) => ({
+                                              opacity: [0, 1, 1, 0],
+                                              y: [20, 0, 0, -20],
+                                              transition: {
+                                                  delay: i * 2,
+                                                  duration: 2,
+                                                  times: [0, 0.1, 0.9, 1]
+                                              }
+                                          })}
+                                          exit={{ opacity: 0 }}
+                                          className="absolute inset-0 text-lg text-muted-foreground flex items-center gap-2"
+                                      >
+                                          <Loader2 className="h-5 w-5 animate-spin text-accent" />
+                                          {line}
+                                      </motion.p>
+                                      ))}
+                                  </AnimatePresence>
+                              </div>
+                            </div>
+                      )}
+
+                      {showThankYou && !isLoading && (
+                          <motion.div
+                              key="thank-you"
+                              initial={{ opacity: 0, y: 20 }}
+                              animate={{ opacity: 1, y: 0 }}
+                              className="flex flex-col items-center justify-center min-h-[400px] text-center p-8"
+                          >
+                              <motion.div
+                                  initial={{ scale: 0 }}
+                                  animate={{ scale: 1 }}
+                                  transition={{ type: 'spring', delay: 0.2 }}
+                                  className="w-20 h-20 rounded-full flex items-center justify-center bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 mb-6"
+                              >
+                                  <CheckCircle className="w-12 h-12" />
+                              </motion.div>
+                              <h3 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">
+                                Thank You, {leadDetails?.name}!
+                              </h3>
+                              <p className="max-w-xl text-xl text-muted-foreground">
+                                Your tailored quotation with rates is on the way. You will receive an email shortly.
+                              </p>
+                              <Button onClick={handleReset} className="mt-8 text-lg h-12">
+                                  <RefreshCw className="mr-2 h-5 w-5" />
+                                  Start New Comparison
+                              </Button>
+                          </motion.div>
+                      )}
+                    </motion.div>
+                  )}
+                </AnimatePresence>
             </div>
         </div>
 
         <Dialog open={isLeadModalOpen} onOpenChange={setIsLeadModalOpen}>
             <DialogContent>
                 <DialogHeader>
-                    <DialogTitle>Almost there!</DialogTitle>
-                    <DialogDescription>
+                    <DialogTitle className="text-2xl">Almost there!</DialogTitle>
+                    <DialogDescription className="text-lg">
                         Enter your details below to see your personalized savings and get a copy sent to your email.
                     </DialogDescription>
                 </DialogHeader>
@@ -857,11 +908,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             name="name"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Full Name</FormLabel>
+                                    <FormLabel className="text-base">Full Name</FormLabel>
                                     <FormControl>
                                         <div className="relative">
-                                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                            <Input placeholder="John Doe" {...field} className="pl-9" />
+                                            <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                            <Input placeholder="John Doe" {...field} className="pl-10 h-12 text-lg" />
                                         </div>
                                     </FormControl>
                                     <FormMessage />
@@ -873,11 +924,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             name="email"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Email Address</FormLabel>
+                                    <FormLabel className="text-base">Email Address</FormLabel>
                                     <FormControl>
                                         <div className="relative">
-                                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                            <Input type="email" placeholder="john.doe@example.com" {...field} className="pl-9" />
+                                            <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                            <Input type="email" placeholder="john.doe@example.com" {...field} className="pl-10 h-12 text-lg" />
                                         </div>
                                     </FormControl>
                                     <FormMessage />
@@ -889,11 +940,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                             name="phone"
                             render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Phone Number</FormLabel>
+                                    <FormLabel className="text-base">Phone Number</FormLabel>
                                     <FormControl>
                                         <div className="relative">
-                                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                            <Input type="tel" placeholder="07123 456789" {...field} className="pl-9" />
+                                            <Phone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                            <Input type="tel" placeholder="07123 456789" {...field} className="pl-10 h-12 text-lg" />
                                         </div>
                                     </FormControl>
                                     <FormMessage />
@@ -906,11 +957,11 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 name="businessName"
                                 render={({ field }) => (
                                 <FormItem>
-                                    <FormLabel>Business Name (Optional)</FormLabel>
+                                    <FormLabel className="text-base">Business Name</FormLabel>
                                     <FormControl>
                                     <div className="relative">
-                                        <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                                        <Input placeholder="ACME Inc." {...field} className="pl-9" />
+                                        <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+                                        <Input placeholder="ACME Inc." {...field} className="pl-10 h-12 text-lg" />
                                     </div>
                                     </FormControl>
                                     <FormMessage />
@@ -918,7 +969,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 )}
                             />
                         )}
-                        <Button type="submit" className="w-full" disabled={isSavingLead}>
+                        <Button type="submit" className="w-full h-12 text-lg" disabled={isSavingLead}>
                             {isSavingLead ? (
                                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
                             ) : (
@@ -929,24 +980,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                 </Form>
             </DialogContent>
         </Dialog>
-
-        <Dialog open={isComingSoonModalOpen} onOpenChange={setIsComingSoonModalOpen}>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Great Things Are Coming!</DialogTitle>
-                    <DialogDescription>
-                        Our electricity comparison tool is currently under development. Stay tuned for updates! In the meantime, feel free to compare gas prices.
-                    </DialogDescription>
-                </DialogHeader>
-                <Button onClick={() => setIsComingSoonModalOpen(false)}>
-                    Got it!
-                </Button>
-            </DialogContent>
-        </Dialog>
-
       </div>
     </section>
   );
 }
-
-    
