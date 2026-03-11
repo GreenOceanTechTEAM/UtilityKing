@@ -165,12 +165,6 @@ const wizardSteps = [
     },
 ];
 
-const dynamicHooks = [
-    "Analyze hundreds of tariffs in real-time.",
-    "100% impartial and secure results.",
-    "Switch suppliers in minutes, hassle-free."
-];
-
 const stepVariants = {
   initial: { opacity: 0, x: 50 },
   animate: { opacity: 1, x: 0, transition: { duration: 0.4, ease: "easeOut" } },
@@ -184,38 +178,6 @@ const pillVariants = {
 };
 
 const AI_TYPING_DELAY = 1000;
-
-const DynamicHook = () => {
-    const [index, setIndex] = useState(0);
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            setIndex((prevIndex) => (prevIndex + 1) % dynamicHooks.length);
-        }, 3000);
-        return () => clearInterval(interval);
-    }, []);
-
-    return (
-        <div className="relative h-8 mb-12 text-center flex items-center justify-center">
-            <AnimatePresence mode="wait">
-                <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: -10 }}
-                    transition={{ duration: 0.5 }}
-                    className="absolute inset-0 flex items-center justify-center"
-                >
-                    <p className="text-xl text-muted-foreground font-medium flex items-center gap-2">
-                        <CheckCircle className="w-6 h-6 text-accent" />
-                        {dynamicHooks[index]}
-                    </p>
-                </motion.div>
-            </AnimatePresence>
-        </div>
-    );
-};
-
 
 export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoProps) {
   const [view, setView] = useState<'start' | 'form'>('start');
@@ -408,7 +370,12 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                        Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
                       </p>
                       
-                      <DynamicHook />
+                        <div className="relative h-8 mb-12 text-center flex items-center justify-center">
+                            <p className="text-xl text-muted-foreground font-medium flex items-center gap-2">
+                                <CheckCircle className="w-6 h-6 text-accent" />
+                                Analyze hundreds of tariffs in real-time & switch in minutes.
+                            </p>
+                        </div>
                       
                       <motion.div
                         initial={{ scale: 0.9, opacity: 0 }}
