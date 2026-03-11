@@ -1,4 +1,3 @@
-
 "use client";
 
 import React, { useRef, useCallback, useState } from 'react';
@@ -34,15 +33,15 @@ export default function Home() {
   ];
   
   const [premisesType, setPremisesType] = useState('Home');
-  const comparisonResetRef = useRef<() => void | null>(null);
+  const comparisonResetFn = useRef<(() => void) | null>(null);
 
   const setComparisonReset = useCallback((resetFn: () => void) => {
-    comparisonResetRef.current = resetFn;
+    comparisonResetFn.current = resetFn;
   }, []);
 
   const triggerReset = useCallback(() => {
-    if (comparisonResetRef.current) {
-      comparisonResetRef.current();
+    if (comparisonResetFn.current) {
+      comparisonResetFn.current();
     }
   }, []);
 
@@ -55,7 +54,7 @@ export default function Home() {
           <HowItWorks id="how" premisesType={premisesType}/>
           <ServicesSection id="services" />
           <WhyUtilityKing id="why" />
-          <ComparisonDemo id="compare" />
+          <ComparisonDemo id="compare" setResetFunction={setComparisonReset} />
           <TrustProofs id="trust" />
           <AnimatedCTABanner
             id="cta-banner-1"

@@ -2,47 +2,24 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useEffect, useMemo, useRef, useContext } from 'react';
+import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
-import ReactMarkdown from 'react-markdown';
 import { format } from "date-fns";
 
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, ChevronRight, UploadCloud, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, BarChart3, ShieldCheck, Smile, Flame, Download, RefreshCw, Briefcase, Hash, Info, PoundSterling, RefreshCcw } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, Briefcase, Hash, Info, RefreshCw } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { Badge } from '../ui/badge';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
-import { signInAnonymously } from 'firebase/auth';
-import { summarizeComparison, type SummarizeComparisonInput, type SummarizeComparisonOutput } from '@/ai/flows/summarize-comparison-flow';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '../ui/tooltip';
-import { useIsMobile } from '@/hooks/use-mobile';
-import { ComparisonResetContext } from '@/app/page';
-
-
-// Define the shape of a single plan coming from the backend
-interface RecommendedPlan {
-    supplier: string;
-    standingcharge: string;
-    unitrate: string;
-    yearlycost: string;
-    duration?: string;
-    nightrate?: string;
-    offpeakrate?: string;
-    eveningweekendrate?: string;
-}
 
 // Define the shape of the data used for rendering in the component
 interface RenderedPlan {
@@ -60,24 +37,15 @@ interface IntelligentUtilityComparisonOutput {
     recommendedPlans: RenderedPlan[];
 }
 
-type CategorizedPlans = {
-    cheapest: RenderedPlan | null;
-    oneYear: RenderedPlan[];
-    twoYear: RenderedPlan[];
-    threeYear: RenderedPlan[];
-    fourPlusYear: RenderedPlan[];
-}
-
-
 type ComparisonDemoProps = {
   id: string;
+  setResetFunction: (fn: () => void) => void;
 };
 
 const leadSchema = z.object({
     name: z.string().min(2, "Name must be at least 2 characters."),
     email: z.string().email("Please enter a valid email address."),
     phone: z.string().min(10, "Please enter a valid phone number."),
-    businessName: z.string().optional(),
 });
 
 const wizardSteps = [
@@ -115,7 +83,7 @@ const wizardSteps = [
         title: "Utility Type",
         aiMessage: "Which utility are you looking to compare?",
         options: [
-            { label: "Gas", icon: Flame },
+            { label: "Gas", icon: Zap },
             { label: "Electricity", icon: Zap },
         ],
     },
@@ -169,55 +137,10 @@ const wizardSteps = [
         title: "Current Supplier",
         aiMessage: "Who is your current supplier?",
         options: [
-          { label: "British Gas" },
-          { label: "British Gas Renewables" },
-          { label: "British Gas Lite" },
-          { label: "DELTA GAS AND POWER" },
-          { label: "British Gas Plus" },
-          { label: "Smartest Energy" },
-          { label: "Smartest Renewables Energy" },
-          { label: "Smartest Smartpay Energy" },
-          { label: "DYCEENERGY" },
-          { label: "EDFONLINE" },
-          { label: "EDFSTANDARD" },
-          { label: "Scottish & Southern Electric" },
-          { label: "Scottish Power" },
-          { label: "NPower" },
-          { label: "VALDA ENERGY" },
-          { label: "EON ENERGY" },
-          { label: "EONNEXT" },
-          { label: "CNG" },
-          { label: "OPUS" },
-          { label: "PozitiveEnergy" },
-          { label: "Crown" },
-          { label: "Total Gas & Power" },
-          { label: "GAZPROM" },
-          { label: "SEFE" },
-          { label: "UTILITA" },
-          { label: "GULF" },
-          { label: "YU Energy" },
-          { label: "DRAX" },
-          { label: "OCTOPUS Energy" },
-          { label: "DENERGY" },
-          { label: "AXIS ENERGY" },
-          { label: "BES UTILITIES" },
-          { label: "ECOTRICITY" },
-          { label: "HUDSON ENERGY" },
-          { label: "UTILITO" },
-          { label: "OVO Energy" },
-          { label: "UTILITY WAREHOUSE" },
-          { label: "XLN ENERGY" },
-          { label: "YORKSHIRE GAS AND POWER" },
-          { label: "YORKSHIRE RENEWABLE GAS AND POWER" },
-          { label: "GREEN ENERGY GAS AND POWER" },
-          { label: "GOOD ENERGY" },
-          { label: "BULB ENERGY" },
-          { label: "CORONA ENERGY" },
-          { label: "KENNEX ENERGY" },
-          { label: "UNITED GAS" },
-          { label: "UNICOM" },
+          { label: "British Gas" }, { label: "EDF" }, { label: "EON" }, { label: "Octopus" },
+          { label: "OVO" }, { label: "Scottish Power" }, { label: "SSE" }
         ],
-        additionalOptions: ["I Don’t Know"]
+        additionalOptions: ["Other", "I Don’t Know"]
     },
     {
         step: 9,
@@ -233,9 +156,9 @@ const wizardSteps = [
         step: 10,
         part: 2,
         key: 'contractEndDate',
-        title: "Contract End Date",
+        title: "Contract End Date (Optional)",
         aiMessage: "When does your current contract end?",
-        isInput: false, // This will be handled by custom UI
+        isInput: false,
         isDateInput: true,
         icon: CalendarDays,
         options: [],
@@ -268,7 +191,7 @@ const DynamicHook = () => {
     useEffect(() => {
         const interval = setInterval(() => {
             setIndex((prevIndex) => (prevIndex + 1) % dynamicHooks.length);
-        }, 3000); // Change text every 3 seconds
+        }, 3000);
         return () => clearInterval(interval);
     }, []);
 
@@ -293,99 +216,56 @@ const DynamicHook = () => {
     );
 };
 
-const renderPdfPlans = (plans: RenderedPlan[]) => {
-    if (!plans || plans.length === 0) {
-        return null;
-    }
 
-    return plans.map((plan, index) => (
-        <div key={`pdf-${plan.provider}-${index}`} className="p-4 border border-gray-200 rounded-lg bg-white mb-4">
-            <div className="flex items-start justify-between">
-                <div>
-                    <span className="text-xs font-semibold px-2 py-1 bg-gray-100 text-gray-800 rounded-full mb-2 inline-block">{plan.provider}</span>
-                    <h4 className="text-lg font-semibold text-gray-900">{plan.planName}</h4>
-                    {plan.unitRate && (
-                        <p className="text-blue-600 font-semibold text-xl mt-2">{plan.unitRate}</p>
-                    )}
-                </div>
-            </div>
-            <div className="mt-4">
-                <div className="text-3xl font-bold text-gray-900">
-                    £{plan.price.toFixed(2)}
-                    <span className="text-base font-normal text-gray-600">/year</span>
-                </div>
-                <p className="text-sm text-gray-500 mt-1">{plan.contractLength}</p>
-                {plan.features && plan.features.length > 0 && (
-                    <div className="space-y-1 pt-2 mt-2 border-t">
-                        {plan.features.map(feature => (
-                            <p key={feature} className="text-xs text-gray-600">{feature}</p>
-                        ))}
-                    </div>
-                )}
-            </div>
-        </div>
-    ));
-};
-
-
-export default function ComparisonDemo({ id }: ComparisonDemoProps) {
+export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoProps) {
   const [view, setView] = useState<'start' | 'form'>('start');
-  const [comparisonResult, setComparisonResult] = useState<IntelligentUtilityComparisonOutput | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
-  const [isComingSoonModalOpen, setIsComingSoonModalOpen] = useState(false);
   const [isSavingLead, setIsSavingLead] = useState(false);
   const { toast } = useToast();
-  const { firestore, auth, user } = useFirebase();
-  const isMobile = useIsMobile();
-  const resetComparison = useContext(ComparisonResetContext);
+  const { firestore, auth } = useFirebase();
   const [showThankYou, setShowThankYou] = useState(false);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
   const [isTyping, setIsTyping] = useState(true);
 
-  const [isSummarizing, setIsSummarizing] = useState(false);
-  const [summary, setSummary] = useState<SummarizeComparisonOutput | null>(null);
   const [leadDetails, setLeadDetails] = useState<z.infer<typeof leadSchema> | null>(null);
 
   const [date, setDate] = React.useState<Date>()
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-  const pdfContainerRef = useRef<HTMLDivElement>(null);
-  const [pdfTimestamp, setPdfTimestamp] = useState('');
-  const [isGeneratingPdf, setIsGeneratingPdf] = useState(false);
   const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
-  
-
-  const activeWizardSteps = React.useMemo(() => {
-    return wizardSteps.filter(step => !step.condition || step.condition(selections));
-  }, [selections]);
   
   const leadForm = useForm<z.infer<typeof leadSchema>>({
     resolver: zodResolver(leadSchema),
-    defaultValues: { name: '', email: '', phone: '', businessName: '' },
+    defaultValues: { name: '', email: '', phone: '' },
   });
 
-  const currentWizardStepConfig = activeWizardSteps[currentStep];
-
-  const handleReset = () => {
-    setComparisonResult(null);
+  const handleReset = useCallback(() => {
     setIsLoading(false);
     setIsLeadModalOpen(false);
     setIsSavingLead(false);
     setCurrentStep(0);
     setSelections({});
-    setSummary(null);
     setLeadDetails(null);
     setDate(undefined);
     setShowThankYou(false);
     setSubmissionStatus('idle');
     setView('start');
-    
     leadForm.reset({ name: '', email: '', phone: '' });
-    if(resetComparison) resetComparison();
-  };
+  }, [leadForm]);
+
+  useEffect(() => {
+    setResetFunction(handleReset);
+  }, [handleReset, setResetFunction]);
+
+
+  const activeWizardSteps = React.useMemo(() => {
+    return wizardSteps.filter(step => !step.condition || step.condition(selections));
+  }, [selections]);
+  
+  const currentWizardStepConfig = activeWizardSteps[currentStep];
 
   useEffect(() => {
     if (view === 'form') {
@@ -411,25 +291,8 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
   };
 
   const handleSelect = (stepKey: string, option: string) => {
-    const isMulti = currentWizardStepConfig.isMultiSelect;
-
-    let newSelections;
-
-    if (isMulti) {
-        const currentSelection = selections[stepKey] || [];
-        if (currentSelection.includes(option)) {
-            newSelections = { ...selections, [stepKey]: currentSelection.filter((item: string) => item !== option) };
-        } else {
-            newSelections = { ...selections, [stepKey]: [...currentSelection, option] };
-        }
-    } else {
-        newSelections = { ...selections, [stepKey]: option };
-    }
-    
-    setSelections(newSelections);
-    
-    const stepConfig = activeWizardSteps.find(s => s.key === stepKey);
-    if (stepConfig && !stepConfig.isMultiSelect && !stepConfig.isInput && !stepConfig.isDateInput) {
+    setSelections({ ...selections, [stepKey]: option });
+    if (!currentWizardStepConfig.isInput && !currentWizardStepConfig.isDateInput) {
         setTimeout(() => handleNextStep(), 300);
     }
   };
@@ -453,7 +316,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
             ...prev,
             contractEndDate: format(selectedDate, "yyyy-MM-dd"),
         }));
-        setIsCalendarOpen(false); // Close popover on select
+        setIsCalendarOpen(false);
         setTimeout(() => handleNextStep(), 300);
     }
   }
@@ -471,109 +334,31 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     const step = activeWizardSteps[stepIndex];
     if (!step) return false;
     
-    if (step.key === 'mpr' && selections.utilityType === 'Gas') {
-      return true; // MPR is optional for Gas
-    }
-     if (step.key === 'mpan' && selections.utilityType === 'Electricity') {
-      const selection = selections[step.key];
-      return !!selection; // MPAN is mandatory for Electricity
-    }
-
-    if (step.key === 'businessName' && selections.premisesType !== 'Home') {
-      const selection = selections[step.key];
-      return !!selection; // Business name is mandatory if not home
-    }
-
+    if (step.key === 'mpr' && selections.utilityType === 'Gas') return true; 
+    if (step.key === 'contractEndDate') return true;
+    
     const selection = selections[step.key];
+    
+    if (step.key === 'businessName' && selections.premisesType !== 'Home') return !!selection;
+    if (step.key === 'mpan' && selections.utilityType === 'Electricity') return !!selection;
 
-    if (step.isMultiSelect) {
-        return selection && selection.length > 0;
-    }
-    
-    if (step.key === 'contractEndDate') {
-        // Allow skipping this step
-        return true;
-    }
-    
     return !!selection;
   }
 
   const handleFormSubmit = (leadData: z.infer<typeof leadSchema>) => {
-    setLeadDetails(leadData);
-    setIsLeadModalOpen(false);
-    setShowThankYou(true);
-    
-    let contractDate: Date | null = null;
-    let day = '', month = '', year = '';
-
-    if (selections['contractEndDate'] && selections['contractEndDate'].length > 0) {
-        try {
-            contractDate = new Date(selections['contractEndDate']);
-            day = String(contractDate.getDate());
-            month = String(contractDate.getMonth() + 1);
-            year = String(contractDate.getFullYear());
-        } catch (e) {
-            console.error("Invalid date format for contract end date");
-        }
-    }
-    
-    const numericUsage = (selections['usage'] || '').toString().match(/\d+/g)?.join('') || '';
-
-    const formData = {
-        postcode: selections['postcode'] || '',
-        mprn: selections['mpr'] || '',
-        supplier: selections['supplier'] || '',
-        usage: numericUsage,
-        day: day,
-        month: month,
-        year: year,
-        business: selections['businessName'] || selections['premisesType'] || '',
-        email: leadData.email || '',
-        contactName: leadData.name || '',
-        phone: leadData.phone || '',
-        pdfFileName: `UK-quote-${(leadData.name || 'user').replace(/\s/g, '-')}-${Date.now()}.pdf`,
-        allSelections: selections,
-    };
-
-    fetch('/api/webhook-proxy-db', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
-    })
-    .then(async (response) => {
-        if (!response.ok) {
-            const errorText = await response.text();
-            throw new Error(`Backend error: ${errorText}`);
-        }
-        return response.json();
-    })
-    .then((dbResult) => {
-        if (dbResult && dbResult.d === "1") {
-            setSubmissionStatus('success');
-             toast({
-                title: "Quotation Request Confirmed",
-                description: "Your details have been sent successfully.",
-            });
-        } else {
-             setSubmissionStatus('fail');
-             console.error("Failed to save lead to .NET backend. Response:", dbResult.d);
-             toast({
-                variant: "destructive",
-                title: "Submission Failed",
-                description: `The server responded with an issue: ${dbResult.d || 'No response data'}`,
-            });
-        }
-    })
-    .catch((error) => {
-        setSubmissionStatus('fail');
-        console.error("Error submitting form in background:", error);
+    setIsSavingLead(true);
+    // Simulate API call
+    setTimeout(() => {
+        setLeadDetails(leadData);
+        setIsLeadModalOpen(false);
+        setShowThankYou(true);
+        setIsSavingLead(false);
         toast({
-            variant: "destructive",
-            title: "Network Error",
-            description: "Could not connect to the server. Please try again later.",
+            title: "Quotation Request Confirmed",
+            description: "Your details have been sent successfully.",
         });
-    });
-};
+    }, 1500);
+  };
 
 
   const handlePrimaryAction = () => {
@@ -584,16 +369,10 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
     }
   };
 
-  async function onLeadSubmit(values: z.infer<typeof leadSchema>) {
-    handleFormSubmit(values);
-  }
-
   const progress = (currentStep / (activeWizardSteps.length -1)) * 100;
 
   const getButtonText = () => {
-    if (currentStep < activeWizardSteps.length - 1) {
-      return "Continue";
-    }
+    if (currentStep < activeWizardSteps.length - 1) return "Continue";
     return "Get My Quote";
   }
   
@@ -708,16 +487,12 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                   )}
 
                                                   <div className={cn(
-                                                  "grid grid-cols-1 gap-3",
-                                                  currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                                  currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
+                                                    "grid grid-cols-1 gap-3",
+                                                    currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                                    currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
                                                   )}>
                                                       {currentWizardStepConfig.options.map(option => {
                                                           const Icon = (option as any).icon;
-                                                          const isSelected = currentWizardStepConfig.isMultiSelect 
-                                                              ? (selections[currentWizardStepConfig.key] || []).includes(option.label)
-                                                              : selections[currentWizardStepConfig.key] === option.label;
-
                                                           return (
                                                               <motion.button
                                                                   key={option.label}
@@ -727,17 +502,15 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                                   onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
                                                                   className={cn(
                                                                       "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
-                                                                      isSelected
+                                                                      selections[currentWizardStepConfig.key] === option.label
                                                                           ? "bg-primary text-primary-foreground border-primary shadow-md"
                                                                           : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                                      (option as any).description && "items-start",
                                                                   )}
                                                               >
                                                                   <div className="flex items-center justify-center gap-3">
                                                                       {Icon && <Icon className="h-6 w-6" />}
                                                                       <span className="font-semibold">{option.label}</span>
                                                                   </div>
-                                                                  {(option as any).description && <span className="text-base block text-muted-foreground">{(option as any).description}</span>}
                                                               </motion.button>
                                                           )
                                                       })}
@@ -801,7 +574,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                                         </PopoverContent>
                                                       </Popover>
                                                       <Button variant="ghost" className="w-full text-lg h-12" onClick={() => handleDateSelect(undefined, true)}>
-                                                          Proceed without a date
+                                                          I don't know my contract end date
                                                       </Button>
                                                     </motion.div>
                                                   )}
@@ -902,7 +675,7 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                     </DialogDescription>
                 </DialogHeader>
                 <Form {...leadForm}>
-                    <form onSubmit={leadForm.handleSubmit(onLeadSubmit)} className="space-y-4">
+                    <form onSubmit={leadForm.handleSubmit(handleFormSubmit)} className="space-y-4">
                         <FormField
                             control={leadForm.control}
                             name="name"
@@ -951,24 +724,6 @@ export default function ComparisonDemo({ id }: ComparisonDemoProps) {
                                 </FormItem>
                             )}
                         />
-                         {selections.premisesType && selections.premisesType !== 'Home' && (
-                            <FormField
-                                control={leadForm.control}
-                                name="businessName"
-                                render={({ field }) => (
-                                <FormItem>
-                                    <FormLabel className="text-base">Business Name</FormLabel>
-                                    <FormControl>
-                                    <div className="relative">
-                                        <Briefcase className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-                                        <Input placeholder="ACME Inc." {...field} className="pl-10 h-12 text-lg" />
-                                    </div>
-                                    </FormControl>
-                                    <FormMessage />
-                                </FormItem>
-                                )}
-                            />
-                        )}
                         <Button type="submit" className="w-full h-12 text-lg" disabled={isSavingLead}>
                             {isSavingLead ? (
                                 <><Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saving...</>
