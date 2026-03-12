@@ -97,6 +97,9 @@
     background-size: 200% 100%;
     animation: shimmer 5s ease-in-out infinite;
   }
+  .pulse-border {
+    animation: pulseBorder 2.5s infinite;
+  }
 }
 
 @keyframes glowBorder {

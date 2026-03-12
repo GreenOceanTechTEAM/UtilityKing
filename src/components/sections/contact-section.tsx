@@ -243,7 +243,7 @@ export default function ContactSection({ id }: ContactSectionProps) {
                               className={cn(
                                   "p-3 w-full rounded-lg border text-base font-medium transition-all duration-200",
                                   isSelected
-                                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                      ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
                                       : "bg-background/50 hover:border-primary hover:bg-primary/5",
                               )}
                           >

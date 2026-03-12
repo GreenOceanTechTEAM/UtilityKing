@@ -353,19 +353,50 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     return !!selection;
   }
 
-  const handleFormSubmit = (leadData: z.infer<typeof leadSchema>) => {
+  const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsSavingLead(true);
-    // Simulate API call
-    setTimeout(() => {
+    
+    const submissionData = {
+        ...leadData,
+        comparisonInputs: selections,
+        createdAt: new Date().toISOString(),
+    };
+
+    try {
+        // This now calls the Next.js API route which will proxy to the .NET backend
+        const response = await fetch('/api/webhook-proxy', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(submissionData),
+        });
+
+        if (!response.ok) {
+            // Try to parse the error response from the backend
+            const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
+            throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+        }
+
+        // The submission was successful
         setLeadDetails(leadData);
         setIsLeadModalOpen(false);
         setShowThankYou(true);
-        setIsSavingLead(false);
         toast({
             title: "Quotation Request Confirmed",
-            description: "Your details have been sent successfully.",
+            description: "Your details have been sent successfully. We'll be in touch shortly!",
         });
-    }, 1500);
+
+    } catch (error: any) {
+        console.error("Failed to submit lead:", error);
+        toast({
+            variant: "destructive",
+            title: "Submission Failed",
+            description: error.message || "There was a problem submitting your details. Please try again.",
+        });
+    } finally {
+        setIsSavingLead(false);
+    }
   };
 
 
@@ -516,7 +547,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                                                                   className={cn(
                                                                       "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
                                                                       selections[currentWizardStepConfig.key] === option.label
-                                                                          ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                          ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
                                                                           : "bg-background/50 hover:border-primary hover:bg-primary/5",
                                                                   )}
                                                               >
@@ -537,7 +568,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                                                               className={cn(
                                                                   "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
                                                                   selections[currentWizardStepConfig.key] === option
-                                                                      ? "bg-primary text-primary-foreground border-primary shadow-md"
+                                                                      ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
                                                                       : "bg-background/50 hover:border-primary hover:bg-primary/5"
                                                               )}
                                                           >
