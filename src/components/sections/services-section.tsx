@@ -97,7 +97,7 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
           viewport={{ once: true, amount: 0.2 }}
           className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3 [perspective:900px]"
         >
-          {services.map((service) => (
+          {services.map((service, index) => (
             <motion.div
               key={service.title}
               variants={itemVariants}
@@ -114,7 +114,10 @@ export default function ServicesSection({ id }: ServicesSectionProps) {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   className="w-full h-full"
                 >
-                  <Card className="group h-full transform transition-all duration-300">
+                  <Card
+                    className="group h-full transform transition-all duration-300 animated-gradient-bg"
+                    style={{ animationDelay: `${index * 0.5}s` }}
+                  >
                       <CardHeader className="p-6">
                       <motion.div
                           whileHover={{ scale: 1.12, rotate: -5 }}
