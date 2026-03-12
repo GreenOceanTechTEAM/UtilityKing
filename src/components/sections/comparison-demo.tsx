@@ -669,7 +669,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                         
                         <div className="w-full max-w-4xl space-y-4">
                             {results && results.length > 0 ? (
-                                results.map((plan, index) => (
+                                results.slice(0, 3).map((plan, index) => (
                                     <motion.div
                                       key={index}
                                       initial={{ opacity: 0, y: 20 }}
@@ -797,3 +797,5 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     </section>
   );
 }
+
+    
