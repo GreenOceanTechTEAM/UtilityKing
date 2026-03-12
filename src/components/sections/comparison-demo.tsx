@@ -2,39 +2,35 @@
 "use client";
 
 import * as React from 'react';
-import { useState, useEffect, useMemo, useRef, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
 import { format } from "date-fns";
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
 import { Calendar } from '@/components/ui/calendar';
-import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, Briefcase, Hash, Info, RefreshCw } from 'lucide-react';
+import { ArrowRight, Zap, Loader2, Sparkles, Home, Building, Factory, ChevronLeft, CalendarDays, Leaf, Search, User, Mail, Phone, CheckCircle, Briefcase, Hash, Info, RefreshCw, TrendingUp, Gauge, FileClock, Sun, Moon } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
-import { useFirebase } from '@/firebase';
 
-// Define the shape of the data used for rendering in the component
-interface RenderedPlan {
-    planName: string;
-    provider: string;
-    price: number;
-    durationMonths: number;
-    contractLength: string;
-    link: string;
-    features: string[];
-    unitRate: string | undefined;
-}
-interface IntelligentUtilityComparisonOutput {
-    comparisonSummary: string;
-    recommendedPlans: RenderedPlan[];
+// Define the shape of the plan data returned from the backend
+interface RecommendedPlan {
+    supplier: string;
+    standingcharge: string;
+    unitrate: string;
+    yearlycost: string;
+    duration: string;
+    nightrate?: string;
+    offpeakrate?: string;
+    eveningweekendrate?: string;
+    fitrate?: string;
 }
 
 type ComparisonDemoProps = {
@@ -137,54 +133,7 @@ const wizardSteps = [
         title: "Current Supplier",
         aiMessage: "Who is your current supplier?",
         options: [
-          { label: "British Gas" },
-          { label: "British Gas Renewables" },
-          { label: "British Gas Lite" },
-          { label: "DELTA GAS AND POWER" },
-          { label: "British Gas Plus" },
-          { label: "Smartest Energy" },
-          { label: "Smartest Renewables Energy" },
-          { label: "Smartest Smartpay Energy" },
-          { label: "DYCEENERGY" },
-          { label: "EDFONLINE" },
-          { label: "EDFSTANDARD" },
-          { label: "Scottish & Southern Electric" },
-          { label: "Scottish Power" },
-          { label: "NPower" },
-          { label: "VALDA ENERGY" },
-          { label: "EON ENERGY" },
-          { label: "EONNEXT" },
-          { label: "CNG" },
-          { label: "OPUS" },
-          { label: "PozitiveEnergy" },
-          { label: "Crown" },
-          { label: "Total Gas & Power" },
-          { label: "GAZPROM" },
-          { label: "SEFE" },
-          { label: "UTILITA" },
-          { label: "GULF" },
-          { label: "YU Energy" },
-          { label: "DRAX" },
-          { label: "OCTOPUS Energy" },
-          { label: "DENERGY" },
-          { label: "AXIS ENERGY" },
-          { label: "BES UTILITIES" },
-          { label: "ECOTRICITY" },
-          { label: "OVO Energy" },
-          { label: "HUDSON ENERGY" },
-          { label: "UTILITO" },
-          { label: "UTILITY WAREHOUSE" },
-          { label: "XLN ENERGY" },
-          { label: "YORKSHIRE GAS AND POWER" },
-          { label: "YORKSHIRE RENEWABLE GAS AND POWER" },
-          { label: "GREEN ENERGY GAS AND POWER" },
-          { label: "GOOD ENERGY" },
-          { label: "BULB ENERGY" },
-          { label: "JELLYFISH ENERGY" },
-          { label: "CORONA ENERGY" },
-          { label: "KENNEX ENERGY" },
-          { label: "UNITED GAS" },
-          { label: "UNICOM" },
+          { label: "British Gas" }, { label: "British Gas Renewables" }, { label: "British Gas Lite" }, { label: "DELTA GAS AND POWER" }, { label: "British Gas Plus" }, { label: "Smartest Energy" }, { label: "Smartest Renewables Energy" }, { label: "Smartest Smartpay Energy" }, { label: "DYCEENERGY" }, { label: "EDFONLINE" }, { label: "EDFSTANDARD" }, { label: "Scottish & Southern Electric" }, { label: "Scottish Power" }, { label: "NPower" }, { label: "VALDA ENERGY" }, { label: "EON ENERGY" }, { label: "EONNEXT" }, { label: "CNG" }, { label: "OPUS" }, { label: "PozitiveEnergy" }, { label: "Crown" }, { label: "Total Gas & Power" }, { label: "GAZPROM" }, { label: "SEFE" }, { label: "UTILITA" }, { label: "GULF" }, { label: "YU Energy" }, { label: "DRAX" }, { label: "OCTOPUS Energy" }, { label: "DENERGY" }, { label: "AXIS ENERGY" }, { label: "BES UTILITIES" }, { label: "ECOTRICITY" }, { label: "OVO Energy" }, { label: "HUDSON ENERGY" }, { label: "UTILITO" }, { label: "UTILITY WAREHOUSE" }, { label: "XLN ENERGY" }, { label: "YORKSHIRE GAS AND POWER" }, { label: "YORKSHIRE RENEWABLE GAS AND POWER" }, { label: "GREEN ENERGY GAS AND POWER" }, { label: "GOOD ENERGY" }, { label: "BULB ENERGY" }, { label: "JELLYFISH ENERGY" }, { label: "CORONA ENERGY" }, { label: "KENNEX ENERGY" }, { label: "UNITED GAS" }, { label: "UNICOM" },
         ],
         additionalOptions: ["Other", "I Don’t Know"]
     },
@@ -226,13 +175,12 @@ const pillVariants = {
 const AI_TYPING_DELAY = 1000;
 
 export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoProps) {
-  const [view, setView] = useState<'start' | 'form'>('start');
+  const [view, setView] = useState<'start' | 'form' | 'results'>('start');
   const [isLoading, setIsLoading] = useState(false);
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
   const [isSavingLead, setIsSavingLead] = useState(false);
+  const [results, setResults] = useState<RecommendedPlan[] | null>(null);
   const { toast } = useToast();
-  const { firestore, auth } = useFirebase();
-  const [showThankYou, setShowThankYou] = useState(false);
 
   const [currentStep, setCurrentStep] = useState(0);
   const [selections, setSelections] = useState<{ [key: string]: any }>({});
@@ -243,8 +191,6 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   const [date, setDate] = React.useState<Date>()
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
-  const [submissionStatus, setSubmissionStatus] = useState<'idle' | 'success' | 'fail'>('idle');
-  
   const leadForm = useForm<z.infer<typeof leadSchema>>({
     resolver: zodResolver(leadSchema),
     defaultValues: { name: '', email: '', phone: '' },
@@ -258,8 +204,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     setSelections({});
     setLeadDetails(null);
     setDate(undefined);
-    setShowThankYou(false);
-    setSubmissionStatus('idle');
+    setResults(null);
     setView('start');
     leadForm.reset({ name: '', email: '', phone: '' });
   }, [leadForm]);
@@ -289,14 +234,12 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   const handleNextStep = () => {
     if (currentStep < activeWizardSteps.length - 1) {
       setCurrentStep(currentStep + 1);
-    } else {
-        handlePrimaryAction();
     }
   };
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep + 1);
+      setCurrentStep(currentStep - 1);
     }
   };
 
@@ -356,60 +299,68 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   }
 
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
-    setIsSavingLead(true);
-    
-    const [year, month, day] = selections.contractEndDate 
-        ? selections.contractEndDate.split('-') 
-        : ['', '', ''];
-
-    const submissionData = {
-        sContactName: leadData.name || '',
-        xEmail: leadData.email || '',
-        sPhone: leadData.phone || '',
-        xPostCode: selections.postcode || '',
-        xMPRN: (selections.utilityType === 'Gas' ? selections.mpr : selections.mpan) || '',
-        xGasStartDay: day,
-        xGasStartMonth: month,
-        xGasStartYear: year,
-        xCurGasSupply: selections.supplier || '',
-        xEacGas: selections.usage || '',
-        xBusiness: selections.premisesType !== 'Home' ? 'true' : 'false',
-        sPdfFileName: '', 
-    };
-
-    try {
-        const response = await fetch('/api/webhook-proxy-db', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(submissionData),
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
-            throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
-        }
-
-        setLeadDetails(leadData);
+        setIsSavingLead(true);
         setIsLeadModalOpen(false);
-        setShowThankYou(true);
-        toast({
-            title: "Quotation Request Confirmed",
-            description: "Your details have been sent successfully. We'll be in touch shortly!",
-        });
+        setIsLoading(true);
 
-    } catch (error: any) {
-        console.error("Failed to submit lead:", error);
-        toast({
-            variant: "destructive",
-            title: "Submission Failed",
-            description: error.message || "There was a problem submitting your details. Please try again.",
-        });
-    } finally {
-        setIsSavingLead(false);
-    }
-  };
+        try {
+            const [year, month, day] = selections.contractEndDate 
+                ? selections.contractEndDate.split('-') 
+                : ['', '', ''];
+
+            const submissionData = {
+                contactName: leadData.name || '',
+                email: leadData.email || '',
+                phone: leadData.phone || '',
+                postcode: selections.postcode || '',
+                mprn: selections.utilityType === 'Gas' ? (selections.mpr || '') : '',
+                supplyno: selections.utilityType === 'Electricity' ? (selections.mpan || '') : '',
+                day: day,
+                month: month,
+                year: year,
+                supplier: selections.supplier || '',
+                usage: selections.usage || '',
+                business: selections.businessName || '',
+                utilitytype: selections.utilityType?.toUpperCase() || '',
+            };
+
+            const response = await fetch('/api/webhook-proxy-db', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(submissionData),
+            });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
+                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+            }
+
+            const result = await response.json();
+            // The .NET response can be a JSON string inside a 'd' property
+            const recommendedPlans = typeof result.d === 'string' ? JSON.parse(result.d) : result;
+            
+            setResults(recommendedPlans);
+            setLeadDetails(leadData);
+            setView('results');
+
+            toast({
+                title: "Comparison Ready!",
+                description: "We've found the best deals for you.",
+            });
+
+        } catch (error: any) {
+            console.error("Failed to get comparison:", error);
+            setView('form'); // Go back to form on error
+            toast({
+                variant: "destructive",
+                title: "Comparison Failed",
+                description: error.message || "There was a problem getting your results. Please try again.",
+            });
+        } finally {
+            setIsLoading(false);
+            setIsSavingLead(false);
+        }
+    };
 
 
   const handlePrimaryAction = () => {
@@ -443,7 +394,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
             <div className="relative rounded-2xl p-4 sm:p-6 bg-white/40 dark:bg-card/40 backdrop-blur-xl border border-white/25 shadow-lg min-h-[550px] flex items-center justify-center">
                 
                 <AnimatePresence mode="wait">
-                  {view === 'start' ? (
+                  {view === 'start' && (
                     <motion.div
                       key="start"
                       initial={{ opacity: 0, y: 20 }}
@@ -459,7 +410,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                        Answer a few quick questions and our AI will calculate the smartest, cheapest tariff available for your home.
                       </p>
                       
-                        <div className="relative h-8 mb-12 text-center flex items-center justify-center">
+                        <div className="relative h-8 my-8 text-center flex items-center justify-center">
                             <p className="text-xl text-muted-foreground font-medium flex items-center gap-2">
                                 <CheckCircle className="w-6 h-6 text-accent" />
                                 Analyze hundreds of tariffs in real-time & switch in minutes.
@@ -481,185 +432,184 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                         </Button>
                       </motion.div>
                     </motion.div>
-                  ) : (
-                    <motion.div
-                      key="form"
-                      initial={{ opacity: 0, scale: 0.98 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      exit={{ opacity: 0, scale: 0.98 }}
-                      transition={{ duration: 0.5, ease: 'easeInOut' }}
-                      className="w-full"
+                  )}
+                  {view === 'form' && (
+                     <motion.div
+                        key="form"
+                        initial={{ opacity: 0, scale: 0.98 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        exit={{ opacity: 0, scale: 0.98 }}
+                        transition={{ duration: 0.5, ease: 'easeInOut' }}
+                        className="w-full"
                     >
-                      {!showThankYou && !isLoading && (
-                          <>
-                              <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
-                                  <motion.div 
-                                      className="bg-primary h-1 rounded-full"
-                                      initial={{ width: 0 }}
-                                      animate={{ width: `${progress}%`}}
-                                      transition={{ duration: 0.5, ease: "easeInOut" }}
-                                  />
-                              </div>
+                        {!isLoading ? (
+                            <>
+                                <div className="w-full bg-primary/10 rounded-full h-1 mb-6">
+                                    <motion.div 
+                                        className="bg-primary h-1 rounded-full"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: `${progress}%`}}
+                                        transition={{ duration: 0.5, ease: "easeInOut" }}
+                                    />
+                                </div>
 
-                              <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
-                                  <AnimatePresence mode="wait">
-                                      {currentWizardStepConfig &&
-                                      <motion.div
-                                          key={currentStep}
-                                          variants={stepVariants}
-                                          initial="initial"
-                                          animate="animate"
-                                          exit="exit"
-                                          className="w-full flex flex-col items-center text-center"
-                                      >
-                                          <div className="flex flex-col items-center text-center gap-3 mb-5">
-                                              <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
-                                                  <Sparkles className="w-5 h-5" />
-                                              </div>
-                                              <div>
-                                                  <p className="text-xl font-semibold text-card-foreground">
-                                                  {currentWizardStepConfig.title}
-                                                  </p>
-                                                  <p className="text-lg text-muted-foreground max-w-md mx-auto">
-                                                      {isTyping ? 
-                                                          <span className="animate-pulse">...</span> : 
-                                                          currentWizardStepConfig.aiMessage
-                                                      }
-                                                  </p>
-                                              </div>
-                                          </div>
-                                          
-                                          {!isTyping && (
-                                              <div className="space-y-3 w-full max-w-lg">
-                                                  {(currentWizardStepConfig.key === 'mpr' || currentWizardStepConfig.key === 'mpan') && (
-                                                      <motion.div
-                                                          initial={{ opacity: 0, y: -10 }}
-                                                          animate={{ opacity: 1, y: 0 }}
-                                                          className="flex items-center justify-center gap-2 text-base text-accent bg-accent/10 p-2 rounded-md mb-4"
-                                                      >
-                                                          <Info className="h-5 w-5" />
-                                                          <span>You can find this on your latest bill.</span>
-                                                      </motion.div>
-                                                  )}
+                                <div className="relative min-h-[380px] overflow-y-auto flex flex-col items-center pr-2">
+                                    <AnimatePresence mode="wait">
+                                        {currentWizardStepConfig &&
+                                        <motion.div
+                                            key={currentStep}
+                                            variants={stepVariants}
+                                            initial="initial"
+                                            animate="animate"
+                                            exit="exit"
+                                            className="w-full flex flex-col items-center text-center"
+                                        >
+                                            <div className="flex flex-col items-center text-center gap-3 mb-5">
+                                                <div className="w-8 h-8 flex-shrink-0 rounded-full bg-primary/10 flex items-center justify-center text-primary mt-1">
+                                                    <Sparkles className="w-5 h-5" />
+                                                </div>
+                                                <div>
+                                                    <p className="text-xl font-semibold text-card-foreground">
+                                                    {currentWizardStepConfig.title}
+                                                    </p>
+                                                    <p className="text-lg text-muted-foreground max-w-md mx-auto">
+                                                        {isTyping ? 
+                                                            <span className="animate-pulse">...</span> : 
+                                                            currentWizardStepConfig.aiMessage
+                                                        }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            
+                                            {!isTyping && (
+                                                <div className="space-y-3 w-full max-w-lg">
+                                                    {(currentWizardStepConfig.key === 'mpr' || currentWizardStepConfig.key === 'mpan') && (
+                                                        <motion.div
+                                                            initial={{ opacity: 0, y: -10 }}
+                                                            animate={{ opacity: 1, y: 0 }}
+                                                            className="flex items-center justify-center gap-2 text-base text-accent bg-accent/10 p-2 rounded-md mb-4"
+                                                        >
+                                                            <Info className="h-5 w-5" />
+                                                            <span>You can find this on your latest bill.</span>
+                                                        </motion.div>
+                                                    )}
 
-                                                  <div className={cn(
-                                                    "grid grid-cols-1 gap-3",
-                                                    currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
-                                                    currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
-                                                  )}>
-                                                      {currentWizardStepConfig.options.map(option => {
-                                                          const Icon = (option as any).icon;
-                                                          return (
-                                                              <motion.button
-                                                                  key={option.label}
-                                                                  variants={pillVariants}
-                                                                  whileHover="hover"
-                                                                  whileTap="tap"
-                                                                  onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
-                                                                  className={cn(
-                                                                      "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
-                                                                      selections[currentWizardStepConfig.key] === option.label
-                                                                          ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
-                                                                          : "bg-background/50 hover:border-primary hover:bg-primary/5",
-                                                                  )}
-                                                              >
-                                                                  <div className="flex items-center justify-center gap-3">
-                                                                      {Icon && <Icon className="h-6 w-6" />}
-                                                                      <span className="font-semibold">{option.label}</span>
-                                                                  </div>
-                                                              </motion.button>
-                                                          )
-                                                      })}
-                                                      {currentWizardStepConfig.additionalOptions?.map(option => (
-                                                          <motion.button
-                                                              key={option}
-                                                              variants={pillVariants}
-                                                              whileHover="hover"
-                                                              whileTap="tap"
-                                                              onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                    <div className={cn(
+                                                      "grid grid-cols-1 gap-3",
+                                                      currentWizardStepConfig.options.length > 2 && "sm:grid-cols-2",
+                                                      currentWizardStepConfig.key === 'supplier' && "max-h-[260px] overflow-y-auto pr-2"
+                                                    )}>
+                                                        {currentWizardStepConfig.options.map(option => {
+                                                            const Icon = (option as any).icon;
+                                                            return (
+                                                                <motion.button
+                                                                    key={option.label}
+                                                                    variants={pillVariants}
+                                                                    whileHover="hover"
+                                                                    whileTap="tap"
+                                                                    onClick={() => handleSelect(currentWizardStepConfig.key, option.label)}
+                                                                    className={cn(
+                                                                        "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200",
+                                                                        selections[currentWizardStepConfig.key] === option.label
+                                                                            ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
+                                                                            : "bg-background/50 hover:border-primary hover:bg-primary/5",
+                                                                    )}
+                                                                >
+                                                                    <div className="flex items-center justify-center gap-3">
+                                                                        {Icon && <Icon className="h-6 w-6" />}
+                                                                        <span className="font-semibold">{option.label}</span>
+                                                                    </div>
+                                                                </motion.button>
+                                                            )
+                                                        })}
+                                                        {currentWizardStepConfig.additionalOptions?.map(option => (
+                                                            <motion.button
+                                                                key={option}
+                                                                variants={pillVariants}
+                                                                whileHover="hover"
+                                                                whileTap="tap"
+                                                                onClick={() => handleSelect(currentWizardStepConfig.key, option)}
+                                                                className={cn(
+                                                                    "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
+                                                                    selections[currentWizardStepConfig.key] === option
+                                                                        ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
+                                                                        : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                                )}
+                                                            >
+                                                                {option}
+                                                            </motion.button>
+                                                        ))}
+                                                    </div>
+
+                                                    {currentWizardStepConfig.isInput && (
+                                                        <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
+                                                            <div className="relative">
+                                                                {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
+                                                                <Input 
+                                                                    type={currentWizardStepConfig.key === 'usage' ? 'number' : 'text'}
+                                                                    placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
+                                                                    className="pl-10 h-12 text-lg text-center"
+                                                                    value={selections[currentWizardStepConfig.key] || ''}
+                                                                    onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
+                                                                    onKeyDown={handleCustomSubmit}
+                                                                />
+                                                            </div>
+                                                        </motion.div>
+                                                    )}
+
+                                                    {currentWizardStepConfig.isDateInput && (
+                                                      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-3">
+                                                        <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
+                                                          <PopoverTrigger asChild>
+                                                            <Button
+                                                              variant={"outline"}
                                                               className={cn(
-                                                                  "p-4 text-center rounded-lg border text-lg font-medium transition-all duration-200 sm:col-span-2",
-                                                                  selections[currentWizardStepConfig.key] === option
-                                                                      ? "bg-primary text-primary-foreground border-primary shadow-md pulse-border"
-                                                                      : "bg-background/50 hover:border-primary hover:bg-primary/5"
+                                                                "w-full justify-start text-left font-normal h-12 text-lg",
+                                                                !date && "text-muted-foreground"
                                                               )}
-                                                          >
-                                                              {option}
-                                                          </motion.button>
-                                                      ))}
-                                                  </div>
-
-                                                  {currentWizardStepConfig.isInput && (
-                                                      <motion.div initial={{opacity:0, height: 0}} animate={{opacity:1, height: 'auto'}} transition={{duration: 0.3}} className="space-y-3">
-                                                          <div className="relative">
-                                                              {currentWizardStepConfig.icon && <currentWizardStepConfig.icon className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />}
-                                                              <Input 
-                                                                  type={currentWizardStepConfig.key === 'usage' ? 'number' : 'text'}
-                                                                  placeholder={currentWizardStepConfig.customPlaceholder || `Enter ${currentWizardStepConfig.title}`}
-                                                                  className="pl-10 h-12 text-lg text-center"
-                                                                  value={selections[currentWizardStepConfig.key] || ''}
-                                                                  onChange={(e) => handleCustomValueChange(currentWizardStepConfig.key, e.target.value)}
-                                                                  onKeyDown={handleCustomSubmit}
-                                                              />
-                                                          </div>
+                                                            >
+                                                              <CalendarDays className="mr-2 h-4 w-4" />
+                                                              {date ? format(date, "PPP") : <span>Pick a date</span>}
+                                                            </Button>
+                                                          </PopoverTrigger>
+                                                          <PopoverContent className="w-auto p-0">
+                                                            <Calendar
+                                                              mode="single"
+                                                              selected={date}
+                                                              onSelect={(d) => handleDateSelect(d)}
+                                                              initialFocus
+                                                            />
+                                                          </PopoverContent>
+                                                        </Popover>
+                                                        <Button variant="ghost" className="w-full text-lg h-12" onClick={() => handleDateSelect(undefined, true)}>
+                                                            I don't know my contract end date
+                                                        </Button>
                                                       </motion.div>
-                                                  )}
-
-                                                  {currentWizardStepConfig.isDateInput && (
-                                                    <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.3 }} className="space-y-3">
-                                                      <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
-                                                        <PopoverTrigger asChild>
-                                                          <Button
-                                                            variant={"outline"}
-                                                            className={cn(
-                                                              "w-full justify-start text-left font-normal h-12 text-lg",
-                                                              !date && "text-muted-foreground"
-                                                            )}
-                                                          >
-                                                            <CalendarDays className="mr-2 h-4 w-4" />
-                                                            {date ? format(date, "PPP") : <span>Pick a date</span>}
-                                                          </Button>
-                                                        </PopoverTrigger>
-                                                        <PopoverContent className="w-auto p-0">
-                                                          <Calendar
-                                                            mode="single"
-                                                            selected={date}
-                                                            onSelect={(d) => handleDateSelect(d)}
-                                                            initialFocus
-                                                          />
-                                                        </PopoverContent>
-                                                      </Popover>
-                                                      <Button variant="ghost" className="w-full text-lg h-12" onClick={() => handleDateSelect(undefined, true)}>
-                                                          I don't know my contract end date
-                                                      </Button>
-                                                    </motion.div>
-                                                  )}
-                                              </div>
-                                          )}
-                                      </motion.div>
-                                      }
-                                  </AnimatePresence>
-                              </div>
-                              <div className="flex justify-center items-center gap-4 pt-4 mt-4 border-t">
-                                  <Button type="button" variant="outline" size="lg" onClick={handlePrevStep} disabled={currentStep === 0} className="text-lg h-12">
-                                    <ChevronLeft className="mr-2 h-5 w-5" />
-                                    Back
-                                  </Button>
-                                  <Button 
-                                      type="button"
-                                      size="lg" 
-                                      onClick={handlePrimaryAction}
-                                      disabled={!isStepComplete(currentStep)}
-                                      className="text-lg h-12"
-                                  >
-                                      {getButtonText()}
-                                      <ArrowRight className="ml-2 h-5 w-5" />
-                                  </Button>
-                              </div>
-                          </>
-                      )}
-
-                      {isLoading && (
+                                                    )}
+                                                </div>
+                                            )}
+                                        </motion.div>
+                                        }
+                                    </AnimatePresence>
+                                </div>
+                                <div className="flex justify-center items-center gap-4 pt-4 mt-4 border-t">
+                                    <Button type="button" variant="outline" size="lg" onClick={handlePrevStep} disabled={currentStep === 0} className="text-lg h-12">
+                                      <ChevronLeft className="mr-2 h-5 w-5" />
+                                      Back
+                                    </Button>
+                                    <Button 
+                                        type="button"
+                                        size="lg" 
+                                        onClick={handlePrimaryAction}
+                                        disabled={!isStepComplete(currentStep)}
+                                        className="text-lg h-12"
+                                    >
+                                        {getButtonText()}
+                                        <ArrowRight className="ml-2 h-5 w-5" />
+                                    </Button>
+                                </div>
+                            </>
+                        ) : (
                           <div className="flex flex-col items-center justify-center min-h-[400px] p-8">
                               <div className="relative h-32 w-full max-w-sm overflow-hidden text-left font-code">
                                   <AnimatePresence>
@@ -687,35 +637,74 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
                                   </AnimatePresence>
                               </div>
                             </div>
-                      )}
+                        )}
+                    </motion.div>
+                  )}
+                  {view === 'results' && (
+                    <motion.div
+                        key="results"
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className="flex flex-col items-center justify-center w-full text-center p-4"
+                    >
+                        <h3 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-2">
+                          Your Comparison Results
+                        </h3>
+                        <p className="max-w-xl text-lg text-muted-foreground mb-8">
+                          Here are the top deals we found for you, {leadDetails?.name}.
+                        </p>
+                        
+                        <div className="w-full max-w-4xl space-y-4">
+                            {results && results.length > 0 ? (
+                                results.map((plan, index) => (
+                                    <motion.div
+                                      key={index}
+                                      initial={{ opacity: 0, y: 20 }}
+                                      animate={{ opacity: 1, y: 0 }}
+                                      transition={{ delay: index * 0.1 }}
+                                    >
+                                    <Card className="text-left w-full hover:shadow-lg transition-shadow duration-300">
+                                        <CardContent className="p-4 sm:p-6 grid grid-cols-2 md:grid-cols-4 items-center gap-4">
+                                            <div className="col-span-2 md:col-span-1">
+                                                <h4 className="font-bold text-lg text-foreground">{plan.supplier}</h4>
+                                                <p className="text-sm text-muted-foreground flex items-center gap-1.5"><FileClock className="w-4 h-4"/>{plan.duration} Month Plan</p>
+                                            </div>
+                                            <div className="text-right md:text-center">
+                                                <p className="text-xs uppercase font-semibold text-muted-foreground">Yearly Cost</p>
+                                                <p className="font-bold text-xl text-primary flex items-center justify-end md:justify-center gap-1.5"><TrendingUp className="w-5 h-5"/>£{plan.yearlycost}</p>
+                                            </div>
+                                            <div className="text-right md:text-center">
+                                                <p className="text-xs uppercase font-semibold text-muted-foreground">Unit Rate</p>
+                                                <p className="font-semibold text-md text-foreground flex items-center justify-end md:justify-center gap-1.5"><Gauge className="w-4 h-4"/>{plan.unitrate}p/kWh</p>
+                                            </div>
+                                            <div className="col-span-2 md:col-span-1 flex justify-end">
+                                              <Button>Switch Now</Button>
+                                            </div>
 
-                      {showThankYou && !isLoading && (
-                          <motion.div
-                              key="thank-you"
-                              initial={{ opacity: 0, y: 20 }}
-                              animate={{ opacity: 1, y: 0 }}
-                              className="flex flex-col items-center justify-center min-h-[400px] text-center p-8"
-                          >
-                              <motion.div
-                                  initial={{ scale: 0 }}
-                                  animate={{ scale: 1 }}
-                                  transition={{ type: 'spring', delay: 0.2 }}
-                                  className="w-20 h-20 rounded-full flex items-center justify-center bg-green-100 dark:bg-green-900/50 text-green-600 dark:text-green-400 mb-6"
-                              >
-                                  <CheckCircle className="w-12 h-12" />
-                              </motion.div>
-                              <h3 className="font-headline text-3xl md:text-4xl font-bold text-primary mb-4">
-                                Thank You, {leadDetails?.name}!
-                              </h3>
-                              <p className="max-w-xl text-xl text-muted-foreground">
-                                Your tailored quotation with rates is on the way. You will receive an email shortly.
-                              </p>
-                              <Button onClick={handleReset} className="mt-8 text-lg h-12">
-                                  <RefreshCw className="mr-2 h-5 w-5" />
-                                  Start New Comparison
-                              </Button>
-                          </motion.div>
-                      )}
+                                            {selections.utilityType === 'Electricity' && (plan.nightrate || plan.offpeakrate) && (
+                                              <div className="col-span-full border-t mt-2 pt-2 grid grid-cols-2 sm:grid-cols-4 gap-2">
+                                                {plan.nightrate && <div className="text-xs"><p className="font-bold flex items-center gap-1"><Moon className="w-3 h-3"/>Night Rate</p><p>{plan.nightrate}p/kWh</p></div>}
+                                                {plan.offpeakrate && <div className="text-xs"><p className="font-bold flex items-center gap-1"><Sun className="w-3 h-3"/>Off-Peak</p><p>{plan.offpeakrate}p/kWh</p></div>}
+                                                {plan.eveningweekendrate && <div className="text-xs"><p className="font-bold">Evening/Weekend</p><p>{plan.eveningweekendrate}p/kWh</p></div>}
+                                              </div>
+                                            )}
+                                        </CardContent>
+                                    </Card>
+                                    </motion.div>
+                                ))
+                            ) : (
+                                <Card>
+                                    <CardContent className="p-8">
+                                        <p className="text-lg text-muted-foreground">We couldn't find any specific deals for your criteria at this moment. A team member will be in touch shortly with a personalized quote.</p>
+                                    </CardContent>
+                                </Card>
+                            )}
+                        </div>
+
+                        <Button onClick={handleReset} className="mt-8 text-lg h-12">
+                            <RefreshCw className="mr-2 h-5 w-5" />
+                            Start New Comparison
+                        </Button>
                     </motion.div>
                   )}
                 </AnimatePresence>
