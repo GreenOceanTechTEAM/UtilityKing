@@ -20,6 +20,7 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
+import { ComparisonResetContext } from '@/app/page';
 
 // Define the shape of the data used for rendering in the component
 interface RenderedPlan {
@@ -356,10 +357,27 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsSavingLead(true);
     
+    // The backend expects specific field names. Let's map our data to that structure.
+    const [year, month, day] = selections.contractEndDate 
+        ? selections.contractEndDate.split('-') 
+        : ['', '', ''];
+
     const submissionData = {
-        ...leadData,
-        ...selections,
-        createdAt: new Date().toISOString(),
+        sContactName: leadData.name || '',
+        xEmail: leadData.email || '',
+        sPhone: leadData.phone || '',
+        xPostCode: selections.postcode || '',
+        // The backend seems to use xMPRN for both gas and electricity meter numbers
+        xMPRN: (selections.utilityType === 'Gas' ? selections.mpr : selections.mpan) || '',
+        xGasStartDay: day,
+        xGasStartMonth: month,
+        xGasStartYear: year,
+        xCurGasSupply: selections.supplier || '',
+        xEacGas: selections.usage || '',
+        // The backend expects a string 'true' or 'false'
+        xBusiness: selections.premisesType !== 'Home' ? 'true' : 'false',
+        // This parameter was missing from our form, sending an empty string.
+        sPdfFileName: '', 
     };
 
     try {
