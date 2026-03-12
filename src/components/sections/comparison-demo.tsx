@@ -358,7 +358,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     
     const submissionData = {
         ...leadData,
-        comparisonInputs: selections,
+        ...selections,
         createdAt: new Date().toISOString(),
     };
 
@@ -783,3 +783,5 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     </section>
   );
 }
+
+    
