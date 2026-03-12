@@ -39,7 +39,7 @@ interface IntelligentUtilityComparisonOutput {
 
 type ComparisonDemoProps = {
   id: string;
-  setResetFunction: (fn: () => void) => void;
+  setResetFunction: (resetFn: () => void) => void;
 };
 
 const leadSchema = z.object({
@@ -137,8 +137,54 @@ const wizardSteps = [
         title: "Current Supplier",
         aiMessage: "Who is your current supplier?",
         options: [
-          { label: "British Gas" }, { label: "EDF" }, { label: "EON" }, { label: "Octopus" },
-          { label: "OVO" }, { label: "Scottish Power" }, { label: "SSE" }
+          { label: "British Gas" },
+          { label: "British Gas Renewables" },
+          { label: "British Gas Lite" },
+          { label: "DELTA GAS AND POWER" },
+          { label: "British Gas Plus" },
+          { label: "Smartest Energy" },
+          { label: "Smartest Renewables Energy" },
+          { label: "Smartest Smartpay Energy" },
+          { label: "DYCEENERGY" },
+          { label: "EDFONLINE" },
+          { label: "EDFSTANDARD" },
+          { label: "Scottish & Southern Electric" },
+          { label: "Scottish Power" },
+          { label: "NPower" },
+          { label: "VALDA ENERGY" },
+          { label: "EON ENERGY" },
+          { label: "EONNEXT" },
+          { label: "CNG" },
+          { label: "OPUS" },
+          { label: "PozitiveEnergy" },
+          { label: "Crown" },
+          { label: "Total Gas & Power" },
+          { label: "GAZPROM" },
+          { label: "SEFE" },
+          { label: "UTILITA" },
+          { label: "GULF" },
+          { label: "YU Energy" },
+          { label: "DRAX" },
+          { label: "OCTOPUS Energy" },
+          { label: "DENERGY" },
+          { label: "AXIS ENERGY" },
+          { label: "BES UTILITIES" },
+          { label: "ECOTRICITY" },
+          { label: "OVO Energy" },
+          { label: "HUDSON ENERGY" },
+          { label: "UTILITO" },
+          { label: "UTILITY WAREHOUSE" },
+          { label: "XLN ENERGY" },
+          { label: "YORKSHIRE GAS AND POWER" },
+          { label: "YORKSHIRE RENEWABLE GAS AND POWER" },
+          { label: "GREEN ENERGY GAS AND POWER" },
+          { label: "GOOD ENERGY" },
+          { label: "BULB ENERGY" },
+          { label: "JELLYFISH ENERGY" },
+          { label: "CORONA ENERGY" },
+          { label: "KENNEX ENERGY" },
+          { label: "UNITED GAS" },
+          { label: "UNICOM" },
         ],
         additionalOptions: ["Other", "I Don’t Know"]
     },
