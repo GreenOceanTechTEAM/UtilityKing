@@ -331,8 +331,21 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
             });
 
             if (!response.ok) {
-                const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
-                throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
+                const errorText = await response.text(); // Get raw text first
+                let errorMessage = `An unexpected server error occurred (status: ${response.status}).`; // Default message
+                
+                try {
+                    // Try to parse the text as a .NET JSON error
+                    const errorJson = JSON.parse(errorText);
+                    if (errorJson && errorJson.Message) {
+                        errorMessage = `Error from backend: ${errorJson.Message}`;
+                    }
+                } catch (e) {
+                    // Parsing failed, it's not JSON. The default message is fine.
+                    console.error("Non-JSON error response from backend:", errorText);
+                }
+                
+                throw new Error(errorMessage);
             }
 
             const result = await response.json();
