@@ -6,12 +6,11 @@ export async function POST(request: NextRequest) {
   const targetUrl = 'https://server.utilityking.co.uk/testreactasp.aspx/reactasp';
 
   try {
-    // 1. Get the request body from the incoming Next.js request.
+    // 1. Get the raw request body from the incoming Next.js request.
     const requestBody = await request.json();
 
-    // 2. The backend expects the data to be wrapped in a specific structure.
-    // The incoming `requestBody` from the frontend is already the `ComparisonRequestData` object.
-    // The C# WebMethod `reactasp` expects an object with a `requestData` key.
+    // 2. The backend's C# WebMethod `reactasp` expects a single object parameter
+    // named `requestData`. We must wrap our form data in an object with this exact key.
     const payloadForBackend = {
         requestData: requestBody
     };
@@ -24,7 +23,7 @@ export async function POST(request: NextRequest) {
             // It's good practice to secure your backend endpoint with a key.
             'X-API-KEY': process.env.DOTNET_API_KEY || 'your_secure_api_key_here',
         },
-        // 4. Send the correctly structured payload.
+        // 4. Send the correctly structured and stringified payload.
         body: JSON.stringify(payloadForBackend),
     });
     

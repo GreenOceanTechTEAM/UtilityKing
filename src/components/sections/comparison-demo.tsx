@@ -20,7 +20,6 @@ import { Button } from '../ui/button';
 import { cn } from '@/lib/utils';
 import { Input } from '../ui/input';
 import { useFirebase } from '@/firebase';
-import { ComparisonResetContext } from '@/app/page';
 
 // Define the shape of the data used for rendering in the component
 interface RenderedPlan {
@@ -266,7 +265,9 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   }, [leadForm]);
 
   useEffect(() => {
-    setResetFunction(handleReset);
+    if (setResetFunction) {
+      setResetFunction(handleReset);
+    }
   }, [handleReset, setResetFunction]);
 
 
@@ -295,7 +296,7 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
 
   const handlePrevStep = () => {
     if (currentStep > 0) {
-      setCurrentStep(currentStep - 1);
+      setCurrentStep(currentStep + 1);
     }
   };
 
@@ -357,7 +358,6 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
   const handleFormSubmit = async (leadData: z.infer<typeof leadSchema>) => {
     setIsSavingLead(true);
     
-    // The backend expects specific field names. Let's map our data to that structure.
     const [year, month, day] = selections.contractEndDate 
         ? selections.contractEndDate.split('-') 
         : ['', '', ''];
@@ -367,22 +367,18 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
         xEmail: leadData.email || '',
         sPhone: leadData.phone || '',
         xPostCode: selections.postcode || '',
-        // The backend seems to use xMPRN for both gas and electricity meter numbers
         xMPRN: (selections.utilityType === 'Gas' ? selections.mpr : selections.mpan) || '',
         xGasStartDay: day,
         xGasStartMonth: month,
         xGasStartYear: year,
         xCurGasSupply: selections.supplier || '',
         xEacGas: selections.usage || '',
-        // The backend expects a string 'true' or 'false'
         xBusiness: selections.premisesType !== 'Home' ? 'true' : 'false',
-        // This parameter was missing from our form, sending an empty string.
         sPdfFileName: '', 
     };
 
     try {
-        // This now calls the Next.js API route which will proxy to the .NET backend
-        const response = await fetch('/api/webhook-proxy', {
+        const response = await fetch('/api/webhook-proxy-db', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -391,12 +387,10 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
         });
 
         if (!response.ok) {
-            // Try to parse the error response from the backend
             const errorData = await response.json().catch(() => ({ message: 'An unknown error occurred.' }));
             throw new Error(errorData.message || `HTTP error! status: ${response.status}`);
         }
 
-        // The submission was successful
         setLeadDetails(leadData);
         setIsLeadModalOpen(false);
         setShowThankYou(true);
@@ -801,5 +795,3 @@ export default function ComparisonDemo({ id, setResetFunction }: ComparisonDemoP
     </section>
   );
 }
-
-    
