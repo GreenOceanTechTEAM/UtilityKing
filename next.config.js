@@ -1,4 +1,3 @@
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   /* config options here */
@@ -50,7 +49,20 @@ const nextConfig = {
         source: '/faqs',
         destination: '/faq.html',
       },
-    ]
+      {
+        source: '/article/:slug',
+        destination: '/article/:slug.html',
+      },
+    ];
+  },
+  async redirects() {
+    return [
+      {
+        source: '/:path((?!^$|api|public|_next/static|_next/image|favicon.ico).*)',
+        destination: '/',
+        permanent: false,
+      },
+    ];
   },
 };
 
