@@ -1,0 +1,690 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare Prepayment Energy Tariffs UK: Find the Cheapest PAYG Deals in 2026. Save £150-£300 per year on your prepayment meter.">
+    <meta name="keywords" content="prepayment energy tariffs, PAYG energy deals, prepayment meter tariffs, smart prepayment, PAYG comparison, UK prepayment energy">
+    <title>Compare Prepayment Energy Tariffs UK: Find the Cheapest PAYG Deals in 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 50%, #4a69bd 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+            .meta-info span {
+                display: block;
+                font-size: 0.95rem;
+                margin: 0.3rem 0;
+            }
+
+        .savings-banner {
+            background: linear-gradient(to right, #e74c3c, #c0392b);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1.5rem auto;
+            max-width: 700px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(231, 76, 60, 0.3);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        .section-title {
+            color: #0c2461;
+            font-size: 1.9rem;
+            margin: 2.5rem 0 1.2rem 0;
+            font-weight: 700;
+            padding-bottom: 0.7rem;
+            border-bottom: 3px solid #e74c3c;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-title {
+            color: #0c2461;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: #e74c3c;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #ffeaa7, #fab1a0);
+            border-left: 5px solid #e74c3c;
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary {
+            background-color: #4a69bd;
+            color: white;
+        }
+
+        .badge-success {
+            background-color: #27ae60;
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: #f39c12;
+            color: white;
+        }
+
+        .badge-danger {
+            background-color: #e74c3c;
+            color: white;
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .comparison-item {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            border-top: 5px solid;
+            transition: transform 0.3s ease;
+        }
+
+            .comparison-item:hover {
+                transform: translateY(-5px);
+            }
+
+            .comparison-item.red {
+                border-top-color: #e74c3c;
+            }
+
+            .comparison-item.blue {
+                border-top-color: #4a69bd;
+            }
+
+            .comparison-item.green {
+                border-top-color: #27ae60;
+            }
+
+        .meter-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .meter-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            border-top: 5px solid #4a69bd;
+            transition: all 0.3s ease;
+        }
+
+            .meter-card:hover {
+                transform: scale(1.03);
+            }
+
+        .meter-icon {
+            font-size: 3rem;
+            color: #4a69bd;
+            margin-bottom: 1.5rem;
+        }
+
+        .meter-title {
+            color: #0c2461;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            font-size: 1.3rem;
+        }
+
+        .myths-section {
+            margin: 3rem 0;
+        }
+
+        .myths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .myth-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #e74c3c;
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid #27ae60;
+        }
+
+        .myth-title {
+            color: #e74c3c;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .fact-title {
+            color: #27ae60;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+        }
+
+        .cta-section {
+            background: linear-gradient(135deg, #0c2461 0%, #1e3799 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0 0 0;
+            box-shadow: 0 10px 30px rgba(12, 36, 97, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            background: white;
+            color: #0c2461;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 1.8rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            text-decoration:none;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+                background: #f8f9fa;
+            }
+
+        ul {
+            margin-left: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+
+            li:before {
+                content: "•";
+                color: #e74c3c;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+                font-size: 1.2rem;
+            }
+
+        .price-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: #e8f6f3;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            color: #27ae60;
+            margin: 0.5rem 0;
+        }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            .cards-container,
+            .comparison-grid,
+            .meter-types,
+            .myths-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin: 2rem 0 1rem 0;
+            }
+
+            .savings-banner {
+                font-size: 1.1rem;
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .card,
+            .comparison-item,
+            .meter-card {
+                padding: 1.8rem;
+            }
+
+            .cta-title {
+                font-size: 1.7rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .card-title,
+            .meter-title {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="meta-info">
+                <span><strong>Last updated:</strong> January 2026</span>
+                <span><strong>Reviewed by:</strong> UK Energy Market Analyst</span>
+                <span><strong>Regulated by:</strong> Ofgem</span>
+            </div>
+
+            <h1 class="hero-title">Compare Prepayment Energy Tariffs UK</h1>
+            <p class="hero-subtitle">Find the Cheapest PAYG Deals in 2026</p>
+
+            <div class="savings-banner">
+                <i class="fas fa-money-bill-wave"></i>
+                Save £150–£300 per year on your prepayment meter
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <h2 class="section-title">What Are Prepayment Energy Tariffs?</h2>
+        <p>Prepayment energy tariffs (also known as PAYG – Pay As You Go) require you to pay for gas and electricity before you use it. You top up your meter using:</p>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-key card-icon"></i> A key or card</div>
+                <p>Traditional prepayment method using physical keys or cards at local top-up points.</p>
+            </div>
+            <div class="card">
+                <div class="card-title"><i class="fas fa-mobile-alt card-icon"></i> A smart meter app or online account</div>
+                <p>Modern digital top-up through smartphone apps or online portals.</p>
+            </div>
+            <div class="card">
+                <div class="card-title"><i class="fas fa-store card-icon"></i> PayPoint or Payzone locations</div>
+                <p>Wide network of local shops and convenience stores for top-ups.</p>
+            </div>
+        </div>
+        <p>Prepayment tariffs are common among renters, students, and households managing tight budgets.</p>
+
+        <h2 class="section-title">Are Prepayment Energy Tariffs More Expensive?</h2>
+        <p>They used to be — but that has changed.</p>
+        <p>Since reforms and Ofgem intervention:</p>
+        <ul>
+            <li>Prepayment tariffs are now protected by a separate energy price cap</li>
+            <li>The gap between prepayment and credit tariffs has narrowed significantly</li>
+            <li>Some prepayment deals are now competitive with standard tariffs</li>
+        </ul>
+        <p>However, not all prepayment tariffs are priced the same, which is why comparison still matters.</p>
+
+        <div class="highlight-box">
+            <p><strong>Why You Should Compare Prepayment Energy Tariffs</strong></p>
+            <p>Many households on prepayment meters are still:</p>
+            <ul>
+                <li>On default supplier tariffs</li>
+                <li>Paying higher standing charges than necessary</li>
+                <li>Missing out on cheaper PAYG deals</li>
+            </ul>
+            <p>By comparing prepayment energy tariffs in 2026, households can often save £150–£300 per year without changing meters.</p>
+        </div>
+
+        <h2 class="section-title">Compare Prepayment Electricity Tariffs UK</h2>
+        <p>When comparing prepayment electricity tariffs, look at:</p>
+        <div class="comparison-grid">
+            <div class="comparison-item red">
+                <h3 class="card-title"><i class="fas fa-bolt"></i> Unit rate (p/kWh)</h3>
+                <p>The price per kilowatt-hour of electricity used.</p>
+            </div>
+            <div class="comparison-item blue">
+                <h3 class="card-title"><i class="fas fa-calendar-day"></i> Standing charge</h3>
+                <p>Daily fixed cost regardless of usage.</p>
+            </div>
+            <div class="comparison-item green">
+                <h3 class="card-title"><i class="fas fa-wallet"></i> Emergency credit allowance</h3>
+                <p>Buffer for when you run out of credit.</p>
+            </div>
+        </div>
+        <p>Smart prepayment meters often offer:</p>
+        <ul>
+            <li>Lower hassle</li>
+            <li>App-based top-ups</li>
+            <li>More competitive pricing</li>
+        </ul>
+
+        <h2 class="section-title">Smart Prepayment Meters vs Traditional PAYG</h2>
+        <div class="meter-types">
+            <div class="meter-card">
+                <div class="meter-icon"><i class="fas fa-wifi"></i></div>
+                <div class="meter-title">Smart Prepayment Meters (Recommended)</div>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Top up online or via app</li>
+                    <li>Better usage tracking</li>
+                    <li>Easier switching</li>
+                    <li>Often better tariff access</li>
+                </ul>
+            </div>
+
+            <div class="meter-card">
+                <div class="meter-icon"><i class="fas fa-key"></i></div>
+                <div class="meter-title">Traditional Key/Card Meters</div>
+                <ul style="text-align: left; margin-top: 1rem;">
+                    <li>Physical top-ups required</li>
+                    <li>Fewer tariff options</li>
+                    <li>Still widely supported</li>
+                </ul>
+            </div>
+        </div>
+        <p>In many cases, switching supplier or requesting a meter upgrade can reduce costs.</p>
+
+        <h2 class="section-title">Can You Switch Prepayment Energy Supplier?</h2>
+        <p>Yes.</p>
+        <p>You can switch prepayment supplier if:</p>
+        <ul>
+            <li>You don't owe debt to your current supplier (or it's below transfer limits)</li>
+            <li>Your meter is compatible</li>
+            <li>You pass basic eligibility checks</li>
+        </ul>
+        <p>Switching is safe and does not interrupt supply.</p>
+
+        <h2 class="section-title">Prepayment Tariffs and the Energy Price Cap</h2>
+        <p>Prepayment tariffs are protected by a specific PAYG price cap, separate from standard variable tariffs.</p>
+        <div class="cards-container">
+            <div class="card">
+                <span class="badge badge-primary">Key Point</span>
+                <p>The cap limits unit rates and standing charges</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-warning">Important</span>
+                <p>It does not cap your total spend</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-danger">Note</span>
+                <p>Prices still vary by region</p>
+            </div>
+        </div>
+        <p>Many competitive fixed tariffs (credit meters) are cheaper than PAYG — but PAYG users still benefit from comparison.</p>
+
+        <h2 class="section-title">How to Compare Prepayment Energy Tariffs with UtilityKing</h2>
+        <div class="comparison-grid">
+            <div class="comparison-item red">
+                <span class="badge badge-success">Step 1</span>
+                <p>Enter your postcode</p>
+            </div>
+            <div class="comparison-item blue">
+                <span class="badge badge-success">Step 2</span>
+                <p>Select prepayment meter</p>
+            </div>
+            <div class="comparison-item green">
+                <span class="badge badge-success">Step 3</span>
+                <p>Choose gas, electricity, or dual fuel</p>
+            </div>
+            <div class="comparison-item red">
+                <span class="badge badge-success">Step 4</span>
+                <p>Enter estimated usage (if known)</p>
+            </div>
+            <div class="comparison-item blue">
+                <span class="badge badge-success">Step 5</span>
+                <p>Compare total annual cost</p>
+            </div>
+            <div class="comparison-item green">
+                <span class="badge badge-success">Step 6</span>
+                <p>Switch if savings are available</p>
+            </div>
+        </div>
+        <p>You'll see only prepayment-compatible tariffs, ranked by price.</p>
+
+        <h2 class="section-title">Common Myths About Prepayment Energy</h2>
+        <div class="myths-section">
+            <div class="myths-grid">
+                <div class="myth-card">
+                    <div class="myth-title">"Prepayment is always the most expensive option"</div>
+                    <p>→ Not anymore — comparison makes a big difference.</p>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-title">"You can't switch on PAYG"</div>
+                    <p>→ You can, in most cases.</p>
+                </div>
+                <div class="myth-card">
+                    <div class="myth-title">"Smart meters force you onto PAYG"</div>
+                    <p>→ Smart meters support both credit and prepayment modes.</p>
+                </div>
+                <div class="fact-card">
+                    <div class="fact-title">Reality Check</div>
+                    <p>Prepayment energy customers are no longer stuck with expensive deals — but only if they compare.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Find Your Best Prepayment Deal</h2>
+            <p style="max-width: 700px; margin: 0 auto 1.5rem; opacity: 0.95; font-size: 1.1rem; position: relative; z-index: 1;">
+                In 2026, the cheapest PAYG tariffs depend on postcode, usage, and meter type. Compare now to see if you can pay less without changing how you pay.
+            </p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8; position: relative; z-index: 1;">
+                <i class="fas fa-shield-alt"></i> Ofgem Protected &bull;
+                <i class="fas fa-bolt"></i> No Supply Interruption &bull;
+                <i class="fas fa-lock"></i> Secure Switching
+            </p>
+        </div>
+    </div>
+
+    <script>
+      
+
+        document.querySelectorAll('.card, .comparison-item, .meter-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+
+        document.querySelectorAll('.myth-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

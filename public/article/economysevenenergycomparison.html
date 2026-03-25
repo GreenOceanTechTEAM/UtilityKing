@@ -1,0 +1,808 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Economy 7 Energy Comparison UK: Is It Still Worth It in 2026? Compare day and night rates to see if Economy 7 saves you money.">
+    <meta name="keywords" content="Economy 7, off-peak electricity, night rate tariffs, storage heaters, electric heating, time-of-use tariffs">
+    <title>Economy 7 Energy Comparison UK: Is It Still Worth It in 2026?</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f5f7fa;
+            overflow-x: hidden;
+        }
+
+        .hero-section {
+            background: linear-gradient(135deg, #6c5ce7 0%, #8e44ad 50%, #a29bfe 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            font-weight: 800;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.95;
+            margin-bottom: 1.5rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-info {
+            background: rgba(255, 255, 255, 0.15);
+            padding: 1.2rem;
+            border-radius: 10px;
+            display: inline-block;
+            margin-bottom: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(10px);
+        }
+
+            .meta-info span {
+                display: block;
+                font-size: 0.95rem;
+                margin: 0.3rem 0;
+            }
+
+        .warning-banner {
+            background: linear-gradient(to right, #f39c12, #e67e22);
+            color: white;
+            padding: 1.2rem;
+            border-radius: 10px;
+            margin: 1.5rem auto;
+            max-width: 700px;
+            font-size: 1.3rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0 5px 15px rgba(243, 156, 18, 0.3);
+        }
+
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem 3rem;
+        }
+
+        .section-title {
+            color: #6c5ce7;
+            font-size: 1.9rem;
+            margin: 2.5rem 0 1.2rem 0;
+            font-weight: 700;
+            padding-bottom: 0.7rem;
+            border-bottom: 3px solid #f39c12;
+        }
+
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.8rem;
+            margin: 1.8rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+            .card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-title {
+            color: #6c5ce7;
+            font-size: 1.4rem;
+            margin-bottom: 1.2rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+            color: #6c5ce7;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #dfe6e9, #b2bec3);
+            border-left: 5px solid #6c5ce7;
+            padding: 1.8rem;
+            border-radius: 12px;
+            margin: 2rem 0;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            margin-bottom: 1.2rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-primary {
+            background-color: #6c5ce7;
+            color: white;
+        }
+
+        .badge-success {
+            background-color: #00b894;
+            color: white;
+        }
+
+        .badge-warning {
+            background-color: #fdcb6e;
+            color: #2d3436;
+        }
+
+        .badge-danger {
+            background-color: #e17055;
+            color: white;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+        }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1.5rem;
+                text-align: left;
+                border-bottom: 1px solid #dfe6e9;
+            }
+
+            .comparison-table th {
+                background: linear-gradient(to right, #6c5ce7, #8e44ad);
+                color: white;
+                font-weight: 700;
+                font-size: 1.1rem;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+            .comparison-table tr:hover {
+                background-color: #f1f2f6;
+            }
+
+        .time-visualization {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .time-card {
+            background: white;
+            border-radius: 15px;
+            padding: 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            border-top: 5px solid;
+            transition: all 0.3s ease;
+        }
+
+            .time-card.night {
+                border-top-color: #0984e3;
+            }
+
+            .time-card.day {
+                border-top-color: #e17055;
+            }
+
+        .time-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: inline-block;
+        }
+
+        .time-card.night .time-icon {
+            color: #0984e3;
+        }
+
+        .time-card.day .time-icon {
+            color: #e17055;
+        }
+
+        .time-title {
+            color: #2d3436;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .rate-display {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: #dfe6e9;
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            font-weight: 700;
+            margin: 1rem 0;
+            font-size: 1.2rem;
+        }
+
+            .rate-display.night {
+                background: #dbe4ff;
+                color: #0984e3;
+            }
+
+            .rate-display.day {
+                background: #ffeaa7;
+                color: #e17055;
+            }
+
+        .usage-calculator {
+            background: white;
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #dfe6e9;
+        }
+
+        .calculator-title {
+            color: #6c5ce7;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+            font-weight: 700;
+        }
+
+        .slider-container {
+            margin: 1.8rem 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+        }
+
+        .slider {
+            width: 100%;
+            height: 10px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #dfe6e9;
+            border-radius: 5px;
+            outline: none;
+        }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 25px;
+                height: 25px;
+                border-radius: 50%;
+                background: #6c5ce7;
+                cursor: pointer;
+                border: 3px solid white;
+                box-shadow: 0 3px 6px rgba(0, 0, 0, 0.2);
+            }
+
+        .result-box {
+            background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+            border-radius: 15px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            color: white;
+        }
+
+        .result-text {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .suitability-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .suitability-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.8rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            border-left: 5px solid;
+        }
+
+            .suitability-card.good {
+                border-left-color: #00b894;
+            }
+
+            .suitability-card.bad {
+                border-left-color: #e17055;
+            }
+
+        .cta-section {
+            background: linear-gradient(135deg, #6c5ce7 0%, #8e44ad 100%);
+            color: white;
+            padding: 3rem 1.5rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0 0 0;
+            box-shadow: 0 10px 30px rgba(108, 92, 231, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1.2rem;
+            font-weight: 800;
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-button {
+            text-decoration:none;
+            background: white;
+            color: #6c5ce7;
+            padding: 1.2rem 3rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 1.8rem;
+            position: relative;
+            z-index: 1;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 10px 30px rgba(255, 255, 255, 0.3);
+                background: #f8f9fa;
+            }
+
+        ul {
+            margin-left: 1.8rem;
+            margin-bottom: 1.5rem;
+        }
+
+        li {
+            margin-bottom: 0.7rem;
+            position: relative;
+        }
+
+            li:before {
+                content: "•";
+                color: #6c5ce7;
+                font-weight: bold;
+                display: inline-block;
+                width: 1em;
+                margin-left: -1em;
+                font-size: 1.2rem;
+            }
+
+        @media (max-width: 992px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .section-title {
+                font-size: 1.7rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 1.9rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            .cards-container,
+            .time-visualization,
+            .suitability-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+                margin: 2rem 0 1rem 0;
+            }
+
+            .warning-banner {
+                font-size: 1.1rem;
+                padding: 1rem;
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+
+            .cta-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .card,
+            .time-card,
+            .suitability-card,
+            .usage-calculator {
+                padding: 1.8rem;
+            }
+
+            .cta-title {
+                font-size: 1.7rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1.1rem;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 2.5rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .card-title,
+            .time-title {
+                font-size: 1.2rem;
+            }
+
+            .cta-button {
+                padding: 0.9rem 1.8rem;
+                font-size: 1rem;
+            }
+
+            .badge {
+                font-size: 0.8rem;
+                padding: 0.4rem 0.8rem;
+            }
+
+            .time-icon {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="meta-info">
+                <span><strong>Last updated:</strong> January 2026</span>
+                <span><strong>Reviewed by:</strong> UK Energy Market Analyst</span>
+                <span><strong>Regulated by:</strong> Ofgem</span>
+            </div>
+
+            <h1 class="hero-title">Economy 7 Energy Comparison UK</h1>
+            <p class="hero-subtitle">Is It Still Worth It in 2026?</p>
+
+            <div class="warning-banner">
+                <i class="fas fa-exclamation-circle"></i>
+                Economy 7 is not automatically cheaper for every household
+            </div>
+        </div>
+    </section>
+
+    <div class="main-content">
+        <h2 class="section-title">What Is Economy 7 Energy?</h2>
+        <p>Economy 7 is a type of electricity tariff that offers:</p>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-moon card-icon"></i> 7 hours of cheaper electricity overnight</div>
+                <p>Typically between 11pm and 8am, exact hours vary by region.</p>
+            </div>
+            <div class="card">
+                <div class="card-title"><i class="fas fa-sun card-icon"></i> Higher rates during the day</div>
+                <p>Standard or above-standard rates for 17 hours daily.</p>
+            </div>
+        </div>
+        <p>It was originally designed for homes that use most of their electricity at night, such as properties with storage heaters, immersion heaters, or electric-only heating systems.</p>
+        <p>In 2026, Economy 7 still exists — but it is not automatically cheaper for every household.</p>
+
+        <h2 class="section-title">How Economy 7 Tariffs Work</h2>
+        <p>An Economy 7 tariff splits electricity prices into two rates:</p>
+
+        <div class="time-visualization">
+            <div class="time-card night">
+                <div class="time-icon"><i class="fas fa-bed"></i></div>
+                <div class="time-title">Night Rate (Off-Peak)</div>
+                <div class="rate-display night">
+                    <i class="fas fa-pound-sign"></i> 30–60% Cheaper
+                </div>
+                <p>Applies for 7 hours overnight</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">Typically 11pm – 8am (varies by region)</p>
+            </div>
+
+            <div class="time-card day">
+                <div class="time-icon"><i class="fas fa-sun"></i></div>
+                <div class="time-title">Day Rate (Peak)</div>
+                <div class="rate-display day">
+                    <i class="fas fa-pound-sign"></i> Higher Than Standard
+                </div>
+                <p>Applies for the remaining 17 hours</p>
+                <p style="font-size: 0.9rem; margin-top: 1rem;">Higher than standard tariff rates</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>👉 The key to saving money on Economy 7 is using at least 35–40% of your electricity at night.</strong></p>
+        </div>
+
+        <h2 class="section-title">Economy 7 vs Standard Electricity Tariffs</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Economy 7</th>
+                    <th>Standard Tariff</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Day rate</strong></td>
+                    <td>Higher</td>
+                    <td>Lower</td>
+                </tr>
+                <tr>
+                    <td><strong>Night rate</strong></td>
+                    <td>Much lower</td>
+                    <td>Same rate</td>
+                </tr>
+                <tr>
+                    <td><strong>Best for</strong></td>
+                    <td>Night-heavy usage</td>
+                    <td>Daytime usage</td>
+                </tr>
+                <tr>
+                    <td><strong>Complexity</strong></td>
+                    <td>Higher</td>
+                    <td>Simple</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Many households are still on Economy 7 tariffs that no longer suit their lifestyle, leading to overpayment.</p>
+
+        <h2 class="section-title">Who Should Still Use Economy 7 in 2026?</h2>
+        <div class="suitability-grid">
+            <div class="suitability-card good">
+                <h3 class="card-title"><i class="fas fa-check-circle" style="color: #00b894;"></i> Economy 7 Makes Sense For:</h3>
+                <ul>
+                    <li>Flats with electric storage heaters</li>
+                    <li>Properties without gas supply</li>
+                    <li>Homes with immersion heaters</li>
+                    <li>EV owners charging overnight</li>
+                    <li>Households using timers to control usage</li>
+                </ul>
+            </div>
+
+            <div class="suitability-card bad">
+                <h3 class="card-title"><i class="fas fa-times-circle" style="color: #e17055;"></i> Economy 7 Usually Worse For:</h3>
+                <ul>
+                    <li>Most usage during the day</li>
+                    <li>Work from home with daytime electricity use</li>
+                    <li>Homes with gas central heating</li>
+                    <li>Low overnight usage patterns</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="usage-calculator">
+            <h3 class="calculator-title">Economy 7 Savings Calculator</h3>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Estimate if Economy 7 could save you money based on your usage pattern</p>
+
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Night-time Usage</span>
+                    <span id="nightValue">40%</span>
+                </div>
+                <input type="range" min="10" max="90" value="40" class="slider" id="nightSlider">
+                <p style="font-size: 0.9rem; color: #666; margin-top: 0.5rem;">Percentage of electricity used during off-peak hours (11pm-8am)</p>
+            </div>
+
+            <div class="result-box">
+                <p style="font-weight: 600;">Economy 7 Recommendation:</p>
+                <div class="result-text" id="recommendation">Could Save Money</div>
+                <p style="font-size: 0.9rem; opacity: 0.9;">
+                    Based on typical Economy 7 pricing vs standard tariffs
+                </p>
+            </div>
+        </div>
+
+        <h2 class="section-title">Common Economy 7 Mistakes That Cost Money</h2>
+        <div class="cards-container">
+            <div class="card">
+                <span class="badge badge-warning">Mistake 1</span>
+                <p>Staying on Economy 7 after removing storage heaters</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-warning">Mistake 2</span>
+                <p>Ignoring high day rates</p>
+            </div>
+            <div class="card">
+                <span class="badge badge-warning">Mistake 3</span>
+                <p>Not comparing against standard tariffs</p>
+            </div>
+        </div>
+        <p style="margin-top: 1rem;">These mistakes can add hundreds of pounds per year.</p>
+
+        <h2 class="section-title">Economy 7 and Smart Meters</h2>
+        <p>Smart meters have made Economy 7 easier to manage.</p>
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-title"><i class="fas fa-chart-line card-icon"></i> Accurate Tracking</div>
+                <p>Monitor day vs night usage precisely through apps.</p>
+            </div>
+            <div class="card">
+                <div class="card-title"><i class="fas fa-sync-alt card-icon"></i> Flexible Switching</div>
+                <p>Easier switching between tariff types as needed.</p>
+            </div>
+            <div class="card">
+                <div class="card-title"><i class="fas fa-clock card-icon"></i> Smart Tariffs</div>
+                <p>Some smart tariffs offer flexible off-peak hours.</p>
+            </div>
+        </div>
+
+        <div class="highlight-box">
+            <p><strong>Economy 7 is no longer a default "cheap" option — it's a specialist tariff.</strong></p>
+            <p>It can still save money if your usage fits, but for many households it now costs more than standard tariffs. The only way to know is to compare properly.</p>
+        </div>
+
+        <div class="cta-section">
+            <h2 class="cta-title">Compare Economy 7 Energy Tariffs</h2>
+            <p style="max-width: 700px; margin: 0 auto 1.5rem; opacity: 0.95; font-size: 1.1rem; position: relative; z-index: 1;">
+                Find out if Economy 7 is still right for your home with accurate day/night usage comparison.
+            </p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <p style="margin-top: 2rem; font-size: 0.9rem; opacity: 0.8; position: relative; z-index: 1;">
+                <i class="fas fa-shield-alt"></i> Ofgem Protected &bull;
+                <i class="fas fa-calculator"></i> Accurate Comparison &bull;
+                <i class="fas fa-user-check"></i> No Obligation
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Economy 7 Savings Calculator
+        const nightSlider = document.getElementById('nightSlider');
+        const nightValue = document.getElementById('nightValue');
+        const recommendation = document.getElementById('recommendation');
+
+        function updateCalculator() {
+            const nightUsage = parseInt(nightSlider.value);
+            nightValue.textContent = `${nightUsage}%`;
+
+            if (nightUsage >= 40) {
+                recommendation.textContent = "Economy 7 Could Save Money";
+                recommendation.style.color = "#fff";
+            } else if (nightUsage >= 30) {
+                recommendation.textContent = "Economy 7 Might Save Money";
+                recommendation.style.color = "#fdcb6e";
+            } else {
+                recommendation.textContent = "Standard Tariff Likely Cheaper";
+                recommendation.style.color = "#e17055";
+            }
+        }
+
+        nightSlider.addEventListener('input', updateCalculator);
+        updateCalculator();
+
+        // CTA Button
+        document.getElementById('compareButton').addEventListener('click', function() {
+            alert('Opening Economy 7 comparison...\n\nThis would compare Economy 7 tariffs against standard tariffs using your specific day/night usage patterns.');
+        });
+
+        // Interactive cards
+        document.querySelectorAll('.card, .time-card, .suitability-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(0.98)';
+                setTimeout(() => {
+                    this.style.transform = '';
+                }, 200);
+            });
+        });
+
+        // Table row highlighting
+        document.querySelectorAll('.comparison-table tr').forEach(row => {
+            row.addEventListener('mouseenter', function() {
+                this.style.backgroundColor = '#f1f2f6';
+            });
+
+            row.addEventListener('mouseleave', function() {
+                if (this.rowIndex % 2 === 0) {
+                    this.style.backgroundColor = '#f8f9fa';
+                } else {
+                    this.style.backgroundColor = 'white';
+                }
+            });
+        });
+    </script>
+</body>
+</html>

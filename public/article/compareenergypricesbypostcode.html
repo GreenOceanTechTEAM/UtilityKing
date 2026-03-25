@@ -1,0 +1,674 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Prices by Postcode: Find the Cheapest Deals in Your Area (2026)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            background: linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+        .hero-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+            .meta-info span {
+                display: block;
+                font-size: 0.95rem;
+                margin: 0.3rem 0;
+            }
+
+        .postcode-search {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            max-width: 500px;
+            margin: 2rem auto;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .postcode-input {
+            width: 100%;
+            padding: 1rem;
+            font-size: 1.1rem;
+            border: 2px solid #e0e0e0;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 600;
+        }
+
+            .postcode-input:focus {
+                outline: none;
+                border-color: #1976d2;
+                box-shadow: 0 0 0 3px rgba(25, 118, 210, 0.2);
+            }
+
+        .search-button {
+            background: linear-gradient(to right, #00c853, #00b347);
+            color: white;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: all 0.3s ease;
+        }
+
+            .search-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(0, 200, 83, 0.3);
+            }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-title {
+            color: #0d47a1;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-left: 4px solid #1976d2;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin: 1.5rem 0;
+        }
+
+            .highlight-box strong {
+                color: #0d47a1;
+            }
+
+        /* Savings Calculator */
+        .savings-calculator {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+            border: 2px solid #e0e0e0;
+        }
+
+        .calculator-title {
+            color: #0d47a1;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .savings-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .savings-item {
+            text-align: center;
+            padding: 1.5rem;
+            border-radius: 8px;
+            background: #f8f9fa;
+        }
+
+        .savings-amount {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #00c853;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .savings-label {
+            font-size: 0.9rem;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1.2rem 1.5rem;
+                text-align: left;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .comparison-table th {
+                background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+                color: white;
+                font-weight: 600;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .comparison-table tr:hover {
+                background-color: #f5f5f5;
+            }
+
+        /* FAQ */
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #1976d2;
+        }
+
+        .faq-question {
+            color: #0d47a1;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #0d47a1 0%, #1976d2 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: white;
+            color: #0d47a1;
+            padding: 1rem 2.5rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+            text-decoration: none;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+                background: #f5f5f5;
+            }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .badge-primary {
+            background-color: #e3f2fd;
+            color: #0d47a1;
+        }
+
+        .badge-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-warning {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .postcode-search {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="meta-info">
+                <span><strong>Last updated:</strong> January 2026</span>
+                <span><strong>Reviewed by:</strong> UK Energy Market Analyst</span>
+                <span><strong>Regulated by:</strong> Ofgem</span>
+            </div>
+
+            <h1 class="hero-title">Compare Energy Prices by Postcode</h1>
+            <p class="hero-subtitle">Find the Cheapest Deals in Your Area (2026)</p>
+
+            <div class="highlight-box" style="background: rgba(255, 255, 255, 0.2); border: none; color: white; max-width: 600px; margin: 2rem auto;">
+                <strong style="color:gold">Why prices vary by location:</strong> Different network costs, standing charges, and supplier pricing strategies mean your postcode determines your best deal.
+            </div>
+
+         
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Why Prices Vary -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">📍</span> Why Energy Prices Vary by Postcode</h2>
+            <p>Energy prices in the UK are not the same everywhere. Even if two households use the same amount of gas and electricity, their bills can differ significantly depending on postcode.</p>
+
+            <div class="highlight-box">
+                <strong>Key reasons for price differences:</strong>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>The UK energy grid is split into regional distribution zones</li>
+                    <li>Each region has different network costs</li>
+                    <li>Standing charges and unit rates vary by location</li>
+                    <li>Suppliers price tariffs differently by region</li>
+                </ul>
+            </div>
+
+            <p><strong>👉 To find the cheapest energy deal, you must compare prices by postcode.</strong></p>
+        </div>
+
+        <!-- Savings Calculator -->
+        <div class="savings-calculator">
+            <h2 class="calculator-title">How Much Can You Save?</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Average annual savings when comparing by postcode vs staying on default tariffs</p>
+
+            <div class="savings-grid">
+                <div class="savings-item">
+                    <span class="savings-amount">£200-£350</span>
+                    <span class="savings-label">Average Households</span>
+                </div>
+                <div class="savings-item">
+                    <span class="savings-amount">£400-£600+</span>
+                    <span class="savings-label">High-Usage Homes</span>
+                </div>
+                <div class="savings-item">
+                    <span class="savings-amount">£500+</span>
+                    <span class="savings-label">Expired Fixed Tariffs</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Cards -->
+        <div class="cards-container">
+            <div class="card">
+                <span class="badge badge-primary">Electricity</span>
+                <h3 class="card-title">Compare Electricity Prices</h3>
+                <p>Electricity prices vary the most by region due to:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Regional unit rate differences</li>
+                    <li>Varying standing charges</li>
+                    <li>Local distribution costs</li>
+                    <li>Green energy availability</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge badge-warning">Gas</span>
+                <h3 class="card-title">Compare Gas Prices</h3>
+                <p>Gas prices show regional variations in:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Distribution network costs</li>
+                    <li>Standing charges</li>
+                    <li>Fixed vs variable pricing</li>
+                    <li>Supplier competition</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge badge-success">Dual Fuel</span>
+                <h3 class="card-title">Dual Fuel by Postcode</h3>
+                <p>Postcode affects dual fuel deals through:</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Regional dual fuel discounts</li>
+                    <li>Electricity vs gas pricing balance</li>
+                    <li>Supplier regional strategies</li>
+                    <li>Combination savings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Fixed vs Variable -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">⚖️</span> Fixed vs Variable Tariffs by Postcode</h2>
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Fixed Tariffs</th>
+                        <th>Variable Tariffs</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Price Stability</strong></td>
+                        <td>✅ Locked for 12-24 months</td>
+                        <td>❌ Can change anytime</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Regional Pricing</strong></td>
+                        <td>✅ Varies significantly by postcode</td>
+                        <td>✅ Varies by postcode</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Best For</strong></td>
+                        <td>Long-term savings & budgeting</td>
+                        <td>Short-term flexibility</td>
+                    </tr>
+                    <tr>
+                        <td><strong>2026 Recommendation</strong></td>
+                        <td>⭐ Best for most households</td>
+                        <td>⚠️ Use temporarily only</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Regional Differences -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">🗺️</span> Regional Price Differences</h2>
+            <p>Why a supplier that's cheapest in <strong>Manchester</strong> may not be cheapest in <strong>London, Birmingham, Leeds, or Glasgow</strong>:</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px;">
+                    <strong>Electricity Distribution</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Different charges in each of the 14 UK distribution zones</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px;">
+                    <strong>Gas Transportation</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Varies across the 8 UK gas distribution networks</p>
+                </div>
+                <div style="background: #f5f5f5; padding: 1rem; border-radius: 8px;">
+                    <strong>Supplier Strategy</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Competitive pricing targeted at specific regions</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 style="color: #0d47a1; margin-bottom: 1rem;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <div class="faq-question">Why do energy prices differ by postcode?</div>
+                    <p>Regional network costs and supplier pricing strategies create location-based price variations.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Can I switch supplier in any postcode?</div>
+                    <p>Yes, if your property has a standard meter and active supply. All UK postcodes have multiple supplier options.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">How often should I compare?</div>
+                    <p>At least once per year, or when your fixed tariff ends. Prices change frequently by region.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Is postcode comparison accurate?</div>
+                    <p>Yes — it's the only accurate way to compare UK energy prices and avoid overpaying.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Step-by-Step Guide -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">📋</span> How to Compare in 5 Simple Steps</h2>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; margin-top: 1.5rem;">
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="background: #0d47a1; color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">1</div>
+                    <strong>Enter Postcode</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Start with your location</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="background: #0d47a1; color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">2</div>
+                    <strong>Select Fuel Type</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Gas, electricity, or dual fuel</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="background: #0d47a1; color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">3</div>
+                    <strong>Enter Usage</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Actual or estimated kWh</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="background: #0d47a1; color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">4</div>
+                    <strong>Compare Prices</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">See all available deals</p>
+                </div>
+                <div style="text-align: center; padding: 1rem;">
+                    <div style="background: #0d47a1; color: white; width: 40px; height: 40px; line-height: 40px; border-radius: 50%; margin: 0 auto 1rem; font-weight: bold;">5</div>
+                    <strong>Switch & Save</strong>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Complete in 5 minutes</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Find Your Best Local Energy Deal</h2>
+            <p style="max-width: 600px; margin: 0 auto 1.5rem; opacity: 0.95;">
+                In 2026, the cheapest energy deals are region-specific, usage-based, and time-sensitive.
+                Don't pay more than you should for your location.
+            </p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                 Contact Us<i class="fa fa-arrow-right"></i>
+            </a>
+            <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ Ofgem Protected</span>
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ No Supply Interruption</span>
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ Free to Switch</span>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <script>
+        // Postcode validation and search
+        document.querySelector('.search-button').addEventListener('click', function() {
+            const postcodeInput = document.querySelector('.postcode-input');
+            const postcode = postcodeInput.value.trim().toUpperCase();
+
+            // Simple validation
+            const postcodeRegex = /^[A-Z]{1,2}\d{1,2}[A-Z]?\s*\d[A-Z]{2}$/i;
+
+            if (!postcode) {
+                alert('Please enter your postcode');
+                postcodeInput.focus();
+                return;
+            }
+
+            if (!postcodeRegex.test(postcode.replace(/\s+/g, ''))) {
+                alert('Please enter a valid UK postcode (e.g., SW1A 1AA)');
+                postcodeInput.focus();
+                return;
+            }
+
+            // In a real implementation, this would submit the form or make an API call
+            alert(`Searching for best energy deals in ${postcode}...\n\nIn a live implementation, this would show personalized energy deals for your area.`);
+        });
+
+        // Format postcode input
+        document.querySelector('.postcode-input').addEventListener('input', function(e) {
+            let value = e.target.value.toUpperCase().replace(/[^A-Z0-9]/g, '');
+
+            if (value.length > 3) {
+                value = value.substring(0, value.length - 3) + ' ' + value.substring(value.length - 3);
+            }
+
+            e.target.value = value;
+        });
+
+       
+
+        // Card hover effects
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+    </script>
+</body>
+</html>

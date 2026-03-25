@@ -1,0 +1,1291 @@
+﻿<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Learn how to compare energy prices without a smart meter in the UK 2026. Full guide to comparing and switching energy tariffs with standard, prepayment, and Economy 7 meters.">
+    <meta name="keywords" content="compare energy prices without smart meter, non-smart meter energy comparison, UK energy tariffs 2026, standard meter, prepayment meter, Economy 7, Ofgem, UtilityKing">
+    <meta name="author" content="UK Energy Market Analyst">
+    <title>Compare Energy Prices Without a Smart Meter (UK Guide 2026)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --secondary: #00c896;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --light-bg: #f8fafc;
+            --text-light: #f1f5f9;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, var(--primary-dark) 100%);
+            color: var(--text-light);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 198, 150, 0.1) 0%, transparent 70%);
+                z-index: 0;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--secondary);
+            color: var(--dark-bg);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #a5f3fc);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: var(--dark-bg);
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(0, 198, 150, 0.3);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(0, 198, 150, 0.4);
+                background: #00e0a8;
+            }
+
+        /* Main Content */
+        .content-wrapper {
+            padding: 20px 0;
+        }
+
+      
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+            .section-header::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 5px;
+                background: var(--primary);
+                border-radius: 5px;
+            }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+        .card-dark {
+            background: var(--dark-card);
+            color: var(--text-light);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .card-dark .card-title {
+            color: var(--text-light);
+        }
+
+        .card-content {
+            color: var(--text-muted);
+        }
+
+        .card-dark .card-content {
+            color: #cbd5e1;
+        }
+
+        /* Grid Layouts */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+            .comparison-table th {
+                background: var(--primary);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .comparison-table td {
+                padding: 18px 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background: #f8fafc;
+            }
+
+            .comparison-table tr:hover {
+                background: #f1f5f9;
+            }
+
+        .table-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-warning {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-neutral {
+            background: #e5e7eb;
+            color: #374151;
+        }
+
+        /* List Styles */
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+            .feature-list li {
+                padding: 10px 0;
+                padding-left: 35px;
+                position: relative;
+            }
+
+                .feature-list li::before {
+                    content: '✓';
+                    position: absolute;
+                    left: 0;
+                    top: 10px;
+                    width: 24px;
+                    height: 24px;
+                    background: var(--secondary);
+                    color: var(--dark-bg);
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: bold;
+                }
+
+        .myth-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+            .myth-list li {
+                padding: 15px 0;
+                border-bottom: 1px solid var(--border-color);
+                display: flex;
+                align-items: flex-start;
+                gap: 15px;
+            }
+
+        .myth-icon {
+            flex-shrink: 0;
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+        }
+
+            .myth-icon.cross {
+                background: #fee2e2;
+                color: var(--danger);
+            }
+
+            .myth-icon.check {
+                background: #d1fae5;
+                color: var(--success);
+            }
+
+        /* Meter Cards */
+        .meter-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-top: 4px solid var(--primary);
+            transition: var(--transition);
+        }
+
+            .meter-card:hover {
+                border-top-color: var(--secondary);
+                box-shadow: var(--shadow);
+                transform: translateY(-5px);
+            }
+
+        .meter-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .meter-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+
+        /* UtilityKing Section */
+        .utilityking-highlight {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 5px solid var(--secondary);
+        }
+
+        .highlight-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-bg);
+        }
+
+        /* Final Verdict */
+        .verdict-box {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            color: white;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .verdict-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Related Articles */
+        .related-articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .article-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #f1f5f9;
+            color: var(--primary);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+            .article-link:hover {
+                background: var(--primary);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .comparison-table {
+                font-size: 0.9rem;
+            }
+
+            .utilityking-highlight {
+                padding: 30px;
+            }
+
+            .process-steps {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .verdict-box {
+                padding: 30px 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+                .hero h1 {
+                    font-size: 2rem;
+                }
+
+            .card {
+                padding: 20px;
+            }
+
+            .section {
+                margin-bottom: 50px;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+
+            .meter-card {
+                padding: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">UK Energy Market 2026</div>
+                <h1>Compare Energy Prices Without a Smart Meter (UK Guide 2026)</h1>
+
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>Last updated: January 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Regulated by: Ofgem</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-bolt"></i>
+                        <span>Market focus: UK gas & electricity</span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Full guide to comparing and switching energy tariffs with standard, prepayment, and Economy 7 meters. Smart meters are optional — your savings aren't.
+                </p>
+
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button animate-in">
+                    Contact Us
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- Can You Compare Section -->
+            <section class="section animate-in" id="can-you-compare">
+                <div class="section-header">
+                    <h2 class="section-title">Can You Compare Energy Prices Without a Smart Meter?</h2>
+                    <p class="section-subtitle">The simple answer is yes — and here's how</p>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--success), var(--secondary)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; color: var(--primary); margin-bottom: 15px;">Yes — You Absolutely Can!</h3>
+                        <p style="font-size: 1.1rem; max-width: 700px; margin: 0 auto;">Millions of UK households compare and switch energy suppliers without smart meters every year.</p>
+                    </div>
+
+                    <p>Despite growing smart meter adoption, having a smart meter is <strong>not required</strong> to:</p>
+
+                    <div class="cards-grid" style="margin-top: 25px;">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-exchange-alt"></i>
+                            </div>
+                            <h4 class="card-title">Compare Energy Tariffs</h4>
+                            <p class="card-content">View all available deals from UK suppliers based on your meter type.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-random"></i>
+                            </div>
+                            <h4 class="card-title">Switch Energy Suppliers</h4>
+                            <p class="card-content">Change suppliers freely with standard, prepayment, or Economy 7 meters.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-pound-sign"></i>
+                            </div>
+                            <h4 class="card-title">Save Money</h4>
+                            <p class="card-content">Access fixed, variable, and competitive tariffs to reduce your bills.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f0f9ff; border-left: 4px solid var(--primary);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-lightbulb" style="color: var(--primary); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>Comparison tools like UtilityKing</strong> are designed to work just as effectively for standard credit meters, prepayment meters, and Economy 7 meters as they do for smart meters.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why This Matters -->
+            <section class="section animate-in delay-1" id="why-matters">
+                <div class="section-header">
+                    <h2 class="section-title">Why This Question Matters in 2026</h2>
+                    <p class="section-subtitle">Clearing up common misconceptions</p>
+                </div>
+
+                <div class="card">
+                    <p>Many households believe these common misconceptions about smart meters and energy comparison:</p>
+
+                    <div class="info-grid" style="margin: 25px 0;">
+                        <div class="card" style="background: #fef2f2; border-top: 4px solid var(--danger);">
+                            <h4 class="card-title" style="color: var(--danger);">Common Myths</h4>
+                            <ul class="feature-list">
+                                <li>Smart meters are mandatory</li>
+                                <li>You can't switch without one</li>
+                                <li>Cheaper tariffs are "smart-only"</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="background: #f0f9ff; border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">The Reality</h4>
+                            <ul class="feature-list">
+                                <li>Smart meters are optional</li>
+                                <li>Switching is independent of meter type</li>
+                                <li>Best deals are available to all</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, #fffbeb, #fef3c7); padding: 25px; border-radius: var(--radius); margin-top: 20px;">
+                        <p><strong>Important:</strong> In 2026, UK energy rules still protect consumer choice — including the right to refuse a smart meter and switch suppliers freely. Ofgem regulations ensure equal access to the energy market regardless of your meter type.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meter Types Section -->
+            <section class="section animate-in delay-2" id="meter-types">
+                <div class="section-header">
+                    <h2 class="section-title">What Type of Meter Do You Have?</h2>
+                    <p class="section-subtitle">Identifying your meter for accurate comparison</p>
+                </div>
+
+                <div class="card">
+                    <p>Before comparing energy prices, it helps to know your meter type. The most common non-smart options are:</p>
+
+                    <div class="cards-grid" style="margin-top: 25px;">
+                        <div class="meter-card animate-in">
+                            <div class="meter-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h3 class="meter-title">1. Standard Credit Meter</h3>
+                            <ul style="list-style: none; margin-top: 15px;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Manual readings required
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Monthly or quarterly bills
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Most UK homes still use these
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="meter-card animate-in delay-1">
+                            <div class="meter-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h3 class="meter-title">2. Prepayment Meter</h3>
+                            <ul style="list-style: none; margin-top: 15px;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Pay-as-you-go (key or card)
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Higher risk of overpaying if not compared
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Can switch to credit meters
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div class="meter-card animate-in delay-2">
+                            <div class="meter-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h3 class="meter-title">3. Economy 7 Meter</h3>
+                            <ul style="list-style: none; margin-top: 15px;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Day and night rates
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Popular in flats and all-electric homes
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Requires correct usage timing
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #dcfce7; border-left: 4px solid var(--success);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-info-circle" style="color: var(--success); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>All of these meter types can be compared without a smart meter.</strong> UtilityKing supports comparison for every meter type available in the UK market, ensuring you see all available tariffs regardless of your current setup.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How It Works Section -->
+            <section class="section animate-in delay-1" id="how-it-works">
+                <div class="section-header">
+                    <h2 class="section-title">How Energy Comparison Works Without a Smart Meter</h2>
+                    <p class="section-subtitle">The process is simpler than you might think</p>
+                </div>
+
+                <div class="card">
+                    <p>When you compare energy prices without a smart meter, the comparison uses:</p>
+
+                    <div class="process-steps">
+                        <div class="step animate-in">
+                            <div class="step-number">1</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Your Postcode</h4>
+                            <p>For regional pricing and available suppliers in your area.</p>
+                        </div>
+
+                        <div class="step animate-in delay-1">
+                            <div class="step-number">2</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Your Meter Type</h4>
+                            <p>Standard, prepayment, or Economy 7 meter specification.</p>
+                        </div>
+
+                        <div class="step animate-in delay-2">
+                            <div class="step-number">3</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Your Usage Estimate</h4>
+                            <p>Annual kWh usage or typical household profile for accuracy.</p>
+                        </div>
+                    </div>
+
+                    <p style="margin-top: 30px;"><strong>UtilityKing then calculates:</strong></p>
+
+                    <div class="cards-grid" style="margin-top: 20px;">
+                        <div class="card">
+                            <h4 class="card-title">Unit Rates (p/kWh)</h4>
+                            <p class="card-content">The cost per kilowatt-hour for your electricity and gas usage.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4 class="card-title">Standing Charges (per day)</h4>
+                            <p class="card-content">Daily fixed costs that apply regardless of your usage.</p>
+                        </div>
+
+                        <div class="card">
+                            <h4 class="card-title">Estimated Annual Cost</h4>
+                            <p class="card-content">Total expected cost based on your usage patterns and tariff rates.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f0f9ff;">
+                        <p>This method is fully accepted by suppliers and regulated under Ofgem rules. You receive the same accurate comparison results as smart meter users, just without the automated data collection.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Meter Readings Section -->
+            <section class="section animate-in delay-2" id="readings">
+                <div class="section-header">
+                    <h2 class="section-title">Do You Need Meter Readings?</h2>
+                    <p class="section-subtitle">Separating comparison from switching requirements</p>
+                </div>
+
+                <div class="card">
+                    <table class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Meter Readings Required?</th>
+                                <th>When & Why</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Compare Tariffs</strong></td>
+                                <td><span class="table-badge badge-neutral">Not Required</span></td>
+                                <td>You can compare using estimated usage, which is standard practice for initial comparison.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>View Available Deals</strong></td>
+                                <td><span class="table-badge badge-neutral">Not Required</span></td>
+                                <td>See all available tariffs without providing any readings or usage data.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Estimate Savings</strong></td>
+                                <td><span class="table-badge badge-warning">Optional</span></td>
+                                <td>More accurate with actual usage, but estimates work well for most households.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Switch Suppliers</strong></td>
+                                <td><span class="table-badge badge-success">Required</span></td>
+                                <td>Only when proceeding with a switch to ensure accurate billing transition.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="info-grid" style="margin-top: 30px;">
+                        <div class="card" style="background: #f0f9ff;">
+                            <h4 class="card-title">If You Decide to Switch</h4>
+                            <p>Your current meter readings are needed to:</p>
+                            <ul class="feature-list">
+                                <li>Close your old account accurately</li>
+                                <li>Open your new account correctly</li>
+                                <li>Ensure a smooth transition</li>
+                            </ul>
+                            <p style="margin-top: 15px;"><strong>Important:</strong> Even then, readings can be provided later — not during initial comparison.</p>
+                        </div>
+
+                        <div class="card" style="background: #fef3c7;">
+                            <h4 class="card-title">Reading Tips</h4>
+                            <ul class="feature-list">
+                                <li>Take readings on the day of switch</li>
+                                <li>Submit to both old and new suppliers</li>
+                                <li>Keep a photo for your records</li>
+                                <li>Include all meter numbers</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Smart Meter Tariffs -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">Are Smart Meter Tariffs Cheaper?</h2>
+                    <p class="section-subtitle">The truth about "smart-only" pricing</p>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, #f59e0b, #fbbf24); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-scale-balanced"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; color: var(--dark-bg); margin-bottom: 15px;">Not Necessarily Cheaper</h3>
+                    </div>
+
+                    <p>While some tariffs are labelled "smart-only," they are usually:</p>
+
+                    <div class="cards-grid" style="margin: 25px 0;">
+                        <div class="card" style="border-top: 4px solid var(--warning);">
+                            <h4 class="card-title" style="color: var(--warning);">Time-of-Use Tariffs</h4>
+                            <p class="card-content">Designed for EV charging or flexible usage patterns that may not suit typical households.</p>
+                        </div>
+
+                        <div class="card" style="border-top: 4px solid var(--warning);">
+                            <h4 class="card-title" style="color: var(--warning);">Limited Suitability</h4>
+                            <p class="card-content">Often require lifestyle changes to maximize savings, which many households cannot accommodate.</p>
+                        </div>
+
+                        <div class="card" style="border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">Standard Fixed Tariffs</h4>
+                            <p class="card-content">For most homes, standard fixed tariffs without smart meters are often cheaper and more predictable.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="background: linear-gradient(135deg, #f0f9ff, #e0f2fe); padding: 25px; border-radius: var(--radius); margin-top: 20px;">
+                        <p><strong>Key Insight:</strong> The majority of the cheapest fixed-rate tariffs in the UK market are available to <strong>all meter types</strong>, not just smart meters. Price competitiveness depends more on supplier competition and market conditions than on meter technology.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fixed vs Variable -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Fixed vs Variable Tariffs Without a Smart Meter</h2>
+                    <p class="section-subtitle">Your options remain fully available</p>
+                </div>
+
+                <div class="card">
+                    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 30px; margin: 25px 0;">
+                        <div class="card" style="background: #f0f9ff; border-top: 4px solid var(--success);">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <div style="width: 50px; height: 50px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h4 class="card-title" style="color: var(--success); margin: 0;">Fixed Tariffs</h4>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Available without smart meters</li>
+                                <li>Price certainty for 12-24 months</li>
+                                <li>Often cheaper than the price cap</li>
+                                <li>Protection against market increases</li>
+                            </ul>
+                        </div>
+
+                        <div class="card" style="background: #fef3c7; border-top: 4px solid var(--warning);">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <div style="width: 50px; height: 50px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h4 class="card-title" style="color: var(--warning); margin: 0;">Variable Tariffs</h4>
+                            </div>
+                            <ul class="feature-list">
+                                <li>Available to all meter types</li>
+                                <li>Prices can rise with market changes</li>
+                                <li>Less control over future costs</li>
+                                <li>No exit fees for switching</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #dcfce7; border-left: 4px solid var(--success);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-bullhorn" style="color: var(--success); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>Important:</strong> Smart meters are <strong>not a requirement</strong> for either fixed or variable tariffs. All suppliers must offer both options to customers with standard meters under Ofgem regulations. Your choice depends on your preference for price certainty versus flexibility.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Myths Section -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">Common Myths About Smart Meters and Comparison</h2>
+                    <p class="section-subtitle">Separating fact from fiction</p>
+                </div>
+
+                <div class="card">
+                    <ul class="myth-list">
+                        <li>
+                            <div class="myth-icon cross">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>
+                                <strong>"You can't switch without a smart meter"</strong>
+                                <p style="margin-top: 5px; color: var(--text-muted);"><strong>False</strong> — switching is completely independent of meter type. Millions switch annually with standard meters.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="myth-icon cross">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>
+                                <strong>"Smart meters are compulsory"</strong>
+                                <p style="margin-top: 5px; color: var(--text-muted);"><strong>False</strong> — installation remains optional in the UK. You have the legal right to refuse a smart meter.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="myth-icon cross">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>
+                                <strong>"Cheapest deals require a smart meter"</strong>
+                                <p style="margin-top: 5px; color: var(--text-muted);"><strong>False</strong> — many of the cheapest fixed deals in the market are available to standard meter customers.</p>
+                            </div>
+                        </li>
+
+                        <li>
+                            <div class="myth-icon cross">
+                                <i class="fas fa-times"></i>
+                            </div>
+                            <div>
+                                <strong>"Smart meters save money automatically"</strong>
+                                <p style="margin-top: 5px; color: var(--text-muted);"><strong>False</strong> — savings come from switching to better tariffs, not from the meter itself.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </section>
+
+            <!-- Who Should Avoid Smart-Only -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Who Should Avoid Smart-Only Tariffs?</h2>
+                    <p class="section-subtitle">Smart meters aren't for everyone — and that's okay</p>
+                </div>
+
+                <div class="card">
+                    <p>Smart-only tariffs may not suit these households:</p>
+
+                    <div class="cards-grid" style="margin-top: 25px;">
+                        <div class="meter-card">
+                            <div class="meter-icon" style="background: linear-gradient(135deg, #64748b, #94a3b8);">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h3 class="meter-title">Low-Usage Households</h3>
+                            <p>Standing charges matter more than time-of-use rates. Simple fixed tariffs often work better.</p>
+                        </div>
+
+                        <div class="meter-card">
+                            <div class="meter-icon" style="background: linear-gradient(135deg, #6366f1, #8b5cf6);">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h3 class="meter-title">Renters</h3>
+                            <p>Limited control over property infrastructure makes smart meter installation impractical.</p>
+                        </div>
+
+                        <div class="meter-card">
+                            <div class="meter-icon" style="background: linear-gradient(135deg, #f59e0b, #f97316);">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3 class="meter-title">Traditional Households</h3>
+                            <p>Homes without flexible usage patterns won't benefit from time-of-use pricing.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f0f9ff;">
+                        <p><strong>Comparing without a smart meter keeps options simple and predictable.</strong> You see all available tariffs without being pushed toward smart-only options that may not suit your lifestyle or circumstances.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UtilityKing Highlight -->
+            <section class="section animate-in delay-1">
+                <div class="utilityking-highlight">
+                    <h3 class="highlight-title">Why UtilityKing Is Ideal for Non-Smart Meter Homes</h3>
+                    <div>
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">All Meter Types Supported</h4>
+                            <p class="card-content">Standard, prepayment, Economy 7 — every meter type is fully supported.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="card-title">Postcode-Accurate Pricing</h4>
+                            <p class="card-content">Regional variations calculated precisely for your location.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-pound-sign"></i>
+                            </div>
+                            <h4 class="card-title">True Annual Cost Ranking</h4>
+                            <p class="card-content">Tariffs ranked by real annual cost, not misleading headline rates.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <h4 class="card-title">No Smart-Only Bias</h4>
+                            <p class="card-content">Smart meters remain optional — never assumed or required.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px;">
+                        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;">With UtilityKing, <strong>you stay in complete control</strong> of how you manage your energy, without pressure to adopt technology you don't want or need.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Switching Process -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Switching Energy Supplier Without a Smart Meter</h2>
+                    <p class="section-subtitle">The process is identical and straightforward</p>
+                </div>
+
+                <div class="card">
+                    <div class="process-steps">
+                        <div class="step animate-in">
+                            <div class="step-number">1</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Compare Tariffs</h4>
+                            <p>Use UtilityKing to see all available deals for your meter type and usage.</p>
+                        </div>
+
+                        <div class="step animate-in delay-1">
+                            <div class="step-number">2</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Choose a Deal</h4>
+                            <p>Select your preferred tariff based on price, contract length, and supplier reputation.</p>
+                        </div>
+
+                        <div class="step animate-in delay-2">
+                            <div class="step-number">3</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Confirm Details</h4>
+                            <p>Provide switching details — no engineer visit required for standard meters.</p>
+                        </div>
+
+                        <div class="step animate-in delay-3">
+                            <div class="step-number">4</div>
+                            <h4 style="color: var(--primary); margin-bottom: 10px;">Provide Readings</h4>
+                            <p>Submit meter readings on switch day for accurate billing transition.</p>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f0f9ff; border-left: 4px solid var(--primary);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-hard-hat" style="color: var(--primary); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>No engineer visit is required</strong> unless you specifically opt in to a smart meter installation later. The switching process for standard meters is completely seamless and happens behind the scenes, with no disruption to your supply.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Verdict -->
+            <section class="section animate-in delay-1">
+                <div class="verdict-box">
+                    <h2 class="verdict-title">Final Verdict: Smart Meters Are Optional — Savings Are Not</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        You do not need a smart meter to compare energy prices, find cheaper tariffs, switch suppliers, or reduce your bills. With the right comparison platform, non-smart meter households can still save hundreds of pounds per year.
+                    </p>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px;">
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Full Market Access</h4>
+                            <p>Access all available tariffs regardless of meter type.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Equal Savings Potential</h4>
+                            <p>Same saving opportunities as smart meter customers.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Consumer Choice Protected</h4>
+                            <p>Your right to choose your preferred meter type is preserved.</p>
+                        </div>
+                    </div>
+
+                  
+                </div>
+            </section>
+
+           
+        </div>
+    </div>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animation
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

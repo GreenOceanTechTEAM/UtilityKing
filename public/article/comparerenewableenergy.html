@@ -1,0 +1,973 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Renewable Energy Suppliers UK (2026 Guide) - UtilityKing</title>
+    <meta name="description" content="2026 guide to comparing renewable energy suppliers in the UK. Find the cheapest green energy providers, compare renewable tariffs, and switch to sustainable energy.">
+    <meta name="keywords" content="renewable energy suppliers UK, compare green energy providers, renewable energy companies, green energy suppliers 2026, eco-friendly energy providers">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #7C3AED;
+            --primary-dark: #5B21B6;
+            --secondary: #EC4899;
+            --accent: #F59E0B;
+            --dark: #1E293B;
+            --light: #FFFFFF;
+            --gray: #64748B;
+            --gray-light: #F1F5F9;
+            --border-radius: 16px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #F8FAFC 0%, #F1F5F9 100%);
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            line-height: 1.3;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            position: relative;
+            padding-bottom: 1rem;
+            margin-top: 4rem;
+            color: var(--primary-dark);
+        }
+
+            h2:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 100px;
+                height: 6px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                border-radius: 3px;
+            }
+
+        h3 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            margin-top: 3rem;
+        }
+
+        p {
+            margin-bottom: 1.5rem;
+            font-size: 1.15rem;
+            color: #334155;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Hero Section */
+        .article-hero {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #FFFFFF;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+
+            .article-hero:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 30%, rgba(124, 58, 237, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            text-align: center;
+            margin: 0 auto;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2.5rem;
+            font-size: 1rem;
+            opacity: 0.9;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+            .meta-item i {
+                color: var(--secondary);
+            }
+
+        .hero-title {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, #FFFFFF, #E2E8F0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-subtitle {
+            font-size: 1.4rem;
+            font-weight: 400;
+            opacity: 0.9;
+            margin-bottom: 3rem;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #E2E8F0;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 8px 25px rgba(124, 58, 237, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -100%;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transition: 0.5s;
+            }
+
+            .btn:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px rgba(124, 58, 237, 0.4);
+            }
+
+                .btn:hover:before {
+                    left: 100%;
+                }
+
+        /* Article Content */
+        .content-block {
+            margin-bottom: 4rem;
+        }
+     
+        /* Dark Section */
+        .dark-section {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            color: #FFFFFF;
+            padding: 5rem 0;
+            margin: 5rem 0;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .dark-section:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,20 100,0 L100,100 Q50,80 0,100 Z" fill="rgba(255,255,255,0.03)"/></svg>');
+                background-size: cover;
+            }
+
+            .dark-section h2,
+            .dark-section h3,
+            .dark-section p,
+            .dark-section li,
+            .dark-section strong {
+                color: #FFFFFF !important;
+            }
+
+                .dark-section h2:after {
+                    background: linear-gradient(90deg, var(--secondary), var(--accent));
+                }
+
+        /* Highlight Banner */
+        .highlight-banner {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform: perspective(1000px) rotateX(2deg);
+            box-shadow: 0 20px 40px rgba(124, 58, 237, 0.2);
+        }
+
+            .highlight-banner:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.1)"/></svg>');
+                background-size: cover;
+            }
+
+        .highlight-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            display: block;
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .highlight-text {
+            font-size: 1.5rem;
+            opacity: 0.95;
+            font-weight: 500;
+            color:#fff;
+        }
+
+        /* Info Cards */
+        .info-card {
+            background: linear-gradient(135deg, #FFFFFF, #F8FAFC);
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+            border-left: 8px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+        }
+
+            .info-card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 25px 50px rgba(0, 0, 0, 0.1);
+            }
+
+            .info-card:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 150px;
+                height: 150px;
+                background: linear-gradient(135deg, rgba(124, 58, 237, 0.05), rgba(236, 72, 153, 0.05));
+                border-radius: 0 0 0 150px;
+            }
+
+        .info-card-title {
+            font-size: 1.8rem;
+            color: var(--primary-dark);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+
+            .info-card-title i {
+                color: var(--secondary);
+                font-size: 2rem;
+            }
+
+        /* Feature Grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2.5rem;
+            margin: 4rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 3rem 2.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(124, 58, 237, 0.1);
+        }
+
+            .feature-card:hover {
+                transform: translateY(-15px);
+                box-shadow: 0 25px 50px rgba(124, 58, 237, 0.15);
+            }
+
+            .feature-card:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 5px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+            }
+
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            height: 90px;
+            width: 90px;
+            background: linear-gradient(135deg, #F5F3FF, #EDE9FE);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: var(--transition);
+        }
+
+        .feature-card:hover .feature-icon {
+            transform: scale(1.1) rotate(5deg);
+            background: linear-gradient(135deg, #EDE9FE, #DDD6FE);
+        }
+
+        .feature-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+        }
+
+        /* Comparison Tables */
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 3rem 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            background: white;
+        }
+
+            .comparison-table th {
+                background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+                color: white;
+                text-align: left;
+                padding: 1.5rem 2rem;
+                font-weight: 600;
+                font-size: 1.1rem;
+            }
+
+            .comparison-table td {
+                padding: 1.5rem 2rem;
+                border-bottom: 1px solid #E2E8F0;
+                transition: var(--transition);
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background-color: #F8FAFC;
+            }
+
+            .comparison-table tr:hover td {
+                background-color: #F1F5F9;
+            }
+
+        .badge {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(236, 72, 153, 0.2);
+        }
+
+        .badge-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+        }
+
+        /* Price Comparison */
+        .price-comparison {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 3rem;
+            margin: 4rem 0;
+            box-shadow: var(--shadow);
+            border: 2px solid #E2E8F0;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2.5rem;
+            margin-top: 2rem;
+        }
+
+        .price-card {
+            background: linear-gradient(135deg, #F8FAFC, #FFFFFF);
+            padding: 2.5rem;
+            border-radius: var(--border-radius);
+            text-align: center;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 2px solid #E2E8F0;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .price-card:hover {
+                transform: translateY(-10px);
+                border-color: var(--primary);
+                box-shadow: 0 20px 40px rgba(124, 58, 237, 0.1);
+            }
+
+        .price-amount {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .price-label {
+            color: var(--dark);
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: #FFFFFF;
+            padding: 6rem 0;
+            text-align: center;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(124, 58, 237, 0.3);
+        }
+
+            .cta-section:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 30%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(236, 72, 153, 0.1) 0%, transparent 50%);
+            }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3rem;
+            color: #FFFFFF;
+            margin-bottom: 2rem;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section p {
+            color: #E2E8F0;
+            opacity: 0.95;
+            font-size: 1.3rem;
+            margin-bottom: 3rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 8px 25px rgba(255, 255, 255, 0.2);
+        }
+
+            .btn-light:hover {
+                background: #F8FAFC;
+                transform: translateY(-5px);
+                box-shadow: 0 15px 35px rgba(255, 255, 255, 0.3);
+            }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            h1 {
+                font-size: 3rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+                margin-top: 3rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .article-hero {
+                padding: 4rem 0 3rem;
+                clip-path: polygon(0 0, 100% 0, 100% 95%, 0 100%);
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1rem;
+            }
+
+            .highlight-number {
+                font-size: 3rem;
+            }
+
+            .feature-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 300px;
+                text-align: center;
+            }
+
+            .cta-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            h2 {
+                font-size: 1.8rem;
+            }
+
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .highlight-number {
+                font-size: 2.5rem;
+            }
+
+            .price-amount {
+                font-size: 2.2rem;
+            }
+
+            .info-card {
+                padding: 2rem;
+            }
+
+            .feature-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes floatIn {
+            from {
+                opacity: 0;
+                transform: translateY(40px) scale(0.95);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .animate-in {
+            animation: floatIn 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes shimmer {
+            0% {
+                background-position: -200% center;
+            }
+
+            100% {
+                background-position: 200% center;
+            }
+        }
+
+        .shimmer-text {
+            background: linear-gradient(90deg, var(--primary), var(--secondary), var(--primary));
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: shimmer 3s linear infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="article-hero">
+        <div class="container hero-content">
+            <div class="article-meta animate-in">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Reviewed by: UK Energy Market Analyst</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+            </div>
+
+            <h1 class="hero-title animate-in">Compare Renewable Energy Suppliers UK (2026 Guide)</h1>
+            <p class="hero-subtitle animate-in">Find the best renewable energy suppliers for your home. Compare green energy providers, prices, and environmental credentials to make an informed switch.</p>
+
+            <a href="https://www.utilityking.co.uk/contact.html" class="btn animate-in">
+                <i class="fas fa-bolt"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Highlight Banner -->
+    <div class="container">
+        <div class="highlight-banner">
+            <span class="highlight-number">50%+</span>
+            <p class="highlight-text">of UK electricity now comes from renewable sources</p>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <main class="article-content">
+        <div class="container">
+            <!-- Introduction -->
+            <section class="content-block">
+                <h2 class="animate-in">Why Compare Renewable Energy Suppliers in the UK?</h2>
+                <p class="animate-in">Renewable energy is now mainstream in the UK. More than half of UK electricity generation comes from renewable sources, and most major suppliers offer green tariffs. However, not all renewable energy suppliers are equal — either in price, transparency, or environmental impact.</p>
+
+                <div class="feature-grid">
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-pound-sign"></i>
+                        </div>
+                        <h4>Find Cheapest Green Tariffs</h4>
+                        <p>Compare prices specific to your postcode for maximum savings on renewable energy</p>
+                    </div>
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-eye"></i>
+                        </div>
+                        <h4>Avoid Greenwashing</h4>
+                        <p>Identify misleading claims and find genuinely sustainable suppliers</p>
+                    </div>
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h4>Support Real Renewables</h4>
+                        <p>Choose suppliers that actively invest in renewable generation projects</p>
+                    </div>
+                    <div class="feature-card animate-in">
+                        <div class="feature-icon">
+                            <i class="fas fa-lock"></i>
+                        </div>
+                        <h4>Lock in Lower Prices</h4>
+                        <p>Secure fixed green deals before prices potentially increase in the market</p>
+                    </div>
+                </div>
+
+                <div class="info-card animate-in">
+                    <h3 class="info-card-title">
+                        <i class="fas fa-lightbulb"></i> Key Insight for 2026
+                    </h3>
+                    <p><strong>Many households switching to renewable energy pay the same or less than standard tariffs — but only if they compare properly.</strong> Without comparison, you could miss out on significant savings or choose a supplier that doesn't match your environmental values.</p>
+                </div>
+            </section>
+
+            <!-- Dark Section -->
+            <section class="dark-section">
+                <div class="container">
+                    <h2 class="animate-in">What Counts as a Renewable Energy Supplier?</h2>
+                    <p class="animate-in">In the UK, a renewable energy supplier typically offers sustainable energy solutions:</p>
+
+                    <div class="feature-grid">
+                        <div class="feature-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="feature-icon" style="color: white; background: rgba(255, 255, 255, 0.2);">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 style="color: white;">Renewable Electricity</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9);">100% renewable electricity backed by REGOs, generated from wind, solar, hydro, or biomass sources with full transparency</p>
+                        </div>
+                        <div class="feature-card" style="background: rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="feature-icon" style="color: white; background: rgba(255, 255, 255, 0.2);">
+                                <i class="fas fa-fire"></i>
+                            </div>
+                            <h4 style="color: white;">Low-Carbon Gas Options</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9);">Standard gas supply with carbon offsetting, or partial biomethane blends for reduced environmental impact</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Comparison Table -->
+            <section class="content-block">
+                <h2 class="animate-in">Are All "Green" Energy Suppliers the Same?</h2>
+                <p class="animate-in"><strong class="badge">NO</strong>. Suppliers vary significantly in their approach to renewable energy and sustainability.</p>
+
+                <table class="comparison-table animate-in">
+                    <thead>
+                        <tr>
+                            <th>Aspect</th>
+                            <th>Basic Green Suppliers</th>
+                            <th>Advanced Renewable Suppliers</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>REGO Sourcing</strong></td>
+                            <td>Buy cheap certificates only</td>
+                            <td>Invest directly in UK renewables</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Price Competitiveness</strong></td>
+                            <td>Premium pricing for green energy</td>
+                            <td>Match or beat standard tariff prices</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Renewable Investment</strong></td>
+                            <td>Minimal new investment</td>
+                            <td>Fund new renewable projects</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Supply Transparency</strong></td>
+                            <td>Vague about energy sources</td>
+                            <td>Full supply chain disclosure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Customer Support</strong></td>
+                            <td>Standard support channels</td>
+                            <td>Dedicated green energy advisors</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-card animate-in">
+                    <h3 class="info-card-title">
+                        <i class="fas fa-balance-scale"></i> Comprehensive Comparison
+                    </h3>
+                    <p><strong>UtilityKing highlights both price competitiveness and environmental credibility, allowing consumers to make fully informed choices.</strong> We show you not just what it costs, but what you're actually supporting with your energy bills and the real environmental impact of each supplier.</p>
+                </div>
+            </section>
+
+            <!-- Price Comparison -->
+            <section class="content-block">
+                <h2 class="animate-in">Fixed vs Variable Renewable Tariffs</h2>
+
+                <div class="price-comparison animate-in">
+                    <h3 style="color: var(--primary-dark); text-align: center; margin-bottom: 2rem;">2026 Market Comparison</h3>
+                    <div class="price-grid">
+                        <div class="price-card">
+                            <div class="price-amount">Fixed Tariffs</div>
+                            <div class="price-label">Recommended for Most</div>
+                            <ul style="text-align: left; margin-top: 1.5rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">✅ Lock in renewable electricity prices</li>
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">✅ Protection from price cap increases</li>
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">✅ Often cheaper over 12–24 months</li>
+                                <li style="color: var(--dark);">✅ Best for budget planning</li>
+                            </ul>
+                            <div style="margin-top: 2rem; padding: 0.8rem; background: linear-gradient(135deg, var(--primary), var(--primary-dark)); color: white; border-radius: 10px; font-weight: 600;">
+                                <strong>Best Value in 2026</strong>
+                            </div>
+                        </div>
+                        <div class="price-card">
+                            <div class="price-amount">Variable Tariffs</div>
+                            <div class="price-label">Flexible but Costly</div>
+                            <ul style="text-align: left; margin-top: 1.5rem; padding-left: 1.5rem;">
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">⚠️ Follows Ofgem price cap</li>
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">✅ No exit fees</li>
+                                <li style="margin-bottom: 0.8rem; color: var(--dark);">⚠️ Usually more expensive long-term</li>
+                                <li style="color: var(--dark);">✅ Maximum flexibility</li>
+                            </ul>
+                            <div style="margin-top: 2rem; padding: 0.8rem; background: var(--accent); color: white; border-radius: 10px; font-weight: 600;">
+                                <strong>Short-term Use Only</strong>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container cta-content">
+                    <h2 class="cta-title animate-in">Ready to Compare Renewable Suppliers?</h2>
+                    <p class="animate-in">Find the best renewable energy deals for your home. Compare prices, environmental impact, and supplier credentials in just a few minutes with our comprehensive comparison tool.</p>
+
+                   
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all content sections
+            const elements = document.querySelectorAll('.content-block, .feature-card, .info-card, .comparison-table, .price-comparison, .dark-section, .highlight-banner');
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Add animation to h2 and p elements
+            document.querySelectorAll('h2, p').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Smooth scroll for links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add hover effect to related articles
+            document.querySelectorAll('.cta-section a[href]').forEach(link => {
+                link.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-3px)';
+                    this.style.boxShadow = '0 10px 20px rgba(255, 255, 255, 0.2)';
+                });
+
+                link.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                    this.style.boxShadow = 'none';
+                });
+            });
+        });
+    </script>
+</body>
+</html>

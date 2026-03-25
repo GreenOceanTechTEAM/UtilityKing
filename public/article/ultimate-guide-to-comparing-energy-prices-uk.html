@@ -1,0 +1,911 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ultimate Guide to Comparing Energy Prices UK | A Complete First-Principles Breakdown from Utility King</title>
+    <meta name="description" content="The ultimate guide to comparing energy prices in the UK. Learn how energy pricing works, regional variations, fixed vs variable tariffs, and how to switch intelligently.">
+    <meta name="keywords" content="ultimate guide comparing energy prices UK, compare energy suppliers, energy tariff guide, Utility King, UK energy comparison, first principles energy">
+    <meta name="author" content="Utility King">
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.7;
+            background-color: #f5f3f0;
+            color: #2e2a24;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+
+        /* ===== FINAL DARK HERO - Rich Charcoal/Black with Gold ===== */
+        .hero {
+            background: linear-gradient(145deg, #1a1a1a 0%, #2d2a24 100%);
+            color: #f0eee9;
+            padding: 90px 0 80px 0;
+            border-bottom-left-radius: 60px;
+            border-bottom-right-radius: 60px;
+            box-shadow: 0 30px 50px -20px #000000cc;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #c9a03d;
+        }
+
+            .hero::before {
+                content: "⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 40px;
+                font-size: 12rem;
+                opacity: 0.05;
+                color: #c9a03d;
+                transform: rotate(-5deg);
+                font-family: Arial, sans-serif;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 50%, rgba(201, 160, 61, 0.05) 0%, transparent 50%);
+                pointer-events: none;
+            }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(201, 160, 61, 0.15);
+            color: #e5c87c;
+            font-weight: 700;
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            padding: 10px 28px;
+            border-radius: 60px;
+            margin-bottom: 30px;
+            border: 1px solid rgba(201, 160, 61, 0.4);
+            backdrop-filter: blur(4px);
+            text-transform: uppercase;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero__highlight {
+            color: #e5c87c;
+            border-bottom: 4px solid #c9a03d;
+            display: inline-block;
+            padding-bottom: 8px;
+        }
+
+        .hero__subhead {
+            font-size: 1.8rem;
+            font-weight: 400;
+            color: #c0bcb2;
+            margin-bottom: 30px;
+            font-style: italic;
+        }
+
+        .hero__intro-text {
+            font-size: 1.3rem;
+            color: #d9d6cd;
+            max-width: 800px;
+            margin-bottom: 45px;
+            border-left: 4px solid #c9a03d;
+            padding-left: 30px;
+        }
+
+        .hero__pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            margin-top: 40px;
+            border-top: 1px solid rgba(201, 160, 61, 0.3);
+            padding-top: 40px;
+        }
+
+        .hero__pillar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 14px 32px;
+            border-radius: 60px;
+            border: 1px solid rgba(201, 160, 61, 0.3);
+            font-weight: 600;
+            backdrop-filter: blur(4px);
+            color: #e5d7b5;
+        }
+
+            .hero__pillar i {
+                color: #c9a03d;
+                font-size: 1.3rem;
+            }
+
+        /* ===== LIGHT THEME BODY - Encyclopedia style ===== */
+        .article-body {
+            background-color: #ffffff;
+            border-radius: 60px 60px 0 0;
+            box-shadow: 0 -30px 60px rgba(0, 0, 0, 0.03), 0 30px 60px -20px #00000030;
+            padding: 80px 0 90px 0;
+            margin-top: -30px;
+            position: relative;
+            z-index: 5;
+        }
+
+            .article-body h2 {
+                font-size: 2.8rem;
+                font-weight: 800;
+                letter-spacing: -0.02em;
+                margin: 70px 0 30px 0;
+                color: #1a1a1a;
+                display: flex;
+                align-items: center;
+                gap: 20px;
+                border-bottom: 3px solid #c9a03d;
+                padding-bottom: 18px;
+            }
+
+                .article-body h2:first-of-type {
+                    margin-top: 0;
+                }
+
+                .article-body h2 i {
+                    color: #c9a03d;
+                    font-size: 2.5rem;
+                }
+
+            .article-body h3 {
+                font-size: 2rem;
+                font-weight: 700;
+                margin: 50px 0 25px 0;
+                color: #2d2a24;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+                .article-body h3 i {
+                    color: #c9a03d;
+                    font-size: 2rem;
+                }
+
+            .article-body p {
+                font-size: 1.15rem;
+                color: #3a3630;
+                margin-bottom: 25px;
+            }
+
+            .article-body strong {
+                color: #1a1a1a;
+                font-weight: 700;
+                border-bottom: 1px dotted #c9a03d;
+            }
+
+        /* Part dividers */
+        .part-divider {
+            margin: 80px 0 40px;
+            text-align: center;
+            position: relative;
+        }
+
+            .part-divider span {
+                background: #c9a03d;
+                color: white;
+                font-weight: 800;
+                font-size: 1.2rem;
+                padding: 8px 40px;
+                border-radius: 60px;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+            }
+
+            .part-divider::before {
+                content: "";
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+                z-index: -1;
+            }
+
+        /* Core components */
+        .components-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin: 45px 0;
+        }
+
+        .component-card {
+            background: #faf8f5;
+            border-radius: 48px;
+            padding: 40px;
+            border: 1px solid #e8e0d5;
+            box-shadow: 0 20px 30px -20px #00000030;
+        }
+
+            .component-card h4 {
+                font-size: 2rem;
+                color: #1a1a1a;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+                .component-card h4 i {
+                    color: #c9a03d;
+                }
+
+            .component-card p {
+                font-size: 1.1rem;
+            }
+
+        /* Formula showcase */
+        .formula-master {
+            background: #1a1a1a;
+            color: white;
+            border-radius: 60px;
+            padding: 45px 50px;
+            margin: 50px 0;
+            text-align: center;
+            border: 3px solid #c9a03d;
+            position: relative;
+        }
+
+            .formula-master p {
+                color: #e5d7b5;
+                font-size: 1.3rem;
+                margin-bottom: 20px;
+            }
+
+        .formula-display {
+            font-size: 2.2rem;
+            font-weight: 800;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 40px;
+            border: 1px solid #c9a03d;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .formula-note {
+            margin-top: 25px;
+            font-style: italic;
+            color: #c0bcb2;
+        }
+
+        /* Regional factors */
+        .regional-master {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 45px 0;
+        }
+
+        .regional-master-item {
+            background: #faf8f5;
+            border-radius: 40px;
+            padding: 30px 20px;
+            text-align: center;
+            border: 1px solid #e8e0d5;
+        }
+
+            .regional-master-item i {
+                font-size: 2.5rem;
+                color: #c9a03d;
+                margin-bottom: 20px;
+            }
+
+            .regional-master-item h4 {
+                font-size: 1.1rem;
+                color: #1a1a1a;
+                font-weight: 600;
+            }
+
+        /* Tariff comparison - premium */
+        .tariff-premium {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 35px;
+            margin: 50px 0;
+        }
+
+        .tariff-premium-card {
+            border-radius: 48px;
+            padding: 45px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .tariff-premium-card.fixed-premium {
+                background: linear-gradient(145deg, #1e3b4a, #12303d);
+            }
+
+            .tariff-premium-card.variable-premium {
+                background: linear-gradient(145deg, #4a3b1e, #3d3012);
+            }
+
+            .tariff-premium-card h4 {
+                font-size: 2.2rem;
+                margin-bottom: 25px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+                .tariff-premium-card h4 i {
+                    color: #c9a03d;
+                }
+
+            .tariff-premium-card ul {
+                list-style: none;
+                margin: 30px 0;
+            }
+
+            .tariff-premium-card li {
+                display: flex;
+                gap: 15px;
+                margin-bottom: 18px;
+                font-size: 1.1rem;
+            }
+
+                .tariff-premium-card li i {
+                    width: 24px;
+                }
+
+            .tariff-premium-card .benefit i {
+                color: #2ecc71;
+            }
+
+            .tariff-premium-card .risk i {
+                color: #e74c3c;
+            }
+
+        /* Five variables - elegant grid */
+        .variables-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .variable-item {
+            background: #faf8f5;
+            border-radius: 44px;
+            padding: 35px 30px;
+            border: 1px solid #e8e0d5;
+            transition: all 0.2s ease;
+        }
+
+            .variable-item:hover {
+                border-color: #c9a03d;
+                transform: translateY(-5px);
+                box-shadow: 0 30px 40px -25px #c9a03d80;
+            }
+
+        .variable-number {
+            font-size: 3rem;
+            font-weight: 800;
+            color: #c9a03d;
+            line-height: 1;
+            margin-bottom: 20px;
+            opacity: 0.7;
+        }
+
+        .variable-item h4 {
+            font-size: 1.5rem;
+            color: #1a1a1a;
+            margin-bottom: 15px;
+        }
+
+        .variable-item ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .variable-item li {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.95rem;
+        }
+
+            .variable-item li i {
+                color: #c9a03d;
+                width: 20px;
+            }
+
+        /* Smart way section */
+        .smart-showcase {
+            background: #faf8f5;
+            border-radius: 60px;
+            padding: 50px 60px;
+            margin: 50px 0;
+            border: 2px solid #c9a03d;
+            position: relative;
+        }
+
+            .smart-showcase h4 {
+                font-size: 2rem;
+                color: #1a1a1a;
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .smart-showcase ul {
+                list-style: none;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+            }
+
+            .smart-showcase li {
+                display: flex;
+                gap: 15px;
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+
+                .smart-showcase li i {
+                    color: #c9a03d;
+                    font-size: 1.3rem;
+                    width: 28px;
+                }
+
+        /* When grid */
+        .when-grid-premium {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 45px 0;
+        }
+
+        .when-item-premium {
+            background: #faf8f5;
+            border-radius: 44px;
+            padding: 35px;
+            border-left: 8px solid #c9a03d;
+        }
+
+            .when-item-premium h4 {
+                font-size: 1.5rem;
+                margin-bottom: 20px;
+                color: #1a1a1a;
+            }
+
+        /* Mistakes list */
+        .mistakes-premium {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+            margin: 45px 0;
+        }
+
+        .mistake-premium-item {
+            background: #fff5f0;
+            border-radius: 40px;
+            padding: 30px;
+            border: 1px solid #ffcdb0;
+        }
+
+            .mistake-premium-item i {
+                color: #e67e22;
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .mistake-premium-item h4 {
+                font-size: 1.2rem;
+                color: #b84d00;
+                margin-bottom: 10px;
+            }
+
+        /* FAQ premium */
+        .faq-premium {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 50px 0;
+        }
+
+        .faq-premium-item {
+            background: #faf8f5;
+            border-radius: 40px;
+            padding: 35px;
+            border: 1px solid #e8e0d5;
+            box-shadow: 0 15px 25px -15px #00000020;
+        }
+
+            .faq-premium-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #1a1a1a;
+                margin-bottom: 20px;
+            }
+
+                .faq-premium-item h4 i {
+                    color: #c9a03d;
+                    font-size: 1.5rem;
+                }
+
+            .faq-premium-item p {
+                font-size: 1.05rem;
+                margin-bottom: 0;
+            }
+
+        .utility-perspective-ultimate {
+            background: linear-gradient(145deg, #1a1a1a, #2d2a24);
+            color: white;
+            border-radius: 70px;
+            padding: 70px 80px;
+            margin: 70px 0 50px;
+            border: 3px solid #c9a03d;
+            text-align: center;
+            position: relative;
+        }
+
+            .utility-perspective-ultimate i {
+                font-size: 5rem;
+                color: #c9a03d;
+                margin-bottom: 30px;
+            }
+
+            .utility-perspective-ultimate p {
+                font-size: 1.3rem;
+                max-width: 800px;
+                margin: 0 auto 20px;
+                color: #f0eee9;
+            }
+
+            .utility-perspective-ultimate strong {
+                color: #e5c87c;
+                border-bottom: none;
+            }
+
+        .footer-ultimate {
+            background: #faf8f5;
+            border-radius: 60px;
+            padding: 45px 60px;
+            font-size: 1.2rem;
+            border: 2px solid #c9a03d;
+            margin: 50px 0 30px;
+            text-align: center;
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, transparent, #c9a03d, transparent);
+            margin: 60px 0;
+        }
+
+        .small-meta {
+            color: #8f8a80;
+            font-size: 0.9rem;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        @media (max-width: 850px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .components-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .regional-master {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .tariff-premium {
+                grid-template-columns: 1fr;
+            }
+
+            .variables-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .smart-showcase ul {
+                grid-template-columns: 1fr;
+            }
+
+            .mistakes-premium {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-premium {
+                grid-template-columns: 1fr;
+            }
+
+            .when-grid-premium {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- FINAL DARK HERO - Rich charcoal/black with gold -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__badge"><i class="fas fa-crown" style="margin-right: 8px;"></i> UTILITY KING · ULTIMATE GUIDE</span>
+            <h1>Ultimate Guide to <span class="hero__highlight">Comparing Energy Prices UK</span></h1>
+            <div class="hero__subhead">A Complete, First-Principles Breakdown from Utility King</div>
+            <p class="hero__intro-text">At Utility King, we believe comparing energy prices in the UK should not feel confusing, rushed, or sales-driven. Energy is one of the largest ongoing household expenses. Yet most UK households either: Stay on a standard variable tariff, Accept renewal offers without comparing, Use comparison tools without understanding how they work.</p>
+
+            <div class="hero__pillars">
+                <div class="hero__pillar"><i class="fas fa-bolt"></i> How pricing works</div>
+                <div class="hero__pillar"><i class="fas fa-map-pin"></i> Regional variation</div>
+                <div class="hero__pillar"><i class="fas fa-scale-balanced"></i> Fixed vs variable</div>
+                <div class="hero__pillar"><i class="fas fa-robot"></i> AI-powered comparison</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT THEME BODY - Encyclopedia style -->
+    <main class="article-body">
+        <div class="container">
+
+            <!-- Opening - exact content -->
+            <p>The result? Millions quietly overpay every year.</p>
+            <p>This is your complete, structured, first-principles guide to comparing energy prices in the UK properly — with clarity, logic, and control.</p>
+            <p>We will explain:</p>
+            <p>How energy pricing works in the UK</p>
+            <p>What actually determines the cheapest tariff</p>
+            <p>How regional pricing affects your bill</p>
+            <p>Fixed vs variable tariffs explained</p>
+            <p>How to compare energy suppliers intelligently</p>
+            <p>When to switch and when to wait</p>
+            <p>How AI-powered tailored comparison changes the game</p>
+            <p><strong>This is not a quick checklist. This is the framework.</strong></p>
+
+            <div class="part-divider"><span>PART 1</span></div>
+            <h2><i class="fas fa-microscope"></i> Understanding How Energy Pricing Works in the UK</h2>
+            <p>Before comparing suppliers, you must understand what you are comparing.</p>
+            <p>Every domestic UK energy tariff consists of two core components:</p>
+
+            <div class="components-grid">
+                <div class="component-card">
+                    <h4><i class="fas fa-bolt"></i> 1. Unit Rate</h4>
+                    <p>pence per kWh</p>
+                    <p>This is the price you pay for each unit of electricity or gas consumed. If you use more energy, the unit rate becomes more important.</p>
+                </div>
+                <div class="component-card">
+                    <h4><i class="fas fa-clock"></i> 2. Standing Charge</h4>
+                    <p>daily fixed cost</p>
+                    <p>This is a daily fee covering: National Grid infrastructure, Regional distribution networks, Meter maintenance, System balancing. You pay the standing charge every day — even if you use no energy.</p>
+                </div>
+            </div>
+
+            <h3>The Formula That Determines Everything</h3>
+            <div class="formula-master">
+                <p>Your annual energy cost is calculated as:</p>
+                <div class="formula-display">
+                    (Annual usage × Unit rate) + (Standing charge × 365)
+                </div>
+                <p class="formula-note">That is it.</p>
+                <p><strong>The cheapest energy supplier in the UK is the one that produces the lowest total annual cost for your postcode and usage.</strong> Not the lowest unit rate. Not the biggest advertised discount. Not the most recognisable brand. The lowest total annual cost.</p>
+            </div>
+
+            <div class="part-divider"><span>PART 2</span></div>
+            <h2><i class="fas fa-map"></i> Why Energy Prices Vary Across the UK</h2>
+            <p>Energy pricing is regional.</p>
+            <p>The UK is divided into electricity distribution regions, each with different network costs.</p>
+            <p>This means:</p>
+            <p>Standing charges vary by region</p>
+            <p>Unit rates can differ by postcode</p>
+            <p>The cheapest supplier in London may not be cheapest in Manchester or Glasgow</p>
+
+            <div class="regional-master">
+                <div class="regional-master-item"><i class="fas fa-chart-line"></i><h4>Infrastructure density</h4></div>
+                <div class="regional-master-item"><i class="fas fa-tree"></i><h4>Rural vs urban spread</h4></div>
+                <div class="regional-master-item"><i class="fas fa-wrench"></i><h4>Network maintenance</h4></div>
+                <div class="regional-master-item"><i class="fas fa-coins"></i><h4>Historical investment</h4></div>
+            </div>
+
+            <p>Factors influencing regional pricing include: Infrastructure density, Rural vs urban spread, Network maintenance costs, Historical grid investment.</p>
+            <p><strong>This is why national "cheapest supplier" headlines are misleading. Energy comparison must always be postcode-specific.</strong></p>
+
+            <div class="part-divider"><span>PART 3</span></div>
+            <h2><i class="fas fa-scale-balanced"></i> Fixed vs Standard Variable Tariffs Explained</h2>
+            <p>When comparing energy prices in the UK, you will encounter two main tariff types.</p>
+
+            <div class="tariff-premium">
+                <div class="tariff-premium-card fixed-premium">
+                    <h4><i class="fas fa-lock"></i> Fixed Energy Tariffs</h4>
+                    <p>A fixed tariff locks in your unit rate for a set period, usually 12–24 months.</p>
+                    <p><strong>Benefits:</strong></p>
+                    <ul>
+                        <li class="benefit"><i class="fas fa-circle-check"></i> Protection from price rises</li>
+                        <li class="benefit"><i class="fas fa-circle-check"></i> Budget stability</li>
+                        <li class="benefit"><i class="fas fa-circle-check"></i> Predictable monthly payments</li>
+                    </ul>
+                    <p><strong>Risks:</strong></p>
+                    <ul>
+                        <li class="risk"><i class="fas fa-circle-exclamation"></i> Exit fees may apply</li>
+                        <li class="risk"><i class="fas fa-circle-exclamation"></i> You cannot benefit if prices fall</li>
+                    </ul>
+                    <p>Fixed tariffs are often preferred during volatile wholesale markets.</p>
+                </div>
+                <div class="tariff-premium-card variable-premium">
+                    <h4><i class="fas fa-chart-line"></i> Standard Variable Tariffs (SVT)</h4>
+                    <p>A standard variable tariff:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Has no fixed end date</li>
+                        <li><i class="fas fa-circle"></i> Can change with market conditions</li>
+                        <li><i class="fas fa-circle"></i> Usually has no exit fees</li>
+                    </ul>
+                    <p>SVTs are flexible but often more expensive long term.</p>
+                    <p><strong>Most households are moved onto an SVT automatically when their fixed contract expires. This passive rollover is one of the biggest causes of overpayment in the UK energy market.</strong></p>
+                </div>
+            </div>
+
+            <div class="part-divider"><span>PART 4</span></div>
+            <h2><i class="fas fa-sliders"></i> What Determines the Cheapest Energy Deal for You?</h2>
+            <p>At Utility King, we analyse five key variables.</p>
+
+            <div class="variables-grid">
+                <div class="variable-item">
+                    <div class="variable-number">1</div>
+                    <h4>Annual Energy Usage (kWh)</h4>
+                    <p>Your electricity and gas consumption levels shape everything.</p>
+                    <p><strong>High-usage households</strong> benefit most from competitive unit rates.</p>
+                    <p><strong>Low-usage households</strong> must monitor standing charges carefully.</p>
+                </div>
+                <div class="variable-item">
+                    <div class="variable-number">2</div>
+                    <h4>Your Region</h4>
+                    <p>Electricity distribution regions impact both standing charges and rates.</p>
+                    <p><strong>Postcode-specific comparison is non-negotiable.</strong></p>
+                </div>
+                <div class="variable-item">
+                    <div class="variable-number">3</div>
+                    <h4>Payment Method</h4>
+                    <p>Direct debit tariffs are usually cheaper than quarterly billing or prepayment meters. Payment structure affects total annual cost.</p>
+                </div>
+                <div class="variable-item">
+                    <div class="variable-number">4</div>
+                    <h4>Heating System</h4>
+                    <p>Your heating type changes everything.</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Heat pump homes require low electricity rates</li>
+                        <li><i class="fas fa-circle"></i> EV owners benefit from time-of-use tariffs</li>
+                        <li><i class="fas fa-circle"></i> Solar panel owners must compare export rates</li>
+                    </ul>
+                    <p>Generic comparison ignores these variables. Tailored comparison accounts for them.</p>
+                </div>
+                <div class="variable-item">
+                    <div class="variable-number">5</div>
+                    <h4>Contract Timing</h4>
+                    <p>If your fixed tariff is ending soon, your renewal window is the strongest switching position. Comparing at the right time matters as much as comparing correctly.</p>
+                </div>
+            </div>
+
+            <div class="part-divider"><span>PART 5</span></div>
+            <h2><i class="fas fa-brain"></i> The Smart Way to Compare Energy Prices UK</h2>
+            <p>Traditional comparison websites often:</p>
+            <p>Rank by commission</p>
+            <p>Use estimated usage</p>
+            <p>Operate on limited supplier panels</p>
+            <p>Trigger sales calls</p>
+            <p>This creates friction and bias.</p>
+
+            <div class="smart-showcase">
+                <h4><i class="fas fa-microchip"></i> At Utility King, our AI-powered tailored energy comparison tool works differently.</h4>
+                <p>Instead of listing generic tariffs, it:</p>
+                <ul>
+                    <li><i class="fas fa-circle-check"></i> Analyses your actual usage</li>
+                    <li><i class="fas fa-circle-check"></i> Accounts for postcode-specific pricing</li>
+                    <li><i class="fas fa-circle-check"></i> Evaluates standing charges properly</li>
+                    <li><i class="fas fa-circle-check"></i> Matches tariff type to your heating profile</li>
+                    <li><i class="fas fa-circle-check"></i> Prioritises total annual cost accuracy</li>
+                </ul>
+                <p><strong>Energy comparison should be intelligent — not noisy.</strong></p>
+            </div>
+
+            <div class="part-divider"><span>PART 6</span></div>
+            <h2><i class="fas fa-calendar"></i> When Should You Compare Energy Prices?</h2>
+            <p>We recommend reviewing your tariff:</p>
+
+            <div class="when-grid-premium">
+                <div class="when-item-premium"><h4>At least once per year</h4></div>
+                <div class="when-item-premium"><h4>4–6 weeks before your fixed contract ends</h4></div>
+                <div class="when-item-premium"><h4>Immediately if on a standard variable tariff</h4></div>
+                <div class="when-item-premium"><h4>After major home changes (renovation, EV, heat pump, solar)</h4></div>
+            </div>
+
+            <p>Energy markets shift. Passive loyalty rarely produces savings.</p>
+
+            <div class="part-divider"><span>PART 7</span></div>
+            <h2><i class="fas fa-shield-halved"></i> Is Switching Energy Supplier Safe?</h2>
+            <p>Yes.</p>
+            <p>Switching energy supplier in the UK:</p>
+            <p>Does not interrupt supply</p>
+            <p>Does not require infrastructure changes</p>
+            <p>Is fully regulated</p>
+            <p>Includes a cooling-off period</p>
+            <p>The electricity and gas grid remain unchanged. Only your billing provider changes. The physical supply is unaffected.</p>
+
+            <div class="part-divider"><span>PART 8</span></div>
+            <h2><i class="fas fa-triangle-exclamation"></i> Common Mistakes When Comparing Energy Prices</h2>
+
+            <div class="mistakes-premium">
+                <div class="mistake-premium-item"><i class="fas fa-bolt"></i><h4>Comparing only unit rates</h4></div>
+                <div class="mistake-premium-item"><i class="fas fa-chart-line"></i><h4>Ignoring standing charges</h4></div>
+                <div class="mistake-premium-item"><i class="fas fa-file-signature"></i><h4>Accepting renewal without market comparison</h4></div>
+                <div class="mistake-premium-item"><i class="fas fa-house"></i><h4>Staying on a standard variable tariff</h4></div>
+                <div class="mistake-premium-item"><i class="fas fa-calculator"></i><h4>Using estimated usage instead of real data</h4></div>
+                <div class="mistake-premium-item"><i class="fas fa-repeat"></i><h4>Switching too frequently without strategy</h4></div>
+            </div>
+
+            <p>Energy comparison is about structured decision-making — not reaction.</p>
+
+            <div class="utility-perspective-ultimate">
+                <i class="fas fa-crown"></i>
+                <p><strong>Utility King's Final Perspective</strong></p>
+                <p>Comparing energy prices in the UK is not complicated. But it must be done correctly.</p>
+                <p>The key principles are:</p>
+                <p>Focus on total annual cost</p>
+                <p>Use real usage data</p>
+                <p>Compare postcode-specific tariffs</p>
+                <p>Time your switch strategically</p>
+                <p>Match tariff type to your energy profile</p>
+                <p>The households that consistently save are not the ones chasing headlines. They are the ones making data-driven decisions.</p>
+                <p><strong>Energy is predictable when approached logically. And when comparison is tailored, switching becomes simple.</strong></p>
+            </div>
+
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-premium">
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> How often should I compare energy prices in the UK?</h4><p>At least once per year or before your fixed contract expires.</p></div>
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> Is the cheapest energy supplier the same across the UK?</h4><p>No. Prices vary by postcode and usage.</p></div>
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> Are fixed tariffs better than variable tariffs?</h4><p>Often, but it depends on market conditions and risk tolerance.</p></div>
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> Does switching energy supplier interrupt supply?</h4><p>No. Switching is administrative only.</p></div>
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> How long does switching take?</h4><p>Typically between 2–5 weeks.</p></div>
+                <div class="faq-premium-item"><h4><i class="fas fa-circle-question"></i> What is the most important factor when comparing energy deals?</h4><p>Total annual cost based on accurate usage data.</p></div>
+            </div>
+
+            <hr>
+            <div class="footer-ultimate">
+                <i class="fas fa-star" style="color: #c9a03d; margin-right: 15px;"></i> If you want to compare energy prices in the UK accurately — without guesswork, sales pressure, or generic rankings — Utility King's AI-powered tailored comparison tool is designed to match your home with the most cost-effective tariff available. Energy comparison should feel structured, not stressful. And when done properly, it works.
+            </div>
+            <div class="small-meta">© Utility King — The ultimate guide to comparing energy prices UK. No header or footer, pure content.</div>
+
+        </div>
+    </main>
+</body>
+</html>

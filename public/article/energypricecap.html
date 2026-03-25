@@ -1,0 +1,728 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Price Cap Explained: What It Means for You in 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section - Dark Theme */
+        .hero-section {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero-section::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .meta-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 8px;
+            display: inline-block;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+            .meta-info span {
+                display: block;
+                font-size: 0.95rem;
+                margin: 0.3rem 0;
+            }
+
+        .warning-banner {
+            background: rgba(255, 193, 7, 0.2);
+            border: 2px solid #ffc107;
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+            .warning-banner h3 {
+                color: #ffc107;
+                margin-bottom: 0.5rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        /* Cards */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+            }
+
+        .card-title {
+            color: #1a237e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card-icon {
+            font-size: 1.8rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin: 3rem 0;
+        }
+
+        .comparison-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid;
+        }
+
+        .price-cap-card {
+            border-top-color: #f44336;
+        }
+
+        .fixed-tariff-card {
+            border-top-color: #4caf50;
+        }
+
+        .pro-con-list {
+            margin-top: 1.5rem;
+        }
+
+        .pro-item {
+            color: #4caf50;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .con-item {
+            color: #f44336;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Myth vs Fact */
+        .myths-section {
+            margin: 3rem 0;
+        }
+
+        .myths-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .myth-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #f44336;
+        }
+
+        .fact-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #4caf50;
+        }
+
+        .myth-title {
+            color: #f44336;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .fact-title {
+            color: #4caf50;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Calculator */
+        .calculator-section {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin: 3rem 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .calculator-title {
+            color: #1a237e;
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .slider-container {
+            margin: 1.5rem 0;
+        }
+
+        .slider-label {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        .slider {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            appearance: none;
+            background: #e0e0e0;
+            border-radius: 4px;
+            outline: none;
+        }
+
+            .slider::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                appearance: none;
+                width: 24px;
+                height: 24px;
+                border-radius: 50%;
+                background: #3949ab;
+                cursor: pointer;
+                border: 3px solid white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            }
+
+        .result-box {
+            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+            border-radius: 12px;
+            padding: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+            border: 2px solid #3949ab;
+        }
+
+        .result-amount {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #1a237e;
+            margin: 1rem 0;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #00c853 0%, #00b347 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background: white;
+            color: #00c853;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            }
+
+        /* FAQ */
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-top: 4px solid #3949ab;
+        }
+
+        .faq-question {
+            color: #1a237e;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .badge-warning {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .badge-success {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-cards {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .calculator-section {
+                padding: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <div class="meta-info">
+                <span><strong>Last updated:</strong> January 2026</span>
+                <span><strong>Reviewed by:</strong> UK Energy Market Analyst</span>
+                <span><strong>Regulated by:</strong> Ofgem</span>
+            </div>
+
+            <h1 class="hero-title">Energy Price Cap Explained</h1>
+            <p class="hero-subtitle">What It Means for You in 2026</p>
+
+            <div class="warning-banner">
+                <h3>⚠️ Important Clarification</h3>
+                <p>The energy price cap does <strong>NOT</strong> cap your total bill. It only limits unit rates and standing charges. Your final bill still depends on how much energy you use.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- What is the Price Cap -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">🏛️</span> What Is the Energy Price Cap?</h2>
+            <p>The UK energy price cap is a government-backed limit set by Ofgem that controls how much energy suppliers can charge customers on standard variable tariffs and default tariffs.</p>
+
+            <div style="background: #f5f5f5; padding: 1.5rem; border-radius: 8px; margin: 1.5rem 0;">
+                <strong>What the price cap actually limits:</strong>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1rem; margin-top: 1rem;">
+                    <div style="text-align: center; padding: 1rem; background: white; border-radius: 6px;">
+                        <div style="font-size: 1.5rem; color: #3949ab; font-weight: bold;">⚡</div>
+                        <strong>Unit Rates</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Maximum pence per kWh</p>
+                    </div>
+                    <div style="text-align: center; padding: 1rem; background: white; border-radius: 6px;">
+                        <div style="font-size: 1.5rem; color: #3949ab; font-weight: bold;">📊</div>
+                        <strong>Standing Charges</strong>
+                        <p style="font-size: 0.9rem; margin-top: 0.5rem;">Daily fixed costs</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Who It Applies To -->
+        <div class="cards-container">
+            <div class="card">
+                <span class="badge badge-info">Applies To</span>
+                <h3 class="card-title">Covered by Price Cap</h3>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Standard variable tariffs</li>
+                    <li>Default tariffs after fixed deals end</li>
+                    <li>Prepayment meter tariffs (separate cap)</li>
+                    <li>Most SVT customers</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <span class="badge badge-warning">Not Covered</span>
+                <h3 class="card-title">Excluded from Price Cap</h3>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Fixed-rate tariffs</li>
+                    <li>Specialised or exclusive tariffs</li>
+                    <li>Some business energy contracts</li>
+                    <li>Green tariffs (usually)</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Price Cap vs Fixed Tariffs -->
+        <div class="comparison-section">
+            <h2 style="color: #1a237e; margin-bottom: 1rem;">Price Cap vs Fixed Tariffs: Which Is Better?</h2>
+
+            <div class="comparison-cards">
+                <div class="comparison-card price-cap-card">
+                    <h3 style="color: #1a237e; margin-bottom: 1rem;">Price Cap Tariffs</h3>
+                    <div class="pro-con-list">
+                        <div class="pro-item">✅ No exit fees</div>
+                        <div class="con-item">❌ Prices can rise every quarter</div>
+                        <div class="con-item">❌ Usually not the cheapest option</div>
+                        <div class="con-item">❌ No price certainty</div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <strong>Best for:</strong> Short-term flexibility, imminent movers
+                    </p>
+                </div>
+
+                <div class="comparison-card fixed-tariff-card">
+                    <h3 style="color: #1a237e; margin-bottom: 1rem;">Fixed Energy Tariffs</h3>
+                    <div class="pro-con-list">
+                        <div class="pro-item">✅ Price certainty for 12-24 months</div>
+                        <div class="pro-item">✅ Often cheaper than the cap</div>
+                        <div class="pro-item">✅ Better budgeting ability</div>
+                        <div class="con-item">❌ May include exit fees</div>
+                    </div>
+                    <p style="margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                        <strong>Best for:</strong> Most households seeking value & stability
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Price Cap Calculator -->
+        <div class="calculator-section">
+            <h2 class="calculator-title">Price Cap Impact Calculator</h2>
+            <p style="text-align: center; color: #666; margin-bottom: 2rem;">Estimate how the price cap affects your bills based on usage</p>
+
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Electricity Usage</span>
+                    <span id="electricityValue">3,100 kWh/year</span>
+                </div>
+                <input type="range" min="1000" max="6000" value="3100" class="slider" id="electricitySlider">
+            </div>
+
+            <div class="slider-container">
+                <div class="slider-label">
+                    <span>Gas Usage</span>
+                    <span id="gasValue">12,000 kWh/year</span>
+                </div>
+                <input type="range" min="5000" max="20000" value="12000" class="slider" id="gasSlider">
+            </div>
+
+            <div class="result-box">
+                <p style="font-weight: 500;">Estimated Annual Bill Under Price Cap</p>
+                <div class="result-amount" id="calculatedBill">£1,850</div>
+                <p style="font-size: 0.9rem; color: #666;">
+                    Based on average regional rates. Actual costs vary by postcode.
+                </p>
+            </div>
+        </div>
+
+        <!-- Myths vs Facts -->
+        <div class="myths-section">
+            <h2 style="color: #1a237e; margin-bottom: 1rem;">Common Myths About the Energy Price Cap</h2>
+
+            <div class="myths-grid">
+                <div class="myth-card">
+                    <div class="myth-title">Myth: "The cap means I'm protected from high bills"</div>
+                    <p style="font-size: 0.95rem;">Only partially true. The cap limits unit rates, but high usage still results in high bills.</p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-title">Reality: Your usage determines your bill</div>
+                    <p style="font-size: 0.95rem;">The price cap doesn't cap total costs - it only limits the rates you're charged per unit.</p>
+                </div>
+
+                <div class="myth-card">
+                    <div class="myth-title">Myth: "Everyone pays the same under the cap"</div>
+                    <p style="font-size: 0.95rem;">False. Region, meter type, and payment method all affect your capped rates.</p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-title">Reality: Regional differences still apply</div>
+                    <p style="font-size: 0.95rem;">Two identical households in different postcodes pay different amounts even under the cap.</p>
+                </div>
+
+                <div class="myth-card">
+                    <div class="myth-title">Myth: "There's no point switching if I'm on the cap"</div>
+                    <p style="font-size: 0.95rem;">Often incorrect. Many fixed tariffs beat the cap by £200-£500/year.</p>
+                </div>
+
+                <div class="fact-card">
+                    <div class="fact-title">Reality: Switching usually saves money</div>
+                    <p style="font-size: 0.95rem;">In 2026, competitive fixed deals are typically cheaper than price-capped tariffs.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Should You Stay on Cap? -->
+        <div class="card">
+            <h2 class="card-title"><span class="card-icon">🤔</span> Should You Stay on the Energy Price Cap in 2026?</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem;">
+                <div style="background: #e8f5e9; padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: #2e7d32; margin-bottom: 1rem;">✅ Stay on Price Cap If:</h3>
+                    <ul style="margin-left: 1.2rem;">
+                        <li>You plan to move soon</li>
+                        <li>You want zero exit fees short-term</li>
+                        <li>You're waiting for market changes</li>
+                        <li>Your usage is very low</li>
+                    </ul>
+                </div>
+
+                <div style="background: #ffebee; padding: 1.5rem; border-radius: 8px;">
+                    <h3 style="color: #c62828; margin-bottom: 1rem;">⚠️ Switch from Price Cap If:</h3>
+                    <ul style="margin-left: 1.2rem;">
+                        <li>You want lower bills</li>
+                        <li>You prefer predictable costs</li>
+                        <li>You seek better long-term value</li>
+                        <li>Your usage is average or high</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ -->
+        <div class="faq-section">
+            <h2 style="color: #1a237e; margin-bottom: 1rem;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <div class="faq-question">How often does the price cap change?</div>
+                    <p>Every three months (quarterly). Ofgem reviews wholesale costs, network charges, and supplier costs to set new limits.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Does the cap mean cheap energy?</div>
+                    <p>No. The price cap is a safety net, not a discount. It prevents extreme pricing but doesn't guarantee good value.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Can I switch away from the price cap?</div>
+                    <p>Yes — and it's often recommended. Switching to a fixed tariff can lock in savings below the capped rate.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Is the price cap going away?</div>
+                    <p>As of 2026, it remains in place while market volatility exists, but it's not a long-term pricing solution.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA -->
+        <div class="cta-section">
+            <h2 class="cta-title">Don't Settle for the Price Cap</h2>
+            <p style="max-width: 600px; margin: 0 auto 1.5rem; opacity: 0.95;">
+                The energy price cap protects you from extreme prices, but active switching often delivers even better value.
+                Compare fixed tariffs that beat the cap in your area.
+            </p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <div style="margin-top: 2rem; display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ Ofgem Protected</span>
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ No Supply Interruption</span>
+                <span style="font-size: 0.9rem; opacity: 0.9;">✅ Free to Switch</span>
+            </div>
+        </div>
+
+      
+    </div>
+
+    <script>
+        // Price Cap Calculator
+        const electricitySlider = document.getElementById('electricitySlider');
+        const gasSlider = document.getElementById('gasSlider');
+        const electricityValue = document.getElementById('electricityValue');
+        const gasValue = document.getElementById('gasValue');
+        const calculatedBill = document.getElementById('calculatedBill');
+
+        // Average rates under price cap (example values)
+        const electricityRate = 0.28; // £0.28 per kWh
+        const gasRate = 0.07; // £0.07 per kWh
+        const standingCharge = 0.55; // £0.55 per day
+
+        function updateCalculator() {
+            const electricityUsage = parseInt(electricitySlider.value);
+            const gasUsage = parseInt(gasSlider.value);
+
+            electricityValue.textContent = `${electricityUsage.toLocaleString()} kWh/year`;
+            gasValue.textContent = `${gasUsage.toLocaleString()} kWh/year`;
+
+            // Calculate annual costs
+            const electricityCost = electricityUsage * electricityRate;
+            const gasCost = gasUsage * gasRate;
+            const standingCost = standingCharge * 365;
+            const totalCost = electricityCost + gasCost + standingCost;
+
+            calculatedBill.textContent = `£${Math.round(totalCost).toLocaleString()}`;
+        }
+
+        electricitySlider.addEventListener('input', updateCalculator);
+        gasSlider.addEventListener('input', updateCalculator);
+
+        // Initialize calculator
+        updateCalculator();
+
+        // CTA Button
+        document.getElementById('compareButton').addEventListener('click', function() {
+            alert('Launching tariff comparison...\n\nIn a live implementation, this would show all available fixed tariffs priced below the current energy price cap for your area.');
+        });
+
+        // Card hover effects
+        document.querySelectorAll('.card, .comparison-card, .faq-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+
+        // Interactive myth/fact cards
+        document.querySelectorAll('.myth-card, .fact-card').forEach(card => {
+            card.addEventListener('click', function() {
+                this.style.transform = 'scale(1.02)';
+                setTimeout(() => {
+                    this.style.transform = 'scale(1)';
+                }, 200);
+            });
+        });
+    </script>
+</body>
+</html>

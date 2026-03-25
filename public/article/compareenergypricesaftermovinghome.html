@@ -1,0 +1,1178 @@
+﻿<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Compare energy prices after moving home in the UK 2026. Switch from expensive deemed tariffs, save money immediately after moving, and find the best energy deals for your new property.">
+    <meta name="keywords" content="energy prices after moving home, moving home energy switch, deemed tariffs UK, home mover energy comparison, moving house energy bills, Ofgem, UtilityKing">
+    <meta name="author" content="UK Energy Market Analyst">
+    <title>Compare Energy Prices After Moving Home (UK 2026 Guide)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --secondary: #00c896;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --light-bg: #f8fafc;
+            --text-light: #f1f5f9;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --moving-color: #059669;
+            --moving-light: #34d399;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #047857 100%);
+            color: var(--text-light);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(5, 150, 105, 0.15) 0%, transparent 70%);
+                z-index: 0;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--moving-light);
+            color: var(--dark-bg);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #a7f3d0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--moving-light);
+            color: var(--dark-bg);
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(52, 211, 153, 0.3);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(52, 211, 153, 0.4);
+                background: #10b981;
+            }
+
+        /* Main Content */
+        .content-wrapper {
+            padding: 60px 0;
+        }
+
+      
+
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+            .section-header::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 5px;
+                background: var(--moving-color);
+                border-radius: 5px;
+            }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+        .card-dark {
+            background: var(--dark-card);
+            color: var(--text-light);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--moving-color), var(--moving-light));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .card-dark .card-title {
+            color: var(--text-light);
+        }
+
+        .card-content {
+            color: var(--text-muted);
+        }
+
+        .card-dark .card-content {
+            color: #cbd5e1;
+        }
+
+        /* Grid Layouts - FIXED: No single cards in new row */
+        .cards-grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .cards-grid-3 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cards-grid-2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cards-grid-auto {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+            .comparison-table th {
+                background: var(--moving-color);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .comparison-table td {
+                padding: 18px 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background: #f8fafc;
+            }
+
+            .comparison-table tr:hover {
+                background: #f1f5f9;
+            }
+
+        .table-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-deemed {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+
+        .badge-fixed {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-variable {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-savings {
+            background: #dcfce7;
+            color: #059669;
+        }
+
+        /* Moving Process */
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .step {
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+            border-top: 4px solid var(--moving-color);
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--moving-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid var(--warning);
+        }
+
+        /* Savings Table */
+        .savings-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+            .savings-table th {
+                background: var(--moving-color);
+                color: white;
+                text-align: left;
+                padding: 18px;
+                font-weight: 600;
+            }
+
+            .savings-table td {
+                padding: 16px 18px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .savings-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .savings-amount {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #dcfce7;
+            color: var(--moving-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* UtilityKing Section */
+        .utilityking-highlight {
+            background: linear-gradient(135deg, #ecfdf5 0%, #d1fae5 100%);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 5px solid var(--moving-color);
+        }
+
+        .highlight-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-bg);
+        }
+
+        /* Final Verdict - Modified: No buttons */
+        .verdict-box {
+            background: linear-gradient(135deg, var(--moving-color) 0%, #047857 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            color: white;
+            text-align: center;
+            margin: 60px 0;
+        }
+
+        .verdict-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .cards-grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-steps {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .cards-grid-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-table, .savings-table {
+                font-size: 0.9rem;
+            }
+
+            .utilityking-highlight {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .cards-grid-2,
+            .cards-grid-3,
+            .cards-grid-4,
+            .cards-grid-auto {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table, .savings-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .verdict-box {
+                padding: 30px 20px;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+                .hero h1 {
+                    font-size: 2rem;
+                }
+
+            .card {
+                padding: 20px;
+            }
+
+            .section {
+                margin-bottom: 50px;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">Home Mover's Energy Guide 2026</div>
+                <h1>Compare Energy Prices After Moving Home (UK 2026 Guide)</h1>
+
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>Last updated: January 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Regulator: Ofgem</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Audience: Home movers, renters, buyers & landlords</span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Switch from expensive deemed tariffs, save money immediately after moving, and find the best energy deals for your new property. Don't overpay on energy bills after your move.
+                </p>
+
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us<i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- Why Compare Section -->
+            <section class="section animate-in" id="why-compare">
+                <div class="section-header">
+                    <h2 class="section-title">Why You Should Compare Energy Prices After Moving Home</h2>
+                    <p class="section-subtitle">Avoid expensive default tariffs when moving property</p>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--moving-color), var(--moving-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; color: var(--moving-color); margin-bottom: 15px;">Moving Home Is One of the Most Expensive Times to Stay on a Bad Energy Deal</h3>
+                    </div>
+
+                    <div class="cards-grid-3">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">Automatic Deemed Tariff</h4>
+                            <p class="card-content">When you move into a new property, you are automatically placed on a deemed tariff with the existing supplier.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-pound-sign"></i>
+                            </div>
+                            <h4 class="card-title">Expensive Default Rates</h4>
+                            <p class="card-content">These tariffs are rarely competitive and often cost hundreds of pounds more per year than the best available deals.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="card-title">Immediate Savings Opportunity</h4>
+                            <p class="card-content">Comparing energy prices immediately after moving home is one of the fastest ways to cut your bills in your new property.</p>
+                        </div>
+                    </div>
+
+                    <div class="warning-box">
+                        <div style="display: flex; align-items: flex-start; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 60px; height: 60px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-clock"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #92400e; margin-bottom: 10px;">Every Day Counts</h4>
+                                <p><strong>Every day you remain on a deemed tariff after moving home costs you money.</strong> Deemed tariffs typically cost 20-40% more than competitive fixed deals. A delay of just one month can cost £50-£150 in unnecessary energy charges.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Deemed Tariff Section -->
+            <section class="section animate-in delay-1" id="deemed-tariff">
+                <div class="section-header">
+                    <h2 class="section-title">What Is a Deemed Energy Tariff?</h2>
+                    <p class="section-subtitle">Understanding your default energy rates after moving</p>
+                </div>
+
+                <div class="card">
+                    <p>A deemed tariff is the default energy rate applied when:</p>
+
+                    <div class="cards-grid-3">
+                        <div class="card">
+                            <div style="width: 50px; height: 50px; background: var(--moving-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-home"></i>
+                            </div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">You Move Into a New Property</h4>
+                            <p>Automatically applied when you become the new bill payer at an address.</p>
+                        </div>
+
+                        <div class="card">
+                            <div style="width: 50px; height: 50px; background: var(--moving-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-hand-pointer"></i>
+                            </div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">No Supplier Chosen</h4>
+                            <p>When you haven't yet selected an energy supplier for your new home.</p>
+                        </div>
+
+                        <div class="card">
+                            <div style="width: 50px; height: 50px; background: var(--moving-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 15px; color: white; font-size: 1.2rem;">
+                                <i class="fas fa-file-signature"></i>
+                            </div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">No Agreement Signed</h4>
+                            <p>When you haven't agreed to a specific tariff with the existing supplier.</p>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: var(--moving-color); margin-bottom: 15px;">Key Facts About Deemed Tariffs:</h4>
+
+                        <div class="cards-grid-4">
+                            <div style="background: #f0f9ff; padding: 20px; border-radius: var(--radius); border-left: 3px solid var(--moving-color);">
+                                <h5 style="color: var(--moving-color); margin-bottom: 8px;">Type</h5>
+                                <p>Usually variable rate tariffs</p>
+                            </div>
+
+                            <div style="background: #f0f9ff; padding: 20px; border-radius: var(--radius); border-left: 3px solid var(--moving-color);">
+                                <h5 style="color: var(--moving-color); margin-bottom: 8px;">Price Level</h5>
+                                <p>Often close to the Ofgem price cap</p>
+                            </div>
+
+                            <div style="background: #f0f9ff; padding: 20px; border-radius: var(--radius); border-left: 3px solid var(--moving-color);">
+                                <h5 style="color: var(--moving-color); margin-bottom: 8px;">Competitiveness</h5>
+                                <p>Rarely the cheapest option available</p>
+                            </div>
+
+                            <div style="background: #dcfce7; padding: 20px; border-radius: var(--radius); border-left: 3px solid var(--success);">
+                                <h5 style="color: var(--success); margin-bottom: 8px;">Flexibility</h5>
+                                <p>No exit fees (so you can switch immediately)</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #dcfce7; border-left: 4px solid var(--success);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-check-circle" style="color: var(--success); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>Important: You are not locked in — switching is allowed straight away.</strong> Under Ofgem regulations, you can switch energy suppliers immediately upon moving into a new property, even if you're on a deemed tariff. There are no penalties or waiting periods.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- When to Compare -->
+            <section class="section animate-in delay-2" id="when-to-compare">
+                <div class="section-header">
+                    <h2 class="section-title">When Should You Compare Energy Prices After Moving?</h2>
+                    <p class="section-subtitle">Timing your comparison for maximum savings</p>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--success), var(--moving-light)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; color: var(--success); margin-bottom: 15px;">Best Time: Immediately After Moving In</h3>
+                    </div>
+
+                    <div class="process-steps">
+                        <div class="step animate-in">
+                            <div class="step-number">1</div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">Move In Day</h4>
+                            <p>Take meter readings and start comparison immediately. Don't wait even one day.</p>
+                        </div>
+
+                        <div class="step animate-in delay-1">
+                            <div class="step-number">2</div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">First Week</h4>
+                            <p>Complete comparison and initiate switch. Most switches complete in 2-5 days.</p>
+                        </div>
+
+                        <div class="step animate-in delay-2">
+                            <div class="step-number">3</div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">Don't Wait For</h4>
+                            <p>Your first bill, meter validation, or cooling-off periods. These aren't required.</p>
+                        </div>
+
+                        <div class="step animate-in delay-3">
+                            <div class="step-number">4</div>
+                            <h4 style="color: var(--moving-color); margin-bottom: 10px;">Every Day Matters</h4>
+                            <p>Each day delayed on deemed tariffs costs money. Start saving immediately.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); margin-top: 30px; border-left: 4px solid var(--danger);">
+                        <h4 style="color: var(--danger); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-exclamation-circle"></i> Cost of Delay
+                        </h4>
+                        <p><strong>Every week you delay means you may be overpaying.</strong> Based on average deemed tariff rates versus competitive fixed deals, delaying your switch by just one week can cost £15-£40 in unnecessary charges. A month's delay typically costs £60-£160. The savings from switching begin from the moment you initiate the switch process.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Information Needed -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">What Information Do You Need to Compare?</h2>
+                    <p class="section-subtitle">Simple requirements for home mover energy comparison</p>
+                </div>
+
+                <div class="card">
+                    <div class="cards-grid-2">
+                        <div style="background: #f0f9ff; padding: 30px; border-radius: var(--radius); border-left: 4px solid var(--moving-color);">
+                            <h4 style="color: var(--moving-color); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-check-circle"></i> Information You Need
+                            </h4>
+                            <ul class="feature-list">
+                                <li><strong>Your postcode</strong> – For regional pricing and available suppliers</li>
+                                <li><strong>Fuel type</strong> – Whether property has gas, electricity, or both</li>
+                                <li><strong>Meter type</strong> – Standard, Economy 7, prepayment, or smart</li>
+                                <li><strong>Estimated usage</strong> – Optional but improves accuracy</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #fef3c7; padding: 30px; border-radius: var(--radius); border-left: 4px solid var(--warning);">
+                            <h4 style="color: var(--warning); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-times-circle"></i> Information You DON'T Need
+                            </h4>
+                            <ul class="feature-list">
+                                <li><strong>Old supplier details</strong> – Not relevant for new property</li>
+                                <li><strong>Previous occupier information</strong> – Your usage starts fresh</li>
+                                <li><strong>Email or phone number</strong> – Just to compare prices</li>
+                                <li><strong>Bank details</strong> – Only needed when switching</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe);">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 70px; height: 70px; background: var(--moving-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem;">
+                                <i class="fas fa-user-shield"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--moving-color); margin-bottom: 10px;">UtilityKing's Privacy-First Approach</h4>
+                                <p>UtilityKing lets you view prices without forced sign-up. Compare anonymously, see all available deals for your new property, and only share contact details when you're ready to proceed with a switch. No pressure, no spam, just transparent comparison.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fixed vs Variable -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Fixed vs Variable Tariffs After Moving Home</h2>
+                    <p class="section-subtitle">Choosing the right tariff type for your new property</p>
+                </div>
+
+                <div class="card">
+                    <div class="cards-grid-2">
+                        <div style="background: linear-gradient(135deg, #ecfdf5, #d1fae5); padding: 30px; border-radius: var(--radius); border-left: 5px solid var(--success);">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <div style="width: 60px; height: 60px; background: var(--success); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="fas fa-lock"></i>
+                                </div>
+                                <h3 style="color: var(--success); margin: 0;">Fixed Tariffs (Usually Best)</h3>
+                            </div>
+                            <ul class="feature-list">
+                                <li><strong>Price certainty</strong> – Rates locked for contract duration</li>
+                                <li><strong>Protection from price rises</strong> – Immune to market volatility</li>
+                                <li><strong>Budget predictability</strong> – Easier financial planning</li>
+                                <li><strong>Often cheaper than deemed tariffs</strong> – Immediate savings</li>
+                                <li><strong>Recommended for home movers</strong> – Stability during transition</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: linear-gradient(135deg, #fef3c7, #fde68a); padding: 30px; border-radius: var(--radius); border-left: 5px solid var(--warning);">
+                            <div style="display: flex; align-items: center; gap: 15px; margin-bottom: 20px;">
+                                <div style="width: 60px; height: 60px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3 style="color: #92400e; margin: 0;">Variable Tariffs</h3>
+                            </div>
+                            <ul class="feature-list">
+                                <li><strong>Prices can change</strong> – Rates adjust with market conditions</li>
+                                <li><strong>Less predictable</strong> – Budgeting uncertainty</li>
+                                <li><strong>Rarely cheapest long-term</strong> – Usually more expensive</li>
+                                <li><strong>No price protection</strong> – Subject to market increases</li>
+                                <li><strong>Minimal advantage</strong> – Little benefit for home movers</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: #f0f9ff; border-left: 4px solid var(--moving-color);">
+                        <p style="display: flex; align-items: flex-start; gap: 15px;">
+                            <i class="fas fa-home" style="color: var(--moving-color); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                            <span><strong>Most households save more by switching to a fixed deal shortly after moving.</strong> Fixed tariffs provide price certainty during an already stressful and expensive time. They typically undercut deemed variable tariffs by 15-30%, providing immediate savings while protecting against future price increases.</span>
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Savings Table -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">How Much Can You Save After Moving?</h2>
+                    <p class="section-subtitle">Typical savings from switching from expensive deemed tariffs</p>
+                </div>
+
+                <div class="card">
+                    <table class="savings-table">
+                        <thead>
+                            <tr>
+                                <th>Household Type</th>
+                                <th>Typical Annual Saving</th>
+                                <th>Key Factors</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>1–2 bed flat</strong></td>
+                                <td><span class="savings-amount">£200 – £350</span></td>
+                                <td>Lower usage makes standing charges critical. Flat-specific deals matter.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2–3 bed house</strong></td>
+                                <td><span class="savings-amount">£300 – £500</span></td>
+                                <td>Higher usage amplifies savings. Both unit rates and standing charges important.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>High-usage home</strong></td>
+                                <td><span class="savings-amount">£500+</span></td>
+                                <td>Large families or electric heating. Unit rate differences create big savings.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Economy 7 property</strong></td>
+                                <td><span class="savings-amount">£250 – £450</span></td>
+                                <td>Correct tariff selection critical. Wrong tariff can increase costs.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prepayment meter</strong></td>
+                                <td><span class="savings-amount">£150 – £300</span></td>
+                                <td>Default rates often highest. Comparison essential for fair pricing.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: var(--moving-color); margin-bottom: 15px;">Savings depend on several key factors:</h4>
+
+                        <div class="cards-grid-3">
+                            <div class="card">
+                                <h4 class="card-title">Usage Patterns</h4>
+                                <p class="card-content">Higher consumption = larger absolute savings from better unit rates.</p>
+                            </div>
+
+                            <div class="card">
+                                <h4 class="card-title">Geographic Region</h4>
+                                <p class="card-content">Regional price variations affect both standing charges and unit rates.</p>
+                            </div>
+
+                            <div class="card">
+                                <h4 class="card-title">Tariff Choice</h4>
+                                <p class="card-content">Fixed vs variable, contract length, and supplier competition.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Special Cases -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Special Cases After Moving Home</h2>
+                    <p class="section-subtitle">Important considerations for different property types</p>
+                </div>
+
+                <div class="card">
+                    <div class="cards-grid-4">
+                        <div class="card">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #3b82f6, #60a5fa);">
+                                <i class="fas fa-plug"></i>
+                            </div>
+                            <h4 class="card-title">Electric-Only Homes</h4>
+                            <p class="card-content">Very common in flats and new builds. Standing charges matter more than unit rates for low usage.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                                <i class="fas fa-moon"></i>
+                            </div>
+                            <h4 class="card-title">Economy 7 Properties</h4>
+                            <p class="card-content">You must compare Economy 7 tariffs only. Standard tariffs can be 30-50% more expensive.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                                <i class="fas fa-key"></i>
+                            </div>
+                            <h4 class="card-title">Prepayment Meters</h4>
+                            <p class="card-content">Still switchable after moving. Comparison is essential as default rates are often 5-10% higher.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">Smart Meter Homes</h4>
+                            <p class="card-content">Smart tariffs may be available — but they're not always cheaper than standard fixed deals.</p>
+                        </div>
+                    </div>
+
+                    <div class="cards-grid-2" style="margin-top: 30px;">
+                        <div style="background: #f0f9ff; padding: 25px; border-radius: var(--radius);">
+                            <h4 style="color: var(--moving-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-user-tie"></i> Renter Considerations
+                            </h4>
+                            <ul class="feature-list">
+                                <li>You have the legal right to choose your supplier</li>
+                                <li>No landlord permission needed (unless bills included)</li>
+                                <li>Look for no exit fee tariffs in case you move again</li>
+                                <li>UtilityKing highlights renter-friendly deals automatically</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #f0f9ff; padding: 25px; border-radius: var(--radius);">
+                            <h4 style="color: var(--moving-color); margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                                <i class="fas fa-house-user"></i> Buyer/Homeowner Advice
+                            </h4>
+                            <ul class="feature-list">
+                                <li>You're free to choose any supplier without restriction</li>
+                                <li>May benefit from longer fixed deals (24-36 months)</li>
+                                <li>Standing charges and unit rates vary by region</li>
+                                <li>Comparing early locks in predictable costs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UtilityKing Section -->
+            <section class="section animate-in delay-1">
+                <div class="utilityking-highlight">
+                    <h3 class="highlight-title">Why UtilityKing Is Best for Home Movers</h3>
+                    <div class="cards-grid-4">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-bell"></i>
+                            </div>
+                            <h4 class="card-title">Deemed Tariff Detection</h4>
+                            <p class="card-content">Automatically flags if you're likely on an expensive deemed tariff after moving.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <h4 class="card-title">Postcode-Accurate Pricing</h4>
+                            <p class="card-content">Uses precise regional data for accurate comparisons at your new address.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">All Meter Types</h4>
+                            <p class="card-content">Full support for standard, Economy 7, prepayment, and smart meters.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <h4 class="card-title">True Annual Cost</h4>
+                            <p class="card-content">Ranks deals by real annual cost, not misleading headline rates.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; padding: 25px; background: rgba(5, 150, 105, 0.1); border-radius: var(--radius);">
+                        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;"><strong>Designed for real-world moving scenarios, not assumptions.</strong> UtilityKing understands the unique challenges and opportunities of moving home. Our comparison engine is optimised to help home movers escape expensive deemed tariffs and find the best energy deals for their new property from day one.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Mistakes -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Common Mistakes After Moving Home</h2>
+                    <p class="section-subtitle">Avoid these costly errors when managing energy after moving</p>
+                </div>
+
+                <div class="card">
+                    <div class="cards-grid-3">
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Staying on Deemed Tariff</h4>
+                            <p>Remaining on expensive default rates for weeks or months, costing hundreds unnecessarily.</p>
+                        </div>
+
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Assuming Current Supplier Cheapest</h4>
+                            <p>Believing the existing supplier offers competitive rates. They rarely do for new customers.</p>
+                        </div>
+
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Wrong Meter Type Selection</h4>
+                            <p>Choosing standard tariff for Economy 7 property, increasing costs by 30-50%.</p>
+                        </div>
+                    </div>
+
+                    <div class="cards-grid-3" style="margin-top: 25px;">
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Ignoring Standing Charges</h4>
+                            <p>Focusing only on unit rates, missing that standing charges dominate low-usage bills.</p>
+                        </div>
+
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Waiting for First Bill</h4>
+                            <p>Delaying switch until first bill arrives, wasting money on expensive rates meanwhile.</p>
+                        </div>
+
+                        <div style="background: #fee2e2; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--danger);">
+                            <h4 style="color: var(--danger); margin-bottom: 15px;">❌ Not Comparing at All</h4>
+                            <p>Simply accepting whatever tariff you're placed on without checking alternatives.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #fef3c7; padding: 30px; border-radius: var(--radius); margin-top: 30px; border-left: 5px solid var(--warning);">
+                        <div style="display: flex; align-items: flex-start; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 60px; height: 60px; background: var(--warning); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-pound-sign"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: #92400e; margin-bottom: 10px;">Costly Consequences</h4>
+                                <p><strong>These mistakes can easily cost £300–£500+ per year.</strong> The combination of staying on a deemed tariff, choosing the wrong tariff type, and delaying action compounds quickly. Many home movers unknowingly waste £500-£800 in their first year by not addressing energy costs promptly after moving.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Verdict - MODIFIED: No buttons as requested -->
+            <section class="section animate-in delay-1">
+                <div class="verdict-box">
+                    <h2 class="verdict-title">Moving Home Is the Best Time to Switch Energy</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        Moving home puts you on an expensive default tariff — but it also gives you a perfect opportunity to reset your energy costs. Comparing energy prices right away prevents overpaying, locks in better rates, and reduces financial stress during an already expensive transition period.
+                    </p>
+
+                    <div class="cards-grid-3" style="margin-bottom: 30px;">
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Prevent Overpaying</h4>
+                            <p>Escape expensive deemed tariffs that cost 20-40% more than competitive deals.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Lock in Better Rates</h4>
+                            <p>Secure fixed-price deals that provide budget certainty for 12-24 months.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Reduce Stress</h4>
+                            <p>One less financial worry during the already stressful process of moving home.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animation
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

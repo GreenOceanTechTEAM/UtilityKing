@@ -1,0 +1,1000 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UK 2026 HMO Energy Comparison Guide: Save £500-£3,000+ annually on shared properties. Expert advice for HMO landlords on tariffs, void periods & cost management.">
+    <meta name="keywords" content="HMO energy comparison, houses in multiple occupation energy, shared property energy bills, HMO landlord energy savings, multi-tenant energy costs">
+    <meta name="robots" content="index, follow">
+    <title>2026 HMO Energy Comparison Guide | Save £3,000+ | UK HMO Landlords</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0D1B2A;
+            --secondary: #00C9A7;
+            --accent: #7B61FF;
+            --warning: #FF6B6B;
+            --success: #00D4AA;
+            --hmo-color: #7B61FF;
+            --domestic-color: #00C9A7;
+            --business-color: #FF6B6B;
+            --light: #0D1B2A;
+            --dark: #0D1B2A;
+            --gray-100: #1B2A3A;
+            --gray-200: #2A3A4A;
+            --gray-300: #3A4A5A;
+            --gray-600: #8A99A9;
+            --gray-800: #E2E8F0;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+            --shadow-lg: 0 20px 60px rgba(0, 0, 0, 0.5);
+            --hmo-gradient: linear-gradient(135deg, #7B61FF 0%, #00C9A7 100%);
+            --dark-gradient: linear-gradient(135deg, #0D1B2A 0%, #1B2A3A 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--light);
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #0D1B2A 0%, #1B2A3A 100%);
+            color: white;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-bottom: 1px solid var(--gray-200);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 60%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(123, 97, 255, 0.15) 0%, transparent 70%);
+            }
+
+            .hero::after {
+                content: '👥';
+                position: absolute;
+                bottom: -30px;
+                right: 50px;
+                font-size: 10rem;
+                opacity: 0.05;
+                z-index: 1;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--hmo-gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge::before {
+                content: '⚡';
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff 0%, #7B61FF 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--hmo-gradient);
+            color: white;
+            padding: 18px 36px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(123, 97, 255, 0.3);
+            text-align: center;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(123, 97, 255, 0.4);
+                background: linear-gradient(135deg, #8B75FF 0%, #00D4B1 100%);
+            }
+
+            .cta-button .fa-arrow-right {
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover .fa-arrow-right {
+                transform: translateX(4px);
+            }
+
+        /* Cards & Sections */
+        .section {
+            margin: 60px 0;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background: var(--hmo-gradient);
+                border-radius: 2px;
+            }
+
+        /* Highlight Card - OUTSIDE GRID, FULL WIDTH */
+        .highlight-card {
+            background: linear-gradient(135deg, #1B2A3A 0%, #2A3A4A 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 45px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-300);
+            width: 100%;
+        }
+
+            .highlight-card .card-icon {
+                width: 70px;
+                height: 70px;
+                background: var(--hmo-gradient);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                color: white;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .highlight-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 16px;
+            }
+
+            .highlight-card p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+                line-height: 1.7;
+            }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .card {
+            background: var(--gray-100);
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            width: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--hmo-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        /* Stats & Numbers */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .stat-card {
+            background: var(--gray-100);
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            width: 100%;
+        }
+
+            .stat-card::before {
+                content: '🏠';
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                opacity: 0.1;
+            }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: var(--gray-100);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+            .comparison-table table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .comparison-table th {
+                background: var(--gray-200);
+                padding: 22px 24px;
+                text-align: left;
+                font-weight: 600;
+                color: white;
+                border-bottom: 2px solid var(--gray-300);
+            }
+
+            .comparison-table td {
+                padding: 22px 24px;
+                color: var(--gray-600);
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .verdict-good {
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-good::before {
+                content: '✓';
+            }
+
+        .verdict-bad {
+            color: var(--warning);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-bad::before {
+                content: '✗';
+            }
+
+        /* Domestic vs Business Comparison */
+        .energy-type-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .energy-type-card {
+            background: var(--gray-100);
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            border: 1px solid var(--gray-200);
+        }
+
+            .energy-type-card.domestic {
+                border-top-color: var(--domestic-color);
+            }
+
+            .energy-type-card.business {
+                border-top-color: var(--business-color);
+            }
+
+            .energy-type-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .energy-type-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.5rem;
+                color: white;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        .domestic h3::before {
+            content: '🏡';
+            color: var(--domestic-color);
+        }
+
+        .business h3::before {
+            content: '🏢';
+            color: var(--business-color);
+        }
+
+        /* HMO Size Tags */
+        .hmo-tag {
+            display: inline-block;
+            background: var(--hmo-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+            .hmo-tag.small {
+                background: linear-gradient(135deg, #00C9A7 0%, #1B2A3A 100%);
+            }
+
+            .hmo-tag.large {
+                background: linear-gradient(135deg, #7B61FF 0%, #1B2A3A 100%);
+            }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #2A1B0D 0%, #3A2A1B 100%);
+            border-left: 4px solid var(--warning);
+            padding: 28px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            width: 100%;
+        }
+
+            .warning-box::before {
+                content: '⚠️';
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 3rem;
+                opacity: 0.1;
+            }
+
+            .warning-box h4 {
+                color: #FFA726;
+                margin-bottom: 12px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .warning-box h4::before {
+                    content: '🚨';
+                }
+
+        /* Cost Visual */
+        .cost-visual {
+            background: var(--gray-100);
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+        }
+
+            .cost-visual h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.6rem;
+                color: white;
+                margin-bottom: 25px;
+            }
+
+        .cost-bars {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 200px;
+            margin: 30px 0;
+            gap: 20px;
+        }
+
+        .cost-bar {
+            width: 25%;
+            background: var(--gray-200);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: height 1s ease;
+            border: 1px solid var(--gray-300);
+        }
+
+            .cost-bar.good {
+                background: var(--success);
+                height: 100px;
+            }
+
+            .cost-bar.expensive {
+                background: var(--warning);
+                height: 180px;
+            }
+
+        .cost-label {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: 600;
+            color: white;
+        }
+
+        /* Savings Calculator */
+        .savings-calc {
+            background: linear-gradient(135deg, #1B2A3A 0%, #2A3A4A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-300);
+            width: 100%;
+        }
+
+            .savings-calc::before {
+                content: '💰';
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                font-size: 4rem;
+                opacity: 0.1;
+            }
+
+            .savings-calc h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: white;
+            }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .energy-type-comparison {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+                .hero h1 {
+                    font-size: 2.4rem;
+                }
+
+                .hero::after {
+                    font-size: 5rem;
+                    right: 20px;
+                    bottom: -15px;
+                }
+
+            .card-grid,
+            .stats-grid,
+            .energy-type-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+                .comparison-table table {
+                    min-width: 600px;
+                }
+
+            .cost-bars {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+            }
+
+            .cost-bar {
+                width: 80%;
+                height: 80px !important;
+                margin-bottom: 40px;
+            }
+
+            .cost-label {
+                bottom: -30px;
+            }
+
+            .highlight-card {
+                padding: 35px 25px;
+            }
+
+                .highlight-card h3 {
+                    font-size: 1.6rem;
+                }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">HMO SPECIALIST GUIDE • JANUARY 2026</div>
+                <h1>HMO Energy Comparison 2026</h1>
+                <p class="hero-lead">Cut utility costs in shared properties. Save £500-£3,000+ annually with HMO-specific energy strategies for bills-included rentals and multi-tenant properties.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Key Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">£3,000+</div>
+                <div class="stat-label">Large HMO Annual Saving</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2-3x</div>
+                <div class="stat-label">Higher vs Single Household</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Landlord-Paid Bills</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">£1,000+</div>
+                <div class="stat-label">Medium HMO Annual Saving</div>
+            </div>
+        </div>
+
+        <!-- Why HMO Costs Are Higher -->
+        <section class="section">
+            <h2 class="section-title">Why Energy Costs Are Higher in HMOs</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Higher Occupancy</h3>
+                    <p>Multiple tenants = simultaneous cooking, heating, washing. Consumption 2-3x higher than single households requires specific tariff comparison.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💼</div>
+                    <h3>Landlord-Paid Bills</h3>
+                    <p>Most HMOs operate "bills included" arrangements. Landlords bear 100% of energy costs, making efficient tariffs essential for profitability.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3>Business Energy Complexity</h3>
+                    <p>Many HMOs require commercial energy contracts without price cap protection. Poor choices here increase costs 20-40%.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Frequent Tenant Changes</h3>
+                    <p>Regular turnover triggers void periods and deemed tariffs. Each change can cost hundreds without active energy management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Domestic vs Business -->
+        <section class="section">
+            <h2 class="section-title">Domestic vs Business Energy for HMOs</h2>
+            <div class="energy-type-comparison">
+                <div class="energy-type-card domestic">
+                    <h3>Domestic Energy</h3>
+                    <p><strong>Often cheaper if HMO qualifies</strong></p>
+                    <p>✅ Standard domestic meter required</p>
+                    <p>✅ Solely residential use</p>
+                    <p>✅ Ofgem price cap protection</p>
+                    <p>✅ Safer for many smaller HMOs</p>
+                    <p style="margin-top: 15px; color: var(--domestic-color); font-weight: 600;">CHECK ELIGIBILITY FIRST</p>
+                </div>
+                <div class="energy-type-card business">
+                    <h3>Business Energy</h3>
+                    <p><strong>Sometimes required for HMOs</strong></p>
+                    <p>✅ Commercial classification</p>
+                    <p>✅ Business meter installed</p>
+                    <p>✅ Serviced/short-let operation</p>
+                    <p>✅ No price cap protection</p>
+                    <p style="margin-top: 15px; color: var(--business-color); font-weight: 600;">COMPARISON CRITICAL HERE</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Card - OUTSIDE GRID, FULL WIDTH -->
+        <div class="highlight-card">
+            <div class="card-icon">💰</div>
+            <h3>Total Annual Cost Matters for HMOs</h3>
+            <p>Compare total cost including standing charges and unit rates. High HMO consumption means even 0.5p/kWh differences add £500+ annually. Fixed tariffs with 1-3 year terms provide optimal balance for bills-included arrangements, protecting margins from market volatility.</p>
+        </div>
+
+        <!-- Average Costs -->
+        <section class="section">
+            <h2 class="section-title">Average Energy Costs for HMOs (2026)</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>HMO Size</th>
+                            <th>Typical Annual Energy Cost</th>
+                            <th>Landlord Management Required</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>3–4 Tenants</strong><br><span class="hmo-tag small">Small HMO</span></td>
+                            <td>£2,000 – £3,000</td>
+                            <td>Regular tariff reviews. Domestic/business eligibility check essential.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>5–6 Tenants</strong><br><span class="hmo-tag">Medium HMO</span></td>
+                            <td>£3,000 – £4,500</td>
+                            <td>Business energy likely required. Quarterly comparison recommended.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>7+ Tenants</strong><br><span class="hmo-tag large">Large HMO</span></td>
+                            <td>£4,500 – £6,500+</td>
+                            <td>Complex commercial contracts. Professional procurement advised.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Cost Visual -->
+        <div class="cost-visual">
+            <h3>Deemed Tariff Impact on HMO Costs</h3>
+            <div class="cost-bars">
+                <div class="cost-bar good">
+                    <div class="cost-label">Competitive Fixed<br>£2,800/yr</div>
+                </div>
+                <div class="cost-bar expensive">
+                    <div class="cost-label">Deemed Tariff<br>£4,200/yr</div>
+                </div>
+                <div class="cost-bar good">
+                    <div class="cost-label">Postcode-Compared<br>£2,500/yr</div>
+                </div>
+                <div class="cost-bar">
+                    <div class="cost-label">Market Average<br>£3,400/yr</div>
+                </div>
+            </div>
+            <p><strong>Typical 5-tenant HMO:</strong> Deemed tariffs cost 40-50% more than competitively sourced rates. Postcode-specific comparison saves £1,400+ annually.</p>
+        </div>
+
+        <!-- Deemed Tariff Warning -->
+        <div class="warning-box">
+            <h4>⚠️ Why Deemed Tariffs Destroy HMO Profitability</h4>
+            <p><strong>If energy isn't actively managed:</strong> HMO defaults to deemed tariff • Unit rates increase 20-40% immediately • No supplier competition • Even short void periods cost hundreds • Tenancy changes trigger automatic deemed rates • HMOs suffer this repeatedly without active comparison.</p>
+        </div>
+
+        <!-- Fixed vs Variable -->
+        <section class="section">
+            <h2 class="section-title">Fixed vs Variable Tariffs for HMOs</h2>
+            <div class="energy-type-comparison">
+                <div class="energy-type-card">
+                    <h3>Fixed Energy Tariffs</h3>
+                    <p><strong>RECOMMENDED FOR HMOS</strong></p>
+                    <p class="verdict-good">✔ Predictable monthly costs</p>
+                    <p class="verdict-good">✔ Protection from price spikes</p>
+                    <p class="verdict-good">✔ Easier "bills-included" budgeting</p>
+                    <p class="verdict-good">✔ 1-3 year terms optimal</p>
+                    <p style="margin-top: 15px; color: var(--success); font-weight: 600;">SAFEST FOR HMO LANDLORDS</p>
+                </div>
+                <div class="energy-type-card">
+                    <h3>Variable Tariffs</h3>
+                    <p><strong>HIGH RISK FOR HMOS</strong></p>
+                    <p class="verdict-bad">✖ Prices change without notice</p>
+                    <p class="verdict-bad">✖ Impossible margin management</p>
+                    <p class="verdict-bad">✖ Rarely cheapest long-term</p>
+                    <p class="verdict-bad">✖ Budgeting uncertainty</p>
+                    <p style="margin-top: 15px; color: var(--warning); font-weight: 600;">AVOID FOR BILLS-INCLUDED HMOS</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section class="section">
+            <h2 class="section-title">Common Energy Mistakes HMO Landlords Make</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Leaving Deemed Tariffs</h3>
+                    <p>Properties default to expensive deemed rates during tenant changes. Many landlords don't switch, costing £200+ per void period.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Wrong Energy Type</h3>
+                    <p>Using domestic comparison for commercial HMOs or business comparison for eligible domestic HMOs. Both errors increase costs 20-30%.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Ignoring Standing Charges</h3>
+                    <p>Focusing only on unit rates. HMO standing charges matter significantly for properties with continuous baseline consumption.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Broker Commissions</h3>
+                    <p>Using traditional brokers who add hidden 0.5p-2p/kWh commissions. These add £500-£2,000+ annually to HMO energy costs.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Time to Compare -->
+        <section class="section">
+            <h2 class="section-title">Best Time to Compare Energy for HMOs</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📅</div>
+                    <h3>Before Contract End</h3>
+                    <p>Start comparing 2-4 months before fixed tariff ends. Avoid automatic rollover to expensive rates with 30-90 day notice periods.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>During Void Periods</h3>
+                    <p>Compare immediately when property empties. Deemed tariffs apply within days, costing hundreds monthly if unaddressed.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Tenant Number Changes</h3>
+                    <p>When adding/removing tenants, consumption patterns change. Re-evaluate tariff suitability for new occupancy levels.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Market Price Drops</h3>
+                    <p>Monitor wholesale markets. Significant drops (10%+) may justify early switching if savings outweigh exit fees.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Calculator -->
+        <div class="savings-calc">
+            <h3>How Much Can HMO Landlords Save?</h3>
+            <p>Small HMOs (3-4 tenants): £500–£1,000/year | Medium HMOs (5-6 tenants): £1,000–£2,000/year | Large HMOs (7+ tenants): £3,000+/year</p>
+        </div>
+
+        <!-- Final CTA -->
+        <section class="hero" style="margin-top: 80px; margin-bottom: 0;">
+            <div class="container">
+                <div class="hero-content" style="text-align: center;">
+                    <h2 style="font-size: 2.5rem;">Stop Energy Costs Eroding HMO Profits</h2>
+                    <p class="hero-lead" style="margin: 20px auto 40px;">Compare HMO-specific energy tariffs today. Manage multi-tenant consumption, avoid deemed tariff traps, and protect your rental margins with strategic energy procurement.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all interactive elements
+        document.querySelectorAll('.card, .stat-card, .energy-type-card, .highlight-card').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animate cost bars on scroll
+        const costObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.cost-bar');
+                    bars.forEach(bar => {
+                        const height = bar.style.height;
+                        bar.style.height = '0';
+                        setTimeout(() => {
+                            bar.style.transition = 'height 1.5s ease';
+                            bar.style.height = height;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const costVisual = document.querySelector('.cost-visual');
+        if (costVisual) {
+            costObserver.observe(costVisual);
+        }
+
+        // Pulse animation for stats
+        setInterval(() => {
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.style.boxShadow = '0 0 20px rgba(123, 97, 255, 0.3)';
+                setTimeout(() => {
+                    card.style.boxShadow = 'var(--shadow)';
+                }, 500);
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

@@ -1,0 +1,755 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Prices After Home Renovation: A Complete Guide from Utility King</title>
+    <meta name="description" content="Learn how to compare energy prices after home renovation. Understand how extensions, efficiency upgrades, solar panels, and heat pumps change your energy tariff needs.">
+    <meta name="keywords" content="compare energy prices, home renovation energy, after renovation switch, energy tariff renovation, utility king, post-renovation energy comparison">
+    <meta name="author" content="Utility King">
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f7fc;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== NEW DARK HERO - Deep Navy/Teal theme ===== */
+        .hero {
+            background: linear-gradient(135deg, #0a2e4d 0%, #1a4a5f 100%);
+            color: #e0f0fa;
+            padding: 75px 0 65px 0;
+            border-bottom-left-radius: 44px;
+            border-bottom-right-radius: 44px;
+            box-shadow: 0 25px 35px -15px rgba(10, 46, 77, 0.5);
+            margin-bottom: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 8px;
+                background: linear-gradient(90deg, #34b4e0, #6dd5ff, #34b4e0);
+            }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(52, 180, 224, 0.2);
+            color: #9ee4ff;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            padding: 8px 22px;
+            border-radius: 40px;
+            margin-bottom: 24px;
+            border: 1px solid rgba(52, 180, 224, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 3.1rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 22px;
+            color: white;
+            max-width: 850px;
+        }
+
+        .hero__highlight {
+            color: #a3e4ff;
+            border-bottom: 3px solid #34b4e0;
+            display: inline-block;
+        }
+
+        .hero__intro-text {
+            font-size: 1.25rem;
+            color: #c2e2f5;
+            max-width: 780px;
+            margin-bottom: 35px;
+        }
+
+        .hero__pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 18px 25px;
+            margin-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.15);
+            padding-top: 35px;
+        }
+
+        .hero__pillar {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 20, 30, 0.4);
+            padding: 12px 28px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+            .hero__pillar i {
+                color: #6dd5ff;
+                font-size: 1.2rem;
+            }
+
+        /* ===== LIGHT THEME BODY - New design with varied elements ===== */
+        .article-body {
+            background-color: #ffffff;
+            border-radius: 48px 48px 0 0;
+            box-shadow: 0 -20px 40px rgba(0, 30, 50, 0.04), 0 25px 45px -15px #0a2e4d30;
+            padding: 65px 0 75px 0;
+            margin-top: -25px;
+            position: relative;
+            z-index: 5;
+        }
+
+            .article-body h2 {
+                font-size: 2.3rem;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                margin: 55px 0 25px 0;
+                color: #0a2e4d;
+                border-bottom: 4px solid #34b4e0;
+                padding-bottom: 12px;
+            }
+
+                .article-body h2:first-of-type {
+                    margin-top: 0;
+                }
+
+            .article-body h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin: 45px 0 22px 0;
+                color: #1a4a5f;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+                .article-body h3 i {
+                    color: #34b4e0;
+                    font-size: 2.1rem;
+                }
+
+            .article-body p {
+                font-size: 1.1rem;
+                color: #2c3e50;
+                margin-bottom: 22px;
+            }
+
+            .article-body strong {
+                color: #0a2e4d;
+                font-weight: 600;
+            }
+
+        /* Formula highlight */
+        .formula-block {
+            background: #e8f2fa;
+            border-radius: 36px;
+            padding: 30px 40px;
+            margin: 35px 0;
+            text-align: center;
+            border: 1px dashed #34b4e0;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0a2e4d;
+            box-shadow: inset 0 2px 10px rgba(52, 180, 224, 0.1);
+        }
+
+        /* Two column category cards */
+        .renovation-categories {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .category-card {
+            border-radius: 36px;
+            padding: 36px;
+            color: white;
+        }
+
+            .category-card.reducing {
+                background: linear-gradient(145deg, #1b4b3c, #0f3b2c);
+            }
+
+            .category-card.increasing {
+                background: linear-gradient(145deg, #4d3a1a, #3f2e12);
+            }
+
+            .category-card h4 {
+                font-size: 1.8rem;
+                margin-bottom: 24px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+                .category-card h4 i {
+                    font-size: 2rem;
+                }
+
+            .category-card ul {
+                list-style: none;
+            }
+
+            .category-card li {
+                display: flex;
+                gap: 14px;
+                margin-bottom: 16px;
+                font-size: 1.05rem;
+                align-items: center;
+            }
+
+                .category-card li i {
+                    width: 24px;
+                    font-size: 1.2rem;
+                }
+
+        /* Scenario cards - new style */
+        .scenario-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 40px 0;
+        }
+
+        .scenario-card {
+            background: #f5f9ff;
+            border-radius: 36px;
+            padding: 36px;
+            border: 1px solid #d4e6f5;
+            box-shadow: 0 15px 25px -15px #0a2e4d20;
+            transition: all 0.2s ease;
+        }
+
+            .scenario-card:hover {
+                transform: translateY(-5px);
+                border-color: #34b4e0;
+                box-shadow: 0 25px 35px -15px #34b4e080;
+            }
+
+        .scenario-icon {
+            background: #34b4e0;
+            color: white;
+            width: 64px;
+            height: 64px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin-bottom: 28px;
+        }
+
+        .scenario-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a2e4d;
+            margin-bottom: 20px;
+        }
+
+        .scenario-card ul {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .scenario-card li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 14px;
+            color: #2c3e50;
+        }
+
+            .scenario-card li i {
+                color: #34b4e0;
+                width: 22px;
+                margin-top: 3px;
+            }
+
+        /* Step process - timeline style */
+        .process-timeline {
+            margin: 50px 0 30px;
+        }
+
+        .process-step {
+            display: flex;
+            gap: 28px;
+            margin-bottom: 28px;
+            background: #f5f9ff;
+            border-radius: 32px;
+            padding: 28px 32px;
+            border-left: 8px solid #34b4e0;
+        }
+
+            .process-step:last-child {
+                margin-bottom: 0;
+            }
+
+        .process-number {
+            background: #0a2e4d;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .process-content h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #0a2e4d;
+            margin-bottom: 12px;
+        }
+
+        /* Mistakes grid */
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .mistake-block {
+            background: #fff8f0;
+            border-radius: 32px;
+            padding: 32px;
+            border: 1px solid #ffd9a3;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .mistake-block::before {
+                content: "!";
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 5rem;
+                font-weight: 700;
+                color: #ffb34720;
+                line-height: 1;
+            }
+
+            .mistake-block h4 {
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #c24f00;
+                margin-bottom: 14px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .mistake-block h4 i {
+                    color: #ff8c1a;
+                }
+
+            .mistake-block p {
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+        /* FAQ accordion style cards */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 45px 0;
+        }
+
+        .faq-block {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 30px;
+            border: 1px solid #d4e6f5;
+            box-shadow: 0 8px 0 #e1f0fa;
+        }
+
+            .faq-block h4 {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #0a2e4d;
+                margin-bottom: 16px;
+            }
+
+                .faq-block h4 i {
+                    color: #34b4e0;
+                    font-size: 1.4rem;
+                }
+
+            .faq-block p {
+                font-size: 1rem;
+                margin-bottom: 0;
+                color: #3a4e62;
+            }
+
+        .utility-perspective {
+            background: linear-gradient(145deg, #e1f0fa, #f0f8ff);
+            border-radius: 50px;
+            padding: 50px 55px;
+            margin: 55px 0 45px;
+            border: 1px solid #34b4e0;
+            text-align: center;
+            position: relative;
+        }
+
+            .utility-perspective i {
+                font-size: 3.5rem;
+                color: #0a2e4d;
+                margin-bottom: 20px;
+            }
+
+            .utility-perspective p {
+                font-size: 1.2rem;
+                max-width: 750px;
+                margin: 0 auto 12px;
+                color: #0a2e4d;
+            }
+
+        .footer-highlight {
+            background: #e1f0fa;
+            border-radius: 44px;
+            padding: 36px 44px;
+            font-size: 1.15rem;
+            border: 1px solid #34b4e0;
+            margin: 40px 0 20px;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #34b4e0, transparent);
+            margin: 45px 0;
+        }
+
+        .small-meta {
+            color: #6b7f94;
+            font-size: 0.9rem;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 750px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .renovation-categories {
+                grid-template-columns: 1fr;
+            }
+
+            .scenario-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mistakes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-step {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO - New deep navy/teal theme -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__badge"><i class="fas fa-tools" style="margin-right: 8px;"></i> UTILITY KING · RENOVATION GUIDE</span>
+            <h1>Compare Energy Prices <span class="hero__highlight">After Home Renovation</span><br>A Complete Guide from Utility King</h1>
+            <p class="hero__intro-text">At Utility King, we often speak to homeowners who have just completed a major renovation and assume their energy setup can remain unchanged. But here's the reality: If you've renovated your home, your energy profile has changed — and your tariff should be reviewed.</p>
+
+            <div class="hero__pillars">
+                <div class="hero__pillar"><i class="fas fa-bolt"></i> Why renovations affect usage</div>
+                <div class="hero__pillar"><i class="fas fa-calendar-alt"></i> When to compare</div>
+                <div class="hero__pillar"><i class="fas fa-solar-panel"></i> Solar & heat pumps</div>
+                <div class="hero__pillar"><i class="fas fa-chart-pie"></i> New tariff priorities</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT THEME BODY - Fresh design -->
+    <main class="article-body">
+        <div class="container">
+
+            <!-- Opening - exact content -->
+            <p>Whether you've added an extension, upgraded insulation, installed a new boiler, fitted solar panels, or converted your loft, your electricity and gas usage is unlikely to match what it was before.</p>
+            <p>In this guide, we explain from first principles:</p>
+            <p>Why home renovations affect energy consumption</p>
+            <p>When you should compare energy suppliers</p>
+            <p>How renovations change your ideal tariff</p>
+            <p>What to review before switching</p>
+            <p>Common mistakes homeowners make</p>
+            <p>If you want to avoid overpaying after upgrading your property, this guide will help you make a data-driven decision.</p>
+
+            <h2>Why Renovations Change Your Energy Profile</h2>
+            <p>Energy costs are driven by one simple formula:</p>
+            <div class="formula-block">
+                (Annual usage × Unit rate) + (Standing charge × 365)
+            </div>
+            <p>When you renovate your home, you often change your annual usage — sometimes significantly.</p>
+            <p>Renovations typically fall into two broad categories:</p>
+
+            <div class="renovation-categories">
+                <div class="category-card reducing">
+                    <h4><i class="fas fa-arrow-down"></i> 1. Energy-Reducing Improvements</h4>
+                    <ul>
+                        <li><i class="fas fa-check-circle"></i> Loft insulation upgrades</li>
+                        <li><i class="fas fa-check-circle"></i> Cavity wall insulation</li>
+                        <li><i class="fas fa-check-circle"></i> Triple glazing</li>
+                        <li><i class="fas fa-check-circle"></i> New energy-efficient boilers</li>
+                        <li><i class="fas fa-check-circle"></i> Smart thermostats</li>
+                        <li><i class="fas fa-check-circle"></i> Air source heat pumps</li>
+                        <li><i class="fas fa-check-circle"></i> Solar panels</li>
+                    </ul>
+                    <p style="margin-top: 20px;">These improvements usually reduce gas or electricity consumption.</p>
+                </div>
+                <div class="category-card increasing">
+                    <h4><i class="fas fa-arrow-up"></i> 2. Energy-Increasing Changes</h4>
+                    <ul>
+                        <li><i class="fas fa-plus-circle"></i> Extensions</li>
+                        <li><i class="fas fa-plus-circle"></i> Loft conversions</li>
+                        <li><i class="fas fa-plus-circle"></i> Garage conversions</li>
+                        <li><i class="fas fa-plus-circle"></i> Underfloor heating installation</li>
+                        <li><i class="fas fa-plus-circle"></i> Electric vehicle (EV) chargers</li>
+                        <li><i class="fas fa-plus-circle"></i> Home office additions</li>
+                        <li><i class="fas fa-plus-circle"></i> Additional bathrooms</li>
+                    </ul>
+                    <p style="margin-top: 20px;">These changes often increase electricity or gas demand.</p>
+                </div>
+            </div>
+            <p>In both cases, your previous tariff may no longer be the most cost-effective.</p>
+
+            <h2>When Should You Compare Energy Prices After Renovation?</h2>
+            <p>At Utility King, we recommend comparing energy prices if:</p>
+            <p>You have significantly changed your heating system</p>
+            <p>You've installed solar panels or battery storage</p>
+            <p>You've added electric heating</p>
+            <p>Your household size has increased</p>
+            <p>You've installed an EV charger</p>
+            <p>You've expanded your property size</p>
+            <p>Even improvements that reduce usage may shift the balance between standing charge and unit rate importance.</p>
+            <p>Renovation is a financial reset point — energy comparison should follow.</p>
+
+            <h2>Renovation Scenarios</h2>
+
+            <div class="scenario-grid">
+                <div class="scenario-card">
+                    <div class="scenario-icon"><i class="fas fa-leaf"></i></div>
+                    <h4>Scenario 1: Improved Energy Efficiency</h4>
+                    <p>If your renovation reduced energy usage, your priorities may shift.</p>
+                    <p>Lower-usage households are more affected by standing charges because:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> You pay the standing charge every day</li>
+                        <li><i class="fas fa-circle"></i> It becomes a larger proportion of your total bill</li>
+                    </ul>
+                    <p>In this case, comparing energy suppliers with lower standing charges may provide better long-term savings.</p>
+                    <p>Your previous high-consumption tariff may no longer be optimal.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon"><i class="fas fa-bolt"></i></div>
+                    <h4>Scenario 2: Increased Electricity Demand</h4>
+                    <p>If you've installed:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> An air source heat pump</li>
+                        <li><i class="fas fa-circle"></i> Underfloor heating</li>
+                        <li><i class="fas fa-circle"></i> Electric radiators</li>
+                        <li><i class="fas fa-circle"></i> An EV charger</li>
+                    </ul>
+                    <p>Your electricity consumption may rise significantly.</p>
+                    <p>In this scenario, the unit rate per kWh becomes critical. Even small differences in electricity rates can scale dramatically with high usage.</p>
+                    <p>You may also benefit from:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Time-of-use tariffs</li>
+                        <li><i class="fas fa-circle"></i> EV-specific energy tariffs</li>
+                        <li><i class="fas fa-circle"></i> Economy 7 or off-peak pricing</li>
+                    </ul>
+                    <p>Comparing energy prices strategically becomes essential.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon"><i class="fas fa-solar-panel"></i></div>
+                    <h4>Scenario 3: Solar Panel Installation</h4>
+                    <p>If you've installed solar panels, your energy setup changes fundamentally.</p>
+                    <p>You now need to consider:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Import tariffs (what you pay)</li>
+                        <li><i class="fas fa-circle"></i> Export tariffs (what you earn)</li>
+                    </ul>
+                    <p>The Smart Export Guarantee (SEG) allows you to receive payment for excess electricity exported to the grid.</p>
+                    <p>When comparing energy deals after solar installation, evaluate:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Electricity unit rate</li>
+                        <li><i class="fas fa-circle"></i> Export rate</li>
+                        <li><i class="fas fa-circle"></i> Standing charge</li>
+                        <li><i class="fas fa-circle"></i> Billing transparency</li>
+                    </ul>
+                    <p>A slightly higher import tariff may be worthwhile if export payments are significantly better.</p>
+                </div>
+                <div class="scenario-card">
+                    <div class="scenario-icon"><i class="fas fa-fire"></i></div>
+                    <h4>Scenario 4: Switching From Gas to Electric Heating</h4>
+                    <p>If you've removed a gas boiler and installed:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> A heat pump</li>
+                        <li><i class="fas fa-circle"></i> Electric heating</li>
+                        <li><i class="fas fa-circle"></i> Hybrid systems</li>
+                    </ul>
+                    <p>You may become electricity-dominant.</p>
+                    <p>This changes the cost structure completely. Gas usage may decrease or disappear entirely. Your comparison strategy must adjust accordingly. Electricity unit rates matter more than before.</p>
+                </div>
+            </div>
+
+            <h2>How to Compare Energy Prices After Renovation</h2>
+            <p>At Utility King, we recommend a structured review process.</p>
+
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="process-number">1</div>
+                    <div class="process-content">
+                        <h4>Monitor Post-Renovation Usage</h4>
+                        <p>Wait at least 2–3 months after renovation to:</p>
+                        <p>Gather updated meter readings</p>
+                        <p>Identify new consumption patterns</p>
+                        <p>Understand seasonal impact</p>
+                        <p>Real data beats assumptions.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">2</div>
+                    <div class="process-content">
+                        <h4>Calculate Your New Estimated Annual Usage</h4>
+                        <p>If you have smart meter access, use:</p>
+                        <p>Monthly usage reports</p>
+                        <p>Peak vs off-peak data</p>
+                        <p>Electricity vs gas balance</p>
+                        <p>Accurate data makes comparison reliable.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">3</div>
+                    <div class="process-content">
+                        <h4>Compare Total Annual Cost</h4>
+                        <p>When reviewing new tariffs, focus on:</p>
+                        <p>Unit rate</p>
+                        <p>Standing charge</p>
+                        <p>Estimated annual cost</p>
+                        <p>Payment method differences</p>
+                        <p>Do not rely solely on headline rates.</p>
+                    </div>
+                </div>
+                <div class="process-step">
+                    <div class="process-number">4</div>
+                    <div class="process-content">
+                        <h4>Review Tariff Type</h4>
+                        <p>Choose between:</p>
+                        <p><strong>Fixed Energy Tariffs</strong> — Price stability, budget predictability</p>
+                        <p><strong>Variable Tariffs</strong> — Flexibility, exposure to market changes</p>
+                        <p>If your energy usage has increased significantly, locking in a competitive fixed rate may reduce risk.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h2>Common Mistakes After Renovation</h2>
+
+            <div class="mistakes-grid">
+                <div class="mistake-block">
+                    <h4><i class="fas fa-ban"></i> Staying on the Same Tariff Automatically</h4>
+                    <p>Your previous tariff was designed for a different energy profile.</p>
+                </div>
+                <div class="mistake-block">
+                    <h4><i class="fas fa-chart-line"></i> Ignoring Standing Charges After Efficiency Upgrades</h4>
+                    <p>Low-usage homes must watch daily charges closely.</p>
+                </div>
+                <div class="mistake-block">
+                    <h4><i class="fas fa-clock"></i> Not Considering Time-of-Use Tariffs After EV Installation</h4>
+                    <p>EV charging overnight can significantly benefit from off-peak pricing.</p>
+                </div>
+                <div class="mistake-block">
+                    <h4><i class="fas fa-solar-panel"></i> Forgetting to Register for Export Payments</h4>
+                    <p>Solar panel owners must register for Smart Export Guarantee tariffs to earn properly.</p>
+                </div>
+            </div>
+
+            <h3>Is Switching Energy Supplier Safe After Renovation?</h3>
+            <p>Yes.</p>
+            <p>Switching energy supplier:</p>
+            <p>Does not affect your new systems</p>
+            <p>Does not interfere with installations</p>
+            <p>Does not disrupt supply</p>
+            <p>Is fully regulated</p>
+            <p>Your infrastructure remains unchanged. Only your billing provider changes.</p>
+
+            <div class="utility-perspective">
+                <i class="fas fa-home"></i>
+                <p><strong>Utility King's Perspective</strong></p>
+                <p>At Utility King, we see renovation as a financial turning point.</p>
+                <p>You've invested in improving your property — your energy tariff should now reflect that change.</p>
+                <p>Energy comparison after renovation ensures:</p>
+                <p>You're not paying outdated rates</p>
+                <p>Your tariff matches your new consumption profile</p>
+                <p>You maximise savings from efficiency upgrades</p>
+                <p>You benefit from export tariffs where applicable</p>
+                <p><strong>Renovation changes your home. Your energy strategy should change too.</strong></p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Should I compare after solar installation?</h4><p>Yes. You should review both import tariffs and Smart Export Guarantee rates.</p></div>
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Does adding an extension increase bills?</h4><p>Often yes, due to increased heating and electricity demand.</p></div>
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Is a fixed tariff better after renovation?</h4><p>It depends on your new usage profile and market conditions.</p></div>
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Do efficiency upgrades reduce need to switch?</h4><p>Not necessarily. Lower usage may shift which tariff is most cost-effective.</p></div>
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Should I wait before switching?</h4><p>It's wise to gather some usage data first, unless you're on an expensive standard variable tariff.</p></div>
+                <div class="faq-block"><h4><i class="fas fa-circle-question"></i> Can I switch if I've installed a heat pump?</h4><p>Yes. Switching does not affect your heating system.</p></div>
+            </div>
+
+            <hr>
+            <div class="footer-highlight">
+                <i class="fas fa-star" style="color: #0a2e4d; margin-right: 14px;"></i> If you've recently renovated and want to compare energy prices based on your updated consumption, Utility King can help you reassess your tariff strategically — ensuring your improved home is matched with an equally optimised energy deal.
+            </div>
+            <div class="small-meta">© Utility King — Complete guide to energy comparison after home renovation. No header or footer, pure content.</div>
+
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,801 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Compare Energy Prices With and Without VAT | Complete Guide | Utility King 2026</title>
+    <meta name="description" content="Complete guide to comparing energy prices with and without VAT. Learn what VAT is, how it affects your energy bill, and why including VAT matters for accurate comparison.">
+    <meta name="keywords" content="energy prices with VAT, energy prices without VAT, VAT on energy, compare energy tariffs, energy price comparison, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(145deg, #f2f0f0 0%, #e8e2e2 100%);
+            color: #2d3e4f;
+            line-height: 1.6;
+        }
+
+        /* === CLEAN DARK HERO - CENTERED CONTENT === */
+        .hero {
+            background: linear-gradient(135deg, #4d5d73 0%, #2f3b4a 100%);
+            color: #fff;
+            padding: 4.5rem 2rem 5.5rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 4px solid #8f9eb5;
+            box-shadow: 0 25px 40px -20px rgba(47,59,74,0.6);
+            text-align: center;
+        }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to bottom right, transparent 49%, #f2f0f0 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(143, 158, 181, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid rgba(143, 158, 181, 0.3);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #e0e6f0;
+            justify-content: center;
+        }
+
+            .hero-badge .uk-icon {
+                background: #8f9eb5;
+                color: #2f3b4a;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .hero .highlight {
+            color: #8f9eb5;
+            border-bottom: 4px solid #8f9eb5;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: #e0e6f0;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .hero-stat .number {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #8f9eb5;
+                line-height: 1;
+            }
+
+            .hero-stat .label {
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.7;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -2.5rem auto 3rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.8rem;
+            box-shadow: 0 30px 40px -20px rgba(77,93,115,0.2);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(143,158,181,0.2);
+        }
+
+        .intro-quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #4d5d73;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #8f9eb5;
+            padding-left: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #5d6370;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #8f9eb5;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 12px -6px #4d5d73;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #3d4a5a;
+            margin: 0;
+        }
+
+            .section-header h2 span {
+                background: #e0e6f0;
+                color: #4d5d73;
+                padding: 0.3rem 1.4rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+                font-weight: 600;
+            }
+
+        /* two-column layout */
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #d0d9e5;
+            box-shadow: 0 15px 25px -15px #7a8aa0;
+            transition: transform 0.2s;
+        }
+
+            .info-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 20px 30px -16px #8f9eb5;
+            }
+
+            .info-card h3 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 1.2rem;
+                color: #4d5d73;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+        .definition-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .definition-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+                border-bottom: 1px dashed #d0d9e5;
+            }
+
+                .definition-list li::before {
+                    content: "•";
+                    color: #8f9eb5;
+                    font-weight: 800;
+                    font-size: 1.5rem;
+                    position: absolute;
+                    left: 0;
+                    top: 0.2rem;
+                }
+
+        /* vat rate cards */
+        .rate-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .rate-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 2px solid;
+            text-align: center;
+        }
+
+            .rate-card.domestic {
+                border-color: #8f9eb5;
+            }
+
+            .rate-card.business {
+                border-color: #e67e22;
+            }
+
+        .rate-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .rate-card h4 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .rate-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #4d5d73;
+        }
+
+        /* price comparison cards */
+        .price-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .price-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border-top: 8px solid;
+        }
+
+            .price-card.excluding {
+                border-top-color: #e67e22;
+            }
+
+            .price-card.including {
+                border-top-color: #2ecc71;
+            }
+
+        .price-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .price-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .excluding .price-icon {
+            background: #e67e2230;
+            color: #a35200;
+        }
+
+        .including .price-icon {
+            background: #2ecc7130;
+            color: #1b6b3b;
+        }
+
+        .price-card h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+        }
+
+        .price-note {
+            background: #f5f5f5;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-style: italic;
+        }
+
+        /* formula card */
+        .formula-card {
+            background: #e0e6f0;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .formula {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #4d5d73;
+            margin: 1rem 0;
+        }
+
+        .formula-note {
+            background: white;
+            padding: 1rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 1rem;
+        }
+
+        /* reasons grid */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .reason-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #d0d9e5;
+        }
+
+        .reason-number {
+            background: #8f9eb5;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* misleading card */
+        .misleading-card {
+            background: #fff2e6;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid #e67e22;
+        }
+
+        .misleading-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+            .misleading-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+            }
+
+                .misleading-list li::before {
+                    content: "⚠️";
+                    position: absolute;
+                    left: 0;
+                    top: 0.4rem;
+                }
+
+        .check-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+            .check-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+            }
+
+                .check-list li::before {
+                    content: "✓";
+                    color: #2ecc71;
+                    font-weight: 800;
+                    position: absolute;
+                    left: 0;
+                }
+
+        /* FAQ grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid #d0d9e5;
+            box-shadow: 0 8px 16px -12px #4d5d73;
+        }
+
+        .faq-q {
+            font-weight: 800;
+            color: #4d5d73;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+            .faq-q span {
+                background: #8f9eb5;
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 30px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(135deg, #4d5d73, #2f3b4a);
+            border-radius: 50px;
+            padding: 3rem;
+            margin: 3.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #8f9eb5;
+            box-shadow: 0 25px 35px -18px #2f3b4a;
+        }
+
+        .cta-premium-left {
+            color: white;
+        }
+
+            .cta-premium-left p {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-premium-left small {
+                color: #e0e6f0;
+                font-size: 1.1rem;
+            }
+
+        .cta-btn {
+            background: #8f9eb5;
+            color: #2f3b4a;
+            padding: 1.3rem 3.2rem;
+            border-radius: 80px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border: 2px solid #c0cde0;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+            .cta-btn:hover {
+                background: #a5b3c9;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #8f9eb5, transparent);
+            margin: 3rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #7a8aa0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .rate-grid, .price-duo, .reasons-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CLEAN DARK HERO - CENTERED CONTENT -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="uk-icon">UK</span>
+                <span>Utility King VAT Guide</span>
+                <span>2026 Edition</span>
+            </div>
+            <h1>Compare Energy Prices With and Without VAT: <span class="highlight">What You're Really Paying</span></h1>
+            <div class="hero-sub">A Complete Guide from Utility King — understand VAT on energy and compare tariffs accurately.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">5%</span> <span class="label">domestic VAT rate</span></div>
+                <div class="hero-stat"><span class="number">20%</span> <span class="label">standard VAT rate</span></div>
+                <div class="hero-stat"><span class="number">100%</span> <span class="label">suppliers apply same rate</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LIGHT CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">“A price including VAT — a price excluding VAT — which one should you compare?”</div>
+            <p class="intro-text">At Utility King, we often see confusion when customers attempt to compare energy prices and notice two different figures: a price including VAT and a price excluding VAT. This raises a practical question: should you compare energy prices with VAT or without VAT? To answer this properly, we need to start from first principles — what VAT is, how it applies to domestic energy, and why it affects energy price comparison. Understanding this clearly ensures you do not misinterpret tariff pricing or overestimate potential savings.</p>
+        </div>
+
+        <!-- What Is VAT? -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>What Is <span>VAT?</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p>VAT stands for Value Added Tax. It is a government-imposed consumption tax applied to goods and services. Businesses collect VAT on behalf of the government and add it to the final price paid by consumers. In the context of energy bills, VAT is applied to: electricity usage, gas usage, and standing charges. <strong>VAT is charged on the total bill amount — not just the energy consumed.</strong></p>
+        </div>
+
+        <!-- What Is the VAT Rate on Domestic Energy? -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>VAT Rate on <span>Domestic Energy</span></h2>
+        </div>
+
+        <div class="rate-grid">
+            <div class="rate-card domestic">
+                <div class="rate-icon">🏠</div>
+                <h4>Domestic Energy</h4>
+                <div class="rate-value">5%</div>
+                <p>Reduced VAT rate for households</p>
+            </div>
+            <div class="rate-card business">
+                <div class="rate-icon">🏢</div>
+                <h4>Business Energy</h4>
+                <div class="rate-value">20%</div>
+                <p>Standard VAT rate (unless eligible for relief)</p>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-top:1rem;">
+            <p>This distinction is important when comparing domestic energy tariffs versus commercial energy contracts.</p>
+        </div>
+
+        <!-- Energy Prices Including VAT vs Excluding VAT -->
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2>Including vs <span>Excluding VAT</span></h2>
+        </div>
+
+        <div class="price-duo">
+            <div class="price-card excluding">
+                <div class="price-header">
+                    <div class="price-icon">➖</div>
+                    <h4>Price Excluding VAT</h4>
+                </div>
+                <p>This is the base energy rate before tax is added. It reflects the supplier's raw pricing structure. This figure is often used in business energy quotations or wholesale discussions.</p>
+                <div class="price-note">Not the price you'll actually pay as a domestic customer</div>
+            </div>
+            <div class="price-card including">
+                <div class="price-header">
+                    <div class="price-icon">➕</div>
+                    <h4>Price Including VAT</h4>
+                </div>
+                <p>This is the actual price you will pay as a domestic consumer. It includes unit rate, standing charge, and VAT applied to both. <strong>For household energy comparison, the including-VAT price is what matters most.</strong></p>
+                <div class="price-note">This is the real cost</div>
+            </div>
+        </div>
+
+        <!-- Why Do Suppliers Show Prices Without VAT? -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Why Show <span>Prices Without VAT?</span></h2>
+        </div>
+
+        <div class="reasons-grid">
+            <div class="reason-card"><div class="reason-number">1</div><h4>Business Energy Markets</h4><p>Commercial customers often reclaim VAT, pay different rates, and operate under tax-adjusted structures. Excluding VAT pricing is relevant here.</p></div>
+            <div class="reason-card"><div class="reason-number">2</div><h4>Transparency & Regulation</h4><p>Some suppliers display both figures to clearly show tax components. However, for residential households, excluding VAT pricing can create confusion if not interpreted correctly.</p></div>
+        </div>
+
+        <!-- How VAT Affects Your Total Energy Bill -->
+        <div class="section-header">
+            <div class="section-icon">📈</div>
+            <h2>How VAT <span>Affects Your Bill</span></h2>
+        </div>
+
+        <div class="formula-card">
+            <p>VAT is applied to the entire bill — including standing charges.</p>
+            <div class="formula">(Annual usage × Unit rate) + (Standing charge × 365) = Subtotal</div>
+            <div class="formula">Subtotal + VAT = Total Bill</div>
+            <div class="formula-note">VAT is then added to this subtotal</div>
+            <p style="margin-top:1.5rem;">Although VAT is a relatively small percentage compared to wholesale energy costs, it still increases the final amount you pay. When comparing energy prices with and without VAT, remember: <strong>VAT applies consistently across suppliers for domestic customers. It does not vary by supplier.</strong></p>
+        </div>
+
+        <!-- Should You Compare With or Without VAT? -->
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <h2>Compare With or <span>Without VAT?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:#e0e6f0; margin-bottom:2rem;">
+            <p style="font-size:1.3rem; font-weight:700; text-align:center;">For domestic households, always compare prices including VAT.</p>
+            <p style="margin-top:1rem;">Why? Because that is the real cost you will pay, VAT is mandatory and unavoidable, comparing excluding VAT figures understates actual expense, and all suppliers apply VAT at the same rate. Comparing excluding VAT figures does not provide a realistic assessment of your savings.</p>
+        </div>
+
+        <!-- When Excluding VAT Does Matter -->
+        <div class="section-header">
+            <div class="section-icon">💼</div>
+            <h2>When Excluding VAT <span>Does Matter</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p>There are limited situations where excluding VAT comparisons are relevant:</p>
+            <ul class="definition-list">
+                <li>Business energy contracts</li>
+                <li>VAT-registered entities</li>
+                <li>Charities or organisations eligible for VAT relief</li>
+                <li>Large-scale commercial procurement</li>
+            </ul>
+            <p style="margin-top:1rem;">In these cases, VAT treatment can vary. For domestic households, however, VAT should simply be included in total cost evaluation.</p>
+        </div>
+
+        <!-- Why Some Energy Comparisons Can Be Misleading -->
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>Misleading <span>Comparisons</span></h2>
+        </div>
+
+        <div class="misleading-card">
+            <p>Confusion often arises when:</p>
+            <ul class="misleading-list">
+                <li>One tariff is quoted excluding VAT</li>
+                <li>Another is quoted including VAT</li>
+                <li>Annual estimates omit standing charges</li>
+                <li>Marketing highlights only unit rates</li>
+            </ul>
+            <p style="margin-top:1.5rem;">To avoid misleading comparisons, always confirm:</p>
+            <ul class="check-list">
+                <li>Is VAT included?</li>
+                <li>Are standing charges included?</li>
+                <li>Is the estimate based on realistic annual usage?</li>
+            </ul>
+            <p style="margin-top:1.5rem;"><strong>Total annual cost including VAT is the only meaningful comparison metric.</strong></p>
+        </div>
+
+        <!-- Does VAT Change When You Switch? -->
+        <div class="section-header">
+            <div class="section-icon">🔄</div>
+            <h2>Does VAT Change <span>When You Switch?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:#e0e6f0;">
+            <p><strong>No.</strong> Switching energy supplier does not change VAT rate, does not affect tax treatment, and does not alter regulatory obligations. VAT is determined by government policy — not by the supplier. Your energy switching decision affects pricing structure, not taxation.</p>
+        </div>
+
+        <!-- Can VAT on Energy Change in the Future? -->
+        <div class="section-header">
+            <div class="section-icon">🔮</div>
+            <h2>Can VAT <span>Change in Future?</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p><strong>Yes — governments can adjust VAT rates.</strong> If VAT rates change: all suppliers must apply the new rate, the change affects all domestic customers, and it is not supplier-specific. This reinforces why VAT is not a competitive differentiator between energy providers.</p>
+        </div>
+
+        <!-- Utility King's Perspective -->
+        <div class="section-header">
+            <div class="section-icon">👑</div>
+            <h2>Utility King's <span>Perspective</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:8px solid #8f9eb5; margin-bottom:2rem;">
+            <p style="font-size:1.2rem;">At Utility King, we encourage customers to focus on clarity. When comparing energy prices with and without VAT: domestic customers should always evaluate including-VAT figures, VAT does not vary between suppliers, the real comparison point is total annual cost including tax, and energy comparison becomes confusing when key elements are separated artificially.</p>
+            <p style="margin-top:1rem;">The right way to compare energy deals is simple: <strong>Look at the full annual cost, including VAT, standing charges, and realistic usage. That is the number that matters.</strong></p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Should I compare energy prices including VAT?</div><p>Yes. For domestic customers, always compare including VAT to reflect actual cost.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Why do some energy quotes exclude VAT?</div><p>Business contracts often display prices excluding VAT because businesses may reclaim it.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does VAT differ between energy suppliers?</div><p>No. VAT rates are set by government policy and applied consistently.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is VAT applied to standing charges?</div><p>Yes. VAT is applied to the total bill, including standing charges.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does switching energy supplier change VAT?</div><p>No. Switching does not affect tax rates.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Can VAT on energy increase?</div><p>Yes. Governments can adjust VAT rates, which would apply across all suppliers.</p></div>
+        </div>
+
+        <!-- CLEAN CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Want clarity on your real energy costs?</p>
+                <small>Let Utility King help you compare tariffs transparently — including VAT, standing charges, and accurate usage.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to comparing energy prices with and without VAT. All rights reserved.</p>
+            <p style="margin-top:0.5rem;">If you are comparing energy prices and want a clear, accurate understanding of your real annual cost — including VAT — Utility King can help you break down tariffs transparently, ensuring your comparison is precise and financially sound.</p>
+        </div>
+    </main>
+</body>
+</html>

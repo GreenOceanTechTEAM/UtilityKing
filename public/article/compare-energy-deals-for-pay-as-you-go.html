@@ -1,0 +1,540 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Deals for Pay-As-You-Go: A Complete Guide from Utility King</title>
+    <meta name="description" content="Learn how to compare energy deals for pay-as-you-go prepayment meters. Understand costs, tariffs, and find the best balance between control and affordability.">
+    <meta name="keywords" content="compare energy deals, pay-as-you-go energy, prepayment meters, energy tariff comparison, utility king, prepayment vs direct debit">
+    <meta name="author" content="Utility King">
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #f8fafc;
+            color: #1e293b;
+        }
+
+        .container {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== DARK HERO (pay-as-you-go theme) ===== */
+        .hero {
+            background: linear-gradient(145deg, #162b29 0%, #1d3d3a 100%);
+            color: #e0f0ed;
+            padding: 64px 0 56px 0;
+            border-bottom-left-radius: 36px;
+            border-bottom-right-radius: 36px;
+            box-shadow: 0 20px 30px -10px rgba(0, 40, 30, 0.4);
+            margin-bottom: 40px;
+        }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(95, 194, 170, 0.18);
+            color: #9ef0da;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            padding: 6px 16px;
+            border-radius: 40px;
+            margin-bottom: 20px;
+            border: 1px solid rgba(95, 194, 170, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 2.9rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 18px;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero__highlight {
+            color: #b7f3e3;
+            border-bottom: 3px solid rgba(95, 194, 170, 0.5);
+            display: inline-block;
+        }
+
+        .hero__intro-text {
+            font-size: 1.2rem;
+            color: #bcddd6;
+            max-width: 750px;
+            margin-bottom: 30px;
+        }
+
+        .hero__stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 24px 32px;
+            margin-top: 24px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            padding-top: 30px;
+        }
+
+        .hero__stat-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.2);
+            padding: 10px 24px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.1);
+            font-weight: 500;
+        }
+
+            .hero__stat-item i {
+                color: #9ef0da;
+                font-size: 1.2rem;
+            }
+
+        /* ===== LIGHT THEME BODY ===== */
+        .article-body {
+            background-color: #ffffff;
+            border-radius: 40px 40px 0 0;
+            box-shadow: 0 -10px 30px rgba(0, 30, 20, 0.04), 0 15px 30px -10px rgba(0, 60, 50, 0.08);
+            padding: 52px 0 60px 0;
+            margin-top: -20px;
+            position: relative;
+            z-index: 5;
+        }
+
+            .article-body h2 {
+                font-size: 2.1rem;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                margin: 48px 0 20px 0;
+                color: #0c332e;
+                border-left: 6px solid #2f6b61;
+                padding-left: 22px;
+            }
+
+                .article-body h2:first-of-type {
+                    margin-top: 0;
+                }
+
+            .article-body h3 {
+                font-size: 1.6rem;
+                font-weight: 600;
+                margin: 36px 0 18px 0;
+                color: #1d4e47;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .article-body h3 i {
+                    color: #368f80;
+                    font-size: 1.8rem;
+                }
+
+            .article-body p {
+                font-size: 1.1rem;
+                color: #2c3f4a;
+                margin-bottom: 22px;
+            }
+
+            .article-body strong {
+                color: #0e403a;
+                font-weight: 600;
+            }
+
+        .info-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .info-card {
+            background: #f6fbfa;
+            border-radius: 28px;
+            padding: 28px 24px;
+            border: 1px solid #cde3dd;
+            transition: all 0.2s ease;
+        }
+
+            .info-card:hover {
+                border-color: #368f80;
+                box-shadow: 0 18px 25px -14px #368f8050;
+            }
+
+        .info-card__title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 24px;
+            color: #0c332e;
+        }
+
+            .info-card__title i {
+                font-size: 2rem;
+                color: #368f80;
+            }
+
+        .info-card ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .info-card li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 16px;
+            font-size: 1rem;
+            color: #2a4b47;
+        }
+
+            .info-card li i {
+                color: #368f80;
+                width: 22px;
+                margin-top: 3px;
+            }
+
+        .reasons-list {
+            background: #f1f8f6;
+            border-radius: 28px;
+            padding: 28px 32px;
+            margin: 28px 0;
+        }
+
+            .reasons-list p {
+                margin-bottom: 12px;
+            }
+
+        .step-flow {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 36px 0 20px;
+        }
+
+        .step-flow-item {
+            background: #f1f8f6;
+            flex: 1 1 160px;
+            border-radius: 28px;
+            padding: 28px 18px;
+            text-align: center;
+            border: 1px solid #d0e6df;
+        }
+
+            .step-flow-item .step-num {
+                background: #1d4e47;
+                color: white;
+                width: 48px;
+                height: 48px;
+                border-radius: 60px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1.4rem;
+                margin: 0 auto 20px;
+            }
+
+            .step-flow-item h4 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #15423c;
+            }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px;
+            margin: 32px 0;
+        }
+
+        .faq-item {
+            background: #f5faf8;
+            border-radius: 24px;
+            padding: 26px 24px;
+            border: 1px solid #d2e7e0;
+        }
+
+            .faq-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #15423c;
+                margin-bottom: 14px;
+            }
+
+                .faq-item h4 i {
+                    color: #368f80;
+                }
+
+            .faq-item p {
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+        .utility-perspective {
+            background: #e2f0ec;
+            border-radius: 40px;
+            padding: 40px 44px;
+            margin: 48px 0 32px;
+            text-align: center;
+            border: 1px solid #a7cfc4;
+        }
+
+            .utility-perspective i {
+                font-size: 3.2rem;
+                color: #1d5a50;
+                opacity: 0.9;
+                margin-bottom: 18px;
+            }
+
+            .utility-perspective p {
+                font-size: 1.2rem;
+                max-width: 750px;
+                margin: 0 auto;
+                color: #15423c;
+            }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #a7cfc4, transparent);
+            margin: 40px 0;
+        }
+
+        .small-meta {
+            color: #6d8f88;
+            font-size: 0.9rem;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step-flow {
+                flex-direction: column;
+            }
+
+            .article-body h2 {
+                font-size: 1.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO (pay-as-you-go theme, exact wording) -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__badge"><i class="fas fa-bolt" style="margin-right: 6px;"></i> UTILITY KING · PAY-AS-YOU-GO GUIDE</span>
+            <h1>Compare Energy Deals <span class="hero__highlight">for Pay-As-You-Go</span><br>A Complete Guide from Utility King</h1>
+            <p class="hero__intro-text">At Utility King, we regularly speak with households who prefer control over their energy spending. Many of them search for: “How do I compare energy deals for pay-as-you-go?”</p>
+
+            <div class="hero__stats">
+                <div class="hero__stat-item"><i class="fas fa-key"></i> Prepayment meters explained</div>
+                <div class="hero__stat-item"><i class="fas fa-coins"></i> Why pricing differs</div>
+                <div class="hero__stat-item"><i class="fas fa-scale-balanced"></i> Control vs cost</div>
+                <div class="hero__stat-item"><i class="fas fa-arrow-right-arrow-left"></i> Switching & smart meters</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT THEME BODY (100% verbatim content) -->
+    <main class="article-body">
+        <div class="container">
+
+            <!-- Opening paragraphs - exact -->
+            <p>Pay-as-you-go energy — also known as prepayment energy — works differently from standard direct debit tariffs. It offers budgeting control, but often at a higher cost.</p>
+            <p>To compare pay-as-you-go energy deals properly, you must understand how they are structured, why pricing differs, and what options are realistically available.</p>
+            <p>In this guide, Utility King explains:</p>
+            <p>What pay-as-you-go energy is</p>
+            <p>How prepayment meters work</p>
+            <p>Why pay-as-you-go tariffs are often more expensive</p>
+            <p>How to compare prepayment energy suppliers</p>
+            <p>When switching makes financial sense</p>
+            <p>Our goal is to help you balance control with cost efficiency.</p>
+
+            <h2>What Is Pay-As-You-Go Energy?</h2>
+            <p>Pay-as-you-go energy means you pay for gas or electricity before you use it.</p>
+            <p>Instead of receiving a monthly or quarterly bill, you:</p>
+            <p>Top up your meter</p>
+            <p>Add credit in advance</p>
+            <p>Use energy until the credit runs out</p>
+            <p>This system is typically managed through:</p>
+            <p>Key meters</p>
+            <p>Card meters</p>
+            <p>Smart prepayment meters</p>
+            <p>Online top-up systems</p>
+            <p>You are not billed after usage. You are billed in advance.</p>
+
+            <h2>How Prepayment Energy Tariffs Work</h2>
+            <p>Although the payment method differs, the cost structure is still based on:</p>
+            <p>Unit rate (price per kWh)</p>
+            <p>Standing charge (daily fixed fee)</p>
+            <p>Your total cost is calculated as:</p>
+            <p><strong>(Usage × Unit rate) + Standing charges</strong></p>
+            <p>The key difference is when you pay, not how the energy is calculated.</p>
+            <p>However, pay-as-you-go tariffs often have:</p>
+            <p>Higher unit rates</p>
+            <p>Higher standing charges</p>
+            <p>This is why careful comparison is essential.</p>
+
+            <h2>Why Pay-As-You-Go Energy Can Be More Expensive</h2>
+            <p>There are several reasons prepayment energy tariffs may cost more:</p>
+
+            <div class="reasons-list">
+                <p><strong>1. Higher Administrative Costs</strong></p>
+                <p>Prepayment systems require additional infrastructure and support.</p>
+                <p><strong>2. Higher Financial Risk for Suppliers</strong></p>
+                <p>Suppliers factor in operational costs and payment handling.</p>
+                <p><strong>3. Reduced Competition</strong></p>
+                <p>Fewer suppliers offer competitive prepayment deals compared to direct debit tariffs.</p>
+            </div>
+
+            <p>However, regulatory price caps often limit how much more expensive prepayment tariffs can be.</p>
+            <p>Still, even small differences in unit rate can add up significantly over a year.</p>
+
+            <h2>Who Uses Pay-As-You-Go Energy?</h2>
+            <p>Pay-as-you-go energy may suit:</p>
+            <p>Households managing tight budgets</p>
+            <p>Tenants in rented properties</p>
+            <p>Customers who prefer spending control</p>
+            <p>Those avoiding debt accumulation</p>
+            <p>It provides immediate spending visibility.</p>
+            <p>But it can also create risks — especially during winter when energy consumption increases.</p>
+
+            <h2>How to Compare Energy Deals for Pay-As-You-Go</h2>
+            <p>When comparing prepayment energy suppliers, focus on the following.</p>
+
+            <div class="info-cards">
+                <div class="info-card">
+                    <div class="info-card__title"><i class="fas fa-bolt"></i> 1. Unit Rate</div>
+                    <p>This is the most important factor for high-usage households.</p>
+                    <p>Even a small difference in price per kWh can significantly impact annual cost.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card__title"><i class="fas fa-clock"></i> 2. Standing Charge</div>
+                    <p>Standing charges apply daily, even if you do not use energy.</p>
+                    <p>Low-usage households should examine this carefully.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card__title"><i class="fas fa-microchip"></i> 3. Smart Prepayment Compatibility</div>
+                    <p>Some suppliers offer smart prepayment meters that allow:</p>
+                    <p>Online top-ups</p>
+                    <p>App-based monitoring</p>
+                    <p>Remote switching between credit and prepayment mode</p>
+                    <p>These features improve flexibility and control.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card__title"><i class="fas fa-map-pin"></i> 4. Regional Pricing</div>
+                    <p>Energy prices vary by region.</p>
+                    <p>Always compare tariffs based on your postcode.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-card__title"><i class="fas fa-headset"></i> 5. Customer Service and Emergency Credit</div>
+                    <p>Check whether the supplier offers:</p>
+                    <p>Emergency credit options</p>
+                    <p>Friendly credit (overnight or weekend protection)</p>
+                    <p>Clear top-up support</p>
+                    <p>Service quality matters more when energy access depends on real-time payments.</p>
+                </div>
+            </div>
+
+            <h2>Can You Switch Pay-As-You-Go Energy Suppliers?</h2>
+            <p>Yes.</p>
+            <p>Switching pay-as-you-go energy suppliers is:</p>
+            <p>Safe</p>
+            <p>Regulated</p>
+            <p>Administrative only</p>
+            <p>Non-disruptive to supply</p>
+            <p>Your electricity and gas continue flowing through the same network.</p>
+            <p>However, you may need to:</p>
+            <p>Replace your prepayment meter</p>
+            <p>Upgrade to a smart prepayment meter</p>
+            <p>Clear outstanding debts (if applicable)</p>
+            <p>If you owe money to your current supplier, switching may be restricted until the balance is addressed.</p>
+
+            <h2>Can You Switch From Pay-As-You-Go to Direct Debit?</h2>
+            <p>Yes — and this can often reduce your annual energy costs.</p>
+            <p>If you:</p>
+            <p>Have stable income</p>
+            <p>Can manage monthly budgeting</p>
+            <p>Have cleared existing debt</p>
+            <p>Switching to direct debit may provide access to cheaper tariffs.</p>
+            <p>At Utility King, we frequently see significant savings when households move from prepayment to fixed monthly billing.</p>
+            <p>However, prepayment remains valuable for customers prioritising strict spending control.</p>
+
+            <h2>Is Pay-As-You-Go Energy Covered by a Price Cap?</h2>
+            <p>In regulated markets, prepayment tariffs are often subject to a price cap.</p>
+            <p>This limits:</p>
+            <p>Maximum unit rate</p>
+            <p>Maximum standing charge</p>
+            <p>While this protects customers from extreme pricing, it does not guarantee the lowest possible rates.</p>
+            <p>Comparison still matters.</p>
+
+            <h2>The Real Cost of Pay-As-You-Go Energy</h2>
+            <p>When comparing energy deals for pay-as-you-go, consider the full annual cost.</p>
+            <p>For example:</p>
+            <p>If a prepayment tariff has a slightly higher unit rate than a direct debit plan, that difference multiplies across thousands of kWh per year.</p>
+            <p>Budgeting control is valuable — but cost differences should be understood clearly.</p>
+            <p>The key is making an informed decision, not an automatic one.</p>
+
+            <h2>Utility King's Perspective</h2>
+            <div class="utility-perspective">
+                <i class="fas fa-hand-holding-dollar"></i>
+                <p>At Utility King, we believe pay-as-you-go energy is about financial control — not necessarily savings.</p>
+                <p>It offers:</p>
+                <p>Spending discipline</p>
+                <p>No surprise bills</p>
+                <p>Reduced risk of debt</p>
+                <p>But it may come at a higher annual cost.</p>
+                <p>When comparing energy deals for pay-as-you-go, we recommend:</p>
+                <p>Reviewing total annual cost</p>
+                <p>Comparing against direct debit alternatives</p>
+                <p>Evaluating flexibility needs</p>
+                <p>Checking smart meter compatibility</p>
+                <p>Energy affordability is not just about price — it is about manageability.</p>
+                <p>But where possible, cost efficiency should not be ignored.</p>
+            </div>
+
+            <h2>Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> Is pay-as-you-go energy more expensive?</h4><p>It is often slightly more expensive than direct debit tariffs, but pricing is regulated.</p></div>
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> Can I switch pay-as-you-go suppliers?</h4><p>Yes, provided you meet eligibility requirements and clear outstanding debt.</p></div>
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> Does pay-as-you-go energy have standing charges?</h4><p>Yes. Standing charges apply daily, even if you do not use energy.</p></div>
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> What happens if I run out of credit?</h4><p>Your supply may stop unless emergency credit is available.</p></div>
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> Can I move from prepayment to direct debit?</h4><p>Yes, if you meet the supplier's requirements and manage payments reliably.</p></div>
+                <div class="faq-item"><h4><i class="fas fa-circle-question"></i> Is pay-as-you-go better for budgeting?</h4><p>It offers strong spending control but may cost more annually.</p></div>
+            </div>
+
+            <hr>
+            <p style="background: #edf7f4; padding: 26px 30px; border-radius: 40px; font-size: 1.1rem;"><i class="fas fa-star" style="color: #1d5a50; margin-right: 10px;"></i> If you want to compare energy deals for pay-as-you-go and determine whether it remains the right option for your household, Utility King can help you evaluate both cost and flexibility — ensuring your energy choice supports your financial stability.</p>
+            <div class="small-meta">© Utility King — Complete guide to pay-as-you-go energy. No header or footer, pure content.</div>
+
+        </div>
+    </main>
+</body>
+</html>

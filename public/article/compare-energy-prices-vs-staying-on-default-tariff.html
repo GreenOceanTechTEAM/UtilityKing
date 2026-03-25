@@ -1,0 +1,778 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Compare Energy Prices vs Default Tariff: The Complete UK Consumer Guide (2026)</title>
+    <meta name="description" content="2026 UK guide: Why default energy tariffs cost more, how the price cap works, real savings comparison, and when switching makes sense. Data-driven & impartial.">
+    <meta name="keywords" content="energy price comparison, default tariff, standard variable tariff, SVT, Ofgem price cap, fixed energy deals, switch energy supplier, UtilityKing, UK energy 2026">
+    <meta name="author" content="UtilityKing Consumer Guide">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(145deg, #f6f9fc 0%, #edf2f7 100%);
+            color: #1a2e3f;
+            line-height: 1.6;
+        }
+
+        /* === DARK HERO WITH ADVANCED GRAPHICS === */
+        .hero {
+            background: radial-gradient(ellipse at 30% 40%, #1e3a5f 0%, #0a1a2b 90%);
+            color: #fff;
+            padding: 4.5rem 2rem 5rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 1px solid rgba(249, 168, 38, 0.3);
+            box-shadow: 0 25px 40px -20px rgba(0,20,40,0.5);
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                inset: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.1"><path d="M20 20 L40 20 L30 40 Z" fill="%23f9a826"/><circle cx="70" cy="30" r="8" fill="%23f9a826"/><rect x="10" y="70" width="15" height="15" fill="%23f9a826" opacity="0.5"/><path d="M80 80 L95 80 L87.5 95 Z" fill="%23f9a826"/></svg>');
+                background-size: 180px 180px;
+                background-repeat: repeat;
+                opacity: 0.15;
+                z-index: -1;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to bottom right, transparent 49%, #f6f9fc 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+            text-align:center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            gap: 0.75rem;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.6rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid rgba(249,168,38,0.4);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            letter-spacing: 0.5px;
+            color: #ffd966;
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.3);
+        }
+
+        .hero h1 {
+            font-size: 3.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 1200px;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.4);
+            background: linear-gradient(135deg, #fff 0%, #f9e2b7 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero .highlight {
+            background: linear-gradient(145deg, #f9a826, #ffcd7e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            border-bottom: 4px solid #f9a826;
+            padding-bottom: 5px;
+        }
+
+        .hero-meta-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 2.8rem;
+            background: rgba(0,0,0,0.25);
+            backdrop-filter: blur(12px);
+            padding: 1.5rem 2.2rem;
+            border-radius: 70px;
+            border: 1px solid rgba(255,215,100,0.25);
+            justify-content:center;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            font-size: 1.1rem;
+            color: #e0ecff;
+        }
+
+        .meta-icon {
+            background: #f9a826;
+            color: #0a1a2b;
+            width: 38px;
+            height: 38px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* === MAIN CONTAINER WITH ADVANCED CARDS === */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 3rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* introduction card */
+        .insight-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.4rem;
+            box-shadow: 0 30px 50px -20px rgba(0,30,50,0.2);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(249,168,38,0.2);
+            background: linear-gradient(145deg, #ffffff, #fbfdff);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .insight-card::before {
+                content: "⚡";
+                position: absolute;
+                font-size: 8rem;
+                right: 1rem;
+                bottom: -1rem;
+                opacity: 0.05;
+                transform: rotate(15deg);
+            }
+
+        .lead {
+            font-size: 1.3rem;
+            font-weight: 400;
+            border-left: 6px solid #f9a826;
+            padding-left: 1.8rem;
+            color: #1f3f5c;
+        }
+
+            .lead strong {
+                color: #b45309;
+                font-weight: 700;
+            }
+
+        /* section headers with style */
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3.5rem 0 1.8rem;
+        }
+
+        .title-icon {
+            background: #f9a826;
+            color: #0b1e2b;
+            width: 54px;
+            height: 54px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            transform: rotate(5deg);
+            box-shadow: 0 12px 18px -10px #f9a82690;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0c2940;
+            letter-spacing: -0.02em;
+            margin: 0;
+        }
+
+            .section-title h2 span {
+                color: #f9a826;
+                background: #fef3dd;
+                padding: 0.2rem 1rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+            }
+
+        /* two-column card grid */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #e3eef9;
+            box-shadow: 0 12px 28px -12px rgba(20,50,70,0.12);
+            transition: transform 0.2s ease;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 0 24px 40px -16px #f9a82660;
+            }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.6rem;
+        }
+
+        .card-icon {
+            background: #fef3e0;
+            width: 52px;
+            height: 52px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #b95f0a;
+        }
+
+        .card-header h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #153145;
+        }
+
+        /* bullet lists with custom markers */
+        .custom-bullets {
+            list-style: none;
+            padding: 0;
+        }
+
+            .custom-bullets li {
+                padding: 0.7rem 0 0.7rem 2rem;
+                position: relative;
+                font-size: 1.05rem;
+                border-bottom: 1px dashed #d8e6f0;
+            }
+
+                .custom-bullets li::before {
+                    content: "▹";
+                    color: #f9a826;
+                    font-weight: 700;
+                    font-size: 1.4rem;
+                    position: absolute;
+                    left: 0;
+                    top: 0.4rem;
+                }
+
+        .double-bullet li::before {
+            content: "⏺";
+            color: #f37c1d;
+        }
+
+        .badge-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+
+            .badge-list span {
+                background: #e6f0f9;
+                padding: 0.4rem 1.4rem;
+                border-radius: 40px;
+                font-weight: 500;
+                color: #1f4b6e;
+                border: 1px solid #bdd6eb;
+                font-size: 0.95rem;
+            }
+
+        /* comparison showcase */
+        .comparison-showcase {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .price-panel {
+            background: white;
+            border-radius: 36px;
+            overflow: hidden;
+            box-shadow: 0 25px 40px -18px #1f3f5c;
+            border: 1px solid #cedfec;
+            transition: all 0.2s;
+        }
+
+            .price-panel.default {
+                border-top: 8px solid #718096;
+            }
+
+            .price-panel.fixed {
+                border-top: 8px solid #f9a826;
+            }
+
+        .panel-head {
+            padding: 1.5rem 2rem;
+            background: #f4fafd;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            border-bottom: 1px solid #d2e1ed;
+        }
+
+            .panel-head h4 {
+                font-size: 1.7rem;
+                font-weight: 700;
+            }
+
+        .panel-body {
+            padding: 2rem;
+        }
+
+        .cost-big {
+            font-size: 2.6rem;
+            font-weight: 800;
+            color: #0a2a3b;
+            line-height: 1;
+            margin: 0.5rem 0;
+        }
+
+            .cost-big small {
+                font-size: 1rem;
+                font-weight: 400;
+                color: #5d7f94;
+            }
+
+        .savings-chip {
+            background: #e0f2e9;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: inline-block;
+            font-weight: 700;
+            color: #1c6b4b;
+            margin: 1.5rem 0;
+            border-left: 8px solid #2a9d8f;
+            box-shadow: 0 6px 12px -6px #a1d9cd;
+        }
+
+        /* stats blocks */
+        .stats-array {
+            display: flex;
+            gap: 1.8rem;
+            margin: 2.8rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-tile {
+            background: linear-gradient(125deg, #ffffff, #f3f9ff);
+            padding: 1.8rem 2rem;
+            border-radius: 32px;
+            flex: 1 1 180px;
+            border: 1px solid #dbe5f0;
+            box-shadow: 0 16px 24px -16px #b1c9dd;
+        }
+
+            .stat-tile .number {
+                font-size: 3.2rem;
+                font-weight: 800;
+                color: #1f3c54;
+                line-height: 1;
+            }
+
+            .stat-tile .label {
+                color: #52738c;
+                font-weight: 600;
+                letter-spacing: -0.2px;
+            }
+
+        /* FAQ advanced grid */
+        .faq-accordion {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #e1eef9;
+            box-shadow: 0 8px 18px -12px #507e9f;
+            transition: 0.15s;
+        }
+
+            .faq-block .q {
+                font-weight: 800;
+                color: #0b2b40;
+                margin-bottom: 0.5rem;
+                font-size: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+                .faq-block .q span {
+                    background: #f9a826;
+                    color: black;
+                    width: 28px;
+                    height: 28px;
+                    border-radius: 30px;
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 800;
+                }
+
+        /* CTA ultimate */
+        .ultimate-cta {
+            background: linear-gradient(115deg, #0a2638, #1d3e5a);
+            border-radius: 50px;
+            padding: 3rem;
+            margin: 3.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            box-shadow: 0 30px 40px -20px #0b2c40;
+            border: 1px solid #f9a82650;
+        }
+
+        .cta-left {
+            color: white;
+        }
+
+            .cta-left p {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+                color: #ffe6b3;
+            }
+
+            .cta-left small {
+                color: #b2c9da;
+            }
+
+        .cta-button {
+            background: #f9a826;
+            color: #0a1f2b;
+            padding: 1.2rem 3rem;
+            border-radius: 80px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border: 3px solid #ffce7a;
+            box-shadow: 0 16px 28px -14px #f9a826;
+            transition: all 0.2s;
+        }
+
+            .cta-button:hover {
+                background: #ffb83d;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(to right, transparent, #f9a82660, transparent);
+            margin: 3rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+
+            .feature-grid, .comparison-showcase, .faq-accordion {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-meta-grid {
+                border-radius: 40px;
+            }
+
+            .section-title {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO SECTION (ADVANCED) -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span>📘 UtilityKing Consumer Guide</span>
+                <span>⚡ 2026 Edition</span>
+            </div>
+            <h1>Compare Energy Prices <span class="highlight">vs</span><br>Staying on Default Tariff</h1>
+            <div style="max-width: 1200px; font-size: 1.3rem; opacity: 0.9; margin-bottom: 2rem;">The most expensive decision is often not a bad choice — it's making no choice at all.</div>
+            <div class="hero-meta-grid">
+                <div class="meta-item"><span class="meta-icon">📅</span> Last updated: <strong>January 2026</strong></div>
+                <div class="meta-item"><span class="meta-icon">⚖️</span> Regulator: <strong>Ofgem</strong></div>
+                <div class="meta-item"><span class="meta-icon">🏠</span> Audience: <strong>UK households on SVT</strong></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LIGHT CONTAINER (ADVANCED CARDS) -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="insight-card">
+            <p class="lead"><strong>Why This Question Matters More Than Most People Realise</strong> — In the UK energy market, the most expensive decision is often not a bad choice — it's making no choice at all. Millions of households remain on their supplier's default tariff, also known as a Standard Variable Tariff (SVT). Many believe that because this tariff is regulated by Ofgem's energy price cap, it must be "safe" or "fair". But <strong style="color:#c8590a;">"capped" does not mean "cheap"</strong>. To understand whether you should compare energy prices or stay on your default tariff, we first need to understand what the default tariff actually is, how it works, and how suppliers price it.</p>
+        </div>
+
+        <!-- What is default tariff + price cap in grid -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">⚡</div>
+                    <h3>What Is a Default Tariff?</h3>
+                </div>
+                <ul class="custom-bullets">
+                    <li>Your fixed tariff ended and you did not switch</li>
+                    <li>You moved into a new home and did nothing</li>
+                    <li>You cancelled a fixed contract</li>
+                    <li>You never selected a tariff manually</li>
+                </ul>
+                <div class="badge-list">
+                    <span>price per unit can change</span>
+                    <span>standing charge varies</span>
+                    <span>no fixed end date</span>
+                    <span>leave anytime, no fees</span>
+                </div>
+                <p style="margin-top: 1rem;"><strong>“Do nothing” option.</strong></p>
+            </div>
+
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">🔒</div>
+                    <h3>How Price Cap Works</h3>
+                </div>
+                <p><strong>Ofgem cap does NOT limit total bill.</strong> It limits max unit rate & standing charge.</p>
+                <ul class="custom-bullets double-bullet">
+                    <li>Wholesale gas prices</li>
+                    <li>Electricity market conditions</li>
+                    <li>Network costs & levies</li>
+                    <li>Supplier operating costs</li>
+                </ul>
+                <div style="background:#fef6e6; padding:1rem; border-radius:20px; margin-top:1rem;">⚠️ It's a <strong>ceiling</strong>, not a discount. Fixed tariffs often undercut the cap.</div>
+            </div>
+        </div>
+
+        <!-- Why structurally expensive + economics combined -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">📊</div>
+                    <h3>Why Default Costs More</h3>
+                </div>
+                <p><strong>Suppliers split customers:</strong> active switchers vs passive default.</p>
+                <ul class="custom-bullets">
+                    <li><strong>Active switchers:</strong> compare, respond, willing to leave → aggressive competition</li>
+                    <li><strong>Passive customers:</strong> rarely switch, inertia, less price-sensitive</li>
+                </ul>
+                <p style="margin-top: 1rem;">Default tariffs = stability & margin. Fixed = acquisition. <strong>That's where savings come from.</strong></p>
+            </div>
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">📈</div>
+                    <h3>Fixed vs Default Economics</h3>
+                </div>
+                <p><span style="background:#2a9d8f20; padding:0.2rem 1rem; border-radius:20px;">✅ Fixed tariff:</span> locks wholesale, predictable revenue, lower pricing.</p>
+                <p><span style="background:#e76f5120; padding:0.2rem 1rem; border-radius:20px;">⏳ Default tariff:</span> less risk, quarterly adjustments, no discount incentive.</p>
+                <p>Risk & commitment drive pricing.</p>
+            </div>
+        </div>
+
+        <!-- Real cost comparison (showcase) -->
+        <div class="section-title">
+            <div class="title-icon">💰</div>
+            <h2>Real-World Cost Comparison <span>2026 example</span></h2>
+        </div>
+
+        <div class="comparison-showcase">
+            <div class="price-panel default">
+                <div class="panel-head">
+                    <h4>Default Tariff</h4>
+                    <span style="background:#718096; color:white; padding:0.2rem 1rem; border-radius:60px;">price cap level</span>
+                </div>
+                <div class="panel-body">
+                    <div class="cost-big">£1,850 <small>/year</small></div>
+                    <ul style="margin:1rem 0 1rem 1.4rem; color:#3d5f7a;">
+                        <li>Electricity 2,900 kWh</li>
+                        <li>Gas 12,000 kWh</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="price-panel fixed">
+                <div class="panel-head">
+                    <h4>12-Month Fixed Deal</h4>
+                    <span style="background:#f9a826; color:#0a1a2b; padding:0.2rem 1rem; border-radius:60px;">competitive</span>
+                </div>
+                <div class="panel-body">
+                    <div class="cost-big">£1,650–£1,720 <small>/year</small></div>
+                    <div class="savings-chip">✨ Potential saving: £130–£200 per year</div>
+                    <p>Higher usage: <strong>£250–£300+</strong> · Low usage: smaller but meaningful<br>Over 3 years, differences compound.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Psychology + when default makes sense two cards -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">🧠</div>
+                    <h3>Why households stay</h3>
+                </div>
+                <ul class="custom-bullets">
+                    <li><strong>“I'll switch later.”</strong></li>
+                    <li><strong>“It's too complicated.”</strong></li>
+                    <li><strong>“Price cap protects me.”</strong></li>
+                    <li><strong>“I don't want disruption.”</strong></li>
+                    <li><strong>“I don't understand tariffs.”</strong></li>
+                </ul>
+                <div style="background:#e1f0fa; padding:1.2rem; border-radius:24px; margin-top:1rem;">⚡ Reality: switching takes ~5 days, no interruption, same infrastructure — only billing changes. <strong>Barrier is perception.</strong></div>
+            </div>
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">⏳</div>
+                    <h3>When default makes sense</h3>
+                </div>
+                <ul class="custom-bullets">
+                    <li>Moving home within weeks</li>
+                    <li>Expect wholesale price drop</li>
+                    <li>Need maximum flexibility</li>
+                    <li>Monitoring volatility</li>
+                </ul>
+                <p style="margin-top:1.5rem;"><span style="background:#fee7c4; padding:0.3rem 1rem; border-radius:40px;">⚠️ Even then, comparison is essential — assumption is expensive.</span></p>
+            </div>
+        </div>
+
+        <!-- Price volatility + exit fees block -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">📉</div>
+                    <h3>Default & price volatility</h3>
+                </div>
+                <p>If wholesale rises → cap rises → default rises. If wholesale falls → default falls. Fixed gives price certainty. <strong>Default transfers volatility risk to you.</strong></p>
+            </div>
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">🚪</div>
+                    <h3>Exit fees vs flexibility</h3>
+                </div>
+                <p><strong>Default:</strong> no exit fees. <strong>Fixed:</strong> £30–75 per fuel exit fees.</p>
+                <p>Matter only if: you leave early, prices drop, you switch quickly. Even with fees, fixed often cheaper overall.</p>
+            </div>
+        </div>
+
+        <!-- loyalty + long-term cost with stats tiles -->
+        <div class="section-title">
+            <div class="title-icon">⏰</div>
+            <h2>The loyalty problem & cost of doing nothing</h2>
+        </div>
+
+        <div style="background:white; border-radius:40px; padding:2rem; margin-bottom:2rem;">
+            <p>Energy suppliers do not reward loyalty. Unlike insurance, pricing is shaped by new customer competition. Staying without comparing: no rewards, no discounts, no reduction — it quietly increases costs.</p>
+        </div>
+
+        <div class="stats-array">
+            <div class="stat-tile"><div class="number">£150</div><div class="label">avg yearly overpay</div></div>
+            <div class="stat-tile"><div class="number">5 yrs</div><div class="label">= £750 lost</div></div>
+            <div class="stat-tile"><div class="number">10 yrs</div><div class="label">= £1,500+ lost</div></div>
+        </div>
+
+        <!-- proper compare + utilityking approach two cards -->
+        <div class="feature-grid">
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">🔍</div>
+                    <h3>How to compare properly</h3>
+                </div>
+                <ul class="custom-bullets">
+                    <li>Total annual cost</li>
+                    <li>Unit rates (elec & gas)</li>
+                    <li>Standing charges</li>
+                    <li>Contract length</li>
+                    <li>Exit fees</li>
+                    <li>Payment method requirements</li>
+                </ul>
+                <p><strong>Not bonuses or headline rates.</strong> Compare total cost over time.</p>
+            </div>
+            <div class="feature-card">
+                <div class="card-header">
+                    <div class="card-icon">🏆</div>
+                    <h3>UtilityKing approach</h3>
+                </div>
+                <ul class="custom-bullets">
+                    <li>Shows price cap comparison clearly</li>
+                    <li>Calculates total annual savings</li>
+                    <li>Includes exit fees in projections</li>
+                    <li>Avoids misleading teaser pricing</li>
+                    <li>Postcode-accurate estimates</li>
+                </ul>
+                <p style="margin-top:1rem;">Clarity, not urgency.</p>
+            </div>
+        </div>
+
+        <!-- Final assessment block -->
+        <div style="background:linear-gradient(115deg, #fdf6e9, #fffbf2); border-radius:40px; padding:2.5rem; margin:2rem 0; border-left:12px solid #f9a826;">
+            <h3 style="font-size:2rem; margin-bottom:1rem;">📌 Final Assessment: Compare First, Decide Second</h3>
+            <p style="font-size:1.2rem;">The default tariff is: <span style="background:#e2eaf1; padding:0.3rem 1.2rem; border-radius:40px;">flexible</span> <span style="background:#e2eaf1; padding:0.3rem 1.2rem; border-radius:40px;">regulated</span> <span style="background:#e2eaf1; padding:0.3rem 1.2rem; border-radius:40px;">convenient</span>. But it is rarely the most cost-effective option. Comparing does not obligate you to switch — it simply reveals whether you're overpaying. And in most cases, households on default are.</p>
+        </div>
+
+        <!-- FAQ advanced blocks -->
+        <div class="section-title">
+            <div class="title-icon">❓</div>
+            <h2>Frequently Asked Questions</h2>
+        </div>
+
+        <div>
+            <div class="faq-block"><div class="q"><span>Q</span> Is the default tariff always bad?</div><p>Not always — but it is rarely the cheapest option available.</p></div>
+            <div class="faq-block"><div class="q"><span>Q</span> Does switching affect supply reliability?</div><p>No. Infrastructure remains identical.</p></div>
+            <div class="faq-block"><div class="q"><span>Q</span> Is the price cap the cheapest price?</div><p>No. It is a regulatory maximum.</p></div>
+            <div class="faq-block"><div class="q"><span>Q</span> How often should I compare?</div><p>Every 6–12 months or before a fixed deal ends.</p></div>
+            <div class="faq-block"><div class="q"><span>Q</span> Is there any risk in comparing?</div><p>No. Comparing does not affect credit score or supply.</p></div>
+        </div>
+
+        <!-- ULTIMATE CTA -->
+        <div class="ultimate-cta">
+            <div class="cta-left">
+                <p>👉 Feel free to contact us</p>
+                <small>See instantly whether staying on default is costing you</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">Contact us →</a>
+        </div>
+
+        <hr>
+        <p style="text-align:center; color:#607b8e;">© UtilityKing 2026 — Independent UK energy guide. All figures based on January 2026 data.</p>
+    </main>
+</body>
+</html>

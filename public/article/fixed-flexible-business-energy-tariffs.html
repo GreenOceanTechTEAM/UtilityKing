@@ -1,0 +1,926 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UK 2026 Fixed vs Flexible Business Energy Guide: Discover which tariff saves most. Expert analysis shows fixed rates protect 90% of SMEs from market volatility.">
+    <meta name="keywords" content="fixed vs flexible business energy, business energy tariffs 2026, fixed rate energy, flexible energy contracts, SME energy comparison, commercial energy tariffs">
+    <meta name="robots" content="index, follow">
+    <title>2026 Fixed vs Flexible Business Energy Guide | Save £3,000+ | UK SMEs</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1A3A5F;
+            --secondary: #00B8D9;
+            --accent: #FF6B6B;
+            --warning: #FFA726;
+            --success: #00C853;
+            --fixed-color: #00B8D9;
+            --flexible-color: #7B61FF;
+            --light: #F8FAFC;
+            --dark: #1A3A5F;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-800: #1E293B;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(26, 58, 95, 0.08);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 95, 0.12);
+            --fixed-gradient: linear-gradient(135deg, #00B8D9 0%, #0077C8 100%);
+            --flexible-gradient: linear-gradient(135deg, #7B61FF 0%, #00C9A7 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--light);
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #2D4A7A 100%);
+            color: white;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 60%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 184, 217, 0.15) 0%, transparent 70%);
+            }
+
+            .hero::after {
+                content: '⚖️';
+                position: absolute;
+                bottom: -30px;
+                right: 50px;
+                font-size: 10rem;
+                opacity: 0.05;
+                z-index: 1;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--fixed-gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge::before {
+                content: '⚠️';
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff 0%, #00B8D9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--fixed-gradient);
+            color: white;
+            padding: 18px 36px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 184, 217, 0.3);
+            text-align: center;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(0, 184, 217, 0.4);
+                background: linear-gradient(135deg, #00C9E8 0%, #0088E0 100%);
+            }
+
+            .cta-button .fa-arrow-right {
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover .fa-arrow-right {
+                transform: translateX(4px);
+            }
+
+        /* Cards & Sections */
+        .section {
+            margin: 60px 0;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background: var(--fixed-gradient);
+                border-radius: 2px;
+            }
+
+        /* Highlight Card - OUTSIDE GRID */
+        .highlight-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #2D4A7A 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 45px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+        }
+
+            .highlight-card .card-icon {
+                width: 70px;
+                height: 70px;
+                background: white;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                color: var(--secondary);
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .highlight-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 16px;
+            }
+
+            .highlight-card p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+                line-height: 1.7;
+            }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            width: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--fixed-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        /* Stats & Numbers */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .stat-card::before {
+                content: '💰';
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                opacity: 0.1;
+            }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+            .comparison-table table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .comparison-table th {
+                background: var(--gray-100);
+                padding: 22px 24px;
+                text-align: left;
+                font-weight: 600;
+                color: var(--dark);
+                border-bottom: 2px solid var(--gray-200);
+            }
+
+            .comparison-table td {
+                padding: 22px 24px;
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .verdict-good {
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-good::before {
+                content: '✓';
+            }
+
+        .verdict-bad {
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-bad::before {
+                content: '✗';
+            }
+
+        /* Fixed vs Flexible Cards */
+        .tariff-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .tariff-card {
+            background: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            width: 100%;
+        }
+
+            .tariff-card.fixed {
+                border-top-color: var(--fixed-color);
+            }
+
+            .tariff-card.flexible {
+                border-top-color: var(--flexible-color);
+            }
+
+            .tariff-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .tariff-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.6rem;
+                color: var(--dark);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .tariff-card.fixed h3::before {
+                content: '🔒';
+                color: var(--fixed-color);
+            }
+
+            .tariff-card.flexible h3::before {
+                content: '📈';
+                color: var(--flexible-color);
+            }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border-left: 4px solid var(--warning);
+            padding: 28px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .warning-box::before {
+                content: '⚠️';
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 3rem;
+                opacity: 0.1;
+            }
+
+            .warning-box h4 {
+                color: #E65100;
+                margin-bottom: 12px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .warning-box h4::before {
+                    content: '🚨';
+                }
+
+        /* Risk Meter */
+        .risk-meter {
+            background: white;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+            .risk-meter h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.6rem;
+                color: var(--dark);
+                margin-bottom: 25px;
+            }
+
+        .meter-scale {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+        .meter-bar {
+            flex-grow: 1;
+            height: 12px;
+            background: linear-gradient(90deg, var(--success) 0%, var(--warning) 50%, var(--accent) 100%);
+            border-radius: 6px;
+            margin: 0 20px;
+        }
+
+        .meter-point {
+            text-align: center;
+            padding: 10px;
+            min-width: 120px;
+        }
+
+            .meter-point.active {
+                background: var(--gray-100);
+                border-radius: var(--radius);
+                font-weight: 600;
+            }
+
+        /* Savings Calculator */
+        .savings-calc {
+            background: linear-gradient(135deg, var(--primary) 0%, #2D4A7A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .savings-calc::before {
+                content: '💡';
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                font-size: 4rem;
+                opacity: 0.1;
+            }
+
+            .savings-calc h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: white;
+            }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tariff-comparison {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+                .hero h1 {
+                    font-size: 2.4rem;
+                }
+
+                .hero::after {
+                    font-size: 5rem;
+                    right: 20px;
+                    bottom: -15px;
+                }
+
+            .card-grid,
+            .stats-grid,
+            .tariff-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+                .comparison-table table {
+                    min-width: 600px;
+                }
+
+            .meter-scale {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .meter-bar {
+                width: 100%;
+                margin: 10px 0;
+            }
+
+            .highlight-card {
+                padding: 35px 25px;
+            }
+
+                .highlight-card h3 {
+                    font-size: 1.6rem;
+                }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">CRITICAL DECISION • JANUARY 2026</div>
+                <h1>Fixed vs Flexible Business Energy 2026</h1>
+                <p class="hero-lead">Choose wrong and overpay thousands. Our expert analysis reveals which tariff type saves 90% of SMEs money while protecting against market volatility.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Key Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">90%</div>
+                <div class="stat-label">SMEs Better with Fixed</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">£3,000+</div>
+                <div class="stat-label">Potential Annual Saving</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">0%</div>
+                <div class="stat-label">Price Cap Protection</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">2-3 Years</div>
+                <div class="stat-label">Optimal Fixed Term</div>
+            </div>
+        </div>
+
+        <!-- What's the Difference -->
+        <section class="section">
+            <h2 class="section-title">Fixed vs Flexible Business Energy: What's the Difference?</h2>
+            <div class="tariff-comparison">
+                <div class="tariff-card fixed">
+                    <h3>Fixed Business Energy Tariff</h3>
+                    <p><strong>Locks in your unit rates & standing charges for 1–5 years.</strong></p>
+                    <p>✅ Prices stay the same throughout contract</p>
+                    <p>✅ Protection from wholesale price rises</p>
+                    <p>✅ Predictable budgeting & cashflow</p>
+                    <p>✅ Exit fees usually apply for early termination</p>
+                </div>
+                <div class="tariff-card flexible">
+                    <h3>Flexible Business Energy Tariff</h3>
+                    <p><strong>Rates track wholesale market prices & can change frequently.</strong></p>
+                    <p>✅ No long-term price lock</p>
+                    <p>✅ Exposure to market volatility</p>
+                    <p>✅ Rates can change monthly or more often</p>
+                    <p>✅ Usually no fixed exit fees</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Side-by-Side Comparison -->
+        <section class="section">
+            <h2 class="section-title">Fixed vs Flexible: Side-by-Side Comparison</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Feature</th>
+                            <th>Fixed Tariff</th>
+                            <th>Flexible Tariff</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Price Certainty</strong></td>
+                            <td class="verdict-good">✅ Yes - Locked for contract term</td>
+                            <td class="verdict-bad">❌ No - Changes with market</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Protection from Price Spikes</strong></td>
+                            <td class="verdict-good">✅ Full protection</td>
+                            <td class="verdict-bad">❌ No protection</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Benefit from Price Drops</strong></td>
+                            <td class="verdict-bad">❌ No - Rates remain fixed</td>
+                            <td class="verdict-good">✅ Yes - Follows market down</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Budget Predictability</strong></td>
+                            <td class="verdict-good">High - Consistent monthly costs</td>
+                            <td class="verdict-bad">Low - Variable monthly costs</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Risk Level</strong></td>
+                            <td class="verdict-good">Low - Controlled exposure</td>
+                            <td class="verdict-bad">High - Uncontrolled exposure</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Best for Most SMEs</strong></td>
+                            <td class="verdict-good">✅ Yes - 90% of businesses</td>
+                            <td class="verdict-bad">❌ No - Only 10% of businesses</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Highlight Card - OUTSIDE GRID, FULL WIDTH -->
+        <div class="highlight-card">
+            <div class="card-icon">💰</div>
+            <h3>Total Annual Cost Matters</h3>
+            <p>Compare total cost including standing charges and unit rates. For 90% of SMEs, fixed tariffs provide lower overall costs when factoring in risk protection and budgeting certainty. Flexible headline rates are misleading without volatility context.</p>
+        </div>
+
+        <!-- Which Is Cheaper -->
+        <section class="section">
+            <h2 class="section-title">Which Is Cheaper: Fixed or Flexible Business Energy?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏆</div>
+                    <h3>Fixed Usually Wins</h3>
+                    <p>For most businesses in 2026, fixed tariffs are cheaper overall due to competitive supplier pricing and risk premiums in flexible rates.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Supplier Pricing Strategy</h3>
+                    <p>Suppliers price fixed deals aggressively to win business. Flexible tariffs often include a "risk premium" for market exposure.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏱️</div>
+                    <h3>Market Timing Difficulty</h3>
+                    <p>Attempting to "time the market" with flexible tariffs rarely succeeds. Businesses waiting for price drops often miss savings windows.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📊</div>
+                    <h3>Historical Data Analysis</h3>
+                    <p>Over 3-year periods, fixed contracts outperform flexible for 80% of SMEs when considering price spikes and volatility.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Risk Warning -->
+        <div class="warning-box">
+            <h4>⚠️ The Biggest Risk of Flexible Business Energy Tariffs</h4>
+            <p><strong>Uncontrolled price rises hit cashflow directly.</strong> Business energy has NO price cap protection. Flexible tariffs can increase dramatically during cold winters, geopolitical instability, or supply shortages. A 50% price spike could devastate SME margins without warning.</p>
+        </div>
+
+        <!-- Risk Meter -->
+        <div class="risk-meter">
+            <h3>Business Risk Assessment: Which Tariff Suits You?</h3>
+            <div class="meter-scale">
+                <div class="meter-point active">
+                    <div style="font-size: 1.2rem; margin-bottom: 5px;">🔒</div>
+                    <strong>Fixed Tariff</strong>
+                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 5px;">Low Risk</div>
+                </div>
+                <div class="meter-bar"></div>
+                <div class="meter-point">
+                    <div style="font-size: 1.2rem; margin-bottom: 5px;">⚖️</div>
+                    <strong>Evaluate Needs</strong>
+                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 5px;">Medium Risk</div>
+                </div>
+                <div class="meter-bar"></div>
+                <div class="meter-point">
+                    <div style="font-size: 1.2rem; margin-bottom: 5px;">📈</div>
+                    <strong>Flexible Tariff</strong>
+                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 5px;">High Risk</div>
+                </div>
+            </div>
+            <p><strong>Simple Rule:</strong> Ask "If my energy prices doubled next quarter, would my business cope?" If NO → choose fixed. If YES → flexible might be suitable.</p>
+        </div>
+
+        <!-- When to Choose Each -->
+        <section class="section">
+            <h2 class="section-title">When to Choose Fixed vs Flexible</h2>
+            <div class="tariff-comparison">
+                <div class="tariff-card fixed">
+                    <h3>Choose Fixed If:</h3>
+                    <p>✅ You want predictable monthly costs</p>
+                    <p>✅ Energy is a major overhead</p>
+                    <p>✅ You don't track wholesale markets</p>
+                    <p>✅ You're a small/medium business</p>
+                    <p>✅ You're risk-averse</p>
+                    <p>✅ You value budgeting certainty</p>
+                    <p style="margin-top: 20px; font-weight: 600; color: var(--fixed-color);">DESCRIBES 90% OF UK SMES</p>
+                </div>
+                <div class="tariff-card flexible">
+                    <h3>Consider Flexible If:</h3>
+                    <p>✅ You're a large energy user (50,000+ kWh)</p>
+                    <p>✅ You have in-house energy expertise</p>
+                    <p>✅ You can tolerate price volatility</p>
+                    <p>✅ You actively manage procurement</p>
+                    <p>✅ You use hedging strategies</p>
+                    <p>✅ You monitor markets daily</p>
+                    <p style="margin-top: 20px; font-weight: 600; color: var(--flexible-color);">DESCRIBES ONLY 10% OF BUSINESSES</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Myths -->
+        <section class="section">
+            <h2 class="section-title">Common Myths About Flexible Business Energy</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>"Flexible is Always Cheaper"</h3>
+                    <p><strong>False.</strong> Only true in specific falling market conditions. Over typical 2-3 year contracts, fixed usually wins.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>"I Can Time the Market"</h3>
+                    <p><strong>Unlikely.</strong> Even energy traders with sophisticated tools struggle. SMEs lack resources for market timing.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>"Fixed Tariffs Are a Rip-off"</h3>
+                    <p><strong>False.</strong> Fixed tariffs are competitively priced and provide valuable price certainty for SMEs.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>"Smart Meters Need Flexible"</h3>
+                    <p><strong>False.</strong> Smart meters work with both tariff types. More data ≠ lower costs with poor timing.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Calculator -->
+        <div class="savings-calc">
+            <h3>How Much Can Fixed Tariffs Save vs Flexible?</h3>
+            <p>Micro-businesses save £300–£700 | Small offices & shops save £800–£2,000 | High-usage SMEs save £3,000+</p>
+        </div>
+
+        <!-- Final CTA -->
+        <section class="hero" style="margin-top: 80px; margin-bottom: 0;">
+            <div class="container">
+                <div class="hero-content" style="text-align: center;">
+                    <h2 style="font-size: 2.5rem;">Stop Gambling with Energy Costs</h2>
+                    <p class="hero-lead" style="margin: 20px auto 40px;">Choose the tariff that protects your margins. For 90% of SMEs, fixed business energy provides the optimal balance of cost control and risk management.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all interactive elements
+        document.querySelectorAll('.card, .stat-card, .tariff-card, .highlight-card, .risk-meter').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Pulse animation for stats
+        setInterval(() => {
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.style.boxShadow = '0 0 20px rgba(0, 184, 217, 0.3)';
+                setTimeout(() => {
+                    card.style.boxShadow = 'var(--shadow)';
+                }, 500);
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

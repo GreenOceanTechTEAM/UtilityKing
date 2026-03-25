@@ -1,0 +1,971 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Unit Rates Across Suppliers (UK 2026 Guide)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #059669;
+            --secondary-light: #10b981;
+            --accent: #f59e0b;
+            --accent-light: #fbbf24;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section with Warm Gradient */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #334155 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(251, 191, 36, 0.05) 100%);
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+            }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(245, 158, 11, 0.2);
+            color: var(--accent-light);
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--radius);
+            min-width: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent-light);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .data-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .data-title {
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        /* Card Styles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background: var(--accent);
+                border-radius: 2px;
+            }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            }
+
+        .card-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .icon-1 {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .icon-2 {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+        }
+
+        .icon-3 {
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .card-body {
+            padding: 20px 25px 25px;
+        }
+
+        /* Data List */
+        .data-list {
+            list-style: none;
+        }
+
+            .data-list li {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+                .data-list li:last-child {
+                    border-bottom: none;
+                }
+
+            .data-list i {
+                color: var(--accent);
+                font-size: 1.2rem;
+            }
+
+        /* Rate Comparison */
+        .rate-comparison {
+            display: flex;
+            justify-content: space-around;
+            gap: 30px;
+            margin: 40px 0;
+            flex-wrap: wrap;
+        }
+
+        .rate-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            box-shadow: var(--shadow);
+            border-top: 5px solid transparent;
+        }
+
+            .rate-card.electricity {
+                border-top-color: var(--primary-light);
+            }
+
+            .rate-card.gas {
+                border-top-color: var(--secondary);
+            }
+
+        .rate-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--dark);
+            margin: 15px 0;
+        }
+
+        .rate-label {
+            color: var(--gray);
+            font-size: 1rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin-bottom: 80px;
+        }
+
+        .comparison-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .comparison-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .comparison-item ul {
+            padding-left: 20px;
+        }
+
+        .comparison-item li {
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 60px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            }
+
+        /* Important Note */
+        .important-note {
+            background: linear-gradient(135deg, #fff7ed 0%, #ffedd5 100%);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 40px 0;
+            border-left: 5px solid var(--accent);
+            box-shadow: var(--shadow);
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .rate-comparison {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .rate-card {
+                width: 100%;
+                max-width: 400px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                border-radius: 0 0 30px 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stat {
+                min-width: 100%;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .comparison-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .rate-value {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Warm Gradient -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="meta-info">
+                        <span class="meta-badge">Last updated: January 2026</span>
+                        <span class="meta-badge">Reviewed by: UK Energy Market Analyst</span>
+                        <span class="meta-badge">Regulator: Ofgem</span>
+                    </div>
+                    <h1>Compare Energy Unit Rates Across Suppliers (UK 2026 Guide)</h1>
+                    <p>An energy unit rate is the price you pay for each unit of energy you use. In 2026, unit rates account for the largest share of total cost for medium and high-usage households.</p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">24-32p</div>
+                            <div class="stat-label">Electricity per kWh</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">6-9p</div>
+                            <div class="stat-label">Gas per kWh</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">£100s</div>
+                            <div class="stat-label">Potential Savings</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="data-box">
+                        <h3 class="data-title">What Is an Energy Unit Rate?</h3>
+                        <ul class="data-list">
+                            <li>
+                                <i class="fas fa-bolt"></i>
+                                <span>Electricity is measured in kilowatt-hours (kWh)</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-fire"></i>
+                                <span>Gas is also measured in kWh</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-chart-line"></i>
+                                <span>The usage-based part of your energy bill</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-exclamation-triangle"></i>
+                                <span>More energy use = more important unit rate</span>
+                            </li>
+                        </ul>
+                        <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-style: italic; color: rgba(255, 255, 255, 0.8);">
+                            The unit rate is the usage-based part of your energy bill. The more energy you use, the more important the unit rate becomes.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Comparing Unit Rates Is Crucial -->
+    <section class="container">
+        <h2 class="section-title">Why Comparing Unit Rates Is Crucial in 2026</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-chart-pie"></i>
+                    </div>
+                    <h3 class="card-title">Bill Composition</h3>
+                </div>
+                <div class="card-body">
+                    <p>In 2026, energy bills are made up of two parts:</p>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-light);">
+                            <span>Standing charges:</span>
+                            <span style="font-weight: 600; color: var(--gray);">Fixed daily cost</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                            <span>Unit rates:</span>
+                            <span style="font-weight: 600; color: var(--primary);">Cost per kWh</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--gray);">
+                        For medium and high-usage households, unit rates account for the largest share of total cost.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-money-bill-wave"></i>
+                    </div>
+                    <h3 class="card-title">Savings Potential</h3>
+                </div>
+                <div class="card-body">
+                    <p>Even small differences in unit rates can mean significant savings:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>1p difference per kWh = £10 per 1000 kWh</li>
+                        <li>Medium household: 2,900 kWh electricity</li>
+                        <li>Medium household: 12,000 kWh gas</li>
+                        <li>Potential savings: £100s per year</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 8px;">
+                        <p style="font-weight: 600; margin-bottom: 5px;">Key Fact:</p>
+                        <p>Comparing unit rates is essential for households that use a lot of energy.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">Supplier Variations</h3>
+                </div>
+                <div class="card-body">
+                    <p>Suppliers set different unit rates based on:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Wholesale energy purchasing strategy</li>
+                        <li>Contract length and risk appetite</li>
+                        <li>Regional network costs</li>
+                        <li>Tariff structure</li>
+                    </ul>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--gray);">
+                        The same household can pay very different unit rates. Brand size does not guarantee cheaper energy.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Average Unit Rates -->
+    <section class="container">
+        <h2 class="section-title">Average UK Energy Unit Rates (2026)</h2>
+
+        <div class="rate-comparison">
+            <div class="rate-card electricity">
+                <div class="card-icon icon-1" style="margin: 0 auto 20px;">
+                    <i class="fas fa-bolt"></i>
+                </div>
+                <h3 style="margin-bottom: 15px; color: var(--primary);">Electricity</h3>
+                <div class="rate-value">24p–32p</div>
+                <div class="rate-label">per kWh</div>
+                <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">
+                    Average range across UK regions
+                </p>
+            </div>
+
+            <div class="rate-card gas">
+                <div class="card-icon icon-2" style="margin: 0 auto 20px;">
+                    <i class="fas fa-fire"></i>
+                </div>
+                <h3 style="margin-bottom: 15px; color: var(--secondary);">Gas</h3>
+                <div class="rate-value">6p–9p</div>
+                <div class="rate-label">per kWh</div>
+                <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">
+                    Average range across UK regions
+                </p>
+            </div>
+        </div>
+
+        <div class="important-note">
+            <p><strong>Important:</strong> These are averages only. The cheapest rates are often available on fixed tariffs below the price cap. Unit rates vary by postcode, tariff, and payment method.</p>
+        </div>
+    </section>
+
+    <!-- Fixed vs Variable Tariffs -->
+    <section class="comparison-section container">
+        <h2 class="section-title">Unit Rates on Fixed vs Variable Tariffs</h2>
+        <div class="comparison-box">
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4>
+                        <i class="fas fa-lock" style="color: var(--secondary);"></i>
+                        Fixed Tariffs
+                    </h4>
+                    <ul>
+                        <li><strong>Usually Cheapest Unit Rates</strong></li>
+                        <li>Lock in unit rates for 12–24 months</li>
+                        <li>Often priced below the Ofgem price cap</li>
+                        <li>Best for price certainty and savings</li>
+                        <li>These typically offer the lowest unit rates available</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item">
+                    <h4>
+                        <i class="fas fa-chart-line" style="color: var(--primary);"></i>
+                        Variable Tariffs
+                    </h4>
+                    <ul>
+                        <li>Unit rates rise or fall with the price cap</li>
+                        <li>No exit fees</li>
+                        <li>Usually more expensive over time</li>
+                        <li>They are rarely the cheapest option</li>
+                        <li>Flexibility to switch anytime</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Electricity vs Gas Unit Rates -->
+    <section class="container">
+        <h2 class="section-title">Electricity Unit Rates vs Gas Unit Rates</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3 class="card-title">Electricity Unit Rates</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Higher unit rates (24p–32p per kWh)</li>
+                        <li>Strongly influenced by renewable generation and grid costs</li>
+                        <li>Biggest savings come from fixed tariffs</li>
+                        <li>Critical for electric heating and EV owners</li>
+                        <li>Economy 7 tariffs offer day/night rates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-fire"></i>
+                    </div>
+                    <h3 class="card-title">Gas Unit Rates</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Lower unit rates (6p–9p per kWh)</li>
+                        <li>Heavily affected by global markets</li>
+                        <li>Still a major cost for high-usage homes</li>
+                        <li>Fixed tariffs offer price protection</li>
+                        <li>Comparing both together gives the clearest picture</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Cheapest Unit Rates by Household Type -->
+    <section class="container">
+        <h2 class="section-title">Cheapest Unit Rates by Household Type</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="card-title">High-Usage Homes</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Unit rates matter more than standing charges</li>
+                        <li>Fixed tariffs with low kWh rates deliver the biggest savings</li>
+                        <li>Focus on lowest overall annual cost</li>
+                        <li>Potential savings: £200+ per year</li>
+                        <li>Compare both electricity and gas rates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h3 class="card-title">Low-Usage Homes</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Standing charges matter more than unit rates</li>
+                        <li>Lowest unit rate is not always cheapest overall</li>
+                        <li>Balance between standing charges and unit rates</li>
+                        <li>Special tariffs for low consumption</li>
+                        <li>Focus on total annual cost</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-car"></i>
+                    </div>
+                    <h3 class="card-title">Electric Heating & EV Owners</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Unit rates are critical for cost control</li>
+                        <li>Economy 7 or smart tariffs may help</li>
+                        <li>High electricity consumption increases importance</li>
+                        <li>Fixed tariffs provide budget certainty</li>
+                        <li>Compare specialized EV tariffs</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Considerations -->
+    <section class="container">
+        <h2 class="section-title">Special Considerations</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">Energy Price Cap</h3>
+                </div>
+                <div class="card-body">
+                    <p>The energy price cap:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Sets maximum unit rates on variable tariffs</li>
+                        <li>Does not apply to fixed deals</li>
+                        <li>Is not a guarantee of the cheapest price</li>
+                        <li>Many fixed tariffs offer lower unit rates than the cap</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">Economy 7 Unit Rates</h3>
+                </div>
+                <div class="card-body">
+                    <p>Economy 7 tariffs have:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Day rate (higher)</li>
+                        <li>Night rate (lower)</li>
+                        <li>Savings depend on overnight usage</li>
+                        <li>Need 35–40% usage overnight to benefit</li>
+                        <li>Daytime-heavy usage can be more expensive</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="card-title">Prepayment Meters</h3>
+                </div>
+                <div class="card-body">
+                    <p>Prepayment customers often face:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Higher unit rates</li>
+                        <li>Fewer fixed tariff options</li>
+                        <li>Competitive prepay tariffs do exist in some regions</li>
+                        <li>Comparison is essential for best rates</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Important Warning -->
+    <section class="container">
+        <div class="important-note">
+            <h3 style="color: var(--accent); margin-bottom: 15px;">⚠️ Why the Lowest Unit Rate Isn't Always the Cheapest Deal</h3>
+            <p>A tariff with the lowest unit rate may have:</p>
+            <ul style="margin-top: 10px; padding-left: 20px;">
+                <li><strong>High standing charges</strong> that offset unit rate savings</li>
+                <li><strong>Long contract length</strong> with limited flexibility</li>
+                <li><strong>High exit fees</strong> if you need to switch early</li>
+                <li><strong>Other hidden costs</strong> or conditions</li>
+            </ul>
+            <p style="margin-top: 15px; font-weight: 600;">
+                Total annual cost matters more than any single figure. Always compare complete tariff details.
+            </p>
+        </div>
+    </section>
+
+    <!-- How to Compare -->
+    <section class="container">
+        <h2 class="section-title">How to Compare Energy Unit Rates Properly</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <h3 class="card-title">1. Enter Your Postcode</h3>
+                </div>
+                <div class="card-body">
+                    <p>Unit rates vary by region. Accurate comparison requires your specific location.</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Regional network costs differ</li>
+                        <li>Supplier availability varies</li>
+                        <li>Postcode-specific deals exist</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">2. Enter Realistic Annual Usage</h3>
+                </div>
+                <div class="card-body">
+                    <p>Accurate usage figures ensure proper cost calculations.</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Use actual kWh figures if available</li>
+                        <li>Estimate based on household size</li>
+                        <li>Consider heating type and appliances</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">3. Compare Total Annual Cost</h3>
+                </div>
+                <div class="card-body">
+                    <p>Compare all elements together:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Electricity unit rate</li>
+                        <li>Gas unit rate</li>
+                        <li>Standing charges</li>
+                        <li>Total annual cost</li>
+                        <li>Contract terms and exit fees</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Requirements -->
+    <section class="container">
+        <div style="background: #f8f9fa; border-radius: var(--radius); padding: 30px; margin-bottom: 60px; border-left: 5px solid var(--primary);">
+            <h3 style="color: var(--primary); margin-bottom: 15px;">Do You Need Contact Details to Get a Quote?</h3>
+            <p>You can compare unit rates instantly without contact details. However:</p>
+            <ul style="margin-top: 15px; padding-left: 20px;">
+                <li><strong>To get a tailored quote:</strong> Basic information helps personalize results</li>
+                <li><strong>To confirm tariff eligibility:</strong> Some tariffs have specific requirements</li>
+                <li><strong>To complete a switch:</strong> Contact details are required by suppliers</li>
+            </ul>
+            <p style="margin-top: 15px; font-style: italic; color: var(--gray);">
+                Basic contact details are required by suppliers, in line with Ofgem regulations.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">Find Your Cheapest Unit Rates Today</h2>
+            <p class="cta-description">In 2026, comparing unit rates is essential — especially for households that use a lot of energy. The cheapest unit rates are often found on fixed tariffs and postcode-specific deals.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile responsive adjustments
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

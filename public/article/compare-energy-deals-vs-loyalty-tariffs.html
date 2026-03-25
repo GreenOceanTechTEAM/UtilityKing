@@ -1,0 +1,785 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Compare Energy Deals vs Loyalty Tariffs | Complete Guide | Utility King 2026</title>
+    <meta name="description" content="Complete guide to comparing energy deals vs loyalty tariffs. Learn whether staying with your supplier saves money or if switching to a new energy deal is better.">
+    <meta name="keywords" content="energy deals vs loyalty tariffs, loyalty tariffs, energy deals, compare energy tariffs, switch energy supplier, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(145deg, #f4f0f0 0%, #e9e2e2 100%);
+            color: #2d3e4f;
+            line-height: 1.6;
+        }
+
+        /* === CLEAN DARK HERO - CENTERED CONTENT === */
+        .hero {
+            background: linear-gradient(135deg, #6d4c4c 0%, #4a3333 100%);
+            color: #fff;
+            padding: 4.5rem 2rem 5.5rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 4px solid #d4a5a5;
+            box-shadow: 0 25px 40px -20px rgba(74,51,51,0.6);
+            text-align: center;
+        }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to bottom right, transparent 49%, #f4f0f0 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(212, 165, 165, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid rgba(212, 165, 165, 0.3);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #ffe0e0;
+            justify-content: center;
+        }
+
+            .hero-badge .uk-icon {
+                background: #d4a5a5;
+                color: #4a3333;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .hero .highlight {
+            color: #d4a5a5;
+            border-bottom: 4px solid #d4a5a5;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: #ffe0e0;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .hero-stat .number {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #d4a5a5;
+                line-height: 1;
+            }
+
+            .hero-stat .label {
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.7;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -2.5rem auto 3rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.8rem;
+            box-shadow: 0 30px 40px -20px rgba(109,76,76,0.2);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(212,165,165,0.2);
+        }
+
+        .intro-quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #6d4c4c;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #d4a5a5;
+            padding-left: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #5d5a5a;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #d4a5a5;
+            color: #4a3333;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 12px -6px #8f6363;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #3d3a3a;
+            margin: 0;
+        }
+
+            .section-header h2 span {
+                background: #f5e6e6;
+                color: #6d4c4c;
+                padding: 0.3rem 1.4rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+                font-weight: 600;
+            }
+
+        /* two-column layout */
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #e6d5d5;
+            box-shadow: 0 15px 25px -15px #a57a7a;
+            transition: transform 0.2s;
+        }
+
+            .info-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 20px 30px -16px #d4a5a5;
+            }
+
+            .info-card h3 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 1.2rem;
+                color: #6d4c4c;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+        .formula-box {
+            background: #f5e6e6;
+            padding: 1.5rem;
+            border-radius: 28px;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #6d4c4c;
+            border-left: 8px solid #d4a5a5;
+        }
+
+        .definition-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .definition-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+                border-bottom: 1px dashed #e6d5d5;
+            }
+
+                .definition-list li::before {
+                    content: "•";
+                    color: #d4a5a5;
+                    font-weight: 800;
+                    font-size: 1.5rem;
+                    position: absolute;
+                    left: 0;
+                    top: 0.2rem;
+                }
+
+        /* comparison cards */
+        .comparison-duo {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2rem;
+            border: 2px solid;
+            box-shadow: 0 20px 30px -18px #6d4c4c;
+        }
+
+            .comparison-card.loyalty {
+                border-color: #d4a5a5;
+            }
+
+            .comparison-card.deals {
+                border-color: #5fa3b8;
+            }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .card-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+        }
+
+        .loyalty .card-icon {
+            background: #d4a5a530;
+            color: #6d4c4c;
+        }
+
+        .deals .card-icon {
+            background: #5fa3b830;
+            color: #2d6b8a;
+        }
+
+        .comparison-card h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+            }
+
+                .feature-list li::before {
+                    content: "→";
+                    color: #d4a5a5;
+                    position: absolute;
+                    left: 0;
+                }
+
+        /* why loyalty not always cheaper */
+        .dynamics-card {
+            background: #f5e6e6;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid #d4a5a5;
+        }
+
+        .dynamics-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .dynamics-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 24px;
+            text-align: center;
+            border: 1px solid #e6d5d5;
+        }
+
+        /* step card */
+        .step-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 1.5rem 0;
+            border: 1px solid #e6d5d5;
+        }
+
+        .step-number {
+            background: #d4a5a5;
+            color: #4a3333;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        /* example card */
+        .example-card {
+            background: #f0f0f0;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+            border: 1px solid #d4a5a5;
+        }
+
+        .example-highlight {
+            background: white;
+            padding: 1rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        /* when staying makes sense */
+        .sense-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .sense-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #e6d5d5;
+        }
+
+        /* risk card */
+        .risk-card {
+            background: #fff2e6;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid #e67e22;
+        }
+
+        /* FAQ grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid #e6d5d5;
+            box-shadow: 0 8px 16px -12px #6d4c4c;
+        }
+
+        .faq-q {
+            font-weight: 800;
+            color: #6d4c4c;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+            .faq-q span {
+                background: #d4a5a5;
+                color: #4a3333;
+                width: 30px;
+                height: 30px;
+                border-radius: 30px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(135deg, #6d4c4c, #4a3333);
+            border-radius: 50px;
+            padding: 3rem;
+            margin: 3.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #d4a5a5;
+            box-shadow: 0 25px 35px -18px #4a3333;
+        }
+
+        .cta-premium-left {
+            color: white;
+        }
+
+            .cta-premium-left p {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-premium-left small {
+                color: #ffe0e0;
+                font-size: 1.1rem;
+            }
+
+        .cta-btn {
+            background: #d4a5a5;
+            color: #4a3333;
+            padding: 1.3rem 3.2rem;
+            border-radius: 80px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border: 2px solid #f0c9c9;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+            .cta-btn:hover {
+                background: #e2baba;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #d4a5a5, transparent);
+            margin: 3rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #8f7a7a;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .row-2, .comparison-duo, .dynamics-grid, .sense-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CLEAN DARK HERO - CENTERED CONTENT -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="uk-icon">UK</span>
+                <span>Utility King Loyalty Guide</span>
+                <span>2026 Edition</span>
+            </div>
+            <h1>Compare Energy Deals vs Loyalty Tariffs: <span class="highlight">Which Actually Saves You More?</span></h1>
+            <div class="hero-sub">A Complete Guide from Utility King — understand whether loyalty pays or switching saves.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">60%</span> <span class="label">on SVTs after contract</span></div>
+                <div class="hero-stat"><span class="number">£150</span> <span class="label">average loyalty overpayment</span></div>
+                <div class="hero-stat"><span class="number">100%</span> <span class="label">safe to switch</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LIGHT CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">“I've been with my supplier for years — surely they're giving me their best rate?”</div>
+            <p class="intro-text">It's a reasonable assumption. Loyalty is often rewarded in many industries. But in the energy market, the relationship between loyalty and savings is more complex. If you are searching to compare energy deals vs loyalty tariffs, you are asking an important financial question: Does staying with your current supplier offer better value than switching to a new energy deal? In this comprehensive guide, we will break this down from first principles — defining what loyalty tariffs are, what energy deals typically offer, and how to compare both properly to avoid overpaying.</p>
+        </div>
+
+        <!-- First Principles: What Is an Energy Tariff? -->
+        <div class="section-header">
+            <div class="section-icon">📐</div>
+            <h2>First Principles: <span>What Is an Energy Tariff?</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p>Before comparing loyalty tariffs and energy deals, we must define what an energy tariff actually is. An energy tariff is the pricing structure that determines how much you pay for electricity and gas. Every tariff includes:</p>
+            <ul class="definition-list">
+                <li>Unit rate (price per kilowatt-hour, kWh)</li>
+                <li>Standing charge (daily fixed fee)</li>
+                <li>Contract type (fixed or variable)</li>
+                <li>Exit fees (if applicable)</li>
+            </ul>
+            <div class="formula-box">
+                Annual bill = (Annual usage × Unit rate) + (Standing charge × 365)
+            </div>
+            <p>This formula applies whether you are on a loyalty tariff or a newly switched energy deal.</p>
+        </div>
+
+        <!-- What Is a Loyalty Tariff? -->
+        <div class="section-header">
+            <div class="section-icon">❤️</div>
+            <h2>What Is a <span>Loyalty Tariff?</span></h2>
+        </div>
+
+        <div class="comparison-duo">
+            <div class="comparison-card loyalty">
+                <div class="card-header">
+                    <div class="card-icon">❤️</div>
+                    <h4>Loyalty Tariff</h4>
+                </div>
+                <p>A loyalty tariff is not always a formally branded product. Instead, it usually refers to:</p>
+                <ul class="feature-list">
+                    <li>The tariff offered to existing customers</li>
+                    <li>Renewal offers when a fixed contract ends</li>
+                    <li>Special in-house deals not publicly advertised</li>
+                    <li>Standard variable tariffs retained by long-term customers</li>
+                </ul>
+                <p>In many cases, when your fixed energy contract ends, your supplier may move you automatically onto a standard variable tariff (SVT), or offer a renewal deal for existing customers. These renewal offers are often described as loyalty incentives. However, the critical question is not what it's called — it's how it's priced.</p>
+            </div>
+
+            <div class="comparison-card deals">
+                <div class="card-header">
+                    <div class="card-icon">🏷️</div>
+                    <h4>Energy Deals</h4>
+                </div>
+                <p>When consumers search to compare energy deals, they usually mean:</p>
+                <ul class="feature-list">
+                    <li>Fixed-rate energy tariffs available in the wider market</li>
+                    <li>Promotional switching offers</li>
+                    <li>Dual fuel deals</li>
+                    <li>Online-exclusive tariffs</li>
+                </ul>
+                <p>These are often designed to attract new customers. Energy deals typically lock in rates for 12–24 months, offer competitive pricing, include exit fees, and aim to win market share. Suppliers frequently price new customer offers more aggressively than renewal tariffs.</p>
+            </div>
+        </div>
+
+        <!-- Why Loyalty Does Not Always Equal Lower Prices -->
+        <div class="section-header">
+            <div class="section-icon">📉</div>
+            <h2>Why Loyalty ≠ <span>Lower Prices</span></h2>
+        </div>
+
+        <div class="dynamics-card">
+            <p>Energy suppliers operate in a competitive market. To grow, they must attract new customers. This often results in:</p>
+            <div class="dynamics-grid">
+                <div class="dynamics-item">Introductory pricing</div>
+                <div class="dynamics-item">Limited-time switching discounts</div>
+                <div class="dynamics-item">Competitive fixed-rate offers</div>
+            </div>
+            <p>Existing customers, particularly those who do not regularly compare energy prices, may be placed on standard variable tariffs or less competitive renewal rates. This is not necessarily malicious — but it reflects market dynamics. <strong>Active consumers often access better pricing than passive ones.</strong></p>
+        </div>
+
+        <!-- Comparing Energy Deals vs Loyalty Tariffs Properly -->
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2>Comparing <span>Properly</span></h2>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">1</div>
+            <h3>Calculate Your Current Annual Cost</h3>
+            <p>Using your actual usage data, determine your total annual energy bill under your loyalty tariff.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">2</div>
+            <h3>Obtain Renewal Offer Details</h3>
+            <p>If your fixed contract is ending, ask your supplier for: unit rate, standing charge, contract length, and exit fees. Do not rely on monthly payment estimates alone.</p>
+        </div>
+
+        <div class="step-card">
+            <div class="step-number">3</div>
+            <h3>Compare Against Market Energy Deals</h3>
+            <p>Look at: fixed-rate energy deals, total estimated annual cost, standing charges, and exit conditions. The key comparison metric is <strong>total annual cost</strong> — not brand familiarity.</p>
+        </div>
+
+        <!-- Fixed Loyalty Tariffs vs Market Fixed Deals -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>Fixed Loyalty vs <span>Market Fixed Deals</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p>Sometimes, loyalty renewal offers are competitive. However, they are often priced slightly higher than the supplier's best new-customer deals. Even a small difference in unit rate can produce meaningful annual savings, particularly for high-usage households.</p>
+        </div>
+
+        <div class="example-card">
+            <p><strong>For example:</strong> A difference of just 1p per kWh in electricity unit rate across 4,000 kWh per year = £40 annual difference. Combined with gas, savings can add up quickly.</p>
+            <div class="example-highlight">
+                Small differences × high usage = substantial savings
+            </div>
+        </div>
+
+        <div class="info-card" style="background:#f5e6e6;">
+            <p><strong>Energy price comparison must always be data-driven.</strong></p>
+        </div>
+
+        <!-- When Staying on a Loyalty Tariff May Make Sense -->
+        <div class="section-header">
+            <div class="section-icon">✅</div>
+            <h2>When Staying <span>Makes Sense</span></h2>
+        </div>
+
+        <div class="sense-grid">
+            <div class="sense-card">
+                <h4>📊 Renewal matches market rates</h4>
+                <p>If your renewal offer is genuinely competitive</p>
+            </div>
+            <div class="sense-card">
+                <h4>⭐ Exceptional service</h4>
+                <p>Customer service quality is worth a small premium</p>
+            </div>
+            <div class="sense-card">
+                <h4>💷 Savings minimal</h4>
+                <p>Switching savings are negligible</p>
+            </div>
+            <div class="sense-card">
+                <h4>🧘 Simplicity valued</h4>
+                <p>You prefer avoiding administrative effort</p>
+            </div>
+        </div>
+
+        <div class="info-card" style="margin-top:1rem;">
+            <p>However, this should be a <strong>conscious decision</strong> — not a default one.</p>
+        </div>
+
+        <!-- The Risk of Automatic Renewal -->
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>The Risk of <span>Automatic Renewal</span></h2>
+        </div>
+
+        <div class="risk-card">
+            <p>One of the most common causes of overpayment is automatic transition to a standard variable tariff. Standard variable tariffs have no fixed end date, allow price changes, and often cost more over time. Many households remain on SVTs for months or years simply because they did not compare options. <strong>Energy loyalty becomes expensive when it is passive.</strong></p>
+        </div>
+
+        <!-- Is Switching Energy Supplier Safe? -->
+        <div class="section-header">
+            <div class="section-icon">🛡️</div>
+            <h2>Is Switching <span>Energy Supplier Safe?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:#f5e6e6;">
+            <p><strong>Yes.</strong> Switching energy suppliers does not interrupt supply, does not change your physical connection, is regulated and protected, and includes a cooling-off period. The electricity and gas grid remains the same regardless of supplier. The risk lies not in switching — but in failing to compare.</p>
+        </div>
+
+        <!-- Utility King's Perspective -->
+        <div class="section-header">
+            <div class="section-icon">👑</div>
+            <h2>Utility King's <span>Perspective</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:8px solid #d4a5a5; margin-bottom:2rem;">
+            <p style="font-size:1.2rem;">At Utility King, we do not believe loyalty should be blind. We encourage customers to: review tariffs annually, compare renewal offers with market deals, prioritise total annual cost, and consider both stability and flexibility.</p>
+            <p style="margin-top:1rem;">Energy suppliers are businesses. They price according to strategy. The most cost-effective households are those that treat energy as an actively managed expense — not a static utility. If your loyalty tariff is genuinely competitive, staying may be the right move. But you should confirm that with data — not assumption.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Are loyalty tariffs cheaper than new energy deals?</div><p>Not always. Many new customer energy deals are priced more competitively than renewal offers.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> What happens if I do nothing when my contract ends?</div><p>You are typically moved onto a standard variable tariff, which may be more expensive.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Can I negotiate with my current energy supplier?</div><p>In some cases, yes. Asking for a competitive renewal rate can be worthwhile.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is it safe to switch energy suppliers?</div><p>Yes. Switching is regulated and does not interrupt supply.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> How often should I compare loyalty tariffs with market deals?</div><p>At least once per year and always before your fixed contract ends.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Should I switch for small savings?</div><p>That depends on your priorities. Even modest annual savings compound over time.</p></div>
+        </div>
+
+        <!-- CLEAN CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Unsure if your loyalty tariff is competitive?</p>
+                <small>Let Utility King help you compare energy deals objectively — ensure your loyalty is financially justified.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to comparing energy deals vs loyalty tariffs. All rights reserved.</p>
+            <p style="margin-top:0.5rem;">If you are unsure whether your loyalty tariff is genuinely competitive, Utility King can help you compare energy deals clearly and objectively — ensuring your loyalty is financially justified, not simply habitual.</p>
+        </div>
+    </main>
+</body>
+</html>

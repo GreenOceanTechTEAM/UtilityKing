@@ -1,0 +1,1566 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Time-of-Use Energy Tariffs | UK Guide 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #0891B2;
+            --primary-dark: #0E5B6B;
+            --primary-light: #CFFAFE;
+            --accent: #F97316;
+            --accent-light: #FFEDD5;
+            --smart: #2563EB;
+            --smart-light: #DBEAFE;
+            --peak: #DC2626;
+            --peak-light: #FEE2E2;
+            --offpeak: #059669;
+            --offpeak-light: #D1FAE5;
+            --success: #059669;
+            --warning: #D97706;
+            --danger: #DC2626;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+        }
+
+        body {
+            background: linear-gradient(135deg, #F0F9FF 0%, #E6F7F7 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Header - Smart Time Theme */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 50px 40px;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            text-align:center;
+        }
+
+            .hero-header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.06'%3E%3Cpath d='M40 10 L45 20 L55 20 L48 28 L52 38 L40 32 L28 38 L32 28 L25 20 L35 20 Z' /%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                background-size: 60px 60px;
+            }
+
+            .hero-header::after {
+                content: "⚡⏰⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 90px;
+                opacity: 0.1;
+                color: var(--accent);
+                transform: rotate(-5deg);
+            }
+
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 22px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-md);
+        }
+
+        .hero-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap: 25px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            background-color: rgba(255,255,255,0.1);
+            padding: 6px 16px;
+            border-radius: 40px;
+            backdrop-filter: blur(5px);
+        }
+
+            .meta-item i {
+                color: var(--accent);
+            }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Grid Item Styling */
+        .grid-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .grid-item:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-xl);
+            }
+
+            .grid-item::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle at top right, var(--primary-light) 0%, transparent 70%);
+                opacity: 0.4;
+                border-radius: 0 0 0 100px;
+            }
+
+        .grid-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item h4 {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item p {
+            color: var(--gray-700);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+        }
+
+            .feature-list li {
+                padding: 8px 0;
+                padding-left: 30px;
+                position: relative;
+                color: var(--gray-700);
+            }
+
+                .feature-list li:before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    color: var(--success);
+                    font-weight: bold;
+                }
+
+        .smart-list li:before {
+            content: "⚡";
+            color: var(--smart);
+            font-size: 1rem;
+        }
+
+        .warning-list li:before {
+            content: "⚠️";
+            color: var(--warning);
+        }
+
+        .peak-list li:before {
+            content: "🔴";
+            color: var(--danger);
+            font-size: 0.9rem;
+        }
+
+        .offpeak-list li:before {
+            content: "🟢";
+            color: var(--success);
+            font-size: 0.9rem;
+        }
+
+        /* Special Cards */
+        .warning-card {
+            border-left: 5px solid var(--warning);
+            background-color: #FFFBED;
+        }
+
+        .success-card {
+            border-left: 5px solid var(--success);
+            background-color: #F1F8F1;
+        }
+
+        .smart-card {
+            border: 2px solid var(--smart);
+            background: linear-gradient(135deg, var(--smart-light) 0%, #ffffff 100%);
+        }
+
+        .peak-card {
+            border-left: 5px solid var(--danger);
+            background-color: #FEF2F2;
+        }
+
+        .offpeak-card {
+            border-left: 5px solid var(--success);
+            background-color: #F0FDF4;
+        }
+
+        .primary-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            border-color: var(--primary);
+        }
+
+        /* Tariff Type Cards */
+        .tariff-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tariff-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .tariff-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .tariff-card h4 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+        .tariff-icon {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .rating {
+            display: inline-block;
+            padding: 5px 16px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+            letter-spacing: 0.3px;
+        }
+
+        .rating-bad {
+            background-color: #FFEBEE;
+            color: #B71C1C;
+        }
+
+        .rating-good {
+            background-color: #E8F5E9;
+            color: #1B5E20;
+        }
+
+        .rating-neutral {
+            background-color: #FFF3E0;
+            color: #BF360C;
+        }
+
+        .rating-excellent {
+            background-color: var(--smart-light);
+            color: var(--primary-dark);
+        }
+
+        /* Time Band Display */
+        .time-bands {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin: 25px 0;
+        }
+
+        .time-band {
+            flex: 1;
+            min-width: 150px;
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .time-band.offpeak {
+                background: linear-gradient(135deg, #059669 0%, #047857 100%);
+            }
+
+            .time-band.standard {
+                background: linear-gradient(135deg, #6B7280 0%, #4B5563 100%);
+            }
+
+            .time-band.peak {
+                background: linear-gradient(135deg, #DC2626 0%, #B91C1C 100%);
+            }
+
+        .band-label {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .band-price {
+            font-size: 1.5rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+        }
+
+        .band-desc {
+            opacity: 0.9;
+            font-size: 0.9rem;
+        }
+
+        /* Smart Meter Card */
+        .smart-meter-card {
+            background: linear-gradient(135deg, #1E293B 0%, #0F172A 100%);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            color: white;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .smart-meter-card::before {
+                content: "📱⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 70px;
+                opacity: 0.1;
+            }
+
+        .meter-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .meter-feature {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+            .meter-feature i {
+                color: var(--accent);
+                font-size: 1.5rem;
+            }
+
+        /* Who It's Best For / Avoid */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .audience-best {
+            background-color: #E8F5E9;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border-top: 5px solid var(--success);
+        }
+
+        .audience-avoid {
+            background-color: #FFEBEE;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border-top: 5px solid var(--danger);
+        }
+
+            .audience-best h4, .audience-avoid h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                margin-bottom: 20px;
+            }
+
+        .audience-best i {
+            color: var(--success);
+        }
+
+        .audience-avoid i {
+            color: var(--danger);
+        }
+
+        .audience-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 15px;
+        }
+
+        .audience-icon {
+            width: 32px;
+            height: 32px;
+            background-color: rgba(0,0,0,0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        /* TOU vs Standard Comparison */
+        .comparison-showdown {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .standard-box {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--gray-300);
+        }
+
+        .tou-box {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border: 2px solid var(--primary);
+            position: relative;
+        }
+
+            .tou-box::after {
+                content: "SMART";
+                position: absolute;
+                top: -12px;
+                right: 20px;
+                background-color: var(--primary);
+                color: white;
+                padding: 4px 16px;
+                border-radius: 30px;
+                font-size: 0.75rem;
+                font-weight: 700;
+                letter-spacing: 1px;
+            }
+
+        .price-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px dashed var(--gray-200);
+        }
+
+            .price-row:last-child {
+                border-bottom: none;
+            }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--primary);
+        }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Renewable Alignment */
+        .renewable-card {
+            background: linear-gradient(135deg, #0B3B2C 0%, #1C4E3D 100%);
+            border-radius: var(--radius-xl);
+            padding: 30px;
+            color: white;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .renewable-card::before {
+                content: "🌿🍃🌱";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 70px;
+                opacity: 0.1;
+            }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+        }
+
+            .faq-item:hover {
+                background-color: white;
+                border-color: var(--primary);
+                box-shadow: var(--shadow-md);
+            }
+
+            .faq-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+
+            .faq-item i {
+                color: var(--accent);
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: "⚡⏰⚡⏰⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 100px;
+                opacity: 0.08;
+                color: var(--accent);
+                transform: rotate(-5deg);
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+                position: relative;
+                z-index: 2;
+            }
+
+            .cta-section p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin: 0 auto 30px;
+                position: relative;
+                z-index: 2;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-xl);
+                background-color: white;
+                color: var(--primary-dark);
+            }
+
+        /* Related Articles */
+        .related-articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .article-tag {
+            background-color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 2px solid var(--gray-200);
+            font-weight: 500;
+        }
+
+            .article-tag:hover {
+                background-color: var(--primary);
+                color: white;
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
+
+            .article-tag i {
+                margin-right: 8px;
+                color: var(--accent);
+            }
+
+            .article-tag:hover i {
+                color: white;
+            }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 40px 25px;
+            }
+
+                .hero-header h1 {
+                    font-size: 2.2rem;
+                }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-item {
+                padding: 30px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .meta-item {
+                width: 100%;
+            }
+
+            .cta-section {
+                padding: 40px 25px;
+            }
+
+                .cta-section h2 {
+                    font-size: 1.8rem;
+                }
+
+            .time-bands {
+                flex-direction: column;
+            }
+
+            .time-band {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .hero-header {
+                padding: 30px 20px;
+            }
+
+                .hero-header h1 {
+                    font-size: 1.8rem;
+                }
+
+            .grid-item {
+                padding: 25px;
+            }
+
+            .grid-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 30px;
+            }
+
+            .tariff-types, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-showdown {
+                grid-template-columns: 1fr;
+            }
+
+            .meter-features {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ensure no orphaned cards */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tariff-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .comparison-showdown {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .meter-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header - Smart Time Theme -->
+        <header class="hero-header">
+            <div class="highlight-badge">
+                <i class="fas fa-clock"></i>
+                TIME-OF-USE SPECIALIST
+            </div>
+            <h1>Compare Time-of-Use Energy Tariffs (UK Guide 2026)</h1>
+            <p>Time-of-use energy tariffs exist because electricity does not cost the same to produce at all times of day. For the right household, this can significantly reduce bills. For the wrong household, it can increase them.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>UK households considering smart tariffs, EV owners, battery users, all-electric homes</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- What Is Time-of-Use -->
+            <div class="grid-item smart-card">
+                <div class="grid-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h2>What Is a Time-of-Use Energy Tariff?</h2>
+
+                <p>Instead of one flat rate, electricity is split into time bands:</p>
+
+                <div class="time-bands">
+                    <div class="time-band offpeak">
+                        <div class="band-label">
+                            <i class="fas fa-moon"></i> Off-peak
+                        </div>
+                        <div class="band-price">Cheap</div>
+                        <div class="band-desc">Typically overnight</div>
+                    </div>
+                    <div class="time-band standard">
+                        <div class="band-label">
+                            <i class="fas fa-cloud-sun"></i> Standard
+                        </div>
+                        <div class="band-price">Moderate</div>
+                        <div class="band-desc">Daytime</div>
+                    </div>
+                    <div class="time-band peak">
+                        <div class="band-label">
+                            <i class="fas fa-sun"></i> Peak
+                        </div>
+                        <div class="band-price">Expensive</div>
+                        <div class="band-desc">Early evening</div>
+                    </div>
+                </div>
+
+                <p><strong>Each kilowatt-hour is charged at the rate that applies at the time it is used.</strong></p>
+
+                <div style="background-color: var(--primary-light); padding: 15px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 500; color: var(--primary-dark);">
+                        <i class="fas fa-info-circle" style="color: var(--primary); margin-right: 8px;"></i>
+                        Time-of-use tariffs are fundamentally about timing, not consumption reduction.
+                    </p>
+                </div>
+            </div>
+
+            <!-- How TOU Differs from Standard -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-balance-scale-left"></i>
+                </div>
+                <h2>How Time-of-Use Differs from Standard Tariffs</h2>
+
+                <div class="comparison-showdown">
+                    <div class="standard-box">
+                        <h3 style="color: var(--gray-700); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-file-invoice"></i> Standard Tariff
+                        </h3>
+                        <div class="price-row">
+                            <span>2am rate</span>
+                            <span style="font-weight: 600;">28p/kWh</span>
+                        </div>
+                        <div class="price-row">
+                            <span>7pm rate</span>
+                            <span style="font-weight: 600;">28p/kWh</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Peak vs Off-peak</span>
+                            <span style="color: var(--gray-500);">No difference</span>
+                        </div>
+                    </div>
+
+                    <div class="tou-box">
+                        <h3 style="color: var(--primary); margin-bottom: 20px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-clock"></i> Time-of-Use Tariff
+                        </h3>
+                        <div class="price-row">
+                            <span><span style="color: var(--success);">●</span> 2am rate</span>
+                            <span style="font-weight: 600; color: var(--success);">9p/kWh</span>
+                        </div>
+                        <div class="price-row">
+                            <span><span style="color: var(--danger);">●</span> 7pm rate</span>
+                            <span style="font-weight: 600; color: var(--danger);">45p/kWh</span>
+                        </div>
+                        <div class="price-row">
+                            <span>Peak vs Off-peak</span>
+                            <span style="font-weight: 600;">5x difference</span>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="margin-top: 20px;"><strong>This difference is why TOU tariffs can either outperform or underperform standard tariffs depending on behaviour.</strong></p>
+            </div>
+
+            <!-- Smart Meters -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h2>The Role of Smart Meters</h2>
+
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md); margin-bottom: 20px;">
+                    <p style="margin-bottom: 0; color: #B71C1C; font-weight: 600;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                        Without a smart meter, time-of-use tariffs are generally unavailable.
+                    </p>
+                </div>
+
+                <p>Smart meters enable:</p>
+                <ul class="feature-list smart-list">
+                    <li>Half-hourly usage recording</li>
+                    <li>Automatic data transmission to suppliers</li>
+                    <li>Accurate time-based billing</li>
+                </ul>
+
+                <p><strong>Installing one is usually a prerequisite for TOU tariffs.</strong></p>
+            </div>
+        </div>
+
+        <!-- Smart Meter Deep Dive -->
+        <div class="smart-meter-card" style="margin-bottom: 40px;">
+            <h2 style="color: white; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-microchip" style="color: var(--accent);"></i>
+                Smart Meter: Your Gateway to Time-of-Use
+            </h2>
+            <p style="color: white; opacity: 0.9; max-width: 700px;">
+                Time-of-use tariffs require precise measurement of when electricity is used. This is only possible with a smart meter.
+            </p>
+
+            <div class="meter-features">
+                <div class="meter-feature">
+                    <i class="fas fa-chart-line"></i>
+                    <div>
+                        <h5 style="color: white; margin-bottom: 5px;">Half-hourly readings</h5>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0; font-size: 0.9rem;">Precise time tracking</p>
+                    </div>
+                </div>
+                <div class="meter-feature">
+                    <i class="fas fa-wifi"></i>
+                    <div>
+                        <h5 style="color: white; margin-bottom: 5px;">Automatic transmission</h5>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0; font-size: 0.9rem;">No manual reads</p>
+                    </div>
+                </div>
+                <div class="meter-feature">
+                    <i class="fas fa-pound-sign"></i>
+                    <div>
+                        <h5 style="color: white; margin-bottom: 5px;">Accurate billing</h5>
+                        <p style="color: rgba(255,255,255,0.8); margin-bottom: 0; font-size: 0.9rem;">Pay for what you use, when you use it</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tariff Types Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">Common Types of Time-of-Use Tariffs</h2>
+
+            <div class="tariff-types">
+                <div class="tariff-card">
+                    <h4><i class="fas fa-history tariff-icon"></i> Economy 7</h4>
+                    <div class="badge badge-neutral" style="margin-bottom: 15px;">📻 Traditional</div>
+                    <p>7 hours cheap overnight electricity. Fixed off-peak window. Higher daytime rates.</p>
+                    <p><strong>Designed for:</strong> Storage heaters, immersion tanks</p>
+                    <span class="rating rating-neutral">📟 Original TOU</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-clock tariff-icon"></i> Smart Time-of-Use</h4>
+                    <div class="badge badge-success" style="margin-bottom: 15px;">⭐⭐⭐ Modern Standard</div>
+                    <p>Flexible off-peak windows. Multiple pricing bands. Smart meter required.</p>
+                    <p><strong>Designed for:</strong> EVs, batteries, flexible homes</p>
+                    <span class="rating rating-excellent">⚡ Smart Optimised</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-bolt tariff-icon"></i> EV-Specific TOU</h4>
+                    <div class="badge badge-info" style="margin-bottom: 15px;">🚗 EV Optimised</div>
+                    <p>Extended overnight cheap windows. Designed for EV charging patterns.</p>
+                    <p><strong>Best for:</strong> Electric vehicle owners</p>
+                    <span class="rating rating-excellent">🔌 EV Ready</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-battery-full tariff-icon"></i> Battery-Optimised TOU</h4>
+                    <div class="badge badge-info" style="margin-bottom: 15px;">🔋 Battery Ready</div>
+                    <p>Long cheap windows for battery charging. Avoids extreme peak pricing.</p>
+                    <p><strong>Best for:</strong> Homes with storage batteries</p>
+                    <span class="rating rating-excellent">🎯 Strategic</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Why Cheaper / Why Expensive -->
+        <div class="content-grid">
+            <div class="grid-item success-card">
+                <div class="grid-icon">
+                    <i class="fas fa-pound-sign"></i>
+                </div>
+                <h2>Why Time-of-Use Tariffs Can Be Cheaper</h2>
+
+                <ul class="offpeak-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🟢</span>
+                        <strong>Charging EVs overnight</strong> — 6p–10p vs 30p+ peak
+                    </li>
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🟢</span>
+                        <strong>Running appliances off-peak</strong> — Dishwashers, washing machines
+                    </li>
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🟢</span>
+                        <strong>Charging home batteries at night</strong> — Use stored power during peak
+                    </li>
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🟢</span>
+                        <strong>Heating water overnight</strong> — Immersion heaters, heat banks
+                    </li>
+                </ul>
+
+                <div style="background-color: #E8F5E9; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="margin-bottom: 0; color: #1B5E20; font-weight: 600;">
+                        When high-usage activities move into cheap periods, overall cost drops even if peak rates are higher.
+                    </p>
+                </div>
+            </div>
+
+            <div class="grid-item peak-card">
+                <div class="grid-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>Why Time-of-Use Tariffs Can Be Expensive</h2>
+
+                <ul class="peak-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🔴</span>
+                        <strong>Most electricity used during peak periods</strong> — 5x higher rates
+                    </li>
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🔴</span>
+                        <strong>Households do not change habits</strong> — Behaviour must match tariff
+                    </li>
+                    <li style="padding-left: 30px; margin-bottom: 15px; position: relative;">
+                        <span style="position: absolute; left: 0;">🔴</span>
+                        <strong>Peak rates significantly higher</strong> — Can be 40p–50p/kWh
+                    </li>
+                </ul>
+
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="margin-bottom: 0; color: #B71C1C; font-weight: 600;">
+                        This is why TOU tariffs are not "cheap by default".
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Audience Grid -->
+        <div class="audience-grid" style="margin-bottom: 40px;">
+            <div class="audience-best">
+                <h4><i class="fas fa-check-circle"></i> ✓ Time-of-Use Is Best For:</h4>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-car" style="color: var(--success);"></i></div>
+                    <div>
+                        <strong>Electric Vehicle Owners</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">EV charging can be scheduled overnight, consuming large amounts during cheapest hours.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-battery-full" style="color: var(--success);"></i></div>
+                    <div>
+                        <strong>Homes with Batteries</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Store cheap off-peak electricity, use during expensive peak periods.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-fire" style="color: var(--success);"></i></div>
+                    <div>
+                        <strong>All-Electric Homes with Storage Heating</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Designed to use electricity overnight, perfect for TOU.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-users" style="color: var(--success);"></i></div>
+                    <div>
+                        <strong>Highly Flexible Households</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Willing and able to shift appliance use consistently.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="audience-avoid">
+                <h4><i class="fas fa-times-circle"></i> ✗ Should Avoid TOU Tariffs:</h4>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-fire" style="color: var(--danger);"></i></div>
+                    <div>
+                        <strong>Gas-heated homes</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Low electricity usage, can't shift enough to justify peak rates.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-clock" style="color: var(--danger);"></i></div>
+                    <div>
+                        <strong>Peak-time families</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Active mainly during early evening peak hours.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-bed" style="color: var(--danger);"></i></div>
+                    <div>
+                        <strong>Unable/unwilling to shift</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">Routines don't accommodate overnight usage.</p>
+                    </div>
+                </div>
+
+                <div class="audience-item">
+                    <div class="audience-icon"><i class="fas fa-microchip" style="color: var(--danger);"></i></div>
+                    <div>
+                        <strong>No smart meter</strong>
+                        <p style="margin-bottom: 0; font-size: 0.95rem;">TOU tariffs unavailable without one.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Standing Charges -->
+        <div class="grid-item warning-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-coins"></i>
+            </div>
+            <h2>Standing Charges on Time-of-Use Tariffs</h2>
+
+            <p>Standing charges apply regardless of when electricity is used.</p>
+
+            <div style="background-color: #FFF3E0; padding: 20px; border-radius: var(--radius-md); margin: 20px 0;">
+                <p style="font-weight: 600; color: #BF360C; margin-bottom: 10px;">⚠️ Some TOU tariffs:</p>
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 8px;">Have higher standing charges</li>
+                    <li style="padding-left: 30px; margin-bottom: 8px;">Use standing charges to offset cheap off-peak rates</li>
+                </ul>
+            </div>
+
+            <p><strong>Comparisons must always include total annual cost, not just unit rates.</strong></p>
+        </div>
+
+        <!-- Common Mistakes -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-exclamation-circle"></i>
+            </div>
+            <h2>Common Mistakes with Time-of-Use Tariffs</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 15px; margin: 25px 0;">
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="font-weight: 600; color: #B71C1C; margin-bottom: 5px;">❌ Focus only on cheap rate</p>
+                    <p style="margin-bottom: 0; font-size: 0.95rem;">Ignore expensive peak pricing</p>
+                </div>
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="font-weight: 600; color: #B71C1C; margin-bottom: 5px;">❌ Overestimate shiftable usage</p>
+                    <p style="margin-bottom: 0; font-size: 0.95rem;">Be realistic about what you can move</p>
+                </div>
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="font-weight: 600; color: #B71C1C; margin-bottom: 5px;">❌ Switch without understanding bands</p>
+                    <p style="margin-bottom: 0; font-size: 0.95rem;">Know your cheap/peak windows</p>
+                </div>
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-md);">
+                    <p style="font-weight: 600; color: #B71C1C; margin-bottom: 5px;">❌ Don't monitor actual usage</p>
+                    <p style="margin-bottom: 0; font-size: 0.95rem;">Check if you're actually shifting</p>
+                </div>
+            </div>
+
+            <div style="background-color: var(--primary-light); padding: 15px; border-radius: var(--radius-md); margin-top: 15px;">
+                <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark); text-align: center;">
+                    Time-of-use tariffs reward behaviour. Without behaviour change, they fail.
+                </p>
+            </div>
+        </div>
+
+        <!-- Renewable Energy Card -->
+        <div class="renewable-card" style="margin-bottom: 40px;">
+            <h2 style="color: white; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
+                <i class="fas fa-leaf" style="color: #A7F3D0;"></i>
+                Time-of-Use Tariffs and Renewable Energy
+            </h2>
+            <p style="color: white; opacity: 0.9; max-width: 700px; margin-bottom: 20px;">
+                Time-of-use tariffs often align with higher renewable generation overnight and lower-carbon electricity periods.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                <div style="background-color: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: var(--radius-lg);">
+                    <span style="color: #A7F3D0; font-weight: 600;">🌙 Overnight</span>
+                    <p style="color: white; margin-bottom: 0;">High wind generation, low carbon</p>
+                </div>
+                <div style="background-color: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: var(--radius-lg);">
+                    <span style="color: #A7F3D0; font-weight: 600;">☀️ Daytime</span>
+                    <p style="color: white; margin-bottom: 0;">Solar generation, medium carbon</p>
+                </div>
+                <div style="background-color: rgba(255,255,255,0.1); padding: 15px 20px; border-radius: var(--radius-lg);">
+                    <span style="color: #A7F3D0; font-weight: 600;">⚠️ Peak</span>
+                    <p style="color: white; margin-bottom: 0;">Gas peakers, highest carbon</p>
+                </div>
+            </div>
+            <p style="color: white; opacity: 0.9; margin-top: 20px; margin-bottom: 0;">
+                For environmentally conscious households, TOU tariffs can reduce both cost and carbon footprint when used correctly.
+            </p>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">5x</div>
+                <div class="stat-label">Peak vs off-peak price difference</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">30-50%</div>
+                <div class="stat-label">Potential bill reduction</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Hours typical cheap window</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">64%</div>
+                <div class="stat-label">Of smart meter users on wrong tariff</div>
+            </div>
+        </div>
+
+        <!-- How to Compare Correctly -->
+        <div class="grid-item primary-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-balance-scale"></i>
+            </div>
+            <h2>How to Compare Time-of-Use Energy Tariffs Correctly</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 30px 0;">
+                <div>
+                    <h3><i class="fas fa-clipboard-list" style="color: var(--primary); margin-right: 8px;"></i> You Need to Know:</h3>
+                    <ul class="feature-list">
+                        <li>Annual electricity usage (kWh)</li>
+                        <li>Off-peak vs peak usage estimate</li>
+                        <li>Meter type (smart or Economy 7)</li>
+                        <li>EVs, batteries, electric heating</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3><i class="fas fa-calculator" style="color: var(--primary); margin-right: 8px;"></i> Calculate:</h3>
+                    <ul class="feature-list">
+                        <li>Cost of off-peak electricity</li>
+                        <li>Cost of peak electricity</li>
+                        <li>Standing charges</li>
+                        <li>Total annual spend</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 25px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); border-left: 5px solid var(--accent);">
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 0; display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-crown" style="color: var(--accent); font-size: 1.5rem;"></i>
+                    UtilityKing compares time-of-use tariffs using realistic usage splits, not assumptions.
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">FAQs: Time-of-Use Energy Tariffs</h2>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do I need a smart meter?</h4>
+                    <p>Yes. Accurate time-based billing requires a smart meter. Without one, TOU tariffs are unavailable.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Is Economy 7 the same as TOU?</h4>
+                    <p>Economy 7 is one type of TOU tariff, but modern smart TOU tariffs are more flexible and precise.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Can TOU increase my bill?</h4>
+                    <p>Yes — if most of your usage happens during peak periods, the higher rates can outweigh off-peak savings.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Good for EV charging?</h4>
+                    <p>Yes — TOU tariffs are one of the cheapest ways to charge at home, often 6p–10p per kWh overnight.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do TOU tariffs change over time?</h4>
+                    <p>Some are fixed, others adjust pricing periodically. Always check tariff terms before switching.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Can I have solar + TOU?</h4>
+                    <p>Yes, but high peak rates may conflict with solar generation. Compare carefully for your specific setup.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Final Verdict: Time-of-Use Tariffs Reward the Engaged Household</h2>
+            <p>Time-of-use energy tariffs are not for everyone — but for the right household, they are one of the most powerful tools for reducing electricity bills. In 2026, they are excellent for EVs, batteries, and flexible homes, but risky for passive or low-usage households.</p>
+
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px;">
+                <div style="text-align: left; background-color: rgba(255,255,255,0.12); padding: 20px 25px; border-radius: var(--radius-lg); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.2);">
+                    <p style="font-size: 1rem; margin-bottom: 10px; color: var(--accent); font-weight: 600;">⏰ TIME-OF-USE VERDICT</p>
+                    <ul style="list-style: none; color: white;">
+                        <li style="margin-bottom: 10px;">✓ <strong>Excellent for:</strong> EVs, batteries, storage heaters, flexible homes</li>
+                        <li style="margin-bottom: 10px;">⚠️ <strong>Risky for:</strong> Daytime users, gas-heated homes, fixed routines</li>
+                        <li style="margin-bottom: 10px;">✓ <strong>Requires:</strong> Smart meter, behaviour change, 30%+ off-peak usage</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <p style="margin-top: 25px; font-size: 1rem; opacity: 0.85;">
+                See whether smart pricing actually works for your home • Smart meter required • EV & battery ready
+            </p>
+        </section>
+
+      
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <p>© 2026 UtilityKing Time-of-Use Energy Guide. This content is for informational purposes only. Time bands, tariffs, and standing charges change frequently. Always verify with official Ofgem sources.</p>
+            <p style="margin-top: 12px; font-size: 0.8rem; letter-spacing: 0.3px;">Time-of-Use Accredited • Smart Meter Certified • EV Ready • Battery Optimised • Ofgem Recognised</p>
+        </div>
+    </div>
+
+    <script>
+        // Interactive CTA Button
+        document.getElementById('touBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analysing Your Time-of-Use Profile...';
+            this.style.backgroundColor = '#FFEDD5';
+            this.style.color = '#0E5B6B';
+
+            setTimeout(() => {
+                alert("⏰ TIME-OF-USE ENERGY COMPARISON\n\nIn a live implementation, UtilityKing would:\n\n1️⃣ Calculate your current off-peak vs peak usage split\n2️⃣ Match against live TOU tariffs in your region\n3️⃣ Compare total annual cost vs standard tariff\n4️⃣ Identify optimal time bands for your habits\n5️⃣ Assess smart meter compatibility & savings potential");
+
+                this.innerHTML = '<i class="fas fa-clock"></i> Compare Time-of-Use Energy Tariffs';
+                this.style.backgroundColor = 'var(--accent)';
+                this.style.color = 'white';
+            }, 2000);
+        });
+
+        // Add smooth appearance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate grid items
+        document.querySelectorAll('.grid-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate tariff cards
+        document.querySelectorAll('.tariff-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(card);
+        });
+
+        // Animate stat items
+        document.querySelectorAll('.stat-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.9)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.15) + 's';
+            observer.observe(item);
+        });
+
+        // Animate FAQ items
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate audience items
+        document.querySelectorAll('.audience-item, .decision-yes, .decision-no').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

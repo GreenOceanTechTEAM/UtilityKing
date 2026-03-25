@@ -1,0 +1,985 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is Green Energy More Expensive? Cost Comparison (UK 2026) - UtilityKing</title>
+    <meta name="description" content="2026 UK green energy cost analysis: Discover if renewable energy costs more. Compare green vs standard energy prices and see potential savings.">
+    <meta name="keywords" content="green energy cost UK, renewable energy prices, green vs standard energy cost, green energy cheaper 2026, renewable energy savings">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --secondary: #0891B2;
+            --accent: #F59E0B;
+            --dark: #111827;
+            --light: #FFFFFF;
+            --gray: #6B7280;
+            --gray-light: #F9FAFB;
+            --border-radius: 20px;
+            --shadow: 0 12px 40px rgba(0, 0, 0, 0.08);
+            --transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Manrope', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #F0FDF4 0%, #ECFDF5 100%);
+            overflow-x: hidden;
+            min-height: 100vh;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        h1 {
+            font-size: 3.8rem;
+            letter-spacing: -1px;
+            line-height: 1.1;
+        }
+
+        h2 {
+            font-size: 3rem;
+            position: relative;
+            padding-bottom: 1.5rem;
+            margin-top: 5rem;
+           
+        }
+
+            h2:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 120px;
+                height: 8px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+                border-radius: 4px;
+            }
+
+        h3 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            margin-top: 3.5rem;
+        }
+
+        p {
+            margin-bottom: 1.8rem;
+            font-size: 1.2rem;
+            color: #374151;
+            line-height: 1.8;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 0 2.5rem;
+        }
+
+        /* Hero Section */
+        .article-hero {
+            background: linear-gradient(135deg, #047857 0%, #059669 100%);
+            color: #FFFFFF;
+            padding: 7rem 0 5rem;
+            position: relative;
+            overflow: hidden;
+            clip-path: ellipse(120% 100% at 50% 0%);
+        }
+
+            .article-hero:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 15% 20%, rgba(255, 255, 255, 0.15) 0%, transparent 40%), radial-gradient(circle at 85% 30%, rgba(8, 145, 178, 0.2) 0%, transparent 40%), radial-gradient(circle at 50% 80%, rgba(245, 158, 11, 0.1) 0%, transparent 40%);
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .article-meta {
+            display: flex;
+            justify-content: center;
+            gap: 2.5rem;
+            margin-bottom: 3rem;
+            font-size: 1.1rem;
+            flex-wrap: wrap;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(255, 255, 255, 0.15);
+            padding: 0.8rem 1.8rem;
+            border-radius: 50px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+            .meta-item:hover {
+                transform: translateY(-3px);
+                background: rgba(255, 255, 255, 0.2);
+            }
+
+            .meta-item i {
+                color: var(--accent);
+            }
+
+        .hero-title {
+            font-size: 3.8rem;
+            margin-bottom: 2rem;
+            color: #FFFFFF;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero-subtitle {
+            font-size: 1.5rem;
+            font-weight: 400;
+            opacity: 0.95;
+            margin-bottom: 3.5rem;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            color: #E5E7EB;
+            line-height: 1.6;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.2rem 3rem;
+            background: linear-gradient(135deg, var(--accent), #D97706);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            transition: var(--transition);
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 12px 30px rgba(245, 158, 11, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .btn:after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+                transform: translateX(-100%);
+            }
+
+            .btn:hover {
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 50px rgba(245, 158, 11, 0.4);
+            }
+
+                .btn:hover:after {
+                    transform: translateX(100%);
+                    transition: transform 0.6s ease;
+                }
+
+        /* Answer Banner */
+        .answer-banner {
+            background: linear-gradient(135deg, #FFFFFF, #F0FDF4);
+            border: 3px solid var(--primary);
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            margin: 4rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+        }
+
+            .answer-banner:before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(5, 150, 105, 0.1) 0%, transparent 70%);
+                animation: rotate 20s linear infinite;
+            }
+
+        @keyframes rotate {
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .answer-text {
+            font-size: 4.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 0 rgba(5, 150, 105, 0.1);
+            position: relative;
+            z-index: 2;
+        }
+
+        .answer-subtext {
+            font-size: 1.8rem;
+            color: var(--dark);
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* Article Content */
+        .article-content {
+            padding: 6rem 0;
+        }
+
+        .content-block {
+            margin-bottom: 5rem;
+        }
+
+        /* Green Section */
+        .green-section {
+            background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+            color: #FFFFFF;
+            padding: 6rem 0;
+            margin: 6rem 0;
+            border-radius: 30px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(5, 150, 105, 0.15);
+        }
+
+            .green-section:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 Q50,30 100,0 L100,100 Q50,70 0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+            .green-section h2,
+            .green-section h3,
+            .green-section p,
+            .green-section li,
+            .green-section strong {
+                color: #FFFFFF !important;
+            }
+
+                .green-section h2:after {
+                    background: linear-gradient(90deg, #FFFFFF, var(--accent));
+                }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1rem;
+            margin: 4rem 0;
+        }
+
+        .comparison-card {
+            background: white;
+            padding: 3.5rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            border: 2px solid transparent;
+            background-clip: padding-box;
+        }
+
+            .comparison-card:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 8px;
+                background: linear-gradient(90deg, var(--primary), var(--secondary));
+            }
+
+            .comparison-card:hover {
+                transform: translateY(-15px) scale(1.02);
+                box-shadow: 0 25px 60px rgba(0, 0, 0, 0.12);
+            }
+
+        .comparison-icon {
+            font-size: 3.5rem;
+            color: var(--primary);
+            margin-bottom: 2rem;
+            height: 100px;
+            width: 100px;
+            background: linear-gradient(135deg, #DCFCE7, #BBF7D0);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            transition: var(--transition);
+        }
+
+        .comparison-card:hover .comparison-icon {
+            transform: rotate(15deg) scale(1.1);
+            background: linear-gradient(135deg, #BBF7D0, #86EFAC);
+        }
+
+        .comparison-card h4 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary-dark);
+            text-align: center;
+        }
+
+        /* Price Table */
+        .price-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 4rem 0;
+            background: white;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+            .price-table th {
+                background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+                color: white;
+                text-align: left;
+                padding: 2rem;
+                font-weight: 700;
+                font-size: 1.3rem;
+            }
+
+            .price-table td {
+                padding: 2rem;
+                border-bottom: 2px solid #F3F4F6;
+                font-size: 1.2rem;
+                transition: var(--transition);
+            }
+
+            .price-table tr:nth-child(even) {
+                background-color: #F9FAFB;
+            }
+
+            .price-table tr:hover td {
+                background-color: #F0FDF4;
+            }
+
+        .price-badge {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+            .price-badge.green {
+                background: linear-gradient(135deg, #10B981, #059669);
+                color: white;
+                box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+            }
+
+            .price-badge.orange {
+                background: linear-gradient(135deg, #F59E0B, #D97706);
+                color: white;
+                box-shadow: 0 8px 20px rgba(245, 158, 11, 0.3);
+            }
+
+        /* Myth vs Fact */
+        .myth-fact {
+            background: linear-gradient(135deg, #FEF3C7, #FDE68A);
+            border-left: 8px solid var(--accent);
+            padding: 4rem;
+            border-radius: var(--border-radius);
+            margin: 5rem 0;
+        }
+
+        .myth-fact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin-top: 3rem;
+        }
+
+        .myth-box, .fact-box {
+            background: white;
+            padding: 3rem;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+        }
+
+            .myth-box h4, .fact-box h4 {
+                font-size: 1.6rem;
+                margin-bottom: 1.5rem;
+                display: flex;
+                align-items: center;
+                gap: 1rem;
+            }
+
+                .myth-box h4 i {
+                    color: #EF4444;
+                }
+
+                .fact-box h4 i {
+                    color: var(--primary);
+                }
+
+        /* Savings Calculator */
+        .savings-calc {
+            background: linear-gradient(135deg, #1F2937, #111827);
+            color: white;
+            padding: 5rem;
+            border-radius: var(--border-radius);
+            margin: 5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .savings-calc:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path d="M0,0 L100,0 L100,100 Q50,90 0,100 Z" fill="rgba(255,255,255,0.05)"/></svg>');
+                background-size: cover;
+            }
+
+        .savings-amount {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 2rem 0;
+            background: linear-gradient(135deg, #10B981, var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: #FFFFFF;
+            padding: 7rem 0;
+            text-align: center;
+            border-radius: 40px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 80px rgba(5, 150, 105, 0.2);
+        }
+
+            .cta-section:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 25% 25%, rgba(255, 255, 255, 0.1) 0%, transparent 50%), radial-gradient(circle at 75% 75%, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+            }
+
+        .cta-content {
+            position: relative;
+            z-index: 2;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .cta-title {
+            font-size: 3.5rem;
+            color: #FFFFFF;
+            margin-bottom: 2.5rem;
+            text-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .cta-section p {
+            color: #E5E7EB;
+            opacity: 0.95;
+            font-size: 1.4rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 2rem;
+            justify-content: center;
+            margin-top: 3.5rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-light {
+            background: white;
+            color: var(--primary);
+            box-shadow: 0 12px 30px rgba(255, 255, 255, 0.2);
+        }
+
+            .btn-light:hover {
+                background: #F9FAFB;
+                transform: translateY(-8px) scale(1.05);
+                box-shadow: 0 20px 50px rgba(255, 255, 255, 0.3);
+            }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            h1 {
+                font-size: 3.2rem;
+            }
+
+            h2 {
+                font-size: 2.5rem;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+        }
+
+        @media (max-width: 992px) {
+            .container {
+                padding: 0 2rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .answer-text {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.8rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+                margin-top: 4rem;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .article-hero {
+                padding: 5rem 0 3rem;
+                clip-path: ellipse(150% 100% at 50% 0%);
+            }
+
+            .article-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 1.5rem;
+            }
+
+            .answer-text {
+                font-size: 2.8rem;
+            }
+
+            .answer-banner {
+                padding: 3rem 2rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 350px;
+                justify-content: center;
+            }
+
+            .cta-title {
+                font-size: 2.8rem;
+            }
+
+            .savings-amount {
+                font-size: 3.5rem;
+            }
+
+            .price-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2.4rem;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.4rem;
+            }
+
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .answer-text {
+                font-size: 2.2rem;
+            }
+
+            .savings-amount {
+                font-size: 2.8rem;
+            }
+
+            .green-section, .cta-section {
+                padding: 4rem 2rem;
+                margin: 4rem 0;
+            }
+
+            .comparison-card, .myth-box, .fact-box {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        /* Animation */
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(60px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+
+            animation: slideUp 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .pulse {
+            animation: pulse 2s infinite;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="article-hero">
+        <div class="container hero-content">
+            <div class="article-meta">
+                <div class="meta-item animate-in">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item animate-in">
+                    <i class="fas fa-user-edit"></i>
+                    <span>Reviewed by: UK Energy Market Analyst</span>
+                </div>
+                <div class="meta-item animate-in">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+            </div>
+
+            <h1 class="hero-title animate-in">Is Green Energy More Expensive? Cost Comparison (UK 2026)</h1>
+            <p class="hero-subtitle animate-in">Discover the truth about renewable energy costs in 2026. Compare green vs standard energy prices and see if switching could save you money.</p>
+
+            <a href="https://www.utilityking.co.uk/contact.html" class="btn animate-in">
+                <i class="fas fa-chart-line"></i> Contact Us
+            </a>
+        </div>
+    </section>
+
+    <!-- Answer Banner -->
+    <div class="container">
+        <div class="answer-banner">
+            <div class="answer-text animate-in">Short Answer: No</div>
+            <p class="answer-subtext animate-in">Green Energy Is Often the Same Price or Cheaper</p>
+            <p class="animate-in" style="max-width: 800px; margin: 2rem auto 0; font-size: 1.3rem; color: var(--dark);">The idea that green energy costs more is one of the most persistent myths in the UK energy market. In 2026, many renewable energy tariffs are priced the same as — or cheaper than — standard energy deals.</p>
+        </div>
+    </div>
+
+    <!-- Article Content -->
+    <main class="article-content">
+        <div class="container">
+            <!-- Why Used to Cost More -->
+            <section class="content-block">
+                <h2 class="animate-in">Why Green Energy Used to Cost More</h2>
+                <p class="animate-in">Historically, green tariffs were more expensive due to several market factors that no longer apply today.</p>
+
+                <div class="comparison-grid">
+                    <div class="comparison-card animate-in">
+                        <div class="comparison-icon">
+                            <i class="fas fa-industry"></i>
+                        </div>
+                        <h4>Limited Renewable Generation</h4>
+                        <p>In the past, renewable energy sources were less developed and couldn't meet large-scale demand, driving up costs.</p>
+                    </div>
+                    <div class="comparison-card animate-in">
+                        <div class="comparison-icon">
+                            <i class="fas fa-money-bill-wave"></i>
+                        </div>
+                        <h4>Higher Production Costs</h4>
+                        <p>Early renewable technology was expensive to manufacture and install, with costs passed to consumers.</p>
+                    </div>
+                    <div class="comparison-card animate-in">
+                        <div class="comparison-icon">
+                            <i class="fas fa-store"></i>
+                        </div>
+                        <h4>Fewer Competitors</h4>
+                        <p>Limited suppliers offered green options, reducing market competition and keeping prices high.</p>
+                    </div>
+                </div>
+
+                <div class="myth-fact animate-in">
+                    <h3 style="color: var(--dark); text-align: center; margin-bottom: 1rem;">Important Update for 2026</h3>
+                    <p style="text-align: center; font-size: 1.4rem; color: var(--dark); font-weight: 600;"><strong>Those conditions no longer apply in today's energy market.</strong></p>
+                </div>
+            </section>
+
+            <!-- Market Changes -->
+            <section class="green-section">
+                <div class="container">
+                    <h2 class="animate-in">What Changed in the UK Energy Market?</h2>
+                    <p class="animate-in">By 2026, the renewable energy landscape has transformed dramatically, making green energy more accessible and affordable than ever before.</p>
+
+                    <div class="comparison-grid">
+                        <div class="comparison-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="comparison-icon" style="color: white; background: rgba(255, 255, 255, 0.2);">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 style="color: white;">50%+ Renewable Power</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9);">Renewable electricity now supplies over half of UK power generation, increasing availability.</p>
+                        </div>
+                        <div class="comparison-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="comparison-icon" style="color: white; background: rgba(255, 255, 255, 0.2);">
+                                <i class="fas fa-wind"></i>
+                            </div>
+                            <h4 style="color: white;">Cheapest Generation</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9);">Wind and solar are among the cheapest sources of electricity generation today.</p>
+                        </div>
+                        <div class="comparison-card" style="background: rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.2);">
+                            <div class="comparison-icon" style="color: white; background: rgba(255, 255, 255, 0.2);">
+                                <i class="fas fa-store-alt"></i>
+                            </div>
+                            <h4 style="color: white;">Widespread Availability</h4>
+                            <p style="color: rgba(255, 255, 255, 0.9);">Most major suppliers now offer green tariffs, increasing market competition.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Price Comparison Table -->
+            <section class="content-block">
+                <h2 class="animate-in">Green Energy vs Standard Energy: Price Comparison</h2>
+
+                <table class="price-table animate-in">
+                    <thead>
+                        <tr>
+                            <th>Energy Type</th>
+                            <th>Typical Cost in 2026</th>
+                            <th>Key Features</th>
+                            <th>Savings Potential</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Green Electricity</strong></td>
+                            <td><span class="price-badge green">Same Price</span></td>
+                            <td>100% renewable, same unit rates & standing charges</td>
+                            <td>No extra cost for renewable</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Electricity</strong></td>
+                            <td><span class="price-badge orange">Standard Price</span></td>
+                            <td>Mixed generation sources</td>
+                            <td>No price advantage</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Green Gas</strong></td>
+                            <td><span class="price-badge orange">Slight Premium</span></td>
+                            <td>Carbon offset or biomethane blends</td>
+                            <td>Often offset by electricity savings</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Standard Gas</strong></td>
+                            <td><span class="price-badge green">Standard Price</span></td>
+                            <td>Traditional natural gas supply</td>
+                            <td>Base pricing</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="info-card" style="background: linear-gradient(135deg, #F0FDF4, #DCFCE7); border-left: 8px solid var(--primary); padding: 3rem; border-radius: var(--border-radius); margin: 3rem 0;">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem;">
+                        <i class="fas fa-lightbulb"></i> Key Finding for 2026
+                    </h3>
+                    <p><strong>In many postcodes, green electricity costs no more than non-green electricity.</strong> The small premium for green gas is often offset by electricity savings when choosing comprehensive green tariffs.</p>
+                </div>
+            </section>
+
+            <!-- Fixed vs Variable -->
+            <section class="content-block">
+                <h2 class="animate-in">Fixed vs Variable Green Tariffs: Which Saves More?</h2>
+
+                <div class="myth-fact-grid animate-in">
+                    <div class="fact-box">
+                        <h4><i class="fas fa-check-circle"></i> Fixed Green Tariffs</h4>
+                        <p><strong>Often the cheapest option</strong> - lock in renewable electricity prices at competitive rates</p>
+                        <p>✅ Frequently priced below the Ofgem price cap</p>
+                        <p>✅ Protection against future price rises</p>
+                        <p>✅ Best for budget planning and long-term savings</p>
+                    </div>
+                    <div class="myth-box">
+                        <h4><i class="fas fa-exclamation-triangle"></i> Variable Green Tariffs</h4>
+                        <p><strong>Typically more expensive</strong> - track the energy price cap without price certainty</p>
+                        <p>⚠️ No exit fees but less predictable</p>
+                        <p>⚠️ Usually more expensive long-term</p>
+                        <p>⚠️ Not ideal for maximizing savings</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Savings Calculator -->
+            <section class="savings-calc">
+                <h3 style="color: white; font-size: 2.5rem; margin-bottom: 2rem;">Potential Annual Savings</h3>
+                <div class="savings-amount animate-in">£0 - £300+</div>
+                <p style="color: #E5E7EB; font-size: 1.4rem; max-width: 700px; margin: 0 auto;">Many households switching to fixed green tariffs save money compared to standard variable tariffs, particularly when moving from price-capped options to competitively priced green deals.</p>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <div class="container cta-content">
+                    <h2 class="cta-title animate-in">Compare Your Green Energy Options</h2>
+                    <p class="animate-in">Find out exactly how much green energy could cost for your home. Compare prices, tariffs, and potential savings in just a few minutes.</p>
+
+                  
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <script>
+        // Animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -150px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all content sections
+            const elements = document.querySelectorAll('.content-block, .comparison-card, .price-table, .green-section, .cta-section, .answer-banner, .myth-fact, .savings-calc');
+            elements.forEach(element => {
+                observer.observe(element);
+            });
+
+            // Add animation to headings and paragraphs
+            document.querySelectorAll('h2, h3, p').forEach(element => {
+                observer.observe(element);
+            });
+
+            // Smooth scroll for links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add interactive hover effects to comparison cards
+            document.querySelectorAll('.comparison-card').forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    this.style.zIndex = '10';
+                });
+
+                card.addEventListener('mouseleave', function() {
+                    this.style.zIndex = '1';
+                });
+            });
+
+            // Add pulse animation to answer banner
+            const answerText = document.querySelector('.answer-text');
+            if (answerText) {
+                setTimeout(() => {
+                    answerText.classList.add('pulse');
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

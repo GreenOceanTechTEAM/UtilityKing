@@ -1,0 +1,1653 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Deals Without Credit Check | UK Guide 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #2C5F2D;
+            --primary-dark: #1E3F1E;
+            --primary-light: #E8F3E8;
+            --accent: #5D9B5D;
+            --accent-light: #E8F5E8;
+            --accessible: #7B5E7B;
+            --accessible-light: #F1EAF1;
+            --inclusive: #4A7B7B;
+            --inclusive-light: #E8F0F0;
+            --success: #2E7D32;
+            --warning: #C67C0E;
+            --danger: #C62828;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --shadow-2xl: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+            --radius-3xl: 2rem;
+        }
+
+        body {
+            background: linear-gradient(135deg, #F4F9F4 0%, #EDF5ED 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Header - Accessible/Inclusive Theme */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-3xl);
+            padding: 50px 40px;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-2xl);
+            text-align:center;
+        }
+
+            .hero-header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg width='80' height='80' viewBox='0 0 80 80' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.05'%3E%3Ccircle cx='20' cy='20' r='8'/%3E%3Ccircle cx='60' cy='40' r='6'/%3E%3Ccircle cx='40' cy='70' r='7'/%3E%3Ccircle cx='70' cy='60' r='5'/%3E%3Ccircle cx='10' cy='50' r='4'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                background-size: 70px 70px;
+            }
+
+            .hero-header::after {
+                content: "🔓✅🛡️";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 90px;
+                opacity: 0.1;
+                color: var(--accent);
+                transform: rotate(-5deg);
+            }
+
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 24px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+            letter-spacing: 0.5px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap: 25px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+            background-color: rgba(255,255,255,0.1);
+            padding: 6px 18px;
+            border-radius: 40px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255,255,255,0.15);
+        }
+
+            .meta-item i {
+                color: var(--accent);
+            }
+
+        /* Quick Stats Bar */
+        .quick-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .quick-stat-card {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: 25px;
+            box-shadow: var(--shadow-lg);
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .quick-stat-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-xl);
+            }
+
+            .quick-stat-card::after {
+                content: "🔓";
+                position: absolute;
+                bottom: 10px;
+                right: 15px;
+                font-size: 40px;
+                opacity: 0.05;
+                color: var(--primary);
+            }
+
+        .quick-stat-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--primary-light), #E8F3E8);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+        }
+
+        .quick-stat-content h3 {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+            line-height: 1;
+            margin-bottom: 5px;
+        }
+
+        .quick-stat-content p {
+            color: var(--gray-600);
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Grid Item Styling */
+        .grid-item {
+            background: white;
+            border-radius: var(--radius-2xl);
+            padding: 35px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .grid-item:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-2xl);
+            }
+
+            .grid-item::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 120px;
+                height: 120px;
+                background: radial-gradient(circle at top right, var(--primary-light) 0%, transparent 70%);
+                opacity: 0.5;
+                border-radius: 0 0 0 120px;
+            }
+
+        .grid-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            z-index: 2;
+            transform: rotate(3deg);
+            transition: transform 0.2s ease;
+        }
+
+        .grid-item:hover .grid-icon {
+            transform: rotate(0deg) scale(1.05);
+        }
+
+        .grid-item h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item h4 {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+            font-weight: 600;
+            position: relative;
+            z-index: 2;
+        }
+
+        .grid-item p {
+            color: var(--gray-700);
+            margin-bottom: 20px;
+            flex-grow: 1;
+            position: relative;
+            z-index: 2;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+            position: relative;
+            z-index: 2;
+            display:grid;
+            grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+        }
+
+            .feature-list li {
+                padding: 8px 0;
+                padding-left: 30px;
+                position: relative;
+                color: var(--gray-700);
+            }
+
+                .feature-list li:before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    color: var(--success);
+                    font-weight: bold;
+                }
+
+        .safe-list li:before {
+            content: "🔓";
+            color: var(--primary);
+            font-size: 1rem;
+        }
+
+        .warning-list li:before {
+            content: "⚠️";
+            color: var(--warning);
+        }
+
+        /* Special Cards */
+        .warning-card {
+            border-left: 5px solid var(--warning);
+            background-color: #FFFBED;
+        }
+
+        .success-card {
+            border-left: 5px solid var(--success);
+            background-color: #F1F8F1;
+        }
+
+        .accessible-card {
+            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+        }
+
+        .primary-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            border-color: var(--primary);
+        }
+
+        /* Credit Check Types */
+        .check-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+
+        .check-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            text-align: center;
+            transition: transform 0.3s ease;
+            border-bottom: 4px solid;
+        }
+
+            .check-card.soft {
+                border-bottom-color: var(--success);
+            }
+
+            .check-card.hard {
+                border-bottom-color: var(--danger);
+            }
+
+            .check-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .check-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin: 0 auto 15px;
+        }
+
+            .check-icon.soft {
+                background-color: #E8F5E9;
+                color: #2E7D32;
+            }
+
+            .check-icon.hard {
+                background-color: #FFEBEE;
+                color: #C62828;
+            }
+
+        .check-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .check-card p {
+            color: var(--gray-600);
+            margin-bottom: 15px;
+            font-size: 0.95rem;
+        }
+
+        .check-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+            .check-badge.soft {
+                background-color: #E8F5E9;
+                color: #2E7D32;
+            }
+
+            .check-badge.hard {
+                background-color: #FFEBEE;
+                color: #C62828;
+            }
+
+        /* Tariff Cards */
+        .tariff-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tariff-card {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .tariff-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .tariff-card.no-check {
+                border-top: 5px solid var(--success);
+            }
+
+            .tariff-card.maybe-check {
+                border-top: 5px solid var(--warning);
+            }
+
+            .tariff-card.check-required {
+                border-top: 5px solid var(--danger);
+            }
+
+        .tariff-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+            .tariff-badge.safe {
+                background-color: #E8F5E9;
+                color: #2E7D32;
+            }
+
+            .tariff-badge.caution {
+                background-color: #FFF3E0;
+                color: #BF360C;
+            }
+
+            .tariff-badge.warning {
+                background-color: #FFEBEE;
+                color: #C62828;
+            }
+
+        .tariff-icon {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+
+        .tariff-card h4 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: var(--radius-xl);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+            .comparison-table th {
+                background-color: var(--primary);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .comparison-table td {
+                padding: 20px;
+                border-bottom: 1px solid var(--gray-200);
+                background-color: white;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .comparison-table tr:hover td {
+                background-color: var(--gray-50);
+            }
+
+        .check-indicator {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .check-indicator i {
+                font-size: 1.2rem;
+            }
+
+            .check-indicator .safe {
+                color: var(--success);
+            }
+
+            .check-indicator .warning {
+                color: var(--warning);
+            }
+
+            .check-indicator .danger {
+                color: var(--danger);
+            }
+
+        /* Deposit Card */
+        .deposit-card {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 30px;
+            color: white;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .deposit-card::before {
+                content: "💰🔒💰";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 70px;
+                opacity: 0.1;
+                color: var(--accent);
+            }
+
+        .deposit-content {
+            display: flex;
+            gap: 25px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        .deposit-item {
+            flex: 1;
+            min-width: 200px;
+            background-color: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: var(--radius-lg);
+            backdrop-filter: blur(5px);
+        }
+
+            .deposit-item i {
+                color: var(--accent);
+                margin-right: 10px;
+            }
+
+        /* Moving Home Card */
+        .moving-card {
+            background: linear-gradient(135deg, var(--inclusive) 0%, #2D5A5A 100%);
+            border-radius: var(--radius-2xl);
+            padding: 30px;
+            color: white;
+            margin: 30px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .moving-card::before {
+                content: "🏠📦🏠";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 70px;
+                opacity: 0.1;
+                color: var(--accent);
+            }
+
+        /* Who Should Prioritize */
+        .audience-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .audience-item {
+            background-color: var(--primary-light);
+            border-radius: var(--radius-lg);
+            padding: 20px;
+            text-align: center;
+            border-bottom: 3px solid var(--accent);
+        }
+
+            .audience-item i {
+                font-size: 2rem;
+                color: var(--primary);
+                margin-bottom: 15px;
+            }
+
+            .audience-item h4 {
+                color: var(--primary);
+                margin-bottom: 5px;
+            }
+
+            .audience-item p {
+                color: var(--gray-600);
+                margin-bottom: 0;
+                font-size: 0.9rem;
+            }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border-bottom: 4px solid var(--accent);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .stat-item::before {
+                content: "🔓";
+                position: absolute;
+                bottom: 10px;
+                right: 15px;
+                font-size: 30px;
+                opacity: 0.1;
+                color: var(--primary);
+            }
+
+        .stat-number {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+            line-height: 1;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background-color: white;
+            border-radius: var(--radius-xl);
+            padding: 25px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.2s ease;
+            box-shadow: var(--shadow-sm);
+        }
+
+            .faq-item:hover {
+                border-color: var(--accent);
+                box-shadow: var(--shadow-md);
+                transform: translateY(-2px);
+            }
+
+            .faq-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+
+            .faq-item i {
+                color: var(--accent);
+            }
+
+        /* UtilityKing Promise */
+        .uk-promise {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            border-radius: var(--radius-2xl);
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            gap: 25px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .uk-promise-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--primary);
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 2.2rem;
+        }
+
+        .uk-promise-content {
+            flex: 1;
+        }
+
+            .uk-promise-content h3 {
+                color: var(--primary);
+                margin-bottom: 10px;
+                font-size: 1.5rem;
+            }
+
+            .uk-promise-content p {
+                color: var(--gray-700);
+                margin-bottom: 0;
+                font-size: 1.05rem;
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-3xl);
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            margin: 60px 0 40px;
+            box-shadow: var(--shadow-2xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: "🔓✅🛡️🔓✅🛡️";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 100px;
+                opacity: 0.08;
+                color: var(--accent);
+                transform: rotate(-5deg);
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+                position: relative;
+                z-index: 2;
+            }
+
+            .cta-section p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin: 0 auto 30px;
+                position: relative;
+                z-index: 2;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent);
+            color: white;
+            padding: 20px 50px;
+            border-radius: 60px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-xl);
+            border: none;
+            cursor: pointer;
+            position: relative;
+            z-index: 2;
+            letter-spacing: 0.5px;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-2xl);
+                background-color: white;
+                color: var(--primary-dark);
+            }
+
+            .cta-button i {
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover i {
+                transform: translateX(5px);
+            }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 40px 25px;
+            }
+
+                .hero-header h1 {
+                    font-size: 2.2rem;
+                }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-item {
+                padding: 30px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .meta-item {
+                width: 100%;
+            }
+
+            .cta-section {
+                padding: 40px 25px;
+            }
+
+                .cta-section h2 {
+                    font-size: 1.8rem;
+                }
+
+            .quick-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .uk-promise {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .hero-header {
+                padding: 30px 20px;
+            }
+
+                .hero-header h1 {
+                    font-size: 1.8rem;
+                }
+
+            .grid-item {
+                padding: 25px;
+            }
+
+            .grid-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+                padding: 18px 30px;
+            }
+
+            .check-types {
+                grid-template-columns: 1fr;
+            }
+
+            .tariff-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .audience-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .deposit-content {
+                flex-direction: column;
+            }
+        }
+
+        /* Ensure no orphaned cards */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .check-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tariff-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .audience-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .quick-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header - Accessible/Inclusive Theme -->
+        <header class="hero-header">
+            <div class="highlight-badge">
+                <i class="fas fa-shield"></i>
+                NO CREDIT CHECK OPTIONS 2026
+            </div>
+            <h1>Compare Energy Deals Without Credit Check: What UK Households Need to Know (2026)</h1>
+            <p>For many UK households, the idea of switching energy suppliers comes with a hidden worry: "Will this affect my credit score?" The good news is that most domestic energy switches do not involve a hard credit check, and many tariffs can be compared and switched without any credit impact at all.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>UK households, renters, students, people with poor or limited credit history</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Quick Stats Bar -->
+        <div class="quick-stats">
+            <div class="quick-stat-card">
+                <div class="quick-stat-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <div class="quick-stat-content">
+                    <h3>90%+</h3>
+                    <p>Switches use soft checks only</p>
+                </div>
+            </div>
+            <div class="quick-stat-card">
+                <div class="quick-stat-icon">
+                    <i class="fas fa-shield"></i>
+                </div>
+                <div class="quick-stat-content">
+                    <h3>0</h3>
+                    <p>Credit impact from comparing</p>
+                </div>
+            </div>
+            <div class="quick-stat-card">
+                <div class="quick-stat-icon">
+                    <i class="fas fa-home"></i>
+                </div>
+                <div class="quick-stat-content">
+                    <h3>5M+</h3>
+                    <p>UK households with limited credit</p>
+                </div>
+            </div>
+            <div class="quick-stat-card">
+                <div class="quick-stat-icon">
+                    <i class="fas fa-gbp"></i>
+                </div>
+                <div class="quick-stat-content">
+                    <h3>£0</h3>
+                    <p>Deposit with prepayment</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- Do Suppliers Run Credit Checks? -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-question-circle"></i>
+                </div>
+                <h2>Do Energy Suppliers Actually Run Credit Checks?</h2>
+
+                <p><strong>Yes — but not always, and not in the way most people think.</strong></p>
+
+                <p>Energy suppliers may use credit checks for risk assessment, not for lending. This is different from applying for a loan or credit card.</p>
+
+                <div class="check-types">
+                    <div class="check-card soft">
+                        <div class="check-icon soft">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <h4>Soft Credit Checks</h4>
+                        <p>Do not affect your credit score. Other lenders cannot see them. You may not even notice they happened.</p>
+                        <span class="check-badge soft">✅ No impact</span>
+                    </div>
+                    <div class="check-card hard">
+                        <div class="check-icon hard">
+                            <i class="fas fa-exclamation-circle"></i>
+                        </div>
+                        <h4>Hard Credit Checks</h4>
+                        <p>Appear on your credit file. Used only in specific circumstances. Most domestic energy tariffs avoid them.</p>
+                        <span class="check-badge hard">⚠️ Can affect score</span>
+                    </div>
+                </div>
+
+                <p><strong>Most domestic energy tariffs use soft checks or none at all.</strong></p>
+            </div>
+
+            <!-- Soft Credit Check Explained -->
+            <div class="grid-item success-card">
+                <div class="grid-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h2>What Is a Soft Credit Check in Energy?</h2>
+
+                <p>A soft credit check allows a supplier to:</p>
+                <ul class="safe-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Verify your identity</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Assess payment risk</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Decide whether to request a deposit</li>
+                </ul>
+
+                <div style="background-color: #E8F5E9; padding: 18px; border-radius: var(--radius-lg); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: #2E7D32;">
+                        <i class="fas fa-check-circle" style="margin-right: 8px;"></i>
+                        Soft checks do not affect your credit score and other lenders cannot see them.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Hard Credit Check Explained -->
+            <div class="grid-item warning-card">
+                <div class="grid-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>What Is a Hard Credit Check — and When Does It Happen?</h2>
+
+                <p>A hard credit check is more serious and does appear on your credit file.</p>
+
+                <p style="font-weight: 600; color: var(--danger); margin: 20px 0 15px;">In energy, hard checks are usually only applied when:</p>
+
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">⚠️ You choose a tariff with monthly credit billing</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">⚠️ You have no payment history</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">⚠️ You have poor or limited credit</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">⚠️ The supplier considers the account high risk</li>
+                </ul>
+
+                <div style="background-color: #FFEBEE; padding: 15px; border-radius: var(--radius-lg);">
+                    <p style="margin-bottom: 0; color: #B71C1C; font-weight: 600;">
+                        Even then, many suppliers avoid hard checks by offering alternatives.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Which Energy Deals Avoid Credit Checks -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px; color: var(--primary);">Which Energy Deals Usually Avoid Credit Checks?</h2>
+
+            <div class="tariff-grid">
+                <div class="tariff-card no-check">
+                    <div class="tariff-badge safe">✅ No credit check</div>
+                    <div class="tariff-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <h4>Standard Variable Tariffs</h4>
+                    <p>Usually do not require hard credit checks. Often accept customers regardless of credit history.</p>
+                    <p style="margin-bottom: 0; color: var(--gray-600); font-size: 0.9rem;">Commonly used by renters, people moving home, households avoiding checks.</p>
+                </div>
+
+                <div class="tariff-card no-check">
+                    <div class="tariff-badge safe">✅ No credit check</div>
+                    <div class="tariff-icon">
+                        <i class="fas fa-coins"></i>
+                    </div>
+                    <h4>Prepayment Meter Tariffs</h4>
+                    <p>Because you pay upfront, no credit check is required. No debt risk exists for the supplier.</p>
+                    <p style="margin-bottom: 0; color: var(--gray-600); font-size: 0.9rem;">Widely used by households with poor credit, budgeting needs, temporary accommodation.</p>
+                </div>
+
+                <div class="tariff-card maybe-check">
+                    <div class="tariff-badge caution">⚠️ May avoid checks</div>
+                    <div class="tariff-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <h4>Some Fixed Tariffs</h4>
+                    <p>Certain fixed tariffs avoid hard checks if you pay by direct debit and have basic payment history.</p>
+                    <p style="margin-bottom: 0; color: var(--gray-600); font-size: 0.9rem;">If credit risk is higher, suppliers may request a refundable deposit.</p>
+                </div>
+
+                <div class="tariff-card check-required">
+                    <div class="tariff-badge warning">⚠️ Often trigger checks</div>
+                    <div class="tariff-icon">
+                        <i class="fas fa-calendar"></i>
+                    </div>
+                    <h4>Monthly Billed Tariffs</h4>
+                    <p>Monthly billed tariffs without direct debit, high-usage households with no history, accounts with previous unpaid balances.</p>
+                    <p style="margin-bottom: 0; color: var(--gray-600); font-size: 0.9rem;">Even then, many checks are still soft, not hard.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Comparison Safety Note -->
+        <div class="grid-item accessible-card" style="margin-bottom: 40px;">
+            <div style="display:flex;gap:20px;align-items:center">
+                <div class="grid-icon">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h2>Does Comparing Energy Deals Trigger a Credit Check?</h2>
+                </div>
+                <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary); margin-bottom: 20px;">No.</p>
+
+                <p>Comparing energy deals:</p>
+                <ul class="safe-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Does not touch your credit file</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Does not notify credit agencies</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">🔓 Does not affect your score</li>
+                </ul>
+
+                <div style="background-color: white; padding: 20px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md); margin-top: 20px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary);">
+                        You can compare freely and safely. A check only happens after you choose a supplier, and even then it may be soft or avoided entirely.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Bad Credit Section -->
+            <div class="content-grid" style="margin-bottom: 40px;">
+                <div class="grid-item">
+                    <div style="display:flex;gap:20px;align-items:center">
+                        <div class="grid-icon">
+                            <i class="fas fa-credit-card"></i>
+                        </div>
+                        <h2>Can You Switch Energy With Bad Credit?</h2>
+                    </div>
+                    <p><strong>Yes.</strong></p>
+
+                    <p>In the UK, suppliers cannot refuse supply based solely on credit history.</p>
+
+                    <p>If credit risk is identified, suppliers may:</p>
+                    <ul class="feature-list">
+                        <li>Offer prepayment meters</li>
+                        <li>Request deposits</li>
+                        <li>Limit tariff options</li>
+                    </ul>
+
+                    <div style="background-color: var(--primary-light); padding: 15px; border-radius: var(--radius-lg); margin-top: 15px;">
+                        <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">
+                            But you will still be able to access energy.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="grid-item">
+                    <div style="display:flex;gap:20px;align-items:center">
+                        <div class="grid-icon">
+                            <i class="fas fa-coins"></i>
+                        </div>
+                        <h2>Deposits vs Credit Checks: What's the Trade-Off?</h2>
+                    </div>
+                    <p>Some suppliers replace credit checks with refundable deposits.</p>
+
+                    <div class="deposit-card" style="margin: 20px 0;">
+                        <div class="deposit-content">
+                            <div class="deposit-item">
+                                <i class="fas fa-check-circle"></i> No impact on credit file
+                            </div>
+                            <div class="deposit-item">
+                                <i class="fas fa-lock"></i> Money held as security
+                            </div>
+                            <div class="deposit-item">
+                                <i class="fas fa-undo"></i> Refunded after good payment history
+                            </div>
+                        </div>
+                    </div>
+
+                    <p><strong>For many households, this is preferable to a hard credit check.</strong></p>
+                </div>
+            </div>
+
+            <!-- Moving Home Section -->
+            <div class="moving-card" style="margin-bottom: 40px;">
+                <h2 style="color: white; margin-bottom: 15px; display: flex; align-items: center; gap: 12px;">
+                    <i class="fas fa-truck-moving" style="color: var(--accent);"></i>
+                    Moving Home: Are Credit Checks More Likely?
+                </h2>
+
+                <p style="color: white; opacity: 0.95; font-size: 1.1rem; margin-bottom: 25px;">
+                    When you move home, your previous supplier cannot block supply. You are placed on a deemed tariff initially. Credit checks are uncommon during this stage, and you can switch shortly after moving in, often without any checks at all.
+                </p>
+
+                <div style="display: flex; flex-wrap: wrap; gap: 20px;">
+                    <div style="background-color: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: var(--radius-lg); backdrop-filter: blur(5px);">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i>
+                        <span style="color: white;">No block on supply</span>
+                    </div>
+                    <div style="background-color: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: var(--radius-lg); backdrop-filter: blur(5px);">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i>
+                        <span style="color: white;">Deemed tariff initially</span>
+                    </div>
+                    <div style="background-color: rgba(255,255,255,0.1); padding: 15px 25px; border-radius: var(--radius-lg); backdrop-filter: blur(5px);">
+                        <i class="fas fa-check-circle" style="color: var(--accent); margin-right: 8px;"></i>
+                        <span style="color: white;">Switch without checks</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Price Cap Note -->
+            <div class="grid-item" style="margin-bottom: 40px;">
+                <div style="display:flex;gap:20px;align-items:center">
+                    <div class="grid-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <h2>Energy Credit Checks vs the Price Cap</h2>
+                </div>
+                <p>The Ofgem price cap:</p>
+                <ul class="feature-list">
+                    <li>Limits unit rates on standard variable tariffs</li>
+                    <li>Does not regulate credit checks directly</li>
+                    <li>Prevents suppliers from charging unfair prices</li>
+                </ul>
+
+                <div style="background-color: var(--primary-light); padding: 15px; border-radius: var(--radius-lg); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">
+                        Credit checks are about risk — not pricing.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Privacy Section -->
+            <div class="grid-item success-card" style="margin-bottom: 40px;">
+                <div style="display:flex;gap:20px;align-items:center">
+                    <div class="grid-icon">
+                        <i class="fas fa-user-secret"></i>
+                    </div>
+                    <h2>Can You Compare Energy Deals Without Giving Personal Details?</h2>
+                </div>
+
+
+                <p><strong style="color: var(--success); font-size: 1.2rem;">Yes.</strong></p>
+
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 15px; margin: 25px 0;">
+                    <div style="background-color: white; padding: 15px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-chart-simple" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 8px;"></i>
+                        <p style="margin-bottom: 0;">Compare tariffs</p>
+                    </div>
+                    <div style="background-color: white; padding: 15px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-pound-sign" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 8px;"></i>
+                        <p style="margin-bottom: 0;">See prices</p>
+                    </div>
+                    <div style="background-color: white; padding: 15px; border-radius: var(--radius-lg); text-align: center; box-shadow: var(--shadow-sm);">
+                        <i class="fas fa-calculator" style="color: var(--primary); font-size: 1.5rem; margin-bottom: 8px;"></i>
+                        <p style="margin-bottom: 0;">Estimate annual costs</p>
+                    </div>
+                </div>
+
+                <p>without providing:</p>
+                <ul class="feature-list">
+                    <li>Phone number</li>
+                    <li>Email address</li>
+                    <li>Payment details</li>
+                </ul>
+
+                <div style="background-color: white; padding: 15px; border-radius: var(--radius-lg); margin-top: 15px; border-left: 4px solid var(--success);">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">
+                        UtilityKing allows comparison without pressure or unnecessary data collection.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Who Should Prioritize -->
+            <div class="grid-item" style="margin-bottom: 40px;">
+                <div style="display:flex;gap:20px;align-items:center">
+                    <div class="grid-icon">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h2>Who Should Prioritise No-Credit-Check Energy Deals?</h2>
+                </div>
+
+
+                <div class="audience-grid">
+                    <div class="audience-item">
+                        <i class="fas fa-key"></i>
+                        <h4>Renters</h4>
+                        <p>Avoid unnecessary credit activity</p>
+                    </div>
+                    <div class="audience-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>Students</h4>
+                        <p>First-time bill payers</p>
+                    </div>
+                    <div class="audience-item">
+                        <i class="fas fa-chart-line"></i>
+                        <h4>Rebuilding Credit</h4>
+                        <p>People with past credit issues</p>
+                    </div>
+                    <div class="audience-item">
+                        <i class="fas fa-clock"></i>
+                        <h4>Temporary Homes</h4>
+                        <p>Short-term accommodation</p>
+                    </div>
+                    <div class="audience-item">
+                        <i class="fas fa-shield"></i>
+                        <h4>Privacy-Focused</h4>
+                        <p>Avoid unnecessary checks</p>
+                    </div>
+                </div>
+
+                <div style="background-color: var(--primary-light); padding: 20px; border-radius: var(--radius-lg); margin-top: 20px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark); text-align: center;">
+                        They provide energy access without financial stress.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Stats Grid -->
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">90%+</div>
+                    <div class="stat-label">Soft checks only</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">5M+</div>
+                    <div class="stat-label">Limited credit households</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">0</div>
+                    <div class="stat-label">Impact from comparing</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">Access guaranteed</div>
+                </div>
+            </div>
+
+            <!-- UtilityKing Promise -->
+            <div class="uk-promise">
+                <div class="uk-promise-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="uk-promise-content">
+                    <h3>How UtilityKing Handles Credit Checks Transparently</h3>
+                    <p>UtilityKing clearly indicates tariffs that may require checks, prioritises no-credit-check and low-risk options, explains deposits and conditions upfront, and allows browsing without contact details. The goal is access, not exclusion.</p>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="grid-item" style="margin-bottom: 40px;">
+                <h2 style="margin-bottom: 30px; color: var(--primary);">Energy Deals Without Credit Check FAQs</h2>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Does switching energy affect my credit score?</h4>
+                        <p>No, comparison does not, and most switches use soft checks or none at all.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Can suppliers refuse me because of credit?</h4>
+                        <p>They must still supply energy, though tariff options may vary (prepayment, deposits, etc).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Is prepayment the only no-check option?</h4>
+                        <p>No, many standard and fixed tariffs also avoid hard checks. Prepayment is one of several options.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Will a deposit affect my credit file?</h4>
+                        <p>No. Deposits are not reported to credit agencies and have no impact on your credit score.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Can I switch again later if my credit improves?</h4>
+                        <p>Yes — switching is always allowed. You can move to better tariffs once your credit improves.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4><i class="fas fa-question-circle"></i> Do all suppliers offer no-check tariffs?</h4>
+                        <p>Most do, but availability varies. Standard variable and prepayment tariffs are widely available without checks.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Final Verdict -->
+            <div class="grid-item accessible-card" style="margin-bottom: 40px;">
+                <div style="display:flex;gap:20px;align-items:center">
+                    <div class="grid-icon">
+                        <i class="fas fa-trophy"></i>
+                    </div>
+                    <h2>Final Verdict: Credit History Shouldn't Stop You Saving</h2>
+                </div>
+
+
+                <p style="font-size: 1.1rem; margin-bottom: 25px;">In 2026, most energy switches do not involve hard credit checks, comparison never affects your credit score, and alternatives exist for every credit situation.</p>
+
+                <div style="background-color: var(--primary); padding: 25px; border-radius: var(--radius-xl); color: white; text-align: center;">
+                    <p style="font-size: 1.3rem; font-weight: 700; margin-bottom: 0; color: white;">
+                        The biggest mistake is not comparing at all.
+                    </p>
+                </div>
+            </div>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>Compare Energy Deals Without Credit Checks</h2>
+                <p>Switch confidently, without risking your credit score.</p>
+
+                <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 35px;">
+                    <div style="text-align: left; background-color: rgba(255,255,255,0.15); padding: 25px 30px; border-radius: var(--radius-2xl); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2);">
+                        <p style="font-size: 1rem; margin-bottom: 15px; color: var(--accent); font-weight: 600; letter-spacing: 1px;color:#fff">🔓 NO CREDIT CHECK CHECKLIST</p>
+                        <ul style="list-style: none; color: white;">
+                            <li style="margin-bottom: 12px;">✓ Compare freely — no credit impact</li>
+                            <li style="margin-bottom: 12px;">✓ Look for standard variable and prepayment tariffs</li>
+                            <li style="margin-bottom: 12px;">✓ Check if deposits replace hard checks</li>
+                            <li style="margin-bottom: 12px;">✓ Avoid unnecessary hard checks</li>
+                            <li style="margin-bottom: 12px;">✓ Switch when ready, without worry</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+
+                <p style="margin-top: 25px; font-size: 1rem; opacity: 0.9;">
+                    No contact details required to browse • No credit check options • Ofgem accredited
+                </p>
+            </section>
+
+            <!-- Footer -->
+            <div class="footer-note">
+                <p>© 2026 UtilityKing No Credit Check Energy Guide. This content is for informational purposes only. Credit check policies, deposit requirements, and tariff availability vary by supplier. Always verify with official Ofgem sources.</p>
+                <p style="margin-top: 12px; font-size: 0.8rem; letter-spacing: 0.3px;">Accessible Energy • No Credit Check Options • Transparent Comparison • Inclusive • Ofgem Recognised</p>
+            </div>
+        </div>
+
+    <script>
+        // Add smooth appearance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate grid items
+        document.querySelectorAll('.grid-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate quick stat cards
+        document.querySelectorAll('.quick-stat-card').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate check cards
+        document.querySelectorAll('.check-card').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate tariff cards
+        document.querySelectorAll('.tariff-card').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate audience items
+        document.querySelectorAll('.audience-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate stat items
+        document.querySelectorAll('.stat-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.9)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate FAQ items
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate deposit items
+        document.querySelectorAll('.deposit-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(15px)';
+            item.style.transition = 'opacity 0.4s ease, transform 0.4s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

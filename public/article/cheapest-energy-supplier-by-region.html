@@ -1,0 +1,758 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Cheapest Energy Supplier by Region | Complete Guide | Utility King 2026</title>
+    <meta name="description" content="Complete guide to finding the cheapest energy supplier by region. Learn how regional pricing works, why prices vary by postcode, and how to compare effectively.">
+    <meta name="keywords" content="cheapest energy supplier by region, regional energy prices, compare energy by postcode, electricity distribution charges, standing charges by region, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+            background: linear-gradient(145deg, #eef2f5 0%, #e2e8f0 100%);
+            color: #2d3e4f;
+            line-height: 1.6;
+        }
+
+        /* === CLEAN DARK HERO - CENTERED CONTENT === */
+        .hero {
+            background: linear-gradient(135deg, #1e4e6f 0%, #0f3147 100%);
+            color: #fff;
+            padding: 4.5rem 2rem 5.5rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 4px solid #4d9fdc;
+            box-shadow: 0 25px 40px -20px rgba(15,49,71,0.6);
+            text-align: center;
+        }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to bottom right, transparent 49%, #eef2f5 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(77, 159, 220, 0.15);
+            backdrop-filter: blur(4px);
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            border: 1px solid rgba(77, 159, 220, 0.3);
+            margin-bottom: 2rem;
+            font-weight: 600;
+            color: #c9e3ff;
+            justify-content: center;
+        }
+
+            .hero-badge .uk-icon {
+                background: #4d9fdc;
+                color: #0f3147;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 0 4px 12px rgba(0,0,0,0.2);
+        }
+
+        .hero .highlight {
+            color: #4d9fdc;
+            border-bottom: 4px solid #4d9fdc;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: #c9e3ff;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+            .hero-stat .number {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #4d9fdc;
+                line-height: 1;
+            }
+
+            .hero-stat .label {
+                font-size: 0.95rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.7;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -2.5rem auto 3rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.8rem;
+            box-shadow: 0 30px 40px -20px rgba(30,78,111,0.2);
+            margin-bottom: 3rem;
+            border: 1px solid rgba(77,159,220,0.2);
+        }
+
+        .intro-quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #1e4e6f;
+            margin-bottom: 1.5rem;
+            border-left: 8px solid #4d9fdc;
+            padding-left: 2rem;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #4d6374;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #4d9fdc;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            box-shadow: 0 8px 12px -6px #1e4e6f;
+        }
+
+        .section-header h2 {
+            font-size: 2.3rem;
+            font-weight: 700;
+            color: #1e3b4f;
+            margin: 0;
+        }
+
+            .section-header h2 span {
+                background: #d4e6ff;
+                color: #1e4e6f;
+                padding: 0.3rem 1.4rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+                font-weight: 600;
+            }
+
+        /* two-column layout */
+        .row-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #c9dff2;
+            box-shadow: 0 15px 25px -15px #4d9fdc;
+            transition: transform 0.2s;
+        }
+
+            .info-card:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 20px 30px -16px #4d9fdc;
+            }
+
+            .info-card h3 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 1.2rem;
+                color: #1e4e6f;
+                display: flex;
+                align-items: center;
+                gap: 0.8rem;
+            }
+
+        /* factors grid */
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .factor-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #c9dff2;
+            text-align: center;
+        }
+
+        .factor-icon {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .factor-card h4 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #1e4e6f;
+            margin-bottom: 0.5rem;
+        }
+
+        /* tariff structure cards */
+        .tariff-structure {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .structure-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 2px solid;
+        }
+
+            .structure-card.unit {
+                border-color: #4d9fdc;
+            }
+
+            .structure-card.standing {
+                border-color: #f39c12;
+            }
+
+        .formula-highlight {
+            background: #d4e6ff;
+            padding: 1.5rem;
+            border-radius: 28px;
+            margin: 1.5rem 0;
+            text-align: center;
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #1e4e6f;
+        }
+
+        /* regional differences grid */
+        .regional-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .regional-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #c9dff2;
+        }
+
+        .regional-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        /* tariff comparison mini */
+        .tariff-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .tariff-mini-card {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            border-top: 8px solid;
+        }
+
+            .tariff-mini-card.fixed {
+                border-top-color: #2ecc71;
+            }
+
+            .tariff-mini-card.variable {
+                border-top-color: #e67e22;
+            }
+
+        .benefits-list, .drawbacks-list {
+            list-style: none;
+            padding: 0;
+            margin: 1rem 0;
+        }
+
+            .benefits-list li {
+                padding: 0.4rem 0 0.4rem 1.8rem;
+                position: relative;
+            }
+
+                .benefits-list li::before {
+                    content: "✓";
+                    color: #2ecc71;
+                    font-weight: 800;
+                    position: absolute;
+                    left: 0;
+                }
+
+            .drawbacks-list li {
+                padding: 0.4rem 0 0.4rem 1.8rem;
+                position: relative;
+            }
+
+                .drawbacks-list li::before {
+                    content: "!";
+                    color: #e67e22;
+                    font-weight: 800;
+                    position: absolute;
+                    left: 0;
+                }
+
+        /* steps grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1.2rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #c9dff2;
+        }
+
+        .step-number {
+            background: #4d9fdc;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            margin: 0 auto 1rem;
+        }
+
+        /* rural considerations */
+        .rural-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .rural-item {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 1px solid #c9dff2;
+        }
+
+        /* FAQ grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid #c9dff2;
+            box-shadow: 0 8px 16px -12px #1e4e6f;
+        }
+
+        .faq-q {
+            font-weight: 800;
+            color: #1e4e6f;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+            .faq-q span {
+                background: #4d9fdc;
+                color: white;
+                width: 30px;
+                height: 30px;
+                border-radius: 30px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+            }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(135deg, #1e4e6f, #0f3147);
+            border-radius: 50px;
+            padding: 3rem;
+            margin: 3.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #4d9fdc;
+            box-shadow: 0 25px 35px -18px #0f3147;
+        }
+
+        .cta-premium-left {
+            color: white;
+        }
+
+            .cta-premium-left p {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-premium-left small {
+                color: #c9e3ff;
+                font-size: 1.1rem;
+            }
+
+        .cta-btn {
+            background: #4d9fdc;
+            color: #0f3147;
+            padding: 1.3rem 3.2rem;
+            border-radius: 80px;
+            font-weight: 800;
+            font-size: 1.4rem;
+            text-decoration: none;
+            border: 2px solid #9ac7f0;
+            transition: all 0.2s;
+            display: inline-block;
+        }
+
+            .cta-btn:hover {
+                background: #6bb3e8;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #4d9fdc, transparent);
+            margin: 3rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #5f8db0;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .factors-grid, .tariff-structure, .regional-grid, .tariff-mini, .steps-grid, .rural-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- CLEAN DARK HERO - CENTERED CONTENT -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">
+                <span class="uk-icon">UK</span>
+                <span>Utility King Regional Guide</span>
+                <span>2026 Edition</span>
+            </div>
+            <h1>Cheapest Energy Supplier <span class="highlight">by Region</span></h1>
+            <div class="hero-sub">A Complete Guide from Utility King — find the most cost-effective supplier for your postcode and usage.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">14</span> <span class="label">UK regions</span></div>
+                <div class="hero-stat"><span class="number">£150</span> <span class="label">regional price variance</span></div>
+                <div class="hero-stat"><span class="number">100%</span> <span class="label">postcode-specific</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN LIGHT CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">“Who is the cheapest energy supplier in my region? — It is a logical question.”</div>
+            <p class="intro-text">Energy prices are not identical across the country. What is competitive in one region may be more expensive in another. However, there is an important truth most consumers do not realise: there is no single supplier that is permanently the cheapest in every region. Energy pricing is dynamic. It depends on network costs, wholesale markets, tariff structure, and your personal usage. To properly compare the cheapest energy supplier by region, we need to start with how regional energy pricing actually works.</p>
+        </div>
+
+        <!-- Why Energy Prices Vary by Region -->
+        <div class="section-header">
+            <div class="section-icon">🗺️</div>
+            <h2>Why Energy Prices <span>Vary by Region</span></h2>
+        </div>
+
+        <div class="factors-grid">
+            <div class="factor-card"><div class="factor-icon">🔌</div><h4>Maintaining lines</h4><p>Electricity lines and infrastructure</p></div>
+            <div class="factor-card"><div class="factor-icon">🏭</div><h4>Managing substations</h4><p>Local distribution networks</p></div>
+            <div class="factor-card"><div class="factor-icon">⛽</div><h4>Gas pipelines</h4><p>Operating regional gas networks</p></div>
+            <div class="factor-card"><div class="factor-icon">🔧</div><h4>Repairing faults</h4><p>Maintenance and emergency response</p></div>
+        </div>
+
+        <div class="info-card" style="background:#d4e6ff; margin-bottom:2rem;">
+            <p>Each region has different infrastructure costs. Rural areas, for example, often require longer distribution lines and serve fewer properties per mile. This increases maintenance costs. These network charges are included in your standing charge and unit rate. This is why <strong>energy price comparison must always be postcode-specific.</strong></p>
+        </div>
+
+        <!-- How Energy Tariffs Are Structured -->
+        <div class="section-header">
+            <div class="section-icon">📐</div>
+            <h2>How Energy Tariffs <span>Are Structured</span></h2>
+        </div>
+
+        <div class="tariff-structure">
+            <div class="structure-card unit">
+                <h3>Unit Rate (pence per kWh)</h3>
+                <p>The amount you pay for the energy you consume.</p>
+            </div>
+            <div class="structure-card standing">
+                <h3>Standing Charge (daily fixed cost)</h3>
+                <p>The fixed daily fee covering infrastructure and supply maintenance.</p>
+            </div>
+        </div>
+
+        <div class="formula-highlight">
+            Annual energy cost = (Annual usage × Unit rate) + (Standing charge × 365)
+        </div>
+
+        <div class="info-card" style="margin:1rem 0 2rem;">
+            <p><strong>The cheapest energy supplier in your region is the one offering the lowest total annual cost based on your usage — not necessarily the lowest advertised rate.</strong></p>
+        </div>
+
+        <!-- Regional Energy Price Differences Explained -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Regional Price <span>Differences Explained</span></h2>
+        </div>
+
+        <div class="regional-grid">
+            <div class="regional-card"><div class="regional-icon">⚡</div><h4>Different electricity distribution charges</h4><p>Vary by network operator region</p></div>
+            <div class="regional-card"><div class="regional-icon">⛽</div><h4>Different gas network fees</h4><p>Regional gas distribution costs</p></div>
+            <div class="regional-card"><div class="regional-icon">🏪</div><h4>Different supplier competition</h4><p>Urban areas often have more options</p></div>
+        </div>
+
+        <div class="info-card" style="background:#d4e6ff; margin:1rem 0;">
+            <p><strong>For example:</strong> Northern regions may have different standing charges compared to southern regions. Rural regions may see higher electricity distribution costs. Urban regions may have greater supplier competition. This means a tariff priced at one rate nationally may still produce different total bills regionally.</p>
+        </div>
+
+        <!-- Fixed vs Standard Variable Tariffs by Region -->
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2>Fixed vs SVT <span>by Region</span></h2>
+        </div>
+
+        <div class="tariff-mini">
+            <div class="tariff-mini-card fixed">
+                <h4 style="color:#2ecc71;">Fixed Energy Tariffs</h4>
+                <p>Locks in your unit rate for 12–24 months.</p>
+                <p><strong>Benefits:</strong></p>
+                <ul class="benefits-list">
+                    <li>Protection from price increases</li>
+                    <li>Predictable monthly bills</li>
+                    <li>Budget stability</li>
+                </ul>
+                <p><strong>Drawbacks:</strong></p>
+                <ul class="drawbacks-list">
+                    <li>Exit fees may apply</li>
+                    <li>Cannot benefit if prices fall</li>
+                </ul>
+            </div>
+            <div class="tariff-mini-card variable">
+                <h4 style="color:#e67e22;">Standard Variable Tariffs (SVT)</h4>
+                <p>No fixed end date.</p>
+                <p><strong>Benefits:</strong></p>
+                <ul class="benefits-list">
+                    <li>No long-term commitment</li>
+                    <li>Usually no exit fees</li>
+                </ul>
+                <p><strong>Drawbacks:</strong></p>
+                <ul class="drawbacks-list">
+                    <li>Rates can change</li>
+                    <li>Often more expensive long term</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="info-card" style="background:#d4e6ff;">
+            <p>In many regions, customers default to SVTs after fixed contracts end — often paying more than necessary.</p>
+        </div>
+
+        <!-- How to Find the Cheapest Supplier -->
+        <div class="section-header">
+            <div class="section-icon">🔍</div>
+            <h2>How to Find <span>the Cheapest Supplier</span></h2>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-number">1</div>Gather accurate usage data (kWh)</div>
+            <div class="step-card"><div class="step-number">2</div>Compare total annual cost</div>
+            <div class="step-card"><div class="step-number">3</div>Check standing charges</div>
+            <div class="step-card"><div class="step-number">4</div>Review contract length</div>
+            <div class="step-card"><div class="step-number">5</div>Assess exit fees</div>
+        </div>
+
+        <div class="info-card" style="margin:1rem 0;">
+            <p><strong>The cheapest energy supplier by region is not defined by brand name. It is defined by the numbers.</strong></p>
+        </div>
+
+        <!-- Why No Permanent Cheapest Supplier -->
+        <div class="section-header">
+            <div class="section-icon">🔄</div>
+            <h2>Why No Permanent <span>"Cheapest Supplier"</span></h2>
+        </div>
+
+        <div class="info-card" style="margin-bottom:2rem;">
+            <p>Energy markets are influenced by: wholesale gas prices, electricity generation costs, regulatory price caps, seasonal demand, and global energy events. Suppliers adjust tariffs accordingly. The supplier that is cheapest in London today may not be cheapest in the North West next quarter. <strong>Energy comparison must be ongoing — not a one-time decision.</strong></p>
+        </div>
+
+        <!-- Regional Considerations for Rural Homes -->
+        <div class="section-header">
+            <div class="section-icon">🏡</div>
+            <h2>Rural <span>Considerations</span></h2>
+        </div>
+
+        <div class="rural-grid">
+            <div class="rural-item"><h4>Higher electricity consumption</h4><p>Rural homes often use more energy for heating</p></div>
+            <div class="rural-item"><h4>Off-grid heating systems</h4><p>Oil, LPG, biomass instead of mains gas</p></div>
+            <div class="rural-item"><h4>Limited mains gas access</h4><p>Many rural areas lack gas network connection</p></div>
+            <div class="rural-item"><h4>Greater distribution charges</h4><p>Higher infrastructure costs in rural regions</p></div>
+        </div>
+
+        <div class="info-card" style="background:#d4e6ff;">
+            <p>If you live in a rural postcode, your cheapest electricity supplier may differ significantly from urban households. This reinforces the importance of postcode-level comparison.</p>
+        </div>
+
+        <!-- Is Switching Safe? -->
+        <div class="section-header">
+            <div class="section-icon">🛡️</div>
+            <h2>Is Switching Safe <span>in Any Region?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:#d4e6ff;">
+            <p><strong>Yes.</strong> Switching energy suppliers does not interrupt supply, does not require infrastructure changes, is regulated nationally, and includes a cooling-off period. The physical electricity and gas network remains the same regardless of supplier. Regional pricing differences do not affect supply safety.</p>
+        </div>
+
+        <!-- Utility King's Perspective -->
+        <div class="section-header">
+            <div class="section-icon">👑</div>
+            <h2>Utility King's <span>Perspective</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:8px solid #4d9fdc; margin-bottom:2rem;">
+            <p style="font-size:1.2rem;">When customers ask us for the cheapest energy supplier by region, we explain that the right question is: <strong>"Which supplier offers the lowest total annual cost for my postcode and usage?"</strong></p>
+            <p style="margin-top:1rem;">The biggest financial mistake we see is passive renewal — remaining on a standard variable tariff because it feels easier. Energy markets reward active comparison. At Utility King, we encourage households to: review tariffs annually, compare regional standing charges, lock in competitive fixed rates when appropriate, and avoid assuming loyalty equals savings. <strong>The cheapest supplier is not universal. It is personal and regional.</strong></p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does energy cost more in certain regions?</div><p>Yes. Distribution network charges vary by region, affecting total energy prices.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> How do I find the cheapest energy supplier in my area?</div><p>Use your postcode and annual usage to compare total annual cost across suppliers.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Are fixed tariffs cheaper than standard variable tariffs?</div><p>Often yes, but this depends on market conditions and timing.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Why is my standing charge higher than someone in another region?</div><p>Standing charges reflect regional infrastructure and network costs.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Should I switch energy suppliers every year?</div><p>It is advisable to review your tariff annually, especially when a fixed contract ends.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is the cheapest supplier the same across all regions?</div><p>No. Energy prices vary by postcode, usage, and market conditions.</p></div>
+        </div>
+
+        <!-- CLEAN CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Want to find your region's cheapest supplier?</p>
+                <small>Let Utility King help you compare tariffs by postcode — accurate, strategic, and cost-effective.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to finding the cheapest energy supplier by region. All rights reserved.</p>
+            <p style="margin-top:0.5rem;">If you want to identify the cheapest energy supplier in your region based on accurate data — not assumptions — Utility King can help you compare tariffs clearly and strategically, ensuring you secure the most cost-effective option available for your area.</p>
+        </div>
+    </main>
+</body>
+</html>

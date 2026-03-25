@@ -1,0 +1,759 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Renewal vs Switching Comparison: Which Option Actually Saves More? | Utility King</title>
+    <meta name="description" content="Compare energy renewal vs switching. Learn which option saves more when your fixed tariff ends. Analyse renewal offers against market deals for best value.">
+    <meta name="keywords" content="energy renewal vs switching, renew or switch energy, compare energy deals, renewal offer, switch energy supplier, utility king, energy contract expiry">
+    <meta name="author" content="Utility King">
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #f4f8f7;
+            color: #1e2b2a;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== NEW DARK HERO - Deep Teal/Emerald theme ===== */
+        .hero {
+            background: linear-gradient(145deg, #0d4d4d 0%, #1b6b6b 100%);
+            color: #e0f7f7;
+            padding: 75px 0 70px 0;
+            border-bottom-left-radius: 48px;
+            border-bottom-right-radius: 48px;
+            box-shadow: 0 30px 40px -18px #0d4d4dcc;
+            margin-bottom: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: "⚖️";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 10rem;
+                opacity: 0.08;
+                color: white;
+                transform: rotate(5deg);
+                font-family: Arial, sans-serif;
+            }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(127, 255, 212, 0.15);
+            color: #a3f0f0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            padding: 8px 22px;
+            border-radius: 40px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(127, 255, 212, 0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 22px;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero__highlight {
+            color: #b0f0f0;
+            border-bottom: 4px solid #5ac8c8;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .hero__intro-text {
+            font-size: 1.25rem;
+            color: #c0f0f0;
+            max-width: 800px;
+            margin-bottom: 35px;
+        }
+
+        .hero__options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            margin-top: 35px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 35px;
+        }
+
+        .hero__option {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 30, 30, 0.4);
+            padding: 12px 28px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.15);
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+            .hero__option i {
+                color: #5ac8c8;
+                font-size: 1.3rem;
+            }
+
+        /* ===== LIGHT THEME BODY - Decision focus ===== */
+        .article-body {
+            background-color: #ffffff;
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 -20px 45px rgba(0, 100, 100, 0.05), 0 25px 50px -15px #0d4d4d40;
+            padding: 70px 0 80px 0;
+            margin-top: -25px;
+            position: relative;
+            z-index: 5;
+        }
+
+            .article-body h2 {
+                font-size: 2.4rem;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                margin: 60px 0 28px 0;
+                color: #0d4d4d;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border-top: 2px solid #d0f0f0;
+                padding-top: 28px;
+            }
+
+                .article-body h2:first-of-type {
+                    margin-top: 0;
+                    border-top: none;
+                    padding-top: 0;
+                }
+
+                .article-body h2 i {
+                    color: #1b9b9b;
+                    font-size: 2.2rem;
+                }
+
+            .article-body h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin: 45px 0 22px 0;
+                color: #1b6b6b;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+                .article-body h3 i {
+                    color: #1b9b9b;
+                    font-size: 2rem;
+                }
+
+            .article-body p {
+                font-size: 1.1rem;
+                color: #2d3f3f;
+                margin-bottom: 22px;
+            }
+
+            .article-body strong {
+                color: #0d4d4d;
+                font-weight: 600;
+            }
+
+        /* Decision crossroad */
+        .crossroad {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 45px 0;
+        }
+
+        .crossroad-card {
+            border-radius: 44px;
+            padding: 40px;
+            color: white;
+            text-align: center;
+        }
+
+            .crossroad-card.renew {
+                background: linear-gradient(145deg, #1b6b6b, #0d4d4d);
+            }
+
+            .crossroad-card.switch {
+                background: linear-gradient(145deg, #b3682c, #8b4e1f);
+            }
+
+            .crossroad-card i {
+                font-size: 3.5rem;
+                margin-bottom: 20px;
+            }
+
+            .crossroad-card h4 {
+                font-size: 2rem;
+                margin-bottom: 15px;
+            }
+
+            .crossroad-card p {
+                color: rgba(255,255,255,0.9);
+                font-size: 1.1rem;
+            }
+
+        /* First principles */
+        .principles-box {
+            background: #ecf9f9;
+            border-radius: 40px;
+            padding: 30px 40px;
+            margin: 35px 0;
+            border-left: 10px solid #1b9b9b;
+        }
+
+        /* Definition cards */
+        .definition-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 40px 0;
+        }
+
+        .definition-card {
+            background: #f5fcfc;
+            border-radius: 38px;
+            padding: 36px;
+            border: 1px solid #c0e8e8;
+            box-shadow: 0 15px 25px -15px #1b6b6b40;
+        }
+
+            .definition-card h4 {
+                font-size: 1.8rem;
+                color: #0d4d4d;
+                margin-bottom: 24px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+                .definition-card h4 i {
+                    color: #1b9b9b;
+                }
+
+            .definition-card ul {
+                list-style: none;
+            }
+
+            .definition-card li {
+                display: flex;
+                gap: 14px;
+                margin-bottom: 16px;
+                color: #2d3f3f;
+            }
+
+                .definition-card li i {
+                    color: #1b9b9b;
+                    width: 22px;
+                }
+
+        /* Why prices differ */
+        .pricing-differ {
+            background: #fff9eb;
+            border-radius: 44px;
+            padding: 36px 44px;
+            margin: 40px 0;
+            border: 2px solid #ffb347;
+        }
+
+            .pricing-differ h4 {
+                font-size: 1.6rem;
+                color: #b24d00;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+        /* Financial framework */
+        .framework-box {
+            background: #0d4d4d;
+            color: white;
+            border-radius: 48px;
+            padding: 40px 48px;
+            margin: 45px 0;
+            text-align: center;
+        }
+
+            .framework-box p {
+                color: #e0f7f7;
+                font-size: 1.2rem;
+            }
+
+        .formula-highlight {
+            background: rgba(255,255,255,0.15);
+            padding: 25px;
+            border-radius: 40px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin: 25px 0;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        /* Advantages split */
+        .advantages-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 45px 0;
+        }
+
+        .advantage-block {
+            border-radius: 40px;
+            padding: 36px;
+        }
+
+            .advantage-block.renew-adv {
+                background: #ecf9f9;
+                border: 2px solid #1b9b9b;
+            }
+
+            .advantage-block.switch-adv {
+                background: #fff4e8;
+                border: 2px solid #ff8c42;
+            }
+
+            .advantage-block h4 {
+                font-size: 1.8rem;
+                margin-bottom: 25px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .advantage-block.renew-adv h4 i {
+                color: #1b9b9b;
+            }
+
+            .advantage-block.switch-adv h4 i {
+                color: #ff8c42;
+            }
+
+            .advantage-block ul {
+                list-style: none;
+            }
+
+            .advantage-block li {
+                display: flex;
+                gap: 14px;
+                margin-bottom: 18px;
+                font-size: 1.05rem;
+            }
+
+        /* Risk of doing nothing */
+        .risk-block {
+            background: #ffefed;
+            border-radius: 44px;
+            padding: 36px 44px;
+            margin: 40px 0;
+            border-left: 12px solid #e63946;
+            border-right: 1px solid #ffcdc9;
+        }
+
+            .risk-block h4 {
+                font-size: 1.8rem;
+                color: #b13020;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+        /* When grids */
+        .when-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 28px;
+            margin: 45px 0;
+        }
+
+        .when-card {
+            border-radius: 40px;
+            padding: 36px;
+        }
+
+            .when-card.renew-when {
+                background: #ecf9f9;
+            }
+
+            .when-card.switch-when {
+                background: #fff4e8;
+            }
+
+            .when-card h4 {
+                font-size: 1.6rem;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .when-card ul {
+                list-style: none;
+            }
+
+            .when-card li {
+                display: flex;
+                gap: 12px;
+                margin-bottom: 16px;
+            }
+
+                .when-card li i {
+                    color: #1b9b9b;
+                    width: 22px;
+                }
+
+            .when-card.switch-when li i {
+                color: #ff8c42;
+            }
+
+        /* FAQ grid */
+        .faq-decision {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 45px 0;
+        }
+
+        .faq-decision-item {
+            background: #f5fcfc;
+            border-radius: 32px;
+            padding: 30px;
+            border: 1px solid #c0e8e8;
+            box-shadow: 0 8px 0 #e0f7f7;
+        }
+
+            .faq-decision-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #0d4d4d;
+                margin-bottom: 16px;
+            }
+
+                .faq-decision-item h4 i {
+                    color: #1b9b9b;
+                    font-size: 1.4rem;
+                }
+
+            .faq-decision-item p {
+                font-size: 1rem;
+                margin-bottom: 0;
+            }
+
+        .utility-perspective-decision {
+            background: #ecf9f9;
+            border-radius: 60px;
+            padding: 55px 60px;
+            margin: 60px 0 45px;
+            border: 2px solid #1b9b9b;
+            text-align: center;
+        }
+
+            .utility-perspective-decision i {
+                font-size: 4rem;
+                color: #0d4d4d;
+                margin-bottom: 25px;
+            }
+
+            .utility-perspective-decision p {
+                font-size: 1.2rem;
+                max-width: 750px;
+                margin: 0 auto 15px;
+                color: #0d4d4d;
+            }
+
+        .footer-decision {
+            background: #f5fcfc;
+            border-radius: 48px;
+            padding: 38px 48px;
+            font-size: 1.15rem;
+            border: 1px solid #1b9b9b;
+            margin: 45px 0 25px;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #1b9b9b, transparent);
+            margin: 50px 0;
+        }
+
+        .small-meta {
+            color: #6f8f8f;
+            font-size: 0.9rem;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 750px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .crossroad {
+                grid-template-columns: 1fr;
+            }
+
+            .definition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-split {
+                grid-template-columns: 1fr;
+            }
+
+            .when-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-decision {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO - Deep teal/emerald theme -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__badge"><i class="fas fa-scale-balanced" style="margin-right: 8px;"></i> UTILITY KING · RENEWAL VS SWITCHING</span>
+            <h1>Energy Renewal <span class="hero__highlight">vs Switching Comparison</span><br>Which Option Actually Saves More?</h1>
+            <p class="hero__intro-text">At Utility King, one of the most financially important decisions households face is this: Should you renew your energy contract with your current supplier — or switch to a new one?</p>
+
+            <div class="hero__options">
+                <div class="hero__option"><i class="fas fa-file-signature"></i> Renewal offers</div>
+                <div class="hero__option"><i class="fas fa-arrow-right-arrow-left"></i> Switching</div>
+                <div class="hero__option"><i class="fas fa-calculator"></i> Total annual cost</div>
+                <div class="hero__option"><i class="fas fa-chart-simple"></i> Market comparison</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT THEME BODY - Decision focus -->
+    <main class="article-body">
+        <div class="container">
+
+            <!-- Opening - exact content -->
+            <p>This decision typically arises when your fixed energy tariff is about to expire. At that moment, you are presented with two main options:</p>
+            <p>Accept a renewal offer from your existing supplier.</p>
+            <p>Compare energy deals and switch to a new provider.</p>
+            <p>Many customers choose renewal because it feels easier. But easy does not always mean cost-effective.</p>
+            <p>In this guide, we will explain from first principles:</p>
+            <p>What energy renewal actually means</p>
+            <p>What switching involves</p>
+            <p>How pricing structures differ</p>
+            <p>The risks and advantages of each option</p>
+            <p>How to compare both objectively</p>
+            <p>The goal is to ensure you make a financially informed decision — not an automatic one.</p>
+
+            <div class="crossroad">
+                <div class="crossroad-card renew">
+                    <i class="fas fa-house-circle-check"></i>
+                    <h4>Renewal</h4>
+                    <p>Stay with your current supplier</p>
+                </div>
+                <div class="crossroad-card switch">
+                    <i class="fas fa-arrow-right-to-bracket"></i>
+                    <h4>Switching</h4>
+                    <p>Move to a new provider</p>
+                </div>
+            </div>
+
+            <h2><i class="fas fa-file-contract"></i> First Principles: What Happens When a Fixed Energy Contract Ends?</h2>
+            <p>A fixed energy contract locks in:</p>
+            <p>Unit rate (price per kWh)</p>
+            <p>Standing charge</p>
+            <p>Contract duration</p>
+            <p>When the contract ends:</p>
+            <p>Your fixed pricing protection ends.</p>
+            <p>Your supplier may offer a renewal tariff.</p>
+            <p>If you take no action, you are usually moved onto a standard variable tariff (SVT).</p>
+            <p>The key decision point is whether to accept renewal or switch.</p>
+
+            <h2><i class="fas fa-house"></i> What Is Energy Renewal?</h2>
+            <div class="definition-grid">
+                <div class="definition-card">
+                    <h4><i class="fas fa-rotate-left"></i> Energy Renewal</h4>
+                    <p>Energy renewal means staying with your current supplier and agreeing to a new tariff.</p>
+                    <p>This may involve:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> A new fixed-term contract</li>
+                        <li><i class="fas fa-circle"></i> A different fixed rate</li>
+                        <li><i class="fas fa-circle"></i> A revised standing charge</li>
+                        <li><i class="fas fa-circle"></i> New exit fee terms</li>
+                    </ul>
+                    <p>Renewal offers are often presented as "loyalty deals" or "exclusive customer offers."</p>
+                    <p>However, renewal pricing is not always the most competitive in the wider market.</p>
+                </div>
+                <div class="definition-card">
+                    <h4><i class="fas fa-right-left"></i> Energy Switching</h4>
+                    <p>Switching energy supplier means:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Ending your relationship with your current provider</li>
+                        <li><i class="fas fa-circle"></i> Choosing a new supplier</li>
+                        <li><i class="fas fa-circle"></i> Agreeing to a new tariff</li>
+                        <li><i class="fas fa-circle"></i> Transferring billing responsibility</li>
+                    </ul>
+                    <p><strong>Importantly:</strong> Switching does not change your physical supply. The electricity and gas grid remains the same. There is no disruption to service. Switching is administrative — not physical.</p>
+                </div>
+            </div>
+
+            <div class="pricing-differ">
+                <h4><i class="fas fa-coins"></i> Why Renewal and Switching Prices May Differ</h4>
+                <p>Energy suppliers operate in a competitive market.</p>
+                <p>To attract new customers, suppliers often:</p>
+                <p>Offer competitive fixed-rate deals</p>
+                <p>Provide promotional tariffs</p>
+                <p>Price aggressively for market share</p>
+                <p>Existing customers may receive renewal offers that are:</p>
+                <p>Slightly higher than new customer deals</p>
+                <p>Less competitive than market alternatives</p>
+                <p>This is not always the case — but it is common enough that comparison is essential.</p>
+            </div>
+
+            <h2><i class="fas fa-scale-balanced"></i> Comparing Energy Renewal vs Switching: The Financial Framework</h2>
+
+            <div class="framework-box">
+                <p><strong>At Utility King, we recommend comparing both options using one simple metric:</strong></p>
+                <div class="formula-highlight">
+                    Total Annual Cost
+                </div>
+                <p>Calculate:</p>
+                <p><strong>(Annual usage × Unit rate) + (Standing charge × 365)</strong></p>
+                <p>Do this for:</p>
+                <p>Your renewal offer</p>
+                <p>The best available market alternatives</p>
+                <p><strong>Ignore marketing headlines. Focus on annual total cost.</strong></p>
+            </div>
+
+            <div class="advantages-split">
+                <div class="advantage-block renew-adv">
+                    <h4><i class="fas fa-check-circle"></i> Advantages of Energy Renewal</h4>
+                    <p>There are legitimate reasons some customers choose renewal.</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> <strong>Simplicity</strong> — No need to provide additional details or manage a switch process.</li>
+                        <li><i class="fas fa-circle"></i> <strong>Service Familiarity</strong> — If you are satisfied with customer support, staying may reduce uncertainty.</li>
+                        <li><i class="fas fa-circle"></i> <strong>Minimal Administrative Effort</strong> — Renewal is often a one-click confirmation.</li>
+                    </ul>
+                    <p>However, convenience should be weighed against potential cost differences.</p>
+                </div>
+                <div class="advantage-block switch-adv">
+                    <h4><i class="fas fa-check-circle"></i> Advantages of Switching Energy Supplier</h4>
+                    <p>Switching may offer:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> <strong>Lower Pricing</strong> — New customer deals are often competitively priced.</li>
+                        <li><i class="fas fa-circle"></i> <strong>Better Tariff Structures</strong> — You may find lower standing charges, more suitable contract lengths, time-of-use options, EV or heat pump tariffs.</li>
+                        <li><i class="fas fa-circle"></i> <strong>Service Improvements</strong> — Switching can resolve issues with poor customer service.</li>
+                    </ul>
+                    <p>Switching is often the more proactive financial strategy.</p>
+                </div>
+            </div>
+
+            <div class="risk-block">
+                <h4><i class="fas fa-triangle-exclamation"></i> The Risk of Doing Nothing</h4>
+                <p>The worst option is often inaction.</p>
+                <p>If you neither renew nor switch:</p>
+                <p>You are typically moved onto a standard variable tariff.</p>
+                <p>Rates may increase.</p>
+                <p>Price protection ends.</p>
+                <p>Standard variable tariffs offer flexibility but are often more expensive long-term.</p>
+                <p><strong>Passive rollover is rarely cost-effective.</strong></p>
+            </div>
+
+            <div class="when-grid">
+                <div class="when-card renew-when">
+                    <h4><i class="fas fa-check"></i> When Renewal Might Make Sense</h4>
+                    <p>Renewal may be the right choice if:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> The offer matches or beats market pricing.</li>
+                        <li><i class="fas fa-circle"></i> You value stability with a trusted supplier.</li>
+                        <li><i class="fas fa-circle"></i> The difference between renewal and switching is minimal.</li>
+                        <li><i class="fas fa-circle"></i> Market conditions are volatile and renewal is competitive.</li>
+                    </ul>
+                    <p>Renewal should be a conscious decision — not a default one.</p>
+                </div>
+                <div class="when-card switch-when">
+                    <h4><i class="fas fa-check"></i> When Switching Is Likely the Better Option</h4>
+                    <p>Switching often makes sense if:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> The renewal offer is significantly higher than market alternatives.</li>
+                        <li><i class="fas fa-circle"></i> Your current supplier has poor service ratings.</li>
+                        <li><i class="fas fa-circle"></i> You want a different tariff structure (e.g., time-of-use, EV, or solar export).</li>
+                        <li><i class="fas fa-circle"></i> You are currently on a standard variable tariff.</li>
+                    </ul>
+                    <p>Switching is especially powerful during renewal windows when exit fees no longer apply.</p>
+                </div>
+            </div>
+
+            <h3>Is It Safe to Switch During Renewal Period?</h3>
+            <p>Yes.</p>
+            <p>Switching energy suppliers:</p>
+            <p>Does not interrupt supply.</p>
+            <p>Does not require infrastructure changes.</p>
+            <p>Is regulated and protected.</p>
+            <p>Includes a cooling-off period.</p>
+            <p>The process typically takes 2–5 weeks. Supply continuity is guaranteed.</p>
+
+            <div class="utility-perspective-decision">
+                <i class="fas fa-scale-balanced"></i>
+                <p><strong>Utility King's Perspective</strong></p>
+                <p>At Utility King, we believe renewal should never be automatic.</p>
+                <p>The renewal window is your strongest negotiating position in the energy market.</p>
+                <p>We recommend:</p>
+                <p>Obtain your renewal offer.</p>
+                <p>Compare total annual cost against market deals.</p>
+                <p>Evaluate service quality and contract terms.</p>
+                <p>Make a deliberate choice.</p>
+                <p>Energy suppliers expect customers to compare. The households that save the most are those who treat contract expiry as a financial opportunity — not a passive event.</p>
+                <p><strong>Renewal is about convenience. Switching is about competitiveness. The right decision depends on the numbers.</strong></p>
+            </div>
+
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-decision">
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> Is renewing easier than switching?</h4><p>Yes, but easier does not always mean cheaper.</p></div>
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> Are renewal offers usually more expensive?</h4><p>Often, but not always. Comparison is essential.</p></div>
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> Can I switch during my renewal window?</h4><p>Yes, usually without exit fees if you are near contract end.</p></div>
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> Does switching affect my energy supply?</h4><p>No. Your electricity and gas continue uninterrupted.</p></div>
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> Should I renew if the price difference is small?</h4><p>That depends on how much you value convenience versus savings.</p></div>
+                <div class="faq-decision-item"><h4><i class="fas fa-circle-question"></i> How often should I compare renewal offers?</h4><p>Every time your fixed contract ends.</p></div>
+            </div>
+
+            <hr>
+            <div class="footer-decision">
+                <i class="fas fa-star" style="color: #0d4d4d; margin-right: 14px;"></i> If your energy contract is expiring and you are deciding between renewal and switching, Utility King can help you compare both options clearly — ensuring your decision is based on total annual cost, not habit.
+            </div>
+            <div class="small-meta">© Utility King — Complete guide to energy renewal vs switching. No header or footer, pure content.</div>
+
+        </div>
+    </main>
+</body>
+</html>

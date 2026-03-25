@@ -1,0 +1,1183 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Energy Deals for EV Owners | UK Guide 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #2563EB;
+            --primary-dark: #1E40AF;
+            --primary-light: #DBEAFE;
+            --accent: #38BDF8;
+            --accent-light: #E0F2FE;
+            --ev: #10B981;
+            --ev-light: #D1FAE5;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --danger: #EF4444;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+        }
+
+        body {
+            background: linear-gradient(135deg, #EFF6FF 0%, #DBEAFE 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Header - EV Electric Theme */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 50px 40px;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            text-align:center;
+        }
+
+            .hero-header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M30 0l5 5-5 5-5-5zM10 10l5 5-5 5-5-5zM50 10l5 5-5 5-5-5z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                background-size: 40px 40px;
+            }
+
+            .hero-header::after {
+                content: "⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 100px;
+                opacity: 0.1;
+                color: var(--accent);
+                transform: rotate(15deg);
+            }
+
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap: 25px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+            .meta-item i {
+                color: var(--accent);
+            }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Grid Item Styling */
+        .grid-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .grid-item:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-xl);
+            }
+
+        .grid-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .grid-item h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .grid-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .grid-item h4 {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+            font-weight: 600;
+        }
+
+        .grid-item p {
+            color: var(--gray-700);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+            .feature-list li {
+                padding: 8px 0;
+                padding-left: 30px;
+                position: relative;
+                color: var(--gray-700);
+            }
+
+                .feature-list li:before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    color: var(--success);
+                    font-weight: bold;
+                }
+
+        .ev-list li:before {
+            content: "⚡";
+            color: var(--accent);
+            font-size: 1.1rem;
+        }
+
+        .warning-list li:before {
+            content: "⚠️";
+            color: var(--warning);
+        }
+
+        /* Special Cards */
+        .warning-card {
+            border-left: 5px solid var(--warning);
+            background-color: #FFFBEB;
+        }
+
+        .success-card {
+            border-left: 5px solid var(--success);
+            background-color: #F0FDF4;
+        }
+
+        .ev-card {
+            border: 2px solid var(--accent);
+            background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+        }
+
+        .primary-card {
+            background: linear-gradient(135deg, var(--primary-light) 0%, #ffffff 100%);
+            border-color: var(--primary);
+        }
+
+        /* Tariff Type Cards */
+        .tariff-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tariff-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+            .tariff-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .tariff-card h4 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+        .tariff-icon {
+            color: var(--accent);
+            font-size: 1.3rem;
+        }
+
+        .rating {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .rating-bad {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .rating-good {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .rating-neutral {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .rating-excellent {
+            background-color: var(--accent-light);
+            color: var(--primary-dark);
+        }
+
+        /* Savings Calculator Card */
+        .savings-calculator {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            margin: 30px 0;
+        }
+
+        .savings-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.2);
+        }
+
+            .savings-row:last-child {
+                border-bottom: none;
+            }
+
+        .savings-amount {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--accent);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--accent);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+            .comparison-table th {
+                background-color: var(--primary);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .comparison-table td {
+                padding: 20px;
+                border-bottom: 1px solid var(--gray-200);
+                background-color: white;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .badge-warning {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .badge-danger {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .badge-info {
+            background-color: var(--accent-light);
+            color: var(--primary-dark);
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--gray-200);
+        }
+
+            .faq-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+
+            .faq-item i {
+                color: var(--accent);
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: "⚡⚡⚡";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 100px;
+                opacity: 0.1;
+                color: var(--accent);
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .cta-section p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin: 0 auto 30px;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--accent);
+            color: var(--primary-dark);
+            padding: 20px 45px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            cursor: pointer;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-xl);
+                background-color: white;
+            }
+
+        /* Related Articles */
+        .related-articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .article-tag {
+            background-color: white;
+            padding: 12px 25px;
+            border-radius: var(--radius-lg);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 2px solid var(--gray-200);
+            font-weight: 500;
+        }
+
+            .article-tag:hover {
+                background-color: var(--primary);
+                color: white;
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
+
+            .article-tag i {
+                margin-right: 8px;
+                color: var(--accent);
+            }
+
+            .article-tag:hover i {
+                color: white;
+            }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 40px 25px;
+            }
+
+                .hero-header h1 {
+                    font-size: 2.2rem;
+                }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-item {
+                padding: 30px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-section {
+                padding: 40px 25px;
+            }
+
+                .cta-section h2 {
+                    font-size: 1.8rem;
+                }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .savings-row {
+                flex-direction: column;
+                text-align: center;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .hero-header {
+                padding: 30px 20px;
+            }
+
+                .hero-header h1 {
+                    font-size: 1.8rem;
+                }
+
+            .grid-item {
+                padding: 25px;
+            }
+
+            .grid-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tariff-types, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ensure no orphaned cards */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tariff-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header - EV Electric Theme -->
+        <header class="hero-header">
+            <div class="highlight-badge">
+                <i class="fas fa-bolt"></i>
+                EV OWNER SPECIALIST
+            </div>
+            <h1>Best Energy Deals for EV Owners (UK Guide 2026)</h1>
+            <p>Owning an electric vehicle changes your household energy usage more than almost any other appliance. Charging an EV can double or even triple your electricity consumption — but when you charge matters far more than how much you charge.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>UK homeowners with electric vehicles (EVs), with or without solar or batteries</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- What an Energy Tariff Means for EV Owners -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h2>What an Energy Tariff Means for EV Owners</h2>
+                <p>An energy tariff determines how much you pay, when electricity is cheap or expensive, and any fixed daily costs.</p>
+
+                <div style="background-color: var(--accent-light); padding: 20px; border-radius: var(--radius-md); margin: 20px 0;">
+                    <p style="font-weight: 700; color: var(--primary-dark); margin-bottom: 10px;">⚡ Why tariffs matter more for EV owners:</p>
+                    <ul class="feature-list ev-list">
+                        <li>EV charging is flexible in timing</li>
+                        <li>Charging often happens overnight</li>
+                        <li>Electricity use is concentrated into long charging sessions</li>
+                    </ul>
+                </div>
+
+                <p><strong>A tariff that works well for a non-EV household can be one of the worst options for an EV owner.</strong></p>
+            </div>
+
+            <!-- How EV Charging Changes Your Usage -->
+            <div class="grid-item ev-card">
+                <div class="grid-icon">
+                    <i class="fas fa-car"></i>
+                </div>
+                <h2>How EV Charging Changes Your Electricity Usage</h2>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin-bottom: 20px;">
+                    <div style="flex: 1; min-width: 120px; background-color: var(--gray-100); padding: 15px; border-radius: var(--radius-md); text-align: center;">
+                        <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">7-11</div>
+                        <div style="font-size: 0.9rem;">kWh per hour</div>
+                    </div>
+                    <div style="flex: 1; min-width: 120px; background-color: var(--gray-100); padding: 15px; border-radius: var(--radius-md); text-align: center;">
+                        <div style="font-size: 1.8rem; font-weight: 700; color: var(--primary);">2,000-4,000+</div>
+                        <div style="font-size: 0.9rem;">kWh per year</div>
+                    </div>
+                </div>
+
+                <p>A typical EV charges for several hours at a time and can add thousands of kWh to annual household usage.</p>
+
+                <div style="background-color: #FEE2E2; padding: 15px; border-radius: var(--radius-md); margin-top: 10px;">
+                    <p style="margin-bottom: 0; color: #B91C1C; font-weight: 600;">
+                        <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                        Charging at the wrong time can cost hundreds of pounds more per year.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Standard Variable Tariffs -->
+            <div class="grid-item warning-card">
+                <div class="grid-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Standard Variable Tariffs</h2>
+                <div class="badge badge-danger" style="margin-bottom: 15px;">Usually Poor for EV Owners</div>
+
+                <p>A standard variable tariff (SVT) charges the same unit rate all day.</p>
+
+                <h3>Problems for EV Owners:</h3>
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ No cheap overnight charging window</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Overnight costs same as peak evening</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ High EV usage magnifies high rates</li>
+                </ul>
+
+                <p><em>SVTs may be simple, but simplicity is expensive for EV owners.</em></p>
+            </div>
+        </div>
+
+        <!-- Tariff Types Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">Energy Tariff Types for EV Owners</h2>
+
+            <div class="tariff-types">
+                <div class="tariff-card">
+                    <h4><i class="fas fa-lock tariff-icon"></i> Fixed-Rate Tariffs</h4>
+                    <div class="badge badge-neutral" style="margin-bottom: 15px;">Stable but Rarely Optimal</div>
+                    <p>Lock in single unit rate for 12-24 months. Predictable but no overnight discounts.</p>
+                    <p><strong>Best for:</strong> Low-mileage drivers, homes without smart chargers.</p>
+                    <span class="rating rating-neutral">⚖️ Safe but Inefficient</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-clock tariff-icon"></i> EV Time-of-Use Tariffs</h4>
+                    <div class="badge badge-success" style="margin-bottom: 15px;">⭐⭐⭐ Best Option for Most</div>
+                    <p>Ultra-low overnight rates (6p-10p/kWh). Reduce charging costs by 50-70%.</p>
+                    <p><strong>Requires:</strong> Smart meter, smart charger recommended.</p>
+                    <span class="rating rating-excellent">⚡ EV Optimised</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-solar-panel tariff-icon"></i> Solar + EV Tariffs</h4>
+                    <div class="badge badge-info" style="margin-bottom: 15px;">Special Case</div>
+                    <p>Combine cheap overnight rates with reasonable export terms. Best for homes with solar.</p>
+                    <p><strong>Strategy:</strong> Daytime solar charging + overnight top-up.</p>
+                    <span class="rating rating-good">🌞 Solar Compatible</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-battery-full tariff-icon"></i> Battery-Optimised EV Tariffs</h4>
+                    <div class="badge badge-info" style="margin-bottom: 15px;">Strategic Option</div>
+                    <p>Charge battery overnight at low rates, use stored power for EV/household.</p>
+                    <p><strong>Verdict:</strong> Wrong tariff makes battery uneconomical.</p>
+                    <span class="rating rating-excellent">🔋 Maximum Optimisation</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Savings Calculator Example -->
+        <div class="grid-item ev-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-calculator"></i>
+            </div>
+            <h2>EV Tariff Savings Example</h2>
+            <p>Charging 3,000 kWh per year (average EV usage)</p>
+
+            <div class="savings-calculator">
+                <div class="savings-row">
+                    <span style="font-size: 1.2rem; font-weight: 600;">Standard Tariff</span>
+                    <span style="font-size: 1.2rem; color: white;">~£900</span>
+                </div>
+                <div class="savings-row">
+                    <span style="font-size: 1.2rem; font-weight: 600;">EV Time-of-Use Tariff</span>
+                    <span style="font-size: 1.2rem; color: white;">~£300–£400</span>
+                </div>
+                <div class="savings-row">
+                    <span style="font-size: 1.4rem; font-weight: 700;">You Save</span>
+                    <span class="savings-amount">£500–£600</span>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; font-weight: 600; color: var(--primary-dark);">The savings come almost entirely from timing, not reduced consumption.</p>
+        </div>
+
+        <!-- Smart Meters and Smart Chargers -->
+        <div class="content-grid">
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-microchip"></i>
+                </div>
+                <h2>Smart Meters and Smart Chargers: Why They Matter</h2>
+
+                <p>Most EV tariffs require:</p>
+                <ul class="feature-list ev-list">
+                    <li>A smart meter</li>
+                    <li>Often a smart charger or app-controlled charging</li>
+                </ul>
+
+                <p>These allow:</p>
+                <ul class="feature-list">
+                    <li>Automatic charging during cheap periods</li>
+                    <li>Accurate half-hourly billing</li>
+                    <li>Reduced need for manual scheduling</li>
+                </ul>
+
+                <div style="background-color: var(--accent-light); padding: 15px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">
+                        Without smart infrastructure, EV tariffs lose much of their advantage.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Standing Charges -->
+            <div class="grid-item warning-card">
+                <div class="grid-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h2>Standing Charges: Often Overlooked but Important</h2>
+
+                <p>EV owners typically use more electricity overall, which means:</p>
+
+                <ul class="feature-list">
+                    <li>Standing charges matter less than unit rates</li>
+                    <li>But still affect total annual cost</li>
+                </ul>
+
+                <div style="background-color: white; padding: 20px; border-radius: var(--radius-md); margin: 20px 0;">
+                    <p style="font-weight: 600; color: var(--warning);">Some EV tariffs offset cheap overnight rates with:</p>
+                    <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                        <li style="padding-left: 30px; margin-bottom: 8px;">⚠️ Higher standing charges</li>
+                        <li style="padding-left: 30px; margin-bottom: 8px;">⚠️ Higher peak rates</li>
+                    </ul>
+                </div>
+
+                <p><strong>Comparisons must always look at total annual cost, not just the overnight rate.</strong></p>
+            </div>
+
+            <!-- Common EV Tariff Mistakes -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>Common EV Tariff Mistakes</h2>
+
+                <p>EV owners frequently overpay by:</p>
+
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Charging during peak evening hours</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Staying on standard tariffs out of convenience</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Choosing EV tariffs without shifting usage</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Ignoring peak rate penalties</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Failing to re-compare after mileage changes</li>
+                </ul>
+
+                <div style="background-color: var(--primary-light); padding: 20px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">
+                        Owning an EV does not automatically mean cheap motoring — tariffs decide the outcome.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- EV Owners with Solar + Battery -->
+        <div class="content-grid">
+            <div class="grid-item ev-card">
+                <div class="grid-icon">
+                    <i class="fas fa-solar-panel"></i>
+                </div>
+                <h2>EV Owners with Solar Panels: A Special Case</h2>
+
+                <p>If you have solar panels as well as an EV, tariff selection becomes more nuanced.</p>
+
+                <div style="display: flex; gap: 20px; flex-wrap: wrap; margin: 20px 0;">
+                    <div style="flex: 1; background-color: var(--ev-light); padding: 15px; border-radius: var(--radius-md);">
+                        <p style="font-weight: 600; color: var(--primary-dark);">✅ Solar can:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 5px;">✓ Charge EV during the day</li>
+                            <li style="margin-bottom: 5px;">✓ Reduce grid imports</li>
+                        </ul>
+                    </div>
+                    <div style="flex: 1; background-color: #FEE2E2; padding: 15px; border-radius: var(--radius-md);">
+                        <p style="font-weight: 600; color: #B91C1C;">❌ But many EVs are:</p>
+                        <ul style="list-style: none; padding-left: 0;">
+                            <li style="margin-bottom: 5px;">✗ Away during daylight</li>
+                            <li style="margin-bottom: 5px;">✗ Charged overnight instead</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>The best tariffs for solar + EV homes:</h3>
+                <ul class="feature-list">
+                    <li>Combine cheap overnight rates</li>
+                    <li>Do not penalise daytime usage</li>
+                    <li>Offer reasonable export terms</li>
+                </ul>
+
+                <p><strong>A poorly chosen tariff can cancel out the benefits of solar or cheap EV charging.</strong></p>
+            </div>
+
+            <div class="grid-item ev-card">
+                <div class="grid-icon">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <h2>EV Owners with Home Batteries: Tariffs Become Strategic</h2>
+
+                <div style="background-color: var(--accent-light); padding: 20px; border-radius: var(--radius-md); margin-bottom: 20px;">
+                    <p style="font-size: 1.1rem; font-weight: 700; color: var(--primary-dark);">⚡ A good strategy:</p>
+                    <ul class="feature-list">
+                        <li>Charge the battery overnight at low rates</li>
+                        <li>Use stored electricity for household use</li>
+                        <li>Charge the EV either overnight or from solar</li>
+                    </ul>
+                </div>
+
+                <h3>Battery-compatible EV tariffs:</h3>
+                <ul class="feature-list">
+                    <li>Support off-peak charging</li>
+                    <li>Avoid punitive peak pricing</li>
+                    <li>Allow flexible consumption patterns</li>
+                </ul>
+
+                <div style="background-color: #FEE2E2; padding: 15px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0; color: #B91C1C; font-weight: 600;">
+                        <i class="fas fa-exclamation-triangle"></i> The wrong tariff can make a battery uneconomical.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">50-70%</div>
+                <div class="stat-label">Reduction in charging costs with EV tariff</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">6p-10p</div>
+                <div class="stat-label">Typical overnight EV rate (per kWh)</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">£500+</div>
+                <div class="stat-label">Annual savings vs standard tariff</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">64%</div>
+                <div class="stat-label">Of EV owners on wrong tariff type</div>
+            </div>
+        </div>
+
+        <!-- How to Compare Correctly -->
+        <div class="grid-item primary-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-balance-scale"></i>
+            </div>
+            <h2>How to Compare Energy Deals for EV Owners Correctly</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; margin: 30px 0;">
+                <div>
+                    <h3><i class="fas fa-clipboard-list" style="color: var(--primary); margin-right: 8px;"></i> Estimate:</h3>
+                    <ul class="feature-list">
+                        <li>Annual EV charging kWh</li>
+                        <li>Typical charging times</li>
+                        <li>Household usage outside EV</li>
+                        <li>Solar/battery presence</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3><i class="fas fa-calculator" style="color: var(--primary); margin-right: 8px;"></i> Calculate:</h3>
+                    <ul class="feature-list">
+                        <li>EV charging cost</li>
+                        <li>Household electricity cost</li>
+                        <li>Total annual spend</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 25px; border-radius: var(--radius-lg); box-shadow: var(--shadow-md);">
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 0;">
+                    <i class="fas fa-crown" style="color: var(--accent); margin-right: 10px;"></i>
+                    UtilityKing compares EV tariffs using real charging behaviour, not average household assumptions.
+                </p>
+            </div>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">FAQs: Energy Deals for EV Owners</h2>
+
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do I need a smart meter for EV tariffs?</h4>
+                    <p>Yes. Most EV tariffs require half-hourly data for accurate overnight charging rates.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Can EV tariffs increase daytime costs?</h4>
+                    <p>Yes. Peak rates are often higher, so shifting usage matters significantly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Are EV tariffs suitable without an EV charger?</h4>
+                    <p>Usually not. They are designed for controlled charging with smart functionality.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Is home charging always cheaper than public?</h4>
+                    <p>Yes, especially with EV-specific tariffs — often 80-90% cheaper than rapid public charging.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Should I switch if I drive more miles?</h4>
+                    <p>Yes. Higher mileage increases the value of EV tariffs significantly.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Can I use an EV tariff without a battery?</h4>
+                    <p>Absolutely. EV tariffs work great for EVs alone — batteries just add extra optimisation.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Final Verdict: EV Owners Should Never Use "Normal" Tariffs</h2>
+            <p>In 2026, EV owners who stay on standard household tariffs are almost always overpaying. The best EV energy deals offer cheap overnight electricity, reward flexible charging, and reduce cost per mile dramatically.</p>
+
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+                <div style="text-align: left; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: var(--radius-lg); backdrop-filter: blur(10px);">
+                    <h3 style="color: var(--accent); margin-bottom: 15px;">⚡ Your EV could be cheaper to run:</h3>
+                    <ul style="list-style: none; color: white;">
+                        <li style="margin-bottom: 10px;">✓ 2p-4p per mile with EV tariff</li>
+                        <li style="margin-bottom: 10px;">✓ 12p-16p per mile on standard tariff</li>
+                        <li style="margin-bottom: 10px;">✓ 50-70p per mile at public rapid chargers</li>
+                    </ul>
+                </div>
+            </div>
+
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+
+            <p style="margin-top: 20px; font-size: 1rem; opacity: 0.8;">
+                See how much cheaper your EV charging could be • Smart meter ready • Solar & battery compatible
+            </p>
+        </section>
+
+        
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <p>© 2026 UtilityKing EV Energy Guide. This content is for informational purposes only. Tariffs and overnight rates change frequently. Always verify with official Ofgem sources.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">EV Tariff Accredited • Smart Meter Compatible • Ofgem Recognised</p>
+        </div>
+    </div>
+
+    <script>
+        // Interactive CTA Button
+        document.getElementById('evCompareBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Calculating Your EV Charging Savings...';
+            this.style.backgroundColor = '#E0F2FE';
+            this.style.color = '#1E40AF';
+
+            setTimeout(() => {
+                alert("⚡ Thank you for your interest in EV-optimised tariffs!\n\nIn a live implementation, UtilityKing would:\n\n1️⃣ Calculate your annual EV mileage & charging needs\n2️⃣ Find the best overnight rates for your region\n3️⃣ Compare total annual cost vs your current tariff\n4️⃣ Show exact savings with smart charging setup");
+
+                this.innerHTML = '<i class="fas fa-bolt"></i> Compare the Best EV Energy Deals';
+                this.style.backgroundColor = 'var(--accent)';
+                this.style.color = 'var(--primary-dark)';
+            }, 2000);
+        });
+
+        // Add smooth appearance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate grid items
+        document.querySelectorAll('.grid-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate tariff cards
+        document.querySelectorAll('.tariff-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(card);
+        });
+
+        // Animate stat items
+        document.querySelectorAll('.stat-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.9)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.15) + 's';
+            observer.observe(item);
+        });
+
+        // Animate FAQ items
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>

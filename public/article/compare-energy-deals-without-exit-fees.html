@@ -1,0 +1,964 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UK 2026 Energy Deals Without Exit Fees Guide: Compare flexible tariffs and avoid £50-£150 penalties. Expert advice for renters, homeowners & frequent switchers.">
+    <meta name="keywords" content="energy deals no exit fees, flexible energy tariffs, exit fee free energy, early exit charges, penalty-free switching, Ofgem exit fee rules">
+    <meta name="robots" content="index, follow">
+    <title>2026 Energy Deals Without Exit Fees Guide | Avoid £150 Penalties | UK Households</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1A365D;
+            --secondary: #00B8D9;
+            --accent: #FF6B6B;
+            --success: #00C853;
+            --warning: #FFA726;
+            --exit-fee-color: #FF6B6B;
+            --flexible-color: #00B8D9;
+            --light: #FFFFFF;
+            --dark: #1A365D;
+            --gray-100: #F8FAFC;
+            --gray-200: #F1F5F9;
+            --gray-300: #E2E8F0;
+            --gray-600: #475569;
+            --gray-800: #1E293B;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(26, 54, 93, 0.08);
+            --shadow-lg: 0 20px 60px rgba(26, 54, 93, 0.12);
+            --flexible-gradient: linear-gradient(135deg, #00B8D9 0%, #00C9A7 100%);
+            --warning-gradient: linear-gradient(135deg, #FF6B6B 0%, #FFA726 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--light);
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--gray-100) 0%, #E2E8F0 100%);
+            color: var(--dark);
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            border-bottom: 1px solid var(--gray-300);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 60%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 184, 217, 0.1) 0%, transparent 70%);
+            }
+
+            .hero::after {
+                content: '🔓';
+                position: absolute;
+                bottom: -30px;
+                right: 50px;
+                font-size: 10rem;
+                opacity: 0.05;
+                z-index: 1;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--flexible-gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge::before {
+                content: '⚠️';
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: var(--dark);
+            text-align: center;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: var(--gray-600);
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--flexible-gradient);
+            color: white;
+            padding: 18px 36px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 184, 217, 0.2);
+            text-align: center;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(0, 184, 217, 0.3);
+                background: linear-gradient(135deg, #00C9E8 0%, #00D4B1 100%);
+            }
+
+            .cta-button .fa-arrow-right {
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover .fa-arrow-right {
+                transform: translateX(4px);
+            }
+
+        /* Cards & Sections */
+        .section {
+            margin: 60px 0;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background: var(--flexible-gradient);
+                border-radius: 2px;
+            }
+
+        /* Highlight Card - OUTSIDE GRID, FULL WIDTH */
+        .highlight-card {
+            background: linear-gradient(135deg, var(--gray-100) 0%, #F1F5F9 100%);
+            color: var(--dark);
+            border-radius: var(--radius);
+            padding: 45px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: var(--shadow-lg);
+            border: 2px solid var(--secondary);
+            width: 100%;
+        }
+
+            .highlight-card .card-icon {
+                width: 70px;
+                height: 70px;
+                background: var(--flexible-gradient);
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                color: white;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .highlight-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--dark);
+                margin-bottom: 16px;
+            }
+
+            .highlight-card p {
+                color: var(--gray-600);
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+                line-height: 1.7;
+            }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            width: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--flexible-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        /* Stats & Numbers */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            width: 100%;
+        }
+
+            .stat-card::before {
+                content: '💷';
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                opacity: 0.1;
+            }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+            .comparison-table table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .comparison-table th {
+                background: var(--gray-100);
+                padding: 22px 24px;
+                text-align: left;
+                font-weight: 600;
+                color: var(--dark);
+                border-bottom: 2px solid var(--gray-300);
+            }
+
+            .comparison-table td {
+                padding: 22px 24px;
+                color: var(--gray-600);
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .verdict-good {
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-good::before {
+                content: '✓';
+            }
+
+        .verdict-bad {
+            color: var(--accent);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-bad::before {
+                content: '✗';
+            }
+
+        /* Fee Comparison */
+        .fee-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .fee-card {
+            background: white;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid transparent;
+            border: 1px solid var(--gray-200);
+        }
+
+            .fee-card.with-fee {
+                border-top-color: var(--exit-fee-color);
+            }
+
+            .fee-card.no-fee {
+                border-top-color: var(--flexible-color);
+                position: relative;
+                overflow: hidden;
+            }
+
+                .fee-card.no-fee::before {
+                    content: 'RECOMMENDED';
+                    position: absolute;
+                    top: 15px;
+                    right: -30px;
+                    background: var(--flexible-color);
+                    color: white;
+                    padding: 5px 30px;
+                    transform: rotate(45deg);
+                    font-size: 0.75rem;
+                    font-weight: 700;
+                }
+
+            .fee-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .fee-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.5rem;
+                color: var(--dark);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        .with-fee h3::before {
+            content: '🔒';
+            color: var(--exit-fee-color);
+        }
+
+        .no-fee h3::before {
+            content: '🔓';
+            color: var(--flexible-color);
+        }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border-left: 4px solid var(--warning);
+            padding: 28px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid var(--gray-200);
+            width: 100%;
+        }
+
+            .warning-box::before {
+                content: '⚠️';
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 3rem;
+                opacity: 0.1;
+            }
+
+            .warning-box h4 {
+                color: #E65100;
+                margin-bottom: 12px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .warning-box h4::before {
+                    content: '🚨';
+                }
+
+        /* Exit Fee Visual */
+        .fee-visual {
+            background: white;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            text-align: center;
+            border: 1px solid var(--gray-200);
+        }
+
+            .fee-visual h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.6rem;
+                color: var(--dark);
+                margin-bottom: 25px;
+            }
+
+        .visual-bars {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            height: 200px;
+            margin: 30px 0;
+            gap: 20px;
+        }
+
+        .visual-bar {
+            width: 30%;
+            background: var(--gray-200);
+            border-radius: 8px 8px 0 0;
+            position: relative;
+            transition: height 1s ease;
+            border: 1px solid var(--gray-300);
+        }
+
+            .visual-bar.with-fee {
+                background: var(--warning-gradient);
+                height: 180px;
+            }
+
+            .visual-bar.no-fee {
+                background: var(--flexible-gradient);
+                height: 140px;
+            }
+
+        .visual-label {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        /* Savings Calculator */
+        .savings-calc {
+            background: linear-gradient(135deg, var(--gray-100) 0%, #F1F5F9 100%);
+            color: var(--dark);
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid var(--secondary);
+            width: 100%;
+        }
+
+            .savings-calc::before {
+                content: '💰';
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                font-size: 4rem;
+                opacity: 0.1;
+            }
+
+            .savings-calc h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: var(--dark);
+            }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fee-comparison {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .fee-card.no-fee::before {
+                top: 10px;
+                right: -25px;
+                font-size: 0.7rem;
+                padding: 4px 25px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+                .hero h1 {
+                    font-size: 2.4rem;
+                }
+
+                .hero::after {
+                    font-size: 5rem;
+                    right: 20px;
+                    bottom: -15px;
+                }
+
+            .card-grid,
+            .stats-grid,
+            .fee-comparison {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+                .comparison-table table {
+                    min-width: 600px;
+                }
+
+            .visual-bars {
+                flex-direction: column;
+                height: auto;
+                align-items: center;
+            }
+
+            .visual-bar {
+                width: 80%;
+                height: 100px !important;
+                margin-bottom: 40px;
+            }
+
+            .visual-label {
+                bottom: -30px;
+            }
+
+            .highlight-card {
+                padding: 35px 25px;
+            }
+
+                .highlight-card h3 {
+                    font-size: 1.6rem;
+                }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">FLEXIBILITY FOCUS • JANUARY 2026</div>
+                <h1>Energy Deals Without Exit Fees 2026</h1>
+                <p class="hero-lead">Avoid £50-£150 penalties and switch freely. Expert guide to flexible tariffs for renters, homeowners, and smart switchers who value freedom over lock-in contracts.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Key Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">£50-£150</div>
+                <div class="stat-label">Typical Exit Fee Penalty</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">100%</div>
+                <div class="stat-label">Flexibility for Renters</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">49 Days</div>
+                <div class="stat-label">Ofgem Penalty-Free Window</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">£0</div>
+                <div class="stat-label">Ideal Exit Fee Amount</div>
+            </div>
+        </div>
+
+        <!-- What Are Exit Fees -->
+        <section class="section">
+            <h2 class="section-title">What Are Exit Fees in Energy Contracts?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">💷</div>
+                    <h3>Typical Charges</h3>
+                    <p>Exit fees range £25–£75 per fuel (electricity and gas charged separately). Dual fuel customers can face £100–£150 total penalties for early switching.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <h3>Contract Timing Matters</h3>
+                    <p>Higher fees on long fixed tariffs (12–24 months). Designed to discourage switching before contract end and trap households on uncompetitive deals.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🎯</div>
+                    <h3>Discouragement Strategy</h3>
+                    <p>Suppliers use exit fees to reduce customer churn. The fees often wipe out savings from switching, making early moves financially unattractive.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>2026 Market Impact</h3>
+                    <p>With volatile pricing and frequent new tariffs, exit fees prevent households from capturing better rates as they appear throughout the year.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Fee Comparison -->
+        <section class="section">
+            <h2 class="section-title">Exit Fees vs No Exit Fees: Key Differences</h2>
+            <div class="fee-comparison">
+                <div class="fee-card with-fee">
+                    <h3>Tariffs WITH Exit Fees</h3>
+                    <p><strong>Common on these tariff types:</strong></p>
+                    <p>✅ Long fixed tariffs (12–24 months)</p>
+                    <p>✅ "Price-protected" deals</p>
+                    <p>✅ Older legacy contracts</p>
+                    <p>✅ Some business energy contracts</p>
+                    <p style="margin-top: 15px; color: var(--exit-fee-color); font-weight: 600;">CAN TRAP YOU ON BAD DEALS</p>
+                </div>
+                <div class="fee-card no-fee">
+                    <h3>Tariffs WITHOUT Exit Fees</h3>
+                    <p><strong>Often available on:</strong></p>
+                    <p>✅ Variable tariffs</p>
+                    <p>✅ Flexible fixed deals</p>
+                    <p>✅ Short-term fixes</p>
+                    <p>✅ Some green & tracker tariffs</p>
+                    <p style="margin-top: 15px; color: var(--flexible-color); font-weight: 600;">MAXIMUM SWITCHING FREEDOM</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Card - OUTSIDE GRID, FULL WIDTH -->
+        <div class="highlight-card">
+            <div class="card-icon">💰</div>
+            <h3>Total Annual Cost With Flexibility Matters</h3>
+            <p>A tariff with slightly higher unit rates but no exit fees can be cheaper overall if you switch again within the year. Flexibility has real financial value in volatile markets - avoiding £50-£150 penalties enables multiple savings opportunities annually. Compare total costs including exit fee risks.</p>
+        </div>
+
+        <!-- Exit Fee Visual -->
+        <div class="fee-visual">
+            <h3>Exit Fee Impact on Switching Savings</h3>
+            <div class="visual-bars">
+                <div class="visual-bar with-fee">
+                    <div class="visual-label">With Exit Fee<br>£150 Penalty</div>
+                </div>
+                <div class="visual-bar no-fee">
+                    <div class="visual-label">No Exit Fee<br>£0 Penalty</div>
+                </div>
+                <div class="visual-bar">
+                    <div class="visual-label">Multiple Switches<br>£300+ Saved</div>
+                </div>
+            </div>
+            <p><strong>Example:</strong> Switching twice in a year with exit fees could cost £300 in penalties. No-exit-fee tariffs enable multiple switches, capturing cumulative savings as better rates appear.</p>
+        </div>
+
+        <!-- Ofgem Rules -->
+        <section class="section">
+            <h2 class="section-title">Ofgem Exit Fee Rules & Protections</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">📋</div>
+                    <h3>Clear Disclosure Required</h3>
+                    <p>Exit fees must be clearly disclosed in contract terms. Suppliers cannot hide fees in fine print or add them mid-contract without consent.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⏰</div>
+                    <h3>49-Day Penalty-Free Window</h3>
+                    <p>No exit fees allowed in the final 49 days of fixed contracts. This ensures you can always switch penalty-free near contract end.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🚫</div>
+                    <h3>No Mid-Contract Changes</h3>
+                    <p>Suppliers cannot add new exit fees during your contract term. The fees agreed at sign-up are the maximum you can be charged.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>Moving Home Exceptions</h3>
+                    <p>Many suppliers waive exit fees if you're moving home, though this isn't automatic. Always check terms before relocating.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Best Situations -->
+        <section class="section">
+            <h2 class="section-title">Who Should Choose No-Exit-Fee Tariffs?</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>Renters & Short-Term Occupants</h3>
+                    <p>Perfect for those who may move within 12 months. Avoid penalties when relocating or changing properties unexpectedly.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Frequent Switchers</h3>
+                    <p>Ideal for households that switch 2-3 times annually to capture best rates. Exit fees destroy this savings strategy.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❓</div>
+                    <h3>Uncertain Future Users</h3>
+                    <p>Best if you're unsure about future usage patterns, household changes, or energy needs. Maintain flexibility without penalty.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">⚡</div>
+                    <h3>Price Volatility Watchers</h3>
+                    <p>Essential for those monitoring market drops. Exit-fee-free tariffs allow immediate switching when better rates appear.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cost Comparison Warning -->
+        <div class="warning-box">
+            <h4>⚠️ Exit Fees vs Savings: The Real Math</h4>
+            <p><strong>A lower unit rate with exit fees often loses to a slightly higher rate with no fees:</strong> Tariff A: 25p/kWh + £100 exit fee. Tariff B: 26p/kWh + £0 exit fee. For average usage, Tariff B becomes cheaper if you switch within 8 months. Flexibility has quantifiable financial value in volatile markets.</p>
+        </div>
+
+        <!-- Common Mistakes -->
+        <section class="section">
+            <h2 class="section-title">Common Exit Fee Mistakes to Avoid</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Focusing Only on Unit Rates</h3>
+                    <p>Ignoring exit fees while chasing the lowest p/kWh. The penalty can erase 6-12 months of unit rate savings if you switch early.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Missing Fine Print Fees</h3>
+                    <p>Not checking Terms & Conditions for hidden exit charges. Some suppliers bury fees in complex contractual language.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Assuming Fixed = Always Better</h3>
+                    <p>Choosing fixed tariffs without considering exit fees. Some flexible variable deals offer better overall value with freedom.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Missing Penalty-Free Windows</h3>
+                    <p>Switching outside the 49-day window before contract end. Timing matters - switch late to avoid fees entirely.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Calculator -->
+        <div class="savings-calc">
+            <h3>How Much Can Exit-Fee-Free Switching Save?</h3>
+            <p>Avoid £50–£150 in penalties per switch | Switch 2-3 times annually without penalty | Capture multiple savings opportunities | Save £300+ annually with flexible switching</p>
+        </div>
+
+        <!-- Final CTA -->
+        <section class="hero" style="margin-top: 80px; margin-bottom: 0; background: linear-gradient(135deg, #F8FAFC 0%, #E2E8F0 100%);">
+            <div class="container">
+                <div class="hero-content" style="text-align: center;">
+                    <h2 style="font-size: 2.5rem;">Choose Freedom Over Lock-In Contracts</h2>
+                    <p class="hero-lead" style="margin: 20px auto 40px; color: var(--gray-600);">Compare exit-fee-free energy deals today. Stay flexible, switch when better rates appear, and avoid £50-£150 penalties that punish smart shopping.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all interactive elements
+        document.querySelectorAll('.card, .stat-card, .fee-card, .highlight-card').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animate visual bars on scroll
+        const visualObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const bars = entry.target.querySelectorAll('.visual-bar');
+                    bars.forEach(bar => {
+                        const height = bar.style.height;
+                        bar.style.height = '0';
+                        setTimeout(() => {
+                            bar.style.transition = 'height 1.5s ease';
+                            bar.style.height = height;
+                        }, 300);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const feeVisual = document.querySelector('.fee-visual');
+        if (feeVisual) {
+            visualObserver.observe(feeVisual);
+        }
+
+        // Pulse animation for stats
+        setInterval(() => {
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.style.boxShadow = '0 0 20px rgba(0, 184, 217, 0.2)';
+                setTimeout(() => {
+                    card.style.boxShadow = 'var(--shadow)';
+                }, 500);
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

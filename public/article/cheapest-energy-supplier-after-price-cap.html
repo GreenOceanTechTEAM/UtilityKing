@@ -1,0 +1,1596 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheapest Energy Supplier After Price Cap Changes 2026 | UK Comparison Guide</title>
+    <meta name="description" content="2026 guide to finding cheapest energy suppliers after Ofgem price cap changes. Compare fixed vs variable tariffs and save £150-£400+ annually.">
+    <meta name="keywords" content="cheapest energy supplier 2026, price cap changes, Ofgem price cap, cheapest electricity supplier, cheapest gas supplier, UK energy comparison">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0066FF;
+            --primary-dark: #0052D4;
+            --primary-light: #E6F0FF;
+            --secondary: #10B981;
+            --secondary-dark: #059669;
+            --accent: #F59E0B;
+            --accent-light: #FEF3C7;
+            --dark: #0F172A;
+            --dark-light: #1E293B;
+            --light: #FFFFFF;
+            --gray-50: #F8FAFC;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-400: #94A3B8;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --shadow-xs: 0 1px 2px rgba(15, 23, 42, 0.05);
+            --shadow-sm: 0 1px 3px rgba(15, 23, 42, 0.1), 0 1px 2px rgba(15, 23, 42, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(15, 23, 42, 0.1), 0 2px 4px -1px rgba(15, 23, 42, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(15, 23, 42, 0.1), 0 4px 6px -2px rgba(15, 23, 42, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(15, 23, 42, 0.1), 0 10px 10px -5px rgba(15, 23, 42, 0.04);
+            --shadow-2xl: 0 25px 50px -12px rgba(15, 23, 42, 0.25);
+            --radius-sm: 6px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 24px;
+            --radius-full: 9999px;
+            --transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            --transition-slow: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-700);
+            background-color: var(--light);
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Space Grotesk', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--dark);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #0F172A 0%, #1E293B 50%, #0C1B3D 100%);
+            color: var(--light);
+            padding: 6rem 0 8rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: radial-gradient(circle at 20% 30%, rgba(16, 185, 129, 0.15) 0%, transparent 50%), radial-gradient(circle at 80% 70%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+            }
+
+        .hero-content {
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: rgba(16, 185, 129, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            color: #A7F3D0;
+            padding: 8px 20px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-bottom: 2rem;
+            animation: fadeInUp 0.6s ease-out 0.2s both;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            color: var(--light);
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+            animation: fadeInUp 0.6s ease-out 0.3s both;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: var(--gray-300);
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            animation: fadeInUp 0.6s ease-out 0.4s both;
+        }
+
+        .hero-stats {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            max-width: 1000px;
+            margin: 4rem auto 0;
+        }
+
+        .stat-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            transition: var(--transition);
+        }
+
+            .stat-card:hover {
+                transform: translateY(-8px);
+                background: rgba(255, 255, 255, 0.08);
+                border-color: rgba(255, 255, 255, 0.2);
+                box-shadow: var(--shadow-xl);
+            }
+
+        .stat-value {
+            display: block;
+            font-size: 2.25rem;
+            font-weight: 800;
+            color: #A7F3D0;
+            margin-bottom: 0.5rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        .stat-label {
+            font-size: 0.875rem;
+            color: var(--gray-300);
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-cta {
+            margin-top: 4rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 1rem 2.5rem;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 2px solid transparent;
+            cursor: pointer;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: var(--secondary);
+            color: var(--light);
+        }
+
+            .btn-primary:hover {
+                background: var(--secondary-dark);
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-xl);
+            }
+
+        .btn-outline {
+            background: transparent;
+            color: var(--light);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+            .btn-outline:hover {
+                background: rgba(255, 255, 255, 0.1);
+                border-color: rgba(255, 255, 255, 0.5);
+                transform: translateY(-3px);
+            }
+
+        /* ===== MAIN CONTENT ===== */
+        .main-content {
+            padding: 5rem 0;
+            background: linear-gradient(180deg, var(--gray-50) 0%, var(--light) 10%);
+        }
+
+        .content-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 350px;
+            gap: 4rem;
+            align-items: start;
+        }
+
+        .article-content {
+            background: var(--light);
+            border-radius: var(--radius-xl);
+            padding: 4rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        /* Section Styling */
+        .section {
+            margin-bottom: 5rem;
+        }
+
+            .section:last-child {
+                margin-bottom: 0;
+            }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .section-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--secondary);
+            font-size: 1.5rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            position: relative;
+        }
+
+        .section-subtitle {
+            color: var(--gray-600);
+            font-size: 1.125rem;
+            margin-top: 0.5rem;
+        }
+
+        /* Key Insight Box */
+        .key-insight {
+            background: linear-gradient(135deg, var(--accent-light) 0%, var(--light) 100%);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid var(--gray-200);
+            text-align: center;
+        }
+
+            .key-insight h3 {
+                font-size: 1.75rem;
+                color: var(--dark);
+                margin-bottom: 1rem;
+            }
+
+        /* Supplier Grid */
+        .supplier-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .supplier-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .supplier-card:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-xl);
+            }
+
+            .supplier-card::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 4px;
+                background: linear-gradient(to right, var(--secondary), var(--accent));
+            }
+
+        .supplier-logo {
+            width: 80px;
+            height: 80px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.2) 100%);
+            color: var(--secondary);
+        }
+
+        .supplier-card h4 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .supplier-type {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 4px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .supplier-card p {
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+            font-size: 0.9375rem;
+        }
+
+        .warning-badge {
+            display: inline-block;
+            background: rgba(245, 158, 11, 0.1);
+            color: var(--accent);
+            padding: 6px 16px;
+            border-radius: var(--radius-full);
+            font-weight: 600;
+            font-size: 0.875rem;
+            margin-top: 1rem;
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        /* Tariff Comparison */
+        .tariff-comparison {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tariff-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 2.5rem 2rem;
+            box-shadow: var(--shadow-md);
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+            .tariff-card:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .tariff-card.fixed {
+                border-color: var(--secondary);
+            }
+
+            .tariff-card.variable {
+                border-color: var(--primary);
+            }
+
+        .tariff-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .tariff-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.25rem;
+        }
+
+        .fixed .tariff-icon {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.05) 100%);
+            color: var(--secondary);
+        }
+
+        .variable .tariff-icon {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.05) 100%);
+            color: var(--primary);
+        }
+
+        .tariff-card h4 {
+            font-size: 1.375rem;
+            margin: 0;
+        }
+
+        .tariff-features {
+            list-style: none;
+            padding-left: 0;
+        }
+
+            .tariff-features li {
+                padding: 0.75rem 0;
+                border-bottom: 1px solid var(--gray-100);
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+            }
+
+                .tariff-features li:last-child {
+                    border-bottom: none;
+                }
+
+                .tariff-features li::before {
+                    content: '';
+                    width: 8px;
+                    height: 8px;
+                    border-radius: 50%;
+                    display: inline-block;
+                }
+
+        .fixed .tariff-features li::before {
+            background: var(--secondary);
+        }
+
+        .variable .tariff-features li::before {
+            background: var(--primary);
+        }
+
+        /* Usage Type Analysis */
+        .usage-analysis {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--light) 100%);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 1px solid var(--gray-200);
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .usage-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: var(--shadow-sm);
+        }
+
+        .usage-icon {
+            width: 56px;
+            height: 56px;
+            border-radius: var(--radius-full);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+            font-size: 1.5rem;
+        }
+
+        .low-usage .usage-icon {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.2) 100%);
+            color: var(--secondary);
+        }
+
+        .average-usage .usage-icon {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.1) 0%, rgba(245, 158, 11, 0.2) 100%);
+            color: var(--accent);
+        }
+
+        .high-usage .usage-icon {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.1) 0%, rgba(0, 102, 255, 0.2) 100%);
+            color: var(--primary);
+        }
+
+        .usage-card h4 {
+            font-size: 1.25rem;
+            margin-bottom: 1rem;
+        }
+
+        .usage-focus {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--gray-700);
+            padding: 6px 12px;
+            border-radius: var(--radius-full);
+            font-size: 0.875rem;
+            font-weight: 600;
+            margin-top: 1rem;
+        }
+
+        /* Savings Calculator */
+        .calculator-section {
+            background: linear-gradient(135deg, var(--gray-50) 0%, var(--light) 100%);
+            border-radius: var(--radius-xl);
+            padding: 3rem;
+            margin: 4rem 0;
+            border: 1px solid var(--gray-200);
+        }
+
+        .calculator-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .calculator-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .calculator-slider {
+            background: var(--light);
+            padding: 2rem;
+            border-radius: var(--radius-lg);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .slider-label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .slider-value {
+            display: block;
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-top: 1rem;
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        input[type="range"] {
+            width: 100%;
+            height: 8px;
+            -webkit-appearance: none;
+            background: linear-gradient(to right, var(--secondary), var(--primary));
+            border-radius: var(--radius-full);
+            outline: none;
+        }
+
+            input[type="range"]::-webkit-slider-thumb {
+                -webkit-appearance: none;
+                width: 24px;
+                height: 24px;
+                background: var(--light);
+                border-radius: 50%;
+                border: 3px solid var(--secondary);
+                cursor: pointer;
+                box-shadow: var(--shadow-md);
+            }
+
+        .calculator-result {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 3rem;
+            text-align: center;
+            box-shadow: var(--shadow-lg);
+            border-top: 4px solid var(--secondary);
+        }
+
+        .result-label {
+            font-size: 1rem;
+            color: var(--gray-600);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        .result-amount {
+            font-size: 4rem;
+            font-weight: 800;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 1rem 0;
+            line-height: 1;
+        }
+
+        .result-description {
+            font-size: 1.125rem;
+            color: var(--gray-600);
+        }
+
+        /* Common Mistakes */
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .mistake-card {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-sm);
+            border-left: 4px solid #EF4444;
+        }
+
+            .mistake-card h4 {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                margin-bottom: 1rem;
+                color: #DC2626;
+            }
+
+        /* ===== SIDEBAR ===== */
+        .sidebar {
+            position: sticky;
+            top: 2rem;
+        }
+
+        .sidebar-widget {
+            background: var(--light);
+            border-radius: var(--radius-lg);
+            padding: 2rem;
+            box-shadow: var(--shadow-lg);
+            margin-bottom: 1.5rem;
+        }
+
+        .widget-title {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-size: 1.25rem;
+            margin-bottom: 1.5rem;
+            color: var(--dark);
+        }
+
+            .widget-title i {
+                color: var(--secondary);
+            }
+
+        .quick-nav {
+            list-style: none;
+        }
+
+            .quick-nav li {
+                margin-bottom: 0.75rem;
+            }
+
+            .quick-nav a {
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 1rem 1.25rem;
+                color: var(--gray-700);
+                text-decoration: none;
+                border-radius: var(--radius-md);
+                transition: var(--transition);
+                border-left: 3px solid transparent;
+            }
+
+                .quick-nav a:hover {
+                    background: rgba(16, 185, 129, 0.1);
+                    color: var(--secondary);
+                    border-left-color: var(--secondary);
+                }
+
+            .quick-nav i {
+                width: 20px;
+                text-align: center;
+            }
+
+        .cta-widget {
+            background: linear-gradient(135deg, var(--secondary) 0%, var(--secondary-dark) 100%);
+            color: var(--light);
+            text-align: center;
+            padding: 3rem 2rem;
+        }
+
+            .cta-widget .btn {
+                width: 100%;
+                justify-content: center;
+                margin-top: 1.5rem;
+                background: var(--light);
+                color: var(--secondary);
+            }
+
+                .cta-widget .btn:hover {
+                    background: rgba(255, 255, 255, 0.9);
+                }
+
+        .stats-widget {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            border: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(16, 185, 129, 0.1);
+        }
+
+            .stat-item:last-child {
+                border-bottom: none;
+            }
+
+        .stat-item-label {
+            font-weight: 500;
+        }
+
+        .stat-item-value {
+            font-weight: 700;
+            color: var(--secondary);
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Cap Visualization */
+        .cap-visual {
+            margin: 1.5rem 0;
+        }
+
+        .cap-bar {
+            height: 12px;
+            background: linear-gradient(90deg, var(--secondary) 0%, var(--primary) 100%);
+            border-radius: var(--radius-full);
+            margin: 0.5rem 0;
+            position: relative;
+        }
+
+        .cap-label {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--gray-600);
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        @media (max-width: 1200px) {
+            .container {
+                padding: 0 1.5rem;
+            }
+
+            .content-wrapper {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .sidebar {
+                position: static;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+
+            .sidebar-widget {
+                margin-bottom: 0;
+            }
+
+            .hero h1 {
+                font-size: 3rem;
+            }
+
+            .hero-stats {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .supplier-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .hero {
+                padding: 4rem 0 6rem;
+            }
+
+                .hero h1 {
+                    font-size: 2.5rem;
+                }
+
+            .hero-stats {
+                grid-template-columns: 1fr;
+                max-width: 400px;
+            }
+
+            .supplier-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .tariff-comparison,
+            .mistakes-grid,
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .calculator-grid {
+                grid-template-columns: 1fr;
+            }
+
+            h2 {
+                font-size: 2rem;
+            }
+
+            .article-content {
+                padding: 3rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero-lead {
+                font-size: 1.125rem;
+            }
+
+            .section-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.5rem;
+            }
+
+            .section-icon {
+                width: 48px;
+                height: 48px;
+            }
+
+            .calculator-section,
+            .usage-analysis,
+            .key-insight {
+                padding: 2rem;
+            }
+
+            .result-amount {
+                font-size: 3rem;
+            }
+
+            .sidebar {
+                grid-template-columns: 1fr;
+            }
+
+            .btn {
+                padding: 0.875rem 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.75rem;
+            }
+
+            .hero-cta {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .article-content {
+                padding: 2rem 1.5rem;
+            }
+
+            .supplier-card,
+            .tariff-card,
+            .usage-card {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* ===== ANIMATIONS ===== */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .stagger > * {
+            opacity: 0;
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+            .stagger > *:nth-child(1) {
+                animation-delay: 0.1s;
+            }
+
+            .stagger > *:nth-child(2) {
+                animation-delay: 0.2s;
+            }
+
+            .stagger > *:nth-child(3) {
+                animation-delay: 0.3s;
+            }
+
+            .stagger > *:nth-child(4) {
+                animation-delay: 0.4s;
+            }
+
+            .stagger > *:nth-child(5) {
+                animation-delay: 0.5s;
+            }
+
+        /* ===== UTILITY CLASSES ===== */
+        .text-center {
+            text-align: center;
+        }
+
+        .mt-1 {
+            margin-top: 1rem;
+        }
+
+        .mt-2 {
+            margin-top: 2rem;
+        }
+
+        .mt-3 {
+            margin-top: 3rem;
+        }
+
+        .mt-4 {
+            margin-top: 4rem;
+        }
+
+        .mb-1 {
+            margin-bottom: 1rem;
+        }
+
+        .mb-2 {
+            margin-bottom: 2rem;
+        }
+
+        .mb-3 {
+            margin-bottom: 3rem;
+        }
+
+        .mb-4 {
+            margin-bottom: 4rem;
+        }
+
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--gray-300), transparent);
+            margin: 3rem 0;
+        }
+
+        .warning-note {
+            background: linear-gradient(135deg, rgba(245, 158, 11, 0.05) 0%, rgba(245, 158, 11, 0.02) 100%);
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+
+        .success-note {
+            background: linear-gradient(135deg, rgba(16, 185, 129, 0.05) 0%, rgba(16, 185, 129, 0.02) 100%);
+            border-left: 4px solid var(--secondary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+
+        .info-note {
+            background: linear-gradient(135deg, rgba(0, 102, 255, 0.05) 0%, rgba(0, 102, 255, 0.02) 100%);
+            border-left: 4px solid var(--primary);
+            padding: 1.5rem;
+            border-radius: var(--radius-md);
+            margin: 1.5rem 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">
+                    <i class="fas fa-shield-alt"></i>
+                    Updated January 2026 • Ofgem Regulated
+                </div>
+
+                <h1>Cheapest Energy Supplier After Price Cap Changes</h1>
+
+                <p class="hero-lead">
+                    UK 2026 guide to finding cheapest energy suppliers after Ofgem price cap changes.
+                    Compare fixed vs variable tariffs and save £150–£400+ annually.
+                </p>
+
+                <div class="hero-stats stagger">
+                    <div class="stat-card">
+                        <span class="stat-value">£150-£400</span>
+                        <span class="stat-label">Annual Savings</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">8+</span>
+                        <span class="stat-label">Key Suppliers</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">£300-£400</span>
+                        <span class="stat-label">Standing Charges</span>
+                    </div>
+                    <div class="stat-card">
+                        <span class="stat-value">4x</span>
+                        <span class="stat-label">Quarterly Reviews</span>
+                    </div>
+                </div>
+
+              
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content-wrapper">
+                <!-- Article Content -->
+                <article class="article-content">
+                    <!-- Section 1: Key Insight -->
+                    <section class="section fade-in">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h2>Is There a Cheapest Energy Supplier?</h2>
+                                <p class="section-subtitle">Understanding the reality after price cap changes</p>
+                            </div>
+                        </div>
+
+                        <div class="key-insight">
+                            <h3>⚠️ There is NO single cheapest supplier for everyone</h3>
+                            <p>Even after price cap changes, the cheapest supplier depends entirely on your postcode, usage patterns, meter type, and whether you choose fixed or variable tariffs.</p>
+                        </div>
+
+                        <p>The Ofgem price cap limits maximum unit rates and standing charges but doesn't set a single national price or stop suppliers offering cheaper fixed deals below the cap.</p>
+
+                        <div class="warning-note">
+                            <h4>Critical Understanding</h4>
+                            <p>The price cap is a MAXIMUM, not a deal. Most variable tariffs sit close to the cap, while fixed tariffs can be significantly below it. This is why comparison matters more than headlines.</p>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 2: Supplier Analysis -->
+                    <section class="section fade-in" id="suppliers">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-building"></i>
+                            </div>
+                            <div>
+                                <h2>Potential Cheapest Suppliers 2026</h2>
+                                <p class="section-subtitle">Patterns, not promises – who often appears cheapest</p>
+                            </div>
+                        </div>
+
+                        <div class="warning-badge">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            These suppliers are NOT always cheapest. Prices vary by region and tariff.
+                        </div>
+
+                        <div class="supplier-grid mt-3">
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-fish"></i>
+                                </div>
+                                <h4>Octopus Energy</h4>
+                                <span class="supplier-type">Green Supplier</span>
+                                <p>Often competitive with innovative tariffs and good customer service ratings.</p>
+                            </div>
+
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-sun"></i>
+                                </div>
+                                <h4>E.ON Next</h4>
+                                <span class="supplier-type">Large Supplier</span>
+                                <p>Frequently appears in cheaper fixed deals with renewable energy options.</p>
+                            </div>
+
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h4>EDF Energy</h4>
+                                <span class="supplier-type">French-Owned</span>
+                                <p>Competitive fixed tariffs, especially for dual fuel customers in certain regions.</p>
+                            </div>
+
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-leaf"></i>
+                                </div>
+                                <h4>ScottishPower</h4>
+                                <span class="supplier-type">Scottish Focus</span>
+                                <p>Often competitive in Scottish regions with various tariff options.</p>
+                            </div>
+
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-home"></i>
+                                </div>
+                                <h4>British Gas</h4>
+                                <span class="supplier-type">Largest Supplier</span>
+                                <p>Frequent fixed tariff promotions that can undercut the price cap.</p>
+                            </div>
+
+                            <div class="supplier-card">
+                                <div class="supplier-logo">
+                                    <i class="fas fa-warehouse"></i>
+                                </div>
+                                <h4>Utility Warehouse</h4>
+                                <span class="supplier-type">Bundle Provider</span>
+                                <p>Often cheapest for bundled services but requires multi-service commitment.</p>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 3: Tariff Comparison -->
+                    <section class="section fade-in">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-balance-scale"></i>
+                            </div>
+                            <div>
+                                <h2>Fixed vs Variable Tariffs After Cap</h2>
+                                <p class="section-subtitle">Where the real savings are found after price cap changes</p>
+                            </div>
+                        </div>
+
+                        <div class="tariff-comparison">
+                            <div class="tariff-card fixed">
+                                <div class="tariff-header">
+                                    <div class="tariff-icon">
+                                        <i class="fas fa-lock"></i>
+                                    </div>
+                                    <h4>Fixed Tariffs</h4>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>Locked rates for 12-24 months</li>
+                                    <li>Protection from future cap rises</li>
+                                    <li>Can undercut current price cap</li>
+                                    <li>May include exit fees</li>
+                                    <li>Best for price certainty</li>
+                                    <li>Often 10-20% below cap</li>
+                                </ul>
+                            </div>
+
+                            <div class="tariff-card variable">
+                                <div class="tariff-header">
+                                    <div class="tariff-icon">
+                                        <i class="fas fa-chart-line"></i>
+                                    </div>
+                                    <h4>Variable Tariffs</h4>
+                                </div>
+                                <ul class="tariff-features">
+                                    <li>Prices change quarterly</li>
+                                    <li>Automatic cap protection</li>
+                                    <li>No exit fees</li>
+                                    <li>Rarely the cheapest option</li>
+                                    <li>Most households overpay</li>
+                                    <li>Follows price cap closely</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="cap-visual">
+                            <h4>Price Cap vs Fixed Deals</h4>
+                            <div class="cap-bar"></div>
+                            <div class="cap-label">
+                                <span>Fixed Deals Below Cap</span>
+                                <span>Price Cap Ceiling</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 4: Usage Analysis -->
+                    <section class="section fade-in">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-chart-pie"></i>
+                            </div>
+                            <div>
+                                <h2>Cheapest Supplier Depends on Usage</h2>
+                                <p class="section-subtitle">How different households find different cheapest suppliers</p>
+                            </div>
+                        </div>
+
+                        <div class="usage-analysis">
+                            <h3 class="text-center">Usage-Based Cheapest Supplier Analysis</h3>
+                            <div class="usage-grid">
+                                <div class="usage-card low-usage">
+                                    <div class="usage-icon">
+                                        <i class="fas fa-user"></i>
+                                    </div>
+                                    <h4>Low Usage Homes</h4>
+                                    <p>Standing charges matter most. Often benefit from low or no standing charge tariffs.</p>
+                                    <div class="usage-focus">Focus: Standing Charges</div>
+                                </div>
+
+                                <div class="usage-card average-usage">
+                                    <div class="usage-icon">
+                                        <i class="fas fa-users"></i>
+                                    </div>
+                                    <h4>Average Usage Homes</h4>
+                                    <p>Fixed tariffs below the cap usually cheapest. Balance of rates and charges.</p>
+                                    <div class="usage-focus">Focus: Fixed Deals</div>
+                                </div>
+
+                                <div class="usage-card high-usage">
+                                    <div class="usage-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <h4>High Usage Homes</h4>
+                                    <p>Unit rate differences dominate. Small savings per kWh add up significantly.</p>
+                                    <div class="usage-focus">Focus: Unit Rates</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="info-note">
+                            <h4>Electricity vs Gas Reality</h4>
+                            <p>After price cap changes, electricity and gas prices move differently. The cheapest electricity supplier may not be the cheapest gas supplier. Dual fuel is convenient but not always cheapest.</p>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 5: Savings Calculator -->
+                    <section class="section fade-in" id="calculator">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h2>Potential Savings Calculator</h2>
+                                <p class="section-subtitle">Estimate how much you could save after price cap changes</p>
+                            </div>
+                        </div>
+
+                        <div class="calculator-section">
+                            <div class="calculator-header">
+                                <h3>Customise Your Profile</h3>
+                                <p class="section-subtitle">Adjust sliders to match your current energy situation</p>
+                            </div>
+
+                            <div class="calculator-grid">
+                                <div class="calculator-slider">
+                                    <label class="slider-label">Current Annual Cost</label>
+                                    <input type="range" min="800" max="4000" value="1800" class="usage-slider" id="cost-slider">
+                                    <span class="slider-value" id="cost-value">£1,800</span>
+                                </div>
+
+                                <div class="calculator-slider">
+                                    <label class="slider-label">Years Since Last Switch</label>
+                                    <input type="range" min="0" max="10" value="3" class="usage-slider" id="years-slider">
+                                    <span class="slider-value" id="years-value">3 years</span>
+                                </div>
+                            </div>
+
+                            <div class="calculator-result">
+                                <div class="result-label">Estimated Annual Savings</div>
+                                <div class="result-amount" id="result-amount">£420</div>
+                                <div class="result-description" id="result-description">
+                                    Switching from variable to fixed tariff recommended
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 6: Common Mistakes -->
+                    <section class="section fade-in">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-exclamation-circle"></i>
+                            </div>
+                            <div>
+                                <h2>Common Mistakes After Cap Changes</h2>
+                                <p class="section-subtitle">Costly errors that keep households overpaying</p>
+                            </div>
+                        </div>
+
+                        <div class="mistakes-grid">
+                            <div class="mistake-card">
+                                <h4><i class="fas fa-times"></i> Assuming Cap = Cheapest</h4>
+                                <p>Believing the price cap guarantees you're getting the best deal, when fixed tariffs are often cheaper.</p>
+                            </div>
+
+                            <div class="mistake-card">
+                                <h4><i class="fas fa-times"></i> Staying on Variable</h4>
+                                <p>Remaining on variable tariffs out of habit or fear of exit fees, missing cheaper fixed deals.</p>
+                            </div>
+
+                            <div class="mistake-card">
+                                <h4><i class="fas fa-times"></i> Ignoring Standing Charges</h4>
+                                <p>Focusing only on unit rates while standing charges add £300-£400+ annually.</p>
+                            </div>
+
+                            <div class="mistake-card">
+                                <h4><i class="fas fa-times"></i> Trusting Headlines</h4>
+                                <p>Believing generic "cheapest supplier" lists that ignore regional and usage differences.</p>
+                            </div>
+                        </div>
+
+                        <div class="success-note">
+                            <h4>✅ Best Practice After Cap Changes</h4>
+                            <p>Compare every time the price cap changes, when your fixed tariff ends, when usage patterns change, and at least once per year. Energy prices move — loyalty doesn't pay.</p>
+                        </div>
+                    </section>
+
+                    <div class="divider"></div>
+
+                    <!-- Section 7: Final Verdict -->
+                    <section class="section fade-in">
+                        <div class="section-header">
+                            <div class="section-icon">
+                                <i class="fas fa-gavel"></i>
+                            </div>
+                            <div>
+                                <h2>2026 Price Cap Verdict</h2>
+                                <p class="section-subtitle">Expert recommendations for finding cheapest suppliers</p>
+                            </div>
+                        </div>
+
+                        <div class="key-insight">
+                            <h3>✅ The Cap is a Ceiling, Not a Bargain</h3>
+                            <p>Fixed tariffs often beat capped prices by 10-20%. The "cheapest supplier" depends entirely on the household's specific circumstances.</p>
+                        </div>
+
+                        <div class="tariff-comparison mt-3">
+                            <div class="tariff-card" style="border-color: var(--secondary);">
+                                <h4>For Most Households</h4>
+                                <p>Fixed tariffs below the price cap offer the best value after cap changes. Savings of £150-£400+ are common when switching from variable tariffs.</p>
+                                <div class="usage-focus" style="background: var(--secondary); color: white;">Recommended: Fixed Deals</div>
+                            </div>
+
+                            <div class="tariff-card" style="border-color: var(--accent);">
+                                <h4>Key Consideration</h4>
+                                <p>Postcode-specific pricing means national "cheapest" lists are misleading. Only accurate comparison reveals your truly cheapest supplier.</p>
+                                <div class="usage-focus" style="background: var(--accent); color: white;">Essential: Postcode Comparison</div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+
+                <!-- Sidebar -->
+                <aside class="sidebar">
+                    <!-- Quick Navigation -->
+                    <div class="sidebar-widget">
+                        <div class="widget-title">
+                            <i class="fas fa-compass"></i>
+                            <span>Quick Navigation</span>
+                        </div>
+                        <ul class="quick-nav">
+                            <li><a href="#suppliers"><i class="fas fa-building"></i> Key Suppliers</a></li>
+                            <li><a href="#calculator"><i class="fas fa-calculator"></i> Savings Calculator</a></li>
+                            <li><a href="#"><i class="fas fa-balance-scale"></i> Fixed vs Variable</a></li>
+                            <li><a href="#"><i class="fas fa-chart-pie"></i> Usage Analysis</a></li>
+                            <li><a href="#"><i class="fas fa-exclamation-circle"></i> Common Mistakes</a></li>
+                            <li><a href="#"><i class="fas fa-calendar-alt"></i> Switch Timing</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- CTA Widget -->
+                    <div class="sidebar-widget cta-widget">
+                        <h3 style="color: white;">Find Your Cheapest Supplier</h3>
+                        <p style="color: rgba(255,255,255,0.9); margin-top: 0.5rem;">
+                            Get personalised postcode-specific comparisons after price cap changes
+                        </p>
+                        <a href="https://www.utilityking.co.uk/contact.html" class="btn btn-primary">
+                            <i class="fas fa-search"></i>
+                            Contact Us
+                        </a>
+                    </div>
+
+                    <!-- Comparison Frequency -->
+                    <div class="sidebar-widget">
+                        <div class="widget-title">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>When to Compare</span>
+                        </div>
+                        <ul class="pattern-list">
+                            <li>Every price cap change (quarterly)</li>
+                            <li>When fixed tariff ends</li>
+                            <li>When usage patterns change</li>
+                            <li>At least once per year</li>
+                            <li>Before winter price rises</li>
+                        </ul>
+                    </div>
+
+                    <!-- Key Statistics -->
+                    <div class="sidebar-widget stats-widget">
+                        <div class="widget-title">
+                            <i class="fas fa-chart-line"></i>
+                            <span>2026 Key Statistics</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-item-label">Avg. Annual Standing</span>
+                            <span class="stat-item-value">£350</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-item-label">Fixed vs Cap Saving</span>
+                            <span class="stat-item-value">10-20%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-item-label">Price Cap Reviews</span>
+                            <span class="stat-item-value">Quarterly</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-item-label">Avg. Switch Saving</span>
+                            <span class="stat-item-value">£280</span>
+                        </div>
+                    </div>
+                </aside>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // Calculator functionality
+        const costSlider = document.getElementById('cost-slider');
+        const yearsSlider = document.getElementById('years-slider');
+        const costValue = document.getElementById('cost-value');
+        const yearsValue = document.getElementById('years-value');
+        const resultAmount = document.getElementById('result-amount');
+        const resultDescription = document.getElementById('result-description');
+
+        // Format currency
+        function formatCurrency(num) {
+            return '£' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        }
+
+        // Update slider values
+        function updateSliderValues() {
+            costValue.textContent = formatCurrency(costSlider.value);
+            yearsValue.textContent = yearsSlider.value + (yearsSlider.value == '1' ? ' year' : ' years');
+
+            calculateSavings();
+        }
+
+        // Calculate potential savings
+        function calculateSavings() {
+            const currentCost = parseInt(costSlider.value);
+            const yearsSinceSwitch = parseInt(yearsSlider.value);
+
+            // Calculation logic
+            // Base savings percentage increases with years since last switch
+            const baseSavingsRate = Math.min(0.25, 0.08 + (yearsSinceSwitch * 0.04));
+
+            // Additional factor for being on variable tariff (most long-term customers are)
+            const variablePenalty = yearsSinceSwitch > 2 ? 0.05 : 0;
+
+            // Total potential savings
+            const potentialSavings = Math.round(currentCost * (baseSavingsRate + variablePenalty));
+
+            // Update result display
+            resultAmount.textContent = formatCurrency(potentialSavings);
+
+            // Update description and color based on savings
+            if (potentialSavings > 500) {
+                resultAmount.style.color = 'var(--secondary)';
+                resultDescription.textContent = 'Significant savings possible by switching';
+                resultDescription.style.color = 'var(--secondary)';
+            } else if (potentialSavings > 200) {
+                resultAmount.style.color = 'var(--secondary)';
+                resultDescription.textContent = 'Switching from variable to fixed tariff recommended';
+                resultDescription.style.color = 'var(--secondary)';
+            } else if (potentialSavings > 50) {
+                resultAmount.style.color = 'var(--secondary)';
+                resultDescription.textContent = 'Moderate savings available with right tariff';
+                resultDescription.style.color = 'var(--secondary)';
+            } else {
+                resultAmount.style.color = 'var(--gray-600)';
+                resultDescription.textContent = 'Compare specific tariffs for best deal';
+                resultDescription.style.color = 'var(--gray-600)';
+            }
+        }
+
+        // Event listeners for sliders
+        costSlider.addEventListener('input', updateSliderValues);
+        yearsSlider.addEventListener('input', updateSliderValues);
+
+        // Initialize calculator
+        updateSliderValues();
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 100,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections
+        document.querySelectorAll('.section').forEach(section => {
+            observer.observe(section);
+        });
+
+        // Update hero stats animation
+        window.addEventListener('load', () => {
+            const statCards = document.querySelectorAll('.stat-card');
+            statCards.forEach((card, index) => {
+                card.style.animationDelay = `${0.2 + (index * 0.1)}s`;
+            });
+        });
+    </script>
+</body>
+</html>

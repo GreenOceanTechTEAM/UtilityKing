@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheapest Dual Fuel Tariffs in the UK Right Now (2026 Guide)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Hero Section - Dark Theme */
+        .hero-section {
+            background: linear-gradient(135deg, #1a237e 0%, #283593 50%, #3949ab 100%);
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-title {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #4fc3f7;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.8;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-cta {
+            background-color: #00c853;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1rem;
+        }
+
+            .hero-cta:hover {
+                background-color: #00b347;
+                transform: translateY(-2px);
+                box-shadow: 0 4px 12px rgba(0, 200, 83, 0.3);
+            }
+
+        /* Main Content */
+        .main-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+        }
+
+        /* Cards Layout */
+        .cards-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid #e0e0e0;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+            }
+
+        .card-title {
+            color: #1a237e;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .card-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #3949ab;
+        }
+
+        .card-badge {
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .badge-best {
+            background-color: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .badge-warning {
+            background-color: #fff3e0;
+            color: #ef6c00;
+        }
+
+        .badge-info {
+            background-color: #e3f2fd;
+            color: #1565c0;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+        }
+
+            .comparison-table th,
+            .comparison-table td {
+                padding: 1.2rem 1.5rem;
+                text-align: left;
+                border-bottom: 1px solid #e0e0e0;
+            }
+
+            .comparison-table th {
+                background-color: #1a237e;
+                color: white;
+                font-weight: 600;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background-color: #f8f9fa;
+            }
+
+        /* FAQ Section */
+        .faq-section {
+            margin: 3rem 0;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            margin-top: 1.5rem;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+            border-left: 4px solid #3949ab;
+        }
+
+        .faq-question {
+            color: #1a237e;
+            font-weight: 600;
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #00c853 0%, #00b347 100%);
+            color: white;
+            padding: 3rem;
+            border-radius: 12px;
+            text-align: center;
+            margin: 3rem 0;
+        }
+
+        .cta-title {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        .cta-button {
+            background-color: white;
+            color: #00c853;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 1.5rem;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(255, 255, 255, 0.2);
+            }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.2rem;
+            }
+
+            .hero-stats {
+                gap: 1.5rem;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 0 1rem 2rem;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .cta-section {
+                padding: 2rem 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 3rem 1rem;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1 class="hero-title">Cheapest Dual Fuel Tariffs in the UK Right Now (2026 Guide)</h1>
+            <p class="hero-subtitle">Find the best energy deals tailored to your home. Compare prices, save money, and switch in minutes.</p>
+
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">£200-£500</span>
+                    <span class="stat-label">Potential Annual Savings</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">2-5 Days</span>
+                    <span class="stat-label">Average Switch Time</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Regulated by Ofgem</span>
+                </div>
+            </div>
+
+            <button class="hero-cta">
+                <span>Contact Us</span>
+            </button>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <!-- Key Information Cards -->
+        <div class="cards-container">
+            <div class="card">
+                <div class="card-icon">⚡</div>
+                <span class="card-badge badge-best">Most Popular</span>
+                <h3 class="card-title">Fixed Dual Fuel Tariffs</h3>
+                <p>Lock in your rates for 12-24 months. Protection from price rises with competitive unit rates that beat standard variable tariffs.</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Lower unit rates than SVTs</li>
+                    <li>Price protection guaranteed</li>
+                    <li>Best for budget planning</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🌿</div>
+                <span class="card-badge badge-info">Green Option</span>
+                <h3 class="card-title">Green Dual Fuel Tariffs</h3>
+                <p>100% renewable electricity with carbon-offset gas. Often priced the same as standard tariffs - good for your wallet and the planet.</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>100% renewable electricity</li>
+                    <li>Carbon-offset gas</li>
+                    <li>Competitively priced</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <div class="card-icon">🏠</div>
+                <span class="card-badge badge-warning">Important</span>
+                <h3 class="card-title">Personalized Rates</h3>
+                <p>There's no single cheapest tariff for everyone. Your best deal depends on location, usage, and household needs.</p>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Postcode-specific pricing</li>
+                    <li>Usage-based calculations</li>
+                    <li>Annual cost comparison</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Comparison Table -->
+        <h2 style="color: #1a237e; margin-top: 3rem; margin-bottom: 1rem;">Fixed vs Variable Tariffs Comparison</h2>
+        <table class="comparison-table">
+            <thead>
+                <tr>
+                    <th>Feature</th>
+                    <th>Fixed Dual Fuel Tariffs</th>
+                    <th>Variable Dual Fuel Tariffs</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Price Stability</strong></td>
+                    <td>✅ Rates locked for contract duration</td>
+                    <td>❌ Can change at any time</td>
+                </tr>
+                <tr>
+                    <td><strong>Price Cap Protection</strong></td>
+                    <td>✅ Usually below price cap</td>
+                    <td>✅ Tracks price cap</td>
+                </tr>
+                <tr>
+                    <td><strong>Exit Fees</strong></td>
+                    <td>⚠️ May apply</td>
+                    <td>✅ Usually none</td>
+                </tr>
+                <tr>
+                    <td><strong>Best For</strong></td>
+                    <td>Long-term savings & budgeting</td>
+                    <td>Short-term flexibility</td>
+                </tr>
+                <tr>
+                    <td><strong>Typical Savings</strong></td>
+                    <td>£200-£500/year vs SVT</td>
+                    <td>Minimal savings</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <!-- Household Type Cards -->
+        <h2 style="color: #1a237e; margin-top: 3rem; margin-bottom: 1rem;">Best Tariffs by Household Type</h2>
+        <div class="cards-container">
+            <div class="card">
+                <h3 class="card-title">Low Usage Households</h3>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Focus on low standing charges</li>
+                    <li>Unit rates matter less</li>
+                    <li>Consider separate suppliers</li>
+                    <li>Ideal for small flats</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Medium Usage Households</h3>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Best dual fuel discounts</li>
+                    <li>Fixed tariffs optimal</li>
+                    <li>Average 2-3 bedroom homes</li>
+                    <li>Maximize savings</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">High Usage Households</h3>
+                <ul style="margin-top: 1rem; margin-left: 1.2rem;">
+                    <li>Prioritize low unit rates</li>
+                    <li>Fixed tariffs essential</li>
+                    <li>Large family homes</li>
+                    <li>Maximum annual savings</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="faq-section">
+            <h2 style="color: #1a237e; margin-bottom: 1rem;">Frequently Asked Questions</h2>
+            <div class="faq-grid">
+                <div class="faq-card">
+                    <div class="faq-question">Who has the cheapest dual fuel tariff?</div>
+                    <p>It varies by postcode and usage. The "cheapest" differs for each household based on location and consumption patterns.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Are cheap tariffs reliable?</div>
+                    <p>Most are reliable. Consider customer service ratings alongside price for the best overall experience.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Can renters switch tariffs?</div>
+                    <p>Yes, if you pay the bills directly and have your own meter. Check your tenancy agreement for any restrictions.</p>
+                </div>
+                <div class="faq-card">
+                    <div class="faq-question">Is switching complicated?</div>
+                    <p>No. It takes 2-5 days with no interruption to supply. Your new supplier handles everything for you.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Final CTA Section -->
+        <div class="cta-section">
+            <h2 class="cta-title">Find Your Perfect Dual Fuel Tariff</h2>
+            <p>Compare prices based on your actual usage and location. No estimates, no guesswork - just your real potential savings.</p>
+          
+            <p style="margin-top: 1.5rem; opacity: 0.9; font-size: 0.9rem;">
+                Compare in minutes • Switch for free • Ofgem protected
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Simple hover effect enhancement
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.cursor = 'pointer';
+            });
+        });
+
+        // CTA button functionality
+      
+           document.querySelector('.hero-cta').addEventListener('click', function() {
+                location.href = 'https://www.utilityking.co.uk/contact.html'
+            });
+    </script>
+</body>
+</html>

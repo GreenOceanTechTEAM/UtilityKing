@@ -1,0 +1,902 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cheapest Energy Standing Charges Explained (UK 2026)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0c2d48;
+            --primary-light: #1a4b6e;
+            --secondary: #2e8b57;
+            --secondary-light: #3cb371;
+            --accent: #ff7f50;
+            --dark: #0a1929;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.7;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section with Dark Theme */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 30%;
+                height: 100%;
+                background: rgba(255, 255, 255, 0.05);
+                clip-path: polygon(100% 0, 100% 100%, 0 100%);
+            }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text h1 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .hero-text p {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+        }
+
+        .meta-info {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .meta-badge {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 30px;
+            margin-top: 40px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--radius);
+            min-width: 150px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-value {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-visual {
+            position: relative;
+        }
+
+        .data-box {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .data-title {
+            font-weight: 600;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.3rem;
+        }
+
+        /* Card Styles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+        }
+
+            .section-title:after {
+                content: '';
+                position: absolute;
+                bottom: -15px;
+                left: 50%;
+                transform: translateX(-50%);
+                width: 80px;
+                height: 4px;
+                background: var(--secondary);
+                border-radius: 2px;
+            }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-10px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            }
+
+        .card-header {
+            padding: 25px 25px 15px;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .icon-1 {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+        }
+
+        .icon-2 {
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+        }
+
+        .icon-3 {
+            background: linear-gradient(135deg, var(--accent), #ff9e6d);
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--dark);
+        }
+
+        .card-body {
+            padding: 20px 25px 25px;
+        }
+
+        /* Data List */
+        .data-list {
+            list-style: none;
+        }
+
+            .data-list li {
+                padding: 15px 0;
+                border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+                display: flex;
+                align-items: center;
+                gap: 15px;
+            }
+
+                .data-list li:last-child {
+                    border-bottom: none;
+                }
+
+            .data-list i {
+                color: var(--accent);
+                font-size: 1.2rem;
+            }
+
+        /* Myth Section */
+        .myth-section {
+            margin-bottom: 80px;
+        }
+
+        .myth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+
+        .myth-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            display: flex;
+            gap: 20px;
+            align-items: flex-start;
+        }
+
+        .myth-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            font-size: 1.3rem;
+        }
+
+        .myth-false {
+            background: rgba(255, 107, 53, 0.1);
+            color: var(--accent);
+        }
+
+        .myth-content h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+
+        /* Comparison Section */
+        .comparison-section {
+            margin-bottom: 80px;
+        }
+
+        .comparison-box {
+            background: white;
+            border-radius: var(--radius);
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 30px;
+        }
+
+        .comparison-item h4 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+
+        .comparison-item ul {
+            padding-left: 20px;
+        }
+
+        .comparison-item li {
+            margin-bottom: 10px;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 60px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+
+            .comparison-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                border-radius: 0 0 30px 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2.4rem;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            .stat {
+                min-width: 100%;
+            }
+
+            .cta-section {
+                padding: 40px 20px;
+            }
+
+            .cta-title {
+                font-size: 1.8rem;
+            }
+
+            .comparison-box {
+                padding: 30px 20px;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .card {
+                margin-bottom: 20px;
+            }
+
+            .myth-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero {
+                padding: 60px 0 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section with Dark Theme -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="meta-info">
+                        <span class="meta-badge">Last updated: January 2026</span>
+                        <span class="meta-badge">Reviewed by: UK Energy Market Analyst</span>
+                        <span class="meta-badge">Regulator: Ofgem</span>
+                    </div>
+                    <h1>Cheapest Energy Standing Charges Explained (UK 2026)</h1>
+                    <p>An energy standing charge is the fixed daily amount you pay for gas and electricity regardless of usage. In 2026, standing charges are one of the biggest drivers of high energy bills.</p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">45-65p</div>
+                            <div class="stat-label">Electricity Daily</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">30-45p</div>
+                            <div class="stat-label">Gas Daily</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">£275-£405</div>
+                            <div class="stat-label">Annual Cost</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="data-box">
+                        <h3 class="data-title">What Standing Charges Pay For:</h3>
+                        <ul class="data-list">
+                            <li>
+                                <i class="fas fa-network-wired"></i>
+                                <span>Maintaining gas and electricity networks</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-tachometer-alt"></i>
+                                <span>Meter reading and administration</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-headset"></i>
+                                <span>Customer service and billing systems</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-university"></i>
+                                <span>Government energy schemes and levies</span>
+                            </li>
+                        </ul>
+                        <p style="margin-top: 20px; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-style: italic; color: rgba(255, 255, 255, 0.8);">
+                            You pay standing charges even if you're away, use zero energy, or your property is empty.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- What is Considered Cheap -->
+    <section class="container">
+        <h2 class="section-title">What Is Considered a "Cheap" Standing Charge?</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <h3 class="card-title">Price Guidelines (2026)</h3>
+                </div>
+                <div class="card-body">
+                    <p>A cheap standing charge is relative to your region and usage level. As a rough guide:</p>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-light);">
+                            <span>Electricity below:</span>
+                            <span style="font-weight: 600; color: var(--secondary);">45p/day</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                            <span>Gas below:</span>
+                            <span style="font-weight: 600; color: var(--secondary);">30p/day</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--gray);">
+                        However, cheap standing charges often come with higher unit rates, so total cost always matters more.
+                    </p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <h3 class="card-title">Why They Vary by Postcode</h3>
+                </div>
+                <div class="card-body">
+                    <p>Standing charges are regionally priced because of:</p>
+                    <ul style="margin-top: 15px; padding-left: 20px;">
+                        <li>Local grid maintenance costs</li>
+                        <li>Distribution network differences</li>
+                        <li>Historical pricing zones</li>
+                    </ul>
+                    <div style="margin-top: 20px; padding: 15px; background: #f0f7ff; border-radius: 8px;">
+                        <p style="font-weight: 600; margin-bottom: 5px;">Important:</p>
+                        <p>Two identical homes can pay different standing charges. National "cheapest" lists are misleading.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <h3 class="card-title">Annual Cost Impact</h3>
+                </div>
+                <div class="card-body">
+                    <p>Before you use any energy, you could be paying:</p>
+                    <div style="margin-top: 20px;">
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--gray-light);">
+                            <span>For electricity (45-65p daily):</span>
+                            <span style="font-weight: 600;">£165–£240 per year</span>
+                        </div>
+                        <div style="display: flex; justify-content: space-between; padding: 12px 0;">
+                            <span>For gas (30-45p daily):</span>
+                            <span style="font-weight: 600;">£110–£165 per year</span>
+                        </div>
+                    </div>
+                    <p style="margin-top: 20px; font-style: italic; color: var(--gray);">
+                        That's £275-£405 per year before any energy consumption.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Fixed vs Variable Comparison -->
+    <section class="comparison-section container">
+        <h2 class="section-title">Cheapest Standing Charges: Fixed vs Variable Tariffs</h2>
+        <div class="comparison-box">
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4>Variable Tariffs</h4>
+                    <ul>
+                        <li>Standing charges capped by Ofgem</li>
+                        <li>Rarely the cheapest overall</li>
+                        <li>Prices can rise with the cap</li>
+                        <li>No exit fees usually</li>
+                        <li>Flexibility to switch anytime</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item">
+                    <h4>Fixed Tariffs</h4>
+                    <ul>
+                        <li>Standing charges may be lower or higher than the cap</li>
+                        <li>Some lower standing charges but raise unit rates</li>
+                        <li>Price protection for contract duration</li>
+                        <li>Often include exit fees</li>
+                        <li>Contract length typically 12-24 months</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid var(--accent);">
+                <strong>Note:</strong> Some fixed tariffs deliberately lower standing charges but raise unit rates — or vice versa. Always compare total annual cost.
+            </p>
+        </div>
+    </section>
+
+    <!-- Different Household Types -->
+    <section class="container">
+        <h2 class="section-title">Cheapest Standing Charges for Different Households</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h3 class="card-title">Low-Usage Homes & Flats</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Standing charges matter more than unit rates</li>
+                        <li>Low standing charge tariffs can save £100+ per year</li>
+                        <li>Focus on minimizing daily fixed costs</li>
+                        <li>Specialist tariffs may be available</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <h3 class="card-title">High-Usage Homes</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Unit rates matter more than standing charges</li>
+                        <li>Slightly higher standing charges can be acceptable</li>
+                        <li>Focus on lowest overall annual cost</li>
+                        <li>Balance between standing charges and unit rates</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-door-closed"></i>
+                    </div>
+                    <h3 class="card-title">Second Homes & Vacant Properties</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Standing charges dominate total cost</li>
+                        <li>Specialist low-standing-charge tariffs may help</li>
+                        <li>Consider very low usage tariffs</li>
+                        <li>May accept higher unit rates for lower standing charges</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Special Meter Considerations -->
+    <section class="container">
+        <h2 class="section-title">Special Meter Considerations</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-key"></i>
+                    </div>
+                    <h3 class="card-title">Prepayment Meters</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Often face higher standing charges</li>
+                        <li>Fewer low-cost options available</li>
+                        <li>In some regions, prepayment electricity standing charges are among the highest</li>
+                        <li>Comparing is especially important for prepay users</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-clock"></i>
+                    </div>
+                    <h3 class="card-title">Economy 7 Meters</h3>
+                </div>
+                <div class="card-body">
+                    <ul>
+                        <li>Usually have a single standing charge</li>
+                        <li>Often higher than standard electricity standing charges</li>
+                        <li>Savings depend entirely on overnight electricity usage</li>
+                        <li>If most usage is daytime, Economy 7 can cost more</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-ban"></i>
+                    </div>
+                    <h3 class="card-title">Zero Standing Charge Energy?</h3>
+                </div>
+                <div class="card-body">
+                    <p><strong>Almost never available.</strong> So-called zero standing charge tariffs:</p>
+                    <ul style="margin-top: 10px;">
+                        <li>Are extremely rare</li>
+                        <li>Come with very high unit rates</li>
+                        <li>Usually cost more overall</li>
+                    </ul>
+                    <p style="margin-top: 15px; font-style: italic; color: var(--gray);">
+                        For most households, minimizing standing charges, not eliminating them, is the realistic goal.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Standing Charges vs Unit Rates -->
+    <section class="container">
+        <h2 class="section-title">Standing Charges vs Unit Rates: Which Is More Important?</h2>
+        <div class="comparison-box">
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <h4>Low Usage Households</h4>
+                    <ul>
+                        <li>Standing charges have the biggest impact</li>
+                        <li>Can be 30-50% of total bill</li>
+                        <li>Focus on lowest standing charges</li>
+                        <li>Accept slightly higher unit rates if needed</li>
+                        <li>Annual savings: £100+ possible</li>
+                    </ul>
+                </div>
+
+                <div class="comparison-item">
+                    <h4>High Usage Households</h4>
+                    <ul>
+                        <li>Unit rates matter more than standing charges</li>
+                        <li>Standing charges are smaller percentage of bill</li>
+                        <li>Focus on lowest unit rates</li>
+                        <li>Can accept higher standing charges</li>
+                        <li>Balance is key for optimal savings</li>
+                    </ul>
+                </div>
+            </div>
+            <p style="margin-top: 30px; padding: 20px; background: #f8f9fa; border-radius: 8px; border-left: 4px solid var(--secondary);">
+                <strong>Key Takeaway:</strong> This is why comparing total annual cost is essential. Never look at standing charges or unit rates in isolation.
+            </p>
+        </div>
+    </section>
+
+    <!-- Myths Section -->
+    <section class="myth-section container">
+        <h2 class="section-title">Common Myths About Cheap Standing Charges</h2>
+        <div class="myth-grid">
+            <div class="myth-card">
+                <div class="myth-icon myth-false">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="myth-content">
+                    <h3>"The lowest standing charge is always the cheapest tariff"</h3>
+                    <p><strong>False.</strong> Suppliers may offset lower standing charges with much higher unit rates. Always compare total annual cost.</p>
+                </div>
+            </div>
+
+            <div class="myth-card">
+                <div class="myth-icon myth-false">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="myth-content">
+                    <h3>"Standing charges are the same everywhere"</h3>
+                    <p><strong>False.</strong> Regional pricing varies significantly due to local network costs, infrastructure, and historical pricing zones.</p>
+                </div>
+            </div>
+
+            <div class="myth-card">
+                <div class="myth-icon myth-false">
+                    <i class="fas fa-times"></i>
+                </div>
+                <div class="myth-content">
+                    <h3>"The price cap keeps standing charges low"</h3>
+                    <p><strong>False.</strong> The Ofgem price cap limits standing charges but does not make them cheap. Standing charges under the cap can still be high.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Find Cheapest -->
+    <section class="container">
+        <h2 class="section-title">How to Find the Cheapest Standing Charges</h2>
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-1">
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <h3 class="card-title">Step 1: Enter Your Postcode</h3>
+                </div>
+                <div class="card-body">
+                    <p>The cheapest standing charges can only be identified using postcode comparison. National averages are misleading.</p>
+                    <ul style="margin-top: 15px;">
+                        <li>Standing charges vary by region</li>
+                        <li>Local network costs differ</li>
+                        <li>Distribution infrastructure varies</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-2">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <h3 class="card-title">Step 2: Enter Realistic Annual Usage</h3>
+                </div>
+                <div class="card-body">
+                    <p>Accurate usage figures ensure proper comparison between standing charges and unit rates.</p>
+                    <ul style="margin-top: 15px;">
+                        <li>Use actual kWh figures if available</li>
+                        <li>Estimate based on household size</li>
+                        <li>Consider seasonal variations</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-icon icon-3">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <h3 class="card-title">Step 3: Compare Total Annual Cost</h3>
+                </div>
+                <div class="card-body">
+                    <p>Compare standing charges, unit rates, and total yearly cost together.</p>
+                    <ul style="margin-top: 15px;">
+                        <li>Don't look at standing charges alone</li>
+                        <li>Check exit fees and contract length</li>
+                        <li>Consider tariff type (fixed/variable)</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">Find Your Cheapest Standing Charges Today</h2>
+            <p class="cta-description">In 2026, standing charges can make up nearly half of an energy bill for low-usage households. Choosing the cheapest standing charge tariff — without overpaying on unit rates — is one of the smartest ways to cut costs.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile responsive adjustments
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

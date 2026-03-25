@@ -1,0 +1,1244 @@
+﻿<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Find the best energy deals for flats and apartments in the UK 2026. Compare flat-specific tariffs, understand standing charges, and save on energy bills as a renter or owner.">
+    <meta name="keywords" content="energy deals for flats, apartment energy tariffs, standing charges UK, flat energy comparison, renter energy deals, Economy 7 flats, Ofgem, UtilityKing">
+    <meta name="author" content="UK Energy Market Analyst">
+    <title>Best Energy Deals for Flats & Apartments (UK 2026 Guide)</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #0056b3;
+            --primary-dark: #003d82;
+            --secondary: #00c896;
+            --dark-bg: #0f172a;
+            --dark-card: #1e293b;
+            --light-bg: #f8fafc;
+            --text-light: #f1f5f9;
+            --text-dark: #334155;
+            --text-muted: #64748b;
+            --border-color: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --apartment-color: #7c3aed;
+            --flat-color: #8b5cf6;
+            --shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-dark);
+            background: var(--light-bg);
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #5b21b6 100%);
+            color: var(--text-light);
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -50%;
+                width: 100%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(124, 58, 237, 0.15) 0%, transparent 70%);
+                z-index: 0;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .badge {
+            display: inline-block;
+            background: var(--flat-color);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            letter-spacing: 0.5px;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, #fff, #c4b5fd);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .hero-meta {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            color: #cbd5e1;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--flat-color);
+            color: white;
+            padding: 16px 32px;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.3);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+                background: #7c3aed;
+            }
+
+        /* Main Content */
+      
+        .section-header {
+            margin-bottom: 40px;
+            position: relative;
+            padding-left: 20px;
+        }
+
+            .section-header::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 100%;
+                width: 5px;
+                background: var(--apartment-color);
+                border-radius: 5px;
+            }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.2rem);
+            font-weight: 600;
+            color: var(--dark-bg);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border: 1px solid var(--border-color);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            }
+
+        .card-dark {
+            background: var(--dark-card);
+            color: var(--text-light);
+        }
+
+        .card-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--apartment-color), var(--flat-color));
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            color: white;
+        }
+
+        .card-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        .card-dark .card-title {
+            color: var(--text-light);
+        }
+
+        .card-content {
+            color: var(--text-muted);
+        }
+
+        .card-dark .card-content {
+            color: #cbd5e1;
+        }
+
+        /* Grid Layouts */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        /* Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 30px;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+            .comparison-table th {
+                background: var(--apartment-color);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-family: 'Poppins', sans-serif;
+            }
+
+            .comparison-table td {
+                padding: 18px 20px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .comparison-table tr:nth-child(even) {
+                background: #f8fafc;
+            }
+
+            .comparison-table tr:hover {
+                background: #f1f5f9;
+            }
+
+        .table-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-electric {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+
+        .badge-dual {
+            background: #d1fae5;
+            color: #065f46;
+        }
+
+        .badge-economy7 {
+            background: #fef3c7;
+            color: #92400e;
+        }
+
+        .badge-prepay {
+            background: #f3e8ff;
+            color: #7c3aed;
+        }
+
+        /* Flat Type Cards */
+        .flat-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            height: 100%;
+            border-top: 4px solid var(--flat-color);
+            transition: var(--transition);
+        }
+
+            .flat-card:hover {
+                border-top-color: var(--apartment-color);
+                box-shadow: var(--shadow);
+                transform: translateY(-5px);
+            }
+
+        .flat-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--apartment-color), var(--flat-color));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+            color: white;
+        }
+
+        .flat-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--dark-bg);
+        }
+
+        /* Standing Charge Focus */
+        .standing-charge-focus {
+            background: linear-gradient(135deg, #f3e8ff, #e9d5ff);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin: 30px 0;
+            border-left: 5px solid var(--apartment-color);
+        }
+
+        /* Cost Table */
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            box-shadow: var(--shadow);
+            border-radius: var(--radius);
+            overflow: hidden;
+        }
+
+            .cost-table th {
+                background: var(--apartment-color);
+                color: white;
+                text-align: left;
+                padding: 18px;
+                font-weight: 600;
+            }
+
+            .cost-table td {
+                padding: 16px 18px;
+                border-bottom: 1px solid var(--border-color);
+            }
+
+            .cost-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .cost-range {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #f3e8ff;
+            color: var(--apartment-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        /* Process Steps */
+        .process-steps {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 30px 0;
+            justify-content: center;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 250px;
+            text-align: center;
+            padding: 25px;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            position: relative;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: var(--apartment-color);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            font-size: 1.2rem;
+        }
+
+        /* UtilityKing Section */
+        .utilityking-highlight {
+            background: linear-gradient(135deg, #f5f3ff 0%, #ede9fe 100%);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 40px 0;
+            border-left: 5px solid var(--flat-color);
+        }
+
+        .highlight-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--dark-bg);
+        }
+
+        /* Final Verdict */
+        .verdict-box {
+            background: linear-gradient(135deg, var(--apartment-color) 0%, #5b21b6 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            color: white;
+            text-align: center;
+            margin: 10px 0;
+        }
+
+        .verdict-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.8rem, 3vw, 2.5rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        /* Related Articles */
+        .related-articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .article-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #f1f5f9;
+            color: var(--apartment-color);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 500;
+            transition: var(--transition);
+            border: 1px solid var(--border-color);
+        }
+
+            .article-link:hover {
+                background: var(--apartment-color);
+                color: white;
+                transform: translateY(-2px);
+            }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero {
+                padding: 60px 0 40px;
+            }
+
+            .cards-grid {
+                grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            }
+
+            .comparison-table, .cost-table {
+                font-size: 0.9rem;
+            }
+
+            .utilityking-highlight {
+                padding: 30px;
+            }
+
+            .process-steps {
+                gap: 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-meta {
+                flex-direction: column;
+                align-items: center;
+                gap: 15px;
+            }
+
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table, .cost-table {
+                display: block;
+                overflow-x: auto;
+            }
+
+            .verdict-box {
+                padding: 30px 20px;
+            }
+
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .step {
+                min-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                padding: 40px 0 30px;
+            }
+
+                .hero h1 {
+                    font-size: 2rem;
+                }
+
+            .card {
+                padding: 20px;
+            }
+
+            .section {
+                margin-bottom: 50px;
+            }
+
+            .cta-button {
+                padding: 14px 24px;
+                font-size: 1rem;
+            }
+
+            .flat-card {
+                padding: 20px;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .delay-1 {
+            animation-delay: 0.1s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.3s;
+        }
+
+        .delay-4 {
+            animation-delay: 0.4s;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="badge">Flat & Apartment Energy Guide 2026</div>
+                <h1>Best Energy Deals for Flats & Apartments (UK 2026 Guide)</h1>
+
+                <div class="hero-meta">
+                    <div class="meta-item">
+                        <i class="far fa-calendar-alt"></i>
+                        <span>Last updated: January 2026</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Regulator: Ofgem</span>
+                    </div>
+                    <div class="meta-item">
+                        <i class="fas fa-users"></i>
+                        <span>Audience: UK flat owners, leaseholders & renters</span>
+                    </div>
+                </div>
+
+                <p class="hero-description">
+                    Find flat-specific energy tariffs, understand why standing charges matter more, and discover how to save on energy bills as a flat owner or renter in 2026.
+                </p>
+
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us<i class="fa fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <div class="content-wrapper">
+        <div class="container">
+            <!-- What Are Best Deals -->
+            <section class="section animate-in" id="best-deals">
+                <div class="section-header">
+                    <h2 class="section-title">What Are the Best Energy Deals for Flats and Apartments?</h2>
+                    <p class="section-subtitle">Understanding flat-specific tariff requirements</p>
+                </div>
+
+                <div class="card">
+                    <p>The best energy deals for flats and apartments are tariffs that offer these key features:</p>
+
+                    <div class="cards-grid" style="margin-top: 25px;">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-file-invoice-dollar"></i>
+                            </div>
+                            <h4 class="card-title">Low Standing Charges</h4>
+                            <p class="card-content">Daily fixed costs matter most for low-usage flats. Lower standing charges = bigger savings.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-bolt"></i>
+                            </div>
+                            <h4 class="card-title">Competitive Unit Rates</h4>
+                            <p class="card-content">Reasonable p/kWh rates that don't sacrifice value for lower standing charges.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-door-open"></i>
+                            </div>
+                            <h4 class="card-title">No Exit Fees</h4>
+                            <p class="card-content">Essential for renters who may need to move unexpectedly. Flexibility is key.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">Meter Compatibility</h4>
+                            <p class="card-content">Works with flat-specific meter types like Economy 7, prepayment, or electric-only setups.</p>
+                        </div>
+                    </div>
+
+                    <div class="standing-charge-focus">
+                        <div style="display: flex; align-items: flex-start; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 60px; height: 60px; background: var(--apartment-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-lightbulb"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--apartment-color); margin-bottom: 10px;">Critical Insight for Flat Dwellers</h4>
+                                <p><strong>Because flats usually use less energy than houses, the cheapest deal isn't always the one with the lowest unit rate — standing charges matter much more.</strong> A tariff with slightly higher unit rates but much lower standing charges can save flat residents hundreds annually.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Why Different Section -->
+            <section class="section animate-in delay-1" id="why-different">
+                <div class="section-header">
+                    <h2 class="section-title">Why Energy Comparison Is Different for Flats</h2>
+                    <p class="section-subtitle">Flat-specific factors that change the equation</p>
+                </div>
+
+                <div class="card">
+                    <p>Flats and apartments often have unique characteristics that make standard energy comparisons misleading:</p>
+
+                    <div class="info-grid" style="margin: 25px 0;">
+                        <div style="background: #f0f9ff; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--apartment-color);">
+                            <h4 style="color: var(--apartment-color); margin-bottom: 15px;">Flat Characteristics</h4>
+                            <ul class="feature-list">
+                                <li>Smaller floor space (less to heat/cool)</li>
+                                <li>Lower gas usage (or no gas at all)</li>
+                                <li>Electric-only heating systems</li>
+                                <li>Shared infrastructure or communal meters</li>
+                                <li>Better insulation in modern blocks</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #fef3c7; padding: 25px; border-radius: var(--radius); border-left: 4px solid var(--warning);">
+                            <h4 style="color: var(--warning); margin-bottom: 15px;">The Problem</h4>
+                            <p>These factors mean many flat residents overpay by choosing tariffs designed for houses with higher energy consumption patterns.</p>
+                            <div style="margin-top: 20px; padding: 15px; background: #fee2e2; border-radius: var(--radius);">
+                                <p style="color: #dc2626; font-weight: 600; display: flex; align-items: center; gap: 10px;">
+                                    <i class="fas fa-exclamation-circle"></i>
+                                    Flat residents can overpay by £200-£400 annually on wrong tariffs
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 20px; background: linear-gradient(135deg, #f5f3ff, #ede9fe);">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 70px; height: 70px; background: var(--flat-color); border-radius: 12px; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.8rem;">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--apartment-color); margin-bottom: 10px;">UtilityKing's Flat-Specific Comparison</h4>
+                                <p>UtilityKing's comparison engine adjusts for these differences, prioritizing tariffs with lower standing charges and better value for lower-consumption households. We rank deals by true annual cost for flat living, not just headline rates designed for houses.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Common Setups Section -->
+            <section class="section animate-in delay-2" id="setups">
+                <div class="section-header">
+                    <h2 class="section-title">Common Energy Setups in UK Flats</h2>
+                    <p class="section-subtitle">Identify your flat type for accurate comparison</p>
+                </div>
+
+                <div class="cards-grid">
+                    <!-- Electric-Only -->
+                    <div class="flat-card animate-in">
+                        <div class="flat-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <span class="table-badge badge-electric">Common Setup</span>
+                        <h3 class="flat-title">1. Electric-Only Flats</h3>
+                        <p><strong>Very common in:</strong> City centres, purpose-built apartment blocks, high-rise buildings</p>
+
+                        <div style="margin: 20px 0; padding: 20px; background: #eff6ff; border-radius: var(--radius);">
+                            <h4 style="color: var(--apartment-color); margin-bottom: 10px;">Best Tariffs:</h4>
+                            <ul style="list-style: none;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Low standing charge electricity deals
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Fixed tariffs for budget certainty
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Single-rate rather than Economy 7 (unless storage heaters)
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Gas + Electricity -->
+                    <div class="flat-card animate-in delay-1">
+                        <div class="flat-icon" style="background: linear-gradient(135deg, #10b981, #34d399);">
+                            <i class="fas fa-fire"></i>
+                        </div>
+                        <span class="table-badge badge-dual">Dual Fuel</span>
+                        <h3 class="flat-title">2. Gas + Electricity Flats</h3>
+                        <p><strong>More common in:</strong> Converted houses, low-rise blocks, older apartments</p>
+
+                        <div style="margin: 20px 0; padding: 20px; background: #ecfdf5; border-radius: var(--radius);">
+                            <h4 style="color: #065f46; margin-bottom: 10px;">Best Tariffs:</h4>
+                            <ul style="list-style: none;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Dual fuel fixed tariffs (bundled discount)
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Deals with reduced gas standing charges
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Separate suppliers if better value
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Economy 7 -->
+                    <div class="flat-card animate-in delay-2">
+                        <div class="flat-icon" style="background: linear-gradient(135deg, #f59e0b, #fbbf24);">
+                            <i class="fas fa-moon"></i>
+                        </div>
+                        <span class="table-badge badge-economy7">Time-Based</span>
+                        <h3 class="flat-title">3. Economy 7 Flats</h3>
+                        <p><strong>Often found in:</strong> Older apartment blocks, flats with storage heaters, all-electric setups</p>
+
+                        <div style="margin: 20px 0; padding: 20px; background: #fef3c7; border-radius: var(--radius);">
+                            <h4 style="color: #92400e; margin-bottom: 10px;">Best Tariffs:</h4>
+                            <ul style="list-style: none;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Proper Economy 7 tariffs with cheap night rates
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    <strong>Not</strong> standard electricity tariffs (critical difference)
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Suppliers with good Economy 7 support
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Prepayment -->
+                    <div class="flat-card animate-in delay-3">
+                        <div class="flat-icon" style="background: linear-gradient(135deg, #8b5cf6, #a78bfa);">
+                            <i class="fas fa-key"></i>
+                        </div>
+                        <span class="table-badge badge-prepay">Prepayment</span>
+                        <h3 class="flat-title">4. Prepayment Meter Flats</h3>
+                        <p><strong>Still common in:</strong> Rental properties, socially-owned flats, temporary accommodations</p>
+
+                        <div style="margin: 20px 0; padding: 20px; background: #f5f3ff; border-radius: var(--radius);">
+                            <h4 style="color: #7c3aed; margin-bottom: 10px;">Best Tariffs:</h4>
+                            <ul style="list-style: none;">
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Specialist prepayment deals
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Suppliers with fairer standing charges
+                                </li>
+                                <li style="padding: 5px 0; padding-left: 25px; position: relative;">
+                                    <i class="fas fa-check" style="position: absolute; left: 0; color: var(--success);"></i>
+                                    Comparison is critical — prepay customers often pay more by default
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Standing Charges Focus -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">What Matters Most for Flats: Standing Charges</h2>
+                    <p class="section-subtitle">The critical factor most flat residents overlook</p>
+                </div>
+
+                <div class="card">
+                    <div style="text-align: center; margin-bottom: 30px;">
+                        <div style="width: 80px; height: 80px; background: linear-gradient(135deg, var(--apartment-color), var(--flat-color)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; color: white;">
+                            <i class="fas fa-balance-scale"></i>
+                        </div>
+                        <h3 style="font-size: 1.8rem; color: var(--apartment-color); margin-bottom: 15px;">For Flats, Standing Charges Often Matter More Than Unit Rates</h3>
+                    </div>
+
+                    <div class="info-grid" style="margin: 25px 0;">
+                        <div style="background: #f0f9ff; padding: 25px; border-radius: var(--radius);">
+                            <h4 style="color: var(--apartment-color); margin-bottom: 15px;">Why Standing Charges Dominate</h4>
+                            <ul class="feature-list">
+                                <li><strong>Lower overall usage</strong> – Flats use 30-50% less energy than houses</li>
+                                <li><strong>Fixed daily costs</strong> – Standing charges are the same regardless of usage</li>
+                                <li><strong>Higher percentage impact</strong> – £1/day charge = £365/year regardless of usage</li>
+                                <li><strong>No volume discount</strong> – Lower usage means unit rate savings are smaller</li>
+                            </ul>
+                        </div>
+
+                        <div style="background: #fef3c7; padding: 25px; border-radius: var(--radius);">
+                            <h4 style="color: var(--warning); margin-bottom: 15px;">The Problem</h4>
+                            <p>A tariff that looks cheap on unit rates can still be expensive overall for flat dwellers if it has high standing charges.</p>
+
+                            <div style="margin-top: 20px; padding: 15px; background: #fee2e2; border-radius: var(--radius);">
+                                <h5 style="color: #dc2626; margin-bottom: 10px;">Example:</h5>
+                                <p>
+                                    Tariff A: 25p/kWh + 25p/day standing charge<br>
+                                    Tariff B: 28p/kWh + 15p/day standing charge<br>
+                                    <strong>For low-usage flats, Tariff B is often cheaper despite higher unit rates.</strong>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card" style="margin-top: 30px; background: linear-gradient(135deg, #f5f3ff, #ede9fe); border-left: 4px solid var(--apartment-color);">
+                        <div style="display: flex; align-items: center; gap: 20px;">
+                            <div style="flex-shrink: 0; width: 60px; height: 60px; background: var(--apartment-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 1.5rem;">
+                                <i class="fas fa-calculator"></i>
+                            </div>
+                            <div>
+                                <h4 style="color: var(--apartment-color); margin-bottom: 10px;">UtilityKing's Solution</h4>
+                                <p>UtilityKing ranks deals by <strong>true annual cost</strong>, not headline pricing. Our comparison engine automatically calculates the best value for your actual usage patterns, ensuring you see which tariffs really work for flat living, not just which have the lowest unit rates.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Cost Expectations -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Cheapest Energy Deals for Flats: What to Expect in 2026</h2>
+                    <p class="section-subtitle">Realistic annual cost ranges based on flat type</p>
+                </div>
+
+                <div class="card">
+                    <table class="cost-table">
+                        <thead>
+                            <tr>
+                                <th>Flat Type</th>
+                                <th>Typical Annual Cost</th>
+                                <th>Key Considerations</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Studio / 1-bed (electric only)</strong></td>
+                                <td><span class="cost-range">£650 – £900</span></td>
+                                <td>Standing charges dominate. Low-usage optimised tariffs essential.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>1-bed (gas + electric)</strong></td>
+                                <td><span class="cost-range">£750 – £1,050</span></td>
+                                <td>Dual fuel savings possible. Gas standing charges critical.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>2-bed flat</strong></td>
+                                <td><span class="cost-range">£900 – £1,200</span></td>
+                                <td>Balance of standing charges and unit rates. More variable usage.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Economy 7 flat</strong></td>
+                                <td><span class="cost-range">£700 – £1,100</span></td>
+                                <td>Highly dependent on night usage ratio. Wrong tariff = expensive.</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Prepayment flat</strong></td>
+                                <td><span class="cost-range">£800 – £1,150</span></td>
+                                <td>Typically 5-10% higher than credit meters. Comparison vital.</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div style="margin-top: 30px;">
+                        <h4 style="color: var(--apartment-color); margin-bottom: 15px;">Actual costs depend heavily on:</h4>
+
+                        <div style="margin-top: 20px;">
+                            <div class="card">
+                                <h4 class="card-title">Standing Charges</h4>
+                                <p class="card-content">Daily fixed costs that vary by region and supplier. The biggest variable for flats.</p>
+                            </div>
+
+                            <div class="card">
+                                <h4 class="card-title">Usage Habits</h4>
+                                <p class="card-content">Working from home, heating preferences, and appliance efficiency.</p>
+                            </div>
+
+                            <div class="card">
+                                <h4 class="card-title">Region</h4>
+                                <p class="card-content">Network charges vary by UK region, affecting standing charges.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Fixed vs Variable -->
+            <section class="section animate-in delay-1">
+                <div class="section-header">
+                    <h2 class="section-title">Fixed vs Variable Energy Deals for Flats</h2>
+                    <p class="section-subtitle">Which tariff type works best for apartment living?</p>
+                </div>
+
+                <div class="card">
+                    <div class="comparison-table">
+                        <thead>
+                            <tr>
+                                <th>Feature</th>
+                                <th>Fixed Tariffs (Recommended)</th>
+                                <th>Variable Tariffs</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><strong>Price certainty</strong></td>
+                                <td><span class="table-badge" style="background: #d1fae5; color: #065f46;">Excellent</span></td>
+                                <td><span class="table-badge" style="background: #fee2e2; color: #dc2626;">Poor</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Budgeting ease</strong></td>
+                                <td><span class="table-badge" style="background: #d1fae5; color: #065f46;">Very Easy</span></td>
+                                <td><span class="table-badge" style="background: #fee2e2; color: #dc2626;">Difficult</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Price cap protection</strong></td>
+                                <td><span class="table-badge" style="background: #d1fae5; color: #065f46;">Often cheaper</span></td>
+                                <td><span class="table-badge" style="background: #fef3c7; color: #92400e;">At cap level</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Flexibility</strong></td>
+                                <td><span class="table-badge" style="background: #fef3c7; color: #92400e;">Exit fees may apply</span></td>
+                                <td><span class="table-badge" style="background: #d1fae5; color: #065f46;">No exit fees</span></td>
+                            </tr>
+                            <tr>
+                                <td><strong>Long-term value</strong></td>
+                                <td><span class="table-badge" style="background: #d1fae5; color: #065f46;">Usually best</span></td>
+                                <td><span class="table-badge" style="background: #fee2e2; color: #dc2626;">Rarely cheapest</span></td>
+                            </tr>
+                        </tbody>
+                        </table>
+
+                        <div class="card" style="margin-top: 30px; background: #f0f9ff; border-left: 4px solid var(--apartment-color);">
+                            <p style="display: flex; align-items: flex-start; gap: 15px;">
+                                <i class="fas fa-home" style="color: var(--apartment-color); font-size: 1.5rem; flex-shrink: 0; margin-top: 3px;"></i>
+                                <span><strong>For most flats in 2026, fixed tariffs win.</strong> The price certainty, easier budgeting, and frequent undercutting of the price cap make fixed deals the sensible choice for flat residents. Variable tariffs are rarely the cheapest long-term option and introduce unnecessary budgeting uncertainty.</span>
+                            </p>
+                        </div>
+                    </div>
+            </section>
+
+            <!-- Renter Specific -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">Best Energy Deals for Renters in Flats</h2>
+                    <p class="section-subtitle">Special considerations for rental properties</p>
+                </div>
+
+                <div class="card">
+                    <p>If you rent a flat, these features should be your priority when choosing an energy deal:</p>
+
+                    <div class="cards-grid" style="margin: 25px 0;">
+                        <div class="card" style="border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">No Exit Fees</h4>
+                            <p class="card-content">Essential for renters who may need to move with short notice. Look for "no exit fee" or "flexible" tariffs.</p>
+                        </div>
+
+                        <div class="card" style="border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">Short/Flexible Contracts</h4>
+                            <p class="card-content">12-month or month-to-month contracts provide the flexibility renters need.</p>
+                        </div>
+
+                        <div class="card" style="border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">No Smart Meter Requirement</h4>
+                            <p class="card-content">Avoid tariffs requiring smart meters if your landlord hasn't approved installation.</p>
+                        </div>
+
+                        <div class="card" style="border-top: 4px solid var(--success);">
+                            <h4 class="card-title" style="color: var(--success);">Easy Switching</h4>
+                            <p class="card-content">Suppliers with simple online management and easy moving home processes.</p>
+                        </div>
+                    </div>
+
+                    <div style="background: #dcfce7; padding: 25px; border-radius: var(--radius); margin-top: 20px; border-left: 4px solid var(--success);">
+                        <h4 style="color: #065f46; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+                            <i class="fas fa-gavel"></i> Important Legal Right
+                        </h4>
+                        <p><strong>You do not need landlord permission to switch energy suppliers</strong> (unless bills are included in rent). As the bill payer, you have the legal right to choose your energy supplier under UK law. This applies even if you're a tenant in a rented flat. UtilityKing helps renters find suitable tariffs with the flexibility they need.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- UtilityKing Section -->
+            <section class="section animate-in delay-1">
+                <div class="utilityking-highlight">
+                    <h3 class="highlight-title">Why UtilityKing Is Ideal for Flats & Apartments</h3>
+                    <div class="cards-grid">
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-chart-bar"></i>
+                            </div>
+                            <h4 class="card-title">Low-Usage Optimised</h4>
+                            <p class="card-content">Accounts for lower consumption patterns typical in flats, not house-based averages.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-exclamation-triangle"></i>
+                            </div>
+                            <h4 class="card-title">High Charge Alerts</h4>
+                            <p class="card-content">Flags high standing charge traps that hurt flat residents disproportionately.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-tachometer-alt"></i>
+                            </div>
+                            <h4 class="card-title">Special Meter Support</h4>
+                            <p class="card-content">Full support for Economy 7, prepayment, and electric-only meter setups.</p>
+                        </div>
+
+                        <div class="card">
+                            <div class="card-icon">
+                                <i class="fas fa-user-tie"></i>
+                            </div>
+                            <h4 class="card-title">Renter-Friendly Focus</h4>
+                            <p class="card-content">Highlights tariffs with no exit fees and flexible terms ideal for renters.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; padding: 25px; background: rgba(124, 58, 237, 0.1); border-radius: var(--radius);">
+                        <p style="font-size: 1.1rem; max-width: 800px; margin: 0 auto;"><strong>Designed for real-world living, not assumptions.</strong> UtilityKing's comparison engine is specifically tuned to identify the best energy deals for flat and apartment residents, considering the unique consumption patterns, meter types, and flexibility needs of this market segment.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- How Often to Compare -->
+            <section class="section animate-in delay-2">
+                <div class="section-header">
+                    <h2 class="section-title">How Often Should Flat Residents Compare Energy?</h2>
+                    <p class="section-subtitle">Maintaining optimal energy costs in your flat</p>
+                </div>
+
+                <div class="card">
+                    <div class="process-steps">
+                        <div class="step animate-in">
+                            <div class="step-number">1</div>
+                            <h4 style="color: var(--apartment-color); margin-bottom: 10px;">Once Per Year</h4>
+                            <p>Minimum recommendation. Market changes and new tariffs appear regularly.</p>
+                        </div>
+
+                        <div class="step animate-in delay-1">
+                            <div class="step-number">2</div>
+                            <h4 style="color: var(--apartment-color); margin-bottom: 10px;">Before Fixed Tariff Ends</h4>
+                            <p>30-45 days before your fixed deal ends to avoid rollover to expensive variable rates.</p>
+                        </div>
+
+                        <div class="step animate-in delay-2">
+                            <div class="step-number">3</div>
+                            <h4 style="color: var(--apartment-color); margin-bottom: 10px;">When Moving Flat</h4>
+                            <p>New location = different available tariffs and regional pricing.</p>
+                        </div>
+
+                        <div class="step animate-in delay-3">
+                            <div class="step-number">4</div>
+                            <h4 style="color: var(--apartment-color); margin-bottom: 10px;">Household Changes</h4>
+                            <p>New flatmate, working from home, or new appliances change usage patterns.</p>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center; margin-top: 30px; padding: 25px; background: linear-gradient(135deg, #f0f9ff, #e0f2fe); border-radius: var(--radius);">
+                        <h4 style="color: var(--apartment-color); margin-bottom: 15px;">Significant Savings Potential</h4>
+                        <p><strong>Even small flats can save £150–£300 per year by switching</strong> from expensive standard variable tariffs or poorly-suited fixed deals to flat-optimised energy tariffs. The savings percentage is often higher for flats than houses due to standing charge optimisation.</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Final Verdict -->
+            <section class="section animate-in delay-1">
+                <div class="verdict-box">
+                    <h2 class="verdict-title">Flats Need Smarter Energy Comparison</h2>
+                    <p style="font-size: 1.2rem; margin-bottom: 30px; max-width: 800px; margin-left: auto; margin-right: auto;">
+                        Flats and apartments are often overcharged by default because most tariffs are designed for houses with different consumption patterns. The best way to avoid overpaying is through flat-specific comparison.
+                    </p>
+
+                    <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin-bottom: 30px;">
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Compare Properly</h4>
+                            <p>Use comparison tools designed for flat consumption patterns, not house averages.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Focus on Standing Charges</h4>
+                            <p>For low-usage flats, standing charges often matter more than unit rates.</p>
+                        </div>
+
+                        <div class="card" style="background: rgba(255, 255, 255, 0.1); color: white; backdrop-filter: blur(10px);">
+                            <h4 class="card-title" style="color: white;">Choose Flat-Friendly Tariffs</h4>
+                            <p>Look for low standing charges, flexibility for renters, and meter compatibility.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+          
+        </div>
+    </div>
+
+    <script>
+        // Add animation on scroll
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('animate-in');
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all sections for animation
+            document.querySelectorAll('.section').forEach(section => {
+                observer.observe(section);
+            });
+
+            // Smooth scroll for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>

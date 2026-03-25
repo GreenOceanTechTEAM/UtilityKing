@@ -1,0 +1,1089 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>How to Compare Energy Prices Correctly (UK 2026 Consumer Guide)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1e3a8a;
+            --primary-light: #3b82f6;
+            --secondary: #059669;
+            --secondary-light: #10b981;
+            --accent: #8b5cf6;
+            --accent-light: #a78bfa;
+            --dark: #0f172a;
+            --dark-bg: #111827;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --warning: #dc2626;
+            --warning-light: #fecaca;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #3730a3 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(167, 139, 250, 0.05) 100%);
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+            }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .meta-badge {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--accent-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(139, 92, 246, 0.3);
+            white-space: nowrap;
+        }
+
+        .warning-box {
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(220, 38, 38, 0.3);
+            height: 100%;
+        }
+
+        .warning-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #fecaca;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .warning-list {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+
+            .warning-list li {
+                padding: 12px 0;
+                border-bottom: 1px solid rgba(254, 202, 202, 0.2);
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+                line-height: 1.5;
+            }
+
+                .warning-list li:last-child {
+                    border-bottom: none;
+                }
+
+            .warning-list i {
+                color: #fecaca;
+                font-size: 1rem;
+                margin-top: 2px;
+                flex-shrink: 0;
+            }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Steps Grid - Fixed 2x2 Layout for Desktop */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 2x2 Layout for specific steps */
+        .two-by-two-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .two-by-two-grid {
+                grid-template-columns: repeat(2, 1fr);
+                grid-template-rows: repeat(2, auto);
+            }
+        }
+
+        .step-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            min-height: 320px;
+        }
+
+            .step-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            }
+
+        .step-header {
+            padding: 25px 25px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            position: relative;
+            flex-shrink: 0;
+        }
+
+        .step-number {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.2rem;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .step-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            padding-top: 10px;
+        }
+
+        .step-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            min-height: 200px;
+        }
+
+            .step-body p {
+                margin-bottom: 15px;
+                line-height: 1.6;
+                color: var(--dark);
+            }
+
+            .step-body ul {
+                margin: 15px 0;
+                padding-left: 20px;
+                line-height: 1.6;
+            }
+
+            .step-body li {
+                margin-bottom: 8px;
+                line-height: 1.5;
+                color: var(--gray);
+            }
+
+        .key-fact {
+            background: #f0f7ff;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            border-left: 4px solid var(--primary);
+        }
+
+            .key-fact p {
+                font-weight: 600;
+                color: var(--primary);
+                margin-bottom: 10px !important;
+            }
+
+            .key-fact .note {
+                font-style: italic;
+                color: var(--gray);
+                font-weight: normal;
+                font-size: 0.95rem;
+                margin-top: 10px;
+                padding-top: 10px;
+                border-top: 1px solid #e2e8f0;
+            }
+
+        /* Usage Section - Clean Layout */
+        .usage-section {
+            margin: 40px 0;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .usage-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        .usage-card {
+            background: white;
+            border-radius: 12px;
+            padding: 30px 25px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 2px solid transparent;
+        }
+
+            .usage-card:hover {
+                transform: translateY(-5px);
+                border-color: var(--accent);
+                box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            }
+
+            .usage-card h4 {
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.3rem;
+                font-weight: 700;
+            }
+
+            .usage-card p {
+                color: var(--gray);
+                line-height: 1.6;
+                font-size: 1rem;
+            }
+
+        /* Fixed/Variable Comparison */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .comparison-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+            }
+        }
+
+        .comparison-item {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: var(--shadow);
+            border: 2px solid transparent;
+        }
+
+            .comparison-item:hover {
+                border-color: var(--accent-light);
+            }
+
+            .comparison-item h4 {
+                font-size: 1.3rem;
+                margin-bottom: 15px;
+                color: var(--primary);
+                font-weight: 700;
+            }
+
+        /* Important Note - Changed to Dark Black */
+        .important-note {
+            background: linear-gradient(135deg, var(--dark-bg) 0%, #1f2937 100%);
+            border-radius: var(--radius);
+            padding: 40px;
+            margin: 50px 0;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .important-note {
+                padding: 30px 25px;
+            }
+        }
+
+        .important-note h3 {
+            color: white;
+            margin-bottom: 30px;
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        @media (min-width: 768px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 15px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+            .feature-item:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-3px);
+            }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .feature-text {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.05rem;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 40px 25px;
+            }
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            }
+
+        /* Warning Boxes */
+        .warning-box-content {
+            background: rgba(220, 38, 38, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            border-left: 4px solid var(--warning);
+        }
+
+            .warning-box-content p {
+                font-weight: 600;
+                color: var(--warning);
+                margin-bottom: 10px !important;
+            }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
+                border-radius: 0 0 30px 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .step-header {
+                padding: 20px;
+            }
+
+            .step-body {
+                padding: 20px;
+            }
+
+            .step-title {
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .meta-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .cta-button {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+        }
+
+        /* Content Width Fix */
+        .content-wrapper {
+            max-width: 100%;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+        }
+
+        .step-content {
+            width: 100%;
+            max-width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="meta-info">
+                        <span class="meta-badge">Last updated: January 2026</span>
+                        <span class="meta-badge">Reviewed by: UK Energy Market Analyst</span>
+                        <span class="meta-badge">Regulator: Ofgem</span>
+                    </div>
+                    <h1>How to Compare Energy Prices Correctly (UK 2026 Consumer Guide)</h1>
+                    <p>Many UK households think they're comparing energy prices correctly — but end up switching to a tariff that looks cheaper and costs more. This guide shows you the right way.</p>
+                </div>
+
+                <div>
+                    <div class="warning-box">
+                        <h3 class="warning-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            Common Comparison Mistakes
+                        </h3>
+                        <ul class="warning-list">
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Focusing only on unit rates</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Ignoring standing charges</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Trusting national "cheapest" lists</span>
+                            </li>
+                            <li>
+                                <i class="fas fa-times"></i>
+                                <span>Comparing without postcode or usage data</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps 1-4 Section -->
+    <section class="container">
+        <h2 class="section-title">The 11-Step Correct Comparison Method</h2>
+
+        <div class="two-by-two-grid">
+            <!-- Step 1 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">1</div>
+                    <h3 class="step-title">Always Compare by Postcode</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>Energy prices in the UK are regionally priced. Your postcode affects:</p>
+                        <ul>
+                            <li>Unit rates</li>
+                            <li>Standing charges</li>
+                            <li>Available suppliers</li>
+                            <li>Network costs</li>
+                        </ul>
+                        <div class="key-fact">
+                            <p>Key Fact:</p>
+                            <p>Two identical households in different areas can pay very different prices.</p>
+                            <div class="note">Any comparison that doesn't ask for your postcode is inaccurate.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">2</div>
+                    <h3 class="step-title">Use Realistic Annual Energy Usage</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>Your annual usage is just as important as your postcode. Energy prices are calculated per kWh used.</p>
+                        <p><strong>If you estimate incorrectly:</strong></p>
+                        <ul>
+                            <li>Cheap tariffs can look expensive</li>
+                            <li>Expensive tariffs can look cheap</li>
+                        </ul>
+
+                        <div class="usage-section">
+                            <h4 style="color: var(--primary); margin: 25px 0 15px; font-size: 1.1rem;">Typical UK Usage (Guide Only)</h4>
+                            <div class="usage-grid">
+                                <div class="usage-card">
+                                    <h4>Low Usage</h4>
+                                    <p>Flats, single occupants</p>
+                                </div>
+                                <div class="usage-card">
+                                    <h4>Medium Usage</h4>
+                                    <p>Small families</p>
+                                </div>
+                                <div class="usage-card">
+                                    <h4>High Usage</h4>
+                                    <p>Large households, electric heating</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">3</div>
+                    <h3 class="step-title">Compare Total Annual Cost — Not Headlines</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>The most common mistake is comparing unit rates or standing charges only.</p>
+                        <div style="margin: 20px 0; padding: 20px; background: #f0f9f0; border-radius: 12px;">
+                            <p style="font-weight: 600; color: var(--secondary); margin-bottom: 10px;">Your energy bill formula:</p>
+                            <div style="font-family: monospace; padding: 15px; background: white; border-radius: 8px; text-align: center; font-size: 1.1rem; border: 2px solid #e2e8f0;">
+                                (Unit rate × usage) + (standing charge × 365)
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px; font-weight: 600; color: var(--dark);">
+                            A tariff with low unit rates but high standing charges can cost more than one with slightly higher unit rates but lower standing charges.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">4</div>
+                    <h3 class="step-title">Understand Standing Charges vs Unit Rates</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <div class="comparison-grid">
+                            <div class="comparison-item" style="background: #f0f7ff;">
+                                <h4 style="color: var(--primary);">Standing Charges</h4>
+                                <ul>
+                                    <li>Fixed daily cost</li>
+                                    <li>Paid even if you use zero energy</li>
+                                    <li>Crucial for low-usage homes</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item" style="background: #f0f9f0;">
+                                <h4 style="color: var(--secondary);">Unit Rates</h4>
+                                <ul>
+                                    <li>Cost per kWh</li>
+                                    <li>Matter most for high-usage households</li>
+                                    <li>Usage-based pricing</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <p style="margin-top: 20px; font-style: italic; color: var(--gray);">
+                            Correct comparison balances both, based on your usage.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps 5-7 Section -->
+    <section class="container">
+        <div class="two-by-two-grid">
+            <!-- Step 5 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">5</div>
+                    <h3 class="step-title">Fixed vs Variable Tariffs — Know the Difference</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <div class="comparison-grid">
+                            <div class="comparison-item">
+                                <h4 style="color: var(--primary);">Fixed Tariffs</h4>
+                                <ul>
+                                    <li>Prices locked for 12–24 months</li>
+                                    <li>Often cheaper than price cap</li>
+                                    <li>May include exit fees</li>
+                                    <li>Best for long-term savings</li>
+                                </ul>
+                            </div>
+                            <div class="comparison-item" style="background: #fef3c7;">
+                                <h4 style="color: #d97706;">Variable Tariffs</h4>
+                                <ul>
+                                    <li>Track the Ofgem price cap</li>
+                                    <li>No exit fees</li>
+                                    <li>Usually more expensive long-term</li>
+                                    <li>Best as short-term option</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 6 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">6</div>
+                    <h3 class="step-title">Don't Be Misled by the Energy Price Cap</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>The price cap:</p>
+                        <ul>
+                            <li>Is not the cheapest tariff</li>
+                            <li>Only applies to variable tariffs</li>
+                            <li>Does not limit fixed deals</li>
+                        </ul>
+                        <div class="warning-box-content">
+                            <p>Important:</p>
+                            <p>Many fixed tariffs in 2026 are priced below the cap. Comparing against the cap alone is not enough.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 7 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">7</div>
+                    <h3 class="step-title">Compare Electricity and Gas Together — and Separately</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>Dual fuel tariffs can offer convenience, but:</p>
+                        <ul>
+                            <li>They are not always the cheapest</li>
+                            <li>Electricity and gas prices behave differently</li>
+                        </ul>
+                        <p style="margin-top: 20px; font-weight: 600; color: var(--dark); background: #f0f7ff; padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary);">
+                            Always compare both options to see which is truly cheaper.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 8 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">8</div>
+                    <h3 class="step-title">Check Contract Terms and Exit Fees</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>A tariff may look cheap but include:</p>
+                        <ul>
+                            <li>Long contract terms</li>
+                            <li>High exit fees</li>
+                            <li>Expensive renewal pricing</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 20px; background: #f0f7ff; border-radius: 12px;">
+                            <p style="font-weight: 600; margin-bottom: 10px; color: var(--primary);">Always check:</p>
+                            <ul>
+                                <li>Contract length</li>
+                                <li>Exit fees</li>
+                                <li>What happens after the fixed period ends</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Steps 9-11 Section -->
+    <section class="container">
+        <div class="two-by-two-grid">
+            <!-- Step 9 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">9</div>
+                    <h3 class="step-title">Careful with "Cheapest Supplier" Claims</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>There is no single cheapest energy supplier in the UK. Prices vary by:</p>
+                        <ul>
+                            <li>Postcode</li>
+                            <li>Usage</li>
+                            <li>Tariff type</li>
+                            <li>Time of year</li>
+                        </ul>
+                        <div class="warning-box-content" style="margin-top: 20px;">
+                            <p>Warning:</p>
+                            <p>Any site claiming a universal cheapest supplier is misleading.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 10 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">10</div>
+                    <h3 class="step-title">Understand Green vs Standard Energy Pricing</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>In 2026:</p>
+                        <ul>
+                            <li>Green electricity often costs the same</li>
+                            <li>Many renewable tariffs are cheaper than standard ones</li>
+                            <li>Fixed green tariffs frequently beat the price cap</li>
+                        </ul>
+                        <p style="margin-top: 20px; padding: 15px; background: #f0f9f0; border-radius: 8px; border-left: 4px solid var(--secondary); font-weight: 600; color: var(--secondary);">
+                            Don't assume green energy is more expensive — compare properly.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 11 -->
+            <div class="step-card">
+                <div class="step-header">
+                    <div class="step-number">11</div>
+                    <h3 class="step-title">Special Meter Considerations</h3>
+                </div>
+                <div class="step-body">
+                    <div class="content-wrapper">
+                        <p>If you have:</p>
+                        <ul>
+                            <li>A prepayment meter</li>
+                            <li>Economy 7</li>
+                            <li>An EV or smart tariff</li>
+                        </ul>
+                        <div style="margin-top: 20px; padding: 15px; background: #f3e8ff; border-radius: 8px; border-left: 4px solid var(--accent);">
+                            <p style="font-weight: 600; color: var(--accent); margin-bottom: 5px;">Important:</p>
+                            <p style="line-height: 1.5;">You must compare tariffs designed for your meter type. Standard comparisons may not apply.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="container">
+        <div class="important-note" style="background: linear-gradient(135deg, var(--dark-bg) 0%, #1f2937 100%); margin: 60px 0;">
+            <h3>Do You Need Contact Details to Compare Energy Prices?</h3>
+            <div class="comparison-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>You can view energy prices instantly</strong> without providing contact details. Basic price comparisons are available immediately.
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-user-check"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>Contact details are needed</strong> to receive a tailored quote, confirm eligibility, or complete a switch.
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; text-align: center; color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                Basic contact details are required by suppliers, in line with Ofgem rules. All comparisons follow strict UK data protection standards.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why UtilityKing - Changed to Dark Black -->
+    <section class="container">
+        <div class="important-note">
+            <h3>Why UtilityKing Helps You Compare Energy Prices Correctly</h3>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>Compares prices by postcode</strong> — regional accuracy matters
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>Uses realistic usage assumptions</strong> based on your household
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>Ranks by total annual cost</strong> not just unit rates or standing charges
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="feature-text">
+                        <strong>Shows savings clearly</strong> with transparent comparisons
+                    </div>
+                </div>
+            </div>
+            <p style="margin-top: 30px; text-align: center; font-size: 1.2rem; font-weight: 600; color: white; padding-top: 20px; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+                No misleading shortcuts. Just accurate comparison.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">Compare Energy Prices Correctly & Save £100s</h2>
+            <p class="cta-description">Comparing energy prices correctly can save hundreds per year — but only if you use postcode-based data, compare total annual cost, and understand tariff structures.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+               Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile responsive adjustments
+        document.addEventListener('DOMContentLoaded', function () {
+            // Add smooth scrolling for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add animation to step cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to step cards
+            document.querySelectorAll('.step-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
+                observer.observe(card);
+            });
+        });
+    </script>
+</body>
+</html>

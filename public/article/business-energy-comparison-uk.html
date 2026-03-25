@@ -1,0 +1,709 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UK 2026 Business Energy Comparison Guide: Save £500-£3,000+ annually. Expert advice for SMEs, sole traders & small businesses on avoiding rollover traps and securing best rates.">
+    <meta name="keywords" content="business energy comparison UK, SME energy savings 2026, small business energy bills, rollover tariffs, Ofgem business energy, utility comparison for businesses">
+    <meta name="robots" content="index, follow">
+    <title>2026 Business Energy Comparison Guide | Save £3,000+ | UK SMEs & Small Businesses</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1A3A5F;
+            --secondary: #00B894;
+            --accent: #6C5CE7;
+            --warning: #FDCB6E;
+            --light: #F8F9FA;
+            --dark: #1A3A5F;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-800: #1E293B;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(26, 58, 95, 0.08);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 95, 0.12);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--light);
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #2D4A7A 100%);
+            color: white;
+            padding: 80px 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 60%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(108, 92, 231, 0.15) 0%, transparent 70%);
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            text-align:center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge::before {
+                content: '⚠️';
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff 0%, #e2e8f0 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+           
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--secondary);
+            color: var(--dark);
+            padding: 18px 36px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 184, 148, 0.3);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(0, 184, 148, 0.4);
+                background: #00d4aa;
+            }
+
+            .cta-button::after {
+                content: '→';
+                font-size: 1.2rem;
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover::after {
+                transform: translateX(4px);
+            }
+
+        /* Cards & Sections */
+        .section {
+            margin: 60px 0;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background: var(--secondary);
+                border-radius: 2px;
+            }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: linear-gradient(135deg, var(--accent) 0%, #8A7CFF 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        .warning-card {
+            background: linear-gradient(135deg, #FFF8E6 0%, #FFEED6 100%);
+            border-left: 4px solid var(--warning);
+            grid-column: span 2;
+        }
+
+            .warning-card .card-icon {
+                background: var(--warning);
+                color: var(--dark);
+            }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+            .comparison-table table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .comparison-table th {
+                background: var(--gray-100);
+                padding: 22px 24px;
+                text-align: left;
+                font-weight: 600;
+                color: var(--dark);
+                border-bottom: 2px solid var(--gray-200);
+            }
+
+            .comparison-table td {
+                padding: 22px 24px;
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .verdict-good {
+            color: #00a86b;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-good::before {
+                content: '✓';
+            }
+
+        .verdict-bad {
+            color: #ff4757;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-bad::before {
+                content: '✗';
+            }
+
+        /* Stats & Numbers */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 24px;
+            margin: 40px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--accent);
+        }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Feature List */
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+            .feature-list li {
+                padding: 12px 0;
+                border-bottom: 1px solid var(--gray-200);
+                display: flex;
+                align-items: flex-start;
+                gap: 12px;
+            }
+
+                .feature-list li:last-child {
+                    border-bottom: none;
+                }
+
+                .feature-list li::before {
+                    content: '✓';
+                    color: var(--secondary);
+                    font-weight: bold;
+                    flex-shrink: 0;
+                    margin-top: 2px;
+                }
+
+        /* Alert Box */
+        .alert-box {
+            background: linear-gradient(135deg, #ffe6e6 0%, #ffd6d6 100%);
+            border-left: 4px solid #ff4757;
+            padding: 28px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+        }
+
+            .alert-box h4 {
+                color: #d32f2f;
+                margin-bottom: 12px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .alert-box h4::before {
+                    content: '⚠️';
+                }
+
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+            margin: 40px 0;
+        }
+
+            .timeline::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: var(--secondary);
+            }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding-left: 30px;
+        }
+
+            .timeline-item::before {
+                content: '';
+                position: absolute;
+                left: -36px;
+                top: 5px;
+                width: 12px;
+                height: 12px;
+                background: var(--secondary);
+                border-radius: 50%;
+                border: 3px solid white;
+                box-shadow: 0 0 0 3px var(--secondary);
+            }
+
+        .timeline-date {
+            font-weight: 600;
+            color: var(--accent);
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 24px;
+            }
+
+                .hero h1 {
+                    font-size: 2.4rem;
+                }
+
+            .card-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .warning-card {
+                grid-column: span 1;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+                .comparison-table table {
+                    min-width: 600px;
+                }
+        }
+
+        /* Business Specific */
+        .business-badge {
+            display: inline-block;
+            background: var(--gray-100);
+            color: var(--gray-600);
+            padding: 6px 12px;
+            border-radius: 6px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-badge">NO PRICE CAP PROTECTION • JANUARY 2026</div>
+            <h1>Small Business Energy: Save £3,000+ in 2026</h1>
+            <p class="hero-lead">Thousands of SMEs overpay on rollover tariffs. Unlike domestic energy, business rates have no price cap. Strategic comparison is your only protection.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us<i class="fa fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- Key Stats -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-number">£3,000+</div>
+            <div class="stat-label">Potential Annual Saving</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">0%</div>
+            <div class="stat-label">Price Cap Protection</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">£5,000</div>
+            <div class="stat-label">Avg. Café/Salon Bill</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-number">1-6 Months</div>
+            <div class="stat-label">Best Time to Switch</div>
+        </div>
+    </div>
+
+    <!-- Why Businesses Overpay -->
+    <section class="section">
+        <h2 class="section-title">Why Small Businesses Overpay for Energy</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">🏪</div>
+                <h3>No Price Cap Protection</h3>
+                <p>Unlike domestic energy, business tariffs have no regulatory price cap. Suppliers can charge significantly higher rates to loyal customers.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">🔄</div>
+                <h3>Silent Rollover Traps</h3>
+                <p>If you don't switch before contract end, you're automatically moved to expensive "deemed" or "rollover" rates with no warning.</p>
+            </div>
+            <div class="card warning-card">
+                <div class="card-icon">⚠️</div>
+                <h3>Loyalty Costs You</h3>
+                <p>Suppliers rarely offer better rates to existing customers. The best deals go to new business customers who actively compare and switch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business vs Domestic Comparison -->
+    <section class="section">
+        <h2 class="section-title">Business vs Domestic Energy: Critical Differences</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Business Energy</th>
+                        <th>Domestic Energy</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Price Cap Protection</strong></td>
+                        <td class="verdict-bad">❌ No Protection</td>
+                        <td class="verdict-good">✅ Yes</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Fixed Pricing Available</strong></td>
+                        <td class="verdict-good">✅ Common (1-5 years)</td>
+                        <td class="verdict-good">✅ Common (1-2 years)</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Rollover Risk</strong></td>
+                        <td class="verdict-bad">High Automatic Increases</td>
+                        <td class="verdict-good">Low</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Negotiation Possible</strong></td>
+                        <td class="verdict-good">✅ Yes, Especially for SMEs</td>
+                        <td class="verdict-bad">Rarely</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Contract Flexibility</strong></td>
+                        <td class="verdict-good">Wide Range (1-5 years)</td>
+                        <td class="verdict-bad">Limited (1-3 years)</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Cost Breakdown -->
+    <section class="section">
+        <h2 class="section-title">Average Small Business Energy Costs (2026)</h2>
+        <div class="comparison-table">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Business Type</th>
+                        <th>Annual Cost (Typical)</th>
+                        <th>Poor Tariff Impact</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>Home Office</strong><br><span class="business-badge">Sole Trader</span></td>
+                        <td>£600 – £1,200</td>
+                        <td class="verdict-bad">Can double</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Small Shop</strong><br><span class="business-badge">Retail</span></td>
+                        <td>£1,500 – £3,000</td>
+                        <td class="verdict-bad">+80-120%</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Café / Salon</strong><br><span class="business-badge">Hospitality</span></td>
+                        <td>£2,500 – £5,000</td>
+                        <td class="verdict-bad">+£2,000+</td>
+                    </tr>
+                    <tr>
+                        <td><strong>Small Office (5-10)</strong><br><span class="business-badge">Professional</span></td>
+                        <td>£3,000 – £6,000</td>
+                        <td class="verdict-bad">+£3,000+ possible</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </section>
+
+    <!-- Rollover Warning -->
+    <div class="alert-box">
+        <h4>Rollover Contracts: The Silent Profit Killer</h4>
+        <p><strong>If you don't switch before your contract ends:</strong> You're automatically moved to expensive "deemed" or "rollover" rates. Unit rates can jump 30-60% overnight. Many SMEs overpay for months or years without realizing. Suppliers have no obligation to remind you about better rates.</p>
+    </div>
+
+    <!-- Best Deals & Timing -->
+    <section class="section">
+        <h2 class="section-title">Smart Switching Strategy</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">📅</div>
+                <h3>When to Switch</h3>
+                <ul class="feature-list">
+                    <li>1-6 months before contract end</li>
+                    <li>When moving premises</li>
+                    <li>When usage patterns change</li>
+                    <li>When market prices drop significantly</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">📝</div>
+                <h3>What to Look For</h3>
+                <ul class="feature-list">
+                    <li>Low unit rates (most important)</li>
+                    <li>Reasonable standing charges</li>
+                    <li>Flexible contract length (2-3 years ideal)</li>
+                    <li>Clear end-of-contract terms</li>
+                    <li>No hidden rollover penalties</li>
+                </ul>
+            </div>
+            <div class="card">
+                <div class="card-icon">💼</div>
+                <h3>Contract Length Guide</h3>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-date">1 Year</div>
+                        <p><strong>Flexibility:</strong> Higher rates, easier to exit</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">2-3 Years</div>
+                        <p><strong>Best Value:</strong> Optimal price-security balance</p>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-date">4-5 Years</div>
+                        <p><strong>Lowest Rates:</strong> Maximum price security, less flexibility</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How to Compare -->
+    <section class="section">
+        <h2 class="section-title" id="compare">How to Compare Business Energy Correctly</h2>
+        <div class="card-grid">
+            <div class="card">
+                <div class="card-icon">1</div>
+                <h3>Gather Your Details</h3>
+                <p>Have your business postcode, current supplier, contract end date, and annual usage (kWh) if available. Estimates work if exact data isn't available.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">2</div>
+                <h3>Compare Like-for-Like</h3>
+                <p>Focus on <strong>total annual cost</strong>, not just unit rates. Include standing charges, contract length, and any additional fees in your comparison.</p>
+            </div>
+            <div class="card">
+                <div class="card-icon">3</div>
+                <h3>Secure & Switch</h3>
+                <p>Choose a fixed-term contract that matches your business needs. The new supplier handles the switch – typically takes 2-4 weeks with no disruption.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="hero" style="margin-top: 80px;">
+        <div class="hero-content" style="text-align: center;">
+            <h2 style="font-size: 2.5rem;">Protect Your Business Profits</h2>
+            <p class="hero-lead" style="margin: 20px auto 40px;">Compare genuine business energy deals in minutes. Avoid rollover traps and secure pricing certainty for your SME.</p>
+           
+            <p style="margin-top: 24px; color: #CBD5E1; font-size: 0.9rem;">No contact details required to view all business tariffs. No obligation to switch.</p>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate stats on scroll
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(20px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 100);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.stat-card').forEach(card => {
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,764 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Contracts Ending Soon: What to Do Before Your Tariff Expires | Utility King</title>
+    <meta name="description" content="Learn what to do when your energy contract is ending soon. Compare tariffs, avoid standard variable rollover, and switch without exit fees in the renewal window.">
+    <meta name="keywords" content="energy contracts ending soon, tariff expiry, compare energy deals, renewal window, switch energy supplier, utility king, avoid SVT">
+    <meta name="author" content="Utility King">
+    <!-- Font & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            background-color: #faf7f5;
+            color: #2a2a2a;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 28px;
+        }
+
+        /* ===== NEW DARK HERO - Rich Burgundy/Maroon theme ===== */
+        .hero {
+            background: linear-gradient(145deg, #4a1d2f 0%, #6d2b43 100%);
+            color: #ffe6f0;
+            padding: 75px 0 70px 0;
+            border-bottom-left-radius: 48px;
+            border-bottom-right-radius: 48px;
+            box-shadow: 0 30px 40px -18px #4a1d2fcc;
+            margin-bottom: 45px;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .hero::before {
+                content: "⏰";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 10rem;
+                opacity: 0.08;
+                color: white;
+                transform: rotate(-5deg);
+                font-family: Arial, sans-serif;
+            }
+
+        .hero__badge {
+            display: inline-block;
+            background: rgba(255, 160, 190, 0.2);
+            color: #ffc0d0;
+            font-weight: 600;
+            font-size: 0.9rem;
+            letter-spacing: 0.02em;
+            padding: 8px 22px;
+            border-radius: 40px;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255, 160, 190, 0.4);
+            backdrop-filter: blur(4px);
+        }
+
+        .hero h1 {
+            font-size: 3.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            letter-spacing: -0.02em;
+            margin-bottom: 22px;
+            color: white;
+            max-width: 900px;
+        }
+
+        .hero__highlight {
+            color: #ffc0d0;
+            border-bottom: 4px solid #ff99bb;
+            display: inline-block;
+            padding-bottom: 4px;
+        }
+
+        .hero__intro-text {
+            font-size: 1.25rem;
+            color: #f5d0dd;
+            max-width: 800px;
+            margin-bottom: 35px;
+        }
+
+        .hero__deadline {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 30px;
+            margin-top: 35px;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 35px;
+        }
+
+        .hero__deadline-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(0, 0, 0, 0.25);
+            padding: 12px 28px;
+            border-radius: 60px;
+            border: 1px solid rgba(255,255,255,0.15);
+            font-weight: 500;
+            backdrop-filter: blur(4px);
+        }
+
+            .hero__deadline-item i {
+                color: #ff99bb;
+                font-size: 1.3rem;
+            }
+
+        /* ===== LIGHT THEME BODY - Contract expiry focus ===== */
+        .article-body {
+            background-color: #ffffff;
+            border-radius: 50px 50px 0 0;
+            box-shadow: 0 -20px 45px rgba(150, 50, 80, 0.05), 0 25px 50px -15px #4a1d2f40;
+            padding: 70px 0 80px 0;
+            margin-top: -25px;
+            position: relative;
+            z-index: 5;
+        }
+
+            .article-body h2 {
+                font-size: 2.4rem;
+                font-weight: 700;
+                letter-spacing: -0.01em;
+                margin: 60px 0 28px 0;
+                color: #4a1d2f;
+                display: flex;
+                align-items: center;
+                gap: 15px;
+                border-top: 2px solid #ffe6f0;
+                padding-top: 28px;
+            }
+
+                .article-body h2:first-of-type {
+                    margin-top: 0;
+                    border-top: none;
+                    padding-top: 0;
+                }
+
+                .article-body h2 i {
+                    color: #b34e71;
+                    font-size: 2.2rem;
+                }
+
+            .article-body h3 {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin: 45px 0 22px 0;
+                color: #6d2b43;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+                .article-body h3 i {
+                    color: #b34e71;
+                    font-size: 2rem;
+                }
+
+            .article-body p {
+                font-size: 1.1rem;
+                color: #3d2e34;
+                margin-bottom: 22px;
+            }
+
+            .article-body strong {
+                color: #4a1d2f;
+                font-weight: 600;
+            }
+
+        /* Warning alert */
+        .alert-block {
+            background: #fff0f5;
+            border-radius: 40px;
+            padding: 30px 40px;
+            margin: 40px 0;
+            border-left: 10px solid #b34e71;
+            font-size: 1.2rem;
+            box-shadow: 0 15px 25px -15px #b34e7180;
+        }
+
+            .alert-block i {
+                color: #b34e71;
+                margin-right: 15px;
+                font-size: 2rem;
+                vertical-align: middle;
+            }
+
+        /* Timeline process */
+        .timeline-container {
+            margin: 50px 0;
+            position: relative;
+        }
+
+            .timeline-container::before {
+                content: '';
+                position: absolute;
+                left: 30px;
+                top: 15px;
+                bottom: 15px;
+                width: 4px;
+                background: #ffd9e5;
+                border-radius: 4px;
+            }
+
+        .timeline-item {
+            display: flex;
+            gap: 30px;
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        .timeline-marker {
+            width: 60px;
+            height: 60px;
+            background: #b34e71;
+            color: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.8rem;
+            z-index: 2;
+            box-shadow: 0 10px 20px -8px #b34e71;
+        }
+
+        .timeline-content {
+            flex: 1;
+            background: #fff9fb;
+            border-radius: 32px;
+            padding: 28px 32px;
+            border: 1px solid #ffd9e5;
+        }
+
+            .timeline-content h4 {
+                font-size: 1.4rem;
+                color: #4a1d2f;
+                margin-bottom: 12px;
+            }
+
+        /* Step cards - clean */
+        .step-cards-compact {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 45px 0;
+        }
+
+        .step-compact {
+            background: #faf0f5;
+            border-radius: 36px;
+            padding: 32px;
+            border: 1px solid #ffd9e5;
+            transition: all 0.2s ease;
+        }
+
+            .step-compact:hover {
+                transform: translateY(-5px);
+                border-color: #b34e71;
+                box-shadow: 0 20px 30px -15px #b34e7180;
+            }
+
+        .step-number-circle {
+            background: #b34e71;
+            color: white;
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.5rem;
+            margin-bottom: 22px;
+        }
+
+        .step-compact h4 {
+            font-size: 1.4rem;
+            color: #4a1d2f;
+            margin-bottom: 18px;
+        }
+
+        .step-compact ul {
+            list-style: none;
+            margin-top: 15px;
+        }
+
+        .step-compact li {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 12px;
+            color: #4d3a42;
+        }
+
+            .step-compact li i {
+                color: #b34e71;
+                width: 20px;
+                margin-top: 3px;
+            }
+
+        /* Formula box */
+        .formula-card {
+            background: #f5e9ee;
+            border-radius: 40px;
+            padding: 30px 40px;
+            margin: 35px 0;
+            text-align: center;
+            border: 2px dashed #b34e71;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #4a1d2f;
+        }
+
+        /* Two column comparison */
+        .tariff-compare {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin: 45px 0;
+        }
+
+        .tariff-compare-card {
+            border-radius: 40px;
+            padding: 36px;
+            color: white;
+        }
+
+            .tariff-compare-card.fixed {
+                background: linear-gradient(145deg, #2c5f4a, #1e7b5c);
+            }
+
+            .tariff-compare-card.variable {
+                background: linear-gradient(145deg, #7d5544, #9e6b56);
+            }
+
+            .tariff-compare-card h4 {
+                font-size: 1.8rem;
+                margin-bottom: 24px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .tariff-compare-card ul {
+                list-style: none;
+            }
+
+            .tariff-compare-card li {
+                display: flex;
+                gap: 14px;
+                margin-bottom: 16px;
+                font-size: 1.05rem;
+            }
+
+                .tariff-compare-card li i {
+                    width: 24px;
+                }
+
+        /* Renewal offer box */
+        .renewal-box {
+            background: #e8f0fe;
+            border-radius: 44px;
+            padding: 36px 44px;
+            margin: 40px 0;
+            border: 2px solid #4a6fa5;
+        }
+
+            .renewal-box h4 {
+                font-size: 1.6rem;
+                color: #2c4a7a;
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+        /* Special situations grid */
+        .situations-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 22px;
+            margin: 40px 0;
+        }
+
+        .situation-item {
+            background: #faf0f5;
+            border-radius: 32px;
+            padding: 28px 22px;
+            text-align: center;
+            border: 1px solid #ffd9e5;
+        }
+
+            .situation-item i {
+                font-size: 2.5rem;
+                color: #b34e71;
+                margin-bottom: 18px;
+            }
+
+            .situation-item h4 {
+                font-size: 1.2rem;
+                color: #4a1d2f;
+                margin-bottom: 12px;
+            }
+
+            .situation-item p {
+                font-size: 0.95rem;
+                margin-bottom: 0;
+            }
+
+        /* FAQ compact */
+        .faq-compact {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 28px;
+            margin: 45px 0;
+        }
+
+        .faq-compact-item {
+            background: #fef9fb;
+            border-radius: 32px;
+            padding: 30px;
+            border: 1px solid #ffd9e5;
+            box-shadow: 0 8px 0 #ffe6f0;
+        }
+
+            .faq-compact-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 14px;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #4a1d2f;
+                margin-bottom: 16px;
+            }
+
+                .faq-compact-item h4 i {
+                    color: #b34e71;
+                    font-size: 1.4rem;
+                }
+
+            .faq-compact-item p {
+                font-size: 1rem;
+                margin-bottom: 0;
+                color: #4d3a42;
+            }
+
+        .utility-perspective-expiry {
+            background: #f5e9ee;
+            border-radius: 60px;
+            padding: 55px 60px;
+            margin: 60px 0 45px;
+            border: 2px solid #b34e71;
+            text-align: center;
+            position: relative;
+        }
+
+            .utility-perspective-expiry i {
+                font-size: 4rem;
+                color: #4a1d2f;
+                margin-bottom: 25px;
+            }
+
+            .utility-perspective-expiry p {
+                font-size: 1.2rem;
+                max-width: 750px;
+                margin: 0 auto 15px;
+                color: #4a1d2f;
+            }
+
+        .footer-expiry {
+            background: #fff9fb;
+            border-radius: 48px;
+            padding: 38px 48px;
+            font-size: 1.15rem;
+            border: 1px solid #b34e71;
+            margin: 45px 0 25px;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #b34e71, transparent);
+            margin: 50px 0;
+        }
+
+        .small-meta {
+            color: #8f7a84;
+            font-size: 0.9rem;
+            margin-top: 25px;
+        }
+
+        @media (max-width: 750px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .tariff-compare {
+                grid-template-columns: 1fr;
+            }
+
+            .situations-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-compact {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-container::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .timeline-marker {
+                margin-left: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO - Rich burgundy/maroon theme -->
+    <section class="hero">
+        <div class="container">
+            <span class="hero__badge"><i class="fas fa-hourglass-half" style="margin-right: 8px;"></i> UTILITY KING · CONTRACT EXPIRY GUIDE</span>
+            <h1>Compare Energy Contracts <span class="hero__highlight">Ending Soon</span><br>What to Do Before Your Tariff Expires</h1>
+            <p class="hero__intro-text">At Utility King, one of the most financially important moments in your energy journey is this: Your energy contract is about to end. Most households don't realise how critical this window is.</p>
+
+            <div class="hero__deadline">
+                <div class="hero__deadline-item"><i class="fas fa-calendar-alt"></i> 4–6 week renewal window</div>
+                <div class="hero__deadline-item"><i class="fas fa-ban"></i> Avoid SVT rollover</div>
+                <div class="hero__deadline-item"><i class="fas fa-pound-sign"></i> No exit fees</div>
+                <div class="hero__deadline-item"><i class="fas fa-chart-line"></i> Compare strategically</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- LIGHT THEME BODY - Contract expiry focus -->
+    <main class="article-body">
+        <div class="container">
+
+            <!-- Opening - exact content -->
+            <p>When a fixed energy tariff ends, you are typically moved automatically onto a standard variable tariff (SVT). And in many cases, that means higher rates.</p>
+            <p>If your energy contract is ending soon, this guide will walk you through:</p>
+            <p>What actually happens when a tariff expires</p>
+            <p>How the renewal process works</p>
+            <p>When you can switch without exit fees</p>
+            <p>How to compare energy deals strategically</p>
+            <p>Common mistakes to avoid</p>
+            <p>The goal is simple: avoid passive overpayment.</p>
+
+            <h2><i class="fas fa-file-contract"></i> What Happens When Your Energy Contract Ends?</h2>
+            <p>Let's start from first principles.</p>
+            <p>A fixed energy contract locks in:</p>
+            <p>Unit rate (price per kWh)</p>
+            <p>Standing charge</p>
+            <p>Contract duration</p>
+            <p>When that fixed term ends:</p>
+            <p>The protection of fixed pricing ends.</p>
+            <p>You are usually moved automatically to a standard variable tariff.</p>
+            <p>Your rates may change.</p>
+            <p>Standard variable tariffs:</p>
+            <p>Have no fixed end date</p>
+            <p>Allow price adjustments</p>
+            <p>Are often more expensive long-term</p>
+
+            <div class="alert-block">
+                <i class="fas fa-exclamation-triangle"></i> <strong>If you do nothing, you may begin paying higher rates without realising it.</strong> This is why comparing energy contracts ending soon is essential.
+            </div>
+
+            <h2><i class="fas fa-clock"></i> When Should You Start Comparing?</h2>
+            <p>At Utility King, we recommend reviewing your options 4 to 6 weeks before your contract ends.</p>
+            <p>In many regulated markets:</p>
+            <p>You can switch within the final 49 days of your contract</p>
+            <p>No exit fees apply during this window</p>
+            <p>This is known as the renewal window.</p>
+            <p>Waiting until after your contract expires may result in:</p>
+            <p>Temporary higher payments</p>
+            <p>Missed fixed-rate opportunities</p>
+            <p>Timing matters.</p>
+
+            <h3>How to Check When Your Contract Ends</h3>
+            <p>You can find your contract end date:</p>
+            <p>On your latest energy bill</p>
+            <p>In your online account</p>
+            <p>In your original contract documentation</p>
+            <p>Suppliers are usually required to notify you before your tariff ends.</p>
+            <p>However, do not rely solely on reminder emails.</p>
+            <p>Take proactive control.</p>
+
+            <h2><i class="fas fa-list-check"></i> Step-by-Step: How to Compare Energy Contracts Ending Soon</h2>
+            <p>At Utility King, we advise a structured comparison process.</p>
+
+            <div class="step-cards-compact">
+                <div class="step-compact">
+                    <div class="step-number-circle">1</div>
+                    <h4>Gather Your Annual Usage (kWh)</h4>
+                    <p>You need:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Electricity usage (annual kWh)</li>
+                        <li><i class="fas fa-circle"></i> Gas usage (annual kWh)</li>
+                    </ul>
+                    <p>This allows accurate total annual cost comparison. Without real usage data, estimated savings may be misleading.</p>
+                </div>
+                <div class="step-compact">
+                    <div class="step-number-circle">2</div>
+                    <h4>Calculate Your Current Annual Cost</h4>
+                    <p>Using your fixed tariff rates, calculate:</p>
+                    <div class="formula-card" style="margin: 20px 0; padding: 20px; font-size: 1.1rem;">
+                        (Annual usage × Unit rate) + (Standing charge × 365)
+                    </div>
+                    <p>This becomes your financial baseline.</p>
+                </div>
+                <div class="step-compact">
+                    <div class="step-number-circle">3</div>
+                    <h4>Compare Fixed and Variable Tariffs</h4>
+                    <p>When reviewing energy deals, you will see:</p>
+                </div>
+            </div>
+
+            <div class="tariff-compare">
+                <div class="tariff-compare-card fixed">
+                    <h4><i class="fas fa-lock"></i> Fixed Tariffs</h4>
+                    <ul>
+                        <li><i class="fas fa-circle-check"></i> Locked-in rates</li>
+                        <li><i class="fas fa-circle-check"></i> Predictable bills</li>
+                        <li><i class="fas fa-circle-exclamation"></i> Possible exit fees</li>
+                    </ul>
+                </div>
+                <div class="tariff-compare-card variable">
+                    <h4><i class="fas fa-chart-line"></i> Standard Variable Tariffs</h4>
+                    <ul>
+                        <li><i class="fas fa-circle-check"></i> Flexible</li>
+                        <li><i class="fas fa-circle-check"></i> No fixed end date</li>
+                        <li><i class="fas fa-circle-exclamation"></i> Rates may change</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p>If your contract is ending during market volatility, a competitive fixed deal may provide stability. If prices are trending downward, flexibility may appeal.</p>
+
+            <div class="step-cards-compact">
+                <div class="step-compact">
+                    <div class="step-number-circle">4</div>
+                    <h4>Review Standing Charges Carefully</h4>
+                    <p>Many consumers focus only on unit rate.</p>
+                    <p>However:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Standing charges apply daily</li>
+                        <li><i class="fas fa-circle"></i> Low-usage homes are more affected</li>
+                        <li><i class="fas fa-circle"></i> Regional differences matter</li>
+                    </ul>
+                    <p>Total annual cost is what counts.</p>
+                </div>
+                <div class="step-compact">
+                    <div class="step-number-circle">5</div>
+                    <h4>Check Exit Fees Before Switching Early</h4>
+                    <p>If you are still outside the renewal window, early termination charges may apply.</p>
+                    <p>Compare:</p>
+                    <ul>
+                        <li><i class="fas fa-circle"></i> Exit fee cost</li>
+                        <li><i class="fas fa-circle"></i> Potential savings from switching</li>
+                    </ul>
+                    <p>Sometimes waiting a few weeks avoids unnecessary penalties.</p>
+                </div>
+            </div>
+
+            <div class="renewal-box">
+                <h4><i class="fas fa-hand-holding-heart"></i> Should You Accept Your Supplier's Renewal Offer?</h4>
+                <p>When your contract ends, your supplier may offer a "loyalty" renewal tariff.</p>
+                <p>Before accepting:</p>
+                <p>Compare the renewal rate with market alternatives</p>
+                <p>Calculate total annual cost difference</p>
+                <p>Evaluate service quality and financial stability</p>
+                <p><strong>Loyalty does not automatically mean best value. Always compare before committing.</strong></p>
+            </div>
+
+            <h3>Is It Safe to Switch Before Contract Ends?</h3>
+            <p>Yes — provided you are within the penalty-free renewal window.</p>
+            <p>Switching energy supplier:</p>
+            <p>Does not interrupt supply</p>
+            <p>Does not require physical changes</p>
+            <p>Is fully regulated</p>
+            <p>Includes a cooling-off period</p>
+            <p>Your electricity and gas continue flowing through the same infrastructure. Only your billing provider changes.</p>
+
+            <h3>What If You Do Nothing?</h3>
+            <p>If you take no action:</p>
+            <p>You move to a standard variable tariff</p>
+            <p>Your rates may increase</p>
+            <p>You lose price protection</p>
+            <p>While SVTs offer flexibility, they are often more expensive than competitive fixed deals. Doing nothing is rarely the most cost-effective strategy.</p>
+
+            <h2><i class="fas fa-star"></i> Special Situations to Consider</h2>
+
+            <div class="situations-grid">
+                <div class="situation-item">
+                    <i class="fas fa-truck-moving"></i>
+                    <h4>Moving House Soon</h4>
+                    <p>Short-term flexibility may matter more than locking into a long contract.</p>
+                </div>
+                <div class="situation-item">
+                    <i class="fas fa-solar-panel"></i>
+                    <h4>Installing Solar or Heat Pumps</h4>
+                    <p>If your energy profile is about to change, choose a tariff aligned with new consumption.</p>
+                </div>
+                <div class="situation-item">
+                    <i class="fas fa-chart-line"></i>
+                    <h4>Significant Market Shifts</h4>
+                    <p>Monitor wholesale trends before locking into long-term pricing.</p>
+                </div>
+            </div>
+
+            <div class="utility-perspective-expiry">
+                <i class="fas fa-calendar-check"></i>
+                <p><strong>Utility King's Perspective</strong></p>
+                <p>At Utility King, we view contract expiry as a financial decision point — not a passive administrative event.</p>
+                <p>The most common mistake households make is: Letting a fixed tariff expire without reviewing alternatives.</p>
+                <p>Energy comparison when contracts are ending soon allows you to:</p>
+                <p>Lock in competitive pricing</p>
+                <p>Avoid automatic SVT rollover</p>
+                <p>Maintain budgeting stability</p>
+                <p>Optimise total annual cost</p>
+                <p><strong>Energy markets reward proactive consumers. Waiting costs money.</strong></p>
+            </div>
+
+            <h2><i class="fas fa-question-circle"></i> Frequently Asked Questions</h2>
+            <div class="faq-compact">
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> When can I switch without exit fees?</h4><p>Usually within the final 49 days of your fixed contract, but confirm with your supplier.</p></div>
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> What happens if I miss my renewal window?</h4><p>You are typically moved onto a standard variable tariff.</p></div>
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> Are renewal offers from my supplier competitive?</h4><p>Sometimes — but always compare before accepting.</p></div>
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> Should I fix again or go variable?</h4><p>It depends on market conditions and your risk tolerance.</p></div>
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> Is switching energy supplier safe?</h4><p>Yes. Switching does not interrupt your supply.</p></div>
+                <div class="faq-compact-item"><h4><i class="fas fa-circle-question"></i> How long does switching take?</h4><p>Typically between 2 and 5 weeks.</p></div>
+            </div>
+
+            <hr>
+            <div class="footer-expiry">
+                <i class="fas fa-star" style="color: #b34e71; margin-right: 14px;"></i> If your energy contract is ending soon and you want to compare your options clearly and strategically, Utility King can help you evaluate fixed and flexible tariffs — ensuring you don't drift onto a more expensive rate by default.
+            </div>
+            <div class="small-meta">© Utility King — Complete guide to energy contracts ending soon. No header or footer, pure content.</div>
+
+        </div>
+    </main>
+</body>
+</html>

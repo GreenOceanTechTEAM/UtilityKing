@@ -1,0 +1,1010 @@
+﻿<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="UK 2026 Landlord Energy Comparison Guide: Save £200-£3,000+ per property annually. Expert advice for HMOs, portfolios, void periods & tenant responsibility.">
+    <meta name="keywords" content="landlord energy comparison, HMO energy bills, rental property energy, landlord energy savings, void period energy costs, property portfolio energy">
+    <meta name="robots" content="index, follow">
+    <title>2026 Landlord Energy Comparison Guide | Save £3,000+ | UK Property Investors</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1A3A5F;
+            --secondary: #00B894;
+            --accent: #FFA726;
+            --warning: #FF6B6B;
+            --success: #00C853;
+            --landlord-color: #00B894;
+            --hmo-color: #6C5CE7;
+            --void-color: #FFA726;
+            --light: #F8FAFC;
+            --dark: #1A3A5F;
+            --gray-100: #F1F5F9;
+            --gray-200: #E2E8F0;
+            --gray-300: #CBD5E1;
+            --gray-600: #475569;
+            --gray-800: #1E293B;
+            --radius: 12px;
+            --shadow: 0 8px 30px rgba(26, 58, 95, 0.08);
+            --shadow-lg: 0 20px 60px rgba(26, 58, 95, 0.12);
+            --landlord-gradient: linear-gradient(135deg, #00B894 0%, #1A3A5F 100%);
+            --hmo-gradient: linear-gradient(135deg, #6C5CE7 0%, #00B894 100%);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: 1.6;
+            color: var(--gray-800);
+            background-color: var(--light);
+            width: 100%;
+            max-width: 100%;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #2D4A7A 100%);
+            color: white;
+            padding: 80px 20px;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                right: -20%;
+                width: 60%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(0, 184, 148, 0.15) 0%, transparent 70%);
+            }
+
+            .hero::after {
+                content: '🏠';
+                position: absolute;
+                bottom: -30px;
+                right: 50px;
+                font-size: 10rem;
+                opacity: 0.05;
+                z-index: 1;
+            }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            width: 100%;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--landlord-gradient);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge::before {
+                content: '💰';
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 3.2rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            background: linear-gradient(90deg, #ffffff 0%, #00B894 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+        }
+
+        .hero-lead {
+            font-size: 1.25rem;
+            color: #CBD5E1;
+            margin-bottom: 40px;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--landlord-gradient);
+            color: white;
+            padding: 18px 36px;
+            border-radius: var(--radius);
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 4px 20px rgba(0, 184, 148, 0.3);
+            text-align: center;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 8px 30px rgba(0, 184, 148, 0.4);
+                background: linear-gradient(135deg, #00D4AA 0%, #2D4A7A 100%);
+            }
+
+            .cta-button .fa-arrow-right {
+                transition: transform 0.3s ease;
+            }
+
+            .cta-button:hover .fa-arrow-right {
+                transform: translateX(4px);
+            }
+
+        /* Cards & Sections */
+        .section {
+            margin: 60px 0;
+            width: 100%;
+        }
+
+        .section-title {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 40px;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+            .section-title::after {
+                content: '';
+                position: absolute;
+                bottom: -10px;
+                left: 0;
+                width: 60px;
+                height: 4px;
+                background: var(--landlord-gradient);
+                border-radius: 2px;
+            }
+
+        /* Highlight Card - OUTSIDE GRID, FULL WIDTH */
+        .highlight-card {
+            background: linear-gradient(135deg, var(--primary) 0%, #2D4A7A 100%);
+            color: white;
+            border-radius: var(--radius);
+            padding: 45px;
+            text-align: center;
+            margin: 40px 0;
+            box-shadow: var(--shadow-lg);
+            width: 100%;
+        }
+
+            .highlight-card .card-icon {
+                width: 70px;
+                height: 70px;
+                background: white;
+                border-radius: 16px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                margin: 0 auto 25px;
+                color: var(--secondary);
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            .highlight-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: white;
+                margin-bottom: 16px;
+            }
+
+            .highlight-card p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: 1.1rem;
+                max-width: 800px;
+                margin: 0 auto;
+                text-align: center;
+                line-height: 1.7;
+            }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+            width: 100%;
+        }
+
+        .card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 35px;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--gray-200);
+            position: relative;
+            width: 100%;
+        }
+
+            .card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+        .card-icon {
+            width: 56px;
+            height: 56px;
+            background: var(--landlord-gradient);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+            color: white;
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .card h3 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: var(--dark);
+            margin-bottom: 16px;
+        }
+
+        .card p {
+            color: var(--gray-600);
+            margin-bottom: 20px;
+        }
+
+        /* Stats & Numbers */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 30px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            border-top: 4px solid var(--secondary);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .stat-card::before {
+                content: '🏠';
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                font-size: 2rem;
+                opacity: 0.1;
+            }
+
+        .stat-number {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--secondary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            border: 1px solid var(--gray-200);
+        }
+
+            .comparison-table table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .comparison-table th {
+                background: var(--gray-100);
+                padding: 22px 24px;
+                text-align: left;
+                font-weight: 600;
+                color: var(--dark);
+                border-bottom: 2px solid var(--gray-200);
+            }
+
+            .comparison-table td {
+                padding: 22px 24px;
+                border-bottom: 1px solid var(--gray-200);
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .verdict-good {
+            color: var(--success);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-good::before {
+                content: '✓';
+            }
+
+        .verdict-bad {
+            color: var(--warning);
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+            .verdict-bad::before {
+                content: '✗';
+            }
+
+        /* Responsibility Guide */
+        .responsibility-guide {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin: 40px 0;
+            width: 100%;
+        }
+
+        .responsibility-card {
+            background: white;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--secondary);
+        }
+
+            .responsibility-card.tenant {
+                border-top-color: var(--landlord-color);
+            }
+
+            .responsibility-card.landlord {
+                border-top-color: var(--hmo-color);
+            }
+
+            .responsibility-card:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .responsibility-card h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.5rem;
+                color: var(--dark);
+                margin-bottom: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+        .tenant h3::before {
+            content: '👤';
+            color: var(--landlord-color);
+        }
+
+        .landlord h3::before {
+            content: '🏢';
+            color: var(--hmo-color);
+        }
+
+        /* Property Type Tags */
+        .property-tag {
+            display: inline-block;
+            background: var(--landlord-gradient);
+            color: white;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 8px;
+            margin-bottom: 8px;
+        }
+
+            .property-tag.hmo {
+                background: var(--hmo-gradient);
+            }
+
+            .property-tag.void {
+                background: linear-gradient(135deg, #FFA726 0%, #FF6B6B 100%);
+            }
+
+        /* Warning Box */
+        .warning-box {
+            background: linear-gradient(135deg, #fff3e0 0%, #ffecb3 100%);
+            border-left: 4px solid var(--accent);
+            padding: 28px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .warning-box::before {
+                content: '⚠️';
+                position: absolute;
+                top: 10px;
+                right: 20px;
+                font-size: 3rem;
+                opacity: 0.1;
+            }
+
+            .warning-box h4 {
+                color: #E65100;
+                margin-bottom: 12px;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+                .warning-box h4::before {
+                    content: '🚨';
+                }
+
+        /* Void Period Visual */
+        .void-visual {
+            background: white;
+            padding: 35px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            margin: 40px 0;
+            text-align: center;
+        }
+
+            .void-visual h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.6rem;
+                color: var(--dark);
+                margin-bottom: 25px;
+            }
+
+        .void-timeline {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 30px 0;
+            position: relative;
+        }
+
+            .void-timeline::before {
+                content: '';
+                position: absolute;
+                top: 50%;
+                left: 0;
+                right: 0;
+                height: 2px;
+                background: var(--gray-300);
+                z-index: 1;
+            }
+
+        .void-point {
+            background: white;
+            padding: 20px;
+            border-radius: var(--radius);
+            text-align: center;
+            box-shadow: var(--shadow);
+            position: relative;
+            z-index: 2;
+            width: 22%;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+            .void-point:hover {
+                transform: translateY(-5px);
+                box-shadow: var(--shadow-lg);
+            }
+
+            .void-point.expensive {
+                border-color: var(--warning);
+            }
+
+            .void-point.savings {
+                border-color: var(--success);
+            }
+
+        /* Savings Calculator */
+        .savings-calc {
+            background: linear-gradient(135deg, var(--primary) 0%, #2D4A7A 100%);
+            color: white;
+            padding: 40px;
+            border-radius: var(--radius);
+            margin: 40px 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .savings-calc::before {
+                content: '💰';
+                position: absolute;
+                top: 20px;
+                right: 40px;
+                font-size: 4rem;
+                opacity: 0.1;
+            }
+
+            .savings-calc h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 1.8rem;
+                margin-bottom: 20px;
+                color: white;
+            }
+
+        /* Responsive */
+        @media (max-width: 1200px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .responsibility-guide {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero {
+                padding: 50px 20px;
+            }
+
+                .hero h1 {
+                    font-size: 2.4rem;
+                }
+
+                .hero::after {
+                    font-size: 5rem;
+                    right: 20px;
+                    bottom: -15px;
+                }
+
+            .card-grid,
+            .stats-grid,
+            .responsibility-guide {
+                grid-template-columns: 1fr;
+            }
+
+            .comparison-table {
+                overflow-x: auto;
+            }
+
+                .comparison-table table {
+                    min-width: 600px;
+                }
+
+            .void-timeline {
+                flex-wrap: wrap;
+                gap: 20px;
+            }
+
+                .void-timeline::before {
+                    display: none;
+                }
+
+            .void-point {
+                width: 100%;
+            }
+
+            .highlight-card {
+                padding: 35px 25px;
+            }
+
+                .highlight-card h3 {
+                    font-size: 1.6rem;
+                }
+        }
+
+        @media (max-width: 480px) {
+            .card-grid,
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .section-title {
+                font-size: 1.6rem;
+            }
+
+            .card {
+                padding: 25px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">PROPERTY INVESTOR GUIDE • JANUARY 2026</div>
+                <h1>Landlord Energy Comparison 2026</h1>
+                <p class="hero-lead">Stop energy costs draining rental profits. Save £200-£3,000+ per property annually with our landlord-specific comparison strategies for HMOs, voids & portfolios.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                    Contact Us <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <div class="container">
+        <!-- Key Stats -->
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-number">£3,000+</div>
+                <div class="stat-label">Portfolio Annual Saving</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">£1,000+</div>
+                <div class="stat-label">HMO Annual Saving</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">80%</div>
+                <div class="stat-label">Void Period Overcharge Risk</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number">£200-£600</div>
+                <div class="stat-label">Single Property Saving</div>
+            </div>
+        </div>
+
+        <!-- Why Landlords Overpay -->
+        <section class="section">
+            <h2 class="section-title">Why Landlords Overpay for Energy</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">🏠</div>
+                    <h3>Expensive Default Tariffs</h3>
+                    <p>Properties left on deemed or default tariffs cost 20-40% more than competitively sourced rates, especially during void periods.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Unreviewed Between Tenancies</h3>
+                    <p>Landlords forget to compare energy when tenants move out, leaving properties on expensive contracts for months or years.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🤔</div>
+                    <h3>Responsibility Confusion</h3>
+                    <p>Unclear whether landlord or tenant pays leads to nobody comparing, with bills defaulting to expensive rates automatically.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">📈</div>
+                    <h3>Rollover During Voids</h3>
+                    <p>Even short void periods trigger rollover contracts with significantly higher unit rates, eroding rental profits quickly.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Responsibility Guide -->
+        <section class="section">
+            <h2 class="section-title">Who Pays Energy Bills: Landlord or Tenant?</h2>
+            <div class="responsibility-guide">
+                <div class="responsibility-card tenant">
+                    <h3>Tenant-Paid Energy (Most Common)</h3>
+                    <p>✅ Tenant chooses supplier</p>
+                    <p>✅ Tenant pays bills directly</p>
+                    <p>✅ Landlord responsible during voids</p>
+                    <p>✅ Suitable for single-let properties</p>
+                    <p style="margin-top: 15px; color: var(--landlord-color); font-weight: 600;">Landlord must still compare during voids</p>
+                </div>
+                <div class="responsibility-card landlord">
+                    <h3>Landlord-Paid Energy</h3>
+                    <p>✅ HMOs & multi-occupancy</p>
+                    <p>✅ Serviced accommodation</p>
+                    <p>✅ Bills-included rentals</p>
+                    <p>✅ Short-term lets</p>
+                    <p style="margin-top: 15px; color: var(--hmo-color); font-weight: 600;">Active comparison essential for margins</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Highlight Card - OUTSIDE GRID, FULL WIDTH -->
+        <div class="highlight-card">
+            <div class="card-icon">💰</div>
+            <h3>Total Annual Cost Matters for Landlords</h3>
+            <p>Compare total cost including standing charges and unit rates. For rental properties, especially during void periods, fixed tariffs with flexible terms provide optimal balance of cost control and adaptability. HMO energy requires business comparison for accurate pricing.</p>
+        </div>
+
+        <!-- Average Costs -->
+        <section class="section">
+            <h2 class="section-title">Average Energy Costs for Rental Properties (2026)</h2>
+            <div class="comparison-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Property Type</th>
+                            <th>Typical Annual Cost</th>
+                            <th>Landlord Considerations</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1-Bed Flat</strong><br><span class="property-tag">Single Let</span></td>
+                            <td>£900 – £1,300</td>
+                            <td>Void period management critical. Short fixed contracts recommended.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>2-Bed House</strong><br><span class="property-tag">Family Rental</span></td>
+                            <td>£1,200 – £1,800</td>
+                            <td>Higher usage during tenancy. Compare both domestic and business rates.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>HMO (4–6 Tenants)</strong><br><span class="property-tag hmo">Multi-Occupancy</span></td>
+                            <td>£2,500 – £5,000</td>
+                            <td>Business energy required. Compare regularly due to high turnover.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Serviced Apartment</strong><br><span class="property-tag">Short-Term Let</span></td>
+                            <td>£1,800 – £3,500</td>
+                            <td>24/7 operation. Fixed pricing essential for predictable costs.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Void Period Warning -->
+        <div class="warning-box">
+            <h4>⚠️ Energy Comparison During Void Periods Is Critical</h4>
+            <p><strong>When a property is empty:</strong> Energy supply continues • The account defaults to expensive deemed tariffs • Deemed rates are 20-40% higher than competitive rates • Even a 1-month void can cost £200+ if unmanaged • Landlords must compare and secure appropriate tariffs before voids begin.</p>
+        </div>
+
+        <!-- Void Period Visual -->
+        <div class="void-visual">
+            <h3>Void Period Energy Cost Timeline</h3>
+            <div class="void-timeline">
+                <div class="void-point">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">🏠</div>
+                    <strong>Tenant Moves Out</strong>
+                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 5px;">Day 1: Account reverts</div>
+                </div>
+                <div class="void-point expensive">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">💸</div>
+                    <strong>Deemed Rates Apply</strong>
+                    <div style="font-size: 0.9rem; color: var(--warning); margin-top: 5px;">Day 2-7: 20-40% more</div>
+                </div>
+                <div class="void-point">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">⏱️</div>
+                    <strong>1 Month Void</strong>
+                    <div style="font-size: 0.9rem; color: var(--gray-600); margin-top: 5px;">Cost: £200+ extra</div>
+                </div>
+                <div class="void-point savings">
+                    <div style="font-size: 1.5rem; margin-bottom: 10px;">✅</div>
+                    <strong>With Comparison</strong>
+                    <div style="font-size: 0.9rem; color: var(--success); margin-top: 5px;">Save £150+ monthly</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- HMO Focus -->
+        <section class="section">
+            <h2 class="section-title">Energy Comparison for HMOs (Critical Focus)</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">👥</div>
+                    <h3>Higher Usage Patterns</h3>
+                    <p>Multiple tenants = simultaneous cooking, heating, washing. Consumption 2-3x higher than single households requires specific tariff comparison.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🔄</div>
+                    <h3>Frequent Tenant Turnover</h3>
+                    <p>Regular voids between tenants. Without active management, HMOs default to expensive deemed rates multiple times annually.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">🏢</div>
+                    <h3>Business Energy Required</h3>
+                    <p>HMOs legally require commercial energy contracts. These lack price cap protection, making comparison essential for cost control.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">💰</div>
+                    <h3>Major Saving Potential</h3>
+                    <p>Regular comparison saves £1,000+ per HMO annually. Portfolio of 5 HMOs can save £5,000+ with proper energy management.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Domestic vs Business -->
+        <section class="section">
+            <h2 class="section-title">Domestic vs Business Energy for Landlords</h2>
+            <div class="responsibility-guide">
+                <div class="responsibility-card">
+                    <h3>Domestic Energy</h3>
+                    <p>✅ Most single-let properties</p>
+                    <p>✅ Protected by price cap</p>
+                    <p>✅ Easier switching process</p>
+                    <p>✅ Usually cheapest option</p>
+                    <p>✅ Standardized tariffs</p>
+                    <p style="margin-top: 15px; color: var(--landlord-color); font-weight: 600;">Recommended for standard rentals</p>
+                </div>
+                <div class="responsibility-card">
+                    <h3>Business Energy</h3>
+                    <p>✅ HMOs & multi-occupancy</p>
+                    <p>✅ No price cap protection</p>
+                    <p>✅ Bespoke negotiated rates</p>
+                    <p>✅ Complex comparison needed</p>
+                    <p>✅ Higher risk of overpaying</p>
+                    <p style="margin-top: 15px; color: var(--hmo-color); font-weight: 600;">Essential for HMOs & commercial lets</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Common Mistakes -->
+        <section class="section">
+            <h2 class="section-title">Common Energy Mistakes Landlords Make</h2>
+            <div class="card-grid">
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Leaving Deemed Tariffs</h3>
+                    <p>Properties automatically revert to expensive deemed rates when tenants leave. Many landlords don't switch, costing £200+ per void.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Forgetting Void Switching</h3>
+                    <p>Not comparing energy after tenant move-out. Even 2-week voids on deemed rates add unnecessary costs to rental overheads.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Assuming Tenant Handles It</h3>
+                    <p>Assuming tenants always manage energy. During voids and with bills-included rentals, landlord comparison is essential.</p>
+                </div>
+                <div class="card">
+                    <div class="card-icon">❌</div>
+                    <h3>Ignoring Business Comparison</h3>
+                    <p>Using domestic comparison for HMOs. Business energy requires different comparison with different supplier options.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Savings Calculator -->
+        <div class="savings-calc">
+            <h3>How Much Can Landlords Save?</h3>
+            <p>Single-let landlords save £200–£600 per property | HMOs save £800–£2,000+ | Portfolio landlords save £3,000+ annually</p>
+        </div>
+
+        <!-- Final CTA -->
+        <section class="hero" style="margin-top: 80px; margin-bottom: 0;">
+            <div class="container">
+                <div class="hero-content" style="text-align: center;">
+                    <h2 style="font-size: 2.5rem;">Protect Your Rental Profit Margins</h2>
+                    <p class="hero-lead" style="margin: 20px auto 40px;">Compare energy prices specifically for rental properties. Manage void periods effectively, optimize HMO costs, and maximize portfolio returns through strategic energy comparison.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <script>
+        // Smooth scroll for CTA buttons
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.2,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '0';
+                    entry.target.style.transform = 'translateY(30px)';
+                    setTimeout(() => {
+                        entry.target.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }, 200);
+                }
+            });
+        }, observerOptions);
+
+        // Observe all interactive elements
+        document.querySelectorAll('.card, .stat-card, .responsibility-card, .highlight-card, .void-point').forEach(element => {
+            observer.observe(element);
+        });
+
+        // Animate void timeline points
+        const voidObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const points = document.querySelectorAll('.void-point');
+                    points.forEach((point, index) => {
+                        setTimeout(() => {
+                            point.style.opacity = '0';
+                            point.style.transform = 'translateY(20px)';
+                            setTimeout(() => {
+                                point.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                                point.style.opacity = '1';
+                                point.style.transform = 'translateY(0)';
+                            }, 100);
+                        }, index * 200);
+                    });
+                }
+            });
+        }, { threshold: 0.5 });
+
+        const voidVisual = document.querySelector('.void-visual');
+        if (voidVisual) {
+            voidObserver.observe(voidVisual);
+        }
+
+        // Pulse animation for stats
+        setInterval(() => {
+            document.querySelectorAll('.stat-card').forEach(card => {
+                card.style.boxShadow = '0 0 20px rgba(0, 184, 148, 0.3)';
+                setTimeout(() => {
+                    card.style.boxShadow = 'var(--shadow)';
+                }, 500);
+            });
+        }, 3000);
+    </script>
+</body>
+</html>

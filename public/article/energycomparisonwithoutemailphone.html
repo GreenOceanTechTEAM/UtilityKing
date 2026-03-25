@@ -1,0 +1,875 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Comparison Without Email or Phone Number (UK 2026 Guide) - UtilityKing</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c2461, #1e3799);
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: 800;
+            color: #0c2461;
+            text-decoration: none;
+        }
+
+            .logo span {
+                color: #f6b93b;
+            }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            font-size: 16px;
+            transition: color 0.3s;
+        }
+
+            nav a:hover {
+                color: #0c2461;
+            }
+
+        .cta-button {
+            background: linear-gradient(135deg, #f6b93b, #fa983a);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            box-shadow: 0 4px 15px rgba(246, 185, 59, 0.3);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-2px);
+                box-shadow: 0 6px 20px rgba(246, 185, 59, 0.4);
+            }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(12, 36, 97, 0.9), rgba(30, 55, 153, 0.9));
+            color: white;
+            text-align: center;
+            padding: 80px 0 60px;
+        }
+
+        .meta-info {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            display: inline-block;
+            font-size: 14px;
+        }
+
+        .hero h1 {
+            font-size: 42px;
+            margin-bottom: 20px;
+            font-weight: 800;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-subtitle {
+            font-size: 20px;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: #ffffff;
+            padding: 10px 0;
+        }
+
+            .content-section.gray {
+                background: #f8f9fa;
+            }
+
+        .section-title {
+            font-size: 36px;
+            margin-bottom: 30px;
+            font-weight: 700;
+            color: #0c2461;
+        }
+
+        .section-intro {
+            font-size: 18px;
+            margin-bottom: 40px;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .content-block {
+            margin-bottom: 40px;
+        }
+
+            .content-block h3 {
+                font-size: 24px;
+                margin-bottom: 15px;
+                color: #0c2461;
+            }
+
+            .content-block p {
+                margin-bottom: 15px;
+                color: #555;
+                line-height: 1.7;
+            }
+
+            .content-block ul, .content-block ol {
+                margin-left: 25px;
+                margin-bottom: 20px;
+            }
+
+            .content-block li {
+                margin-bottom: 10px;
+                color: #555;
+                line-height: 1.7;
+            }
+
+        .highlight-box {
+            background: linear-gradient(135deg, #f6f9ff, #e8f4ff);
+            border-left: 4px solid #f6b93b;
+            padding: 25px;
+            margin: 30px 0;
+            border-radius: 0 10px 10px 0;
+        }
+
+            .highlight-box h4 {
+                color: #0c2461;
+                margin-bottom: 15px;
+                font-size: 20px;
+            }
+
+        .check-list li {
+            list-style: none;
+            margin-bottom: 15px;
+            position: relative;
+            background:#fff;
+            padding-left:20px;
+            font-weight:bold;
+        }
+
+            .check-list li:before {
+                content: "✓";
+                color: #4CAF50;
+                font-weight: bold;
+                position: absolute;
+                left: 0;
+            }
+
+        .myth-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .myth-card {
+            background: white;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+        }
+
+            .myth-card.false {
+                border-left: 4px solid #e74c3c;
+            }
+
+            .myth-card h4 {
+                color: #0c2461;
+                margin-bottom: 10px;
+            }
+
+        /* FAQ Section - Fixed Accordion */
+        .faq-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            margin-bottom: 15px;
+            border: 1px solid #e1e8ed;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .faq-question {
+            background: #f8f9fa;
+            padding: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+            font-size: 18px;
+            transition: background-color 0.3s;
+        }
+
+            .faq-question:hover {
+                background: #edf2f7;
+            }
+
+            .faq-question::after {
+                content: '+';
+                font-size: 24px;
+                font-weight: 300;
+                transition: transform 0.3s;
+            }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+
+        .faq-answer {
+            padding: 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease, padding 0.3s ease;
+        }
+
+        .faq-item.active .faq-answer {
+            padding: 20px;
+            max-height: 500px;
+        }
+
+        .faq-answer p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .faq-answer ul {
+            padding-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .faq-answer li {
+            margin-bottom: 8px;
+            color: #555;
+        }
+
+        /* Comparison Terms Section - Fixed White Text */
+        .comparison-terms {
+            background: rgba(12, 36, 97, 0.9);
+            color: #ffffff;
+            padding: 60px 0;
+            text-align: center;
+        }
+
+            .comparison-terms .section-title {
+                color: #ffffff;
+            }
+
+        .terms-description {
+            font-size: 18px;
+            max-width: 800px;
+            margin: 0 auto 40px;
+            opacity: 0.9;
+            color: #ffffff;
+        }
+
+        /* Features Grid */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .feature-card {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 30px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+            .feature-card:hover {
+                transform: translateY(-5px);
+                border-color: rgba(246, 185, 59, 0.5);
+            }
+
+        .feature-icon {
+            font-size: 40px;
+            margin-bottom: 20px;
+            color: #f6b93b;
+        }
+
+        .feature-card h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: #ffffff;
+        }
+
+        .feature-card p {
+            opacity: 0.8;
+            color: #ffffff;
+        }
+        /*important grid*/
+        .important-grid
+        {
+            display:grid;
+            grid-template-columns:1fr 1fr;
+            gap:5px;
+        }
+        /* Step-by-step Section */
+        .steps-section {
+            background: #ffffff;
+            padding: 60px 0;
+        }
+
+        .steps-container {
+            counter-reset: step-counter;
+        }
+
+        .step-item {
+            display: flex;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: #0c2461;
+            color: white;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 18px;
+            margin-right: 20px;
+            flex-shrink: 0;
+        }
+
+        .step-content h4 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #0c2461;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #f6b93b, #fa983a);
+            padding: 80px 0;
+            text-align: center;
+            color: white;
+        }
+
+            .cta-section h2 {
+                font-size: 36px;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .cta-section p {
+                font-size: 18px;
+                max-width: 600px;
+                margin: 0 auto 30px;
+                opacity: 0.95;
+            }
+
+        /* Footer */
+        footer {
+            background: #0c2461;
+            color: white;
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: #f6b93b;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+            .footer-column ul li {
+                margin-bottom: 10px;
+            }
+
+        .footer-column a {
+            color: #bdc3c7;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+            .footer-column a:hover {
+                color: #f6b93b;
+            }
+
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #bdc3c7;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .important-grid {
+                display: grid;
+                grid-template-columns: 1fr;
+            }
+            .header-content {
+                flex-direction: column;
+                gap: 20px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .step-item {
+                flex-direction: column;
+            }
+
+            .step-number {
+                margin-bottom: 15px;
+                margin-right: 0;
+            }
+            .features-grid {
+                grid-template-columns:1fr;
+              
+            }
+        }
+    </style>
+</head>
+<body>
+   
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="meta-info">
+                <strong>Last updated: January 2026</strong> |
+                <strong>Editorial review: UK Energy Market Analyst</strong> |
+                <strong>Regulator: Ofgem</strong>
+            </div>
+            <h1>Energy Comparison Without Email or Phone Number (UK 2026 Guide)</h1>
+            <p class="hero-subtitle">Compare energy prices first — decide later. No contact details required until you're ready to switch.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Introduction Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Compare Energy Prices First — Decide Later</h2>
+            <p class="section-intro">Many UK households want to compare energy prices without immediately handing over their email address or phone number. This is understandable. For years, some comparison sites have required contact details upfront, often leading to unwanted marketing emails or sales calls before users have even seen a single tariff.</p>
+            <p class="section-intro">In 2026, expectations have changed. Consumers want clear prices, transparency, and control — with the option to provide contact details only when they actively choose to request a personalised quote or switch supplier.</p>
+
+            <div class="content-block">
+                <h3>This guide explains:</h3>
+                <ul class="check-list">
+                    <li>What energy comparison you can do without contact details</li>
+                    <li>When email or phone details are required (and why)</li>
+                    <li>How to compare energy prices safely and privately</li>
+                    <li>How to stay in control of your data while still accessing the best deals</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Can You Compare Section -->
+    <section class="content-section gray">
+        <div class="container">
+            <h2 class="section-title">Can You Compare Energy Prices Without Email or Phone Number?</h2>
+
+            <div class="highlight-box">
+                <h4>Yes — for standard energy comparisons.</h4>
+                <div class="important-grid">
+                    <div>
+                        <p>You can compare energy prices on UtilityKing without providing an email address or phone number when you want to:</p>
+                        <br />
+                        <ul class="check-list">
+                            <li>View available gas and electricity tariffs</li>
+                            <li>Compare unit rates and standing charges</li>
+                            <li>Estimate annual costs</li>
+                            <li>See potential savings in your area</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <p>To do this, only non-personal information is required, such as:</p> <br />
+                        <ul class="check-list">
+                            <li>Your postcode</li>
+                            <li>Estimated annual energy usage (or an average)</li>
+                            <li>Current tariff type (optional)</li>
+                        </ul>
+                        <p>This allows you to explore the market freely, without sign-ups or pressure.</p>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </section>
+
+    <!-- What You Can Do Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">What You Can Do Without Contact Details</h2>
+            <p>You do not need to provide contact details to:</p>
+
+            <div class="feature-grid">
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">⚡</div>
+                    <h3 style="color: #0c2461;">Compare Electricity Prices</h3>
+                    <p style="color: #555;">View all available electricity tariffs in your area</p>
+                </div>
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">🔥</div>
+                    <h3 style="color: #0c2461;">Compare Gas Prices</h3>
+                    <p style="color: #555;">See current gas rates from all suppliers</p>
+                </div>
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">📊</div>
+                    <h3 style="color: #0c2461;">View All Tariffs</h3>
+                    <p style="color: #555;">Fixed, variable, dual fuel, and single fuel options</p>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px;">UtilityKing separates price comparison from quote requests, so you stay in control throughout the process.</p>
+        </div>
+    </section>
+
+    <!-- When Contact Details Are Required -->
+    <section class="content-section gray">
+        <div class="container">
+            <h2 class="section-title">When Contact Details Are Required (Important)</h2>
+            <p>While comparison can be done anonymously, contact details are required if you request a tailored quote or choose to switch supplier.</p>
+            <div class="important-grid">
+                <div class="content-block">
+                    <h3>This is because energy suppliers must:</h3>
+                    <ul class="check-list">
+                        <li>Verify property and meter details</li>
+                        <li>Confirm eligibility for specific tariffs</li>
+                        <li>Generate accurate, personalised pricing</li>
+                        <li>Contact you if clarification is needed</li>
+                        <li>Set up an account if you proceed</li>
+                    </ul>
+                </div>
+
+                <div class="highlight-box">
+                    <h4>Key Points:</h4>
+                    <p><strong>👉 Simply viewing prices does not require contact details.</strong></p>
+                    <p><strong>👉 Requesting a personalised supplier quote does require contact details.</strong></p>
+                </div>
+            </div>
+          
+        </div>
+    </section>
+
+    <!-- Why Tailored Quotes Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Why Tailored Energy Quotes Require Contact Details</h2>
+            <p>A tailored quote is different from a general comparison. It takes into account:</p>
+
+            <div class="features-grid">
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">🏠</div>
+                    <h3 style="color: #0c2461;">Your Exact Address</h3>
+                </div>
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">🔢</div>
+                    <h3 style="color: #0c2461;">Meter Configuration</h3>
+                </div>
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">💳</div>
+                    <h3 style="color: #0c2461;">Payment Preferences</h3>
+                </div>
+                <div class="feature-card" style="background: #f8f9fa; border-color: #e1e8ed;">
+                    <div class="feature-icon">⚖️</div>
+                    <h3 style="color: #0c2461;">Supplier Eligibility</h3>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px;">Suppliers are legally required to associate this information with verified contact details. This protects both the customer and the supplier and ensures the quote you receive is accurate and valid.</p>
+            <p><strong>UtilityKing only requests this information after you choose to proceed.</strong></p>
+        </div>
+    </section>
+
+    <!-- Privacy-First Section -->
+    <section class="content-section gray">
+        <div class="container">
+            <h2 class="section-title">Privacy-First Comparison: How UtilityKing Is Different</h2>
+            <p>Many comparison sites collect contact details early because they operate as lead-generation platforms. UtilityKing is built differently.</p>
+
+            <div class="content-block">
+                <h3>UtilityKing's approach:</h3>
+                <ul class="check-list important-grid">
+                    <li>No email or phone number required to compare prices</li>
+                    <li>No forced account creation</li>
+                    <li>Clear separation between browsing and requesting quotes</li>
+                    <li>Contact details requested only with user intent</li>
+                </ul>
+                <p>Your data is not sold, and you won't receive unsolicited calls or emails simply for comparing prices.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Accuracy Section -->
+    <section class="content-section">
+        <div class="container">
+            <h2 class="section-title">Is Energy Comparison Without Contact Details Accurate?</h2>
+
+            <div class="highlight-box">
+                <h4>Yes. Comparison accuracy depends on:</h4>
+                <ul class="check-list feature-grid">
+                    <li>Location (postcode)</li>
+                    <li>Energy usage (kWh)</li>
+                    <li>Tariff pricing data</li>
+                </ul><br />
+                <p>It does <strong>not</strong> depend on your name, email address, or phone number.</p>
+                <p>Anonymous comparison provides the same pricing visibility as signed-in comparison — the difference comes only when you move to a personalised quote or switch.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Step-by-Step Section -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title">How to Compare Energy Prices Without Sharing Details (Step-by-Step)</h2>
+
+            <div class="steps-container">
+                <div class="important-grid">
+                    <div>
+                        <div class="step-item">
+                            <div class="step-number">1</div>
+                            <div class="step-content">
+                                <h4>Enter your postcode</h4>
+                                <p>Start by entering your postcode to see tariffs available in your area.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">2</div>
+                            <div class="step-content">
+                                <h4>Add estimated gas and electricity usage</h4>
+                                <p>Provide your estimated annual usage in kWh, or use averages based on your property type.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">3</div>
+                            <div class="step-content">
+                                <h4>View available tariffs in your area</h4>
+                                <p>See all available tariffs from UK energy suppliers without any sign-up.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <div class="step-item">
+                            <div class="step-number">4</div>
+                            <div class="step-content">
+                                <h4>Compare total annual costs</h4>
+                                <p>Compare the total annual cost of each tariff including standing charges and unit rates.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">5</div>
+                            <div class="step-content">
+                                <h4>Shortlist the best options</h4>
+                                <p>Save or bookmark the tariffs that best suit your needs and budget.</p>
+                            </div>
+                        </div>
+                        <div class="step-item">
+                            <div class="step-number">6</div>
+                            <div class="step-content">
+                                <h4>Request a tailored quote only if you choose to proceed</h4>
+                                <p>Only provide contact details when you're ready to get a personalised quote or switch.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <p style="margin-top: 30px; font-size: 18px;">This approach allows you to compare freely and act only when you're ready.</p>
+        </div>
+    </section>
+
+    <!-- Myths Section -->
+    <section class="content-section gray">
+        <div class="container">
+            <h2 class="section-title">Common Myths About No-Email Energy Comparison</h2>
+
+            <div class="myth-grid">
+                <div class="myth-card false">
+                    <h4>"You won't see the best deals."</h4>
+                    <p><strong>False.</strong> Prices are not hidden behind sign-ups. All available tariffs are visible from the start.</p>
+                </div>
+                <div class="myth-card false">
+                    <h4>"It's less accurate."</h4>
+                    <p><strong>False.</strong> Accuracy depends on usage and location, not contact details. The calculations are identical.</p>
+                </div>
+                <div class="myth-card false">
+                    <h4>"You'll be contacted anyway."</h4>
+                    <p><strong>False.</strong> Without contact details, suppliers cannot contact you. We don't share data without consent.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title" style="color: #0c2461;">Frequently Asked Questions</h2>
+            <div class="important-grid">
+                <div class="faq-item">
+                    <div class="faq-question">Can I compare energy prices without creating an account?</div>
+                    <div class="faq-answer">
+                        <p>Yes. No account is required to view or compare tariffs on UtilityKing.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">When do I need to give my email or phone number?</div>
+                    <div class="faq-answer">
+                        <p>Only when requesting a tailored quote or switching supplier. Simple price comparison requires no contact details.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Will I get marketing emails if I just compare?</div>
+                    <div class="faq-answer">
+                        <p>No. Comparing prices alone does not trigger marketing contact. Your details remain private.</p>
+                    </div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">Is energy comparison free?</div>
+                    <div class="faq-answer">
+                        <p>Yes. Comparing energy prices is free for consumers. UtilityKing's service is completely free to use.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion Section -->
+    <section class="comparison-terms">
+        <div class="container">
+            <h2 class="section-title">Transparent Comparison, On Your Terms</h2>
+            <p class="terms-description">In 2026, energy comparison should work around the consumer — not the other way around. You should be able to compare prices first, understand your options, and decide whether to proceed without pressure.</p>
+
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">🔍</div>
+                    <h3>Compare Without Commitment</h3>
+                    <p>Compare energy prices without email or phone number. See all options before deciding.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🎯</div>
+                    <h3>Request When Ready</h3>
+                    <p>Request a tailored quote only when you choose to proceed. No pressure, no rush.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">🛡️</div>
+                    <h3>Stay In Control</h3>
+                    <p>Stay in control of your data at every stage. Your privacy is protected throughout.</p>
+                </div>
+            </div>
+
+          
+        </div>
+    </section>
+
+   
+    <script>
+        // Fixed Accordion Script - Only opens one item at a time
+        document.addEventListener('DOMContentLoaded', function () {
+            const faqItems = document.querySelectorAll('.faq-item');
+
+            faqItems.forEach(item => {
+                const question = item.querySelector('.faq-question');
+
+                question.addEventListener('click', () => {
+                    // Close all other items
+                    faqItems.forEach(otherItem => {
+                        if (otherItem !== item) {
+                            otherItem.classList.remove('active');
+                        }
+                    });
+
+                    // Toggle current item
+                    item.classList.toggle('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

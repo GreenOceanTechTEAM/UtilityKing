@@ -1,0 +1,1126 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Energy Switching Mistakes That Cost Households £500+ (UK 2026)</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #1a237e;
+            --primary-light: #303f9f;
+            --secondary: #c62828;
+            --secondary-light: #d32f2f;
+            --accent: #ff6f00;
+            --accent-light: #ff8f00;
+            --dark: #0f172a;
+            --light: #f8fafc;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --danger: #d32f2f;
+            --danger-light: #ffebee;
+            --success: #2e7d32;
+            --success-light: #e8f5e9;
+            --shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            --radius: 16px;
+            --transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section with Warning Gradient */
+        .hero {
+            background: linear-gradient(135deg, var(--dark) 0%, #5d4037 100%);
+            color: white;
+            padding: 80px 0 60px;
+            position: relative;
+            overflow: hidden;
+            border-radius: 0 0 40px 40px;
+            margin-bottom: 60px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+        }
+
+            .hero::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(135deg, rgba(255, 111, 0, 0.1) 0%, rgba(255, 143, 0, 0.05) 100%);
+                clip-path: polygon(100% 0, 0 0, 100% 100%);
+            }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+            position: relative;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .hero-content {
+                grid-template-columns: 1fr 1fr;
+                gap: 60px;
+                align-items: center;
+            }
+        }
+
+        .hero-text h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        @media (max-width: 768px) {
+            .hero-text h1 {
+                font-size: 2.2rem;
+            }
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 25px;
+            line-height: 1.7;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .meta-badge {
+            background: rgba(255, 111, 0, 0.2);
+            color: var(--accent-light);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            border: 1px solid rgba(255, 111, 0, 0.3);
+            white-space: nowrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 25px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .stat {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 20px;
+            border-radius: var(--radius);
+            min-width: 140px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        .stat-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-light);
+            margin-bottom: 5px;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.8);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .warning-card {
+            background: rgba(211, 47, 47, 0.1);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(211, 47, 47, 0.3);
+            height: 100%;
+        }
+
+        .warning-title {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #ffcdd2;
+            font-size: 1.3rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        /* Section Styles */
+        .section-title {
+            text-align: center;
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 50px;
+            color: var(--dark);
+            position: relative;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 40px;
+            }
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
+        }
+
+        /* Mistakes Grid */
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        @media (min-width: 768px) {
+            .mistakes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .mistake-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            height: 100%;
+            border-top: 5px solid var(--danger);
+            display: flex;
+            flex-direction: column;
+        }
+
+            .mistake-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+            }
+
+        .mistake-header {
+            padding: 25px 25px 15px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            position: relative;
+        }
+
+        .mistake-number {
+            position: absolute;
+            top: -15px;
+            left: 25px;
+            width: 45px;
+            height: 45px;
+            background: var(--danger);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            font-size: 1.3rem;
+            z-index: 2;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .mistake-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            line-height: 1.4;
+            padding-top: 10px;
+        }
+
+        .mistake-body {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .mistake-body p {
+                margin-bottom: 15px;
+                line-height: 1.6;
+                color: var(--dark);
+            }
+
+            .mistake-body ul {
+                margin: 15px 0;
+                padding-left: 20px;
+                line-height: 1.6;
+            }
+
+            .mistake-body li {
+                margin-bottom: 8px;
+                line-height: 1.5;
+                color: var(--gray);
+            }
+
+        .cost-box {
+            background: var(--danger-light);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            border-left: 4px solid var(--danger);
+            flex-shrink: 0;
+        }
+
+        .cost-amount {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--danger);
+            margin-bottom: 5px;
+        }
+
+        .cost-label {
+            font-size: 1rem;
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        /* Total Cost Section */
+        .total-cost-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #1a237e 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 60px 0;
+            color: white;
+            text-align: center;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .total-cost-section {
+                padding: 40px 25px;
+            }
+        }
+
+        .total-cost-title {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        .total-cost-amount {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: var(--accent-light);
+            margin: 20px 0;
+            text-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .total-cost-amount {
+                font-size: 2.5rem;
+            }
+        }
+
+        /* How to Avoid Section */
+        .avoid-section {
+            background: white;
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 60px 0;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .avoid-section {
+                padding: 30px 25px;
+            }
+        }
+
+        .avoid-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .avoid-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .avoid-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: var(--success-light);
+            border-radius: 12px;
+            border-left: 4px solid var(--success);
+            transition: var(--transition);
+        }
+
+            .avoid-item:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+        .avoid-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--success), #4caf50);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .avoid-content h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            color: var(--success);
+        }
+
+        .avoid-content p {
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        /* Why UtilityKing Section */
+        .utilityking-section {
+            background: linear-gradient(135deg, var(--dark) 0%, #111827 100%);
+            border-radius: var(--radius);
+            padding: 50px;
+            margin: 60px 0;
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .utilityking-section {
+                padding: 40px 25px;
+            }
+        }
+
+        .utilityking-features {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 25px;
+            margin-top: 40px;
+        }
+
+        @media (min-width: 768px) {
+            .utilityking-features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+            padding: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: var(--transition);
+        }
+
+            .feature-item:hover {
+                background: rgba(255, 255, 255, 0.15);
+                transform: translateY(-5px);
+            }
+
+        .feature-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), var(--accent-light));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.3rem;
+            flex-shrink: 0;
+        }
+
+        .feature-content {
+            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: var(--radius);
+            padding: 60px 40px;
+            text-align: center;
+            color: white;
+            margin-bottom: 80px;
+            box-shadow: var(--shadow);
+        }
+
+        @media (max-width: 768px) {
+            .cta-section {
+                padding: 40px 25px;
+            }
+        }
+
+        .cta-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        @media (max-width: 768px) {
+            .cta-title {
+                font-size: 1.8rem;
+            }
+        }
+
+        .cta-description {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.6;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: white;
+            color: var(--primary);
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: var(--transition);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+            border: none;
+            cursor: pointer;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+            }
+
+        /* Responsive Improvements */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
+                border-radius: 0 0 30px 30px;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .hero-text p {
+                font-size: 1rem;
+            }
+
+            .mistake-header {
+                padding: 20px;
+            }
+
+            .mistake-body {
+                padding: 20px;
+            }
+
+            .mistake-title {
+                font-size: 1.3rem;
+            }
+
+            .stat {
+                min-width: 120px;
+                padding: 15px;
+            }
+
+            .stat-value {
+                font-size: 1.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-text h1 {
+                font-size: 1.8rem;
+            }
+
+            .meta-badge {
+                font-size: 0.8rem;
+                padding: 6px 12px;
+            }
+
+            .cta-button {
+                padding: 16px 30px;
+                font-size: 1rem;
+            }
+
+            .mistake-number {
+                width: 40px;
+                height: 40px;
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <div class="meta-info">
+                        <span class="meta-badge">Last updated: January 2026</span>
+                        <span class="meta-badge">Reviewed by: UK Energy Market Analyst</span>
+                        <span class="meta-badge">Regulator: Ofgem</span>
+                    </div>
+                    <h1>Energy Switching Mistakes That Cost Households £500+ (UK 2026)</h1>
+                    <p>Switching energy supplier is supposed to save money — yet every year, thousands of UK households end up £500 or more worse off after switching.</p>
+
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">£500+</div>
+                            <div class="stat-label">Potential Loss</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">10</div>
+                            <div class="stat-label">Costly Mistakes</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">1000s</div>
+                            <div class="stat-label">Affected Households</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <div class="warning-card">
+                        <h3 class="warning-title">
+                            <i class="fas fa-exclamation-triangle"></i>
+                            The Hidden Cost of Switching Wrong
+                        </h3>
+                        <p style="color: #ffcdd2; line-height: 1.6; margin-bottom: 20px;">
+                            The problem isn't switching itself. It's <strong>how people switch</strong>. Energy pricing in 2026 is complex, regional, and highly dependent on usage.
+                        </p>
+                        <p style="color: #ffcdd2; line-height: 1.6;">
+                            Small mistakes — like focusing on the wrong number or ignoring contract terms — can lock households into expensive tariffs for years.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mistakes Section -->
+    <section class="container">
+        <h2 class="section-title">The 10 Most Expensive Energy Switching Mistakes</h2>
+
+        <div class="mistakes-grid">
+            <!-- Mistake 1 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">1</div>
+                    <h3 class="mistake-title">Choosing the "Cheapest" Tariff Without Using Your Postcode</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>This is the single most expensive mistake people make. Energy prices in the UK are postcode-based.</p>
+                    <ul>
+                        <li>A tariff that's cheap nationally may be expensive in your area</li>
+                        <li>Standing charges can vary by £100+ per year between regions</li>
+                        <li>National "cheapest energy" lists are misleading</li>
+                    </ul>
+                    <div class="cost-box">
+                        <div class="cost-amount">£200–£400</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                    <p style="margin-top: 15px; font-style: italic; color: var(--gray); font-weight: 600;">
+                        👉 Any comparison that doesn't ask for your postcode is inaccurate.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Mistake 2 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">2</div>
+                    <h3 class="mistake-title">Ignoring Standing Charges</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Many households focus only on unit rates — and completely ignore standing charges.</p>
+                    <p>In 2026, standing charges can account for:</p>
+                    <ul>
+                        <li>30–50% of total bills for low-usage homes</li>
+                        <li>Hundreds of pounds per year, regardless of usage</li>
+                    </ul>
+                    <p>A tariff with a low unit rate but high standing charge can be far more expensive overall.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£150–£300</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 3 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">3</div>
+                    <h3 class="mistake-title">Switching to a Variable Tariff "Because It Has No Exit Fees"</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Variable tariffs feel safe because they have no contract or exit fees. But in reality, they are usually one of the most expensive options.</p>
+                    <p>Variable tariffs:</p>
+                    <ul>
+                        <li>Track the Ofgem price cap</li>
+                        <li>Rarely offer the lowest unit rates</li>
+                        <li>Increase automatically when the cap rises</li>
+                    </ul>
+                    <p>Many fixed tariffs in 2026 are priced below the cap.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£200–£500</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 4 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">4</div>
+                    <h3 class="mistake-title">Assuming the Energy Price Cap Is the Cheapest Option</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>The energy price cap is not a cheap deal — it's a consumer protection ceiling.</p>
+                    <p>It:</p>
+                    <ul>
+                        <li>Applies only to variable tariffs</li>
+                        <li>Does not guarantee value</li>
+                        <li>Does not limit fixed tariff pricing</li>
+                    </ul>
+                    <p>Households that stay on capped variable tariffs often miss cheaper fixed deals available in their area.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£300+</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 5 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">5</div>
+                    <h3 class="mistake-title">Using the Wrong Energy Usage Figures</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Using incorrect usage figures can completely distort comparisons.</p>
+                    <p>Common issues:</p>
+                    <ul>
+                        <li>Guessing usage</li>
+                        <li>Using outdated figures</li>
+                        <li>Using national averages that don't match your household</li>
+                    </ul>
+                    <p>This leads to choosing tariffs with unsuitable pricing structures and overpaying on unit rates or standing charges.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£100–£250</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 6 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">6</div>
+                    <h3 class="mistake-title">Locking Into Long Contracts Without Checking Exit Fees</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Some tariffs look cheap upfront but include:</p>
+                    <ul>
+                        <li>Long contract lengths (18–24 months)</li>
+                        <li>High exit fees (£75–£150 per fuel)</li>
+                    </ul>
+                    <p>If prices fall or better deals appear, you're trapped in an expensive contract.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£150–£300</div>
+                        <div class="cost-label">Potential cost when switching again</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- More Mistakes -->
+    <section class="container">
+        <div class="mistakes-grid">
+            <!-- Mistake 7 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">7</div>
+                    <h3 class="mistake-title">Assuming Dual Fuel Is Always Cheaper</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Dual fuel tariffs offer convenience — not guaranteed savings.</p>
+                    <p>In some regions:</p>
+                    <ul>
+                        <li>Electricity is cheaper with one supplier</li>
+                        <li>Gas is cheaper with another</li>
+                    </ul>
+                    <p>Blindly choosing dual fuel can result in higher combined costs.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£100–£200</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 8 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">8</div>
+                    <h3 class="mistake-title">Avoiding Green Tariffs Because "They Cost More"</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>This myth still costs households money.</p>
+                    <p>In 2026:</p>
+                    <ul>
+                        <li>Many green electricity tariffs cost the same</li>
+                        <li>Some renewable tariffs are cheaper than standard ones</li>
+                        <li>Fixed green deals often beat the price cap</li>
+                    </ul>
+                    <p>Avoiding green tariffs can mean missing the cheapest options available.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£100–£300</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 9 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">9</div>
+                    <h3 class="mistake-title">Not Comparing Prepayment or Economy 7 Tariffs Properly</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Households with special meters must compare specialist tariffs:</p>
+                    <ul>
+                        <li>Prepayment meters</li>
+                        <li>Economy 7</li>
+                        <li>Electric heating</li>
+                    </ul>
+                    <p>Using standard comparisons often results in higher unit rates and missed savings.</p>
+                    <div class="cost-box">
+                        <div class="cost-amount">£200+</div>
+                        <div class="cost-label">Potential cost per year</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Mistake 10 -->
+            <div class="mistake-card">
+                <div class="mistake-header">
+                    <div class="mistake-number">10</div>
+                    <h3 class="mistake-title">Switching Once — and Never Reviewing Again</h3>
+                </div>
+                <div class="mistake-body">
+                    <p>Energy markets change constantly. Households that switch once and forget often drift onto expensive default rates.</p>
+                    <p>Common issues:</p>
+                    <ul>
+                        <li>Stay on rolled-over tariffs</li>
+                        <li>Ignore renewal notices</li>
+                        <li>Don't monitor market changes</li>
+                    </ul>
+                    <div class="cost-box">
+                        <div class="cost-amount">£500+</div>
+                        <div class="cost-label">Potential cost over 2–3 years</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Total Cost Section -->
+    <section class="container">
+        <div class="total-cost-section">
+            <h3 class="total-cost-title">How Much Can These Mistakes Cost in Total?</h3>
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 800px; margin: 0 auto; line-height: 1.7;">
+                For many households, combining just 2–3 of these mistakes can easily result in hundreds of pounds in unnecessary costs over a year or two.
+            </p>
+            <div class="total-cost-amount">£500–£1,000+</div>
+            <p style="font-size: 1.2rem; color: rgba(255, 255, 255, 0.9); max-width: 800px; margin: 20px auto 0; line-height: 1.7;">
+                The savings are there — but only if you compare properly and avoid these common mistakes.
+            </p>
+        </div>
+    </section>
+
+    <!-- How to Avoid Section -->
+    <section class="container">
+        <div class="avoid-section">
+            <h2 class="section-title" style="color: var(--dark);">How to Avoid These Costly Energy Switching Mistakes</h2>
+            <div class="avoid-grid">
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-map-marker-alt"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Always compare by postcode</h4>
+                        <p>Energy prices vary regionally. Accurate comparisons require your specific location.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Use realistic energy usage</h4>
+                        <p>Accurate kWh figures ensure proper cost calculations and tariff matching.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Compare total annual cost, not headlines</h4>
+                        <p>Look at the complete yearly cost, not just unit rates or standing charges alone.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-balance-scale"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Check standing charges and unit rates</h4>
+                        <p>Balance both based on your usage patterns for optimal savings.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-lock"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Consider fixed tariffs below the price cap</h4>
+                        <p>Many fixed deals offer better value than capped variable tariffs.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-file-contract"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Review contracts and exit fees</h4>
+                        <p>Understand the terms before committing to avoid being locked into poor deals.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-calendar-alt"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Re-compare before your tariff ends</h4>
+                        <p>Set reminders to review your energy deal before it rolls over to expensive rates.</p>
+                    </div>
+                </div>
+
+                <div class="avoid-item">
+                    <div class="avoid-icon">
+                        <i class="fas fa-shield-alt"></i>
+                    </div>
+                    <div class="avoid-content">
+                        <h4>Use accurate comparison tools</h4>
+                        <p>Trust tools that factor in all variables for complete, transparent comparisons.</p>
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-style: italic; color: var(--gray); font-size: 1.1rem;">
+                UtilityKing does all of this automatically, helping you switch safely and save money.
+            </p>
+        </div>
+    </section>
+
+    <!-- Why UtilityKing Section -->
+    <section class="container">
+        <div class="utilityking-section">
+            <h2 class="section-title" style="color: white;">Why UtilityKing Helps You Switch Without Costly Errors</h2>
+            <div class="utilityking-features">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-map-pin"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Uses postcode-accurate pricing</strong> — compares real local rates, not misleading national averages
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-calculator"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Calculates true annual cost</strong> — considers both standing charges and unit rates for complete accuracy
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-chart-bar"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Highlights standing charges clearly</strong> — ensures you don't miss this critical cost component
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-exchange-alt"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Compares fixed and variable tariffs</strong> — shows all options so you can choose the best deal
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-exclamation-circle"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Flags exit fees and contract risks</strong> — warns you about potential traps before you commit
+                    </div>
+                </div>
+
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <i class="fas fa-pound-sign"></i>
+                    </div>
+                    <div class="feature-content">
+                        <strong>Shows real savings</strong> — transparent comparison against your current or best alternative deal
+                    </div>
+                </div>
+            </div>
+            <p style="text-align: center; margin-top: 40px; font-size: 1.3rem; font-weight: 600; color: white;">
+                No guesswork. No expensive mistakes. Just accurate energy switching.
+            </p>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="container">
+        <div class="cta-section">
+            <h2 class="cta-title">Switch Smart & Save £500+</h2>
+            <p class="cta-description">Energy switching can save hundreds — but only if done correctly. Avoid the common mistakes that cost households £500+ each year.</p>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <script>
+        // Mobile responsive adjustments
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add smooth scrolling for any anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+
+                    const targetId = this.getAttribute('href');
+                    if(targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if(targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+
+            // Add animation to mistake cards on scroll
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Apply animation to mistake cards
+            document.querySelectorAll('.mistake-card').forEach(card => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                card.style.transition = 'opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease';
+                observer.observe(card);
+            });
+
+            // Apply animation to avoid items
+            document.querySelectorAll('.avoid-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+
+            // Apply animation to feature items
+            document.querySelectorAll('.feature-item').forEach(item => {
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+                item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+                observer.observe(item);
+            });
+        });
+    </script>
+</body>
+</html>

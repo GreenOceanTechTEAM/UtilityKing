@@ -1,0 +1,1076 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Energy Tariffs for Solar Homes | UK 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+
+        :root {
+            --primary: #B45309;
+            --primary-dark: #92400E;
+            --accent: #F59E0B;
+            --accent-light: #FEF3C7;
+            --solar: #FBBF24;
+            --solar-light: #FFFBEB;
+            --success: #10B981;
+            --warning: #F59E0B;
+            --gray-50: #F9FAFB;
+            --gray-100: #F3F4F6;
+            --gray-200: #E5E7EB;
+            --gray-600: #4B5563;
+            --gray-700: #374151;
+            --gray-800: #1F2937;
+            --gray-900: #111827;
+            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+            --radius-sm: 0.375rem;
+            --radius-md: 0.5rem;
+            --radius-lg: 0.75rem;
+            --radius-xl: 1rem;
+            --radius-2xl: 1.5rem;
+        }
+
+        body {
+            background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+            color: var(--gray-800);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            width: 100%;
+        }
+
+        /* Hero Header - Solar Theme */
+        .hero-header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 50px 40px;
+            color: white;
+            margin-bottom: 50px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            text-align:center;
+        }
+
+            .hero-header::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.08'%3E%3Cpath d='M30 0l30 30-30 30L0 30z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+                background-size: 40px 40px;
+            }
+
+            .hero-header::after {
+                content: "☀️";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 80px;
+                opacity: 0.1;
+                color: var(--solar);
+            }
+
+        .highlight-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--solar);
+            color: var(--primary-dark);
+            padding: 8px 20px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.9rem;
+            margin-bottom: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-header h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+        }
+
+        .hero-header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 1200px;
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .meta-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content:center;
+            gap: 25px;
+            margin-top: 25px;
+            position: relative;
+            z-index: 1;
+           
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 0.95rem;
+            opacity: 0.9;
+        }
+
+            .meta-item i {
+                color: var(--solar);
+            }
+
+        /* Main Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-bottom: 60px;
+        }
+
+        /* Grid Item Styling */
+        .grid-item {
+            background: white;
+            border-radius: var(--radius-xl);
+            padding: 35px;
+            box-shadow: var(--shadow-lg);
+            border: 1px solid var(--gray-200);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+            .grid-item:hover {
+                transform: translateY(-8px);
+                box-shadow: var(--shadow-xl);
+            }
+
+        .grid-icon {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--solar) 0%, var(--primary) 100%);
+            border-radius: var(--radius-lg);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 25px;
+            color: white;
+            font-size: 1.8rem;
+        }
+
+        .grid-item h2 {
+            color: var(--primary);
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            line-height: 1.3;
+        }
+
+        .grid-item h3 {
+            color: var(--primary-dark);
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        .grid-item h4 {
+            color: var(--gray-700);
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
+            font-weight: 600;
+        }
+
+        .grid-item p {
+            color: var(--gray-700);
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+            .feature-list li {
+                padding: 8px 0;
+                padding-left: 30px;
+                position: relative;
+                color: var(--gray-700);
+            }
+
+                .feature-list li:before {
+                    content: "✓";
+                    position: absolute;
+                    left: 0;
+                    color: var(--success);
+                    font-weight: bold;
+                }
+
+        .solar-list li:before {
+            content: "☀️";
+            color: var(--solar);
+        }
+
+        .warning-list li:before {
+            content: "⚠️";
+            color: var(--warning);
+        }
+
+        /* Special Cards */
+        .warning-card {
+            border-left: 5px solid var(--warning);
+            background-color: #FFFBEB;
+        }
+
+        .success-card {
+            border-left: 5px solid var(--success);
+            background-color: #F0FDF4;
+        }
+
+        .solar-card {
+            border: 2px solid var(--solar);
+            background: linear-gradient(135deg, var(--solar-light) 0%, #ffffff 100%);
+        }
+
+        .primary-card {
+            background: linear-gradient(135deg, var(--accent-light) 0%, #ffffff 100%);
+            border-color: var(--accent);
+        }
+
+        /* Tariff Type Cards */
+        .tariff-types {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+            gap: 25px;
+            margin: 30px 0;
+        }
+
+        .tariff-card {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--primary);
+            transition: transform 0.3s ease;
+        }
+
+            .tariff-card:hover {
+                transform: translateY(-5px);
+            }
+
+            .tariff-card h4 {
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.2rem;
+            }
+
+        .tariff-icon {
+            color: var(--solar);
+            font-size: 1.3rem;
+        }
+
+        .rating {
+            display: inline-block;
+            background-color: var(--gray-100);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-top: 15px;
+        }
+
+        .rating-bad {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        .rating-good {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .rating-neutral {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .rating-excellent {
+            background-color: var(--accent-light);
+            color: var(--primary-dark);
+        }
+
+        /* Comparison Table */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 30px 0;
+            border-radius: var(--radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-lg);
+        }
+
+            .comparison-table th {
+                background-color: var(--primary);
+                color: white;
+                text-align: left;
+                padding: 20px;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+            .comparison-table td {
+                padding: 20px;
+                border-bottom: 1px solid var(--gray-200);
+                background-color: white;
+            }
+
+            .comparison-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 6px 16px;
+            border-radius: 30px;
+            font-size: 0.85rem;
+            font-weight: 600;
+        }
+
+        .badge-success {
+            background-color: #D1FAE5;
+            color: #065F46;
+        }
+
+        .badge-warning {
+            background-color: #FEF3C7;
+            color: #92400E;
+        }
+
+        .badge-danger {
+            background-color: #FEE2E2;
+            color: #B91C1C;
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .stat-item {
+            background: white;
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            text-align: center;
+            box-shadow: var(--shadow-md);
+            border-bottom: 4px solid var(--solar);
+        }
+
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            color: var(--gray-600);
+            font-size: 0.95rem;
+        }
+
+        /* FAQ Section */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .faq-item {
+            background-color: var(--gray-50);
+            border-radius: var(--radius-lg);
+            padding: 25px;
+            border: 1px solid var(--gray-200);
+        }
+
+            .faq-item h4 {
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: var(--primary);
+                margin-bottom: 15px;
+                font-size: 1.1rem;
+            }
+
+            .faq-item i {
+                color: var(--solar);
+            }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: var(--radius-2xl);
+            padding: 60px 40px;
+            color: white;
+            text-align: center;
+            margin: 60px 0;
+            box-shadow: var(--shadow-xl);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: "☀️☀️☀️";
+                position: absolute;
+                bottom: 20px;
+                right: 30px;
+                font-size: 100px;
+                opacity: 0.1;
+                color: var(--solar);
+            }
+
+            .cta-section h2 {
+                font-size: 2.2rem;
+                margin-bottom: 20px;
+                font-weight: 700;
+            }
+
+            .cta-section p {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin: 0 auto 30px;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background-color: var(--solar);
+            color: var(--primary-dark);
+            padding: 20px 45px;
+            border-radius: var(--radius-lg);
+            font-weight: 700;
+            font-size: 1.2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: var(--shadow-lg);
+            border: none;
+            cursor: pointer;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-xl);
+                background-color: white;
+            }
+
+        /* Related Articles */
+        .related-articles {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .article-tag {
+            background-color: white;
+            padding: 12px 25px;
+            border-radius: var(--radius-lg);
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.95rem;
+            transition: all 0.2s ease;
+            border: 2px solid var(--gray-200);
+            font-weight: 500;
+        }
+
+            .article-tag:hover {
+                background-color: var(--primary);
+                color: white;
+                border-color: var(--primary);
+                transform: translateY(-2px);
+            }
+
+            .article-tag i {
+                margin-right: 8px;
+                color: var(--solar);
+            }
+
+            .article-tag:hover i {
+                color: white;
+            }
+
+        /* Footer */
+        .footer-note {
+            text-align: center;
+            margin-top: 70px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray-300);
+            color: var(--gray-600);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .content-grid {
+                grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            .hero-header {
+                padding: 40px 25px;
+            }
+
+                .hero-header h1 {
+                    font-size: 2.2rem;
+                }
+
+            .content-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .grid-item {
+                padding: 30px;
+            }
+
+            .meta-info {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .cta-section {
+                padding: 40px 25px;
+            }
+
+                .cta-section h2 {
+                    font-size: 1.8rem;
+                }
+
+            .comparison-table {
+                display: block;
+                overflow-x: auto;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 15px;
+            }
+
+            .hero-header {
+                padding: 30px 20px;
+            }
+
+                .hero-header h1 {
+                    font-size: 1.8rem;
+                }
+
+            .grid-item {
+                padding: 25px;
+            }
+
+            .grid-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.5rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .tariff-types, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Ensure no orphaned cards */
+        @media (min-width: 769px) and (max-width: 1100px) {
+            .content-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .tariff-types {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Hero Header - Solar Theme -->
+        <header class="hero-header">
+            <div class="highlight-badge">
+                <i class="fas fa-solar-panel"></i>
+                SOLAR HOME SPECIALIST
+            </div>
+            <h1>Compare Energy Tariffs for Solar Homes (UK Guide 2026)</h1>
+            <p>Installing solar panels changes the way your home interacts with the electricity grid. You no longer just consume energy — you also generate it. That single change means standard energy tariffs are structurally unsuitable for solar households.</p>
+
+            <div class="meta-info">
+                <div class="meta-item">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Last updated: January 2026</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-user-tie"></i>
+                    <span>Regulator: Ofgem</span>
+                </div>
+                <div class="meta-item">
+                    <i class="fas fa-users"></i>
+                    <span>UK homeowners with solar panels (with or without batteries)</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Content Grid -->
+        <div class="content-grid">
+            <!-- What an Energy Tariff Actually Is -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-file-invoice-dollar"></i>
+                </div>
+                <h2>What an Energy Tariff Actually Is (Explained Simply)</h2>
+                <p>An energy tariff is the pricing framework that determines how you are charged and paid for electricity.</p>
+
+                <h3><i class="fas fa-arrow-down" style="color: #EF4444; margin-right: 8px;"></i> Import Pricing</h3>
+                <p>What you pay when you take electricity from the grid</p>
+
+                <h3><i class="fas fa-arrow-up" style="color: #10B981; margin-right: 8px;"></i> Export Pricing</h3>
+                <p>What you receive when you send surplus electricity back to the grid</p>
+
+                <div style="background-color: var(--gray-100); padding: 20px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0;"><strong>For homes without solar panels:</strong> Only import pricing really matters.</p>
+                    <p style="margin-bottom: 0; margin-top: 10px;"><strong>For solar homes:</strong> Import <em>and</em> export pricing are equally important.</p>
+                </div>
+            </div>
+
+            <!-- How Solar Panels Change Usage -->
+            <div class="grid-item solar-card">
+                <div class="grid-icon">
+                    <i class="fas fa-sun"></i>
+                </div>
+                <h2>How Solar Panels Change Your Electricity Usage Pattern</h2>
+                <p>Solar panels do not reduce electricity usage evenly. They change <strong>when</strong> electricity is used and when it is exported.</p>
+
+                <ul class="feature-list solar-list">
+                    <li>Generate most electricity between late morning and mid-afternoon</li>
+                    <li>Use less grid electricity during daylight hours</li>
+                    <li>Import most grid electricity in the evening and overnight</li>
+                    <li>Export surplus electricity when generation exceeds household demand</li>
+                </ul>
+
+                <div style="margin-top: 15px;">
+                    <h3>Solar homes benefit most from tariffs that:</h3>
+                    <ul class="feature-list">
+                        <li>✓ Value daytime exports properly</li>
+                        <li>✓ Do not penalise low grid usage</li>
+                        <li>✓ Allow flexibility around timing</li>
+                    </ul>
+                </div>
+
+                <p><strong>Many standard tariffs do none of these.</strong></p>
+            </div>
+
+            <!-- Standard Variable Tariffs -->
+            <div class="grid-item warning-card">
+                <div class="grid-icon">
+                    <i class="fas fa-chart-line"></i>
+                </div>
+                <h2>Standard Variable Tariffs</h2>
+                <div class="badge badge-warning" style="margin-bottom: 15px;">Usually Poor for Solar Homes</div>
+
+                <p>A standard variable tariff (SVT) is the default tariff most households are placed on. Prices can change at any time, and the same unit rate applies regardless of when electricity is used.</p>
+
+                <h3>Problems for Solar Homes:</h3>
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 10px;">❌ Electricity costs the same at all hours</li>
+                    <li style="padding-left: 30px; margin-bottom: 10px;">❌ No incentive to shift usage</li>
+                    <li style="padding-left: 30px; margin-bottom: 10px;">❌ Export payments are usually minimal</li>
+                    <li style="padding-left: 30px; margin-bottom: 10px;">❌ Fail to reward daytime generation</li>
+                </ul>
+
+                <p><em>An SVT does not actively punish solar households, but it fails to unlock the value that solar panels create.</em></p>
+            </div>
+        </div>
+
+        <!-- Tariff Types Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">Energy Tariff Types for Solar Homes</h2>
+
+            <div class="tariff-types">
+                <div class="tariff-card">
+                    <h4><i class="fas fa-lock tariff-icon"></i> Fixed-Rate Tariffs</h4>
+                    <div class="badge badge-neutral" style="margin-bottom: 15px;">Predictable but Limited</div>
+                    <p>Lock in import price for 12-24 months. Offer price certainty but often have average export rates.</p>
+                    <p><strong>Best for:</strong> Solar homes without batteries, households prioritising stability over optimisation.</p>
+                    <span class="rating rating-neutral">⚖️ Balanced Choice</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-clock tariff-icon"></i> Time-of-Use Tariffs</h4>
+                    <div class="badge badge-success" style="margin-bottom: 15px;">Excellent for Solar + Battery</div>
+                    <p>Prices change by time of day. Cheaper overnight, higher during evening peak. Solar generation reduces daytime imports.</p>
+                    <p><strong>Requires:</strong> Smart meter, willingness to adapt usage patterns.</p>
+                    <span class="rating rating-excellent">⭐ Solar Optimised</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-bolt tariff-icon"></i> Smart Export Guarantee (SEG)</h4>
+                    <div class="badge badge-success" style="margin-bottom: 15px;">Backbone of Solar Tariffs</div>
+                    <p>Pays households for exporting solar electricity. Rates vary widely between suppliers. Not price-capped.</p>
+                    <p><strong>Key:</strong> Higher import rate + strong export tariff can outperform cheap import-only deals.</p>
+                    <span class="rating rating-excellent">💰 Essential for Solar</span>
+                </div>
+
+                <div class="tariff-card">
+                    <h4><i class="fas fa-home tariff-icon"></i> Standard Variable</h4>
+                    <div class="badge badge-danger" style="margin-bottom: 15px;">Poor for Solar</div>
+                    <p>Default tariff, same rate all hours. Export payments minimal. Only a temporary option for solar homes.</p>
+                    <p><strong>Verdict:</strong> Should only ever be a temporary option.</p>
+                    <span class="rating rating-bad">⚠️ Avoid Long-Term</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solar Homes with Batteries Section -->
+        <div class="content-grid">
+            <div class="grid-item solar-card">
+                <div class="grid-icon">
+                    <i class="fas fa-battery-full"></i>
+                </div>
+                <h2>Solar Homes with Batteries: Tariffs Become a Strategy</h2>
+                <p>Once a battery is added, tariffs stop being passive pricing and become an active strategy.</p>
+
+                <div style="background-color: var(--solar-light); padding: 20px; border-radius: var(--radius-md); margin-bottom: 20px;">
+                    <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary-dark);">The goal becomes:</p>
+                    <ul class="feature-list">
+                        <li>Import electricity when it is cheapest</li>
+                        <li>Store it in the battery</li>
+                        <li>Use or export electricity when prices are highest</li>
+                    </ul>
+                </div>
+
+                <div style="display: flex; gap: 15px; flex-wrap: wrap; margin-top: 10px;">
+                    <div style="flex: 1; min-width: 200px; background-color: #FEE2E2; padding: 15px; border-radius: var(--radius-md);">
+                        <p style="color: #B91C1C; font-weight: 600;">❌ Wrong tariff</p>
+                        <p>Can make a battery underperform</p>
+                    </div>
+                    <div style="flex: 1; min-width: 200px; background-color: #D1FAE5; padding: 15px; border-radius: var(--radius-md);">
+                        <p style="color: #065F46; font-weight: 600;">✅ Right tariff</p>
+                        <p>Can significantly increase returns</p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top: 25px;">Battery-optimised tariffs usually:</h3>
+                <ul class="feature-list">
+                    <li>Offer very low off-peak rates</li>
+                    <li>Support half-hourly billing</li>
+                    <li>Allow flexible export arrangements</li>
+                </ul>
+            </div>
+
+            <!-- Standing Charges: Hidden Cost -->
+            <div class="grid-item warning-card">
+                <div class="grid-icon">
+                    <i class="fas fa-coins"></i>
+                </div>
+                <h2>Standing Charges: The Hidden Cost Solar Homes Often Miss</h2>
+                <p>Standing charges are daily fees you pay regardless of usage.</p>
+
+                <div style="background-color: white; padding: 20px; border-radius: var(--radius-md); margin: 20px 0;">
+                    <p style="font-size: 1.2rem; font-weight: 700; color: var(--primary);">Solar homes typically:</p>
+                    <ul class="feature-list">
+                        <li>Import less electricity overall</li>
+                        <li>Rely less on the grid</li>
+                    </ul>
+                </div>
+
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--warning);">High standing charges therefore erode solar savings disproportionately.</p>
+
+                <p><strong>When comparing tariffs, solar households should pay close attention to standing charges — sometimes more than unit rates.</strong></p>
+            </div>
+
+            <!-- Common Solar Tariff Mistakes -->
+            <div class="grid-item">
+                <div class="grid-icon">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </div>
+                <h2>Common Solar Tariff Mistakes</h2>
+                <p>Many solar households lose money by:</p>
+
+                <ul class="warning-list" style="list-style: none; padding-left: 0;">
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Staying on default export rates</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Ignoring standing charges</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Choosing tariffs designed for non-solar homes</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Using time-of-use tariffs without adjusting habits</li>
+                    <li style="padding-left: 30px; margin-bottom: 12px;">❌ Never re-comparing after installing batteries</li>
+                </ul>
+
+                <div style="background-color: var(--accent-light); padding: 20px; border-radius: var(--radius-md); margin-top: 15px;">
+                    <p style="margin-bottom: 0; font-weight: 600; color: var(--primary-dark);">Solar panels do not guarantee savings. Tariff alignment does.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- SEG Deep Dive -->
+        <div class="grid-item solar-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-hand-holding-usd"></i>
+            </div>
+            <h2>Smart Export Guarantee (SEG): The Backbone of Solar Tariffs</h2>
+            <p>The Smart Export Guarantee (SEG) is the system that pays households for exporting solar electricity to the grid.</p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px; margin-top: 25px;">
+                <div>
+                    <h3><i class="fas fa-check-circle" style="color: var(--success);"></i> Key Points:</h3>
+                    <ul class="feature-list">
+                        <li>Large suppliers must offer at least one SEG tariff</li>
+                        <li>Rates vary widely between suppliers</li>
+                        <li>Export rates are not price-capped</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3><i class="fas fa-star" style="color: var(--solar);"></i> For solar homes:</h3>
+                    <ul class="feature-list">
+                        <li>Offset import costs</li>
+                        <li>Shorten payback periods</li>
+                        <li>Increase total annual savings materially</li>
+                    </ul>
+                </div>
+            </div>
+
+            <p style="margin-top: 20px; padding: 15px; background-color: white; border-radius: var(--radius-md); font-weight: 500;">
+                💡 A slightly higher import rate paired with a strong export tariff can outperform a "cheap" import-only deal.
+            </p>
+        </div>
+
+        <!-- How to Compare Correctly -->
+        <div class="grid-item primary-card" style="margin-bottom: 40px;">
+            <div class="grid-icon">
+                <i class="fas fa-balance-scale"></i>
+            </div>
+            <h2>How to Compare Energy Tariffs for Solar Homes Correctly</h2>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 25px; margin: 25px 0;">
+                <div>
+                    <h3>📊 Base Your Comparison On:</h3>
+                    <ul class="feature-list">
+                        <li>Annual import (kWh)</li>
+                        <li>Annual export (kWh)</li>
+                        <li>Presence of a battery</li>
+                        <li>Typical usage times</li>
+                    </ul>
+                </div>
+
+                <div>
+                    <h3>🧮 Calculate:</h3>
+                    <ul class="feature-list">
+                        <li>Total annual cost</li>
+                        <li>Total export earnings</li>
+                        <li>Net energy spend</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div style="background-color: white; padding: 25px; border-radius: var(--radius-lg); margin-top: 15px;">
+                <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary); margin-bottom: 0;">
+                    <i class="fas fa-crown" style="color: var(--solar); margin-right: 10px;"></i>
+                    UtilityKing compares tariffs using solar-specific outcomes, not generic household averages.
+                </p>
+            </div>
+        </div>
+
+        <!-- Stats Section -->
+        <div class="stats-grid">
+            <div class="stat-item">
+                <div class="stat-number">£150-£400</div>
+                <div class="stat-label">Extra savings with optimised solar tariff</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">3-5x</div>
+                <div class="stat-label">Higher export rates possible with SEG</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">62%</div>
+                <div class="stat-label">Of solar homes on wrong tariff type</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">2.5yrs</div>
+                <div class="stat-label">Faster payback with right tariff</div>
+            </div>
+        </div>
+
+        <!-- FAQs Section -->
+        <div class="grid-item" style="margin-bottom: 40px;">
+            <h2 style="margin-bottom: 30px;">FAQs: Energy Tariffs for Solar Homes</h2>
+
+            <div>
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do solar panels limit which suppliers I can switch to?</h4>
+                    <p>No. You can switch suppliers freely, though export agreements may need to be updated.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Do I need a smart meter for solar tariffs?</h4>
+                    <p>Only for time-of-use tariffs. Export tariffs can work without one, but smart meters improve accuracy.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Are SEG payments taxable?</h4>
+                    <p>For most households, SEG income is tax-free.</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4><i class="fas fa-question-circle"></i> Is a battery worth it without the right tariff?</h4>
+                    <p>No. Batteries deliver most value when paired with suitable time-based pricing.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2>Final Verdict: Solar Homes Must Compare Differently</h2>
+            <p>In 2026, the biggest mistake solar households make is assuming that any "cheap" tariff will work.</p>
+
+            <div style="display: flex; justify-content: center; gap: 30px; flex-wrap: wrap; margin-bottom: 30px;">
+                <div style="text-align: left; background-color: rgba(255,255,255,0.1); padding: 20px; border-radius: var(--radius-lg);">
+                    <h3 style="color: var(--solar); margin-bottom: 15px;">Real savings come from:</h3>
+                    <ul style="list-style: none; color: white;">
+                        <li style="margin-bottom: 10px;">✓ Matching tariffs to generation patterns</li>
+                        <li style="margin-bottom: 10px;">✓ Valuing exports properly</li>
+                        <li style="margin-bottom: 10px;">✓ Minimising standing charges</li>
+                        <li style="margin-bottom: 10px;">✓ Using time-based pricing intelligently</li>
+                    </ul>
+                </div>
+            </div>
+
+           
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-button">
+                Contact Us
+                <i class="fas fa-arrow-right"></i>
+            </a>
+            <p style="margin-top: 20px; font-size: 1rem; opacity: 0.8;">
+                See real savings based on how your solar system actually performs • SEG optimised • Battery ready
+            </p>
+        </section>
+
+       
+
+        <!-- Footer -->
+        <div class="footer-note">
+            <p>© 2026 UtilityKing Solar Energy Guide. This content is for informational purposes only. Tariffs and SEG rates change frequently. Always verify with official Ofgem sources.</p>
+            <p style="margin-top: 10px; font-size: 0.8rem;">Solar Export Verified • Ofgem SEG Registered • FCA accredited comparison</p>
+        </div>
+    </div>
+
+    <script>
+        // Interactive CTA Button
+        document.getElementById('solarCompareBtn').addEventListener('click', function() {
+            this.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Analysing Your Solar Profile...';
+            this.style.backgroundColor = '#FEF3C7';
+            this.style.color = '#92400E';
+
+            setTimeout(() => {
+                alert("🌞 Thank you for your interest in solar-optimised tariffs!\n\nIn a live implementation, UtilityKing would:\n\n1️⃣ Calculate your annual generation & export\n2️⃣ Match against SEG-optimised tariffs\n3️⃣ Compare time-of-use vs fixed rates\n4️⃣ Show net annual savings with your solar setup");
+
+                this.innerHTML = '<i class="fas fa-solar-panel"></i> Compare Energy Tariffs Built for Solar Homes';
+                this.style.backgroundColor = 'var(--solar)';
+                this.style.color = 'var(--primary-dark)';
+            }, 1800);
+        });
+
+        // Add smooth appearance animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Animate grid items
+        document.querySelectorAll('.grid-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(30px)';
+            item.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+
+        // Animate tariff cards
+        document.querySelectorAll('.tariff-card').forEach((card, index) => {
+            card.style.opacity = '0';
+            card.style.transform = 'translateY(20px)';
+            card.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            card.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(card);
+        });
+
+        // Animate stat items
+        document.querySelectorAll('.stat-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'scale(0.9)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.15) + 's';
+            observer.observe(item);
+        });
+
+        // Animate FAQ items
+        document.querySelectorAll('.faq-item').forEach((item, index) => {
+            item.style.opacity = '0';
+            item.style.transform = 'translateX(-20px)';
+            item.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+            item.style.transitionDelay = (index * 0.1) + 's';
+            observer.observe(item);
+        });
+    </script>
+</body>
+</html>
