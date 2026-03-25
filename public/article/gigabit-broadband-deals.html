@@ -1,0 +1,544 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Gigabit broadband deals 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- premium type: Inter & Manrope (clean and elegant) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f4f7fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #1c2c3c;
+        }
+
+        /* sophisticated gigabit palette: deep navy, vibrant cyan, warm gold, pearl */
+        :root {
+            --navy: #1b3a4f;
+            --cyan: #2c9e9e;
+            --gold: #dba458;
+            --pearl: #ffffff;
+            --bg-light: #f9fcff;
+            --border-soft: #e3e9f2;
+            --slate: #2c4a62;
+            --shadow: 0 20px 35px -18px #1c2c3c30;
+        }
+
+        .guide {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: var(--pearl);
+            border-radius: 2.8rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid #e2e9f2;
+        }
+
+        /* header – subtle gradient */
+        .header {
+            background: linear-gradient(145deg, #f5faff, #ecf3fc);
+            padding: 2.2rem 2rem;
+            color: var(--navy);
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        .header h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .header h1 i {
+            background: rgba(44,158,158,0.1);
+            padding: 0.7rem 0.9rem;
+            border-radius: 1.8rem 0.2rem 1.8rem 0.2rem;
+            font-size: 1.8rem;
+            border: 1px solid rgba(44,158,158,0.3);
+            color: var(--cyan);
+        }
+
+        .header .sub {
+            font-size: 1.1rem;
+            max-width: 900px;
+            color: #3b5d77;
+            border-left: 4px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 1.2rem 0 1.8rem;
+            font-weight: 300;
+        }
+
+        .header .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3b607a;
+        }
+
+            .header .tags i {
+                color: var(--gold);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main {
+            padding: 2.2rem 2rem;
+            background: var(--bg-light);
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        /* quick stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.5rem 0.3rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 5px 12px -8px #a0b8cf;
+        }
+
+            .stat-card .big {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: var(--cyan);
+            }
+
+            .stat-card .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #4d6e89;
+                letter-spacing: 0.5px;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--navy);
+            margin: 2.8rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+            .section-head i {
+                color: var(--gold);
+                font-size: 1.8rem;
+                background: rgba(219,164,88,0.1);
+                padding: 0.5rem;
+                border-radius: 1.2rem 0.1rem 1.2rem 0.1rem;
+            }
+
+        /* quick summary table */
+        .summary-wrapper {
+            overflow-x: auto;
+            margin-bottom: 2.5rem;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: var(--pearl);
+            border: 1px solid var(--border-soft);
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+            .summary-table th {
+                background: #ecf3fa;
+                padding: 1rem 1.2rem;
+                font-weight: 600;
+                color: var(--navy);
+            }
+
+            .summary-table td {
+                padding: 1rem 1.2rem;
+                border-bottom: 1px solid #eef3f9;
+            }
+
+        /* speed comparison table */
+        .speed-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: var(--pearl);
+            border: 1px solid var(--border-soft);
+        }
+
+        .speed-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+            .speed-table th {
+                background: #ecf3fa;
+                padding: 1rem;
+                font-weight: 600;
+            }
+
+            .speed-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #eef3f9;
+            }
+
+        /* pricing grid */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .price-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-soft);
+            text-align: center;
+        }
+
+            .price-card .provider {
+                font-weight: 700;
+                color: var(--navy);
+                margin-bottom: 0.5rem;
+            }
+
+            .price-card .cost {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--cyan);
+            }
+
+        /* symmetrical vs asymmetrical */
+        .sym-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .sym-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .sym-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-soft);
+        }
+
+            .sym-card.sym {
+                border-top: 6px solid var(--cyan);
+            }
+
+            .sym-card.asym {
+                border-top: 6px solid var(--gold);
+            }
+
+        /* openreach vs altnet */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .net-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* real-world example */
+        .example-box {
+            background: linear-gradient(145deg, #f5faff, #ecf3fc);
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            border: 2px solid var(--gold);
+        }
+
+        .big-highlight {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--cyan);
+        }
+
+        /* who should choose */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-soft);
+            margin: 2rem 0;
+        }
+
+        /* faq */
+        .faq details {
+            background: var(--pearl);
+            border-radius: 1.8rem 0.1rem 1.8rem 0.1rem;
+            margin: 0.8rem 0;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* cta */
+        .cta {
+            background: linear-gradient(145deg, #ffffff, #f5faff);
+            border-radius: 3rem 0.2rem 3rem 0.2rem;
+            padding: 2.8rem 2rem;
+            margin: 3.5rem 0 2rem;
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--cyan);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.1rem 3rem 0.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn:hover {
+                background: #1f7a7a;
+            }
+
+        hr {
+            border: 1px solid #e5ecf5;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header">
+            <h1><i class="fas fa-bolt"></i> Gigabit Broadband Deals UK (2026)</h1>
+            <div class="sub">Gigabit broadband is now widely available – 900Mbps to 1Gbps+ speeds, with symmetrical upload in many areas. But do you need it? And which provider offers best value? We compare Openreach, Alt‑Nets, Virgin, and more.</div>
+            <div class="tags">
+                <span><i class="fas fa-tachometer-alt"></i> 900–1100+ Mbps</span>
+                <span><i class="fas fa-pound-sign"></i> £35–50/month</span>
+                <span><i class="fas fa-upload"></i> symmetrical options</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- quick stats -->
+            <div class="stats-grid">
+                <div class="stat-card"><span class="big">1Gbps</span><span class="small">gigabit speed</span></div>
+                <div class="stat-card"><span class="big">£35–50</span><span class="small">typical monthly</span></div>
+                <div class="stat-card"><span class="big">FTTP</span><span class="small">full fibre required</span></div>
+                <div class="stat-card"><span class="big">symmetrical</span><span class="small">alt‑nets often</span></div>
+            </div>
+
+            <!-- what is gigabit -->
+            <div class="section-head"><i class="fas fa-question-circle"></i> What is gigabit broadband?</div>
+            <div style="background:var(--pearl); border-radius:2rem 0.2rem; padding:1.8rem; border:1px solid var(--border-soft);">
+                Gigabit broadband delivers speeds close to or exceeding 1,000 Mbps (1Gbps). Only available via full fibre (FTTP) networks or some cable (Virgin). Standard fibre (FTTC) cannot support gigabit.
+            </div>
+
+            <!-- speed comparison table -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> Gigabit speed comparison (2026)</div>
+            <div class="speed-wrapper">
+                <table class="speed-table">
+                    <tr><th>Provider Type</th><th>Download Speed</th><th>Upload Speed</th></tr>
+                    <tr><td>Openreach FTTP</td><td>900 Mbps</td><td>100–110 Mbps</td></tr>
+                    <tr><td>CityFibre / Hyperoptic</td><td>900–1000 Mbps</td><td>900–1000 Mbps</td></tr>
+                    <tr><td>Community Fibre</td><td>1–3 Gbps</td><td>1–3 Gbps</td></tr>
+                    <tr><td>Virgin Media</td><td>~1.1 Gbps</td><td>50–100 Mbps</td></tr>
+                </table>
+            </div>
+
+            <!-- pricing grid -->
+            <div class="section-head"><i class="fas fa-pound-sign"></i> Typical gigabit pricing (24-month)</div>
+            <div class="price-grid">
+                <div class="price-card"><div class="provider">Openreach-based</div><div class="cost">£40–50</div></div>
+                <div class="price-card"><div class="provider">Alt‑Net (CityFibre, etc.)</div><div class="cost">£35–45</div></div>
+                <div class="price-card"><div class="provider">Virgin Media</div><div class="cost">£40–50</div></div>
+            </div>
+
+            <!-- symmetrical vs asymmetrical -->
+            <div class="section-head"><i class="fas fa-arrow-up"></i> Symmetrical vs asymmetrical gigabit</div>
+            <div class="sym-row">
+                <div class="sym-card sym">
+                    <i class="fas fa-check-circle" style="color:var(--cyan); font-size:1.5rem;"></i>
+                    <h3 style="margin:0.8rem 0;">Symmetrical gigabit</h3>
+                    <p>1Gbps down + 1Gbps up. Ideal for remote teams, content creators, cloud backups, live streaming. Common with Alt‑Nets.</p>
+                </div>
+                <div class="sym-card asym">
+                    <i class="fas fa-check-circle" style="color:var(--gold); font-size:1.5rem;"></i>
+                    <h3 style="margin:0.8rem 0;">Asymmetrical gigabit</h3>
+                    <p>900–1100 down, 50–110 up. Suitable for heavy streaming, large downloads, big households. Openreach FTTP & Virgin.</p>
+                </div>
+            </div>
+
+            <!-- do you need gigabit? -->
+            <div class="section-head"><i class="fas fa-question"></i> Do you really need gigabit?</div>
+            <div style="background:var(--pearl); border-radius:2rem 0.2rem; padding:1.8rem; border:1px solid var(--border-soft);">
+                For most households, 150–300 Mbps is sufficient. Gigabit is beneficial if you have 6+ heavy users, download large games frequently, run a home server, upload large media files, or work in creative industries. The difference between 300 Mbps and 1Gbps is rarely noticeable for general browsing.
+            </div>
+
+            <!-- real-world example -->
+            <div class="example-box">
+                <i class="fas fa-download" style="font-size:2rem; color:var(--cyan); margin-right:1rem;"></i>
+                <strong style="font-size:1.4rem;">Downloading a 50GB game:</strong><br>
+                150 Mbps → ~45 min · 300 Mbps → ~22 min · 1Gbps → ~7 min<br>
+                <span class="big-highlight">Gigabit saves time on large transfers</span>
+            </div>
+
+            <!-- openreach vs alt-net -->
+            <div class="section-head"><i class="fas fa-code-branch"></i> Openreach vs Alt‑Net gigabit</div>
+            <div class="two-col">
+                <div class="net-card">
+                    <i class="fas fa-tower-cell" style="color:var(--navy); font-size:2rem;"></i>
+                    <h3 style="margin:0.8rem 0;">Openreach</h3>
+                    <p>Widest coverage, used by BT/Sky/TalkTalk. Upload speeds lower (100–110 Mbps).</p>
+                </div>
+                <div class="net-card">
+                    <i class="fas fa-satellite-dish" style="color:var(--cyan); font-size:2rem;"></i>
+                    <h3 style="margin:0.8rem 0;">Alt‑Nets</h3>
+                    <p>Symmetrical speeds common, often cheaper, limited postcode coverage (CityFibre, Hyperoptic, Community Fibre).</p>
+                </div>
+            </div>
+
+            <!-- installation & contract -->
+            <div class="two-col">
+                <div class="net-card">
+                    <i class="fas fa-tools" style="color:var(--gold);"></i>
+                    <h3 style="margin:0.8rem 0;">Installation</h3>
+                    <p>Requires engineer visit (if not pre‑installed). New fibre ONT box. Cost £0–60 – often free on 24‑month deals.</p>
+                </div>
+                <div class="net-card">
+                    <i class="fas fa-file-contract" style="color:var(--gold);"></i>
+                    <h3 style="margin:0.8rem 0;">Contract</h3>
+                    <p>Most gigabit deals: 18–24 months. Check CPI‑linked rises (+3.9% common), setup fees, exit penalties. Wi‑Fi 6/6E router recommended.</p>
+                </div>
+            </div>
+
+            <!-- who should choose -->
+            <div class="section-head"><i class="fas fa-users"></i> Who should choose gigabit?</div>
+            <div class="who-grid">
+                <div><i class="fas fa-gamepad" style="color:var(--cyan);"></i> Gaming households</div>
+                <div><i class="fas fa-video" style="color:var(--cyan);"></i> Content creators</div>
+                <div><i class="fas fa-home" style="color:var(--cyan);"></i> Large families</div>
+                <div><i class="fas fa-briefcase" style="color:var(--cyan);"></i> Home offices</div>
+            </div>
+
+            <!-- who doesn't need -->
+            <div style="background:#f0f7fc; border-radius:2rem 0.2rem; padding:1.5rem; margin:2rem 0;">
+                <i class="fas fa-eye" style="color:var(--gold); margin-right:0.5rem;"></i> <strong>You probably don't need gigabit if:</strong> 1–2 person household, basic streaming, light browsing, budget focus. 150–300 Mbps is typically more than enough.
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq">
+                <details><summary>Is gigabit worth the extra cost?</summary>For heavy users, yes. For most households, 300 Mbps is sufficient.</details>
+                <details><summary>Is gigabit available everywhere?</summary>No – only where full fibre or cable networks exist.</details>
+                <details><summary>Does gigabit improve Wi-Fi?</summary>Only if your router and devices support high speeds.</details>
+                <details><summary>Is upload speed important?</summary>Yes – especially for remote work and cloud usage.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#ecf3fc; border-radius:2rem 0.2rem; padding:2rem; margin:2.5rem 0;">
+                <i class="fas fa-crown" style="color:var(--gold); font-size:2rem; margin-right:1rem;"></i>
+                <strong style="font-size:1.3rem;">Utility King approach:</strong> We check full fibre availability, compare symmetrical vs asymmetrical gigabit, total contract cost, all networks in your postcode – so you match speed to actual usage and avoid overpaying.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta">
+                <h2 style="font-size:2rem; color:var(--navy);">ready to compare gigabit broadband deals?</h2>
+                <p style="margin:1rem 0; color:#3b607a;">If gigabit is available in your area, you may have access to faster speeds at competitive prices – especially from Alt‑Nets. Comparing providers could unlock better upload speeds and lower monthly costs.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#4d6e89;"><i class="fas fa-info-circle"></i> We'll help you find the fastest full fibre in your postcode.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#8a9eb5;">© Utility King 2026 · gigabit broadband comparison · premium light</p>
+        </div> <!-- main -->
+    </div> <!-- guide -->
+</body>
+</html>

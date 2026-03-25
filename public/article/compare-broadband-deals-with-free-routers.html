@@ -1,0 +1,805 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Compare Broadband Deals With Free Routers | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Premium Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            color: #2a3440;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium color palette - modern tech tones */
+        :root {
+            --primary-charcoal: #1e2b3c;
+            --primary-teal: #2c7a78;
+            --primary-electric: #4a90e2;
+            --primary-softblue: #7ba9e5;
+            --gradient-premium: linear-gradient(145deg, #1e2b3c, #2c7a78);
+            --gradient-accent: linear-gradient(135deg, #4a90e2, #7ba9e5);
+            --card-bg: #ffffff;
+            --bg-soft: #f0f5fe;
+            --text-dark: #1e2b3c;
+            --text-soft: #3e4d5e;
+            --border-subtle: #dbe4f0;
+            --shadow-elegant: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Font 1: Cormorant Garamond - elegant serif for headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color: var(--text-dark);
+        }
+
+        /* Font 2: Plus Jakarta Sans - modern sans for subheads, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag, .meta {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - clean body text */
+
+        /* Premium typography */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: var(--primary-electric);
+            }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--primary-charcoal);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-teal);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-elegant);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(74, 144, 226, 0.2));
+                pointer-events: none;
+            }
+
+            .hero-premium h1 {
+                color: white;
+                max-width: 1400px;
+                text-align: center;
+            }
+
+            .hero-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: clamp(1.1rem, 4vw, 1.25rem);
+                max-width: 1400px;
+                margin-bottom: 1.5rem;
+                text-align: center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 100px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hero-tags i {
+                margin-right: 0.5rem;
+                color: var(--primary-electric);
+            }
+
+        /* Main content */
+        .main-content {
+            background: white;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            box-shadow: var(--shadow-elegant);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive grids */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Premium Card Design */
+        .card-premium {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+            .card-premium:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-teal);
+            }
+
+            .card-premium::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-accent);
+                opacity: 0.6;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: var(--bg-soft);
+            color: var(--primary-charcoal);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .badge-charcoal {
+            background: var(--primary-charcoal);
+            color: white;
+            border: none;
+        }
+
+        .badge-teal {
+            background: var(--primary-teal);
+            color: white;
+            border: none;
+        }
+
+        .badge-electric {
+            background: var(--primary-electric);
+            color: white;
+            border: none;
+        }
+
+        .badge-softblue {
+            background: var(--primary-softblue);
+            color: white;
+            border: none;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-teal);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary-charcoal);
+            font-size: 1rem;
+        }
+
+        .price-highlight {
+            background: var(--gradient-accent);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: none;
+        }
+
+        /* Premium Table */
+        .table-premium {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+            width: 100%;
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .table-premium table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table-premium th {
+                background: var(--primary-charcoal);
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: white;
+                text-align: left;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            .table-premium td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                font-size: 1rem;
+                color: var(--text-soft);
+            }
+
+            .table-premium tr:last-child td {
+                border-bottom: none;
+            }
+
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Premium CTA */
+        .cta-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .cta-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(74, 144, 226, 0.2), transparent 60%);
+                pointer-events: none;
+            }
+
+            .cta-premium h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+                .cta-premium h2::after {
+                    display: none;
+                }
+
+            .cta-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-premium {
+            background: var(--primary-electric);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin: 1rem 0;
+        }
+
+            .btn-premium:hover {
+                background: #5f9ee7;
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+            }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Summary card */
+        .summary-card {
+            background: linear-gradient(145deg, var(--bg-soft), white);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .summary-card h2 {
+                margin-top: 0;
+            }
+
+        /* Router comparison cards */
+        .router-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .router-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .router-card {
+            background: var(--bg-soft);
+            border-radius: 1rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+        }
+
+            .router-card i {
+                font-size: 2rem;
+                color: var(--primary-electric);
+                margin-bottom: 0.5rem;
+            }
+
+            .router-card h4 {
+                font-size: 1.3rem;
+                margin-bottom: 0.5rem;
+                color: var(--primary-charcoal);
+            }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-soft);
+            }
+
+                .feature-list li i {
+                    color: var(--primary-electric);
+                    font-size: 1.1rem;
+                }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-electric), transparent);
+            margin: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .wifi-badge {
+            display: inline-block;
+            background: var(--primary-charcoal);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Hero -->
+        <div class="hero-premium">
+            <h1>Compare Broadband Deals<br><span style="color: var(--primary-electric);">With Free Routers</span></h1>
+            <p>A comprehensive guide to understanding router quality, hidden costs, and choosing the right hardware for your home.</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-wifi"></i> Wi-Fi 5 vs Wi-Fi 6</span>
+                <span><i class="fas fa-network-wired"></i> Mesh systems</span>
+                <span><i class="fas fa-exclamation-triangle"></i> Hidden costs</span>
+                <span><i class="fas fa-pound-sign"></i> Router value up to £120</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Executive Summary -->
+            <div class="summary-card">
+                <h2>Key insights</h2>
+                <div class="grid-4x1" style="margin: 0;">
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-charcoal); font-size: 1.2rem;">Wi-Fi 5</p>
+                        <p style="font-size: 0.95rem;">Entry-level, suitable for 150–300 Mbps</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-charcoal); font-size: 1.2rem;">Wi-Fi 6</p>
+                        <p style="font-size: 0.95rem;">Faster, efficient, handles more devices</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-charcoal); font-size: 1.2rem;">Mesh</p>
+                        <p style="font-size: 0.95rem;">£5–£10 extra monthly for larger homes</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-charcoal); font-size: 1.2rem;">Return policy</p>
+                        <p style="font-size: 0.95rem;">Always required at contract end</p>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#" class="btn-premium" style="background: var(--primary-charcoal);"><i class="fas fa-search"></i> Compare router deals</a>
+                </div>
+            </div>
+
+            <!-- Is the router really free? -->
+            <h2>Is the router really free?</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-charcoal">The reality</span>
+                    <p style="margin-top: 1rem;">In most cases, yes — but:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-pound-sign"></i> Cost is built into your monthly contract</li>
+                        <li><i class="fas fa-undo-alt"></i> Must return it when contract ends</li>
+                        <li><i class="fas fa-times-circle"></i> Early cancellation may require hardware return</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-electric">Always confirm</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-truck"></i> Delivery fees (£5–£15)</li>
+                        <li><i class="fas fa-credit-card"></i> Activation fees</li>
+                        <li><i class="fas fa-sync-alt"></i> Replacement charges</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Router types explained -->
+            <h2>Router types explained</h2>
+            <div class="router-grid">
+                <div class="router-card">
+                    <i class="fas fa-wifi"></i>
+                    <h4>Wi-Fi 5 (802.11ac)</h4>
+                    <p><span class="wifi-badge">Common</span></p>
+                    <p>Good for speeds up to ~300 Mbps</p>
+                    <p>Suitable for small homes and flats</p>
+                </div>
+                <div class="router-card">
+                    <i class="fas fa-wifi" style="color: var(--primary-teal);"></i>
+                    <h4>Wi-Fi 6 (802.11ax)</h4>
+                    <p><span class="wifi-badge" style="background: var(--primary-teal);">Recommended</span></p>
+                    <p>Faster and more efficient</p>
+                    <p>Better for 300 Mbps+ and gigabit</p>
+                    <p>Handles more devices, improved latency</p>
+                </div>
+            </div>
+
+            <!-- Standard vs Mesh -->
+            <h2>Standard router vs mesh system</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-charcoal">Standard Router</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Single hub device</li>
+                        <li><i class="fas fa-check"></i> Suitable for flats and smaller homes</li>
+                        <li><i class="fas fa-check"></i> Cheapest option</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-electric">Mesh Wi-Fi</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Multiple nodes across home</li>
+                        <li><i class="fas fa-check"></i> Better coverage in large or thick-walled homes</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> May cost £5–£10 extra per month</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Do you need premium router -->
+            <h2>Do you need a premium router?</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">🏠</span><p>Property size</p></div>
+                <div class="card-premium"><span class="stat-number">🧱</span><p>Wall thickness</p></div>
+                <div class="card-premium"><span class="stat-number">📱</span><p>Number of devices</p></div>
+                <div class="card-premium"><span class="stat-number">⚡</span><p>Speed tier</p></div>
+            </div>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <p><strong>Small flat with 150 Mbps:</strong> Standard Wi-Fi 5 router is usually fine.</p>
+                <p><strong>4-bedroom house with 500 Mbps:</strong> Wi-Fi 6 or mesh system is better.</p>
+            </div>
+
+            <!-- Router inclusion table -->
+            <h2>Comparing free router deals (2026 typical)</h2>
+            <div class="table-premium">
+                <table>
+                    <tr>
+                        <th>Speed Tier</th>
+                        <th>Router Type Typically Included</th>
+                    </tr>
+                    <tr>
+                        <td>67–100 Mbps</td>
+                        <td>Wi-Fi 5</td>
+                    </tr>
+                    <tr>
+                        <td>150–300 Mbps</td>
+                        <td>Wi-Fi 5 or Wi-Fi 6</td>
+                    </tr>
+                    <tr>
+                        <td>500 Mbps+</td>
+                        <td>Wi-Fi 6</td>
+                    </tr>
+                    <tr>
+                        <td>Gigabit</td>
+                        <td>Wi-Fi 6 / Wi-Fi 6E</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="text-center"><i>Some Alt-Nets now include Wi-Fi 6 routers as standard — even at mid-tier speeds.</i></p>
+
+            <!-- Hidden costs -->
+            <h2>Hidden router costs to watch</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Delivery charges (£5–£15)</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Premium hub upgrade fees</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Monthly mesh add-on charges</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Return requirements</p></div>
+            </div>
+
+            <!-- Own router option -->
+            <h2>Can you use your own router?</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-teal">Yes — in most cases</span>
+                    <p>However:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-key"></i> Need correct login details</li>
+                        <li><i class="fas fa-phone"></i> VoIP services may require provider hub</li>
+                        <li><i class="fas fa-lock"></i> Some providers lock firmware features</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-electric">Benefit</span>
+                    <p>Using your own high-end router may improve performance — especially on gigabit.</p>
+                </div>
+            </div>
+
+            <!-- Example comparison -->
+            <h2>Example comparison</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-charcoal">Deal A</span>
+                    <p class="stat-number">£32/month</p>
+                    <p>300 Mbps + Wi-Fi 6 router included</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-teal">Deal B</span>
+                    <p class="stat-number">£30/month</p>
+                    <p>300 Mbps + Wi-Fi 5 router included</p>
+                </div>
+            </div>
+            <p class="text-center">Difference: £2/month. If you'd otherwise upgrade your router separately (£120+), Deal A may be better value.</p>
+
+            <!-- Router vs speed -->
+            <h2>Router quality vs broadband speed</h2>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <p>Sometimes slow performance isn't the broadband — it's the router.</p>
+                <p>Upgrading from Wi-Fi 5 → Wi-Fi 6 can improve:</p>
+                <div class="grid-4x1" style="margin-top: 1rem;">
+                    <div>📱 Device handling</div>
+                    <div>⚡ Latency</div>
+                    <div>📶 Stability</div>
+                    <div>🏠 Coverage</div>
+                </div>
+                <p style="margin-top: 1rem;">In some homes, a better router delivers more noticeable improvement than upgrading from 300 Mbps to 500 Mbps.</p>
+            </div>
+
+            <!-- Who should prioritise -->
+            <h2>Who should prioritise a better router?</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">🎮</span><p>Gamers</p></div>
+                <div class="card-premium"><span class="stat-number">👨‍👩‍👧</span><p>Large families</p></div>
+                <div class="card-premium"><span class="stat-number">🏡</span><p>Large homes</p></div>
+                <div class="card-premium"><span class="stat-number">💼</span><p>Remote workers</p></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2>Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Do all deals include a free router?</h3>
+                    <p>Most do on 18–24 month contracts.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is Wi-Fi 6 necessary?</h3>
+                    <p>Not essential — but beneficial for 300 Mbps+ and many devices.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Do I have to return the router?</h3>
+                    <p>Usually yes at end of contract.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Can I upgrade to a better router?</h3>
+                    <p>Often for an additional monthly fee.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-premium" style="background: var(--primary-charcoal); color: white;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: var(--primary-electric);"></i>
+                    <span style="font-size: 1.3rem; font-weight: 600; color: white;">Utility King approach</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.9);">We help you compare router types clearly, review speed vs hardware compatibility, compare total contract cost, check full fibre availability, and avoid hidden hardware charges. We focus on performance — not just headline speed.</p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-premium">
+                <h2>Ready to compare broadband deals with free routers?</h2>
+                <p>If you're switching broadband, you may be able to upgrade both your speed and router quality — often without paying extra. Comparing deals in your postcode could unlock better Wi-Fi and better value.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium"><i class="fas fa-paper-plane"></i> Contact Us</a>
+                </div>
+                <p style="margin-top: 1.5rem;"><i class="fas fa-map-pin" style="color: var(--primary-electric);"></i> Find the best fibre & router package in your area</p>
+            </div>
+
+            <hr>
+            <p style="text-align: center; color: #999; font-size: 0.9rem;">© Utility King 2026 · Compare Broadband Deals With Free Routers · Premium UK Guide</p>
+        </div>
+    </div>
+</body>
+</html>

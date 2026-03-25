@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Broadband & TV packages 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- clean, modern type: Plus Jakarta Sans + Lora for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f5f0;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #283b3a;
+        }
+
+        /* fresh palette: deep teal, warm coral, light sand, off-white */
+        :root {
+            --teal: #1f5f5f; /* deep teal */
+            --coral: #e87a5e; /* warm coral */
+            --sand: #f2e3d5; /* light sand */
+            --paper: #fefcf8;
+            --border-light: #dae0d3;
+            --slate: #35635b;
+        }
+
+        .guide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--paper);
+            border-radius: 3rem;
+            box-shadow: 0 45px 70px -35px #32615b;
+            overflow: hidden;
+            border: 1px solid #d0dace;
+        }
+
+        /* header – teal + coral underline */
+        .header-tv {
+            background: var(--teal);
+            padding: 2rem 1rem;
+            color: #fcfaf2;
+            border-bottom: 6px solid var(--coral);
+        }
+
+        @media (min-width: 640px) {
+            .header-tv {
+                padding: 2.5rem 2.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-tv {
+                padding: 3.2rem 4rem;
+            }
+        }
+
+        .header-tv h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (min-width: 640px) {
+            .header-tv h1 {
+                font-size: 3rem;
+                justify-content: center;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-tv h1 {
+                font-size: 3.6rem;
+            }
+        }
+
+        .header-tv h1 i {
+            background: var(--coral);
+            color: var(--teal);
+            padding: 0.8rem;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            font-size: 2.2rem;
+        }
+
+        .header-tv .sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 1400px;
+            opacity: 0.9;
+            margin: 1rem 0 1.8rem;
+            border-left: 4px solid var(--coral);
+            padding-left: 1.5rem;
+            text-align: center;
+        }
+
+        .header-tv .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.8px;
+            color: #c4ddd5;
+            justify-content: center;
+        }
+
+            .header-tv .tags i {
+                color: var(--coral);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main-tv {
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .main-tv {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-tv {
+                padding: 3.5rem 4rem;
+            }
+        }
+
+        /* KPI stats */
+        .stat-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            background: white;
+            border-radius: 2.5rem 0.8rem 2.5rem 0.8rem;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            flex: 1 1 120px;
+            text-align: center;
+        }
+
+            .stat-item .big {
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: var(--coral);
+            }
+
+            .stat-item .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #4e6f68;
+                text-transform: uppercase;
+            }
+
+        /* section heading */
+        .sec-head {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--teal);
+            margin: 2.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--coral);
+            padding-bottom: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+            .sec-head i {
+                color: var(--coral);
+                font-size: 1.8rem;
+            }
+
+        /* what's included grid */
+        .included-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            background: #f0f6f2;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 1.5rem 0;
+        }
+
+        /* typical pricing table */
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin: 2rem 0;
+        }
+
+            .pricing-table th {
+                text-align: left;
+                font-weight: 600;
+                color: var(--teal);
+                border-bottom: 2px dashed var(--coral);
+                padding-bottom: 0.2rem;
+            }
+
+            .pricing-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1.2rem 0.3rem 1.2rem 0.3rem;
+                border: 1px solid #e0ded3;
+            }
+
+        /* fibre vs full fibre cards */
+        .fibre-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .tv-card {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            border: 1px solid #d9d2c5;
+        }
+
+            .tv-card.fttc {
+                border-top: 6px solid #7ea29a;
+            }
+
+            .tv-card.fttp {
+                border-top: 6px solid var(--coral);
+            }
+
+        /* example comparison */
+        .example-box {
+            background: #e8f0eb;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 2rem;
+            margin: 2.2rem 0;
+        }
+
+        /* contract table */
+        .contract-note {
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            border: 1px solid #dbd5c9;
+        }
+
+        /* streaming speed info */
+        .speed-guide {
+            background: var(--sand);
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* total cost comparison */
+        .total-cost-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin: 2rem 0;
+        }
+
+            .total-cost-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1.2rem 0.3rem 1.2rem 0.3rem;
+                border: 1px solid #d8dace;
+            }
+
+        /* who should choose */
+        .who-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            background: #f5f9f5;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* faq */
+        .faq-stack details {
+            background: white;
+            border-radius: 1.5rem 0.3rem 1.5rem 0.3rem;
+            margin: 0.8rem 0;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #d9d2c6;
+        }
+
+        /* cta */
+        .cta-tv {
+            background: white;
+            border-radius: 3rem 1rem 3rem 1rem;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 2rem;
+            border: 4px solid var(--coral);
+            text-align: center;
+        }
+
+        .btn-tv {
+            background: var(--coral);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.5rem 3rem 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 18px 24px -16px #b15d46;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn-tv:hover {
+                background: #d2694f;
+                transform: translateY(-3px);
+            }
+
+        hr {
+            border: 1px solid #d4d7ce;
+            margin: 2rem 0;
+        }
+
+        /* responsive */
+        p, li {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .faq-stack details {
+            border-bottom: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        .faq-stack summary {
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: 600;
+        }
+
+            /* Remove default arrow */
+            .faq-stack summary::-webkit-details-marker {
+                display: none;
+            }
+
+            /* Custom arrow */
+            .faq-stack summary::after {
+                content: "▶";
+                font-size: 12px;
+                transition: transform 0.3s ease;
+            }
+
+        /* Rotate arrow when open */
+        .faq-stack details[open] summary::after {
+            transform: rotate(90deg);
+        }
+        .cta-flex {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .cta-col {
+            flex: 1; /* columns share equal width */
+            min-width: 250px; /* prevent columns from getting too narrow */
+            padding: 10px;
+        }
+        /* Base font setup for consistency */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #fafafa;
+            margin: 20px;
+        }
+
+        /* Heading style */
+        .subheading {
+            font-size: clamp(2rem, 5vw, 2rem); /* responsive sizing */
+            color: #1a1a1a;
+            font-weight: 700;
+            letter-spacing: 1px;
+            margin-bottom: 0.5em;
+            text-transform: capitalize;
+            text-align: left;
+            position: relative;
+        }
+
+            /* Optional underline effect for headings */
+            .subheading::after {
+                content: '';
+                display: block;
+                width: 50px;
+                height: 3px;
+                background-color: #3498db;
+                margin-top: 8px;
+                border-radius: 2px;
+            }
+
+        /* Subheading style */
+        .heading {
+            font-size: clamp(2rem, 3vw, 5rem);
+            color: #555;
+            font-weight: 700;
+            margin-bottom: 1em;
+            letter-spacing: 0.5px;
+            line-height: 1.4;
+            position: relative;
+            text-transform: uppercase;
+        }
+
+
+            .heading:hover {
+                color: #3498db;
+                transition: color 0.3s ease;
+            }
+
+        /* Paragraph style */
+        .paragraph {
+            font-size: clamp(1rem, 2vw, 1.125rem);
+            font-weight: bold;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 1.5em;
+            text-align: justify;
+            max-width: 1400px; /* improve readability */
+        }
+
+            /* Optional subtle paragraph hover highlight */
+            .paragraph:hover {
+                background-color: #f0f8ff;
+                transition: background-color 0.3s ease;
+                padding: 5px;
+                border-radius: 4px;
+            }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header-tv">
+            <h1 class="heading" style="color:white"><i class="fas fa-tv"></i> Compare Broadband & TV Packages</h1>
+            <div class="sub">Bundling broadband and TV can be convenient – but is it cheaper? We compare bundles vs standalone streaming, fibre options, sports add‑ons, and total contract cost.</div>
+            <div class="tags">
+                <span><i class="fas fa-tag"></i> from £35–50/mo</span>
+                <span><i class="fas fa-futbol"></i> sports add £20–35</span>
+                <span><i class="fas fa-wifi"></i> full fibre bundles</span>
+            </div>
+        </div>
+
+        <div class="main-tv">
+            <!-- KPI stats -->
+            <div class="stat-row">
+                <div class="stat-item"><span class="big">£35–50</span><span class="paragraph">entry bundle</span></div>
+                <div class="stat-item"><span class="big">£60–90+</span><span class="paragraph">+ sports</span></div>
+                <div class="stat-item"><span class="big">150–300</span><span class="paragraph">Mbps common</span></div>
+                <div class="stat-item"><span class="big">24mo</span><span class="paragraph">typical contract</span></div>
+            </div>
+
+            <!-- what's included -->
+            <div class="subheading"><i class="fas fa-list-ul"></i> What's included in broadband & TV packages?</div>
+            <div class="included-grid">
+                <span>📺 basic TV (Freeview, on‑demand)</span>
+                <span>🎬 entertainment add‑ons</span>
+                <span>⚽ sports packages</span>
+                <span>🎥 cinema channels</span>
+                <span>📦 streaming platform bundles</span>
+            </div>
+
+            <!-- typical pricing table -->
+            <div class="subheading"><i class="fas fa-pound-sign"></i> Typical UK pricing (2026)</div>
+            <table class="pricing-table">
+                <tr><th class="paragraph">Package type</th><th class="paragraph">Monthly cost</th></tr>
+                <tr><td class="paragraph">67 Mbps + Basic TV</td><td class="paragraph">£35–45</td></tr>
+                <tr><td class="paragraph">150 Mbps + TV</td><td class="paragraph">£40–55</td></tr>
+                <tr><td class="paragraph">300 Mbps + TV</td><td class="paragraph">£50–70</td></tr>
+                <tr><td class="paragraph">Broadband + Sports</td><td class="paragraph">£60–90+</td></tr>
+            </table>
+
+            <!-- fibre vs full fibre in tv bundles -->
+            <div class="subheading"><i class="fas fa-code-branch"></i> Fibre vs full fibre in TV bundles</div>
+            <div class="fibre-row">
+                <div class="tv-card fttc">
+                    <div style="font-weight:700;">Standard (FTTC)</div>
+                    <p class="paragraph">⬇️ up to 67–80 Mbps, suitable for HD streaming. Often in entry‑level bundles.</p>
+                </div>
+                <div class="tv-card fttp">
+                    <div style="font-weight:700;">Full fibre (FTTP)</div>
+                    <p class="paragraph">⬇️ 100–1000 Mbps, better for 4K streaming, stable under heavy use – increasingly available.</p>
+                </div>
+            </div>
+            <div class="cta-flex">
+                <div class="cta-col">
+                    <div class="subheading"><i class="fas fa-scale-balanced"></i> Is it cheaper to bundle?</div>
+                    <div class="example-box">
+                        <p class="paragraph">
+                            <strong>Example comparison (monthly):</strong><br>
+                            Bundle: 150 Mbps + TV = £50<br>
+                            Separate: broadband £28 + streaming services £15–20 = £43–48<br>
+                            ➡️ Bundling may cost more depending on channels required.
+                        </p>
+                    </div>
+                </div>
+                <div class="cta-col">
+                    <!-- streaming speed needed -->
+                    <div class="subheading"><i class="fas fa-wifi"></i> Broadband speed needed for TV streaming</div>
+                    <div class="speed-guide">
+                        <p class="paragraph">
+                            📺 HD streaming: ~5 Mbps per stream.<br>
+                            4K streaming: ~25 Mbps per stream.<br>
+                            Multiple 4K streams: 100–150 Mbps minimum; 300 Mbps for larger households.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <!-- is it cheaper to bundle? -->
+           
+
+            <!-- when bundles make sense -->
+            <div class="subheading"><i class="fas fa-check-circle"></i> When bundles make sense</div>
+            <div class="included-grid">
+                <span>⚽ want sports channels</span>
+                <span>📄 one bill</span>
+                <span>🎁 strong promo pricing</span>
+                <span>🛠️ installation included</span>
+                <span>📺 integrated TV box</span>
+            </div>
+
+            <!-- standalone better -->
+            <div class="subheading"><i class="fas fa-star"></i> When standalone broadband is better</div>
+            <div class="included-grid">
+                <span>📺 only Netflix/Prime/Disney+</span>
+                <span>⚽ no live sports</span>
+                <span>🔄 prefer flexibility</span>
+                <span>📉 shorter contracts</span>
+            </div>
+
+            <!-- contract length & costs -->
+            <div class="subheading"><i class="fas fa-file-contract"></i> Contract length & equipment</div>
+            <div class="paragraph">
+                Most bundles: 18–24 months. Longer contracts reduce monthly cost but reduce flexibility. Check mid‑contract price rises (CPI +3.9% common), early termination fees, equipment return policies.
+            </div>
+
+           
+
+            <!-- sports & premium add‑ons -->
+            <div class="subheading"><i class="fas fa-futbol"></i> Sports & premium add‑on costs</div>
+            <p class="paragraph">⚽ Sports packages often add £20–35/month. 🎥 Cinema packages add £10–20/month. These significantly increase total contract cost – always calculate full monthly commitment.</p>
+
+            <!-- total cost comparison table -->
+            <div class="subheading"><i class="fas fa-calculator"></i> Total cost example (24 months)</div>
+            <table class="total-cost-table">
+                <tr><td><strong>150 Mbps + TV</strong> – £50/mo = £1,200 total</td></tr>
+                <tr><td><strong>Broadband only</strong> – £28/mo = £672 total</td></tr>
+                <tr><td><strong>Broadband + streaming</strong> – £45/mo = £1,080 total</td></tr>
+            </table>
+            <p class="paragraph">Small monthly differences add up over two years.</p>
+
+            <!-- who should choose bundles -->
+            <div class="subheading"><i class="fas fa-users"></i> Who should choose broadband & TV bundles?</div>
+            <div class="who-grid">
+                <span>⚽ sports fans</span>
+                <span>👪 families</span>
+                <span>📺 traditional TV viewers</span>
+                <span>📱 streaming‑focused? → standalone often cheaper</span>
+            </div>
+
+            <!-- FAQ -->
+          
+
+            <!-- why compare with utility king -->
+            <div style="background:#ecf2ed; border-radius:2rem 0.5rem; padding:1.5rem; margin:2rem 0;" class="paragraph">
+                <i class="fas fa-crown" style="color:var(--coral); font-size:1.8rem; margin-right:0.8rem;"></i>
+                <strong>Utility King approach:</strong> We compare bundled vs standalone pricing, speed tiers, total contract cost, full fibre availability, and hidden equipment charges – so you balance entertainment and cost.
+            </div>
+
+            <div class="cta-flex">
+                <div class="cta-col">
+                    <div class="cta-tv">
+                        <h2 style="font-size:2rem; color:var(--teal);">Ready to compare broadband & TV packages?</h2>
+                        <p style="font-size:1.2rem; margin:1rem 0;" class="paragraph">If your contract is ending or you're reviewing your entertainment setup, better‑value bundles or standalone options may be available in your postcode. Switch to reduce costs while maintaining performance.</p>
+                        <a href="https://www.utilityking.co.uk/contact.html" class="btn-tv">
+                            <i class="fas fa-paper-plane"></i> Contact Utility King
+                        </a>
+                       
+                    </div>
+                </div>
+                <div class="cta-col">
+                    <br /><br />
+                    <div class="subheading"><i class="fas fa-question"></i> FAQs</div>
+                    <div class="faq-stack">
+                        <details><summary>Is broadband cheaper without TV?</summary>Usually yes – unless promotional bundles are very strong.</details>
+                        <details><summary>Can I get full fibre with TV?</summary>Yes, many providers now offer full fibre bundles.</details>
+                        <details><summary>Do TV bundles require long contracts?</summary>Typically 18–24 months.</details>
+                        <details><summary>Can I add sports later?</summary>Yes, often as monthly add‑ons.</details>
+                        <details><summary>Is streaming replacing traditional TV bundles?</summary>For many households, yes – standalone broadband + streaming is often cheaper.</details>
+                    </div> <br />
+                    <p style="margin-top:1rem; color:#5f857b;" class="paragraph"><i class="fas fa-info-circle"></i> We'll help you find the best bundle in your area.</p>
+                </div>
+            </div>
+          
+
+            <hr>
+            <p style="text-align:center; color:#6c9288;" >@Utility King 2026 · broadband & TV packages comparison</p>
+        </div> <!-- main-tv -->
+    </div> <!-- guide -->
+    <script>
+        const details = document.querySelectorAll(".faq-stack details");
+
+        details.forEach((targetDetail) => {
+            targetDetail.addEventListener("toggle", () => {
+
+                if (targetDetail.open) {
+
+                    details.forEach((detail) => {
+                        if (detail !== targetDetail) {
+                            detail.removeAttribute("open");
+                        }
+                    });
+
+                }
+
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,515 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Openreach vs Alt-Net Broadband 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- clean type: Inter & Manrope -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f5f9;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1.2rem;
+            color: #1f2a3a;
+        }
+
+        /* neutral, sophisticated palette: deep teal, warm slate, soft grey, white */
+        :root {
+            --teal: #2f6b6b;
+            --slate: #3f4d5e;
+            --light-grey: #eef3f7;
+            --card-white: #ffffff;
+            --border-soft: #d9e2ec;
+            --bg-soft: #f8fbfe;
+            --accent-gold: #c9a44b;
+        }
+
+        .guide {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 2.5rem;
+            box-shadow: 0 30px 50px -20px #1f2a3a40;
+            overflow: hidden;
+            border: 1px solid #e0e9f0;
+        }
+
+        /* header – slate + teal stripe */
+        .header {
+            background: var(--slate);
+            padding: 2rem 1.8rem;
+            color: white;
+            border-bottom: 6px solid var(--teal);
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 2.5rem 2.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header {
+                padding: 3rem 4rem;
+            }
+        }
+
+        .header h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 480px) {
+            .header h1 {
+                font-size: 1.8rem;
+            }
+        }
+
+        .header h1 i {
+            background: var(--teal);
+            padding: 0.6rem 0.8rem;
+            border-radius: 1.5rem;
+            font-size: 1.6rem;
+        }
+
+        .header .sub {
+            font-size: 1rem;
+            max-width: 800px;
+            opacity: 0.9;
+            border-left: 4px solid var(--teal);
+            padding-left: 1.2rem;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .header .tags {
+            display: flex;
+            gap: 1rem 2rem;
+            flex-wrap: wrap;
+            font-size: 0.85rem;
+            font-weight: 500;
+        }
+
+            .header .tags i {
+                margin-right: 4px;
+                color: var(--teal);
+            }
+
+        /* main */
+        .main {
+            padding: 2rem 1.5rem;
+            background: var(--bg-soft);
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 3.5rem 4rem;
+            }
+        }
+
+        /* quick stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--card-white);
+            border-radius: 1.8rem;
+            padding: 1.4rem 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 6px 12px -8px #1f2a3a20;
+        }
+
+            .stat-card .big {
+                font-size: 1.7rem;
+                font-weight: 700;
+                color: var(--teal);
+                line-height: 1.2;
+            }
+
+            .stat-card .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #4a6075;
+                text-transform: uppercase;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--slate);
+            margin: 2.5rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+            .section-head i {
+                color: var(--teal);
+                font-size: 1.6rem;
+            }
+
+        /* two‑column layout for comparisons */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .col-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 8px 18px -10px #1f2a3a20;
+        }
+
+            .col-card.openreach {
+                border-top: 6px solid var(--slate);
+            }
+
+            .col-card.altnet {
+                border-top: 6px solid var(--teal);
+            }
+
+        .col-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin: 0.8rem 0 1rem;
+        }
+
+        .openreach .col-title {
+            color: var(--slate);
+        }
+
+        .altnet .col-title {
+            color: var(--teal);
+        }
+
+        .provider-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+            .provider-list li {
+                padding: 0.3rem 0;
+            }
+
+        /* speed table */
+        .speed-wrapper {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+
+        .speed-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 1.5rem;
+            min-width: 500px;
+        }
+
+            .speed-table th {
+                background: var(--light-grey);
+                padding: 1rem;
+                text-align: left;
+            }
+
+            .speed-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #e6ecf2;
+            }
+
+        /* upload comparison highlight */
+        .upload-block {
+            background: #e1f0f0;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* pricing table */
+        .price-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 1.5rem;
+            min-width: 500px;
+        }
+
+            .price-table th {
+                background: var(--light-grey);
+                padding: 1rem;
+            }
+
+            .price-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #e9edf2;
+            }
+
+        /* when to choose */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .choice-card {
+            background: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* example box */
+        .example-box {
+            background: var(--slate);
+            color: white;
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+            .example-box .big-number {
+                font-size: 2rem;
+                font-weight: 700;
+                color: var(--accent-gold);
+            }
+
+        /* faq */
+        .faq details {
+            background: white;
+            border-radius: 1.5rem;
+            margin: 0.8rem 0;
+            padding: 0.9rem 1.2rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* cta */
+        .cta {
+            background: white;
+            border-radius: 2.5rem;
+            padding: 2.5rem 1.8rem;
+            margin: 3rem 0 1.8rem;
+            border: 3px solid var(--teal);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--teal);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem 2.2rem;
+            border-radius: 3rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            margin: 1rem 0;
+        }
+
+            .btn:hover {
+                background: #1f5a5a;
+            }
+
+        hr {
+            border: 1px solid #dee7f0;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header">
+            <h1><i class="fas fa-code-branch"></i> Openreach vs Alt‑Net Broadband Comparison (2026)</h1>
+            <div class="sub">As full fibre rolls out, more households now have a choice: Openreach‑based (BT, Sky, TalkTalk) vs Alt‑Nets (CityFibre, Hyperoptic, Community Fibre). Which offers better speed, value and reliability? We compare across the board.</div>
+            <div class="tags">
+                <span><i class="fas fa-tower-cell"></i> Openreach vs independent</span>
+                <span><i class="fas fa-upload"></i> symmetrical uploads</span>
+                <span><i class="fas fa-pound-sign"></i> competitive pricing</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- quick stats -->
+            <div class="stats-grid">
+                <div class="stat-card"><span class="big">Openreach</span><span class="small">widest coverage</span></div>
+                <div class="stat-card"><span class="big">Alt‑Nets</span><span class="small">symmetrical speeds</span></div>
+                <div class="stat-card"><span class="big">900 Mbps</span><span class="small">typical max</span></div>
+                <div class="stat-card"><span class="big">postcode</span><span class="small">decides choice</span></div>
+            </div>
+
+            <!-- what is openreach / alt‑nets (two‑column) -->
+            <div class="two-col">
+                <div class="col-card openreach">
+                    <i class="fas fa-tower-cell" style="font-size:2rem; color:var(--slate);"></i>
+                    <div class="col-title">What is Openreach?</div>
+                    <p>UK’s largest broadband infrastructure provider. Supplies network for BT, Sky, TalkTalk, Vodafone, Plusnet, EE. Offers FTTC & FTTP. Widest UK coverage.</p>
+                    <ul class="provider-list">
+                        <li>✅ BT · Sky · TalkTalk · Vodafone</li>
+                        <li>✅ FTTC & FTTP</li>
+                    </ul>
+                </div>
+                <div class="col-card altnet">
+                    <i class="fas fa-satellite-dish" style="font-size:2rem; color:var(--teal);"></i>
+                    <div class="col-title">What are Alt‑Nets?</div>
+                    <p>Alternative Networks building own fibre: CityFibre, Hyperoptic, Community Fibre, Gigaclear, B4RN. Full fibre only (FTTP). Highly postcode‑specific.</p>
+                    <ul class="provider-list">
+                        <li>🔵 CityFibre · Hyperoptic · Community Fibre</li>
+                        <li>🔵 Gigaclear · many regionals</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- speed comparison table -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> speed tiers</div>
+            <div class="speed-wrapper">
+                <table class="speed-table">
+                    <tr><th>Openreach FTTP</th><th>Alt‑Net FTTP (typical)</th></tr>
+                    <tr><td>100 / 150 / 300 / 500 / 900 Mbps</td><td>150 / 300 / 500 / 900 / 1000+ Mbps</td></tr>
+                    <tr><td>Upload: 20–110 Mbps (tier‑dependent)</td><td>Often symmetrical (e.g. 900 up & down)</td></tr>
+                </table>
+            </div>
+
+            <!-- upload highlight -->
+            <div class="upload-block">
+                <i class="fas fa-upload" style="font-size:2rem; color:var(--teal); margin-right:1rem;"></i>
+                <strong>Upload speed: the biggest difference</strong> – Openreach FTTP typically 20–110 Mbps upload; many Alt‑Nets offer symmetrical speeds (150–900 Mbps upload). If you work remotely, upload large files, or use cloud backups, Alt‑Nets can be a major advantage.
+            </div>
+
+            <!-- pricing comparison -->
+            <div class="section-head"><i class="fas fa-pound-sign"></i> typical pricing (2026)</div>
+            <div class="price-wrapper">
+                <table class="price-table">
+                    <tr><th>Speed</th><th>Openreach‑based</th><th>Alt‑Net</th></tr>
+                    <tr><td>150 Mbps</td><td>£28–35</td><td>£25–32</td></tr>
+                    <tr><td>300 Mbps</td><td>£32–40</td><td>£28–35</td></tr>
+                    <tr><td>900 Mbps</td><td>£40–50</td><td>£35–45</td></tr>
+                </table>
+            </div>
+
+            <!-- reliability & support two‑col -->
+            <div class="section-head"><i class="fas fa-shield"></i> reliability & support</div>
+            <div class="two-col">
+                <div class="col-card openreach">
+                    <p><strong>Openreach:</strong> National backbone, proven reliability. Support depends on brand (BT/Sky etc.) – large call centres, residential SLAs.</p>
+                </div>
+                <div class="col-card altnet">
+                    <p><strong>Alt‑Nets:</strong> Newer 100% fibre infrastructure, performance varies by provider. Often more localised support, strong local reputations.</p>
+                </div>
+            </div>
+
+            <!-- contract length -->
+            <div class="section-head"><i class="fas fa-file-contract"></i> contract flexibility</div>
+            <div class="two-col">
+                <div class="col-card openreach">Openreach providers: typically 18–24 months, CPI‑linked rises (+3.9% common).</div>
+                <div class="col-card altnet">Alt‑Nets: 12–24 months, some offer shorter terms. Check setup fees, exit penalties.</div>
+            </div>
+
+            <!-- coverage & when to choose -->
+            <div class="section-head"><i class="fas fa-map-pin"></i> coverage & decision</div>
+            <div class="choice-grid">
+                <div class="choice-card">
+                    <i class="fas fa-check-circle" style="color:var(--slate);"></i>
+                    <h3 style="margin:0.5rem 0;">Choose Openreach if:</h3>
+                    <p>Alt‑Net not available · prefer national brands · want bundled TV · need broader service integration.</p>
+                </div>
+                <div class="choice-card">
+                    <i class="fas fa-check-circle" style="color:var(--teal);"></i>
+                    <h3 style="margin:0.5rem 0;">Choose Alt‑Net if:</h3>
+                    <p>symmetrical upload matters · gigabit pricing lower · newer fibre infrastructure · strong regional provider available.</p>
+                </div>
+            </div>
+
+            <!-- example scenario -->
+            <div class="example-box">
+                <i class="fas fa-calculator" style="font-size:2rem; color:var(--accent-gold); margin-right:1rem;"></i>
+                <strong>Example: 900 Mbps tier</strong><br>
+                Openreach: £45/mo · 110 Mbps upload<br>
+                Alt‑Net: £39/mo · 900 Mbps upload<br>
+                <span class="big-number">Alt‑Net: lower price + 8x faster upload</span>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq">
+                <details><summary>Are Alt‑Nets better than Openreach?</summary>Not automatically – but often cheaper and faster on upload.</details>
+                <details><summary>Is Openreach more reliable?</summary>Generally very reliable, but modern Alt‑Nets can be equally strong.</details>
+                <details><summary>Can I switch easily?</summary>Yes – switching works similarly to other broadband changes.</details>
+                <details><summary>Do Alt‑Nets offer TV bundles?</summary>Usually not – they focus on broadband‑only.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#f0f7fa; border-radius:1.8rem; padding:1.8rem; margin:2rem 0;">
+                <i class="fas fa-crown" style="color:var(--teal); font-size:1.8rem; margin-right:1rem;"></i>
+                <strong>Utility King approach:</strong> We check all networks available in your postcode, compare speed tiers, upload vs download, total contract cost – because infrastructure often determines performance more than brand.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta">
+                <h2 style="font-size:1.8rem; color:var(--slate);">ready to compare Openreach vs Alt‑Nets?</h2>
+                <p style="margin:1rem 0;">If a new fibre provider has launched in your area, you may have better‑value options than before. Comparing networks could unlock faster speeds at lower cost.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#5f7f9c;"><i class="fas fa-info-circle"></i> We'll help you see all available fibre networks.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#7c8f9b;">© Utility King 2026 · Openreach vs Alt‑Net comparison · fully responsive</p>
+        </div> <!-- main -->
+    </div> <!-- guide -->
+</body>
+</html>

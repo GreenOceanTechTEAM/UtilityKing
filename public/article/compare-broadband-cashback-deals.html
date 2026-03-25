@@ -1,0 +1,828 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Compare Broadband Cashback Deals | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Premium Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            color: #2d3a4a;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium color palette - sophisticated jewel tones */
+        :root {
+            --primary-deep: #1e2c4a;
+            --primary-emerald: #2e6b5e;
+            --primary-amber: #c9895e;
+            --primary-lavender: #8a7aa0;
+            --gradient-premium: linear-gradient(145deg, #1e2c4a, #2e6b5e);
+            --gradient-accent: linear-gradient(135deg, #c9895e, #b5734d);
+            --card-bg: #ffffff;
+            --bg-soft: #f8faff;
+            --text-dark: #1e2c4a;
+            --text-soft: #4a5b6b;
+            --border-subtle: #e2eaf0;
+            --shadow-elegant: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Font 1: Cormorant Garamond - elegant serif for headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color: var(--text-dark);
+        }
+
+        /* Font 2: Plus Jakarta Sans - modern sans for subheads, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag, .meta {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - clean body text */
+
+        /* Premium typography */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: var(--primary-amber);
+            }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-emerald);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-elegant);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+
+        }
+
+            .hero-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(201, 137, 94, 0.15));
+                pointer-events: none;
+            }
+
+            .hero-premium h1 {
+                color: white;
+                max-width: 1400px;
+                text-align:center;
+            }
+
+            .hero-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: clamp(1.1rem, 4vw, 1.25rem);
+                max-width: 1400px;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 100px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hero-tags i {
+                margin-right: 0.5rem;
+                color: var(--primary-amber);
+            }
+
+        /* Main content */
+        .main-content {
+            background: white;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            box-shadow: var(--shadow-elegant);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive grids */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Premium Card Design */
+        .card-premium {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+            .card-premium:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-emerald);
+            }
+
+            .card-premium::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-accent);
+                opacity: 0.6;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: var(--bg-soft);
+            color: var(--primary-deep);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .badge-deep {
+            background: var(--primary-deep);
+            color: white;
+            border: none;
+        }
+
+        .badge-emerald {
+            background: var(--primary-emerald);
+            color: white;
+            border: none;
+        }
+
+        .badge-amber {
+            background: var(--primary-amber);
+            color: white;
+            border: none;
+        }
+
+        .badge-lavender {
+            background: var(--primary-lavender);
+            color: white;
+            border: none;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-emerald);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary-deep);
+            font-size: 1rem;
+        }
+
+        .price-highlight {
+            background: var(--gradient-accent);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: none;
+        }
+
+        /* Premium Table */
+        .table-premium {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+            width: 100%;
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .table-premium table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table-premium th {
+                background: var(--primary-deep);
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: white;
+                text-align: left;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            .table-premium td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                font-size: 1rem;
+                color: var(--text-soft);
+            }
+
+            .table-premium tr:last-child td {
+                border-bottom: none;
+            }
+
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Premium CTA */
+        .cta-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .cta-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(201, 137, 94, 0.2), transparent 60%);
+                pointer-events: none;
+            }
+
+            .cta-premium h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+                .cta-premium h2::after {
+                    display: none;
+                }
+
+            .cta-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-premium {
+            background: var(--primary-amber);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin: 1rem 0;
+        }
+
+            .btn-premium:hover {
+                background: #da9b72;
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+            }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Summary card */
+        .summary-card {
+            background: linear-gradient(145deg, var(--bg-soft), white);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .summary-card h2 {
+                margin-top: 0;
+            }
+
+        /* Cashback type cards */
+        .cashback-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (max-width: 640px) {
+            .cashback-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .cashback-type {
+            background: var(--bg-soft);
+            border-radius: 1rem;
+            padding: 1.2rem;
+            text-align: center;
+            border: 1px solid var(--border-subtle);
+        }
+
+            .cashback-type i {
+                font-size: 2rem;
+                color: var(--primary-amber);
+                margin-bottom: 0.5rem;
+            }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-soft);
+            }
+
+                .feature-list li i {
+                    color: var(--primary-amber);
+                    font-size: 1.1rem;
+                }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-amber), transparent);
+            margin: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Hero -->
+        <div class="hero-premium">
+            <h1>Compare Broadband<br><span style="color: var(--primary-amber);">Cashback Deals</span></h1>
+            <p>A strategic guide to understanding whether cashback offers deliver genuine value — or just offset higher prices.</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-gift"></i> £50–£150 cashback</span>
+                <span><i class="fas fa-credit-card"></i> Prepaid cards</span>
+                <span><i class="fas fa-file-invoice"></i> Bill credit</span>
+                <span><i class="fas fa-calculator"></i> Total cost analysis</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Executive Summary -->
+            <div class="summary-card">
+                <h2>Key insights</h2>
+                <div class="grid-4x1" style="margin: 0;">
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep); font-size: 1.2rem;">£50–£150</p>
+                        <p style="font-size: 0.95rem;">Typical cashback range</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep); font-size: 1.2rem;">18–24 months</p>
+                        <p style="font-size: 0.95rem;">Standard contract length</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep); font-size: 1.2rem;">60–120 days</p>
+                        <p style="font-size: 0.95rem;">Typical payout waiting period</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep); font-size: 1.2rem;">CPI + 3.9%</p>
+                        <p style="font-size: 0.95rem;">May still apply</p>
+                    </div>
+                </div>
+                <div style="margin-top: 1.5rem;">
+                    <a href="#" class="btn-premium" style="background: var(--primary-deep);"><i class="fas fa-search"></i> Compare cashback deals</a>
+                </div>
+            </div>
+
+            <!-- What is cashback -->
+            <h2>What is a broadband cashback deal?</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Definition</span>
+                    <p style="font-size: 1.1rem; margin-top: 0.5rem;">A cashback deal gives you money back after signing up, typically:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-credit-card"></i> After installation</li>
+                        <li><i class="fas fa-clock"></i> After 60–120 days</li>
+                        <li><i class="fas fa-layer-group"></i> Sometimes in stages</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-amber">Types</span>
+                    <div class="cashback-grid">
+                        <div class="cashback-type">
+                            <i class="fas fa-credit-card"></i>
+                            <p style="font-weight: 600;">Prepaid card</p>
+                            <p style="font-size: 0.85rem;">Flexible spending</p>
+                        </div>
+                        <div class="cashback-type">
+                            <i class="fas fa-file-invoice"></i>
+                            <p style="font-weight: 600;">Bill credit</p>
+                            <p style="font-size: 0.85rem;">No claim needed</p>
+                        </div>
+                        <div class="cashback-type">
+                            <i class="fas fa-exchange-alt"></i>
+                            <p style="font-weight: 600;">Third-party</p>
+                            <p style="font-size: 0.85rem;">Highest payouts</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Typical cashback amounts -->
+            <h2>Typical cashback amounts (2026)</h2>
+            <div class="table-premium">
+                <table>
+                    <tr>
+                        <th>Speed Tier</th>
+                        <th>Typical Cashback</th>
+                    </tr>
+                    <tr>
+                        <td>67–100 Mbps</td>
+                        <td>£50–£75</td>
+                    </tr>
+                    <tr>
+                        <td>150–300 Mbps</td>
+                        <td>£70–£100</td>
+                    </tr>
+                    <tr>
+                        <td>500 Mbps</td>
+                        <td>£80–£120</td>
+                    </tr>
+                    <tr>
+                        <td>900 Mbps–1Gbps</td>
+                        <td>£90–£150</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="text-center"><i>Higher speeds often come with higher incentives.</i></p>
+
+            <!-- How to compare properly -->
+            <h2>How to compare cashback deals properly</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">The biggest mistake</span>
+                    <p style="font-weight: 600; color: var(--primary-deep); margin: 1rem 0;">Looking at cashback — not total cost.</p>
+                    <div style="background: var(--bg-soft); padding: 1rem; border-radius: 0.8rem;">
+                        <p><strong>Deal A:</strong> £30/month · £100 cashback</p>
+                        <p>24-month: £720 – £100 = <span class="stat-number">£620</span></p>
+                        <p style="margin-top: 0.5rem;"><strong>Deal B:</strong> £27/month · No cashback</p>
+                        <p>24-month: <span class="stat-number">£648</span></p>
+                    </div>
+                    <p style="margin-top: 1rem;"><i class="fas fa-check-circle" style="color: var(--primary-emerald);"></i> Deal A cheaper overall</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-amber">The calculation</span>
+                    <p style="font-weight: 600;">Always calculate:</p>
+                    <p style="font-size: 1.2rem; text-align: center; margin: 1rem 0;">(Monthly price × contract length) – cashback</p>
+                    <div class="stat-row">
+                        <span class="stat-label">Example</span>
+                        <span class="stat-value">£34 × 24 = £816</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Less cashback</span>
+                        <span class="stat-value">– £100</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Total</span>
+                        <span class="stat-value">£716</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Watch out for price rises -->
+            <h2>Watch out for price rises</h2>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <div class="two-col" style="margin: 0;">
+                    <div>
+                        <span class="badge badge-deep">CPI + 3.9%</span>
+                        <p style="margin-top: 1rem;">Many cashback deals still include annual increases. A £100 reward may be offset by a £3/month increase in year two — £36 extra over 12 months.</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-amber">Key point</span>
+                        <p style="margin-top: 1rem;">Cashback doesn't cancel future price rises.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Contract length -->
+            <h2>Contract length & cashback</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Longer commitment</span>
+                    <p>Cashback is usually offered on:</p>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-calendar-check"></i> 18-month contracts</li>
+                        <li><i class="fas fa-calendar-check"></i> 24-month contracts</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-amber">Shorter contracts</span>
+                    <p>Rarely include high cashback. Longer commitment = bigger incentive.</p>
+                </div>
+            </div>
+
+            <!-- When cashback is worth it -->
+            <h2>When cashback is worth it</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-emerald">✅ Strong value if:</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Monthly price is competitive</li>
+                        <li><i class="fas fa-check"></i> Contract terms are clear</li>
+                        <li><i class="fas fa-check"></i> No excessive setup fees</li>
+                        <li><i class="fas fa-check"></i> Claim process is straightforward</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-deep">🎯 Especially useful when:</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-sync-alt"></i> Switching at contract end</li>
+                        <li><i class="fas fa-tools"></i> Offsetting setup costs</li>
+                        <li><i class="fas fa-home"></i> Moving home</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- When cashback isn't worth it -->
+            <h2>When cashback isn't worth it</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Inflated monthly price</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Steep CPI increases</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Complex claim steps</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>6+ month delay</p></div>
+            </div>
+
+            <!-- Cashback vs free installation -->
+            <h2>Cashback vs free installation</h2>
+            <div class="card-premium">
+                <div class="two-col" style="margin: 0;">
+                    <div>
+                        <span class="badge badge-amber">Option A</span>
+                        <p style="font-size: 1.3rem; font-weight: 700; margin: 0.5rem 0;">£80 cashback</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-emerald">Option B</span>
+                        <p style="font-size: 1.3rem; font-weight: 700; margin: 0.5rem 0;">Free £40 installation</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;">A slightly cheaper monthly deal with free setup may beat a cashback-heavy plan.</p>
+            </div>
+
+            <!-- Example gigabit comparison -->
+            <h2>Example gigabit cashback comparison</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Plan A</span>
+                    <p class="stat-number">£38/month</p>
+                    <p>£120 cashback</p>
+                    <div class="stat-row">
+                        <span class="stat-label">24-month total</span>
+                        <span class="stat-value">£912 – £120 = £792</span>
+                    </div>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-emerald">Plan B</span>
+                    <p class="stat-number">£35/month</p>
+                    <p>£60 cashback</p>
+                    <div class="stat-row">
+                        <span class="stat-label">24-month total</span>
+                        <span class="stat-value">£840 – £60 = £780</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-center"><strong>Plan B cheaper overall</strong> — even with lower cashback.</p>
+
+            <!-- Tips to maximise cashback -->
+            <h2>Tips to maximise cashback</h2>
+            <div class="grid-3x2">
+                <div class="card-premium"><span class="stat-number">1️⃣</span> <p>Take screenshots of offer</p></div>
+                <div class="card-premium"><span class="stat-number">2️⃣</span> <p>Save confirmation emails</p></div>
+                <div class="card-premium"><span class="stat-number">3️⃣</span> <p>Set calendar reminder for claim date</p></div>
+                <div class="card-premium"><span class="stat-number">4️⃣</span> <p>Keep account active until payout</p></div>
+                <div class="card-premium"><span class="stat-number">5️⃣</span> <p>Check eligibility terms</p></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2>Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is broadband cashback real money?</h3>
+                    <p>Yes — but often paid after installation and claim validation.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">How long does cashback take?</h3>
+                    <p>Typically 60–120 days.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Can cashback be refused?</h3>
+                    <p>Yes — if claim rules aren't followed.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is cashback better than lower monthly price?</h3>
+                    <p>Not always — calculate total contract cost.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-premium" style="background: var(--primary-deep); color: white;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: var(--primary-amber);"></i>
+                    <span style="font-size: 1.3rem; font-weight: 600; color: white;">Utility King approach</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.9);">We help you compare real total contract cost, review cashback vs monthly price, check price rise clauses, and compare all providers in your postcode. We focus on real value — not just big headline incentives.</p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-premium">
+                <h2>Ready to compare broadband cashback deals?</h2>
+                <p>If you're switching broadband, a cashback deal could reduce your effective cost by £50–£150 — but only if the underlying contract is competitive.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium"><i class="fas fa-paper-plane"></i> Contact Us</a>
+                </div>
+                <p style="margin-top: 1.5rem;"><i class="fas fa-map-pin" style="color: var(--primary-amber);"></i> Find the best value offer in your area</p>
+            </div>
+
+            <hr>
+            <p style="text-align: center; color: #999; font-size: 0.9rem;">© Utility King 2026 · Compare Broadband Cashback Deals · Premium UK Guide</p>
+        </div>
+    </div>
+</body>
+</html>

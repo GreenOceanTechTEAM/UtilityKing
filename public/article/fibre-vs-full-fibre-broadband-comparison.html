@@ -1,0 +1,1339 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Fibre vs Full Fibre Broadband Comparison (UK Guide 2026) | Utility King</title>
+    <meta name="description" content="Complete guide to comparing fibre vs full fibre broadband in the UK for 2026. Learn the difference between FTTC and FTTP, compare speeds, pricing, and find the best option.">
+    <meta name="keywords" content="fibre vs full fibre, FTTC vs FTTP, fibre broadband comparison, full fibre UK, broadband speeds, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+            background: #fcf9f7;
+            color: #2d2a2a;
+            line-height: 1.6;
+        }
+
+        /* === DARK HERO - LUXURY GOLD/BURGUNDY THEME === */
+        .hero {
+            background: linear-gradient(135deg, #2c1810 0%, #4a2518 100%);
+            color: #fff;
+            padding: 5rem 2rem 6rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 4px solid #c6a43c;
+            box-shadow: 0 30px 50px -20px rgba(44,24,16,0.8);
+            text-align: center;
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M30 5 L55 20 L55 40 L30 55 L5 40 L5 20 Z" fill="none" stroke="%23c6a43c" stroke-width="0.5" opacity="0.1"/></svg>');
+                background-size: 80px 80px;
+                opacity: 0.3;
+                z-index: 1;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 80px;
+                background: linear-gradient(to bottom right, transparent 49%, #fcf9f7 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(198, 164, 60, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 0.7rem 2rem;
+            border-radius: 50px;
+            border: 1px solid rgba(198, 164, 60, 0.3);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: #fff;
+            justify-content: center;
+            letter-spacing: 0.5px;
+            font-size: 0.95rem;
+            text-transform: uppercase;
+        }
+
+            .hero-badge .uk-icon {
+                background: #c6a43c;
+                color: #2c1810;
+                width: 36px;
+                height: 36px;
+                border-radius: 36px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 1.1rem;
+            }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            max-width: 1000px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 0 4px 30px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .hero .highlight {
+            color: #c6a43c;
+            border-bottom: 3px solid #c6a43c;
+            padding-bottom: 5px;
+            display: inline-block;
+            font-style: italic;
+        }
+
+        .hero-sub {
+            font-size: 1.4rem;
+            max-width: 800px;
+            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: #e0d6c8;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            padding: 1.2rem 2.5rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(198, 164, 60, 0.2);
+        }
+
+            .hero-stat .number {
+                font-size: 2.5rem;
+                font-weight: 800;
+                color: #c6a43c;
+                line-height: 1;
+                font-family: 'Playfair Display', serif;
+            }
+
+            .hero-stat .label {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.7;
+                font-weight: 300;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 40px;
+            padding: 3rem;
+            box-shadow: 0 40px 60px -30px rgba(44,24,16,0.2);
+            margin-bottom: 4rem;
+            border: 1px solid #f0e8e0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .intro-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 8px;
+                background: linear-gradient(90deg, #c6a43c, #e5c87a, #c6a43c);
+            }
+
+        .intro-quote {
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: #2c1810;
+            margin-bottom: 1.8rem;
+            line-height: 1.4;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            padding-left: 2rem;
+        }
+
+            .intro-quote::before {
+                content: "“";
+                font-size: 4rem;
+                color: #c6a43c;
+                position: absolute;
+                left: -1rem;
+                top: -1rem;
+                opacity: 0.3;
+                font-family: 'Playfair Display', serif;
+            }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #4a4a4a;
+            line-height: 1.8;
+        }
+
+        /* quick summary card */
+        .summary-card {
+            background: #faf5f0;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 1px solid #e5d9ce;
+            box-shadow: 0 30px 40px -25px rgba(44,24,16,0.15);
+            position: relative;
+        }
+
+            .summary-card::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                right: 20px;
+                width: 100px;
+                height: 100px;
+                background: radial-gradient(circle, #c6a43c10 0%, transparent 70%);
+                border-radius: 50%;
+                z-index: 0;
+            }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 28px;
+            text-align: left;
+            border: 1px solid #e5d9ce;
+            font-weight: 500;
+            box-shadow: 0 10px 20px -15px rgba(0,0,0,0.1);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: grid;
+            grid-template-columns: 120px 1fr;
+            gap: 1rem;
+            align-items: center;
+        }
+
+            .summary-item:hover {
+                transform: translateY(-5px) scale(1.02);
+                border-color: #c6a43c;
+                box-shadow: 0 25px 30px -18px #c6a43c;
+            }
+
+        .summary-feature {
+            font-weight: 800;
+            color: #c6a43c;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: #2c1810;
+        }
+
+        .summary-highlight {
+            background: #2c1810;
+            color: white;
+            padding: 1.5rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 2rem;
+            border: 1px solid #c6a43c;
+            box-shadow: 0 15px 30px -15px #c6a43c;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            margin: 5rem 0 2.5rem;
+            position: relative;
+        }
+
+            .section-header::after {
+                content: "";
+                position: absolute;
+                bottom: -10px;
+                left: 76px;
+                right: 0;
+                height: 2px;
+                background: linear-gradient(90deg, #c6a43c, transparent);
+            }
+
+        .section-icon {
+            background: #2c1810;
+            color: #c6a43c;
+            width: 60px;
+            height: 60px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 600;
+            box-shadow: 0 15px 25px -12px #2c1810;
+            transform: rotate(-3deg);
+            border: 1px solid #c6a43c30;
+        }
+
+        .section-header h2 {
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #2c1810;
+            margin: 0;
+            letter-spacing: -0.01em;
+            font-family: 'Playfair Display', serif;
+        }
+
+            .section-header h2 span {
+                background: linear-gradient(135deg, #faf5f0, #fff);
+                color: #4a2518;
+                padding: 0.3rem 1.5rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+                font-weight: 500;
+                display: inline-block;
+                border: 1px solid #e5d9ce;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+            }
+
+        /* comparison table card */
+        .comparison-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e5d9ce;
+            box-shadow: 0 30px 40px -25px rgba(44,24,16,0.15);
+            position: relative;
+            overflow: hidden;
+        }
+
+            .comparison-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: linear-gradient(90deg, #c6a43c, #e5c87a, #c6a43c);
+            }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 10px;
+            margin: 1.5rem 0;
+        }
+
+            .comparison-table th {
+                padding: 1.2rem;
+                text-align: left;
+                font-weight: 700;
+                color: #2c1810;
+                background: #faf5f0;
+                border-radius: 20px 20px 0 0;
+                font-size: 1.1rem;
+            }
+
+            .comparison-table td {
+                padding: 1.2rem;
+                background: #fcf9f7;
+                border-radius: 16px;
+                border: 1px solid #f0e8e0;
+            }
+
+        .feature-highlight {
+            font-weight: 700;
+            color: #c6a43c;
+            font-size: 1.1rem;
+        }
+
+        .badge-available {
+            background: #2c7a4d;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-limited {
+            background: #b85c3a;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            display: inline-block;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* fibre type cards */
+        .fibre-types {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .fibre-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            border: 1px solid #e5d9ce;
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 30px -20px rgba(44,24,16,0.2);
+        }
+
+            .fibre-card:hover {
+                transform: translateY(-12px);
+                box-shadow: 0 35px 50px -25px #c6a43c;
+                border-color: #c6a43c;
+            }
+
+            .fibre-card::after {
+                content: "";
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 150px;
+                height: 150px;
+                background: radial-gradient(circle, #c6a43c15 0%, transparent 70%);
+                border-radius: 50%;
+                z-index: 0;
+            }
+
+            .fibre-card.fttc {
+                border-top: 8px solid #b85c3a;
+            }
+
+            .fibre-card.fttp {
+                border-top: 8px solid #c6a43c;
+            }
+
+        .fibre-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fibre-card h3 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            font-family: 'Playfair Display', serif;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fibre-subhead {
+            font-size: 1.1rem;
+            color: #6b6b6b;
+            margin-bottom: 1.5rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fibre-speed {
+            font-size: 1.5rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #faf5f0, #fff);
+            padding: 1rem;
+            border-radius: 30px;
+            text-align: center;
+            margin: 1.5rem 0;
+            border: 1px solid #e5d9ce;
+            position: relative;
+            z-index: 2;
+        }
+
+        .fibre-list {
+            list-style: none;
+            padding: 0;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+            .fibre-list li {
+                padding: 0.7rem 0 0.7rem 2.5rem;
+                position: relative;
+                border-bottom: 1px dashed #f0e8e0;
+                font-weight: 400;
+            }
+
+                .fibre-list li::before {
+                    content: "▸";
+                    color: #c6a43c;
+                    font-weight: 700;
+                    position: absolute;
+                    left: 0;
+                    font-size: 1.2rem;
+                }
+
+        .fibre-pros {
+            background: #f5efe8;
+            padding: 1.5rem;
+            border-radius: 24px;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+            border: 1px solid #e5d9ce;
+        }
+
+            .fibre-pros h4 {
+                margin-bottom: 0.8rem;
+                color: #2c1810;
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
+
+            .fibre-pros ul {
+                list-style: none;
+                padding-left: 0;
+            }
+
+            .fibre-pros li {
+                padding: 0.3rem 0 0.3rem 1.8rem;
+                position: relative;
+            }
+
+                .fibre-pros li::before {
+                    content: "✓";
+                    color: #c6a43c;
+                    font-weight: 700;
+                    position: absolute;
+                    left: 0;
+                }
+
+        .fibre-cons {
+            background: #fff5f0;
+            padding: 1.5rem;
+            border-radius: 24px;
+            margin-top: 1rem;
+            border: 1px solid #ffd9ce;
+        }
+
+            .fibre-cons li::before {
+                content: "!";
+                color: #b85c3a;
+            }
+
+        /* speed comparison card */
+        .speed-card {
+            background: linear-gradient(135deg, #2c1810, #4a2518);
+            color: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .speed-card::before {
+                content: "";
+                position: absolute;
+                top: -50px;
+                right: -50px;
+                width: 200px;
+                height: 200px;
+                background: radial-gradient(circle, #c6a43c30 0%, transparent 70%);
+                border-radius: 50%;
+            }
+
+        .speed-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .speed-item {
+            background: rgba(255,255,255,0.05);
+            padding: 2rem;
+            border-radius: 28px;
+            text-align: center;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(198, 164, 60, 0.2);
+            transition: all 0.3s;
+        }
+
+            .speed-item:hover {
+                transform: scale(1.05);
+                border-color: #c6a43c;
+                background: rgba(255,255,255,0.1);
+            }
+
+            .speed-item p:first-child {
+                font-size: 1.1rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                color: #c6a43c;
+                margin-bottom: 1rem;
+            }
+
+        .speed-value {
+            font-size: 2rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* upload card */
+        .upload-card {
+            background: #faf5f0;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e5d9ce;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .upload-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 28px;
+            text-align: center;
+            border: 1px solid #e5d9ce;
+            transition: all 0.3s;
+        }
+
+            .upload-item:hover {
+                border-color: #c6a43c;
+                box-shadow: 0 20px 30px -15px #c6a43c;
+            }
+
+        .upload-number {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: #2c1810;
+            margin: 0.5rem 0;
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* pricing table */
+        .pricing-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e5d9ce;
+            box-shadow: 0 30px 40px -25px rgba(44,24,16,0.15);
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin: 2rem 0;
+        }
+
+            .pricing-table th {
+                background: #faf5f0;
+                padding: 1.2rem;
+                text-align: left;
+                border-radius: 16px;
+                font-weight: 700;
+                color: #2c1810;
+            }
+
+            .pricing-table td {
+                padding: 1rem;
+                background: #fcf9f7;
+                border-radius: 12px;
+            }
+
+        .price-gap {
+            background: #2c1810;
+            color: #c6a43c;
+            padding: 0.5rem 1.5rem;
+            border-radius: 40px;
+            display: inline-block;
+            font-weight: 700;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+        }
+
+        /* decision grid */
+        .decision-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .decision-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            border: 1px solid #e5d9ce;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .decision-card:hover {
+                transform: translateY(-5px);
+                border-color: #c6a43c;
+                box-shadow: 0 25px 40px -20px #c6a43c;
+            }
+
+            .decision-card.choose-fttc {
+                border-left: 8px solid #b85c3a;
+            }
+
+            .decision-card.choose-fttp {
+                border-left: 8px solid #c6a43c;
+            }
+
+            .decision-card h3 {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+                font-family: 'Playfair Display', serif;
+            }
+
+        .decision-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .decision-list li {
+                padding: 0.7rem 0 0.7rem 2.2rem;
+                position: relative;
+                border-bottom: 1px dashed #f0e8e0;
+            }
+
+                .decision-list li::before {
+                    content: "✓";
+                    color: #c6a43c;
+                    font-weight: 700;
+                    position: absolute;
+                    left: 0;
+                    font-size: 1.2rem;
+                }
+
+        /* availability card */
+        .availability-card {
+            background: linear-gradient(135deg, #2c1810, #4a2518);
+            color: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .availability-card::before {
+                content: "";
+                position: absolute;
+                top: -30px;
+                left: -30px;
+                width: 150px;
+                height: 150px;
+                background: radial-gradient(circle, #c6a43c40 0%, transparent 70%);
+                border-radius: 50%;
+            }
+
+        .availability-btn {
+            background: #c6a43c;
+            color: #2c1810;
+            padding: 1rem 3rem;
+            border-radius: 60px;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            border: 1px solid #e5c87a;
+            transition: all 0.3s;
+        }
+
+            .availability-btn:hover {
+                background: #e5c87a;
+                transform: scale(1.05);
+            }
+
+        /* savings card */
+        .savings-card {
+            background: linear-gradient(135deg, #c6a43c, #e5c87a);
+            color: #2c1810;
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .savings-number {
+            font-size: 5rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            font-family: 'Playfair Display', serif;
+            text-shadow: 2px 2px 0 rgba(255,255,255,0.3);
+        }
+
+        /* FAQ grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 28px;
+            padding: 2rem;
+            border: 1px solid #e5d9ce;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+            .faq-block:hover {
+                transform: translateY(-3px);
+                border-color: #c6a43c;
+                box-shadow: 0 20px 30px -18px #c6a43c;
+            }
+
+        .faq-q {
+            font-weight: 800;
+            color: #2c1810;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .faq-q span {
+                background: #2c1810;
+                color: #c6a43c;
+                width: 34px;
+                height: 34px;
+                border-radius: 34px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 800;
+                font-size: 1.1rem;
+                border: 1px solid #c6a43c;
+            }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(135deg, #2c1810, #4a2518);
+            border-radius: 60px;
+            padding: 3.5rem;
+            margin: 4rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 2px solid #c6a43c;
+            box-shadow: 0 40px 60px -30px #2c1810;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-premium::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(198,164,60,0.2), transparent);
+            }
+
+        .cta-premium-left {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+            .cta-premium-left p {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-bottom: 0.5rem;
+                letter-spacing: -0.01em;
+                font-family: 'Playfair Display', serif;
+            }
+
+            .cta-premium-left small {
+                color: #e0d6c8;
+                font-size: 1.2rem;
+                font-weight: 300;
+            }
+
+        .cta-btn {
+            background: #c6a43c;
+            color: #2c1810;
+            padding: 1.3rem 3.5rem;
+            border-radius: 80px;
+            font-weight: 700;
+            font-size: 1.3rem;
+            text-decoration: none;
+            border: 2px solid #e5c87a;
+            transition: all 0.3s;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 20px 30px -15px #00000050;
+            letter-spacing: 1px;
+            margin-top:10px;
+        }
+
+            .cta-btn:hover {
+                background: #e5c87a;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #c6a43c, transparent);
+            margin: 4rem 0 2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #6b6b6b;
+            font-size: 1rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .summary-grid, .fibre-types, .speed-grid, .upload-grid, .decision-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+                padding: 2.5rem;
+            }
+
+            .summary-item {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .section-header h2 {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- DARK HERO - LUXURY GOLD/BURGUNDY THEME -->
+    <section class="hero">
+        <div class="hero-content">
+          
+            <h1>Fibre vs Full Fibre Broadband Comparison <span class="highlight">(UK Guide 2026)</span></h1>
+            <div class="hero-sub">Not all "fibre broadband" is the same. Compare FTTC vs FTTP and find the right connection for your home.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">35-80</span> <span class="label">FTTC Mbps</span></div>
+                <div class="hero-stat"><span class="number">100-1000</span> <span class="label">FTTP Mbps</span></div>
+                <div class="hero-stat"><span class="number">£5-10</span> <span class="label">upgrade gap</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">Not all "fibre broadband" is the same. Many UK households believe they already have full fibre — when in reality they're on part-fibre (FTTC).</div>
+            <p class="intro-text">The difference affects speed, reliability, upload performance and long-term value. If you're comparing fibre vs full fibre broadband, this guide will help you: understand the technical differences (in plain English), compare speeds and pricing, decide which is right for your home, avoid overpaying, and check availability in your postcode. At Utility King, we help households compare broadband clearly and confidently — without confusing jargon.</p>
+        </div>
+
+        <!-- Quick Summary -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Quick Summary: <span>Fibre vs Full Fibre</span></h2>
+        </div>
+
+        <div class="comparison-card">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Feature</th>
+                        <th>Fibre (FTTC)</th>
+                        <th>Full Fibre (FTTP)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="feature-highlight">Connection Type</td>
+                        <td>Fibre to cabinet, copper to home</td>
+                        <td>Fibre direct to home</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Typical Speeds</td>
+                        <td>35–80 Mbps</td>
+                        <td>100–1000 Mbps</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Reliability</td>
+                        <td>Good</td>
+                        <td>Excellent</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Upload Speeds</td>
+                        <td>Lower</td>
+                        <td>Much higher</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Latency</td>
+                        <td>Moderate</td>
+                        <td>Low</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Typical Cost</td>
+                        <td>£22–£30/month</td>
+                        <td>£30–£45/month</td>
+                    </tr>
+                    <tr>
+                        <td class="feature-highlight">Availability</td>
+                        <td><span class="badge-available">Widely available</span></td>
+                        <td><span class="badge-limited">Expanding rapidly</span></td>
+                    </tr>
+                </tbody>
+            </table>
+          
+        </div>
+
+        <!-- What Is Standard Fibre Broadband (FTTC)? -->
+        <div class="section-header">
+            <div class="section-icon">📡</div>
+            <h2>What Is <span>Standard Fibre (FTTC)?</span></h2>
+        </div>
+
+        <div class="fibre-types">
+            <div class="fibre-card fttc">
+                <div class="fibre-icon">📡</div>
+                <h3>FTTC</h3>
+                <div class="fibre-subhead">Fibre to the Cabinet</div>
+                <div class="fibre-speed">35–80 Mbps typical</div>
+                <p><strong>How it works:</strong> Fibre optic cable runs to your local street cabinet. Traditional copper wiring connects the cabinet to your home. Because copper is used for the final stretch, speeds are limited.</p>
+                <div class="fibre-pros">
+                    <h4>Pros:</h4>
+                    <ul>
+                        <li>Widely available across the UK</li>
+                        <li>Lower monthly cost</li>
+                        <li>Reliable for everyday use</li>
+                    </ul>
+                </div>
+                <div class="fibre-cons">
+                    <h4>Limitations:</h4>
+                    <ul>
+                        <li>Slower than full fibre</li>
+                        <li>Speed drops if you live far from cabinet</li>
+                        <li>Lower upload speeds</li>
+                        <li>More peak-time congestion</li>
+                    </ul>
+                </div>
+                <p style="margin-top:1rem; font-style:italic;">FTTC is often marketed simply as "fibre broadband."</p>
+            </div>
+
+            <!-- What Is Full Fibre Broadband (FTTP)? -->
+            <div class="fibre-card fttp">
+                <div class="fibre-icon">⚡</div>
+                <h3>FTTP</h3>
+                <div class="fibre-subhead">Fibre to the Premises</div>
+                <div class="fibre-speed">100–1000 Mbps typical</div>
+                <p><strong>How it works:</strong> Fibre optic cable runs directly into your property. No copper wiring involved. This allows much faster and more stable connections.</p>
+                <div class="fibre-pros">
+                    <h4>Pros:</h4>
+                    <ul>
+                        <li>Significantly faster downloads</li>
+                        <li>Much higher upload speeds</li>
+                        <li>Lower latency (ideal for gaming & video calls)</li>
+                        <li>More reliable at peak times</li>
+                        <li>Future-proof infrastructure</li>
+                    </ul>
+                </div>
+                <div class="fibre-cons">
+                    <h4>Limitations:</h4>
+                    <ul>
+                        <li>Slightly higher cost</li>
+                        <li>Not yet available everywhere</li>
+                    </ul>
+                </div>
+                <p style="margin-top:1rem; font-style:italic;">Full fibre is considered the long-term future of UK broadband.</p>
+            </div>
+        </div>
+
+        <!-- Speed Comparison -->
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h2>Speed Comparison: <span>How Big Is the Difference?</span></h2>
+        </div>
+
+        <div class="speed-card">
+            <div class="speed-grid">
+                <div class="speed-item">
+                    <p>FTTC Fibre</p>
+                    <div class="speed-value">67 Mbps</div>
+                    <p>£25/month</p>
+                </div>
+                <div class="speed-item">
+                    <p>Full Fibre</p>
+                    <div class="speed-value">150 Mbps</div>
+                    <p>£29/month</p>
+                </div>
+                <div class="speed-item">
+                    <p>Full Fibre</p>
+                    <div class="speed-value">500 Mbps</div>
+                    <p>£36/month</p>
+                </div>
+            </div>
+            <p style="margin-top:1.5rem; color: white;">For just £4 more, you may more than double your speed. For £10 more, you can move into ultrafast territory. The performance gap is significant — especially in busy households.</p>
+        </div>
+
+        <!-- Upload Speeds -->
+        <div class="section-header">
+            <div class="section-icon">☁️</div>
+            <h2>Upload Speeds: <span>The Overlooked Difference</span></h2>
+        </div>
+
+        <div class="upload-card">
+            <p>Most people focus on download speed. But upload speed matters for Zoom & Teams calls, uploading files, cloud backups, streaming, and gaming.</p>
+            <div class="upload-grid">
+                <div class="upload-item">
+                    <p>FTTC upload speeds</p>
+                    <div class="upload-number">10–20 Mbps</div>
+                </div>
+                <div class="upload-item">
+                    <p>Full fibre upload speeds</p>
+                    <div class="upload-number">100–900 Mbps</div>
+                </div>
+            </div>
+            <p>If you work from home or upload large files, full fibre is a major upgrade.</p>
+        </div>
+
+        <!-- Price Comparison -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>Price Comparison: <span>Is Full Fibre Worth It?</span></h2>
+        </div>
+
+        <div class="pricing-card">
+            <p>Here's a typical pricing breakdown:</p>
+            <table class="pricing-table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Speed</th>
+                        <th>Monthly Cost</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>FTTC</td>
+                        <td>50 Mbps</td>
+                        <td>£23</td>
+                    </tr>
+                    <tr>
+                        <td>FTTC</td>
+                        <td>67 Mbps</td>
+                        <td>£26</td>
+                    </tr>
+                    <tr>
+                        <td>FTTP</td>
+                        <td>150 Mbps</td>
+                        <td>£29</td>
+                    </tr>
+                    <tr>
+                        <td>FTTP</td>
+                        <td>500 Mbps</td>
+                        <td>£36</td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:1.5rem;">The gap between standard fibre and full fibre has narrowed significantly. In many areas, upgrading costs less than <span class="price-gap">£5 extra per month</span>. When comparing, always check total contract cost, setup fees, and mid-contract price rises (CPI + 3.9% common).</p>
+        </div>
+
+        <!-- Which Is Right for Your Household? -->
+        <div class="section-header">
+            <div class="section-icon">🏠</div>
+            <h2>Which Is Right <span>for Your Household?</span></h2>
+        </div>
+
+        <div class="decision-grid">
+            <div class="decision-card choose-fttc">
+                <h3 style="color:#b85c3a;">Choose Standard Fibre (FTTC) If:</h3>
+                <ul class="decision-list">
+                    <li>You live alone or as a couple</li>
+                    <li>You stream in HD</li>
+                    <li>You don't game heavily</li>
+                    <li>You want the lowest monthly cost</li>
+                </ul>
+            </div>
+            <div class="decision-card choose-fttp">
+                <h3 style="color:#c6a43c;">Choose Full Fibre (FTTP) If:</h3>
+                <ul class="decision-list">
+                    <li>3+ people in household</li>
+                    <li>Multiple 4K streams</li>
+                    <li>Online gaming</li>
+                    <li>Working from home</li>
+                    <li>Smart home devices</li>
+                    <li>You want future-proof speeds</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Availability -->
+        <div class="section-header">
+            <div class="section-icon">🗺️</div>
+            <h2>Availability <span>Across the UK</span></h2>
+        </div>
+
+        <div class="availability-card">
+            <p><strong>FTTC</strong> is available in most areas. <strong>Full fibre</strong> rollout is expanding rapidly, especially in cities, new-build developments, and urban and suburban areas. Rural areas are improving but may still rely on FTTC. Availability depends entirely on postcode.</p>
+           
+        </div>
+
+        <!-- How Much Could You Save? -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>How Much Could <span>You Save?</span></h2>
+        </div>
+
+        <div class="savings-card">
+            <p>If you're currently paying:</p>
+            <p style="font-size:1.5rem;">£39/month for 67 Mbps FTTC</p>
+            <p>And full fibre is available at:</p>
+            <p style="font-size:1.5rem;">£30/month for 150 Mbps</p>
+            <div class="savings-number">£9</div>
+            <p>per month</p>
+            <p style="font-size:1.3rem; margin:1rem 0;">Improve speed significantly + gain better reliability</p>
+            <p>Many households are on outdated contracts without realising newer infrastructure is available.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is full fibre the same as fibre broadband?</div><p>No. Standard fibre (FTTC) uses copper for part of the connection. Full fibre (FTTP) uses fibre all the way to your home.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is full fibre worth upgrading to?</div><p>If available and affordable in your area, yes — especially for families or remote workers.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does full fibre require installation work?</div><p>Sometimes an engineer visit is required to run fibre directly into your property.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is 67 Mbps enough?</div><p>For small households, yes. For larger or heavier-use homes, 100 Mbps+ is more suitable.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Will full fibre increase property value?</div><p>High-speed broadband is increasingly considered a desirable feature for buyers and renters.</p></div>
+        </div>
+
+        <!-- Final Verdict -->
+        <div class="section-header">
+            <div class="section-icon">🏁</div>
+            <h2>Fibre vs Full Fibre: <span>Final Verdict</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:8px solid #c6a43c; padding:2rem; border-radius:24px; box-shadow:0 20px 30px -15px rgba(44,24,16,0.1);">
+            <p><strong>Standard fibre is:</strong> Affordable, reliable, sufficient for light to moderate use.</p>
+            <p><strong>Full fibre is:</strong> Faster, more stable, better for multiple users, future-proof.</p>
+            <p style="margin-top:1.5rem;">If the price difference is small, full fibre usually delivers better long-term value. The right choice depends on household size, usage habits, budget, and availability in your postcode.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Ready to compare fibre vs full fibre deals?</p>
+                <small>Broadband infrastructure is improving — and pricing has become more competitive. If you haven't compared recently, you could upgrade speed and reduce your bill.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact Us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to fibre vs full fibre broadband comparison UK. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

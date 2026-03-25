@@ -1,0 +1,1133 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband for Smart Homes UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fc 0%, #f0f5ff 100%);
+            color: #1a2b4c;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Light Hero */
+        .premium-hero {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 50px -20px rgba(46, 204, 113, 0.25);
+            border: 1px solid rgba(46, 204, 113, 0.3);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #2ecc71;
+            top: -200px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 450px;
+            height: 450px;
+            background: #3498db;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: #f39c12;
+            top: 150px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #2ecc7110, #3498db10);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid #2ecc71;
+            margin-bottom: 2.5rem;
+            color: #1a2b4c;
+        }
+
+            .hero-badge i {
+                color: #2ecc71;
+                font-size: 1.3rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -2px;
+            color: #1a2b4c;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #2ecc71, #3498db, #f39c12);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #4a5f7a;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #2ecc71;
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a2b4c;
+            transition: all 0.3s ease;
+        }
+
+            .hero-pill:hover {
+                border-color: #3498db;
+                background: linear-gradient(135deg, #2ecc7110, #3498db10);
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px #2ecc71;
+            }
+
+            .hero-pill i {
+                color: #2ecc71;
+                margin-right: 10px;
+            }
+
+        /* Main content area */
+        .content-area {
+            background: white;
+            border-radius: 48px;
+            padding: 4rem;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(46, 204, 113, 0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 1rem;
+            }
+
+        .section-subhead {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a2b4c;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Quick summary cards - 2x2 with colored borders */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.4s ease;
+            border: 3px solid;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
+        }
+
+            .summary-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .summary-card:nth-child(2) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .summary-card:nth-child(3) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .summary-card:nth-child(4) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .summary-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            }
+
+        .summary-icon {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .summary-card:nth-child(1) .summary-icon {
+            color: #2ecc71;
+        }
+
+        .summary-card:nth-child(2) .summary-icon {
+            color: #3498db;
+        }
+
+        .summary-card:nth-child(3) .summary-icon {
+            color: #f39c12;
+        }
+
+        .summary-card:nth-child(4) .summary-icon {
+            color: #9f7aea;
+        }
+
+        .summary-content h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .summary-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* Device usage table */
+        .device-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 3px solid #2ecc71;
+            box-shadow: 0 20px 30px -15px rgba(46, 204, 113, 0.2);
+        }
+
+        .device-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .device-table th {
+                text-align: left;
+                padding: 1.2rem 1rem;
+                font-size: 1.3rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                border-bottom: 3px solid #2ecc71;
+            }
+
+            .device-table td {
+                padding: 1.2rem 1rem;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+                color: #4a5f7a;
+            }
+
+            .device-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .bandwidth-highlight {
+            color: #2ecc71;
+            font-weight: 700;
+        }
+
+        /* Recommended speeds - 4x1 grid */
+        .speed-recommend-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .rec-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .rec-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .rec-card:nth-child(2) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .rec-card:nth-child(3) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .rec-card:nth-child(4) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+        .rec-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .rec-card:nth-child(1) .rec-icon {
+            color: #2ecc71;
+        }
+
+        .rec-card:nth-child(2) .rec-icon {
+            color: #3498db;
+        }
+
+        .rec-card:nth-child(3) .rec-icon {
+            color: #f39c12;
+        }
+
+        .rec-card:nth-child(4) .rec-icon {
+            color: #9f7aea;
+        }
+
+        .rec-speed {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .rec-card:nth-child(1) .rec-speed {
+            color: #2ecc71;
+        }
+
+        .rec-card:nth-child(2) .rec-speed {
+            color: #3498db;
+        }
+
+        .rec-card:nth-child(3) .rec-speed {
+            color: #f39c12;
+        }
+
+        .rec-card:nth-child(4) .rec-speed {
+            color: #9f7aea;
+        }
+
+        /* Upload importance - 2x2 */
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .upload-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 3px solid;
+        }
+
+            .upload-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .upload-card:nth-child(2) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .upload-card h3 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 1.5rem;
+            }
+
+            .upload-card:nth-child(1) h3 {
+                color: #2ecc71;
+            }
+
+            .upload-card:nth-child(2) h3 {
+                color: #f39c12;
+            }
+
+        .upload-list {
+            list-style: none;
+        }
+
+            .upload-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .upload-list i {
+                width: 28px;
+            }
+
+        .upload-card:nth-child(1) .upload-list i {
+            color: #2ecc71;
+        }
+
+        .upload-card:nth-child(2) .upload-list i {
+            color: #f39c12;
+        }
+
+        /* Broadband type ranking - 4x1 */
+        .rank-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .rank-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .rank-card:nth-child(1) {
+                border-color: #ffd700;
+                background: linear-gradient(145deg, white, #fffbe8);
+            }
+
+            .rank-card:nth-child(2) {
+                border-color: #c0c0c0;
+                background: linear-gradient(145deg, white, #f5f5f5);
+            }
+
+            .rank-card:nth-child(3) {
+                border-color: #cd7f32;
+                background: linear-gradient(145deg, white, #fff0e8);
+            }
+
+            .rank-card:nth-child(4) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+        .medal {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1rem;
+        }
+
+        .rank-card:nth-child(1) .medal {
+            background: #ffd700;
+            color: #1a2b4c;
+        }
+
+        .rank-card:nth-child(2) .medal {
+            background: #c0c0c0;
+            color: #1a2b4c;
+        }
+
+        .rank-card:nth-child(3) .medal {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .rank-card:nth-child(4) .medal {
+            background: #9f7aea;
+            color: white;
+        }
+
+        .rank-card h4 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .rank-badge {
+            display: inline-block;
+            padding: 0.4rem 1rem;
+            border-radius: 60px;
+            font-size: 1rem;
+            font-weight: 600;
+            margin: 0.8rem 0;
+        }
+
+        .rank-card:nth-child(1) .rank-badge {
+            background: #2ecc71;
+            color: white;
+        }
+
+        .rank-card:nth-child(2) .rank-badge {
+            background: #3498db;
+            color: white;
+        }
+
+        .rank-card:nth-child(3) .rank-badge {
+            background: #f39c12;
+            color: white;
+        }
+
+        .rank-card:nth-child(4) .rank-badge {
+            background: #9f7aea;
+            color: white;
+        }
+
+        /* Router comparison - 2x2 */
+        .router-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .router-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 3px solid;
+        }
+
+            .router-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .router-card:nth-child(2) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .router-card h3 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .router-card:nth-child(1) h3 {
+                color: #2ecc71;
+            }
+
+            .router-card:nth-child(2) h3 {
+                color: #f39c12;
+            }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .feature-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .feature-list i {
+                width: 24px;
+            }
+
+        .router-card:nth-child(1) .feature-list i {
+            color: #2ecc71;
+        }
+
+        .router-card:nth-child(2) .feature-list i {
+            color: #f39c12;
+        }
+
+        /* Example comparison */
+        .example-card {
+            background: white;
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border: 4px solid;
+            border-color: #2ecc71 #3498db #2ecc71 #3498db;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .example-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border: 2px solid;
+        }
+
+        .example-item:nth-child(1) .example-icon {
+            color: #f39c12;
+            border-color: #f39c12;
+        }
+
+        .example-item:nth-child(2) .example-icon {
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .example-text h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .example-text p {
+            font-size: 1.3rem;
+            color: #4a5f7a;
+        }
+
+        .example-divider {
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #2ecc71, #3498db, transparent);
+        }
+
+        .example-badge {
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 20px 30px -10px #2ecc71;
+        }
+
+        /* Checklist - 3x2 */
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .checklist-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.8rem;
+            border: 2px solid;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .checklist-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: #e8f7ed;
+            }
+
+            .checklist-card:nth-child(2) {
+                border-color: #3498db;
+                background: #e8f0ff;
+            }
+
+            .checklist-card:nth-child(3) {
+                border-color: #f39c12;
+                background: #fff5e8;
+            }
+
+            .checklist-card:nth-child(4) {
+                border-color: #9f7aea;
+                background: #f5f0ff;
+            }
+
+            .checklist-card:nth-child(5) {
+                border-color: #e74c3c;
+                background: #ffe8e8;
+            }
+
+            .checklist-card:nth-child(6) {
+                border-color: #1abc9c;
+                background: #e8faf5;
+            }
+
+        .checklist-icon {
+            font-size: 1.8rem;
+            flex-shrink: 0;
+        }
+
+        .checklist-card:nth-child(1) .checklist-icon {
+            color: #2ecc71;
+        }
+
+        .checklist-card:nth-child(2) .checklist-icon {
+            color: #3498db;
+        }
+
+        .checklist-card:nth-child(3) .checklist-icon {
+            color: #f39c12;
+        }
+
+        .checklist-card:nth-child(4) .checklist-icon {
+            color: #9f7aea;
+        }
+
+        .checklist-card:nth-child(5) .checklist-icon {
+            color: #e74c3c;
+        }
+
+        .checklist-card:nth-child(6) .checklist-icon {
+            color: #1abc9c;
+        }
+
+        .checklist-card p {
+            font-size: 1.1rem;
+            color: #1a2b4c;
+        }
+
+        /* Ideal config card */
+        .config-card {
+            background: linear-gradient(145deg, #e8f7ed, white);
+            border-radius: 48px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 3px solid #2ecc71;
+            text-align: center;
+        }
+
+        .config-items {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .config-tag {
+            background: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            border: 1px solid #2ecc71;
+            color: #1a2b4c;
+        }
+
+        /* FAQ - 3x2 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2rem;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .faq-card:nth-child(2) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .faq-card:nth-child(3) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .faq-card:nth-child(4) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .faq-card:nth-child(5) {
+                border-color: #e74c3c;
+                background: linear-gradient(145deg, white, #ffe8e8);
+            }
+
+            .faq-card:nth-child(6) {
+                border-color: #1abc9c;
+                background: linear-gradient(145deg, white, #e8faf5);
+            }
+
+            .faq-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .faq-card p {
+                font-size: 1.15rem;
+                color: #4a5f7a;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            border: 4px solid;
+            border-color: #2ecc71 #3498db #2ecc71 #3498db;
+        }
+
+            .cta-section h2 {
+                font-size: 3.5rem;
+                font-weight: 800;
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 1.5rem;
+                color: #1a2b4c;
+            }
+
+            .cta-section p {
+                font-size: 1.4rem;
+                color: #4a5f7a;
+                margin-bottom: 3rem;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: linear-gradient(135deg, #2ecc71, #3498db);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 30px -10px #2ecc71;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 30px 40px -10px #2ecc71;
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.2rem;
+            color: #a0b8d0;
+        }
+
+        @media (max-width: 1200px) {
+            .speed-recommend-grid, .rank-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .checklist-grid, .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .upload-grid, .router-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .speed-recommend-grid, .rank-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .checklist-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .example-divider {
+                width: 100px;
+                height: 2px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Light Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-crown"></i> Utility King · UK 2026 Guide</div>
+                <h1 class="hero-title"><span>Broadband for</span><br>Smart Homes UK 2026</h1>
+                <p class="hero-description">25+ connected devices, security cameras, voice assistants — can your broadband handle it all reliably?</p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-home"></i> 150–300 Mbps ideal</span>
+                    <span class="hero-pill"><i class="fas fa-upload"></i> Upload matters</span>
+                    <span class="hero-pill"><i class="fas fa-wifi"></i> Wi-Fi 6 or mesh</span>
+                    <span class="hero-pill"><i class="fas fa-shield-alt"></i> Full fibre best</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Quick Summary - 2x2 -->
+            <div class="summary-grid">
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-home"></i></div><div class="summary-content"><h4>150–300 Mbps ideal</h4><p>Suits most smart homes</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-upload"></i></div><div class="summary-content"><h4>Upload speed crucial</h4><p>Security cameras need upload</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-wifi"></i></div><div class="summary-content"><h4>Wi-Fi 6 or mesh</h4><p>Often more important than speed</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-tachometer-alt"></i></div><div class="summary-content"><h4>Infrastructure matters</h4><p>Full fibre most stable</p></div></div>
+            </div>
+
+            <!-- Device Usage Table -->
+            <div class="section-header"><div class="section-subhead">USAGE</div><h2 class="section-heading">Typical device bandwidth</h2></div>
+            <div class="device-card">
+                <table class="device-table">
+                    <tr><th>Device</th><th>Bandwidth Usage</th></tr>
+                    <tr><td>Smart speaker</td><td class="bandwidth-highlight">&lt;1 Mbps</td></tr>
+                    <tr><td>Smart thermostat</td><td class="bandwidth-highlight">Minimal</td></tr>
+                    <tr><td>HD security camera</td><td class="bandwidth-highlight">2–4 Mbps upload</td></tr>
+                    <tr><td>4K security camera</td><td class="bandwidth-highlight">5–8 Mbps upload</td></tr>
+                    <tr><td>4K TV streaming</td><td class="bandwidth-highlight">15–25 Mbps</td></tr>
+                    <tr><td>Zoom call</td><td class="bandwidth-highlight">2–4 Mbps</td></tr>
+                </table>
+                <p style="margin-top: 1.5rem; font-size: 1.2rem;"><i class="fas fa-info-circle" style="color:#2ecc71;"></i> The challenge isn't total Mbps — it's simultaneous usage and stability.</p>
+            </div>
+
+            <!-- Recommended Speeds - 4x1 -->
+            <div class="section-header"><div class="section-subhead">RECOMMENDATIONS</div><h2 class="section-heading">Speeds for smart homes</h2></div>
+            <div class="speed-recommend-grid">
+                <div class="rec-card"><div class="rec-icon"><i class="fas fa-home"></i></div><h4>Small Smart Home</h4><div class="rec-speed">100–150 Mbps</div><p>1–2 people, 10–15 devices</p></div>
+                <div class="rec-card"><div class="rec-icon"><i class="fas fa-users"></i></div><h4>Family Smart Home</h4><div class="rec-speed">150–300 Mbps</div><p>20+ devices</p></div>
+                <div class="rec-card"><div class="rec-icon"><i class="fas fa-building"></i></div><h4>Large Smart Home</h4><div class="rec-speed">300–500 Mbps</div><p>30+ devices + cameras</p></div>
+                <div class="rec-card"><div class="rec-icon"><i class="fas fa-rocket"></i></div><h4>Gigabit</h4><div class="rec-speed">1000 Mbps</div><p>Heavy downloaders/streamers</p></div>
+            </div>
+
+            <!-- Upload Importance - 2x2 -->
+            <div class="section-header"><div class="section-subhead">CRITICAL FACTOR</div><h2 class="section-heading">Upload speed matters</h2></div>
+            <div class="upload-grid">
+                <div class="upload-card"><h3>Smart home upload needs</h3><ul class="upload-list"><li><i class="fas fa-video"></i> Cloud-connected cameras</li><li><i class="fas fa-door-open"></i> Video doorbells</li><li><i class="fas fa-cloud-upload-alt"></i> Remote backups</li><li><i class="fas fa-eye"></i> Remote monitoring</li></ul></div>
+                <div class="upload-card"><h3>Camera calculation</h3><ul class="upload-list"><li><i class="fas fa-camera"></i> 4 HD cameras = 12+ Mbps upload minimum</li><li><i class="fas fa-exclamation-triangle"></i> FTTC may struggle</li><li><i class="fas fa-check-circle"></i> Full fibre handles upload better</li></ul></div>
+            </div>
+
+            <!-- Broadband Type Ranking - 4x1 -->
+            <div class="section-header"><div class="section-subhead">BEST OPTIONS</div><h2 class="section-heading">Broadband type for smart homes</h2></div>
+            <div class="rank-grid">
+                <div class="rank-card"><div class="medal"><i class="fas fa-crown"></i></div><h4>Full Fibre (FTTP)</h4><div class="rank-badge">BEST</div><p>Most stable · Strong upload · Handles many devices</p></div>
+                <div class="rank-card"><div class="medal"><i class="fas fa-medal"></i></div><h4>Cable (Virgin)</h4><div class="rank-badge">GOOD</div><p>High download · Lower upload tiers · Area dependent</p></div>
+                <div class="rank-card"><div class="medal"><i class="fas fa-medal"></i></div><h4>FTTC</h4><div class="rank-badge">BASIC</div><p>Affordable · Upload limited · Less future-proof</p></div>
+                <div class="rank-card"><div class="medal"><i class="fas fa-5g"></i></div><h4>5G Home</h4><div class="rank-badge">FLEXIBLE</div><p>Variable speeds · Less stable for always-on cameras</p></div>
+            </div>
+
+            <!-- Router Comparison - 2x2 -->
+            <div class="section-header"><div class="section-subhead">HARDWARE</div><h2 class="section-heading">Router quality matters more than speed</h2></div>
+            <div class="router-grid">
+                <div class="router-card"><h3>Wi-Fi 6 Router</h3><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Handles more devices simultaneously</li><li><i class="fas fa-check-circle"></i> Reduces congestion</li><li><i class="fas fa-check-circle"></i> Improves efficiency</li><li><i class="fas fa-check-circle"></i> Lower latency</li></ul></div>
+                <div class="router-card"><h3>Mesh Wi-Fi System</h3><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Eliminates dead zones</li><li><i class="fas fa-check-circle"></i> Perfect for multi-floor homes</li><li><i class="fas fa-check-circle"></i> Seamless roaming</li><li><i class="fas fa-check-circle"></i> Central management</li></ul></div>
+            </div>
+
+            <!-- Example Comparison -->
+            <div class="section-header"><div class="section-subhead">REAL WORLD</div><h2 class="section-heading">Example comparison</h2></div>
+            <div class="example-card">
+                <div class="example-item"><div class="example-icon"><i class="fas fa-tachometer-alt"></i></div><div class="example-text"><h4>Household A (FTTC 67 Mbps)</h4><p>4 cameras + 2x 4K streams · Evening slowdowns</p></div></div>
+                <div class="example-divider"></div>
+                <div class="example-item"><div class="example-icon"><i class="fas fa-home"></i></div><div class="example-text"><h4>Household B (FTTP 300 Mbps)</h4><p>25 devices · Stable performance</p></div></div>
+                <div class="example-badge">Infrastructure > Speed</div>
+            </div>
+
+            <!-- Peak-Time Note -->
+            <div class="config-card" style="margin-bottom: 2rem;">
+                <p style="font-size: 1.3rem;"><strong>Smart homes don't "pause" at 8pm.</strong> Devices constantly sync, upload footage, update firmware, and stream. Full fibre maintains performance during peak hours.</p>
+            </div>
+
+            <!-- Smart Home Checklist - 3x2 -->
+            <div class="section-header"><div class="section-subhead">BEFORE YOU CHOOSE</div><h2 class="section-heading">Smart home broadband checklist</h2></div>
+            <div class="checklist-grid">
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-check-circle"></i></div><p>Is full fibre available?</p></div>
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-arrow-up"></i></div><p>What's the upload speed?</p></div>
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-wifi"></i></div><p>Does router support Wi-Fi 6?</p></div>
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-network-wired"></i></div><p>Do I need mesh coverage?</p></div>
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-microchip"></i></div><p>How many devices will connect?</p></div>
+                <div class="checklist-card"><div class="checklist-icon"><i class="fas fa-clock"></i></div><p>Are peak slowdowns common locally?</p></div>
+            </div>
+
+            <!-- Ideal Config Card -->
+            <div class="section-header"><div class="section-subhead">PERFECT SETUP</div><h2 class="section-heading">Best configuration for smart homes</h2></div>
+            <div class="config-card">
+                <div class="config-items">
+                    <span class="config-tag">📡 300 Mbps FTTP</span>
+                    <span class="config-tag">📶 Wi-Fi 6 router</span>
+                    <span class="config-tag">🕸️ Mesh for large homes</span>
+                    <span class="config-tag">🔌 Ethernet for key devices</span>
+                    <span class="config-tag">☁️ Camera upload capacity</span>
+                </div>
+                <p style="font-size: 1.2rem; margin-top: 1.5rem;">This balance delivers stable performance for 25+ devices without overpaying for gigabit.</p>
+            </div>
+
+            <!-- FAQ - 3x2 -->
+            <div class="section-header"><div class="section-subhead">COMMON QUESTIONS</div><h2 class="section-heading">FAQs</h2></div>
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Is 150 Mbps enough for a smart home?</strong><p>Yes for small-to-medium households.</p></div>
+                <div class="faq-card"><strong>Do smart homes need gigabit?</strong><p>Rarely — unless very heavy use.</p></div>
+                <div class="faq-card"><strong>Does upload speed matter?</strong><p>Yes — especially for security cameras.</p></div>
+                <div class="faq-card"><strong>Is Wi-Fi 6 necessary?</strong><p>Recommended for 20+ devices.</p></div>
+                <div class="faq-card"><strong>Is 5G good for smart homes?</strong><p>Only if fibre unavailable.</p></div>
+                <div class="faq-card"><strong>What's the ideal smart home speed?</strong><p>300 Mbps FTTP with good upload.</p></div>
+            </div>
+
+            <!-- Why Utility King - 2x2 (reusing summary card style) -->
+            <div class="section-header"><div class="section-subhead">WHY US</div><h2 class="section-heading">Compare with Utility King</h2></div>
+            <div class="summary-grid" style="margin-bottom: 2rem;">
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-map-marked-alt"></i></div><div class="summary-content"><h4>Check full fibre</h4><p>Availability in your area</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-arrow-up"></i></div><div class="summary-content"><h4>Compare upload speeds</h4><p>Critical for cameras</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-wifi"></i></div><div class="summary-content"><h4>Review router quality</h4><p>Wi-Fi 6 & mesh options</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-microchip"></i></div><div class="summary-content"><h4>Match speed to devices</h4><p>Don't overpay for gigabit</p></div></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Upgrade your smart home broadband</h2>
+                <p>If devices lag, cameras buffer, or Wi-Fi drops upstairs — better infrastructure transforms performance.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank"><i class="fas fa-envelope"></i> Contact us</a>
+            </div>
+            <div class="footer-note"><i class="fas fa-crown" style="color: #2ecc71;"></i> Utility King — broadband for smart homes UK 2026</div>
+        </div>
+    </div>
+</body>
+</html>

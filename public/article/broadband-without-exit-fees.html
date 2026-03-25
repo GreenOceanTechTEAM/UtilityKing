@@ -1,0 +1,847 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband Without Exit Fees UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #f8fafc, #eff3f8);
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Hero */
+        .premium-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #fef9e8 100%);
+            border-radius: 56px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 35px 60px -25px rgba(0,0,0,0.12);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 550px;
+            height: 550px;
+            background: #ef4444;
+            top: -200px;
+            right: -120px;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: #f59e0b;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 450px;
+            height: 450px;
+            background: #10b981;
+            top: 150px;
+            left: 15%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(239, 68, 68, 0.08);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            margin-bottom: 2.5rem;
+            color: #b91c1c;
+        }
+
+            .hero-badge i {
+                color: #ef4444;
+                font-size: 1.2rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -2px;
+            color: #0f172a;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #ef4444, #f59e0b, #10b981);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #475569;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px -5px rgba(0,0,0,0.05);
+        }
+
+            .hero-pill:hover {
+                border-color: #ef4444;
+                background: #fef2f2;
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px rgba(239, 68, 68, 0.2);
+            }
+
+            .hero-pill i {
+                color: #ef4444;
+                margin-right: 10px;
+            }
+
+        /* Main Content */
+        .content-area {
+            background: white;
+            border-radius: 56px;
+            padding: 4rem;
+            box-shadow: 0 30px 55px -20px rgba(0,0,0,0.1);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #ef4444;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Info Cards Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2.2rem;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.05);
+        }
+
+            .info-card:hover {
+                transform: translateY(-6px);
+                border-color: #ef4444;
+                box-shadow: 0 20px 30px -12px rgba(239, 68, 68, 0.15);
+            }
+
+        .info-icon {
+            width: 65px;
+            height: 65px;
+            background: #fef2f2;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #ef4444;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .info-card p {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Options Grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .option-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+            .option-card:nth-child(1) {
+                border-color: #10b981;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .option-card:nth-child(2) {
+                border-color: #3b82f6;
+                background: linear-gradient(145deg, #ffffff, #eff6ff);
+            }
+
+            .option-card:nth-child(3) {
+                border-color: #f59e0b;
+                background: linear-gradient(145deg, #ffffff, #fffbeb);
+            }
+
+            .option-card h3 {
+                font-size: 1.5rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .option-card:nth-child(1) h3 {
+                color: #10b981;
+            }
+
+            .option-card:nth-child(2) h3 {
+                color: #3b82f6;
+            }
+
+            .option-card:nth-child(3) h3 {
+                color: #f59e0b;
+            }
+
+        .option-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+            .option-list li {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .option-list i {
+                width: 22px;
+            }
+
+        .option-card:nth-child(1) .option-list i {
+            color: #10b981;
+        }
+
+        .option-card:nth-child(2) .option-list i {
+            color: #3b82f6;
+        }
+
+        .option-card:nth-child(3) .option-list i {
+            color: #f59e0b;
+        }
+
+        /* Cooling Off Card */
+        .cooling-card {
+            background: #fefce8;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #eab308;
+        }
+
+        /* Moving Home Card */
+        .moving-card {
+            background: #eff6ff;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #3b82f6;
+        }
+
+        /* Pricing Table */
+        .pricing-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .pricing-table th {
+                text-align: left;
+                padding: 1.2rem 1rem;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #0f172a;
+                border-bottom: 2px solid #ef4444;
+            }
+
+            .pricing-table td {
+                padding: 1rem 1rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #eef2ff;
+                color: #334155;
+            }
+
+        .price-highlight {
+            color: #ef4444;
+            font-weight: 700;
+        }
+
+        /* Exit Fee Example */
+        .example-card {
+            background: linear-gradient(145deg, #fef2f2, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            border: 2px solid #ef4444;
+        }
+
+        .fee-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #ef4444;
+            margin: 1rem 0;
+        }
+
+        .comparison-row {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        .comparison-item {
+            background: white;
+            padding: 1rem;
+            border-radius: 20px;
+            min-width: 200px;
+        }
+
+        /* When It Makes Sense */
+        .sense-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .sense-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+            .sense-card:hover {
+                border-color: #ef4444;
+                transform: translateY(-4px);
+            }
+
+        .sense-icon {
+            font-size: 2rem;
+            color: #ef4444;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Hidden Fees Card */
+        .hidden-card {
+            background: #fff5e8;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #f59e0b;
+        }
+
+        /* Fibre vs 5G Grid */
+        .fibre5g-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .fibre5g-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 2px solid;
+        }
+
+            .fibre5g-card:nth-child(1) {
+                border-color: #10b981;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .fibre5g-card:nth-child(2) {
+                border-color: #f59e0b;
+                background: linear-gradient(145deg, #ffffff, #fffbeb);
+            }
+
+            .fibre5g-card h3 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .fibre5g-card:nth-child(1) h3 {
+                color: #10b981;
+            }
+
+            .fibre5g-card:nth-child(2) h3 {
+                color: #f59e0b;
+            }
+
+        /* FAQ Grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border-left: 5px solid #ef4444;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:hover {
+                background: #fef2f2;
+                transform: translateX(4px);
+            }
+
+            .faq-card strong {
+                font-size: 1.2rem;
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #0f172a;
+            }
+
+            .faq-card p {
+                color: #475569;
+                font-size: 1rem;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #991b1b, #b91c1c);
+            border-radius: 48px;
+            padding: 4rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            color: white;
+        }
+
+            .cta-section h2 {
+                font-size: 3rem;
+                font-weight: 800;
+                font-family: 'Space Grotesk', sans-serif;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section p {
+                font-size: 1.3rem;
+                opacity: 0.9;
+                margin-bottom: 2.5rem;
+                max-width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            color: #991b1b;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 35px -10px rgba(0,0,0,0.3);
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1200px) {
+            .options-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .sense-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid, .fibre5g-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .options-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .sense-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-door-open"></i> UTILITY KING · UK 2026 GUIDE
+                </div>
+                <h1 class="hero-title">
+                    <span>Broadband Without</span><br>Exit Fees
+                </h1>
+                <p class="hero-description">
+                    Leave a 24-month contract early and you could face £200+ in penalties. Compare rolling contracts, cooling-off periods, and how to avoid termination charges.
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-calendar-week"></i> 30-day rolling</span>
+                    <span class="hero-pill"><i class="fas fa-pound-sign"></i> No exit penalties</span>
+                    <span class="hero-pill"><i class="fas fa-home"></i> Ideal for renters</span>
+                    <span class="hero-pill"><i class="fas fa-gavel"></i> Cooling-off period</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- What Are Exit Fees -->
+            <div class="section-header">
+                <div class="section-subhead">DEFINITION</div>
+                <h2 class="section-heading">What are broadband exit fees?</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-pound-sign"></i></div>
+                    <h3>Early Termination Charges</h3>
+                    <p>Cancel before your minimum contract term ends and you could face charges based on remaining months — sometimes £200+.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-chart-line"></i></div>
+                    <h3>How it's calculated</h3>
+                    <p>£30/month contract × 12 months remaining = potential charges of several hundred pounds depending on provider policy.</p>
+                </div>
+            </div>
+
+            <!-- Options Without Exit Fees -->
+            <div class="section-header">
+                <div class="section-subhead">YOUR OPTIONS</div>
+                <h2 class="section-heading">Broadband without exit fees</h2>
+            </div>
+            <div class="options-grid">
+                <div class="option-card">
+                    <h3>🟢 30-Day Rolling</h3>
+                    <ul class="option-list">
+                        <li><i class="fas fa-check-circle"></i> No long-term commitment</li>
+                        <li><i class="fas fa-check-circle"></i> 30 days' notice to cancel</li>
+                        <li><i class="fas fa-check-circle"></i> No early termination penalty</li>
+                        <li><i class="fas fa-info-circle"></i> Higher monthly cost</li>
+                    </ul>
+                </div>
+                <div class="option-card">
+                    <h3>🔵 4G/5G Mobile</h3>
+                    <ul class="option-list">
+                        <li><i class="fas fa-check-circle"></i> Rolling SIM plans available</li>
+                        <li><i class="fas fa-check-circle"></i> Plug-and-play setup</li>
+                        <li><i class="fas fa-check-circle"></i> Portable</li>
+                        <li><i class="fas fa-check-circle"></i> Good short-term solution</li>
+                    </ul>
+                </div>
+                <div class="option-card">
+                    <h3>🟡 12-Month Contracts</h3>
+                    <ul class="option-list">
+                        <li><i class="fas fa-check-circle"></i> Lower risk than 24-month</li>
+                        <li><i class="fas fa-check-circle"></i> Shorter exposure to fees</li>
+                        <li><i class="fas fa-times-circle"></i> Not fee-free</li>
+                        <li><i class="fas fa-check-circle"></i> Lower commitment</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Cooling-Off Period -->
+            <div class="cooling-card">
+                <i class="fas fa-hourglass-half" style="font-size: 1.8rem; color: #eab308; margin-bottom: 0.5rem; display: block;"></i>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Cooling-Off Period (14 Days)</h3>
+                <p>Under UK consumer law, you can cancel within 14 days of signing — no early termination charge. You may need to pay for service already used. After 14 days, exit fees apply.</p>
+            </div>
+
+            <!-- Moving Home -->
+            <div class="moving-card">
+                <i class="fas fa-truck-moving" style="font-size: 1.8rem; color: #3b82f6; margin-bottom: 0.5rem; display: block;"></i>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Moving home & exit fees</h3>
+                <p>Moving doesn't automatically remove exit fees. If provider can supply service at new address → contract continues. If they cannot → you may cancel penalty-free. Always confirm before moving.</p>
+            </div>
+
+            <!-- Cost Comparison -->
+            <div class="section-header">
+                <div class="section-subhead">PRICING 2026</div>
+                <h2 class="section-heading">Monthly cost comparison</h2>
+            </div>
+            <div class="pricing-card">
+                <table class="pricing-table">
+                    <tr><th>Plan Type</th><th>Typical Monthly Cost</th></tr>
+                    <tr><td>24-Month Fibre</td><td class="price-highlight">£25–£35</td></tr>
+                    <tr><td>12-Month Fibre</td><td class="price-highlight">£28–£40</td></tr>
+                    <tr><td>30-Day Fibre</td><td class="price-highlight">£35–£45</td></tr>
+                    <tr><td>5G Rolling</td><td class="price-highlight">£30–£45</td></tr>
+                </table>
+                <p style="margin-top: 1rem; font-size: 0.95rem; color: #64748b;"><i class="fas fa-info-circle"></i> Rolling contracts cost more — but eliminate long-term risk.</p>
+            </div>
+
+            <!-- Exit Fee Example -->
+            <div class="section-header">
+                <div class="section-subhead">REAL-WORLD MATH</div>
+                <h2 class="section-heading">Exit fee scenario</h2>
+            </div>
+            <div class="example-card">
+                <div class="comparison-row">
+                    <div class="comparison-item">
+                        <strong>24-Month Contract</strong>
+                        <div class="fee-value">£30/month</div>
+                        <p>10 months remaining</p>
+                        <div style="color: #ef4444; font-weight: 700;">~£200–£250 exit fee</div>
+                    </div>
+                    <div class="comparison-item">
+                        <strong>30-Day Rolling</strong>
+                        <div class="fee-value">Cancel anytime</div>
+                        <p>No penalty</p>
+                        <div style="color: #10b981; font-weight: 700;">£0 exit fee</div>
+                    </div>
+                </div>
+                <p style="margin-top: 1rem;">Flexibility has value if your situation may change.</p>
+            </div>
+
+            <!-- When It Makes Sense -->
+            <div class="section-header">
+                <div class="section-subhead">BEST FOR</div>
+                <h2 class="section-heading">When broadband without exit fees makes sense</h2>
+            </div>
+            <div class="sense-grid">
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-home"></i></div><h4>Short-term renters</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-truck"></i></div><h4>Planning to move soon</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-key"></i></div><h4>Buying a property</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-map-marker-alt"></i></div><h4>Unsure about area</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-graduation-cap"></i></div><h4>Students</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-briefcase"></i></div><h4>Contractors</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-clock"></i></div><h4>Temporary accommodation</h4></div>
+                <div class="sense-card"><div class="sense-icon"><i class="fas fa-question-circle"></i></div><h4>Testing a provider</h4></div>
+            </div>
+
+            <!-- Hidden Fees -->
+            <div class="hidden-card">
+                <i class="fas fa-eye-slash" style="font-size: 1.8rem; color: #f59e0b; margin-bottom: 0.5rem; display: block;"></i>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Hidden fees on rolling contracts</h3>
+                <p>⚠ Setup fees (£30–£60) · Router delivery charges · Higher installation cost · 30-day notice requirement. Even rolling contracts require notice before cancellation.</p>
+            </div>
+
+            <!-- Fibre vs 5G for Flexibility -->
+            <div class="section-header">
+                <div class="section-subhead">FIBRE vs 5G</div>
+                <h2 class="section-heading">Flexibility comparison</h2>
+            </div>
+            <div class="fibre5g-grid">
+                <div class="fibre5g-card">
+                    <h3>📡 Full Fibre Rolling</h3>
+                    <ul class="option-list">
+                        <li><i class="fas fa-check-circle"></i> More stable</li>
+                        <li><i class="fas fa-check-circle"></i> Unlimited data</li>
+                        <li><i class="fas fa-times-circle"></i> Higher monthly price</li>
+                    </ul>
+                </div>
+                <div class="fibre5g-card">
+                    <h3>📱 5G Rolling</h3>
+                    <ul class="option-list">
+                        <li><i class="fas fa-check-circle"></i> Instant setup</li>
+                        <li><i class="fas fa-check-circle"></i> Portable</li>
+                        <li><i class="fas fa-times-circle"></i> Performance depends on signal</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- When Long Contracts Are Worth It -->
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-calendar-check"></i></div>
+                    <h3>When long contracts are worth it</h3>
+                    <p>If you plan to stay 2+ years, want the lowest monthly price, or want cashback incentives — a 24-month contract may save £200+ over time. But only if you complete the term.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-switch"></i></div>
+                    <h3>Can you switch without exit fees?</h3>
+                    <p>Yes if: minimum term has ended · within cooling-off period · provider cannot serve new address · provider breaches contract terms.</p>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-header">
+                <div class="section-subhead">QUESTIONS</div>
+                <h2 class="section-heading">Frequently asked questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Are there truly no exit fee broadband deals?</strong><p>Yes — on rolling 30-day contracts.</p></div>
+                <div class="faq-card"><strong>Is rolling broadband more expensive?</strong><p>Yes — typically £8–£15 more per month.</p></div>
+                <div class="faq-card"><strong>Can I avoid exit fees if I move?</strong><p>Only if provider cannot serve new address.</p></div>
+                <div class="faq-card"><strong>Do all providers charge exit fees?</strong><p>All long-term contracts do.</p></div>
+                <div class="faq-card"><strong>Is mobile broadband easier to cancel?</strong><p>Often yes — especially SIM-only plans.</p></div>
+                <div class="faq-card"><strong>What's the cooling-off period?</strong><p>14 days to cancel without penalty.</p></div>
+            </div>
+
+            <!-- Why Utility King -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-calendar-alt"></i></div><h3>Compare 30-day rolling deals</h3><p>Find flexible broadband in your area</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-file-contract"></i></div><h3>Review contract length clearly</h3><p>Know your exit risks</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-pound-sign"></i></div><h3>Compare total cost</h3><p>For your expected stay</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Check fibre & 5G availability</h3><p>Find flexible options near you</p></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Avoid expensive exit fees</h2>
+                <p>Compare rolling contracts in your postcode — cancel anytime with 30 days' notice.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #ef4444;"></i> Utility King — broadband without exit fees UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

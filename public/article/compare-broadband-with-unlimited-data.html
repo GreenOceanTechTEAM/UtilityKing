@@ -1,0 +1,913 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Unlimited Broadband UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fc 0%, #f0f5ff 100%);
+            color: #1a2b4c;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Light Hero */
+        .premium-hero {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 30px 50px -20px rgba(155, 89, 182, 0.25);
+            border: 1px solid rgba(155, 89, 182, 0.3);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #9b59b6;
+            top: -200px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 450px;
+            height: 450px;
+            background: #2ecc71;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: #3498db;
+            top: 150px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #9b59b610, #2ecc7110);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid #9b59b6;
+            margin-bottom: 2.5rem;
+            color: #1a2b4c;
+        }
+
+            .hero-badge i {
+                color: #9b59b6;
+                font-size: 1.3rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -2px;
+            color: #1a2b4c;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #9b59b6, #2ecc71, #3498db);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #4a5f7a;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #9b59b6;
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a2b4c;
+            transition: all 0.3s ease;
+        }
+
+            .hero-pill:hover {
+                border-color: #2ecc71;
+                background: linear-gradient(135deg, #9b59b610, #2ecc7110);
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px #9b59b6;
+            }
+
+            .hero-pill i {
+                color: #9b59b6;
+                margin-right: 10px;
+            }
+
+        /* Main content area */
+        .content-area {
+            background: white;
+            border-radius: 48px;
+            padding: 4rem;
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.1);
+            border: 1px solid rgba(155, 89, 182, 0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 1rem;
+            }
+
+        .section-subhead {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #9b59b6, #2ecc71);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a2b4c;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Quick summary cards - 2x2 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.4s ease;
+            border: 3px solid;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
+        }
+
+            .summary-card:nth-child(1) {
+                border-color: #9b59b6;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .summary-card:nth-child(2) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .summary-card:nth-child(3) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .summary-card:nth-child(4) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .summary-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            }
+
+        .summary-icon {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .summary-card:nth-child(1) .summary-icon {
+            color: #9b59b6;
+        }
+
+        .summary-card:nth-child(2) .summary-icon {
+            color: #2ecc71;
+        }
+
+        .summary-card:nth-child(3) .summary-icon {
+            color: #3498db;
+        }
+
+        .summary-card:nth-child(4) .summary-icon {
+            color: #f39c12;
+        }
+
+        .summary-content h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .summary-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* Fibre vs Mobile Unlimited - 2x2 */
+        .compare-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .compare-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 3px solid;
+        }
+
+            .compare-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .compare-card:nth-child(2) {
+                border-color: #9b59b6;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+        .compare-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .compare-card:nth-child(1) .compare-icon {
+            color: #2ecc71;
+        }
+
+        .compare-card:nth-child(2) .compare-icon {
+            color: #9b59b6;
+        }
+
+        .compare-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .feature-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .feature-list i {
+                width: 24px;
+            }
+
+        .compare-card:nth-child(1) .feature-list i {
+            color: #2ecc71;
+        }
+
+        .compare-card:nth-child(2) .feature-list i {
+            color: #9b59b6;
+        }
+
+        /* Monthly usage table */
+        .usage-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 3px solid #9b59b6;
+        }
+
+        .usage-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .usage-table th {
+                text-align: left;
+                padding: 1.2rem 1rem;
+                font-size: 1.3rem;
+                font-weight: 700;
+                border-bottom: 3px solid #9b59b6;
+            }
+
+            .usage-table td {
+                padding: 1.2rem 1rem;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(155, 89, 182, 0.2);
+                color: #4a5f7a;
+            }
+
+        .usage-value {
+            color: #9b59b6;
+            font-weight: 700;
+        }
+
+        /* Who needs unlimited - 4x1 */
+        .need-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .need-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid;
+        }
+
+            .need-card:nth-child(1) {
+                border-color: #2ecc71;
+                background: #e8f7ed;
+            }
+
+            .need-card:nth-child(2) {
+                border-color: #3498db;
+                background: #e8f0ff;
+            }
+
+            .need-card:nth-child(3) {
+                border-color: #9b59b6;
+                background: #f5f0ff;
+            }
+
+            .need-card:nth-child(4) {
+                border-color: #f39c12;
+                background: #fff5e8;
+            }
+
+        .need-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .need-card:nth-child(1) .need-icon {
+            color: #2ecc71;
+        }
+
+        .need-card:nth-child(2) .need-icon {
+            color: #3498db;
+        }
+
+        .need-card:nth-child(3) .need-icon {
+            color: #9b59b6;
+        }
+
+        .need-card:nth-child(4) .need-icon {
+            color: #f39c12;
+        }
+
+        /* FUP explanation card */
+        .fup-card {
+            background: linear-gradient(145deg, #f5f0ff, white);
+            border-radius: 40px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 3px dashed #9b59b6;
+        }
+
+        /* Cost table */
+        .cost-card {
+            background: white;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            border: 3px solid #2ecc71;
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .cost-table th {
+                text-align: left;
+                padding: 1.2rem 1rem;
+                font-size: 1.3rem;
+                font-weight: 700;
+                border-bottom: 3px solid #2ecc71;
+            }
+
+            .cost-table td {
+                padding: 1.2rem 1rem;
+                font-size: 1.2rem;
+                border-bottom: 1px solid rgba(46, 204, 113, 0.2);
+                color: #4a5f7a;
+            }
+
+        .cost-highlight {
+            color: #2ecc71;
+            font-weight: 700;
+        }
+
+        /* Signs grid - 3x2 */
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 3rem 0;
+        }
+
+        .sign-card {
+            background: white;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border: 2px solid #e74c3c;
+            background: #ffe8e8;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sign-icon {
+            font-size: 1.8rem;
+            color: #e74c3c;
+            flex-shrink: 0;
+        }
+
+        .sign-card p {
+            font-size: 1.1rem;
+            color: #1a2b4c;
+        }
+
+        /* Example comparison */
+        .example-card {
+            background: white;
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border: 4px solid;
+            border-color: #9b59b6 #2ecc71 #9b59b6 #2ecc71;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .example-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border: 2px solid;
+        }
+
+        .example-item:nth-child(1) .example-icon {
+            color: #9b59b6;
+            border-color: #9b59b6;
+        }
+
+        .example-item:nth-child(2) .example-icon {
+            color: #2ecc71;
+            border-color: #2ecc71;
+        }
+
+        .example-text h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .example-text p {
+            font-size: 1.3rem;
+            color: #4a5f7a;
+        }
+
+        .example-divider {
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #9b59b6, #2ecc71, transparent);
+        }
+
+        .example-badge {
+            background: linear-gradient(135deg, #9b59b6, #2ecc71);
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            box-shadow: 0 20px 30px -10px #9b59b6;
+        }
+
+        /* FAQ - 3x2 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 3rem 0;
+        }
+
+        .faq-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2rem;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:nth-child(1) {
+                border-color: #9b59b6;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .faq-card:nth-child(2) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .faq-card:nth-child(3) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .faq-card:nth-child(4) {
+                border-color: #f39c12;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .faq-card:nth-child(5) {
+                border-color: #e74c3c;
+                background: linear-gradient(145deg, white, #ffe8e8);
+            }
+
+            .faq-card:nth-child(6) {
+                border-color: #1abc9c;
+                background: linear-gradient(145deg, white, #e8faf5);
+            }
+
+            .faq-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .faq-card p {
+                font-size: 1.15rem;
+                color: #4a5f7a;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            border: 4px solid;
+            border-color: #9b59b6 #2ecc71 #9b59b6 #2ecc71;
+        }
+
+            .cta-section h2 {
+                font-size: 3.5rem;
+                font-weight: 800;
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 1.5rem;
+                color: #1a2b4c;
+            }
+
+            .cta-section p {
+                font-size: 1.4rem;
+                color: #4a5f7a;
+                margin-bottom: 3rem;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: linear-gradient(135deg, #9b59b6, #2ecc71);
+            color: white;
+            padding: 1.5rem 4rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 30px -10px #9b59b6;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 30px 40px -10px #9b59b6;
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.2rem;
+            color: #a0b8d0;
+        }
+
+        @media (max-width: 1200px) {
+            .need-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .signs-grid, .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .compare-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .need-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .signs-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .example-divider {
+                width: 100px;
+                height: 2px;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Light Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-crown"></i> Utility King · UK 2026 Guide</div>
+                <h1 class="hero-title"><span>Unlimited Broadband</span><br>Compared UK 2026</h1>
+                <p class="hero-description">Does unlimited really mean no limits? Compare fibre vs mobile, Fair Usage Policies, and find the right plan for your usage.</p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-home"></i> Fibre: truly unlimited</span>
+                    <span class="hero-pill"><i class="fas fa-sim-card"></i> Mobile: traffic management</span>
+                    <span class="hero-pill"><i class="fas fa-chart-line"></i> Families use 500GB+</span>
+                    <span class="hero-pill"><i class="fas fa-file-contract"></i> Check FUP terms</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Quick Summary - 2x2 -->
+            <div class="summary-grid">
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-home"></i></div><div class="summary-content"><h4>Fibre: truly unlimited</h4><p>No caps, no throttling</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-sim-card"></i></div><div class="summary-content"><h4>Mobile: traffic management</h4><p>Fair usage policies apply</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-chart-line"></i></div><div class="summary-content"><h4>Heavy households</h4><p>500GB–1TB+ monthly</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-file-contract"></i></div><div class="summary-content"><h4>Always check FUP</h4><p>Read the small print</p></div></div>
+            </div>
+
+            <!-- What Does Unlimited Mean -->
+            <div class="section-header"><div class="section-subhead">DEFINITION</div><h2 class="section-heading">What does "unlimited" mean?</h2></div>
+            <div class="compare-grid">
+                <div class="compare-card"><div class="compare-icon"><i class="fas fa-check-circle"></i></div><h3>Typically includes</h3><ul class="feature-list"><li><i class="fas fa-check"></i> No monthly data cap</li><li><i class="fas fa-check"></i> No extra charges</li><li><i class="fas fa-check"></i> No automatic cut-off</li></ul></div>
+                <div class="compare-card"><div class="compare-icon"><i class="fas fa-exclamation-triangle"></i></div><h3>May include (mobile)</h3><ul class="feature-list"><li><i class="fas fa-times"></i> Fair Usage Policies</li><li><i class="fas fa-times"></i> Traffic prioritisation</li><li><i class="fas fa-times"></i> Speed management during congestion</li></ul></div>
+            </div>
+
+            <!-- Fibre vs Mobile Unlimited - 2x2 -->
+            <div class="section-header"><div class="section-subhead">COMPARISON</div><h2 class="section-heading">Fibre unlimited vs mobile unlimited</h2></div>
+            <div class="compare-grid">
+                <div class="compare-card"><div class="compare-icon"><i class="fas fa-home"></i></div><h3>Fibre Broadband (FTTP & FTTC)</h3><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Genuinely unlimited</li><li><i class="fas fa-check-circle"></i> No routine throttling</li><li><i class="fas fa-check-circle"></i> Stable peak performance</li><li><i class="fas fa-check-circle"></i> Best for heavy/family use</li></ul></div>
+                <div class="compare-card"><div class="compare-icon"><i class="fas fa-5g"></i></div><h3>4G & 5G Unlimited</h3><ul class="feature-list"><li><i class="fas fa-check"></i> Unlimited in theory</li><li><i class="fas fa-exclamation-triangle"></i> May reduce priority at peak</li><li><i class="fas fa-exclamation-triangle"></i> Speed fluctuates</li><li><i class="fas fa-check"></i> Best for flexible/temporary setups</li></ul></div>
+            </div>
+
+            <!-- Monthly Usage Table -->
+            <div class="section-header"><div class="section-subhead">USAGE STATS</div><h2 class="section-heading">How much data does a household use?</h2></div>
+            <div class="usage-card">
+                <table class="usage-table">
+                    <tr><th>Usage Type</th><th>Approx Data</th></tr>
+                    <tr><td>Light user</td><td class="usage-value">100–200GB</td></tr>
+                    <tr><td>Family streaming HD</td><td class="usage-value">300–500GB</td></tr>
+                    <tr><td>4K streaming household</td><td class="usage-value">500GB–1TB+</td></tr>
+                    <tr><td>Gamers & downloads</td><td class="usage-value">1TB+</td></tr>
+                </table>
+                <p style="margin-top: 1.5rem; font-size: 1.2rem;"><i class="fas fa-chart-line" style="color:#9b59b6;"></i> Many families exceed 500GB per month without realising it. Unlimited broadband avoids overage worries.</p>
+            </div>
+
+            <!-- Who Needs Unlimited - 4x1 -->
+            <div class="section-header"><div class="section-subhead">WHO NEEDS IT</div><h2 class="section-heading">Who needs unlimited broadband?</h2></div>
+            <div class="need-grid">
+                <div class="need-card"><div class="need-icon"><i class="fas fa-tv"></i></div><p>Stream regularly (especially 4K)</p></div>
+                <div class="need-card"><div class="need-icon"><i class="fas fa-download"></i></div><p>Download large games</p></div>
+                <div class="need-card"><div class="need-icon"><i class="fas fa-cloud-upload-alt"></i></div><p>Use cloud backups</p></div>
+                <div class="need-card"><div class="need-icon"><i class="fas fa-users"></i></div><p>Multiple users / work from home</p></div>
+            </div>
+
+            <!-- Fair Usage Policy Explained -->
+            <div class="section-header"><div class="section-subhead">FINE PRINT</div><h2 class="section-heading">Fair Usage Policies explained</h2></div>
+            <div class="fup-card">
+                <p style="font-size: 1.3rem; text-align: center;">Even unlimited plans may include terms like:</p>
+                <div style="background: white; border-radius: 60px; padding: 1rem; margin: 1.5rem 0; text-align: center; border: 1px solid #9b59b6;">
+                    <i class="fas fa-quote-left" style="color:#9b59b6;"></i> "Speeds may be reduced during busy periods."
+                </div>
+                <p style="font-size: 1.1rem; text-align: center;">This is <strong>traffic management</strong> — full fibre networks rarely need this, mobile networks use it frequently.</p>
+            </div>
+
+            <!-- Cost Table -->
+            <div class="section-header"><div class="section-subhead">PRICING 2026</div><h2 class="section-heading">Unlimited broadband cost</h2></div>
+            <div class="cost-card">
+                <table class="cost-table">
+                    <tr><th>Plan Type</th><th>Monthly Cost</th></tr>
+                    <tr><td>FTTC Unlimited</td><td class="cost-highlight">£22–£27</td></tr>
+                    <tr><td>FTTP 150 Mbps Unlimited</td><td class="cost-highlight">£25–£32</td></tr>
+                    <tr><td>FTTP 300 Mbps Unlimited</td><td class="cost-highlight">£28–£35</td></tr>
+                    <tr><td>5G Unlimited</td><td class="cost-highlight">£30–£45</td></tr>
+                </table>
+                <p style="margin-top: 1rem;">Full fibre often offers better value per Mbps.</p>
+            </div>
+
+            <!-- Signs You Need Unlimited - 3x2 -->
+            <div class="section-header"><div class="section-subhead">WARNING SIGNS</div><h2 class="section-heading">Signs you need unlimited data</h2></div>
+            <div class="signs-grid">
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-chart-line"></i></div><p>You worry about data usage</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-tv"></i></div><p>You stream daily</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-gamepad"></i></div><p>Kids download large games</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-camera"></i></div><p>Cameras upload constantly</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-sim-card"></i></div><p>You hit mobile data limits</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-users"></i></div><p>Multiple users in home</p></div>
+            </div>
+
+            <!-- Example Comparison -->
+            <div class="section-header"><div class="section-subhead">REAL WORLD</div><h2 class="section-heading">Example comparison</h2></div>
+            <div class="example-card">
+                <div class="example-item"><div class="example-icon"><i class="fas fa-home"></i></div><div class="example-text"><h4>Household A (FTTP 300)</h4><p>700GB monthly · Stable performance</p></div></div>
+                <div class="example-divider"></div>
+                <div class="example-item"><div class="example-icon"><i class="fas fa-5g"></i></div><div class="example-text"><h4>Household B (5G)</h4><p>700GB monthly · Evening speeds fluctuate</p></div></div>
+                <div class="example-badge">Both unlimited — infrastructure changes experience</div>
+            </div>
+
+            <!-- When Capped Plans Make Sense -->
+            <div class="section-header"><div class="section-subhead">ALTERNATIVES</div><h2 class="section-heading">When capped plans make sense</h2></div>
+            <div style="background: #e8f0ff; border-radius: 36px; padding: 2rem; margin: 2rem 0; text-align: center; border: 2px solid #3498db;">
+                <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem;">
+                    <span class="config-tag" style="background: white; padding: 0.8rem 1.8rem; border-radius: 60px;">Single user</span>
+                    <span class="config-tag" style="background: white; padding: 0.8rem 1.8rem; border-radius: 60px;">Light browsing</span>
+                    <span class="config-tag" style="background: white; padding: 0.8rem 1.8rem; border-radius: 60px;">No streaming</span>
+                    <span class="config-tag" style="background: white; padding: 0.8rem 1.8rem; border-radius: 60px;">Temporary use</span>
+                    <span class="config-tag" style="background: white; padding: 0.8rem 1.8rem; border-radius: 60px;">Backup internet</span>
+                </div>
+                <p style="margin-top: 1.5rem;">For families, capped plans usually cause frustration.</p>
+            </div>
+
+            <!-- FAQ - 3x2 -->
+            <div class="section-header"><div class="section-subhead">COMMON QUESTIONS</div><h2 class="section-heading">FAQs</h2></div>
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Is unlimited broadband truly unlimited?</strong><p>For fibre plans, generally yes.</p></div>
+                <div class="faq-card"><strong>Can unlimited broadband be throttled?</strong><p>Rarely on fibre — more common on mobile.</p></div>
+                <div class="faq-card"><strong>Is unlimited necessary for light users?</strong><p>Not always — capped plans can be cheaper.</p></div>
+                <div class="faq-card"><strong>Does unlimited cost more?</strong><p>Often similar pricing to older capped plans.</p></div>
+                <div class="faq-card"><strong>Can unlimited still slow at peak?</strong><p>Yes — due to congestion, not data limits.</p></div>
+                <div class="faq-card"><strong>Which unlimited plan is best?</strong><p>Full fibre 300 Mbps for most families.</p></div>
+            </div>
+
+            <!-- Why Utility King - 2x2 -->
+            <div class="section-header"><div class="section-subhead">WHY US</div><h2 class="section-heading">Compare with Utility King</h2></div>
+            <div class="summary-grid" style="margin-bottom: 2rem;">
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-map-marked-alt"></i></div><div class="summary-content"><h4>Check fibre availability</h4><p>FTTP, FTTC in your area</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-file-contract"></i></div><div class="summary-content"><h4>Review Fair Usage Policies</h4><p>Know the real terms</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-pound-sign"></i></div><div class="summary-content"><h4>Compare total cost</h4><p>No hidden fees</p></div></div>
+                <div class="summary-card"><div class="summary-icon"><i class="fas fa-chart-line"></i></div><div class="summary-content"><h4>Match speed to usage</h4><p>Don't overpay</p></div></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Find truly unlimited broadband</h2>
+                <p>Compare full fibre and unlimited plans in your postcode — no hidden caps, no usage worries.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank"><i class="fas fa-envelope"></i> Contact us</a>
+            </div>
+            <div class="footer-note"><i class="fas fa-crown" style="color: #9b59b6;"></i> Utility King — unlimited broadband UK 2026</div>
+        </div>
+    </div>
+</body>
+</html>

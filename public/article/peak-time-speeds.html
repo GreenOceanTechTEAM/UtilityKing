@@ -1,0 +1,1113 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband Peak Time Speeds UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4fa;
+            color: #1a2b4c;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Dark Hero Section */
+        .dark-hero {
+            background: linear-gradient(145deg, #1e3a5f, #2a4a7a);
+            border-radius: 40px;
+            padding: 4rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.4);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+        }
+
+        .shape-1 {
+            width: 450px;
+            height: 450px;
+            background: #f39c12;
+            top: -150px;
+            right: -80px;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #3498db;
+            bottom: -150px;
+            left: -80px;
+        }
+
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #e74c3c;
+            top: 100px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 2.2rem;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge i {
+                color: #f39c12;
+                margin-right: 10px;
+            }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.8rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #f39c12, #3498db);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+            .hero-pill:hover {
+                background: rgba(255,255,255,0.12);
+                border-color: #f39c12;
+                transform: translateY(-3px);
+            }
+
+            .hero-pill i {
+                color: #f39c12;
+                margin-right: 10px;
+            }
+
+        /* Main content area */
+        .content-area {
+            background: white;
+            border-radius: 40px;
+            padding: 3.5rem;
+            box-shadow: 0 25px 50px -15px rgba(0,20,40,0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 3.5rem 0 2.5rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f39c12;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a2b4c;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+        }
+
+        /* Quick summary cards - 2x2 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .summary-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeef5;
+        }
+
+            .summary-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 35px -12px rgba(243,156,18,0.2);
+                border-color: #f39c12;
+            }
+
+        .summary-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #f39c12;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .summary-content h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: #1a2b4c;
+        }
+
+        .summary-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* What are peak times - definition card */
+        .definition-card {
+            background: #f8faff;
+            border-radius: 36px;
+            padding: 2.8rem;
+            margin: 2rem 0 2.5rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .peak-hours {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .hour-badge {
+            background: #1a2b4c;
+            color: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: 700;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.2);
+        }
+
+            .hour-badge i {
+                color: #f39c12;
+                margin-right: 10px;
+            }
+
+        /* Why slowdown - 4x1 */
+        .slowdown-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .slowdown-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .slowdown-icon {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .slowdown-card p {
+            font-size: 1.1rem;
+        }
+
+        /* Peak performance by type - 4x1 medal cards */
+        .peak-rank-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .rank-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+
+            .rank-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 30px -12px rgba(243,156,18,0.2);
+                border-color: #f39c12;
+            }
+
+        .medal {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.2rem;
+        }
+
+        .gold {
+            background: #ffd700;
+            color: #1a2b4c;
+        }
+
+        .silver {
+            background: #c0c0c0;
+            color: #1a2b4c;
+        }
+
+        .bronze {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .base {
+            background: #9f7aea;
+            color: white;
+        }
+
+        .rank-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .peak-badge {
+            display: inline-block;
+            background: #f39c12;
+            color: white;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0.8rem 0;
+        }
+
+        /* Openreach vs Alt-Net - 2x2 */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.2rem;
+            margin: 2.5rem 0;
+        }
+
+        .premium-card {
+            background: #f8faff;
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+
+            .premium-card:hover {
+                border-color: #f39c12;
+                box-shadow: 0 25px 40px -15px rgba(243,156,18,0.2);
+                transform: translateY(-6px);
+            }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #f39c12;
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        .premium-card h3 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* Example comparison - 3x1 */
+        .example-peak-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .example-peak-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .headline-speed {
+            font-size: 1.5rem;
+            color: #4a5f7a;
+            margin: 0.5rem 0;
+        }
+
+        .peak-speed {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin: 1rem 0;
+        }
+
+        .speed-drop {
+            font-size: 1rem;
+            color: #e74c3c;
+        }
+
+        /* What speed needed - 4x1 */
+        .needed-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .needed-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .needed-icon {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        .needed-value {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #f39c12;
+            margin: 0.5rem 0;
+        }
+
+        /* Upload importance - 2x2 */
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .upload-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #eaeef5;
+        }
+
+            .upload-card ul {
+                list-style: none;
+                margin-top: 1.5rem;
+            }
+
+            .upload-card li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .upload-card i {
+                width: 24px;
+            }
+
+        .check-green {
+            color: #2ecc71;
+        }
+
+        .times-red {
+            color: #e74c3c;
+        }
+
+        /* How to test - 3 steps */
+        .test-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .test-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .test-number {
+            width: 40px;
+            height: 40px;
+            background: #f39c12;
+            color: white;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        /* How to improve - 4x1 */
+        .improve-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .improve-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .improve-icon {
+            font-size: 2rem;
+            color: #f39c12;
+            margin-bottom: 1rem;
+        }
+
+        /* Ranking list */
+        .ranking-card {
+            background: linear-gradient(145deg, #f8faff, white);
+            border-radius: 36px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid #eaeef5;
+        }
+
+        .ranking-item {
+            display: flex;
+            align-items: center;
+            padding: 1rem 1.5rem;
+            margin-bottom: 0.8rem;
+            background: white;
+            border-radius: 60px;
+            gap: 1.5rem;
+        }
+
+        .rank-number {
+            width: 40px;
+            height: 40px;
+            background: #f39c12;
+            color: white;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        /* FAQ - 3x2 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:hover {
+                border-color: #f39c12;
+                transform: translateY(-4px);
+                box-shadow: 0 15px 25px -10px rgba(243,156,18,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .faq-card p {
+                font-size: 1.15rem;
+                color: #4a5f7a;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(145deg, #1a2b4c, #0f1e33);
+            border-radius: 40px;
+            padding: 4rem;
+            margin: 3.5rem 0 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.3);
+        }
+
+            .cta-section h2 {
+                font-size: 3.2rem;
+                font-weight: 700;
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 1.2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.4rem;
+                opacity: 0.9;
+                margin-bottom: 3rem;
+                max-width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: white;
+            color: #1a2b4c;
+            padding: 1.4rem 3.5rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 30px -8px rgba(255,255,255,0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 35px -5px rgba(255,255,255,0.3);
+                background: #f8faff;
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1.2rem;
+            color: #6b85a8;
+        }
+
+        @media (max-width: 1200px) {
+            .peak-rank-grid, .slowdown-grid, .needed-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .example-peak-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .test-steps, .improve-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid-2x2, .upload-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .peak-rank-grid, .slowdown-grid, .needed-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-peak-grid, .test-steps, .improve-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Dark Hero -->
+        <div class="dark-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i> Utility King · UK 2026 Guide
+                </div>
+                <h1 class="hero-title">
+                    <span>Peak Time Speeds</span><br>Compared UK 2026
+                </h1>
+                <p class="hero-description">
+                    Broadband slows at 8pm? Compare FTTP, FTTC, cable & 5G performance during peak hours (7–10pm).
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-home"></i> FTTP: minimal slowdown</span>
+                    <span class="hero-pill"><i class="fas fa-road"></i> FTTC: varies by area</span>
+                    <span class="hero-pill"><i class="fas fa-tv"></i> Cable: fluctuates</span>
+                    <span class="hero-pill"><i class="fas fa-5g"></i> 5G: congestion heavy</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Quick Summary - 2x2 -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-home"></i></div>
+                    <div class="summary-content">
+                        <h4>FTTP: minimal slowdown</h4>
+                        <p>Best peak performance</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-road"></i></div>
+                    <div class="summary-content">
+                        <h4>FTTC: varies by area</h4>
+                        <p>Cabinet congestion possible</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-tv"></i></div>
+                    <div class="summary-content">
+                        <h4>Cable: fluctuates</h4>
+                        <p>Area dependent</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-5g"></i></div>
+                    <div class="summary-content">
+                        <h4>5G: congestion heavy</h4>
+                        <p>Speed drops at peak</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What are peak times -->
+            <div class="section-header">
+                <div class="section-subhead">THE BASICS</div>
+                <h2 class="section-heading">What are peak time speeds?</h2>
+            </div>
+
+            <div class="definition-card">
+                <div class="definition-text">
+                    ⏰ Peak time speeds refer to broadband performance during <strong>evening hours (7pm–10pm)</strong> when networks face highest demand.
+                </div>
+                <div class="peak-hours">
+                    <div class="hour-badge"><i class="fas fa-clock"></i> 7pm – 10pm</div>
+                </div>
+                <p style="font-size: 1.2rem;">Even if your plan advertises 300 Mbps, you might see lower speeds during busy periods.</p>
+            </div>
+
+            <!-- Why slowdown - 4x1 -->
+            <div class="section-header">
+                <div class="section-subhead">CAUSES</div>
+                <h2 class="section-heading">Why does broadband slow at peak?</h2>
+            </div>
+
+            <div class="slowdown-grid">
+                <div class="slowdown-card">
+                    <div class="slowdown-icon"><i class="fas fa-users"></i></div>
+                    <p>Many users share infrastructure</p>
+                </div>
+                <div class="slowdown-card">
+                    <div class="slowdown-icon"><i class="fas fa-server"></i></div>
+                    <p>Cabinet/node capacity limits</p>
+                </div>
+                <div class="slowdown-card">
+                    <div class="slowdown-icon"><i class="fas fa-sim-card"></i></div>
+                    <p>Mobile traffic prioritisation</p>
+                </div>
+                <div class="slowdown-card">
+                    <div class="slowdown-icon"><i class="fas fa-copper"></i></div>
+                    <p>Copper line saturation</p>
+                </div>
+            </div>
+
+            <!-- Peak performance by type - 4x1 medal cards -->
+            <div class="section-header">
+                <div class="section-subhead">PERFORMANCE</div>
+                <h2 class="section-heading">Peak time by connection type</h2>
+            </div>
+
+            <div class="peak-rank-grid">
+                <div class="rank-card">
+                    <div class="medal gold"><i class="fas fa-crown"></i></div>
+                    <h4>Full Fibre (FTTP)</h4>
+                    <div class="peak-badge">Minimal slowdown</div>
+                    <p>Dedicated fibre, high capacity</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal silver"><i class="fas fa-medal"></i></div>
+                    <h4>Standard Fibre (FTTC)</h4>
+                    <div class="peak-badge">Varies by cabinet</div>
+                    <p>Copper from cabinet to home</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal bronze"><i class="fas fa-medal"></i></div>
+                    <h4>Cable (Virgin Media)</h4>
+                    <div class="peak-badge">Fluctuates</div>
+                    <p>Shared neighbourhood node</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal base"><i class="fas fa-5g"></i></div>
+                    <h4>5G Home Broadband</h4>
+                    <div class="peak-badge">Heavy drop possible</div>
+                    <p>Tower congestion</p>
+                </div>
+            </div>
+
+            <!-- Openreach vs Alt-Net - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">INFRASTRUCTURE</div>
+                <h2 class="section-heading">Openreach vs Alt-Net peak performance</h2>
+            </div>
+
+            <div class="grid-2x2">
+                <div class="premium-card">
+                    <div class="card-icon"><i class="fas fa-broadcast-tower"></i></div>
+                    <h3>Openreach FTTP</h3>
+                    <p style="font-size: 1.2rem; margin: 1rem 0;">Strong national backbone · Reliable capacity · Minimal peak impact</p>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon"><i class="fas fa-city"></i></div>
+                    <h3>Alt-Nets (CityFibre, Hyperoptic)</h3>
+                    <p style="font-size: 1.2rem; margin: 1rem 0;">Modern infrastructure · Less congested · Symmetrical speeds</p>
+                </div>
+            </div>
+
+            <!-- Example comparison - 3x1 -->
+            <div class="section-header">
+                <div class="section-subhead">REAL WORLD</div>
+                <h2 class="section-heading">Peak speed examples</h2>
+            </div>
+
+            <div class="example-peak-grid">
+                <div class="example-peak-card">
+                    <i class="fas fa-home" style="font-size: 2rem; color: #f39c12;"></i>
+                    <h4>Household A</h4>
+                    <div class="headline-speed">300 Mbps FTTP</div>
+                    <div class="peak-speed">290 Mbps</div>
+                    <div class="speed-drop">▼ 3% drop</div>
+                </div>
+                <div class="example-peak-card">
+                    <i class="fas fa-road" style="font-size: 2rem; color: #f39c12;"></i>
+                    <h4>Household B</h4>
+                    <div class="headline-speed">300 Mbps FTTC</div>
+                    <div class="peak-speed">180 Mbps</div>
+                    <div class="speed-drop">▼ 40% drop</div>
+                </div>
+                <div class="example-peak-card">
+                    <i class="fas fa-tv" style="font-size: 2rem; color: #f39c12;"></i>
+                    <h4>Household C</h4>
+                    <div class="headline-speed">1Gbps cable</div>
+                    <div class="peak-speed">650 Mbps</div>
+                    <div class="speed-drop">▼ 35% drop</div>
+                </div>
+            </div>
+
+            <!-- What speed needed - 4x1 -->
+            <div class="section-header">
+                <div class="section-subhead">REQUIREMENTS</div>
+                <h2 class="section-heading">What speed do you need at peak?</h2>
+            </div>
+
+            <div class="needed-grid">
+                <div class="needed-card">
+                    <div class="needed-icon"><i class="fas fa-film"></i></div>
+                    <p>HD streaming</p>
+                    <div class="needed-value">5–8 Mbps</div>
+                </div>
+                <div class="needed-card">
+                    <div class="needed-icon"><i class="fas fa-tv"></i></div>
+                    <p>4K streaming</p>
+                    <div class="needed-value">15–25 Mbps</div>
+                </div>
+                <div class="needed-card">
+                    <div class="needed-icon"><i class="fas fa-gamepad"></i></div>
+                    <p>Gaming</p>
+                    <div class="needed-value">Low bandwidth</div>
+                </div>
+                <div class="needed-card">
+                    <div class="needed-icon"><i class="fas fa-video"></i></div>
+                    <p>Video calls</p>
+                    <div class="needed-value">2–4 Mbps</div>
+                </div>
+            </div>
+
+            <!-- Upload speeds at peak - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">UPLOAD</div>
+                <h2 class="section-heading">Upload speeds at peak</h2>
+            </div>
+
+            <div class="upload-grid">
+                <div class="upload-card">
+                    <h3 style="font-size: 1.8rem;">Symmetrical fibre</h3>
+                    <ul>
+                        <li><i class="fas fa-check-circle check-green"></i> Stable uploads at peak</li>
+                        <li><i class="fas fa-check-circle check-green"></i> 300/300 Mbps consistent</li>
+                    </ul>
+                </div>
+                <div class="upload-card">
+                    <h3 style="font-size: 1.8rem;">Cable & 5G</h3>
+                    <ul>
+                        <li><i class="fas fa-times-circle times-red"></i> Upload fluctuations</li>
+                        <li><i class="fas fa-times-circle times-red"></i> Congestion impact</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How to test - 4 steps -->
+            <div class="section-header">
+                <div class="section-subhead">TESTING</div>
+                <h2 class="section-heading">How to test peak time speeds</h2>
+            </div>
+
+            <div class="test-steps">
+                <div class="test-card">
+                    <div class="test-number">1</div>
+                    <i class="fas fa-clock" style="font-size: 2rem; color: #f39c12; margin: 1rem 0;"></i>
+                    <p>Test at 8–9pm</p>
+                </div>
+                <div class="test-card">
+                    <div class="test-number">2</div>
+                    <i class="fas fa-ethernet" style="font-size: 2rem; color: #f39c12; margin: 1rem 0;"></i>
+                    <p>Use Ethernet</p>
+                </div>
+                <div class="test-card">
+                    <div class="test-number">3</div>
+                    <i class="fas fa-chart-line" style="font-size: 2rem; color: #f39c12; margin: 1rem 0;"></i>
+                    <p>Compare to off-peak</p>
+                </div>
+                <div class="test-card">
+                    <div class="test-number">4</div>
+                    <i class="fas fa-tachometer-alt" style="font-size: 2rem; color: #f39c12; margin: 1rem 0;"></i>
+                    <p>Check latency & jitter</p>
+                </div>
+            </div>
+
+            <!-- How to improve - 4x1 -->
+            <div class="section-header">
+                <div class="section-subhead">SOLUTIONS</div>
+                <h2 class="section-heading">How to improve peak performance</h2>
+            </div>
+
+            <div class="improve-grid">
+                <div class="improve-card">
+                    <div class="improve-icon"><i class="fas fa-arrow-up"></i></div>
+                    <p>Upgrade FTTC → FTTP</p>
+                </div>
+                <div class="improve-card">
+                    <div class="improve-icon"><i class="fas fa-city"></i></div>
+                    <p>Consider Alt-Net</p>
+                </div>
+                <div class="improve-card">
+                    <div class="improve-icon"><i class="fas fa-ethernet"></i></div>
+                    <p>Use Ethernet</p>
+                </div>
+                <div class="improve-card">
+                    <div class="improve-icon"><i class="fas fa-wifi"></i></div>
+                    <p>Upgrade to Wi-Fi 6</p>
+                </div>
+            </div>
+
+            <!-- Ranking -->
+            <div class="section-header">
+                <div class="section-subhead">TOP CHOICES</div>
+                <h2 class="section-heading">Peak time performance ranking</h2>
+            </div>
+
+            <div class="ranking-card">
+                <div class="ranking-item"><span class="rank-number">1</span> Full Fibre (FTTP) — minimal slowdown, consistent</div>
+                <div class="ranking-item"><span class="rank-number">2</span> Alt-Net FTTP — modern, often less congested</div>
+                <div class="ranking-item"><span class="rank-number">3</span> Cable — area dependent, can fluctuate</div>
+                <div class="ranking-item"><span class="rank-number">4</span> FTTC — cabinet congestion possible</div>
+                <div class="ranking-item"><span class="rank-number">5</span> 5G — heavy congestion at peak</div>
+            </div>
+
+            <!-- FAQ - 3x2 -->
+            <div class="section-header">
+                <div class="section-subhead">COMMON QUESTIONS</div>
+                <h2 class="section-heading">FAQs</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Why does broadband slow at night?</strong> <p>Likely local congestion.</p></div>
+                <div class="faq-card"><strong>Is full fibre immune to peak slowdown?</strong> <p>Mostly — extreme congestion rare.</p></div>
+                <div class="faq-card"><strong>Is cable worse than fibre at peak?</strong> <p>Sometimes — depends on area.</p></div>
+                <div class="faq-card"><strong>Does speed tier matter for peak?</strong> <p>Headroom helps, but infrastructure matters more.</p></div>
+                <div class="faq-card"><strong>Can router cause peak slowdowns?</strong> <p>Yes — older Wi-Fi 5 routers.</p></div>
+                <div class="faq-card"><strong>What's best for peak consistency?</strong> <p>Full fibre (FTTP).</p></div>
+            </div>
+
+            <!-- Why Utility King - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+
+            <div class="summary-grid" style="margin-bottom: 2rem;">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="summary-content">
+                        <h4>Compare infrastructure</h4>
+                        <p>FTTP, FTTC or cable in your area</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-clock"></i></div>
+                    <div class="summary-content">
+                        <h4>Peak performance insights</h4>
+                        <p>Know what to expect at 8pm</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-sync-alt"></i></div>
+                    <div class="summary-content">
+                        <h4>Symmetrical fibre options</h4>
+                        <p>Stable uploads at peak</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="summary-content">
+                        <h4>Match speed to demand</h4>
+                        <p>Don't overpay for unused capacity</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Tired of evening slowdowns?</h2>
+                <p>Compare full fibre options in your postcode for consistent peak performance.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #f39c12;"></i> Utility King — broadband peak time speeds UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

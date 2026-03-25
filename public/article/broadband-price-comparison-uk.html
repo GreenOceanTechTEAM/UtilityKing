@@ -1,0 +1,1004 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Broadband Price Comparison UK: Speed vs Cost (2026 Guide) | Utility King</title>
+    <meta name="description" content="Complete guide to comparing broadband price vs speed in the UK for 2026. Find the best value deals by speed tier and calculate cost per Mbps.">
+    <meta name="keywords" content="broadband price comparison UK, broadband speed vs cost, compare broadband deals, fibre broadband, full fibre, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+            background: linear-gradient(145deg, #f8fafc 0%, #f1f5f9 100%);
+            color: #0f172a;
+            line-height: 1.6;
+        }
+
+        /* === DARK HERO - CENTERED CONTENT - FRESH DESIGN === */
+        .hero {
+            background: linear-gradient(135deg, #0b1f33 0%, #0e2a47 100%);
+            color: #fff;
+            padding: 5rem 2rem 6rem;
+            position: relative;
+            isolation: isolate;
+            border-bottom: 4px solid #3b82f6;
+            box-shadow: 0 25px 40px -20px rgba(11,31,51,0.8);
+            text-align: center;
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 30% 50%, rgba(59,130,246,0.1) 0%, transparent 50%);
+                z-index: 1;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -2px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to bottom right, transparent 49%, #f8fafc 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            background: rgba(59, 130, 246, 0.15);
+            backdrop-filter: blur(8px);
+            padding: 0.7rem 1.8rem;
+            border-radius: 100px;
+            border: 1px solid rgba(59, 130, 246, 0.4);
+            margin-bottom: 2rem;
+            font-weight: 500;
+            color: #fff;
+            justify-content: center;
+            letter-spacing: 0.3px;
+        }
+
+            .hero-badge .uk-icon {
+                background: #3b82f6;
+                color: #fff;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1rem;
+            }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            font-weight: 700;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            letter-spacing: -0.02em;
+        }
+
+        .hero .highlight {
+            color: #3b82f6;
+            border-bottom: 4px solid #3b82f6;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            max-width: 750px;
+            opacity: 0.9;
+            margin: 0 auto 2.5rem;
+            color: #e2e8f0;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.5rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.05);
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+            .hero-stat .number {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #3b82f6;
+                line-height: 1;
+            }
+
+            .hero-stat .label {
+                font-size: 0.9rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.8;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -3rem auto 4rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2.8rem;
+            box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+            margin-bottom: 3rem;
+            border: 1px solid #e2e8f0;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .intro-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 6px;
+                height: 100%;
+                background: #3b82f6;
+            }
+
+        .intro-quote {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-bottom: 1.5rem;
+            line-height: 1.4;
+        }
+
+        .intro-text {
+            font-size: 1.2rem;
+            color: #334155;
+        }
+
+        /* quick summary card */
+        .summary-card {
+            background: linear-gradient(145deg, #ffffff, #f8fafc);
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .summary-item {
+            background: white;
+            padding: 1.2rem;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid #e2e8f0;
+            font-weight: 500;
+            box-shadow: 0 4px 6px -2px rgba(0,0,0,0.05);
+            transition: all 0.2s;
+        }
+
+            .summary-item:hover {
+                transform: translateY(-2px);
+                border-color: #3b82f6;
+                box-shadow: 0 10px 15px -8px #3b82f6;
+            }
+
+        .summary-highlight {
+            background: #3b82f6;
+            color: white;
+            padding: 1.2rem;
+            border-radius: 28px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            box-shadow: 0 10px 20px -8px #3b82f6;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #3b82f6;
+            color: white;
+            width: 56px;
+            height: 56px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 600;
+            box-shadow: 0 12px 18px -10px #3b82f6;
+            transform: rotate(-2deg);
+        }
+
+        .section-header h2 {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin: 0;
+            letter-spacing: -0.01em;
+        }
+
+            .section-header h2 span {
+                background: #e2e8f0;
+                color: #0f172a;
+                padding: 0.3rem 1.4rem;
+                border-radius: 60px;
+                font-size: 1.3rem;
+                margin-left: 1rem;
+                font-weight: 500;
+                display: inline-block;
+            }
+
+        /* why speed vs cost matters */
+        .why-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .comparison-mini {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 1rem 0;
+        }
+
+        .deal-box {
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 24px;
+            border: 1px solid #e2e8f0;
+            text-align: center;
+        }
+
+            .deal-box.a {
+                border-left: 6px solid #ef4444;
+            }
+
+            .deal-box.b {
+                border-left: 6px solid #10b981;
+            }
+
+        .deal-price {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        .deal-speed {
+            font-size: 1.3rem;
+            color: #64748b;
+        }
+
+        .deal-mbps {
+            background: #e2e8f0;
+            padding: 0.8rem;
+            border-radius: 40px;
+            margin-top: 1rem;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        /* speed tiers */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .tier-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 20px -12px rgba(0,0,0,0.1);
+        }
+
+            .tier-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 30px -15px #3b82f6;
+                border-color: #3b82f6;
+            }
+
+            .tier-card::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: linear-gradient(90deg, #3b82f6, #60a5fa);
+            }
+
+        .tier-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .tier-card h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-speed {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #3b82f6;
+            margin: 0.8rem 0;
+        }
+
+        .tier-price {
+            font-size: 2rem;
+            font-weight: 700;
+            background: linear-gradient(135deg, #0f172a, #334155);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin: 0.8rem 0;
+        }
+
+        .tier-list {
+            list-style: none;
+            padding: 0;
+            margin: 1.5rem 0;
+        }
+
+            .tier-list li {
+                padding: 0.5rem 0 0.5rem 2rem;
+                position: relative;
+                border-bottom: 1px dashed #e2e8f0;
+            }
+
+                .tier-list li::before {
+                    content: "▹";
+                    color: #3b82f6;
+                    font-weight: 700;
+                    position: absolute;
+                    left: 0;
+                }
+
+        .tier-card.entry .tier-icon {
+            color: #10b981;
+        }
+
+        .tier-card.mid .tier-icon {
+            color: #3b82f6;
+        }
+
+        .tier-card.full .tier-icon {
+            color: #8b5cf6;
+        }
+
+        /* speed needs */
+        .needs-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .need-card {
+            background: white;
+            border-radius: 24px;
+            padding: 1.5rem;
+            border: 1px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .need-icon {
+            font-size: 2.5rem;
+            background: #f1f5f9;
+            width: 70px;
+            height: 70px;
+            border-radius: 70px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .need-content h4 {
+            font-size: 1.3rem;
+            margin-bottom: 0.3rem;
+        }
+
+        .need-content p {
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+
+        /* real cost card */
+        .cost-card {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            color: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .cost-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .cost-item {
+            background: rgba(255,255,255,0.1);
+            padding: 1rem;
+            border-radius: 20px;
+            text-align: center;
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .cost-formula {
+            background: #3b82f6;
+            color: white;
+            padding: 1.2rem;
+            border-radius: 40px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+        }
+
+        /* comparison table */
+        .table-card {
+            background: white;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f0;
+            overflow-x: auto;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+            .comparison-table th {
+                background: #f1f5f9;
+                padding: 1.2rem;
+                text-align: left;
+                font-weight: 600;
+                color: #0f172a;
+                border-radius: 16px 16px 0 0;
+            }
+
+            .comparison-table td {
+                padding: 1.2rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+        .value-badge {
+            background: #10b981;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .premium-badge {
+            background: #8b5cf6;
+            color: white;
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        /* savings card */
+        .savings-card {
+            background: linear-gradient(135deg, #10b981, #059669);
+            color: white;
+            border-radius: 32px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            text-align: center;
+        }
+
+        .savings-number {
+            font-size: 4rem;
+            font-weight: 800;
+            margin: 1rem 0;
+            text-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .savings-detail {
+            font-size: 1.5rem;
+            margin: 1rem 0;
+        }
+
+        /* FAQ grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-block {
+            background: white;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e2e8f0;
+            box-shadow: 0 8px 16px -12px #0f172a;
+            transition: all 0.2s;
+        }
+
+            .faq-block:hover {
+                box-shadow: 0 15px 25px -15px #3b82f6;
+            }
+
+        .faq-q {
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+            .faq-q span {
+                background: #3b82f6;
+                color: white;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 700;
+                font-size: 1rem;
+            }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(135deg, #0b1f33, #0e2a47);
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 3.5rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid #3b82f6;
+            box-shadow: 0 30px 40px -20px #0b1f33;
+            position: relative;
+            overflow: hidden;
+            gap:20px;
+        }
+
+            .cta-premium::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(59,130,246,0.15), transparent);
+            }
+
+        .cta-premium-left {
+            color: white;
+            position: relative;
+            z-index: 2;
+        }
+
+            .cta-premium-left p {
+                font-size: 2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+                letter-spacing: -0.01em;
+            }
+
+            .cta-premium-left small {
+                color: #94a3b8;
+                font-size: 1.1rem;
+            }
+
+        .cta-btn {
+            background: #3b82f6;
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-weight: 600;
+            font-size: 1.2rem;
+            text-decoration: none;
+            border: 1px solid #60a5fa;
+            transition: all 0.2s;
+            display: inline-block;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 15px 20px -12px #3b82f6;
+        }
+
+            .cta-btn:hover {
+                background: #2563eb;
+                transform: scale(1.02);
+                box-shadow: 0 20px 25px -12px #3b82f6;
+            }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #e2e8f0, transparent);
+            margin: 3rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.95rem;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .summary-grid, .tiers-grid, .needs-grid, .cost-grid, .comparison-mini, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .need-card {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- DARK HERO - CENTERED CONTENT -->
+    <section class="hero">
+        <div class="hero-content">
+           
+            <h1>Broadband Price Comparison UK: <span class="highlight">Speed vs Cost (2026 Guide)</span></h1>
+            <div class="hero-sub">Compare deals based on real value — not just the cheapest monthly price.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">£22-45</span> <span class="label">price range</span></div>
+                <div class="hero-stat"><span class="number">35-1000</span> <span class="label">Mbps speeds</span></div>
+                <div class="hero-stat"><span class="number">£150+</span> <span class="label">potential savings</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">When comparing broadband in the UK, most people focus on one thing: Price. But the smarter question is: How much speed are you getting for your money?</div>
+            <p class="intro-text">At Utility King, we help households compare broadband deals based not just on the cheapest monthly cost — but on real value. In this guide, you'll learn: how broadband pricing actually works, what different speed tiers really cost, whether faster broadband is worth it, how to calculate cost per Mbps, and how to find the best value deal in your postcode.</p>
+        </div>
+
+        <!-- Quick Summary -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Quick Summary: <span>Broadband Price vs Speed</span></h2>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-grid">
+                <div class="summary-item">Budget fibre (35–67 Mbps): £22–£27/month</div>
+                <div class="summary-item">Mid-tier fibre (100–300 Mbps): £26–£32/month</div>
+                <div class="summary-item">Full fibre (500–1000 Mbps): £35–£45/month</div>
+                <div class="summary-item">Best value tier for most homes: 100–300 Mbps</div>
+                <div class="summary-item">Average savings when switching: £150–£220/year</div>
+            </div>
+            <div class="summary-highlight">
+                👉 Compare Broadband Deals by Speed in Your Area
+            </div>
+        </div>
+
+        <!-- Why Speed vs Cost Matters -->
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h2>Why Speed vs Cost <span>Matters</span></h2>
+        </div>
+
+        <div class="why-card">
+            <p>Two broadband deals might look similar:</p>
+            <div class="comparison-mini">
+                <div class="deal-box a">
+                    <div class="deal-price">£24/month</div>
+                    <div class="deal-speed">50 Mbps</div>
+                    <div class="deal-mbps">Cost per Mbps: £0.48</div>
+                </div>
+                <div class="deal-box b">
+                    <div class="deal-price">£28/month</div>
+                    <div class="deal-speed">150 Mbps</div>
+                    <div class="deal-mbps">Cost per Mbps: £0.18</div>
+                </div>
+            </div>
+            <p>Suddenly, the "more expensive" deal offers significantly better value. Broadband comparison isn't just about price — it's about performance for what you pay.</p>
+        </div>
+
+        <!-- UK Broadband Speed Tiers -->
+        <div class="section-header">
+            <div class="section-icon">📶</div>
+            <h2>UK Broadband <span>Speed Tiers</span></h2>
+        </div>
+
+        <div class="tiers-grid">
+            <div class="tier-card entry">
+                <div class="tier-icon">🟢</div>
+                <h3>Entry-Level Fibre</h3>
+                <div class="tier-speed">35–67 Mbps</div>
+                <div class="tier-price">£22–£27/month</div>
+                <p><strong>Best for:</strong> 1–2 people</p>
+                <ul class="tier-list">
+                    <li>HD streaming</li>
+                    <li>Zoom calls</li>
+                    <li>General browsing</li>
+                </ul>
+                <p style="color:#64748b; font-size:0.95rem;">Cost per Mbps: Higher relative to mid-tier</p>
+            </div>
+            <div class="tier-card mid">
+                <div class="tier-icon">🔵</div>
+                <h3>Mid-Tier Fibre</h3>
+                <div class="tier-speed">100–300 Mbps</div>
+                <div class="tier-price">£26–£32/month</div>
+                <p><strong>Best for:</strong> Families, gamers, remote workers</p>
+                <ul class="tier-list">
+                    <li>Multiple 4K streams</li>
+                    <li>Online gaming</li>
+                    <li>Smart home devices</li>
+                </ul>
+                <p style="color:#10b981; font-weight:600;">Best value for most households</p>
+            </div>
+            <div class="tier-card full">
+                <div class="tier-icon">🔴</div>
+                <h3>Full Fibre / Ultrafast</h3>
+                <div class="tier-speed">500–1000 Mbps</div>
+                <div class="tier-price">£35–£45/month</div>
+                <p><strong>Best for:</strong> Heavy users, large households</p>
+                <ul class="tier-list">
+                    <li>Near-instant downloads</li>
+                    <li>Ultra-low latency</li>
+                    <li>Maximum reliability</li>
+                </ul>
+                <p style="margin-top:1rem;"><a href="#" style="color:#3b82f6; text-decoration:none;">👉 Check availability</a></p>
+            </div>
+        </div>
+
+        <!-- How Much Speed Do You Actually Need? -->
+        <div class="section-header">
+            <div class="section-icon">🏠</div>
+            <h2>How Much Speed <span>Do You Need?</span></h2>
+        </div>
+
+        <div class="needs-grid">
+            <div class="need-card">
+                <div class="need-icon">👥</div>
+                <div class="need-content">
+                    <h4>1–2 Person Household</h4>
+                    <p>35–67 Mbps sufficient</p>
+                </div>
+            </div>
+            <div class="need-card">
+                <div class="need-icon">👨‍👩‍👧‍👦</div>
+                <div class="need-content">
+                    <h4>3–4 Person Household</h4>
+                    <p>100–300 Mbps recommended</p>
+                </div>
+            </div>
+            <div class="need-card">
+                <div class="need-icon">🎮</div>
+                <div class="need-content">
+                    <h4>Heavy Streaming / Gaming</h4>
+                    <p>300 Mbps+ ideal</p>
+                </div>
+            </div>
+            <div class="need-card">
+                <div class="need-icon">🏘️</div>
+                <div class="need-content">
+                    <h4>Large Smart Homes</h4>
+                    <p>500 Mbps+ future-proofing</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Real Cost of Cheap Broadband -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>The Real Cost <span>of Cheap Broadband</span></h2>
+        </div>
+
+        <div class="cost-card">
+            <p>The lowest monthly price doesn't always mean lowest total cost. Check:</p>
+            <div class="cost-grid">
+                <div class="cost-item">Contract length (18–24 months)</div>
+                <div class="cost-item">Setup fees</div>
+                <div class="cost-item">Router charges</div>
+                <div class="cost-item">Mid-contract price rises (CPI + 3.9%)</div>
+            </div>
+            <div class="cost-formula">
+                Monthly cost × contract term + setup fees = total commitment
+            </div>
+        </div>
+
+        <!-- Full Fibre vs Standard Fibre -->
+        <div class="section-header">
+            <div class="section-icon">🔌</div>
+            <h2>Full Fibre vs <span>Standard Fibre</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; padding:2rem; border-radius:32px; border:1px solid #e2e8f0;">
+            <p><strong>Full fibre (FTTP)</strong> connects fibre directly to your home. Benefits: more stable speeds, less slowdown at peak times, lower latency, future-ready infrastructure. If the price difference is small (under £10/month), upgrading often makes sense. However, availability varies by postcode.</p>
+        </div>
+
+        <!-- Example Breakdown -->
+        <div class="section-header">
+            <div class="section-icon">📋</div>
+            <h2>Price Comparison: <span>Example Breakdown</span></h2>
+        </div>
+
+        <div class="table-card">
+            <table class="comparison-table">
+                <thead>
+                    <tr>
+                        <th>Speed</th>
+                        <th>Monthly Cost</th>
+                        <th>Contract</th>
+                        <th>Total 24-Month</th>
+                        <th>Value Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><strong>50 Mbps</strong></td>
+                        <td>£24</td>
+                        <td>24 months</td>
+                        <td>£576</td>
+                        <td><span class="value-badge">Budget</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>150 Mbps</strong></td>
+                        <td>£28</td>
+                        <td>24 months</td>
+                        <td>£672</td>
+                        <td><span class="value-badge">High Value</span></td>
+                    </tr>
+                    <tr>
+                        <td><strong>500 Mbps</strong></td>
+                        <td>£36</td>
+                        <td>24 months</td>
+                        <td>£864</td>
+                        <td><span class="premium-badge">Premium</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <p style="margin-top:1.5rem;">For £4 more per month, the jump from 50 Mbps to 150 Mbps significantly improves performance. For £8 more again, 500 Mbps delivers premium performance. Value depends on usage — not just price.</p>
+        </div>
+
+        <!-- How Much Could You Save? -->
+        <div class="section-header">
+            <div class="section-icon">💷</div>
+            <h2>How Much Could <span>You Save?</span></h2>
+        </div>
+
+        <div class="savings-card">
+            <p>If you're paying:</p>
+            <p style="font-size:1.5rem;">£40/month for 100 Mbps</p>
+            <p>And new customers pay:</p>
+            <p style="font-size:1.5rem;">£28/month for 150 Mbps</p>
+            <div class="savings-number">£12</div>
+            <p>per month</p>
+            <div class="savings-detail">£144 per year · £288 over 24 months</div>
+            <p style="margin-top:2rem;">Plus improved performance. Many UK households are on outdated tariffs without realising it.</p>
+        </div>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is higher Mbps always better?</div><p>Not always. Beyond your usage needs, extra speed may not improve everyday experience.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> What is a good broadband speed in the UK?</div><p>For most households, 100–300 Mbps offers strong value.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is 1Gbps worth it?</div><p>For heavy users or future-proofing, yes — but many homes won't fully utilise it.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Why do broadband prices increase mid-contract?</div><p>Many providers apply annual increases linked to inflation plus a fixed percentage.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Can I switch broadband easily?</div><p>Yes. Switching typically takes 1–2 weeks, and your new provider handles most of the process.</p></div>
+        </div>
+
+        <!-- Final Verdict -->
+        <div class="section-header">
+            <div class="section-icon">🏁</div>
+            <h2>Final Verdict: <span>Speed vs Cost</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:8px solid #3b82f6; padding:2rem; border-radius:32px;">
+            <p>The cheapest broadband isn't always the best value. And the fastest broadband isn't always necessary. The best deal is the one that matches your household usage, offers competitive cost per Mbps, has transparent contract terms, and fits your budget. Broadband comparison should be simple — and savings should be clear.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Ready to compare broadband prices by speed?</p>
+                <small>If you haven't reviewed your broadband in 12 months, better value options are available.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact Us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to broadband price comparison UK: speed vs cost. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

@@ -1,0 +1,1240 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband Reviews vs Real Speeds UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f0f4fa;
+            color: #1a2b4c;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Dark Hero Section */
+        .dark-hero {
+            background: linear-gradient(145deg, #2c3e50, #1a2634);
+            border-radius: 40px;
+            padding: 4rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            color: white;
+            box-shadow: 0 30px 40px -20px rgba(0,0,0,0.4);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.25;
+        }
+
+        .shape-1 {
+            width: 450px;
+            height: 450px;
+            background: #f1c40f;
+            top: -150px;
+            right: -80px;
+        }
+
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #3498db;
+            bottom: -150px;
+            left: -80px;
+        }
+
+        .shape-3 {
+            width: 350px;
+            height: 350px;
+            background: #e74c3c;
+            top: 100px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 5;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: rgba(255,255,255,0.08);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid rgba(255,255,255,0.15);
+            margin-bottom: 2.2rem;
+            letter-spacing: 0.5px;
+        }
+
+            .hero-badge i {
+                color: #f1c40f;
+                margin-right: 10px;
+            }
+
+        .hero-title {
+            font-size: 4.2rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.8rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #f1c40f, #3498db);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.4rem;
+            color: rgba(255,255,255,0.85);
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: rgba(255,255,255,0.06);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+            .hero-pill:hover {
+                background: rgba(255,255,255,0.12);
+                border-color: #f1c40f;
+                transform: translateY(-3px);
+            }
+
+            .hero-pill i {
+                color: #f1c40f;
+                margin-right: 10px;
+            }
+
+        /* Main content area */
+        .content-area {
+            background: white;
+            border-radius: 40px;
+            padding: 3.5rem;
+            box-shadow: 0 25px 50px -15px rgba(0,20,40,0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 3.5rem 0 2.5rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f1c40f;
+            text-transform: uppercase;
+            letter-spacing: 2.5px;
+            margin-bottom: 0.8rem;
+        }
+
+        .section-heading {
+            font-size: 3rem;
+            font-weight: 700;
+            color: #1a2b4c;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+        }
+
+        /* Quick summary cards - 2x2 */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 3.5rem;
+        }
+
+        .summary-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1.8rem;
+            transition: all 0.3s ease;
+            border: 1px solid #eaeef5;
+        }
+
+            .summary-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 35px -12px rgba(241,196,15,0.2);
+                border-color: #f1c40f;
+            }
+
+        .summary-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #f1c40f;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .summary-content h4 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
+            color: #1a2b4c;
+        }
+
+        .summary-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* Why mismatch - 2x2 */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.2rem;
+            margin: 2.5rem 0;
+        }
+
+        .mismatch-card {
+            background: #f8faff;
+            border-radius: 36px;
+            padding: 2.5rem;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+
+            .mismatch-card:hover {
+                border-color: #f1c40f;
+                box-shadow: 0 25px 40px -15px rgba(241,196,15,0.2);
+                transform: translateY(-6px);
+            }
+
+        .card-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            color: #f1c40f;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+        }
+
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .feature-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .feature-list i {
+                width: 24px;
+            }
+
+        .check-green {
+            color: #2ecc71;
+        }
+
+        .times-red {
+            color: #e74c3c;
+        }
+
+        /* Advertised vs Real - definition card */
+        .definition-card {
+            background: #f8faff;
+            border-radius: 36px;
+            padding: 2.8rem;
+            margin: 2rem 0 2.5rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .advertised-example {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 2rem;
+            margin: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .example-box {
+            background: white;
+            padding: 1.5rem 2.5rem;
+            border-radius: 24px;
+            box-shadow: 0 10px 20px -8px rgba(0,0,0,0.1);
+        }
+
+        .advertised {
+            color: #f1c40f;
+            font-weight: 700;
+            font-size: 2rem;
+        }
+
+        .real {
+            color: #3498db;
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        /* Infrastructure matters - 4x1 medal cards */
+        .infra-rank-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .rank-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+
+            .rank-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 20px 30px -12px rgba(241,196,15,0.2);
+                border-color: #f1c40f;
+            }
+
+        .medal {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            margin: 0 auto 1.2rem;
+        }
+
+        .gold {
+            background: #ffd700;
+            color: #1a2b4c;
+        }
+
+        .silver {
+            background: #c0c0c0;
+            color: #1a2b4c;
+        }
+
+        .bronze {
+            background: #cd7f32;
+            color: white;
+        }
+
+        .base {
+            background: #9f7aea;
+            color: white;
+        }
+
+        .rank-card h4 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+        }
+
+        .speed-badge {
+            display: inline-block;
+            background: #f1c40f;
+            color: #1a2b4c;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0.8rem 0;
+        }
+
+        /* Peak time vs reviews - 2x2 */
+        .peak-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .peak-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #eaeef5;
+        }
+
+        .complaint-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .complaint-list li {
+                font-size: 1.1rem;
+                margin-bottom: 0.8rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .complaint-list i {
+                width: 24px;
+                color: #e74c3c;
+            }
+
+        /* Upload importance - 2x2 */
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .upload-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #eaeef5;
+        }
+
+        .upload-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .upload-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .upload-list i {
+                width: 24px;
+            }
+
+        /* Wi-Fi skew - 4x1 */
+        .wifi-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .wifi-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .wifi-icon {
+            font-size: 2rem;
+            color: #f1c40f;
+            margin-bottom: 1rem;
+        }
+
+        .wifi-example {
+            background: white;
+            padding: 1rem;
+            border-radius: 60px;
+            font-size: 0.9rem;
+            margin-top: 1rem;
+        }
+
+        /* Reviews useful for - 4x1 */
+        .useful-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .useful-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .useful-icon {
+            font-size: 2rem;
+            color: #2ecc71;
+            margin-bottom: 1rem;
+        }
+
+        .not-useful {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .not-useful-icon {
+            font-size: 2rem;
+            color: #e74c3c;
+            margin-bottom: 1rem;
+        }
+
+        /* Example comparison */
+        .example-card {
+            background: #f8faff;
+            border-radius: 40px;
+            padding: 2.5rem;
+            margin: 2.5rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border: 1px solid #eaeef5;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .example-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            color: #f1c40f;
+            box-shadow: 0 15px 25px -10px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+        }
+
+        .rating {
+            color: #f1c40f;
+            font-weight: 700;
+            font-size: 1.3rem;
+        }
+
+        .example-divider {
+            width: 2px;
+            height: 80px;
+            background: linear-gradient(to bottom, transparent, #f1c40f, transparent);
+        }
+
+        .example-badge {
+            background: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #f1c40f;
+            border: 2px solid #f1c40f;
+        }
+
+        /* How to compare - 4 steps */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .step-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 1.8rem;
+            text-align: center;
+            border: 1px solid #eaeef5;
+        }
+
+        .step-number {
+            width: 40px;
+            height: 40px;
+            background: #f1c40f;
+            color: #1a2b4c;
+            border-radius: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        /* Ofcom card */
+        .ofcom-card {
+            background: linear-gradient(145deg, #f8faff, white);
+            border-radius: 36px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            border: 1px solid #eaeef5;
+            text-align: center;
+        }
+
+        .ofcom-badge {
+            display: inline-block;
+            background: #1a2b4c;
+            color: white;
+            padding: 0.6rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            margin: 1rem 0;
+        }
+
+        /* When to prioritize - 2x2 */
+        .priority-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .priority-card {
+            background: #f8faff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 1px solid #eaeef5;
+        }
+
+        .priority-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .priority-list li {
+                font-size: 1.2rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .priority-list i {
+                width: 24px;
+            }
+
+        .check-yellow {
+            color: #f1c40f;
+        }
+
+        /* FAQ - 3x2 */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-card {
+            background: #f8faff;
+            border-radius: 28px;
+            padding: 2rem 1.8rem;
+            border: 1px solid #eaeef5;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:hover {
+                border-color: #f1c40f;
+                transform: translateY(-4px);
+                box-shadow: 0 15px 25px -10px rgba(241,196,15,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .faq-card p {
+                font-size: 1.15rem;
+                color: #4a5f7a;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(145deg, #1a2b4c, #0f1e33);
+            border-radius: 40px;
+            padding: 4rem;
+            margin: 3.5rem 0 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 30px 40px -15px rgba(0,0,0,0.3);
+        }
+
+            .cta-section h2 {
+                font-size: 3.2rem;
+                font-weight: 700;
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 1.2rem;
+            }
+
+            .cta-section p {
+                font-size: 1.4rem;
+                opacity: 0.9;
+                margin-bottom: 3rem;
+                max-width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: white;
+            color: #1a2b4c;
+            padding: 1.4rem 3.5rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 20px 30px -8px rgba(255,255,255,0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 35px -5px rgba(255,255,255,0.3);
+                background: #f8faff;
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1.2rem;
+            color: #6b85a8;
+        }
+
+        @media (max-width: 1200px) {
+            .infra-rank-grid, .wifi-grid, .useful-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 3.5rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid-2x2, .peak-grid, .upload-grid, .priority-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .infra-rank-grid, .wifi-grid, .useful-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .example-divider {
+                width: 100px;
+                height: 2px;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Dark Hero -->
+        <div class="dark-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i> Utility King · UK 2026 Guide
+                </div>
+                <h1 class="hero-title">
+                    <span>Broadband Reviews</span> vs <span>Real Speeds</span>
+                </h1>
+                <p class="hero-description">
+                    ⭐ 4.5 stars doesn't always mean faster speeds. Learn how to compare customer reviews with real-world performance.
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-star"></i> Reviews = service</span>
+                    <span class="hero-pill"><i class="fas fa-tachometer-alt"></i> Speed = infrastructure</span>
+                    <span class="hero-pill"><i class="fas fa-chart-line"></i> Advertised ≠ real</span>
+                    <span class="hero-pill"><i class="fas fa-wifi"></i> Wi-Fi skews tests</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Quick Summary - 2x2 -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-star"></i></div>
+                    <div class="summary-content">
+                        <h4>Reviews reflect service</h4>
+                        <p>Billing, support, installation</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="summary-content">
+                        <h4>Speed = infrastructure</h4>
+                        <p>FTTP, FTTC, cable or 5G</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-chart-line"></i></div>
+                    <div class="summary-content">
+                        <h4>Advertised ≠ guaranteed</h4>
+                        <p>Averages, not minimums</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-wifi"></i></div>
+                    <div class="summary-content">
+                        <h4>Wi-Fi skews tests</h4>
+                        <p>Ethernet shows true speed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Why mismatch - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">WHY THEY DIFFER</div>
+                <h2 class="section-heading">Why reviews and speeds don't match</h2>
+            </div>
+
+            <div class="grid-2x2">
+                <div class="mismatch-card">
+                    <div class="card-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Fast infrastructure</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle check-green"></i> High speeds</li>
+                        <li><i class="fas fa-times-circle times-red"></i> Poor customer service</li>
+                    </ul>
+                </div>
+                <div class="mismatch-card">
+                    <div class="card-icon"><i class="fas fa-headset"></i></div>
+                    <h3>Great support</h3>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check-circle check-green"></i> 5-star reviews</li>
+                        <li><i class="fas fa-times-circle times-red"></i> Slower legacy infrastructure</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Advertised vs Real -->
+            <div class="section-header">
+                <div class="section-subhead">THE NUMBERS</div>
+                <h2 class="section-heading">Advertised speed vs real speed</h2>
+            </div>
+
+            <div class="definition-card">
+                <p style="font-size: 1.3rem;">UK providers advertise <strong>average download speeds</strong> — at least 50% of customers receive that speed at peak time.</p>
+                <div class="advertised-example">
+                    <div class="example-box">
+                        <div class="advertised">300 Mbps</div>
+                        <p>Advertised</p>
+                    </div>
+                    <i class="fas fa-arrow-right" style="font-size: 2rem; color: #f1c40f;"></i>
+                    <div class="example-box">
+                        <div class="real">250–310 Mbps</div>
+                        <p>Real-world</p>
+                    </div>
+                </div>
+                <p style="margin-top: 1.5rem;">Variation depends on congestion, router quality, Wi-Fi vs Ethernet, and home wiring.</p>
+            </div>
+
+            <!-- Infrastructure matters - 4x1 medal cards -->
+            <div class="section-header">
+                <div class="section-subhead">WHAT MATTERS MOST</div>
+                <h2 class="section-heading">Infrastructure > Brand</h2>
+            </div>
+
+            <div class="infra-rank-grid">
+                <div class="rank-card">
+                    <div class="medal gold"><i class="fas fa-crown"></i></div>
+                    <h4>Full Fibre (FTTP)</h4>
+                    <div class="speed-badge">Most consistent</div>
+                    <p>Minimal peak drop · Strong upload</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal silver"><i class="fas fa-medal"></i></div>
+                    <h4>Standard Fibre (FTTC)</h4>
+                    <div class="speed-badge">Varies by cabinet</div>
+                    <p>Distance from cabinet matters</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal bronze"><i class="fas fa-medal"></i></div>
+                    <h4>Cable</h4>
+                    <div class="speed-badge">Area dependent</div>
+                    <p>High downloads, variable</p>
+                </div>
+                <div class="rank-card">
+                    <div class="medal base"><i class="fas fa-5g"></i></div>
+                    <h4>5G Home</h4>
+                    <div class="speed-badge">Signal dependent</div>
+                    <p>Most variable real speeds</p>
+                </div>
+            </div>
+
+            <!-- Peak time vs reviews - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">COMPLAINTS</div>
+                <h2 class="section-heading">Peak time vs review complaints</h2>
+            </div>
+
+            <div class="peak-grid">
+                <div class="peak-card">
+                    <h3>Common complaints</h3>
+                    <ul class="complaint-list">
+                        <li><i class="fas fa-exclamation-circle"></i> "Slows down every evening"</li>
+                        <li><i class="fas fa-exclamation-circle"></i> "Speed not as advertised"</li>
+                    </ul>
+                </div>
+                <div class="peak-card">
+                    <h3>Likely causes</h3>
+                    <ul class="complaint-list">
+                        <li><i class="fas fa-check-circle" style="color: #f1c40f;"></i> Cabinet congestion (FTTC)</li>
+                        <li><i class="fas fa-check-circle" style="color: #f1c40f;"></i> Cable node congestion</li>
+                        <li><i class="fas fa-check-circle" style="color: #f1c40f;"></i> Weak home Wi-Fi</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Upload importance - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">OVERLOOKED FACTOR</div>
+                <h2 class="section-heading">Upload speeds matter too</h2>
+            </div>
+
+            <div class="upload-grid">
+                <div class="upload-card">
+                    <h3>Upload critical for</h3>
+                    <ul class="upload-list">
+                        <li><i class="fas fa-check-circle check-green"></i> Zoom calls</li>
+                        <li><i class="fas fa-check-circle check-green"></i> Cloud backups</li>
+                        <li><i class="fas fa-check-circle check-green"></i> Gaming</li>
+                        <li><i class="fas fa-check-circle check-green"></i> Streaming</li>
+                    </ul>
+                </div>
+                <div class="upload-card">
+                    <h3>Symmetrical fibre</h3>
+                    <p style="font-size: 1.3rem; margin: 1rem 0;">300/300 Mbps</p>
+                    <p>Outperforms 1Gbps with low upload in real-world use</p>
+                </div>
+            </div>
+
+            <!-- Wi-Fi skew - 4x1 -->
+            <div class="section-header">
+                <div class="section-subhead">TESTING MATTERS</div>
+                <h2 class="section-heading">Why Wi-Fi skews real speeds</h2>
+            </div>
+
+            <div class="wifi-grid">
+                <div class="wifi-card">
+                    <div class="wifi-icon"><i class="fas fa-wifi"></i></div>
+                    <p>Testing over Wi-Fi</p>
+                </div>
+                <div class="wifi-card">
+                    <div class="wifi-icon"><i class="fas fa-microchip"></i></div>
+                    <p>Old routers (Wi-Fi 5)</p>
+                </div>
+                <div class="wifi-card">
+                    <div class="wifi-icon"><i class="fas fa-building"></i></div>
+                    <p>Thick walls</p>
+                </div>
+                <div class="wifi-card">
+                    <div class="wifi-icon"><i class="fas fa-map-pin"></i></div>
+                    <p>Poor router placement</p>
+                </div>
+            </div>
+
+            <div style="background: #f8faff; border-radius: 24px; padding: 1.5rem; margin: 1rem 0 2rem; text-align: center;">
+                <p style="font-size: 1.2rem;"><strong>300 Mbps fibre</strong> → Wi-Fi in bedroom = 120 Mbps → Ethernet = 295 Mbps</p>
+                <p class="example-badge" style="display: inline-block; margin-top: 1rem;">The broadband wasn't slow — the Wi-Fi was</p>
+            </div>
+
+            <!-- Reviews useful for - 4x1 -->
+            <div class="section-header">
+                <div class="section-subhead">WHAT REVIEWS ARE GOOD FOR</div>
+                <h2 class="section-heading">Useful vs not useful</h2>
+            </div>
+
+            <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; margin: 2.5rem 0;">
+                <div class="useful-grid" style="grid-template-columns: repeat(2, 1fr); margin: 0;">
+                    <div class="useful-card">
+                        <div class="useful-icon"><i class="fas fa-truck"></i></div>
+                        <p>Installation experience</p>
+                    </div>
+                    <div class="useful-card">
+                        <div class="useful-icon"><i class="fas fa-file-invoice"></i></div>
+                        <p>Billing transparency</p>
+                    </div>
+                    <div class="useful-card">
+                        <div class="useful-icon"><i class="fas fa-headset"></i></div>
+                        <p>Customer support</p>
+                    </div>
+                    <div class="useful-card">
+                        <div class="useful-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <p>Reliability complaints</p>
+                    </div>
+                </div>
+                <div class="not-useful">
+                    <div class="not-useful-icon"><i class="fas fa-times-circle"></i></div>
+                    <p>Less useful for comparing infrastructure performance</p>
+                    <p style="margin-top: 1rem;">❌ Predicting your exact speed</p>
+                </div>
+            </div>
+
+            <!-- Example comparison -->
+            <div class="section-header">
+                <div class="section-subhead">REAL WORLD</div>
+                <h2 class="section-heading">Reviews vs real speeds</h2>
+            </div>
+
+            <div class="example-card">
+                <div class="example-item">
+                    <div class="example-icon"><i class="fas fa-star" style="color: #f1c40f;"></i></div>
+                    <div class="example-text">
+                        <h4>Provider A</h4>
+                        <p class="rating">3.8/5 stars</p>
+                        <p>Full fibre 300 · 290 Mbps stable</p>
+                    </div>
+                </div>
+                <div class="example-divider"></div>
+                <div class="example-item">
+                    <div class="example-icon"><i class="fas fa-star" style="color: #f1c40f;"></i></div>
+                    <div class="example-text">
+                        <h4>Provider B</h4>
+                        <p class="rating">4.5/5 stars</p>
+                        <p>FTTC 67 · 45 Mbps peak</p>
+                    </div>
+                </div>
+                <div class="example-badge">Higher score ≠ faster speed</div>
+            </div>
+
+            <!-- How to compare - 4 steps -->
+            <div class="section-header">
+                <div class="section-subhead">METHODOLOGY</div>
+                <h2 class="section-heading">How to compare reviews vs speeds</h2>
+            </div>
+
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <i class="fas fa-home" style="font-size: 2rem; color: #f1c40f; margin: 1rem 0;"></i>
+                    <p>Check infrastructure type (FTTP/FTTC/cable)</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <i class="fas fa-traffic-light" style="font-size: 2rem; color: #f1c40f; margin: 1rem 0;"></i>
+                    <p>Look for congestion complaints</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <i class="fas fa-star" style="font-size: 2rem; color: #f1c40f; margin: 1rem 0;"></i>
+                    <p>Separate service from speed reviews</p>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">4</div>
+                    <i class="fas fa-ethernet" style="font-size: 2rem; color: #f1c40f; margin: 1rem 0;"></i>
+                    <p>Test your speed over Ethernet</p>
+                </div>
+            </div>
+
+            <!-- Ofcom card -->
+            <div class="ofcom-card">
+                <h3 style="font-size: 2rem;">Ofcom Speed Guarantees</h3>
+                <div class="ofcom-badge">Minimum Guaranteed Speed</div>
+                <p style="margin: 1.5rem 0;">If your speed falls below this consistently, you may request a fix or leave without penalty.</p>
+                <p style="font-weight: 700;">Always check the guaranteed speed before signing.</p>
+            </div>
+
+            <!-- When to prioritize - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">DECISION GUIDE</div>
+                <h2 class="section-heading">When to prioritize reviews vs infrastructure</h2>
+            </div>
+
+            <div class="priority-grid">
+                <div class="priority-card">
+                    <h3>Prioritize reviews for</h3>
+                    <ul class="priority-list">
+                        <li><i class="fas fa-check-circle check-yellow"></i> Customer support access</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Installation reliability</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Complaint resolution</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Contract transparency</li>
+                    </ul>
+                </div>
+                <div class="priority-card">
+                    <h3>Prioritize infrastructure for</h3>
+                    <ul class="priority-list">
+                        <li><i class="fas fa-check-circle check-yellow"></i> Gaming</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Remote work</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Video conferencing</li>
+                        <li><i class="fas fa-check-circle check-yellow"></i> Upload stability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FAQ - 3x2 -->
+            <div class="section-header">
+                <div class="section-subhead">COMMON QUESTIONS</div>
+                <h2 class="section-heading">FAQs</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Why is my real speed lower than advertised?</strong> <p>Wi-Fi, congestion, or line type.</p></div>
+                <div class="faq-card"><strong>Do all customers get advertised speed?</strong> <p>No — it's an average.</p></div>
+                <div class="faq-card"><strong>Are online reviews reliable?</strong> <p>Useful for service, not speed predictions.</p></div>
+                <div class="faq-card"><strong>Does full fibre match advertised speeds?</strong> <p>Usually very closely.</p></div>
+                <div class="faq-card"><strong>Should I upgrade speed tier?</strong> <p>Infrastructure upgrade matters more.</p></div>
+                <div class="faq-card"><strong>What's more important, reviews or infrastructure?</strong> <p>Infrastructure for speed, reviews for service.</p></div>
+            </div>
+
+            <!-- Why Utility King - 2x2 -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+
+            <div class="summary-grid" style="margin-bottom: 2rem;">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-home"></i></div>
+                    <div class="summary-content">
+                        <h4>Compare infrastructure</h4>
+                        <p>FTTP, FTTC, cable in your area</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-clock"></i></div>
+                    <div class="summary-content">
+                        <h4>Peak-time performance</h4>
+                        <p>Real-world consistency</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-arrow-up"></i></div>
+                    <div class="summary-content">
+                        <h4>Upload speeds compared</h4>
+                        <p>Often overlooked</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-file-contract"></i></div>
+                    <div class="summary-content">
+                        <h4>Contract guarantees</h4>
+                        <p>Know your minimum speed</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Find broadband that delivers</h2>
+                <p>Compare real-world performance by infrastructure type in your postcode.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #f1c40f;"></i> Utility King — broadband reviews vs real speeds UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

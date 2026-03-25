@@ -1,0 +1,659 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Virgin Media Broadband Comparison 2026 | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: 3 families - Montserrat (headings), Outfit (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #fff5f5 0%, #ffefef 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1rem;
+            color: #2d1e1e;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --virgin-red: #cd323c;
+            --virgin-red-light: #ff6b6b;
+            --virgin-gradient: linear-gradient(145deg, #cd323c, #a0252e);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --bg-soft: #fff8f8;
+            --text-dark: #2d1e1e;
+            --text-soft: #4a3a3a;
+            --accent-gold: #ffb347;
+            --accent-teal: #00c9b6;
+            --shadow-color: rgba(205, 50, 60, 0.2);
+            --border-light: #ffd9d9;
+        }
+
+        /* Font 1: Montserrat - headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Font 2: Outfit - subheadings, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - body text (default) */
+
+        /* RESPONSIVE FONT SIZES */
+        h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #cd323c, #8b1e26);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            margin: 1.5rem 0 1rem;
+            background: linear-gradient(135deg, #cd323c, #a0252e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            margin-bottom: 0.75rem;
+            word-wrap: break-word;
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            line-height: 1.5;
+            color: #4a3a3a;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 700;
+            background: var(--virgin-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION - CENTERED */
+        .hero-vibrant {
+            background: linear-gradient(135deg, #cd323c 0%, #b02a33 50%, #ff6b6b 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            box-shadow: 0 30px 40px -20px rgba(205, 50, 60, 0.6);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+            .hero-vibrant::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.1)"/></svg>');
+                background-size: cover;
+                opacity: 0.3;
+            }
+
+            .hero-vibrant h1 {
+                color: white;
+                -webkit-text-fill-color: white;
+                text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                position: relative;
+                z-index: 2;
+                font-size: clamp(1.8rem, 7vw, 4rem);
+                text-align: center;
+            }
+
+            .hero-vibrant p {
+                color: rgba(255,255,255,0.95);
+                font-size: clamp(1rem, 4vw, 1.4rem);
+                max-width: 700px;
+                text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                position: relative;
+                z-index: 2;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+            justify-content: center;
+        }
+
+            .hero-tags span {
+                background: rgba(255,255,255,0.25);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 50px;
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+                font-weight: 600;
+                color: white;
+                border: 1px solid rgba(255,255,255,0.4);
+                white-space: nowrap;
+            }
+
+            .hero-tags i {
+                margin-right: 0.3rem;
+            }
+
+        /* Main content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: clamp(1.2rem, 4vw, 3rem);
+            box-shadow: 0 20px 40px -10px rgba(205, 50, 60, 0.15);
+            width: 100%;
+            border: 1px solid #ffd0d0;
+        }
+
+        /* RESPONSIVE GRIDS */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            width: 100%;
+        }
+
+        /* Mobile first */
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Tablet */
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            body {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Card style */
+        .card-colorful {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 15px 30px -10px var(--shadow-color);
+            transition: all 0.3s ease;
+            border: 1px solid #ffd9d9;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            word-wrap: break-word;
+        }
+
+            .card-colorful::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: var(--virgin-gradient);
+            }
+
+            .card-colorful:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 40px -8px rgba(205, 50, 60, 0.3);
+            }
+
+        /* Virgin specific card */
+        .card-virgin {
+            border-left: 6px solid #cd323c;
+        }
+
+        .provider-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .provider-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+
+        .badge-virgin {
+            background: #ffe5e5;
+            color: #cd323c;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #ffd9d9;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: #cd323c;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #2d1e1e;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .price-highlight {
+            background: linear-gradient(135deg, #ffd166, #ffb347);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            color: #2d1e1e;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            white-space: nowrap;
+        }
+
+        /* Table responsive */
+        .table-wrapper {
+            background: white;
+            border-radius: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #ffd9d9;
+            margin: 1.5rem 0;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .table-wrapper table {
+                width: 100%;
+                min-width: 500px;
+                border-collapse: collapse;
+            }
+
+            .table-wrapper th {
+                background: linear-gradient(135deg, #ffe5e5, #ffd9d9);
+                padding: 1rem;
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                color: #cd323c;
+                text-align: left;
+                font-family: 'Outfit', sans-serif;
+            }
+
+            .table-wrapper td {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid #ffe5e5;
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+            }
+
+        /* Two column responsive */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* CTA responsive - CENTERED */
+        .cta-spectacular {
+            background: linear-gradient(135deg, #cd323c 0%, #b02a33 50%, #ff6b6b 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+            .cta-spectacular::after {
+                content: '📡';
+                font-size: clamp(5rem, 20vw, 10rem);
+                position: absolute;
+                bottom: -10px;
+                right: 5px;
+                opacity: 0.15;
+                transform: rotate(-10deg);
+                pointer-events: none;
+            }
+
+            .cta-spectacular h2 {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                -webkit-text-fill-color: white;
+                font-size: clamp(1.6rem, 6vw, 2.8rem);
+                text-align: center;
+            }
+
+            .cta-spectacular p {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-glow {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            font-weight: 700;
+            color: #cd323c;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            white-space: nowrap;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+            .btn-glow {
+                padding: 0.7rem 1.2rem;
+                gap: 0.5rem;
+            }
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.3);
+        }
+
+        /* Center align utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, #cd323c, #ff6b6b, #ffb3b3);
+            border-radius: 3px;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        /* Utility classes */
+        .text-wrap {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .no-overflow {
+            overflow: hidden;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- HERO - CENTERED -->
+        <div class="hero-vibrant">
+            <h1>VIRGIN MEDIA<br><span style="font-size: 0.7em; display: block; color: rgba(255,255,255,0.9);">broadband comparison 2026</span></h1>
+            <p>⚡ Up to 1.1Gbps downloads · Cable network · Compare vs full fibre</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-gauge-high"></i> 1.1 Gbps</span>
+                <span><i class="fas fa-pound-sign"></i> £28–£50/mo</span>
+                <span><i class="fas fa-network-wired"></i> own cable network</span>
+                <span><i class="fas fa-tv"></i> TV bundles</span>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="main-content">
+            <!-- 4x1 quick stats -->
+            <div class="grid-4x1">
+                <div class="card-colorful"><span class="subhead">Max speed</span><span class="stat-number">1.1 Gbps</span><p>Gig1 package</p><span class="price-highlight">⚡ fastest</span></div>
+                <div class="card-colorful"><span class="subhead">Entry speed</span><span class="stat-number">132 Mbps</span><p>M125 package</p><span class="price-highlight">£28-35</span></div>
+                <div class="card-colorful"><span class="subhead">Upload</span><span class="stat-number">20-100</span><p>Mbps depending on tier</p><span class="price-highlight">📤 varies</span></div>
+                <div class="card-colorful"><span class="subhead">Contract</span><span class="stat-number">18 mo</span><p>typical term</p><span class="price-highlight">📅 CPI+ rises</span></div>
+            </div>
+
+            <!-- How Virgin works - full width card -->
+            <div class="card-colorful" style="background: #fff3f3;">
+                <span class="provider-badge badge-virgin"><i class="fas fa-info-circle"></i> HOW IT WORKS</span>
+                <p class="card-text">Virgin Media operates on its <span style="color:#cd323c; font-weight:700;">own cable network</span> (separate from Openreach). It uses fibre to cabinets and coaxial cable to homes (DOCSIS), with ongoing FTTP upgrades. Availability is postcode-specific, speeds can be very high, but infrastructure varies by area.</p>
+            </div>
+
+            <!-- Speed tiers 4x1 -->
+            <h2>📊 Virgin Media speed tiers 2026</h2>
+            <div class="grid-4x1">
+                <div class="card-colorful card-virgin"><span class="subhead">M125</span><span class="stat-number">132 Mbps</span><p>£28–35/mo</p><span class="price-highlight">entry level</span></div>
+                <div class="card-colorful card-virgin"><span class="subhead">M250</span><span class="stat-number">264 Mbps</span><p>£32–40/mo</p><span class="price-highlight">⭐ popular</span></div>
+                <div class="card-colorful card-virgin"><span class="subhead">M350</span><span class="stat-number">362 Mbps</span><p>£35–45/mo</p><span class="price-highlight">🚀 fast</span></div>
+                <div class="card-colorful card-virgin"><span class="subhead">Gig1</span><span class="stat-number">1.1 Gbps</span><p>£40–50/mo</p><span class="price-highlight">⚡ ultrafast</span></div>
+            </div>
+
+            <!-- Upload speeds table -->
+            <h2>📤 Upload speed comparison</h2>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Package</th><th>Download</th><th>Upload (approx)</th></tr>
+                    <tr><td>M125</td><td>132 Mbps</td><td>~20 Mbps</td></tr>
+                    <tr><td>M250</td><td>264 Mbps</td><td>~25 Mbps</td></tr>
+                    <tr><td>M350</td><td>362 Mbps</td><td>~35 Mbps</td></tr>
+                    <tr><td>Gig1</td><td>1.1 Gbps</td><td>~50–100 Mbps</td></tr>
+                </table>
+            </div>
+            <p style="margin-top:0.5rem;">Compared to Openreach full fibre (FTTP) which can offer 100–900 Mbps upload, Virgin's upload is lower – important for video calls, cloud backups, gaming.</p>
+
+            <!-- Virgin vs full fibre 2x2 -->
+            <h2>⚔️ Virgin vs Full Fibre (Openreach)</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful card-virgin">
+                    <span class="provider-badge badge-virgin"><i class="fas fa-cable-car"></i> VIRGIN CABLE</span>
+                    <h3 style="color:#cd323c;">Pros & Cons</h3>
+                    <p>✅ Very fast downloads, competitive gigabit pricing, strong in urban areas.</p>
+                    <p>⚠️ Upload lower than symmetrical fibre, peak-time variation.</p>
+                </div>
+                <div class="card-colorful" style="border-top: 6px solid #2f7a5c;">
+                    <span class="provider-badge" style="background: #e0f0e0; color:#2f7a5c;"><i class="fas fa-broadcast-tower"></i> FULL FIBRE FTTP</span>
+                    <h3 style="color:#2f7a5c;">Pros & Cons</h3>
+                    <p>✅ Higher upload speeds, lower latency, very stable.</p>
+                    <p>⚠️ Not available everywhere, may be slower download.</p>
+                </div>
+            </div>
+
+            <!-- Virgin for gaming/streaming - 4x1 -->
+            <h2>🎮 Virgin for gaming & streaming?</h2>
+            <div class="grid-4x1">
+                <div class="card-colorful"><span class="stat-number">🎮</span><p>Low latency (most areas), fast downloads</p></div>
+                <div class="card-colorful"><span class="stat-number">📺</span><p>4K streaming on multiple devices</p></div>
+                <div class="card-colorful"><span class="stat-number">👪</span><p>Large households: 250–350 Mbps sweet spot</p></div>
+                <div class="card-colorful"><span class="stat-number">💾</span><p>Gig1 only for huge file downloads</p></div>
+            </div>
+
+            <!-- Pricing & contracts -->
+            <h2>💰 Pricing & contracts</h2>
+            <div class="card-colorful">
+                <p>Virgin typically offers <span style="color:#cd323c; font-weight:700;">18‑month contracts</span>, promotional new‑customer pricing, CPI‑linked annual rises (CPI +3.9% common). Always check setup fees, installation, post‑promotion price, early exit fees.</p>
+            </div>
+
+            <!-- TV bundles -->
+            <h2>📺 TV & bundle options</h2>
+            <div class="card-colorful">
+                <p>Virgin is known for <span style="color:#cd323c; font-weight:700;">strong bundles</span>: broadband + TV + sports + cinema + landline. Bundling simplifies but increases monthly cost. If you don't need premium TV, broadband‑only may be cheaper.</p>
+            </div>
+
+            <!-- Example cost -->
+            <div class="card-colorful" style="background: #cd323c; color: white;">
+                <span class="provider-badge" style="background: white; color:#cd323c;"><i class="fas fa-calculator"></i> 24‑MONTH COST EXAMPLE</span>
+                <p style="color:white; font-size:1.3rem;">M250 at £35/month = <span style="font-weight:800; font-size:2rem;">£840</span> total (excl. price rises)</p>
+                <p style="color:rgba(255,255,255,0.9);">Compare: 150 Mbps full fibre at £30 = £720. Small monthly differences add up.</p>
+            </div>
+
+            <!-- Who should choose Virgin - 2x2 -->
+            <h2>🎯 Who should choose Virgin?</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful card-virgin">
+                    <span class="provider-badge badge-virgin">VIRGIN IS BEST IF:</span>
+                    <p>✔️ faster than Openreach in your area<br>✔️ you want gigabit download<br>✔️ heavy streaming, large household<br>✔️ strong cable coverage</p>
+                </div>
+                <div class="card-colorful" style="border-top: 6px solid #2f7a5c;">
+                    <span class="provider-badge" style="background: #e0f0e0; color:#2f7a5c;">PREFER FULL FIBRE IF:</span>
+                    <p>✔️ upload speed matters<br>✔️ you run cloud backups / host services<br>✔️ you want symmetrical speeds<br>✔️ Virgin availability limited</p>
+                </div>
+            </div>
+
+            <!-- Key checks -->
+            <h2>✅ Key things to check</h2>
+            <div class="grid-4x1">
+                <div class="card-colorful"><i class="fas fa-check-circle" style="color:#cd323c;"></i> <span class="subhead">Postcode availability</span></div>
+                <div class="card-colorful"><i class="fas fa-check-circle" style="color:#cd323c;"></i> <span class="subhead">Upload speeds</span></div>
+                <div class="card-colorful"><i class="fas fa-check-circle" style="color:#cd323c;"></i> <span class="subhead">Installation fees</span></div>
+                <div class="card-colorful"><i class="fas fa-check-circle" style="color:#cd323c;"></i> <span class="subhead">Price rises (CPI+)</span></div>
+            </div>
+
+            <!-- FAQ 2x2 -->
+            <h2>❓ Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <h3 style="color:#cd323c;">Is Virgin faster than Sky/BT?</h3>
+                    <p>Often yes for download – but upload may be lower than full fibre.</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#cd323c;">Is Virgin gigabit worth it?</h3>
+                    <p>For heavy downloaders, yes. Most households fine with 250–350 Mbps.</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#cd323c;">Does Virgin use fibre?</h3>
+                    <p>Partially – fibre to cabinet + coax to home (ongoing FTTP upgrades).</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#cd323c;">Is Virgin reliable?</h3>
+                    <p>Generally yes, but performance varies by area.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-colorful" style="background: linear-gradient(145deg, #fff0f0, #ffe5e5);">
+                <span class="provider-badge" style="background: #cd323c; color:white;"><i class="fas fa-crown"></i> UTILITY KING APPROACH</span>
+                <p style="font-size:clamp(1rem, 4vw, 1.3rem);">We compare <span style="color:#cd323c; font-weight:700;">Virgin vs full fibre alternatives</span>, <span style="color:#cd323c; font-weight:700;">upload/download speeds</span>, <span style="color:#cd323c; font-weight:700;">postcode availability</span>, and <span style="color:#cd323c; font-weight:700;">total contract cost</span> – so you choose the best infrastructure and value, not just the fastest headline.</p>
+            </div>
+
+            <!-- CTA - CENTERED with updated link -->
+            <div class="cta-spectacular">
+                <h2>Ready to compare Virgin Media?</h2>
+                <p>Virgin offers some of the fastest download speeds – but it's essential to compare it against full fibre alternatives in your postcode. Better‑value options may already be available.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-glow"><i class="fas fa-paper-plane"></i> Contact Utility King</a>
+                </div>
+                <p style="margin-top: 1rem;"><i class="fas fa-map-pin"></i> We'll help you find the best deal in your area</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#7c8f9b; font-size:clamp(0.9rem, 3.5vw, 1.1rem);">© Utility King 2026 · Virgin Media broadband comparison · vibrant & responsive</p>
+        </div>
+    </div>
+</body>
+</html>

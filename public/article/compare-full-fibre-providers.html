@@ -1,0 +1,545 @@
+﻿<
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Full fibre providers 2026 · premium light | Utility King</title>
+    <!-- Font Awesome 6 (free via 5) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- refined type: Syne + Inter (very premium) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f5fb; /* soft light background */
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem 1.2rem;
+            color: #1d2b3c;
+        }
+
+        /* sophisticated light gradient palette: cream, soft lavender, warm gold, pearl */
+        :root {
+            --grad-1: #f9f3e7; /* warm cream */
+            --grad-2: #eaeef7; /* soft lavender */
+            --grad-3: #d4dff0; /* gentle blue */
+            --gold-light: #c99f5e; /* warm gold */
+            --slate-soft: #2f4058; /* deep slate for text */
+            --card-bg: #ffffff; /* pure white */
+            --border-soft: #e6e2d9;
+            --shadow: 0 20px 35px -15px rgba(55, 65, 81, 0.15);
+        }
+
+        .guide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 3.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid #edeae2;
+        }
+
+        /* header – light gradient */
+        .header {
+            background: linear-gradient(145deg, #faf7f0, #f5f3f0);
+            padding: 2.5rem 2rem;
+            color: var(--slate-soft);
+            border-bottom: 2px solid var(--gold-light);
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 3rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header {
+                padding: 3.8rem 5rem;
+            }
+        }
+
+        .header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 70% 20%, rgba(201,159,94,0.08) 0%, transparent 60%);
+            pointer-events: none;
+        }
+
+        .header h1 {
+            font-family: 'Syne', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            color: #1f3545;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            position: relative;
+            z-index: 2;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .header h1 i {
+            background: rgba(201,159,94,0.1);
+            padding: 0.8rem;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            font-size: 2rem;
+            border: 1px solid rgba(201,159,94,0.3);
+            color: var(--gold-light);
+        }
+
+        .header .sub {
+            font-size: 1.1rem;
+            max-width: 900px;
+            opacity: 0.85;
+            border-left: 4px solid var(--gold-light);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0 2rem;
+            font-weight: 300;
+            color: #3e5468;
+        }
+
+        .header .tags {
+            display: flex;
+            gap: 1.5rem 3rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #4a6075;
+        }
+
+            .header .tags i {
+                color: var(--gold-light);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main {
+            padding: 2.5rem 2rem;
+            background: #fdfdfb;
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 3rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 4rem 5rem;
+            }
+        }
+
+        /* premium stat cards */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1.2rem;
+            margin-bottom: 3rem;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.6rem 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 10px 20px -12px #9b8e7c;
+        }
+
+            .stat-card .big {
+                font-size: 1.8rem;
+                font-weight: 700;
+                color: var(--gold-light);
+            }
+
+            .stat-card .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                color: #5d7184;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'Syne', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 3rem 0 1.8rem 0;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            color: #1f3545;
+        }
+
+            .section-head i {
+                font-size: 1.8rem;
+                background: rgba(201,159,94,0.1);
+                padding: 0.6rem;
+                border-radius: 1.5rem 0.1rem 1.5rem 0.1rem;
+                border: 1px solid rgba(201,159,94,0.2);
+                color: var(--gold-light);
+            }
+
+        /* elegant two‑col cards */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .premium-card {
+            background: #ffffff;
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem 2rem;
+            border: 1px solid #eae4db;
+            box-shadow: 0 15px 25px -18px #9c8d7b;
+        }
+
+            .premium-card.openreach {
+                border-top: 4px solid #5b7f9c;
+            }
+
+            .premium-card.altnet {
+                border-top: 4px solid var(--gold-light);
+            }
+
+        .card-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            font-family: 'Syne', sans-serif;
+            margin: 1rem 0 1.2rem;
+        }
+
+        .openreach .card-title {
+            color: #3f627f;
+        }
+
+        .altnet .card-title {
+            color: var(--gold-light);
+        }
+
+        .provider-list {
+            list-style: none;
+            margin: 1rem 0;
+            color: #3e5569;
+        }
+
+            .provider-list li {
+                padding: 0.3rem 0;
+            }
+
+        /* speed table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: #ffffff;
+            border: 1px solid #eae4db;
+        }
+
+        .premium-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+            .premium-table th {
+                background: #f6f3ee;
+                padding: 1.2rem 1rem;
+                font-weight: 600;
+                color: #1f3545;
+            }
+
+            .premium-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #f0eae2;
+                color: #2c4052;
+            }
+
+        /* upload highlight */
+        .upload-luxury {
+            background: linear-gradient(145deg, #f9f6f1, #fefcf8);
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            border: 1px solid rgba(201,159,94,0.3);
+            box-shadow: 0 0 20px rgba(201,159,94,0.05);
+        }
+
+        /* choice grid */
+        .choice-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .choice-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .choice-item {
+            background: #ffffff;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid #eae4db;
+        }
+
+        /* example box */
+        .example-luxury {
+            background: linear-gradient(145deg, #f5efe7, #fdfaf5);
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            border: 1px solid var(--gold-light);
+        }
+
+        .big-gold {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--gold-light);
+        }
+
+        /* checklist */
+        .bullet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1rem;
+            background: #f8f6f2;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid #eae4db;
+        }
+
+        /* faq */
+        .faq details {
+            background: #f8f6f2;
+            border-radius: 2rem 0.1rem 2rem 0.1rem;
+            margin: 0.8rem 0;
+            padding: 1rem 1.5rem;
+            border: 1px solid #eae4db;
+            color: #1f3545;
+        }
+
+        /* cta ultimate */
+        .cta-premium {
+            background: linear-gradient(145deg, #f3efe8, #fefcf8);
+            border-radius: 4rem 0.2rem 4rem 0.2rem;
+            padding: 3rem 2rem;
+            margin: 4rem 0 2rem;
+            border: 2px solid var(--gold-light);
+            text-align: center;
+            box-shadow: 0 0 40px rgba(201,159,94,0.1);
+        }
+
+        .btn-premium {
+            background: transparent;
+            color: var(--gold-light);
+            border: 2px solid var(--gold-light);
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 3rem;
+            border-radius: 4rem 0.1rem 4rem 0.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            transition: 0.3s;
+            margin: 1.5rem 0;
+        }
+
+            .btn-premium:hover {
+                background: var(--gold-light);
+                color: white;
+                box-shadow: 0 0 30px rgba(201,159,94,0.5);
+            }
+
+        hr {
+            border: 1px solid #eae4db;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header">
+            <h1><i class="fas fa-broadcast-tower"></i> Full fibre providers · 2026</h1>
+            <div class="sub">Full fibre (FTTP) is the fastest, most reliable broadband available. With Openreach and multiple Alt‑Nets, comparing properly is essential. We break down speeds, uploads, pricing and contract terms.</div>
+            <div class="tags">
+                <span><i class="fas fa-gem"></i> 100 – 1000+ Mbps</span>
+                <span><i class="fas fa-upload"></i> symmetrical options</span>
+                <span><i class="fas fa-pound-sign"></i> £25–£50/month</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- premium stat cards -->
+            <div class="stats-grid">
+                <div class="stat-card"><span class="big">FTTP</span><span class="small">fibre to home</span></div>
+                <div class="stat-card"><span class="big">100–1000+</span><span class="small">Mbps speeds</span></div>
+                <div class="stat-card"><span class="big">symmetrical</span><span class="small">alt‑nets often</span></div>
+                <div class="stat-card"><span class="big">postcode</span><span class="small">decides choice</span></div>
+            </div>
+
+            <!-- what is full fibre -->
+            <div class="section-head"><i class="fas fa-question-circle"></i> What is full fibre?</div>
+            <div style="background:#f8f6f2; border-radius:2rem 0.2rem; padding:1.8rem; border:1px solid #eae4db;">
+                Full fibre (FTTP) means fibre optic cable directly to your home – no copper. Faster, more stable, future‑proof. Differs from standard fibre (FTTC) which still uses copper from the cabinet.
+            </div>
+
+            <!-- main networks two‑col -->
+            <div class="section-head"><i class="fas fa-code-branch"></i> Main full fibre networks</div>
+            <div class="two-col">
+                <div class="premium-card openreach">
+                    <i class="fas fa-tower-cell" style="font-size:2.2rem; color:#3f627f;"></i>
+                    <div class="card-title">Openreach FTTP</div>
+                    <p>Used by: BT, Sky, TalkTalk, Plusnet, EE, Vodafone (many areas). Widest rollout. Speeds 100–900 Mbps. Upload typically 20–110 Mbps.</p>
+                </div>
+                <div class="premium-card altnet">
+                    <i class="fas fa-satellite-dish" style="font-size:2.2rem; color:var(--gold-light);"></i>
+                    <div class="card-title">Alt‑Nets</div>
+                    <p>CityFibre, Hyperoptic, Community Fibre, Gigaclear, B4RN. Postcode‑specific. Speeds 150 Mbps – 1Gbps+. Often symmetrical upload (e.g. 900 up & down).</p>
+                </div>
+            </div>
+
+            <!-- speed comparison table -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> Speed & pricing</div>
+            <div class="table-wrapper">
+                <table class="premium-table">
+                    <tr><th>Speed tier</th><th>Openreach providers</th><th>Alt‑Nets</th></tr>
+                    <tr><td>100–150 Mbps</td><td>£25–32</td><td>£23–30</td></tr>
+                    <tr><td>300 Mbps</td><td>£30–38</td><td>£28–35</td></tr>
+                    <tr><td>500 Mbps</td><td>£35–45</td><td>£32–40</td></tr>
+                    <tr><td>900 Mbps+</td><td>£40–50</td><td>£35–45</td></tr>
+                </table>
+            </div>
+
+            <!-- upload highlight -->
+            <div class="upload-luxury">
+                <i class="fas fa-upload" style="font-size:2rem; color:var(--gold-light); margin-right:1rem;"></i>
+                <strong style="font-size:1.3rem; color:#1f3545;">Upload: key differentiator</strong> – <span style="color:#2c4052;">Openreach FTTP: 20–110 Mbps upload. Alt‑Nets: often symmetrical (150–900 Mbps upload). For remote work, large uploads, cloud backups – symmetrical fibre is a major advantage.</span>
+            </div>
+
+            <!-- reliability & contract -->
+            <div class="two-col">
+                <div class="premium-card">
+                    <i class="fas fa-shield-alt" style="color:#5b7f9c;"></i>
+                    <h3 style="margin:1rem 0 0.5rem; color:#1f3545;">Reliability</h3>
+                    <p>Both can deliver strong performance – infrastructure age & network capacity matter more than brand. Lower latency, fewer peak slowdowns.</p>
+                </div>
+                <div class="premium-card">
+                    <i class="fas fa-file-contract" style="color:var(--gold-light);"></i>
+                    <h3 style="margin:1rem 0 0.5rem; color:#1f3545;">Contracts</h3>
+                    <p>Openreach‑based: 18–24 months, CPI rises common. Alt‑Nets: 12–24 months, some fixed‑price options. Setup fees £0–60.</p>
+                </div>
+            </div>
+
+            <!-- which is best -->
+            <div class="section-head"><i class="fas fa-crown"></i> Which provider for you?</div>
+            <div class="choice-grid">
+                <div class="choice-item">
+                    <i class="fas fa-check-circle" style="color:#5b7f9c; font-size:1.5rem;"></i>
+                    <h3 style="margin:0.8rem 0; color:#1f3545;">Choose Openreach if:</h3>
+                    <p>You want national brand · TV bundles · Alt‑Net not available · prefer established.</p>
+                </div>
+                <div class="choice-item">
+                    <i class="fas fa-check-circle" style="color:var(--gold-light); font-size:1.5rem;"></i>
+                    <h3 style="margin:0.8rem 0; color:#1f3545;">Choose Alt‑Net if:</h3>
+                    <p>Symmetrical upload matters · gigabit cheaper locally · shorter contracts · strong regional provider.</p>
+                </div>
+            </div>
+
+            <!-- example scenario -->
+            <div class="example-luxury">
+                <i class="fas fa-calculator" style="font-size:2.2rem; color:var(--gold-light); margin-right:1rem;"></i>
+                <strong style="font-size:1.5rem; color:#1f3545;">300 Mbps tier example</strong><br>
+                <span style="color:#2c4052;">
+                    Openreach: £34/mo · upload ~50 Mbps → 24‑month £816<br>
+                    Alt‑Net: £30/mo · upload 300 Mbps → 24‑month £720
+                </span><br>
+                <span class="big-gold">£96 less + 6x faster upload</span>
+            </div>
+
+            <!-- is gigabit worth it? -->
+            <div class="section-head"><i class="fas fa-question"></i> Is gigabit worth it?</div>
+            <div style="background:#f8f6f2; border-radius:2rem 0.2rem; padding:1.8rem;">
+                For most households 150–300 Mbps is sufficient. Gigabit useful for large households, heavy downloading, multiple 4K streams, content creation.
+            </div>
+
+            <!-- key checks -->
+            <div class="section-head"><i class="fas fa-clipboard-list"></i> Before you choose</div>
+            <div class="bullet-grid">
+                <div><i class="fas fa-check-circle" style="color:var(--gold-light);"></i> Which networks available?</div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold-light);"></i> Upload speed (symmetrical?)</div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold-light);"></i> Total contract cost</div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold-light);"></i> Installation fees</div>
+                <div><i class="fas fa-check-circle" style="color:var(--gold-light);"></i> Annual price rises</div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq">
+                <details><summary>Is full fibre better than standard fibre?</summary>Yes – faster, more stable, future‑proof (no copper).</details>
+                <details><summary>Are Alt‑Nets reliable?</summary>Many are highly reliable – performance varies by provider and local infrastructure.</details>
+                <details><summary>Is symmetrical broadband important?</summary>For remote work, cloud uploads, content creation – yes.</details>
+                <details><summary>Is Openreach slower than Alt‑Nets?</summary>Not necessarily on download – but upload speeds are often lower.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#f8f6f2; border-radius:2.5rem 0.2rem; padding:2rem; margin:2.5rem 0; border:1px solid #eae4db;">
+                <i class="fas fa-crown" style="color:var(--gold-light); font-size:2rem; margin-right:1rem;"></i>
+                <strong style="font-size:1.4rem;">Utility King approach:</strong> We check all available networks in your postcode, compare upload/download speeds, total contract cost, contract lengths – because infrastructure determines performance more than brand.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta-premium">
+                <h2 style="font-size:2.2rem; color:#1f3545;">ready to compare full fibre?</h2>
+                <p style="margin:1rem 0; color:#3e5569;">If full fibre is available in your area, you may have more choice than ever. Comparing providers could unlock faster speeds and lower monthly costs.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1.5rem; color:#5d7184;"><i class="fas fa-info-circle"></i> We'll help you see all available providers in your postcode.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#7b8d9f;">© Utility King 2026 · full fibre providers · premium light edition</p>
+        </div> <!-- main -->
+    </div> <!-- guide -->
+</body>
+</html>

@@ -1,0 +1,554 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Hyperoptic vs Community Fibre 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- premium type: Inter & Manrope (clean and elegant) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f6fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #1f2e45;
+        }
+
+        /* sophisticated palette: hyperoptic purple, community fibre green, soft neutrals */
+        :root {
+            --hyperoptic: #6b2b9e; /* rich purple */
+            --community: #20856c; /* deep teal */
+            --gold-light: #e0a458; /* warm gold */
+            --pearl: #ffffff;
+            --bg-light: #fafcff;
+            --border-soft: #e2e8f2;
+            --slate: #314d66;
+            --shadow: 0 20px 35px -18px rgba(45,62,80,0.2);
+        }
+
+        .guide {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: var(--pearl);
+            border-radius: 2.8rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid #e5ecf5;
+        }
+
+        /* header – subtle gradient */
+        .header {
+            background: linear-gradient(145deg, #f9fcff, #f0f5fd);
+            padding: 2.2rem 2rem;
+            color: #1f2e45;
+            border-bottom: 3px solid var(--gold-light);
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        .header h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .header h1 i {
+            background: rgba(107,43,158,0.08);
+            padding: 0.7rem 0.9rem;
+            border-radius: 1.8rem 0.2rem 1.8rem 0.2rem;
+            font-size: 1.8rem;
+            border: 1px solid rgba(107,43,158,0.2);
+            color: var(--hyperoptic);
+        }
+
+        .header .sub {
+            font-size: 1.1rem;
+            max-width: 900px;
+            color: #3e5a73;
+            border-left: 4px solid var(--gold-light);
+            padding-left: 1.5rem;
+            margin: 1.2rem 0 1.8rem;
+            font-weight: 300;
+        }
+
+        .header .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3b5b77;
+        }
+
+            .header .tags i {
+                color: var(--gold-light);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main {
+            padding: 2.2rem 2rem;
+            background: var(--bg-light);
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        /* quick summary table */
+        .summary-wrapper {
+            overflow-x: auto;
+            margin-bottom: 2.5rem;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: var(--pearl);
+            border: 1px solid var(--border-soft);
+        }
+
+        .summary-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 550px;
+        }
+
+            .summary-table th {
+                background: #f0f6fc;
+                padding: 1rem 1.2rem;
+                font-weight: 600;
+                color: #1f2e45;
+            }
+
+            .summary-table td {
+                padding: 1rem 1.2rem;
+                border-bottom: 1px solid #edf2f8;
+            }
+
+            .summary-table .hyper {
+                color: var(--hyperoptic);
+                font-weight: 600;
+            }
+
+            .summary-table .comm {
+                color: var(--community);
+                font-weight: 600;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1f2e45;
+            margin: 2.8rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+            .section-head i {
+                color: var(--gold-light);
+                font-size: 1.8rem;
+                background: rgba(224,164,88,0.1);
+                padding: 0.5rem;
+                border-radius: 1.2rem 0.1rem 1.2rem 0.1rem;
+            }
+
+        /* two‑col layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .provider-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem 1.8rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 8px 16px -12px #b2c4d6;
+        }
+
+            .provider-card.hyper {
+                border-top: 6px solid var(--hyperoptic);
+            }
+
+            .provider-card.comm {
+                border-top: 6px solid var(--community);
+            }
+
+            .provider-card .card-title {
+                font-size: 1.6rem;
+                font-weight: 700;
+                font-family: 'Manrope', sans-serif;
+                margin: 0.8rem 0 1rem;
+            }
+
+        .hyper .card-title {
+            color: var(--hyperoptic);
+        }
+
+        .comm .card-title {
+            color: var(--community);
+        }
+
+        /* speed tables */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: var(--pearl);
+            border: 1px solid var(--border-soft);
+        }
+
+        .speed-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+            .speed-table th {
+                background: #f0f6fc;
+                padding: 1rem;
+                font-weight: 600;
+            }
+
+            .speed-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #edf2f8;
+            }
+
+        /* upload highlight */
+        .upload-block {
+            background: linear-gradient(145deg, #f4faff, #e9f2fa);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid var(--gold-light);
+        }
+
+        /* price comparison grid */
+        .price-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 600px) {
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .price-col {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-soft);
+        }
+
+            .price-col.hyper .price-head {
+                color: var(--hyperoptic);
+            }
+
+            .price-col.comm .price-head {
+                color: var(--community);
+            }
+
+        .price-head {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        /* example box */
+        .example-box {
+            background: linear-gradient(145deg, #f8fcff, #f0f5fd);
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            border: 2px solid var(--gold-light);
+        }
+
+        .big-save {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--hyperoptic);
+        }
+
+        /* coverage row */
+        .coverage-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-soft);
+            margin: 2rem 0;
+        }
+
+        /* faq */
+        .faq details {
+            background: var(--pearl);
+            border-radius: 1.8rem 0.1rem 1.8rem 0.1rem;
+            margin: 0.8rem 0;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* cta */
+        .cta {
+            background: linear-gradient(145deg, #ffffff, #f5faff);
+            border-radius: 3rem 0.2rem 3rem 0.2rem;
+            padding: 2.8rem 2rem;
+            margin: 3.5rem 0 2rem;
+            border: 2px solid var(--gold-light);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--hyperoptic);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.1rem 3rem 0.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn:hover {
+                background: #5a2585;
+            }
+
+        hr {
+            border: 1px solid #e5ecf5;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header">
+            <h1><i class="fas fa-exchange-alt"></i> Hyperoptic vs Community Fibre (2026)</h1>
+            <div class="sub">If you live in a major UK city, you may have access to two high‑performance full fibre providers: Hyperoptic and Community Fibre. Both offer symmetrical speeds and focus on urban areas. We compare speed, price, contract, and coverage.</div>
+            <div class="tags">
+                <span><i class="fas fa-tachometer-alt"></i> up to 1Gbps (3Gbps CF)</span>
+                <span><i class="fas fa-upload"></i> symmetrical upload</span>
+                <span><i class="fas fa-pound-sign"></i> £20–£60/month</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- quick comparison summary -->
+            <div class="summary-wrapper">
+                <table class="summary-table">
+                    <tr><th>Feature</th><th>Hyperoptic</th><th>Community Fibre</th></tr>
+                    <tr><td>Network Type</td><td>Full Fibre (FTTP)</td><td>Full Fibre (FTTP)</td></tr>
+                    <tr><td>Max Speed</td><td>1Gbps</td><td>1Gbps (3Gbps some areas)</td></tr>
+                    <tr><td>Upload Speeds</td><td>Symmetrical</td><td>Symmetrical</td></tr>
+                    <tr><td>Entry Price</td><td>~£25–30</td><td>~£20–28</td></tr>
+                    <tr><td>Contract Options</td><td>12–24 months</td><td>12–24 months</td></tr>
+                    <tr><td>Coverage</td><td>Select UK cities</td><td>Primarily London</td></tr>
+                </table>
+            </div>
+
+            <!-- network infrastructure -->
+            <div class="section-head"><i class="fas fa-network-wired"></i> Network infrastructure</div>
+            <div style="background:var(--pearl); border-radius:2rem 0.2rem; padding:1.8rem; border:1px solid var(--border-soft);">
+                Both use 100% full fibre (FTTP), independent of Openreach. Deliver symmetrical speeds. Strong in apartment buildings, new developments, city centres. Performance generally excellent where available.
+            </div>
+
+            <!-- provider cards -->
+            <div class="two-col">
+                <div class="provider-card hyper">
+                    <i class="fas fa-bolt" style="font-size:2rem; color:var(--hyperoptic);"></i>
+                    <div class="card-title">Hyperoptic</div>
+                    <ul style="list-style:none;">
+                        <li>✓ 150 / 500 / 1000 Mbps tiers</li>
+                        <li>✓ Symmetrical upload</li>
+                        <li>✓ £25–£45 typical</li>
+                        <li>✓ Major cities across UK</li>
+                    </ul>
+                </div>
+                <div class="provider-card comm">
+                    <i class="fas fa-tree" style="font-size:2rem; color:var(--community);"></i>
+                    <div class="card-title">Community Fibre</div>
+                    <ul style="list-style:none;">
+                        <li>✓ 150 / 300 / 1000 / 3000 Mbps (select)</li>
+                        <li>✓ Symmetrical upload</li>
+                        <li>✓ £20–£60 typical</li>
+                        <li>✓ Primarily London, expanding</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- speed comparison tables -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> Speed tiers</div>
+            <div class="table-wrapper">
+                <table class="speed-table">
+                    <tr><th>Hyperoptic</th><th>Download</th><th>Upload</th><th>Price</th></tr>
+                    <tr><td>150 Mbps</td><td>150</td><td>150</td><td>£25–30</td></tr>
+                    <tr><td>500 Mbps</td><td>500</td><td>500</td><td>£30–38</td></tr>
+                    <tr><td>1 Gbps</td><td>1000</td><td>1000</td><td>£35–45</td></tr>
+                </table>
+            </div>
+            <div class="table-wrapper">
+                <table class="speed-table">
+                    <tr><th>Community Fibre</th><th>Download</th><th>Upload</th><th>Price</th></tr>
+                    <tr><td>150 Mbps</td><td>150</td><td>150</td><td>£20–28</td></tr>
+                    <tr><td>300 Mbps</td><td>300</td><td>300</td><td>£22–30</td></tr>
+                    <tr><td>1 Gbps</td><td>1000</td><td>1000</td><td>£25–35</td></tr>
+                    <tr><td>3 Gbps (select)</td><td>3000</td><td>3000</td><td>£50–60</td></tr>
+                </table>
+            </div>
+
+            <!-- upload spotlight -->
+            <div class="upload-block">
+                <i class="fas fa-upload" style="font-size:2rem; color:var(--hyperoptic); margin-right:1rem;"></i>
+                <strong style="font-size:1.2rem;">Symmetrical speeds:</strong> Both providers offer upload equal to download – ideal for remote work, cloud backups, video conferencing, content creation, gaming streams. (Openreach often upload 20–110 Mbps.)
+            </div>
+
+            <!-- pricing comparison -->
+            <div class="section-head"><i class="fas fa-pound-sign"></i> Pricing (24‑month typical)</div>
+            <div class="price-grid">
+                <div class="price-col hyper">
+                    <div class="price-head">Hyperoptic</div>
+                    <p>150 Mbps: ~£28<br>500 Mbps: ~£35<br>1 Gbps: ~£40</p>
+                </div>
+                <div class="price-col comm">
+                    <div class="price-head">Community Fibre</div>
+                    <p>150 Mbps: ~£22<br>300 Mbps: ~£25<br>1 Gbps: ~£30</p>
+                </div>
+            </div>
+
+            <!-- contract & installation -->
+            <div class="two-col">
+                <div class="provider-card">
+                    <i class="fas fa-file-contract" style="color:var(--gold-light);"></i>
+                    <div class="card-title">Contract & setup</div>
+                    <p>Both offer 12–24 months. Engineer installation required (often free on contract). Check mid‑contract rises – some Alt‑Nets avoid CPI increases.</p>
+                </div>
+                <div class="provider-card">
+                    <i class="fas fa-tools" style="color:var(--gold-light);"></i>
+                    <div class="card-title">Installation</div>
+                    <p>Engineer visit to install fibre into property. Typically 1–2 weeks from order. Router included. Free installation on many deals.</p>
+                </div>
+            </div>
+
+            <!-- coverage -->
+            <div class="section-head"><i class="fas fa-map-pin"></i> Coverage</div>
+            <div class="coverage-row">
+                <div style="flex:1;"><strong style="color:var(--hyperoptic);">Hyperoptic:</strong> major UK cities, strong in apartment blocks, expanding.</div>
+                <div style="flex:1;"><strong style="color:var(--community);">Community Fibre:</strong> primarily London, rapid expansion within Greater London, limited outside.</div>
+            </div>
+
+            <!-- who should choose -->
+            <div class="two-col">
+                <div class="provider-card hyper">
+                    <i class="fas fa-check-circle" style="color:var(--hyperoptic);"></i>
+                    <div class="card-title">Choose Hyperoptic if</div>
+                    <p>Available in your building · want strong symmetrical speeds · outside London but in major city · well‑established urban fibre provider.</p>
+                </div>
+                <div class="provider-card comm">
+                    <i class="fas fa-check-circle" style="color:var(--community);"></i>
+                    <div class="card-title">Choose Community Fibre if</div>
+                    <p>You live in London · want cheapest gigabit · symmetrical speeds · potentially higher‑than‑1Gbps options.</p>
+                </div>
+            </div>
+
+            <!-- example scenario -->
+            <div class="example-box">
+                <i class="fas fa-calculator" style="font-size:2rem; color:var(--gold-light); margin-right:1rem;"></i>
+                <strong style="font-size:1.5rem;">1Gbps example (24 months)</strong><br>
+                Hyperoptic: £40/mo = £960 total<br>
+                Community Fibre: £30/mo = £720 total<br>
+                <span class="big-save">£240 less with Community Fibre</span> (both symmetrical gigabit)
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq">
+                <details><summary>Are Hyperoptic and Community Fibre better than BT/Sky?</summary>Where available, they often offer faster upload speeds and better gigabit pricing.</details>
+                <details><summary>Do both offer symmetrical broadband?</summary>Yes – upload equals download speed.</details>
+                <details><summary>Is 1Gbps necessary?</summary>For most households, 150–300 Mbps is enough. Gigabit for heavy users or future‑proofing.</details>
+                <details><summary>Are there annual price increases?</summary>Check contract – some Alt‑Nets offer fixed pricing.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#f0f7fc; border-radius:2rem 0.2rem; padding:2rem; margin:2.5rem 0;">
+                <i class="fas fa-crown" style="color:var(--gold-light); font-size:2rem; margin-right:1rem;"></i>
+                <strong style="font-size:1.3rem;">Utility King approach:</strong> We check Alt‑Net availability in your postcode, compare symmetrical speed tiers, total contract cost, contract lengths – because infrastructure matters more than brand.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta">
+                <h2 style="font-size:2rem; color:#1f2e45;">ready to compare Hyperoptic vs Community Fibre?</h2>
+                <p style="margin:1rem 0; color:#3e5a73;">If you live in a city with both available, you may have access to some of the fastest and cheapest full fibre broadband. Comparing could save you hundreds.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#5e7a97;"><i class="fas fa-info-circle"></i> We'll help you find the best gigabit value in your postcode.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#8a9eb5;">© Utility King 2026 · Hyperoptic vs Community Fibre comparison · premium light</p>
+        </div> <!-- main -->
+    </div> <!-- guide -->
+</body>
+</html>

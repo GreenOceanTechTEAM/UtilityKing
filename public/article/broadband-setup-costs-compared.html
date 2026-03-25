@@ -1,0 +1,500 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Broadband setup costs compared 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- clean, modern type: DM Sans + Space Grotesk for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,300..700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f4f0;
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #273f3a;
+        }
+
+        /* fresh palette: charcoal blue, soft teal, warm sand, off-white */
+        :root {
+            --charcoal: #2b4b55; /* deep blue‑green */
+            --teal-soft: #6b9e96; /* muted teal */
+            --sand: #f2e5d5; /* warm sand */
+            --paper: #fefcf8;
+            --border-light: #dadfd2;
+            --slate: #3d615b;
+        }
+
+        .guide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--paper);
+            border-radius: 3rem;
+            box-shadow: 0 45px 70px -35px #3b615a;
+            overflow: hidden;
+            border: 1px solid #d0d9ce;
+        }
+
+        /* header – charcoal + teal underline */
+        .header-setup {
+            background: var(--charcoal);
+            padding: 2rem 1.8rem;
+            color: #fcf9f0;
+            border-bottom: 6px solid var(--teal-soft);
+            text-align:center;
+        }
+
+        @media (min-width: 640px) {
+            .header-setup {
+                padding: 2.5rem 2.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-setup {
+                padding: 3.2rem 4rem;
+            }
+        }
+
+        .header-setup h1 {
+         
+            font-size: 2.3rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content:center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .header-setup h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-setup h1 {
+                font-size: 3.6rem;
+            }
+        }
+
+        .header-setup h1 i {
+            background: var(--teal-soft);
+            color: var(--charcoal);
+            padding: 0.8rem;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            font-size: 2.2rem;
+           
+           
+        }
+
+        .header-setup .sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 1400px;
+            opacity: 0.9;
+            margin: 1rem 0 1.8rem;
+            border-left: 4px solid var(--teal-soft);
+            padding-left: 1.5rem;
+            
+           
+        }
+
+        .header-setup .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.8px;
+            color: #bfd9d2;
+            justify-content:center;
+        }
+
+            .header-setup .tags i {
+                color: var(--teal-soft);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main-setup {
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .main-setup {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-setup {
+                padding: 3.5rem 4rem;
+            }
+        }
+
+        /* KPI row */
+        .stat-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            background: white;
+            border-radius: 2.5rem 0.8rem 2.5rem 0.8rem;
+            padding: 1.5rem 1.8rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-light);
+        }
+
+        .stat-item {
+            flex: 1 1 110px;
+            text-align: center;
+        }
+
+            .stat-item .big {
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: var(--teal-soft);
+            }
+
+            .stat-item .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #4e6f68;
+                text-transform: uppercase;
+            }
+
+        /* section heading */
+        .sec-head {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: var(--charcoal);
+            margin: 2.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--teal-soft);
+            padding-bottom: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+            .sec-head i {
+                color: var(--teal-soft);
+                font-size: 1.8rem;
+            }
+
+        /* definition box */
+        .info-box {
+            background: #f0f6f2;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* typical fees table */
+        .fee-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 8px;
+            margin: 2rem 0;
+        }
+
+            .fee-table th {
+                text-align: left;
+                font-weight: 600;
+                color: var(--charcoal);
+                border-bottom: 2px dashed var(--teal-soft);
+                padding-bottom: 0.2rem;
+            }
+
+            .fee-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1.2rem 0.3rem 1.2rem 0.3rem;
+                border: 1px solid #e0ded3;
+            }
+
+        /* fibre vs full fibre cards */
+        .fttc-fttp {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .cost-card {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            border: 1px solid #d9d2c5;
+        }
+
+            .cost-card.fttc {
+                border-top: 6px solid #7ea29a;
+            }
+
+            .cost-card.fttp {
+                border-top: 6px solid var(--teal-soft);
+            }
+
+        /* contract length & setup */
+        .contract-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            margin: 1.8rem 0;
+        }
+
+            .contract-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1rem 0.3rem 1rem 0.3rem;
+                border: 1px solid #dbd5c9;
+            }
+
+        /* example calculation */
+        .example-calc {
+            background: #e8f0eb;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 2rem;
+            margin: 2.2rem 0;
+        }
+
+        /* new line installation */
+        .newline-box {
+            background: var(--sand);
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* hidden costs grid */
+        .hidden-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            background: #f5f9f5;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* steps list */
+        .steps-list {
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+            border: 1px solid #d8dace;
+        }
+
+        /* faq */
+        .faq-stack details {
+            background: white;
+            border-radius: 1.5rem 0.3rem 1.5rem 0.3rem;
+            margin: 0.8rem 0;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #d9d2c6;
+        }
+
+        /* cta */
+        .cta-setup {
+            background: white;
+            border-radius: 3rem 1rem 3rem 1rem;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 2rem;
+            border: 4px solid var(--teal-soft);
+            text-align: center;
+        }
+
+        .btn-setup {
+            background: var(--teal-soft);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.5rem 3rem 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 18px 24px -16px #43756b;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn-setup:hover {
+                background: #548d84;
+                transform: translateY(-3px);
+            }
+
+        hr {
+            border: 1px solid #d4d7ce;
+            margin: 2rem 0;
+        }
+
+        /* responsive */
+        p, li {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header-setup">
+            <h1><i class="fas fa-tools"></i> Broadband Setup Costs Compared (UK 2026)</h1>
+            <div class="sub">Setup costs can add £20–£100+ upfront. To find the truly cheapest deal, compare total contract cost — not just monthly price. We break down activation, installation, router fees and more.</div>
+            <div class="tags">
+                <span><i class="fas fa-pound-sign"></i> £0–£60 typical</span>
+                <span><i class="fas fa-calendar"></i> 24‑month often waives</span>
+                <span><i class="fas fa-wifi"></i> FTTP sometimes free</span>
+            </div>
+        </div>
+
+        <div class="main-setup">
+            <!-- KPI stats -->
+            <div class="stat-row">
+                <div class="stat-item"><span class="big">£20–35</span><span class="small">activation</span></div>
+                <div class="stat-item"><span class="big">£40–60</span><span class="small">engineer install</span></div>
+                <div class="stat-item"><span class="big">£0–60</span><span class="small">full fibre</span></div>
+                <div class="stat-item"><span class="big">£5–15</span><span class="small">router delivery</span></div>
+            </div>
+
+            <!-- what counts as setup costs -->
+            <div class="sec-head"><i class="fas fa-question-circle"></i> What counts as broadband setup costs?</div>
+            <div class="info-box">
+                Activation fee, engineer installation, new line installation, full fibre install, router delivery, hardware upgrades. Not all providers itemise clearly – always review the breakdown.
+            </div>
+
+            <!-- typical setup fees table -->
+            <div class="sec-head"><i class="fas fa-table"></i> Typical UK setup fees (2026)</div>
+            <table class="fee-table">
+                <tr><th>Setup type</th><th>Typical cost</th></tr>
+                <tr><td>Standard activation</td><td>£20–£35</td></tr>
+                <tr><td>Engineer installation</td><td>£40–£60</td></tr>
+                <tr><td>New line installation</td><td>£50–£100</td></tr>
+                <tr><td>Full fibre install</td><td>£0–£60 (often free promo)</td></tr>
+                <tr><td>Router delivery</td><td>£5–£15</td></tr>
+            </table>
+
+            <!-- fibre vs full fibre -->
+            <div class="sec-head"><i class="fas fa-code-branch"></i> Fibre vs full fibre setup costs</div>
+            <div class="fttc-fttp">
+                <div class="cost-card fttc">
+                    <div style="font-weight:700;">Standard (FTTC)</div>
+                    <p>Often remote activation, no engineer required. £0–£30 if line exists.</p>
+                </div>
+                <div class="cost-card fttp">
+                    <div style="font-weight:700;">Full fibre (FTTP)</div>
+                    <p>May need engineer visit to install fibre to property. Typical £0–£60, but many providers offer free install on 18–24 month contracts.</p>
+                </div>
+            </div>
+
+            <!-- contract length & setup fees -->
+            <div class="sec-head"><i class="fas fa-file-contract"></i> Contract length & setup fees</div>
+            <table class="contract-table">
+                <tr><td><strong>12 months</strong> – more likely to charge</td></tr>
+                <tr><td><strong>18 months</strong> – sometimes free</td></tr>
+                <tr><td><strong>24 months</strong> – often free (providers spread cost)</td></tr>
+                <tr><td><strong>Rolling (30‑day)</strong> – frequently charged</td></tr>
+            </table>
+
+            <!-- example: setup cost vs monthly price -->
+            <div class="sec-head"><i class="fas fa-scale-balanced"></i> Setup cost vs monthly price</div>
+            <div class="example-calc">
+                <p>
+                    <strong>Over 24 months:</strong><br>
+                    Deal A: £25/month + £40 setup = total £640<br>
+                    Deal B: £27/month + £0 setup = total £648<br>
+                    ✅ Deal A cheaper overall – always compare total contract cost.
+                </p>
+            </div>
+
+            <!-- new line installation costs -->
+            <div class="sec-head"><i class="fas fa-house"></i> New line installation costs</div>
+            <div class="newline-box">
+                If property has no active line, is new build, or never had broadband: £50–£100+. Some providers include free in promotions – check.
+            </div>
+
+            <!-- router charges -->
+            <div class="sec-head"><i class="fas fa-router"></i> Router charges explained</div>
+            <p>Most providers include router free, but watch for delivery fees, premium upgrades, early termination hardware fees. May need to return router after contract.</p>
+
+            <!-- moving home -->
+            <div class="sec-head"><i class="fas fa-truck-moving"></i> Moving home & setup costs</div>
+            <p>Some charge relocation fees, others waive during transfer. New fibre installation may apply. Compare switching vs transferring – switching can offer better overall value.</p>
+
+            <!-- hidden costs grid -->
+            <div class="sec-head"><i class="fas fa-eye-slash"></i> Hidden costs to watch</div>
+            <div class="hidden-grid">
+                <span>✔️ VAT included? (business plans often excl.)</span>
+                <span>✔️ Mid‑contract price rises (CPI +3.9%)</span>
+                <span>✔️ Setup waived only for online orders?</span>
+                <span>✔️ Free install requires min. contract length?</span>
+            </div>
+
+            <!-- how to compare properly -->
+            <div class="sec-head"><i class="fas fa-compass"></i> How to compare broadband setup costs properly</div>
+            <div class="steps-list">
+                1️⃣ Compare monthly price<br>
+                2️⃣ Add setup fee<br>
+                3️⃣ Multiply monthly price by contract length<br>
+                4️⃣ Include activation/delivery fees<br>
+                5️⃣ Review total contract cost<br>
+                👉 The cheapest monthly deal ≠ cheapest overall.
+            </div>
+
+            <!-- when paying setup fees is worth it -->
+            <div class="sec-head"><i class="fas fa-coins"></i> When paying setup fees is worth it</div>
+            <p>If monthly price is significantly lower, contract flexibility needed, shorter commitment wanted, or full fibre install improves reliability – paying setup can be sensible. Short‑term thinking may cost more long‑term.</p>
+
+            <!-- FAQ -->
+            <div class="sec-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq-stack">
+                <details><summary>Is broadband installation usually free?</summary>Often on 18–24 month contracts, but not guaranteed – always check.</details>
+                <details><summary>Does full fibre always cost more to install?</summary>Not necessarily – many providers waive installation during promotions.</details>
+                <details><summary>Are setup fees refundable?</summary>Generally no, unless cancelled within cooling‑off period (14 days).</details>
+                <details><summary>Can I avoid engineer installation?</summary>If infrastructure already exists, possibly. Remote activation may be available.</details>
+                <details><summary>Should I prioritise free setup?</summary>No – compare total contract cost first.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#ecf2ed; border-radius:2rem 0.5rem; padding:1.5rem; margin:2rem 0;">
+                <i class="fas fa-crown" style="color:var(--teal-soft); font-size:1.8rem; margin-right:0.8rem;"></i>
+                <strong>Utility King approach:</strong> We compare setup fees clearly, total contract cost, infrastructure type, contract lengths – so you avoid hidden charges and choose the best‑value deal confidently.
+            </div>
+
+            <!-- final CTA -->
+            <div class="cta-setup">
+                <h2 style="font-size:2rem; color:var(--charcoal);">Ready to compare broadband setup costs?</h2>
+                <p style="font-size:1.2rem; margin:1rem 0;">If you're switching provider or moving home, setup fees can significantly impact upfront cost. Better‑value deals – including free installation – may be available in your postcode.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-setup">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#5f857b;"><i class="fas fa-info-circle"></i> We'll help you find the lowest total cost in your area.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#6c9288;">© Utility King 2026 · broadband setup costs comparison · fully responsive</p>
+        </div> <!-- main-setup -->
+    </div> <!-- guide -->
+</body>
+</html>

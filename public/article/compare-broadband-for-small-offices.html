@@ -1,0 +1,528 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Small office broadband 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- fresh type: Plus Jakarta Sans + DM Serif Display for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f2f3ee;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #253531;
+        }
+
+        /* modern, warm industrial palette: moss green, terracotta, cream, deep slate */
+        :root {
+            --moss: #4a685b; /* muted green */
+            --terracotta: #c17b5e; /* warm clay */
+            --cream-bg: #fefaf2;
+            --slate-dark: #2a3b3a;
+            --border-warm: #e0d6cc;
+            --accent-sand: #e7d7c4;
+        }
+
+        .guide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--cream-bg);
+            border-radius: 3rem;
+            box-shadow: 0 45px 70px -35px #384f49;
+            overflow: hidden;
+            border: 1px solid #d6cdc0;
+        }
+
+        /* header — moss + terracotta underline */
+        .header-office {
+            background: var(--moss);
+            padding: 2rem 1.8rem;
+            color: #fcf7ed;
+            border-bottom: 6px solid var(--terracotta);
+        }
+
+        @media (min-width: 640px) {
+            .header-office {
+                padding: 2.5rem 2.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-office {
+                padding: 3.2rem 4rem;
+            }
+        }
+
+        .header-office h1 {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2.4rem;
+            font-weight: 400;
+            letter-spacing: -0.01em;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .header-office h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-office h1 {
+                font-size: 3.8rem;
+            }
+        }
+
+        .header-office h1 i {
+            background: var(--terracotta);
+            color: var(--moss);
+            padding: 0.8rem;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            font-size: 2rem;
+        }
+
+        .header-office .sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 950px;
+            opacity: 0.9;
+            margin: 1rem 0 1.8rem;
+            border-left: 4px solid var(--terracotta);
+            padding-left: 1.5rem;
+        }
+
+        .header-office .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.6px;
+            color: #cfdfd4;
+        }
+
+            .header-office .tags i {
+                color: var(--terracotta);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main-office {
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .main-office {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-office {
+                padding: 3.5rem 4rem;
+            }
+        }
+
+        /* KPI row */
+        .kpi-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            background: white;
+            border-radius: 2.5rem 0.8rem 2.5rem 0.8rem;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-warm);
+        }
+
+            .kpi-strip .item {
+                flex: 1 1 100px;
+                text-align: center;
+            }
+
+            .kpi-strip .big {
+                font-size: 1.7rem;
+                font-weight: 800;
+                color: var(--terracotta);
+                line-height: 1.2;
+            }
+
+            .kpi-strip .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #5c736b;
+                text-transform: uppercase;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'DM Serif Display', serif;
+            font-size: 2rem;
+            font-weight: 400;
+            color: var(--slate-dark);
+            margin: 2.5rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--terracotta);
+            padding-bottom: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+            .section-head i {
+                color: var(--terracotta);
+                font-size: 1.8rem;
+            }
+
+        /* what counts? */
+        .def-box {
+            background: #f4ede4;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* speed recommendation cards */
+        .speed-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .speed-card {
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 1rem;
+            border: 1px solid var(--border-warm);
+            text-align: center;
+        }
+
+            .speed-card .icon {
+                font-size: 2rem;
+                color: var(--terracotta);
+                margin-bottom: 0.5rem;
+            }
+
+            .speed-card .speed {
+                font-size: 1.8rem;
+                font-weight: 800;
+                color: var(--moss);
+            }
+
+            .speed-card .tag {
+                background: var(--accent-sand);
+                display: inline-block;
+                padding: 0.2rem 1rem;
+                border-radius: 40px;
+                font-weight: 600;
+                margin: 0.5rem 0;
+            }
+
+        /* fibre vs full fibre row */
+        .fibre-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        .fibre-card {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            border: 1px solid #d6cbbc;
+        }
+
+            .fibre-card.fttc {
+                border-top: 6px solid #9a8478;
+            }
+
+            .fibre-card.fttp {
+                border-top: 6px solid var(--terracotta);
+            }
+
+            .fibre-card .title {
+                font-weight: 700;
+                font-size: 1.4rem;
+                color: var(--slate-dark);
+            }
+
+        /* upload highlight */
+        .upload-block {
+            background: var(--slate-dark);
+            color: #f4efe6;
+            border-radius: 2.5rem 0.5rem 2.5rem 0.5rem;
+            padding: 1.8rem 2rem;
+            margin: 2rem 0;
+        }
+
+        /* business vs residential table */
+        .mini-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            margin: 1.8rem 0;
+        }
+
+            .mini-table th {
+                text-align: left;
+                font-weight: 600;
+                color: var(--slate-dark);
+                border-bottom: 2px dashed var(--terracotta);
+                padding-bottom: 0.2rem;
+            }
+
+            .mini-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1.2rem 0.3rem 1.2rem 0.3rem;
+                border: 1px solid #e0d4c8;
+            }
+
+        /* pricing grid */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .price-item {
+            background: white;
+            border-radius: 1.5rem 0.3rem 1.5rem 0.3rem;
+            padding: 1.2rem;
+            border: 1px solid #d7cbbc;
+        }
+
+            .price-item .speed {
+                font-weight: 700;
+                color: var(--moss);
+            }
+
+            .price-item .cost {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: var(--terracotta);
+            }
+
+        /* checklist / best setup */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            background: #f3ede4;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+        /* faq */
+        .faq-block details {
+            background: white;
+            border-radius: 1.5rem 0.3rem 1.5rem 0.3rem;
+            margin: 0.8rem 0;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #d6cdbc;
+        }
+
+        /* cta */
+        .cta-office {
+            background: white;
+            border-radius: 3rem 1rem 3rem 1rem;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 2rem;
+            border: 4px solid var(--terracotta);
+            text-align: center;
+        }
+
+        .btn-office {
+            background: var(--terracotta);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.5rem 3rem 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 18px 24px -16px #975f45;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn-office:hover {
+                background: #a86d52;
+                transform: translateY(-3px);
+            }
+
+        hr {
+            border: 1px solid #d4cbbc;
+            margin: 2rem 0;
+        }
+
+        /* responsive */
+        p, li {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header-office">
+            <h1><i class="fas fa-building"></i> Compare Broadband for Small Offices (UK 2026)</h1>
+            <div class="sub">For small offices, broadband isn't just about browsing speed — it's about keeping your team productive. Video calls, cloud software, VoIP, file sharing, payment systems. We help you find the right connection.</div>
+            <div class="tags">
+                <span><i class="fas fa-users"></i> 1–3 staff: 100–150 Mbps</span>
+                <span><i class="fas fa-people-group"></i> 3–10 staff: 150–300 Mbps</span>
+                <span><i class="fas fa-check-circle"></i> full fibre recommended</span>
+            </div>
+        </div>
+
+        <div class="main-office">
+            <!-- KPI strip -->
+            <div class="kpi-strip">
+                <div class="item"><span class="big">100–150</span><span class="small">Mbps · 1–3 staff</span></div>
+                <div class="item"><span class="big">150–300</span><span class="small">Mbps · best value</span></div>
+                <div class="item"><span class="big">FTTP</span><span class="small">full fibre</span></div>
+                <div class="item"><span class="big">£30–60</span><span class="small">/mo excl. VAT</span></div>
+            </div>
+
+            <!-- what counts as small office -->
+            <div class="section-head"><i class="fas fa-question-circle"></i> What counts as a small office?</div>
+            <div class="def-box">
+                Typically 1–10 employees, shared cloud systems, regular video conferencing, file transfers, possibly VoIP. Need reliable, stable connections – not necessarily enterprise infrastructure.
+            </div>
+
+            <!-- speed recommendations -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> What speed does a small office need?</div>
+            <div class="speed-grid">
+                <div class="speed-card"><div class="icon"><i class="fas fa-user-tie"></i></div><div class="speed">100 Mbps</div><div class="tag">1–3 staff</div><div>Light cloud, occasional video calls</div></div>
+                <div class="speed-card"><div class="icon"><i class="fas fa-people-group"></i></div><div class="speed">150–300 Mbps</div><div class="tag">3–10 staff ⭐ best value</div><div>Frequent video, shared platforms, file transfer</div></div>
+                <div class="speed-card"><div class="icon"><i class="fas fa-chart-line"></i></div><div class="speed">300–500 Mbps</div><div class="tag">8–15 staff</div><div>Heavy cloud, large files, design teams</div></div>
+            </div>
+
+            <!-- fibre vs full fibre -->
+            <div class="section-head"><i class="fas fa-code-branch"></i> Fibre vs full fibre for small offices</div>
+            <div class="fibre-row">
+                <div class="fibre-card fttc">
+                    <div class="title">FTTC (standard)</div>
+                    <p>⬇️ up to 67–80 Mbps<br>⬆️ 10–20 Mbps upload<br>Shared cabinet, may struggle under heavy simultaneous use.</p>
+                </div>
+                <div class="fibre-card fttp">
+                    <div class="title">FTTP (full fibre)</div>
+                    <p>⬇️ 100–1000 Mbps<br>⬆️ 100–900 Mbps upload<br>Lower latency, stable at peak hours – strongly recommended.</p>
+                </div>
+            </div>
+
+            <!-- upload spotlight -->
+            <div class="upload-block">
+                <i class="fas fa-upload" style="font-size:2.2rem; color:var(--terracotta); margin-right:1rem;"></i>
+                <strong>Why upload speed matters in offices:</strong> Upload client files, cloud storage, video calls, VoIP. Standard fibre 10–20 Mbps, full fibre 100–900 Mbps – bottlenecks disappear.
+            </div>
+
+            <!-- business vs residential table -->
+            <div class="section-head"><i class="fas fa-building"></i> Business vs residential for offices</div>
+            <table class="mini-table">
+                <tr><th>Feature</th><th>Residential</th><th>Business fibre</th></tr>
+                <tr><td>SLA (repair target)</td><td>No</td><td>Yes, 24–48h</td></tr>
+                <tr><td>Repair priority</td><td>Standard</td><td>Faster</td></tr>
+                <tr><td>Static IP</td><td>Rare</td><td>Available</td></tr>
+                <tr><td>Support</td><td>Standard</td><td>Priority</td></tr>
+            </table>
+            <p>For small offices relying on cloud systems, business fibre is usually recommended.</p>
+
+            <!-- SLA explanation -->
+            <div class="section-head"><i class="fas fa-file-contract"></i> SLA (Service Level Agreement)</div>
+            <p>Most business broadband includes 24–48h repair targets, uptime guarantees (≥99.5%), and defined escalation – valuable when downtime hurts operations.</p>
+
+            <!-- typical pricing -->
+            <div class="section-head"><i class="fas fa-pound-sign"></i> Typical pricing (excl. VAT)</div>
+            <div class="price-grid">
+                <div class="price-item"><span class="speed">100 Mbps</span><span class="cost">£30–40</span><span>/mo</span></div>
+                <div class="price-item"><span class="speed">300 Mbps</span><span class="cost">£40–55</span><span>/mo</span></div>
+                <div class="price-item"><span class="speed">500 Mbps</span><span class="cost">£50–65</span><span>/mo</span></div>
+            </div>
+
+            <!-- leased line note -->
+            <div class="section-head"><i class="fas fa-server"></i> When to consider a leased line</div>
+            <p>If internet is mission‑critical, downtime causes financial loss, you host services – leased lines offer guaranteed speeds, but from £200+/mo. Usually unnecessary for small offices.</p>
+
+            <!-- keep costs low checklist -->
+            <div class="section-head"><i class="fas fa-coins"></i> How to keep costs low</div>
+            <div class="def-box">
+                1️⃣ Choose the right speed – don't overbuy gigabit.<br>
+                2️⃣ Compare contract lengths (24‑month often best value).<br>
+                3️⃣ Review total cost: VAT, setup fees, static IP add‑ons.<br>
+                4️⃣ Check infrastructure – full fibre may be similar price.
+            </div>
+
+            <!-- example saving -->
+            <div style="background:#e7ddd2; border-radius:2rem 0.5rem; padding:1.5rem; margin:2rem 0;">
+                <i class="fas fa-calculator" style="color:var(--terracotta); font-size:2rem; margin-right:1rem;"></i>
+                <strong>Example saving:</strong> Old £70/mo for 100 Mbps → new deal £48/mo for 300 Mbps = save <strong>£22/month (£264/year)</strong> + better performance.
+            </div>
+
+            <!-- best setup for different offices -->
+            <div class="section-head"><i class="fas fa-briefcase"></i> Best setup for different small offices</div>
+            <div class="setup-grid">
+                <div><i class="fas fa-user-tie" style="color:var(--terracotta);"></i> 2‑person consultancy → 100–150 Mbps full fibre</div>
+                <div><i class="fas fa-paint-brush" style="color:var(--terracotta);"></i> 5‑person agency → 300 Mbps full fibre</div>
+                <div><i class="fas fa-microchip" style="color:var(--terracotta);"></i> Tech startup (8 staff) → 300–500 Mbps</div>
+                <div><i class="fas fa-cash-register" style="color:var(--terracotta);"></i> Retail office with POS → 150–300 Mbps + SLA</div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> Frequently asked questions</div>
+            <div class="faq-block">
+                <details><summary>Is 100 Mbps enough for 5 people?</summary>Possibly, but 150–300 Mbps offers more stability for simultaneous use.</details>
+                <details><summary>Do small offices need business broadband?</summary>Usually yes – for SLA, repair guarantees, and support.</details>
+                <details><summary>Is full fibre worth it?</summary>In most cases yes – especially for upload performance.</details>
+                <details><summary>Can I use residential broadband in an office?</summary>You can, but without SLA protections – risk if downtime costs you.</details>
+                <details><summary>How long does installation take?</summary>Typically 7–14 days.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#efe8dd; border-radius:2rem 0.5rem; padding:1.5rem; margin:2rem 0;">
+                <i class="fas fa-crown" style="color:var(--terracotta); font-size:1.8rem; margin-right:0.8rem;"></i>
+                <strong>Utility King approach:</strong> Compare business fibre deals, SLA details, postcode availability, total cost (incl. VAT) – so your small office gets the right balance of cost, reliability, and speed.
+            </div>
+
+            <!-- final CTA -->
+            <div class="cta-office">
+                <h2 style="font-size:2rem; color:var(--slate-dark);">Ready to compare broadband for your small office?</h2>
+                <p style="font-size:1.2rem; margin:1rem 0;">If your contract is ending – or your team is growing – better‑value business fibre deals may be available in your postcode. Switch to improve productivity and cut costs.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-office">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#6d8a7e;"><i class="fas fa-info-circle"></i> We'll help you find the best plan for your team.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#758f86;">© Utility King 2026 · Small office broadband comparison · fully responsive</p>
+        </div> <!-- main-office -->
+    </div> <!-- guide -->
+</body>
+</html>

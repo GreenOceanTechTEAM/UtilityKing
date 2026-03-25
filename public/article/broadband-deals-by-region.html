@@ -1,0 +1,832 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband Deals by Region UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #f8fafc, #eff3f8);
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Hero */
+        .premium-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #eef2ff 100%);
+            border-radius: 56px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 35px 60px -25px rgba(0,0,0,0.12);
+            border: 1px solid rgba(59, 130, 246, 0.2);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 550px;
+            height: 550px;
+            background: #3b82f6;
+            top: -200px;
+            right: -120px;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: #10b981;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 450px;
+            height: 450px;
+            background: #f59e0b;
+            top: 150px;
+            left: 15%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(59, 130, 246, 0.08);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            margin-bottom: 2.5rem;
+            color: #1e40af;
+        }
+
+            .hero-badge i {
+                color: #3b82f6;
+                font-size: 1.2rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -2px;
+            color: #0f172a;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #3b82f6, #10b981, #f59e0b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #475569;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px -5px rgba(0,0,0,0.05);
+        }
+
+            .hero-pill:hover {
+                border-color: #3b82f6;
+                background: #eff6ff;
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px rgba(59, 130, 246, 0.2);
+            }
+
+            .hero-pill i {
+                color: #3b82f6;
+                margin-right: 10px;
+            }
+
+        /* Main Content */
+        .content-area {
+            background: white;
+            border-radius: 56px;
+            padding: 4rem;
+            box-shadow: 0 30px 55px -20px rgba(0,0,0,0.1);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #3b82f6;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Info Cards Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2.2rem;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.05);
+        }
+
+            .info-card:hover {
+                transform: translateY(-6px);
+                border-color: #3b82f6;
+                box-shadow: 0 20px 30px -12px rgba(59, 130, 246, 0.15);
+            }
+
+        .info-icon {
+            width: 65px;
+            height: 65px;
+            background: #eff6ff;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #3b82f6;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .info-card p {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Competition Regions Grid */
+        .competition-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .competition-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+            transition: all 0.3s ease;
+        }
+
+            .competition-card:hover {
+                border-color: #10b981;
+                transform: translateY(-4px);
+            }
+
+        .competition-icon {
+            font-size: 2rem;
+            color: #10b981;
+            margin-bottom: 0.8rem;
+        }
+
+        /* Regional Cards - 6x2 Grid */
+        .regional-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .regional-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 1.8rem;
+            border: 2px solid;
+            transition: all 0.3s ease;
+        }
+
+            .regional-card:nth-child(1) {
+                border-color: #3b82f6;
+                background: linear-gradient(145deg, #ffffff, #eff6ff);
+            }
+
+            .regional-card:nth-child(2) {
+                border-color: #10b981;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .regional-card:nth-child(3) {
+                border-color: #f59e0b;
+                background: linear-gradient(145deg, #ffffff, #fffbeb);
+            }
+
+            .regional-card:nth-child(4) {
+                border-color: #8b5cf6;
+                background: linear-gradient(145deg, #ffffff, #f5f3ff);
+            }
+
+            .regional-card:nth-child(5) {
+                border-color: #ec4899;
+                background: linear-gradient(145deg, #ffffff, #fdf2f8);
+            }
+
+            .regional-card:nth-child(6) {
+                border-color: #14b8a6;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .regional-card h3 {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin-bottom: 0.8rem;
+            }
+
+        .regional-feature {
+            font-size: 0.9rem;
+            color: #4b5563;
+            margin-top: 0.5rem;
+        }
+
+        /* Rural vs Urban Comparison */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .comp-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 2px solid;
+        }
+
+            .comp-card:nth-child(1) {
+                border-color: #3b82f6;
+                background: linear-gradient(145deg, #ffffff, #eff6ff);
+            }
+
+            .comp-card:nth-child(2) {
+                border-color: #10b981;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .comp-card h3 {
+                font-size: 1.6rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .comp-card:nth-child(1) h3 {
+                color: #3b82f6;
+            }
+
+            .comp-card:nth-child(2) h3 {
+                color: #10b981;
+            }
+
+        .comp-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+            .comp-list li {
+                font-size: 1rem;
+                margin-bottom: 0.8rem;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+            }
+
+            .comp-list i {
+                width: 22px;
+            }
+
+        .comp-card:nth-child(1) .comp-list i {
+            color: #3b82f6;
+        }
+
+        .comp-card:nth-child(2) .comp-list i {
+            color: #10b981;
+        }
+
+        /* Price Table */
+        .price-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .price-table th {
+                text-align: left;
+                padding: 1rem;
+                font-size: 1.1rem;
+                font-weight: 700;
+                border-bottom: 2px solid #3b82f6;
+            }
+
+            .price-table td {
+                padding: 1rem;
+                font-size: 1rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+        .price-highlight {
+            color: #3b82f6;
+            font-weight: 700;
+        }
+
+        /* Postcode Matters */
+        .postcode-card {
+            background: #fefce8;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #eab308;
+            border-right: 6px solid #eab308;
+        }
+
+        /* Alt-Nets Card */
+        .altnet-card {
+            background: linear-gradient(145deg, #f5f3ff, #ffffff);
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #8b5cf6;
+        }
+
+        /* How to Compare */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 2.5rem 0;
+        }
+
+        .step-card {
+            background: #f1f5f9;
+            border-radius: 24px;
+            padding: 1.2rem;
+            text-align: center;
+        }
+
+        .step-number {
+            width: 35px;
+            height: 35px;
+            background: #3b82f6;
+            color: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 0.8rem;
+            font-weight: 700;
+        }
+
+        /* Example Comparison */
+        .example-card {
+            background: linear-gradient(145deg, #eff6ff, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border: 2px solid #3b82f6;
+        }
+
+        .example-item {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+            padding: 1rem;
+        }
+
+        .example-value {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #3b82f6;
+        }
+
+        /* FAQ Grid */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border-left: 5px solid #3b82f6;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:hover {
+                background: #eff6ff;
+                transform: translateX(4px);
+            }
+
+            .faq-card strong {
+                font-size: 1.2rem;
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #0f172a;
+            }
+
+            .faq-card p {
+                color: #475569;
+                font-size: 1rem;
+            }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #1e40af, #065f46);
+            border-radius: 48px;
+            padding: 4rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            color: white;
+        }
+
+            .cta-section h2 {
+                font-size: 3rem;
+                font-weight: 800;
+                font-family: 'Space Grotesk', sans-serif;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section p {
+                font-size: 1.3rem;
+                opacity: 0.9;
+                margin-bottom: 2.5rem;
+                max-width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            color: #1e40af;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -8px rgba(0,0,0,0.2);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 35px -10px rgba(0,0,0,0.3);
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1200px) {
+            .regional-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .competition-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid, .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .regional-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .competition-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-map-marker-alt"></i> UTILITY KING · UK 2026 GUIDE
+                </div>
+                <h1 class="hero-title">
+                    <span>Broadband Deals</span><br>by Region
+                </h1>
+                <p class="hero-description">
+                    The best deal in London may not exist in Manchester. Compare by region and postcode — infrastructure, competition, and pricing vary dramatically across the UK.
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-city"></i> Urban competition</span>
+                    <span class="hero-pill"><i class="fas fa-tree"></i> Rural options</span>
+                    <span class="hero-pill"><i class="fas fa-tachometer-alt"></i> Full fibre rollout</span>
+                    <span class="hero-pill"><i class="fas fa-map-pin"></i> Postcode matters</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Why Deals Vary -->
+            <div class="section-header">
+                <div class="section-subhead">WHY VARIATION</div>
+                <h2 class="section-heading">Why broadband deals vary by region</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-tower-cell"></i></div><h3>Infrastructure availability</h3><p>Full fibre, cable, or FTTC — what's available determines competition and pricing.</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-chart-line"></i></div><h3>Competition density</h3><p>Multiple providers in urban areas drive prices down; rural regions have fewer options.</p></div>
+            </div>
+
+            <!-- Competition Regions -->
+            <div class="section-header">
+                <div class="section-subhead">HOTSPOTS</div>
+                <h2 class="section-heading">Regions with most competition</h2>
+            </div>
+            <div class="competition-grid">
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-city"></i></div><h4>London</h4><p>Multiple Alt-Nets · Gigabit under £35</p></div>
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-building"></i></div><h4>Manchester</h4><p>CityFibre · Competitive gigabit pricing</p></div>
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-industry"></i></div><h4>Birmingham</h4><p>Strong rollout · Mid-tier competition</p></div>
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-landmark"></i></div><h4>Leeds</h4><p>Expanding fibre · Competitive offers</p></div>
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-flag-checkered"></i></div><h4>Glasgow</h4><p>Strong Openreach FTTP · Alt-Net presence</p></div>
+                <div class="competition-card"><div class="competition-icon"><i class="fas fa-university"></i></div><h4>Bristol</h4><p>Growing gigabit availability</p></div>
+            </div>
+
+            <!-- Regional Breakdown - 6 Regions -->
+            <div class="section-header">
+                <div class="section-subhead">REGIONAL GUIDE</div>
+                <h2 class="section-heading">Broadband by UK region</h2>
+            </div>
+            <div class="regional-grid">
+                <div class="regional-card"><h3>📍 London</h3><p>Strong full fibre · Multiple Alt-Nets · Gigabit from £30–£35 · Frequent cashback</p><div class="regional-feature">Hyperoptic, Community Fibre, Openreach, Virgin</div></div>
+                <div class="regional-card"><h3>📍 Northern England</h3><p>Manchester, Leeds, Newcastle — CityFibre expanding · Competitive pricing · Gigabit £32–£40</p><div class="regional-feature">Rural areas may rely on FTTC</div></div>
+                <div class="regional-card"><h3>📍 Midlands</h3><p>Birmingham & surrounding — Strong rollout · Mid-tier competition · Growing gigabit</p><div class="regional-feature">Smaller towns may have limited Alt-Net choice</div></div>
+                <div class="regional-card"><h3>📍 South East</h3><p>Good Openreach FTTP coverage · Virgin Media strong · Growing Alt-Net presence</p><div class="regional-feature">Rural South West: FTTC common, 5G alternative</div></div>
+                <div class="regional-card"><h3>📍 Scotland</h3><p>Glasgow, Edinburgh: strong fibre · Highlands: limited choice, satellite/5G required</p><div class="regional-feature">Government-backed expansion continues</div></div>
+                <div class="regional-card"><h3>📍 Wales</h3><p>Cardiff: competitive pricing · Rural areas: slower speeds, fibre rollout improving</p><div class="regional-feature">FTTC still common outside cities</div></div>
+            </div>
+
+            <!-- Rural vs Urban Comparison -->
+            <div class="section-header">
+                <div class="section-subhead">URBAN vs RURAL</div>
+                <h2 class="section-heading">Regional differences at a glance</h2>
+            </div>
+            <div class="comparison-grid">
+                <div class="comp-card"><h3>🏙️ Urban Areas</h3><ul class="comp-list"><li><i class="fas fa-check-circle"></i> Provider choice: High</li><li><i class="fas fa-check-circle"></i> Gigabit availability: Common</li><li><i class="fas fa-check-circle"></i> Competition: Strong</li><li><i class="fas fa-check-circle"></i> Pricing: Competitive</li></ul></div>
+                <div class="comp-card"><h3>🌾 Rural Areas</h3><ul class="comp-list"><li><i class="fas fa-times-circle"></i> Provider choice: Limited</li><li><i class="fas fa-chart-line"></i> Gigabit availability: Expanding</li><li><i class="fas fa-chart-line"></i> Competition: Moderate</li><li><i class="fas fa-pound-sign"></i> Pricing: Often higher</li></ul></div>
+            </div>
+
+            <!-- Price Examples Table -->
+            <div class="section-header">
+                <div class="section-subhead">PRICING 2026</div>
+                <h2 class="section-heading">Regional price examples</h2>
+            </div>
+            <div class="price-card">
+                <table class="price-table">
+                    <tr><th>Plan Type</th><th>Typical Price</th> </tr>
+                    <tr><td>Urban Full Fibre 300 Mbps</td><td class="price-highlight">£28–£32/month</td></tr>
+                    <tr><td>Rural FTTC 67 Mbps</td><td class="price-highlight">£24–£30/month</td></tr>
+                    <tr><td>Urban Gigabit</td><td class="price-highlight">£30–£40/month</td></tr>
+                    <tr><td>5G Home Broadband (varies)</td><td class="price-highlight">£30–£45/month</td></tr>
+                </table>
+                <p style="margin-top: 1rem;">In some urban areas, gigabit costs only slightly more than 150 Mbps in rural areas.</p>
+            </div>
+
+            <!-- Postcode Matters -->
+            <div class="postcode-card">
+                <i class="fas fa-map-pin" style="font-size: 1.8rem; color: #eab308; margin-bottom: 0.5rem; display: block;"></i>
+                <h3 style="font-size: 1.3rem; margin-bottom: 0.5rem;">Why postcode matters more than region</h3>
+                <p>Even within the same city: Street A may have Openreach + CityFibre + Virgin (gigabit from £32). Street B (5 minutes away) may have FTTC only (max 67 Mbps). Availability is hyper-local.</p>
+            </div>
+
+            <!-- Alt-Nets Section -->
+            <div class="section-header">
+                <div class="section-subhead">ALT-NETS</div>
+                <h2 class="section-heading">Alternative fibre networks (Alt-Nets)</h2>
+            </div>
+            <div class="altnet-card">
+                <i class="fas fa-network-wired" style="font-size: 2rem; color: #8b5cf6; margin-bottom: 1rem; display: block;"></i>
+                <p>Alt-Nets often focus on specific cities, offer symmetrical speeds, provide competitive pricing, and sometimes avoid CPI-linked price rises. Where they operate, pricing pressure increases significantly.</p>
+                <div style="display: flex; flex-wrap: wrap; gap: 0.8rem; margin-top: 1rem;">
+                    <span style="background: #f5f3ff; padding: 0.3rem 1rem; border-radius: 60px;">CityFibre</span>
+                    <span style="background: #f5f3ff; padding: 0.3rem 1rem; border-radius: 60px;">Hyperoptic</span>
+                    <span style="background: #f5f3ff; padding: 0.3rem 1rem; border-radius: 60px;">Community Fibre</span>
+                    <span style="background: #f5f3ff; padding: 0.3rem 1rem; border-radius: 60px;">Gigaclear</span>
+                    <span style="background: #f5f3ff; padding: 0.3rem 1rem; border-radius: 60px;">Zzoomm</span>
+                </div>
+            </div>
+
+            <!-- How to Compare Properly -->
+            <div class="section-header">
+                <div class="section-subhead">METHOD</div>
+                <h2 class="section-heading">How to compare regional deals properly</h2>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">1</div><p>Check full fibre availability</p></div>
+                <div class="step-card"><div class="step-number">2</div><p>Compare upload speeds</p></div>
+                <div class="step-card"><div class="step-number">3</div><p>Total 24-month cost</p></div>
+                <div class="step-card"><div class="step-number">4</div><p>Check CPI-linked rises</p></div>
+                <div class="step-card"><div class="step-number">5</div><p>Router quality</p></div>
+            </div>
+
+            <!-- Real-World Example -->
+            <div class="section-header">
+                <div class="section-subhead">REAL WORLD</div>
+                <h2 class="section-heading">London vs rural example</h2>
+            </div>
+            <div class="example-card">
+                <div class="example-item"><i class="fas fa-city" style="font-size: 2rem; color: #3b82f6;"></i><h4>London Postcode</h4><div class="example-value">Gigabit FTTP</div><p>£34/month + £100 cashback</p></div>
+                <div class="example-item"><i class="fas fa-tree" style="font-size: 2rem; color: #10b981;"></i><h4>Rural Postcode</h4><div class="example-value">67 Mbps FTTC</div><p>£27/month · no cashback</p></div>
+            </div>
+
+            <!-- Moving Region Opportunity -->
+            <div class="section-header">
+                <div class="section-subhead">MOVING</div>
+                <h2 class="section-heading">Moving to a new region?</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-check-circle"></i></div><h3>Check fibre availability</h3><p>At new address before moving</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-exchange-alt"></i></div><h3>Review exit fees</h3><p>From current provider</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-calendar"></i></div><h3>Book installation early</h3><p>Avoid delays after moving</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-arrow-up"></i></div><h3>Upgrade infrastructure</h3><p>Moving is prime opportunity</p></div>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-header">
+                <div class="section-subhead">QUESTIONS</div>
+                <h2 class="section-heading">Frequently asked questions</h2>
+            </div>
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Are broadband prices different in every region?</strong><p>Yes — due to competition and infrastructure.</p></div>
+                <div class="faq-card"><strong>Is London cheaper for broadband?</strong><p>Often yes — due to high competition.</p></div>
+                <div class="faq-card"><strong>Do rural areas have fewer deals?</strong><p>Generally yes — but fibre rollout is improving.</p></div>
+                <div class="faq-card"><strong>Can I get gigabit in small towns?</strong><p>Increasingly yes — depends on local rollout.</p></div>
+                <div class="faq-card"><strong>How do I check regional availability?</strong><p>Use postcode comparison tools.</p></div>
+                <div class="faq-card"><strong>What's the best region for broadband?</strong><p>Urban areas with Alt-Net competition.</p></div>
+            </div>
+
+            <!-- Why Utility King -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Compare by postcode</h3><p>See what's available at your address</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-network-wired"></i></div><h3>Identify full fibre networks</h3><p>Openreach, CityFibre, Virgin, Alt-Nets</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-arrow-up"></i></div><h3>Compare upload speeds</h3><p>Critical for cameras & remote work</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-pound-sign"></i></div><h3>Find regional offers</h3><p>Cashback and local incentives</p></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Find the best deal in your region</h2>
+                <p>Your postcode determines available speeds, provider choice, pricing competition, and infrastructure quality. Check what's available at your address today.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #3b82f6;"></i> Utility King — broadband deals by region UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,799 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Ultimate Guide to Broadband Comparison UK 2026</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background: #f8fafc;
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .dark-hero {
+            background: linear-gradient(145deg, #0a0c15, #111827, #1a1f2e);
+            border-radius: 64px;
+            padding: 3rem 3rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 40px 60px -20px rgba(0,0,0,0.4);
+            border: 1px solid rgba(139,92,246,0.2);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(90px);
+            opacity: 0.3;
+        }
+
+        .shape-1 {
+            width: 600px;
+            height: 600px;
+            background: #8b5cf6;
+            top: -250px;
+            right: -150px;
+        }
+
+        .shape-2 {
+            width: 550px;
+            height: 550px;
+            background: #10b981;
+            bottom: -200px;
+            left: -120px;
+        }
+
+        .shape-3 {
+            width: 500px;
+            height: 500px;
+            background: #f59e0b;
+            top: 150px;
+            left: 10%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(139,92,246,0.15);
+            backdrop-filter: blur(10px);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(139,92,246,0.3);
+            margin-bottom: 2.5rem;
+            color: #e9d5ff;
+            font-family: 'Outfit', sans-serif;
+        }
+
+            .hero-badge i {
+                color: #8b5cf6;
+                font-size: 1.2rem;
+            }
+
+        .hero-title {
+            font-size: 3rem;
+            font-weight: 800;
+            line-height: 1.08;
+            margin-bottom: 2rem;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            letter-spacing: -2px;
+            color: white;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #8b5cf6, #10b981, #f59e0b);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.8);
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            padding: 1rem 1rem;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+            .hero-pill:hover {
+                border-color: #8b5cf6;
+                background: rgba(139,92,246,0.2);
+                transform: translateY(-3px);
+            }
+
+            .hero-pill i {
+                color: #8b5cf6;
+                margin-right: 10px;
+            }
+
+        .content-area {
+            background: white;
+            border-radius: 64px;
+            padding: 4rem;
+            box-shadow: 0 30px 55px -20px rgba(0,0,0,0.1);
+            border: 1px solid #eef2ff;
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #8b5cf6;
+            text-transform: uppercase;
+            letter-spacing: 5px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            border-radius: 32px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px -8px rgba(0,0,0,0.08);
+        }
+
+            .info-card:nth-child(1) {
+                background: linear-gradient(145deg, #e9d5ff, #ffffff);
+                border: 1px solid #ddd6fe;
+            }
+
+            .info-card:nth-child(2) {
+                background: linear-gradient(145deg, #d1fae5, #ffffff);
+                border: 1px solid #a7f3d0;
+            }
+
+            .info-card:nth-child(3) {
+                background: linear-gradient(145deg, #fed7aa, #ffffff);
+                border: 1px solid #fed7aa;
+            }
+
+            .info-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 20px 30px -12px rgba(0,0,0,0.15);
+            }
+
+        .info-icon {
+            width: 65px;
+            height: 65px;
+            border-radius: 22px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .info-card:nth-child(1) .info-icon {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .info-card:nth-child(2) .info-icon {
+            background: #10b981;
+            color: white;
+        }
+
+        .info-card:nth-child(3) .info-icon {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .info-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #0f172a;
+        }
+
+        .info-card p {
+            font-size: 1rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .type-card {
+            border-radius: 28px;
+            padding: 1.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .type-card:nth-child(1) {
+                background: linear-gradient(145deg, #e9d5ff, #ffffff);
+                border: 2px solid #8b5cf6;
+            }
+
+            .type-card:nth-child(2) {
+                background: linear-gradient(145deg, #dbeafe, #ffffff);
+                border: 2px solid #3b82f6;
+            }
+
+            .type-card:nth-child(3) {
+                background: linear-gradient(145deg, #fef3c7, #ffffff);
+                border: 2px solid #f59e0b;
+            }
+
+            .type-card:nth-child(4) {
+                background: linear-gradient(145deg, #d1fae5, #ffffff);
+                border: 2px solid #10b981;
+            }
+
+            .type-card h4 {
+                font-size: 1.2rem;
+                font-weight: 700;
+                margin-bottom: 0.5rem;
+            }
+
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .step-card {
+            border-radius: 32px;
+            padding: 2rem;
+            text-align: center;
+            transition: all 0.3s ease;
+        }
+
+            .step-card:nth-child(1) {
+                background: linear-gradient(145deg, #e0f2fe, #ffffff);
+                border: 2px solid #0ea5e9;
+            }
+
+            .step-card:nth-child(2) {
+                background: linear-gradient(145deg, #d1fae5, #ffffff);
+                border: 2px solid #10b981;
+            }
+
+            .step-card:nth-child(3) {
+                background: linear-gradient(145deg, #fed7aa, #ffffff);
+                border: 2px solid #f59e0b;
+            }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            border-radius: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin: 0 auto 1rem;
+        }
+
+        .step-card:nth-child(1) .step-number {
+            background: #0ea5e9;
+            color: white;
+        }
+
+        .step-card:nth-child(2) .step-number {
+            background: #10b981;
+            color: white;
+        }
+
+        .step-card:nth-child(3) .step-number {
+            background: #f59e0b;
+            color: white;
+        }
+
+        .step-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .speed-card {
+            background: linear-gradient(145deg, #f8fafc, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e2e8f0;
+        }
+
+        .speed-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .speed-table th {
+                text-align: left;
+                padding: 1rem;
+                font-size: 1.1rem;
+                font-weight: 700;
+                border-bottom: 2px solid #8b5cf6;
+            }
+
+            .speed-table td {
+                padding: 1rem;
+                font-size: 1rem;
+                border-bottom: 1px solid #e2e8f0;
+            }
+
+        .speed-highlight {
+            color: #8b5cf6;
+            font-weight: 700;
+        }
+
+        .hidden-card {
+            background: #fef2f2;
+            border-radius: 32px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 6px solid #ef4444;
+            border-right: 6px solid #ef4444;
+        }
+
+        .usage-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .usage-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+
+        .usage-icon {
+            font-size: 1.5rem;
+            color: #8b5cf6;
+            margin-bottom: 0.3rem;
+        }
+
+        .timing-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .timing-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 1.2rem;
+            text-align: center;
+            border: 2px solid #e2e8f0;
+        }
+
+        .timing-icon {
+            font-size: 1.5rem;
+            color: #f59e0b;
+            margin-bottom: 0.3rem;
+        }
+
+        .renew-card {
+            background: linear-gradient(145deg, #e9d5ff, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border: 2px solid #8b5cf6;
+        }
+
+        .renew-item {
+            flex: 1;
+            min-width: 150px;
+            text-align: center;
+        }
+
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .mistake-card {
+            background: #fef2f2;
+            border-radius: 28px;
+            padding: 1.2rem;
+            text-align: center;
+            border-left: 5px solid #ef4444;
+        }
+
+        .mistake-icon {
+            font-size: 1.5rem;
+            color: #ef4444;
+            margin-bottom: 0.3rem;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .faq-card {
+            background: #f8fafc;
+            border-radius: 28px;
+            padding: 1.5rem;
+            border-bottom: 4px solid;
+            transition: all 0.3s ease;
+        }
+
+            .faq-card:nth-child(1) {
+                border-bottom-color: #8b5cf6;
+            }
+
+            .faq-card:nth-child(2) {
+                border-bottom-color: #10b981;
+            }
+
+            .faq-card:nth-child(3) {
+                border-bottom-color: #3b82f6;
+            }
+
+            .faq-card:nth-child(4) {
+                border-bottom-color: #f59e0b;
+            }
+
+            .faq-card:nth-child(5) {
+                border-bottom-color: #ef4444;
+            }
+
+            .faq-card:nth-child(6) {
+                border-bottom-color: #ec489a;
+            }
+
+            .faq-card:hover {
+                transform: translateY(-3px);
+                background: white;
+                box-shadow: 0 10px 25px -8px rgba(0,0,0,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.2rem;
+                display: block;
+                margin-bottom: 0.5rem;
+                color: #0f172a;
+            }
+
+            .faq-card p {
+                color: #475569;
+                font-size: 1rem;
+            }
+
+        .cta-section {
+            background: linear-gradient(135deg, #8b5cf6, #10b981);
+            border-radius: 56px;
+            padding: 4rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+            .cta-section::before {
+                content: '';
+                position: absolute;
+                top: -50%;
+                left: -50%;
+                width: 200%;
+                height: 200%;
+                background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, transparent 70%);
+                animation: pulse 8s ease infinite;
+            }
+
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+                opacity: 0.5;
+            }
+
+            50% {
+                transform: scale(1.05);
+                opacity: 0.8;
+            }
+        }
+
+        .cta-section h2 {
+            font-size: 3.2rem;
+            font-weight: 800;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-section p {
+            font-size: 1.3rem;
+            opacity: 0.95;
+            margin-bottom: 2.5rem;
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: white;
+            color: #8b5cf6;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 30px -10px rgba(0,0,0,0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 40px -12px rgba(0,0,0,0.3);
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1200px) {
+            .info-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .types-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .steps-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .usage-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .timing-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .mistakes-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .types-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .steps-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .usage-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .mistakes-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .renew-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-title {
+                font-size: 3rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <div class="dark-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge"><i class="fas fa-star-of-life"></i> UTILITY KING · UK 2026 GUIDE</div>
+                <h1 class="hero-title"><span>Ultimate Guide</span><br>to Broadband Comparison</h1>
+                <p class="hero-description">Everything you need to know — from full fibre to hidden costs, speed requirements to switching. Compare smarter, save money, and get the right connection for your home.</p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-home"></i> Full fibre best</span>
+                    <span class="hero-pill"><i class="fas fa-tachometer-alt"></i> 150-300 Mbps ideal</span>
+                    <span class="hero-pill"><i class="fas fa-pound-sign"></i> Compare total cost</span>
+                    <span class="hero-pill"><i class="fas fa-sync-alt"></i> Switch and save</span>
+                </div>
+            </div>
+        </div>
+        <div class="content-area">
+            <div class="section-header"><div class="section-subhead">WHY COMPARE</div><h2 class="section-heading">Why broadband comparison matters</h2></div>
+            <div class="info-grid">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-pound-sign"></i></div><h3>Find the cheapest deal</h3><p>Providers constantly update promotions — comparing ensures you are not overpaying.</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-tachometer-alt"></i></div><h3>Upgrade to faster speeds</h3><p>Full fibre rollout means better options may be available in your area.</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-eye-slash"></i></div><h3>Avoid hidden charges</h3><p>Setup fees, price rises, and exit costs — comparing reveals the true price.</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">TECHNOLOGIES</div><h2 class="section-heading">Types of broadband in the UK</h2></div>
+            <div class="types-grid">
+                <div class="type-card"><h4>Full Fibre (FTTP)</h4><p>100 Mbps - 1 Gbps+ | Highest upload | Most reliable</p></div>
+                <div class="type-card"><h4>Standard Fibre (FTTC)</h4><p>30-67 Mbps | Copper to home | Widely available</p></div>
+                <div class="type-card"><h4>Cable Broadband</h4><p>High download | Lower upload | Urban areas</p></div>
+                <div class="type-card"><h4>4G / 5G Home</h4><p>Wireless | Quick setup | Signal dependent</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">METHOD</div><h2 class="section-heading">How to compare broadband deals</h2></div>
+            <div class="steps-grid">
+                <div class="step-card"><div class="step-number">1</div><h3>Check Availability</h3><p>Enter your postcode to see which providers and fibre networks serve your address.</p></div>
+                <div class="step-card"><div class="step-number">2</div><h3>Compare Speeds</h3><p>Choose speed based on household size — 150-300 Mbps suits most families.</p></div>
+                <div class="step-card"><div class="step-number">3</div><h3>Compare Total Cost</h3><p>Monthly price plus setup fees plus cashback plus annual rises equals true cost.</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">SPEED GUIDE</div><h2 class="section-heading">What speed do you need?</h2></div>
+            <div class="speed-card">
+                <table class="speed-table">
+                    <thead> <tr><th>Household Type</th><th>Recommended Speed</th></tr> </thead>
+                    <tbody> <tr><td class="speed-highlight">Single user</td><td class="speed-highlight">50-100 Mbps</td></tr> <tr><td class="speed-highlight">Couple</td><td class="speed-highlight">100-150 Mbps</td></tr> <tr><td class="speed-highlight">Family (3-4 people)</td><td class="speed-highlight">150-300 Mbps</td></tr> <tr><td class="speed-highlight">Large household</td><td class="speed-highlight">300-500 Mbps</td></tr> </tbody>
+                </table>
+            </div>
+            <div class="hidden-card"><i class="fas fa-eye-slash" style="font-size: 1.8rem; color: #ef4444; margin-bottom: 0.5rem; display: block;"></i><h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Hidden costs to watch</h3><p>Installation fees (GBP 30-60) | Router delivery charges | Early exit fees | Mid-contract price rises (CPI + 3.9 per cent) — always compare total contract cost.</p></div>
+            <div class="section-header"><div class="section-subhead">BY USAGE</div><h2 class="section-heading">Best broadband speeds for different uses</h2></div>
+            <div class="usage-grid">
+                <div class="usage-card"><div class="usage-icon"><i class="fas fa-user"></i></div><p><strong>Light</strong><br>50-100 Mbps</p><small>Browsing, email, occasional streaming</small></div>
+                <div class="usage-card"><div class="usage-icon"><i class="fas fa-tv"></i></div><p><strong>Moderate</strong><br>100-150 Mbps</p><small>HD streaming, video calls</small></div>
+                <div class="usage-card"><div class="usage-icon"><i class="fas fa-gamepad"></i></div><p><strong>Heavy</strong><br>150-300 Mbps</p><small>4K streaming, gaming, remote work</small></div>
+                <div class="usage-card"><div class="usage-icon"><i class="fas fa-home"></i></div><p><strong>Very Heavy</strong><br>300 Mbps+</p><small>Large downloads, smart homes</small></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">TIMING</div><h2 class="section-heading">When should you compare broadband?</h2></div>
+            <div class="timing-grid">
+                <div class="timing-card"><div class="timing-icon"><i class="fas fa-calendar-end"></i></div><p>When contract ends</p></div>
+                <div class="timing-card"><div class="timing-icon"><i class="fas fa-chart-line"></i></div><p>After price rises</p></div>
+                <div class="timing-card"><div class="timing-icon"><i class="fas fa-truck-moving"></i></div><p>When moving home</p></div>
+                <div class="timing-card"><div class="timing-icon"><i class="fas fa-home"></i></div><p>When fibre arrives</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">DECISION</div><h2 class="section-heading">Renewal vs switching</h2></div>
+            <div class="renew-card"><div class="renew-item"><h4>Renewing</h4><p>Convenient | No equipment changes | Renewal offers weaker</p></div><div class="renew-item"><i class="fas fa-arrow-right" style="font-size: 2rem; color: #8b5cf6;"></i></div><div class="renew-item"><h4>Switching</h4><p>New customer deals | Speed upgrades | Save GBP 100-300</p></div></div>
+            <div class="section-header"><div class="section-subhead">AVOID THESE</div><h2 class="section-heading">Common broadband comparison mistakes</h2></div>
+            <div class="mistakes-grid">
+                <div class="mistake-card"><div class="mistake-icon"><i class="fas fa-pound-sign"></i></div><p>Cheapest plan only</p></div>
+                <div class="mistake-card"><div class="mistake-icon"><i class="fas fa-chart-line"></i></div><p>Ignoring price rises</p></div>
+                <div class="mistake-card"><div class="mistake-icon"><i class="fas fa-rocket"></i></div><p>Overpaying for gigabit</p></div>
+                <div class="mistake-card"><div class="mistake-icon"><i class="fas fa-tools"></i></div><p>Forgetting setup fees</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">QUESTIONS</div><h2 class="section-heading">Frequently asked questions</h2></div>
+            <div class="faq-grid">
+                <div class="faq-card"><strong>What is the best broadband speed for most homes?</strong><p>Around 150-300 Mbps — balances performance and price.</p></div>
+                <div class="faq-card"><strong>Is full fibre worth it?</strong><p>Yes — it offers faster speeds, better reliability, and higher uploads.</p></div>
+                <div class="faq-card"><strong>How often should I compare broadband?</strong><p>At least once per year, or when your contract ends.</p></div>
+                <div class="faq-card"><strong>Can I switch broadband easily?</strong><p>Yes — One Touch Switch makes switching simple.</p></div>
+                <div class="faq-card"><strong>Does broadband availability vary by postcode?</strong><p>Yes — infrastructure differs by street. Always check by postcode.</p></div>
+                <div class="faq-card"><strong>What is the biggest mistake people make?</strong><p>Only comparing monthly price, not total contract cost.</p></div>
+            </div>
+            <div class="section-header"><div class="section-subhead">WHY US</div><h2 class="section-heading">Compare with Utility King</h2></div>
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card"><h3>Compare by postcode</h3><p>See deals at your exact address</p></div>
+                <div class="info-card"><h3>Total cost clarity</h3><p>No hidden fees</p></div>
+                <div class="info-card"><h3>Easy switching</h3><p>One Touch Switch ready</p></div>
+            </div>
+            <div class="cta-section"><h2>Compare broadband deals today</h2><p>Enter your postcode to see available speeds, providers, and prices — tailored to your address.</p><a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank"><i class="fas fa-envelope"></i> Contact us</a></div>
+          
+        </div>
+    </div>
+</body>
+</html>

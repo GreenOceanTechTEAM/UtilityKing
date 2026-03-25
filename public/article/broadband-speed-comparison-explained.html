@@ -1,0 +1,518 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Broadband speed comparison explained (2026) | Utility King</title>
+    <!-- Font Awesome 5 (free) for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f5fafd;
+            color: #12344a;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 36px;
+            box-shadow: 0 24px 48px -16px rgba(0,30,60,0.25);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #003153 0%, #0e4b6e 100%);
+            color: white;
+            padding: 2.2rem 2.8rem;
+        }
+
+            .header h1 {
+                font-size: 2.3rem;
+                font-weight: 650;
+                letter-spacing: -0.02em;
+                margin-bottom: 0.4rem;
+            }
+
+                .header h1 i {
+                    color: #ffbc6c;
+                    margin-right: 12px;
+                }
+
+            .header .sub {
+                font-size: 1.2rem;
+                opacity: 0.9;
+                max-width: 800px;
+                margin-top: 0.6rem;
+            }
+
+            .header .meta {
+                display: flex;
+                gap: 2.2rem;
+                margin-top: 1.8rem;
+                font-weight: 300;
+                flex-wrap: wrap;
+            }
+
+                .header .meta span i {
+                    margin-right: 8px;
+                    color: #b3d9ff;
+                }
+
+        .content {
+            padding: 2.5rem 2.8rem;
+        }
+
+        /* summary bar (no button) */
+        .summary-box {
+            background: #e2f0f9;
+            border-left: 6px solid #0e4b6e;
+            border-radius: 24px;
+            padding: 1.5rem 2.2rem;
+            margin-bottom: 2.5rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .summary-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem 2.8rem;
+        }
+
+        .stat-item {
+            font-size: 1.1rem;
+        }
+
+            .stat-item strong {
+                font-size: 1.5rem;
+                color: #003153;
+                display: block;
+                font-weight: 700;
+            }
+
+            .stat-item span {
+                font-size: 0.95rem;
+                color: #1f5170;
+            }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 650;
+            color: #003153;
+            margin: 2.8rem 0 1rem 0;
+            border-bottom: 3px solid #ffbc6c;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+            h2 i {
+                color: #0e4b6e;
+                margin-right: 12px;
+                font-size: 1.9rem;
+            }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 650;
+            color: #1d4460;
+            margin: 2rem 0 0.8rem;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            font-size: 1.1rem;
+            color: #1e3d55;
+        }
+
+        .tier-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.6rem;
+            margin: 2.2rem 0 2rem;
+        }
+
+        .tier-card {
+            flex: 1 1 200px;
+            background: #ffffff;
+            border-radius: 28px;
+            border: 1px solid #cde0ed;
+            padding: 1.8rem 1.2rem;
+            box-shadow: 0 8px 18px -12px #2a5b7c;
+        }
+
+        .tier-icon {
+            font-size: 2.2rem;
+            color: #0e4b6e;
+            margin-bottom: 0.4rem;
+        }
+
+        .tier-speed {
+            font-size: 1.9rem;
+            font-weight: 800;
+            color: #003153;
+            line-height: 1.2;
+        }
+
+        .tier-label {
+            background: #ffd966;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            font-weight: 600;
+            display: inline-block;
+            margin: 0.8rem 0 0.5rem;
+            font-size: 0.9rem;
+        }
+
+        .tier-best {
+            font-size: 0.98rem;
+            margin-top: 0.8rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.2rem 0;
+            border-radius: 24px;
+            overflow: hidden;
+            box-shadow: 0 6px 18px rgba(0,35,60,0.08);
+        }
+
+            .comparison-table th {
+                background: #003153;
+                color: white;
+                font-weight: 600;
+                padding: 1rem 1.2rem;
+                text-align: left;
+            }
+
+            .comparison-table td {
+                padding: 1rem 1.2rem;
+                background: white;
+                border-bottom: 1px solid #c7dcee;
+            }
+
+            .comparison-table .row-highlight {
+                background: #ecf6ff;
+                font-weight: 500;
+            }
+
+        .two-col {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .col {
+            flex: 1 1 250px;
+            background: #f1f8ff;
+            border-radius: 26px;
+            padding: 1.8rem;
+            border: 1px solid #bed9f0;
+        }
+
+            .col i {
+                font-size: 2.2rem;
+                color: #0e4b6e;
+            }
+
+        .pipe-example {
+            background: #ecf3f9;
+            padding: 1.6rem 2rem;
+            border-radius: 28px;
+            margin: 2rem 0;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 1.2rem;
+        }
+
+            .pipe-example i {
+                font-size: 2.8rem;
+                color: #226688;
+            }
+
+        .real-world-box {
+            background: #fcf2e3;
+            border-radius: 28px;
+            padding: 1.8rem 2.2rem;
+            margin: 2.2rem 0;
+            border-left: 8px solid #ff9f4b;
+        }
+
+            .real-world-box h4 {
+                font-size: 1.4rem;
+                margin-bottom: 0.8rem;
+                color: #003153;
+            }
+
+        .price-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 24px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+            .price-table th {
+                background: #0e4b6e;
+                color: white;
+                padding: 0.9rem 1rem;
+                text-align: left;
+            }
+
+            .price-table td {
+                padding: 0.9rem 1rem;
+                border-bottom: 1px solid #c8dcf0;
+            }
+
+        .faq-item {
+            margin: 1.5rem 0;
+            border-bottom: 1px dashed #b1cde0;
+            padding-bottom: 1rem;
+        }
+
+            .faq-item strong {
+                font-size: 1.2rem;
+                color: #00395e;
+            }
+
+        .single-cta-block {
+            background: linear-gradient(145deg, #deecf7, #ffffff);
+            border-radius: 36px;
+            padding: 2.5rem 2.2rem;
+            margin: 3rem 0 1.8rem;
+            text-align: center;
+            border: 1px solid #c5dcf2;
+        }
+
+        .btn-contact {
+            background: #ff8c42;
+            color: white;
+            border: none;
+            font-weight: 700;
+            font-size: 1.4rem;
+            padding: 1.1rem 3rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+            box-shadow: 0 14px 28px rgba(255,140,66,0.3);
+            transition: 0.2s;
+            margin: 1rem 0 0.5rem;
+        }
+
+            .btn-contact:hover {
+                background: #e67320;
+                transform: translateY(-3px);
+                box-shadow: 0 18px 32px rgba(255,140,66,0.4);
+            }
+
+            .btn-contact i {
+                font-size: 1.5rem;
+            }
+
+        .small-note {
+            color: #326a8c;
+            margin-top: 1.4rem;
+            font-size: 0.95rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #c8deef;
+            margin: 2rem 0 1rem;
+        }
+
+        @media (max-width: 650px) {
+            .header {
+                padding: 1.5rem;
+            }
+
+            .content {
+                padding: 1.5rem;
+            }
+
+            h2 {
+                font-size: 1.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1><i class="fas fa-tachometer-alt"></i> Broadband Speed Comparison Explained (UK 2026 Guide)</h1>
+            <div class="sub">67 Mbps. 150 Mbps. 300 Mbps. 1Gbps. What do those numbers actually mean — and how do you compare them properly? Choosing the wrong speed can mean paying for bandwidth you don’t use or frustrating slowdowns.</div>
+            <div class="meta">
+                <span><i class="fas fa-water"></i> Mbps explained</span>
+                <span><i class="fas fa-arrow-down"></i> download vs upload</span>
+                <span><i class="fas fa-network-wired"></i> fibre vs full fibre</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- quick summary (only text) -->
+            <div class="summary-box">
+                <div class="summary-stats">
+                    <div class="stat-item"><strong>35–67 Mbps</strong> <span>light use</span></div>
+                    <div class="stat-item"><strong>100–300 Mbps</strong> <span>families</span></div>
+                    <div class="stat-item"><strong>300–500 Mbps</strong> <span>large households</span></div>
+                    <div class="stat-item"><strong>900–1000 Mbps</strong> <span>gigabit / future‑proof</span></div>
+                    <div class="stat-item"><strong>full fibre</strong> <span>consistent speeds</span></div>
+                </div>
+            </div>
+
+            <!-- what does mbps mean + pipe analogy -->
+            <h2><i class="fas fa-question-circle"></i> What does Mbps mean?</h2>
+            <p><strong>Mbps</strong> = megabits per second. It measures how much data your connection can transfer per second. Higher Mbps = faster data transfer.</p>
+            <div class="pipe-example">
+                <i class="fas fa-water"></i>
+                <p style="margin:0; flex:1;">Think of it like water through a pipe: <strong>narrow pipe → lower Mbps → slower flow</strong> &nbsp;|&nbsp; <strong>wide pipe → higher Mbps → faster flow</strong>. The more people and devices, the wider the pipe needed.</p>
+            </div>
+
+            <!-- download vs upload -->
+            <h2><i class="fas fa-arrow-down"></i> Download speed vs upload speed</h2>
+            <div class="two-col">
+                <div class="col">
+                    <i class="fas fa-download"></i>
+                    <h3 style="margin-top:0.4rem;">Download speed</h3>
+                    <p>Streaming Netflix, downloading apps, loading websites, installing games. This is the number most providers advertise.</p>
+                </div>
+                <div class="col">
+                    <i class="fas fa-upload"></i>
+                    <h3 style="margin-top:0.4rem;">Upload speed</h3>
+                    <p>Video calls, cloud backups, live streaming, online gaming. Full fibre offers much higher upload speeds.</p>
+                </div>
+            </div>
+
+            <!-- standard uk broadband speed tiers -->
+            <h2><i class="fas fa-layer-group"></i> Standard UK broadband speed tiers</h2>
+            <div class="tier-grid">
+                <div class="tier-card">
+                    <div class="tier-icon"><i class="fas fa-seedling"></i></div>
+                    <div class="tier-speed">35–67 Mbps</div>
+                    <div class="tier-label">entry fibre</div>
+                    <div class="tier-best">✔ 1–2 people<br>✔ HD streaming<br>£22–27/mo</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-icon"><i class="fas fa-house-user"></i></div>
+                    <div class="tier-speed">100–150 Mbps</div>
+                    <div class="tier-label">small family</div>
+                    <div class="tier-best">✔ 4K streaming<br>✔ remote work<br>£26–32/mo</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-icon"><i class="fas fa-bolt"></i></div>
+                    <div class="tier-speed">300–500 Mbps</div>
+                    <div class="tier-label">ultrafast</div>
+                    <div class="tier-best">✔ 4+ users<br>✔ gaming<br>£32–42/mo</div>
+                </div>
+                <div class="tier-card">
+                    <div class="tier-icon"><i class="fas fa-rocket"></i></div>
+                    <div class="tier-speed">900–1000 Mbps</div>
+                    <div class="tier-label">gigabit</div>
+                    <div class="tier-best">✔ heavy use<br>✔ future‑proof<br>£40–50/mo</div>
+                </div>
+            </div>
+
+            <!-- fibre vs full fibre -->
+            <h2><i class="fas fa-code-branch"></i> Fibre vs full fibre: why it matters</h2>
+            <div class="two-col">
+                <div class="col">
+                    <i class="fas fa-tint"></i>
+                    <h3>Standard fibre (FTTC)</h3>
+                    <p>Up to ~67–80 Mbps, lower upload, may slow at peak times.</p>
+                </div>
+                <div class="col">
+                    <i class="fas fa-broadcast-tower"></i>
+                    <h3>Full fibre (FTTP)</h3>
+                    <p>100–1000 Mbps, much higher upload, stable, reliable. If available, often only a few pounds more.</p>
+                </div>
+            </div>
+
+            <!-- how much speed do you actually need? -->
+            <h2><i class="fas fa-ruler"></i> How much speed do you actually need?</h2>
+            <table class="comparison-table">
+                <tr><th>Household type</th><th>Recommended</th></tr>
+                <tr><td>👤 1–2 people</td><td>35–67 Mbps (usually sufficient)</td></tr>
+                <tr class="row-highlight"><td>👨‍👩‍👧 Family of four</td><td>100–300 Mbps</td></tr>
+                <tr><td>🎮 Gaming + streaming</td><td>150–300 Mbps</td></tr>
+                <tr><td>🏠 6+ heavy users</td><td>300–500 Mbps</td></tr>
+            </table>
+            <p>Gigabit is rarely essential — unless usage is extreme.</p>
+
+            <!-- real world speed comparison -->
+            <div class="real-world-box">
+                <h4><i class="fas fa-file-download"></i> Downloading a 10GB file</h4>
+                <p>
+                    ⬇️ 50 Mbps → ~27 minutes<br>
+                    ⬇️ 150 Mbps → ~9 minutes<br>
+                    ⬇️ 500 Mbps → ~3 minutes<br>
+                    ⬇️ 1000 Mbps → ~1.5 minutes
+                </p>
+                <p style="margin-top:0.5rem;">For everyday browsing, 300 Mbps vs 500 Mbps is barely noticeable. The biggest leap: 50 → 150 Mbps.</p>
+            </div>
+
+            <!-- why faster isn't always better -->
+            <h2><i class="fas fa-exclamation-triangle"></i> Why faster isn’t always better</h2>
+            <p>Higher speed won’t fix poor Wi‑Fi, bad router placement, thick walls, or old devices. Sometimes a router upgrade improves more than a speed boost.</p>
+
+            <!-- speed vs price best value approach -->
+            <h2><i class="fas fa-pound-sign"></i> Speed vs price: best value approach</h2>
+            <table class="price-table">
+                <tr><th>Tier</th><th>Value note</th></tr>
+                <tr><td>35–67 Mbps</td><td>cheapest</td></tr>
+                <tr><td>100–300 Mbps</td><td>🌟 best value (often +£3–5 from entry)</td></tr>
+                <tr><td>300–500 Mbps</td><td>premium performance</td></tr>
+                <tr><td>900–1000 Mbps</td><td>maximum speed</td></tr>
+            </table>
+            <p>Upgrading from 67 to 150 Mbps usually costs only £3–5 more — worth it for household stability.</p>
+
+            <!-- when should you upgrade -->
+            <h2><i class="fas fa-calendar-check"></i> When should you upgrade speed?</h2>
+            <p>Consider upgrading if: buffering at peak, video call freezing, multiple users cause slowdown, full fibre becomes available, or you're out of contract with price rises. Many can upgrade speed and lower price at the same time.</p>
+
+            <!-- FAQ -->
+            <h2><i class="fas fa-question"></i> Frequently asked questions</h2>
+            <div class="faq-item"><strong>Is 100 Mbps enough for a family?</strong> Yes — for most families, 100–150 Mbps is sufficient.</div>
+            <div class="faq-item"><strong>Is gigabit broadband worth it?</strong> For most homes, no — unless usage is heavy or pricing competitive.</div>
+            <div class="faq-item"><strong>Does speed affect gaming?</strong> Download speed affects game updates; latency affects gameplay.</div>
+            <div class="faq-item"><strong>What is considered fast broadband in the UK?</strong> 100 Mbps+ is fast; 300 Mbps+ ultrafast.</div>
+            <div class="faq-item"><strong>How often should I review my speed?</strong> At least once a year — especially when contract ends.</div>
+
+            <!-- why compare with utility king -->
+            <h2><i class="fas fa-crown"></i> Why compare broadband speeds with Utility King?</h2>
+            <p>We help you compare speed tiers clearly, infrastructure (FTTC vs FTTP), total contract cost, postcode availability, and switch easily. We focus on the right speed — not just the fastest headline.</p>
+
+            <!-- single contact button -->
+            <div class="single-cta-block">
+                <h3 style="font-size:1.9rem; color:#003153;">Ready to compare broadband speeds?</h3>
+                <p style="font-size:1.2rem;">If your connection feels slow — or you’re unsure whether you’re overpaying — better‑value options may already be available in your postcode. Switching takes minutes.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-contact">
+                    <i class="fas fa-envelope"></i> Contact Utility King
+                </a>
+                <div class="small-note">
+                    <i class="fas fa-info-circle"></i> We'll help you find the right speed for your home.
+                </div>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#2e6a95;"><i class="fas fa-chart-bar"></i> Broadband speed comparison 2026 — Utility King</p>
+        </div> <!-- end content -->
+    </div> <!-- end page -->
+</body>
+</html>

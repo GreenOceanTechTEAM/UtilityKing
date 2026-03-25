@@ -1,0 +1,473 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Compare Business Broadband Deals UK (2026) | Utility King</title>
+    <!-- Font Awesome 5 (free) for icons -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #f2f6fa;
+            color: #123241;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .page {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 38px;
+            box-shadow: 0 28px 48px -18px #0a2b3f;
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(145deg, #00263b 0%, #10455f 100%);
+            color: white;
+            padding: 2.2rem 3rem;
+        }
+
+            .header h1 {
+                font-size: 2.4rem;
+                font-weight: 650;
+                letter-spacing: -0.02em;
+                margin-bottom: 0.4rem;
+            }
+
+                .header h1 i {
+                    color: #fdbb6b;
+                    margin-right: 12px;
+                }
+
+            .header .sub {
+                font-size: 1.25rem;
+                opacity: 0.92;
+                max-width: 900px;
+                margin-top: 0.6rem;
+            }
+
+            .header .meta {
+                display: flex;
+                gap: 2.4rem;
+                margin-top: 2rem;
+                font-weight: 300;
+                flex-wrap: wrap;
+            }
+
+                .header .meta span i {
+                    margin-right: 8px;
+                    color: #b2d9ff;
+                }
+
+        .content {
+            padding: 2.8rem 3rem;
+        }
+
+        /* quick summary (no button) */
+        .summary-banner {
+            background: #e2eff8;
+            border-left: 6px solid #10455f;
+            border-radius: 28px;
+            padding: 1.6rem 2.2rem;
+            margin-bottom: 2.8rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2.2rem 3rem;
+        }
+
+        .stat-item {
+            font-size: 1.1rem;
+        }
+
+            .stat-item strong {
+                font-size: 1.6rem;
+                color: #00263b;
+                display: block;
+                font-weight: 700;
+            }
+
+            .stat-item span {
+                font-size: 0.95rem;
+                color: #1c5570;
+            }
+
+        h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #00263b;
+            margin: 2.5rem 0 1rem 0;
+            border-bottom: 3px solid #fdbb6b;
+            padding-bottom: 0.5rem;
+            display: inline-block;
+        }
+
+            h2 i {
+                color: #10455f;
+                margin-right: 12px;
+                font-size: 2rem;
+            }
+
+        h3 {
+            font-size: 1.5rem;
+            font-weight: 650;
+            color: #144f6b;
+            margin: 1.8rem 0 0.8rem;
+        }
+
+        p {
+            margin: 1.2rem 0;
+            font-size: 1.1rem;
+            color: #173f55;
+        }
+
+        .feature-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin: 2rem 0 1.5rem;
+        }
+
+        .feature-card {
+            flex: 1 1 240px;
+            background: #f8fdff;
+            border-radius: 28px;
+            border: 1px solid #c6ddec;
+            padding: 2rem 1.4rem;
+            box-shadow: 0 6px 12px -8px #1f5575;
+        }
+
+            .feature-card i {
+                font-size: 2.4rem;
+                color: #10455f;
+            }
+
+        .badge {
+            background: #fdbb6b;
+            color: #00263b;
+            font-weight: 700;
+            padding: 0.25rem 1.2rem;
+            border-radius: 30px;
+            display: inline-block;
+            font-size: 0.9rem;
+            margin: 0.8rem 0 0.5rem;
+        }
+
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2.2rem 0;
+            border-radius: 28px;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0,35,60,0.07);
+        }
+
+            .comparison-table th {
+                background: #00263b;
+                color: white;
+                font-weight: 600;
+                padding: 1rem 1.5rem;
+                text-align: left;
+            }
+
+            .comparison-table td {
+                padding: 1rem 1.5rem;
+                background: white;
+                border-bottom: 1px solid #caddf0;
+            }
+
+            .comparison-table .emph-row {
+                background: #ecf5fd;
+            }
+
+        .tier-showcase {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2.2rem 0;
+        }
+
+        .tier-block {
+            flex: 1 1 220px;
+            background: #ffffff;
+            border-radius: 26px;
+            border: 1px solid #bcd6ee;
+            padding: 1.6rem 1.2rem;
+        }
+
+            .tier-block .tier-icon {
+                font-size: 2rem;
+                color: #10455f;
+            }
+
+        .tier-speed {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #00263b;
+            line-height: 1.2;
+            margin: 0.4rem 0 0.2rem;
+        }
+
+        .tier-tag {
+            background: #ffe6be;
+            border-radius: 60px;
+            padding: 0.2rem 1.2rem;
+            font-weight: 600;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 26px;
+            overflow: hidden;
+            margin: 2rem 0;
+        }
+
+            .pricing-table th {
+                background: #10455f;
+                color: white;
+                padding: 0.9rem 1.2rem;
+                text-align: left;
+            }
+
+            .pricing-table td {
+                padding: 0.9rem 1.2rem;
+                border-bottom: 1px solid #c1daef;
+            }
+
+        .tip-box {
+            background: #e6f2fb;
+            border-radius: 28px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border-left: 8px solid #fdbb6b;
+        }
+
+        .faq-item {
+            margin: 1.6rem 0;
+            border-bottom: 1px dashed #afcee7;
+            padding-bottom: 1rem;
+        }
+
+            .faq-item strong {
+                font-size: 1.2rem;
+                color: #003759;
+            }
+
+        .single-cta-wrapper {
+            background: linear-gradient(135deg, #e2effb, white);
+            border-radius: 42px;
+            padding: 2.8rem 2.5rem;
+            margin: 3.5rem 0 2rem;
+            text-align: center;
+            border: 1px solid #c3ddf5;
+        }
+
+        .btn-business {
+            background: #fd9e3e;
+            color: white;
+            border: none;
+            font-weight: 700;
+            font-size: 1.5rem;
+            padding: 1.2rem 3.5rem;
+            border-radius: 70px;
+            display: inline-flex;
+            align-items: center;
+            gap: 15px;
+            text-decoration: none;
+            box-shadow: 0 18px 30px rgba(253, 158, 62, 0.35);
+            transition: 0.2s;
+            margin: 1rem 0 0.5rem;
+        }
+
+            .btn-business:hover {
+                background: #e58220;
+                transform: translateY(-4px);
+                box-shadow: 0 22px 38px rgba(253, 140, 40, 0.4);
+            }
+
+            .btn-business i {
+                font-size: 1.7rem;
+            }
+
+        .small-note {
+            color: #2b6685;
+            margin-top: 1.4rem;
+            font-size: 0.95rem;
+        }
+
+        hr {
+            border: none;
+            border-top: 2px solid #c0daef;
+            margin: 2rem 0 1rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="page">
+        <div class="header">
+            <h1><i class="fas fa-briefcase"></i> Compare Business Broadband Deals UK (2026 Guide)</h1>
+            <div class="sub">Business broadband isn’t just about speed — it’s about reliability, uptime, support and performance under pressure. The right connection directly impacts productivity and revenue.</div>
+            <div class="meta">
+                <span><i class="fas fa-chart-line"></i> SLAs & uptime</span>
+                <span><i class="fas fa-tachometer-alt"></i> business vs residential</span>
+                <span><i class="fas fa-map-marker-alt"></i> postcode availability</span>
+            </div>
+        </div>
+
+        <div class="content">
+            <!-- quick summary block (no button) -->
+            <div class="summary-banner">
+                <div class="stats">
+                    <div class="stat-item"><strong>100–300 Mbps</strong> <span>small business</span></div>
+                    <div class="stat-item"><strong>300–500 Mbps</strong> <span>growing teams (full fibre)</span></div>
+                    <div class="stat-item"><strong>£30–£70+</strong> <span>typical monthly cost</span></div>
+                    <div class="stat-item"><strong>SLA</strong> <span>fault repair guarantees</span></div>
+                </div>
+            </div>
+
+            <!-- what is business broadband -->
+            <h2><i class="fas fa-building"></i> What is business broadband?</h2>
+            <p>Business broadband is designed specifically for commercial use. It often includes higher reliability guarantees, faster fault repair times, dedicated customer support, static IP options, and Service Level Agreements (SLAs). It typically costs more than residential but offers stronger protections.</p>
+
+            <!-- business vs residential table -->
+            <h2><i class="fas fa-balance-scale-left"></i> Business vs residential broadband</h2>
+            <table class="comparison-table">
+                <tr><th>Feature</th><th>Residential</th><th>Business</th></tr>
+                <tr><td>Price</td><td>Lower</td><td>Higher</td></tr>
+                <tr><td>Support</td><td>Standard hours</td><td>Priority support</td></tr>
+                <tr><td>Repair time</td><td>Standard</td><td>Faster SLAs</td></tr>
+                <tr><td>Static IP</td><td>Rare</td><td>Common</td></tr>
+                <tr><td>Traffic priority</td><td>Standard</td><td>Often prioritised</td></tr>
+            </table>
+            <p>For home‑based sole traders, residential fibre may be enough. For VAT‑registered businesses or offices, business broadband is usually more appropriate.</p>
+
+            <!-- speed tiers for business -->
+            <h2><i class="fas fa-gauge-high"></i> What speed does your business need?</h2>
+            <div class="tier-showcase">
+                <div class="tier-block">
+                    <div class="tier-icon"><i class="fas fa-user-tie"></i></div>
+                    <div class="tier-speed">100–150 Mbps</div>
+                    <div class="tier-tag">sole trader / home</div>
+                    <p style="margin-top:0.8rem;">Video calls, cloud tools, email, file uploads.</p>
+                </div>
+                <div class="tier-block">
+                    <div class="tier-icon"><i class="fas fa-users"></i></div>
+                    <div class="tier-speed">150–300 Mbps</div>
+                    <div class="tier-tag">small office (3–10)</div>
+                    <p>Multiple video calls, cloud software, file sharing, payment systems.</p>
+                </div>
+                <div class="tier-block">
+                    <div class="tier-icon"><i class="fas fa-chart-pie"></i></div>
+                    <div class="tier-speed">300–500 Mbps+</div>
+                    <div class="tier-tag">growing (10+)</div>
+                    <p>Heavy cloud, VoIP, large transfers, frequent conferencing.</p>
+                </div>
+                <div class="tier-block">
+                    <div class="tier-icon"><i class="fas fa-server"></i></div>
+                    <div class="tier-speed">500 Mbps–1 Gbps</div>
+                    <div class="tier-tag">enterprise / high‑demand</div>
+                    <p>Large teams, data‑heavy, hosting, dedicated operations.</p>
+                </div>
+            </div>
+
+            <!-- why upload speed matters -->
+            <h2><i class="fas fa-upload"></i> Why upload speed matters for business</h2>
+            <p>
+                Cloud backups, sending large client files, hosting servers, video conferencing, VoIP phone systems — all depend on upload.<br>
+                <span style="background:#ffefd2; padding:0.2rem 0.8rem; border-radius:30px;"><strong>Standard fibre upload:</strong> 10–20 Mbps</span> &nbsp; <span style="background:#d6ecff; padding:0.2rem 0.8rem; border-radius:30px;"><strong>Full fibre upload:</strong> 100–900 Mbps</span><br>
+                For modern businesses, full fibre offers a major advantage.
+            </p>
+
+            <!-- SLAs explained -->
+            <h2><i class="fas fa-file-contract"></i> Service Level Agreements (SLAs) explained</h2>
+            <p>An SLA defines guaranteed uptime, maximum repair time, and compensation if targets aren’t met. Typical residential repair: 2–5 working days. Typical business SLA: fix within 24–48 hours. For businesses that rely on connectivity, this matters.</p>
+
+            <!-- contract length options -->
+            <h2><i class="fas fa-calendar-alt"></i> Contract length options</h2>
+            <p>Business broadband contracts typically run 12, 24 or 36 months. Longer often means lower monthly rates — but less flexibility. Always compare monthly cost, setup fees, early termination terms.</p>
+
+            <!-- typical pricing table -->
+            <h2><i class="fas fa-pound-sign"></i> Typical business broadband pricing</h2>
+            <table class="pricing-table">
+                <tr><th>Speed</th><th>Monthly cost (typical)</th></tr>
+                <tr><td>100 Mbps</td><td>£30–£40</td></tr>
+                <tr><td>300 Mbps</td><td>£40–£55</td></tr>
+                <tr><td>500 Mbps</td><td>£50–£65</td></tr>
+                <tr><td>1 Gbps</td><td>£60–£80+</td></tr>
+            </table>
+            <p>Prices vary by postcode and infrastructure availability.</p>
+
+            <!-- dedicated vs shared connections -->
+            <h2><i class="fas fa-network-wired"></i> Dedicated vs shared connections</h2>
+            <p>Most business broadband is shared (like residential) but with higher priority. <strong>Dedicated leased lines</strong> offer guaranteed symmetrical speeds, exclusive connection, much higher cost (£200+ per month) — suitable for larger enterprises.</p>
+
+            <!-- when residential may be enough -->
+            <div class="tip-box">
+                <h3 style="margin-top:0;">🧑‍💻 When residential broadband may be enough</h3>
+                <p>If you’re a sole trader, work from home, don’t need an SLA, and downtime risk is manageable — residential full fibre (e.g. 150 Mbps) is often cheaper than entry‑level business packages.</p>
+            </div>
+
+            <!-- how much could you save -->
+            <h2><i class="fas fa-coins"></i> How much could you save?</h2>
+            <p>If you’re paying £65/month for 100 Mbps business broadband and new deals offer £45/month for 300 Mbps: <strong>save £20/month</strong>, improve performance and upload speed. Businesses often stay on legacy contracts too long.</p>
+
+            <!-- key features to compare -->
+            <h2><i class="fas fa-check-double"></i> Key features to compare</h2>
+            <div class="feature-grid">
+                <div class="feature-card"><i class="fas fa-tachometer-alt"></i> <strong>Speed</strong> (down + upload)</div>
+                <div class="feature-card"><i class="fas fa-clock"></i> <strong>SLA repair times</strong></div>
+                <div class="feature-card"><i class="fas fa-ip"></i> <strong>Static IP</strong> availability</div>
+                <div class="feature-card"><i class="fas fa-file-signature"></i> <strong>Contract length</strong></div>
+                <div class="feature-card"><i class="fas fa-tools"></i> <strong>Installation / setup fees</strong></div>
+                <div class="feature-card"><i class="fas fa-chart-line"></i> <strong>Mid‑contract price increases</strong></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2><i class="fas fa-question"></i> Frequently asked questions</h2>
+            <div class="faq-item"><strong>Is business broadband faster than residential?</strong> Not necessarily — but it includes better support and repair guarantees.</div>
+            <div class="faq-item"><strong>Do I need a static IP?</strong> Only if hosting servers, CCTV remote access, or certain business systems.</div>
+            <div class="faq-item"><strong>Is full fibre better for business?</strong> Yes — especially for reliability and upload performance.</div>
+            <div class="faq-item"><strong>How long does installation take?</strong> Typically 7–14 days. Dedicated leased lines take longer.</div>
+            <div class="faq-item"><strong>Can I switch business broadband easily?</strong> Yes, but check notice periods and exit fees.</div>
+
+            <!-- why compare with utility king -->
+            <h2><i class="fas fa-crown"></i> Why compare business broadband with Utility King?</h2>
+            <p>We help you compare speeds clearly, review SLA details, check postcode availability, total contract cost, and understand infrastructure options. We focus on balancing cost, performance and reliability.</p>
+
+            <!-- single CTA block with contact button -->
+            <div class="single-cta-wrapper">
+                <h3 style="font-size:2.2rem; color:#00263b;">Ready to compare business broadband deals UK?</h3>
+                <p style="font-size:1.2rem;">If your contract is ending — or performance isn’t meeting expectations — better‑value options may be available in your postcode. Switching could improve speed, reduce downtime risk and lower costs.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-business">
+                    <i class="fas fa-envelope"></i> Contact Utility King
+                </a>
+                <div class="small-note">
+                    <i class="fas fa-info-circle"></i> We'll help you find the best plan for your business.
+                </div>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#256b92;"><i class="fas fa-briefcase"></i> Business broadband comparison 2026 — Utility King</p>
+        </div> <!-- end content -->
+    </div> <!-- end page -->
+</body>
+</html>

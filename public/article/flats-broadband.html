@@ -1,0 +1,782 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Compare Broadband Deals for Flats | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: 3 families - Montserrat (headings), Outfit (subheads), Inter (body) -->
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+           
+        }
+
+        body {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e6f0fa 100%);
+            font-family:Geneva, Tahoma, sans-serif,Verdana;
+            line-height: 1.5;
+            padding: 1rem;
+            color: #1a2b3c;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --primary-blue: #2a7de1;
+            --primary-teal: #00b8b0;
+            --primary-purple: #8b5cf6;
+            --gradient-flat: linear-gradient(145deg, #2a7de1, #00b8b0);
+            --gradient-sunset: linear-gradient(135deg, #4158D0, #C850C0, #FFCC70);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --bg-soft: #f0f9ff;
+            --text-dark: #1a2b3c;
+            --text-soft: #2c3e50;
+            --accent-gold: #ffb347;
+            --accent-green: #10b981;
+            --shadow-color: rgba(42, 125, 225, 0.2);
+            --border-light: #d0e0ff;
+        }
+
+        /* Font 1: Montserrat - headings */
+        h1, h2, h3, .heading-xl {
+            font-family: Geneva, Tahoma, sans-serif,Verdana;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Font 2: Outfit - subheadings, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag {
+            font-family: Arial,Verdana, Geneva, Tahoma, sans-serif, Tahoma, sans-serif,Verdana;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - body text (default) */
+
+        /* RESPONSIVE FONT SIZES */
+        h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #2a7de1, #00b8b0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 6vw, 2.8rem);
+            margin: 2rem 0 1rem;
+            background: linear-gradient(135deg, #2a7de1, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+            text-align: center;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            margin-bottom: 0.75rem;
+            word-wrap: break-word;
+            color: var(--primary-blue);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            line-height: 1.5;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 700;
+            background: var(--gradient-flat);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION - CENTERED */
+        .hero-vibrant {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 50%, #FFB347 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            box-shadow: 0 30px 40px -20px rgba(65, 88, 208, 0.5);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+            .hero-vibrant::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.1)"/></svg>');
+                background-size: cover;
+                opacity: 0.2;
+            }
+
+            .hero-vibrant h1 {
+                color: white;
+                -webkit-text-fill-color: white;
+                text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                position: relative;
+                z-index: 2;
+                font-size: clamp(1.8rem, 7vw, 4rem);
+                text-align: center;
+            }
+
+            .hero-vibrant p {
+                color: rgba(255,255,255,0.95);
+                font-size: clamp(1rem, 4vw, 1.4rem);
+                max-width: 700px;
+                text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                position: relative;
+                z-index: 2;
+                margin-left: auto;
+                margin-right: auto;
+                text-align: center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+            justify-content: center;
+        }
+
+            .hero-tags span {
+                background: rgba(255,255,255,0.25);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 50px;
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+                font-weight: 600;
+                color: white;
+                border: 1px solid rgba(255,255,255,0.4);
+                white-space: nowrap;
+            }
+
+            .hero-tags i {
+                margin-right: 0.3rem;
+            }
+
+        /* Main content */
+        .main-content {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: clamp(1.2rem, 4vw, 3rem);
+            box-shadow: 0 20px 40px -10px rgba(42, 125, 225, 0.15);
+            width: 100%;
+            border: 1px solid #d0e0ff;
+        }
+
+        /* RESPONSIVE GRIDS */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            width: 100%;
+        }
+         .grid-5x1 {
+            display: grid;
+            gap: 25px;
+            margin: 1.5rem 0;
+            width: 100%;
+        }
+        /* Mobile first */
+        .grid-5x1 {
+            grid-template-columns: 1fr;
+        }
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Tablet */
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .grid-5x1 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+            .grid-5x1 {
+                grid-template-columns: repeat(5, 1fr);
+            }
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            body {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Card style */
+        .card-colorful {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 15px 30px -10px var(--shadow-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-light);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            word-wrap: break-word;
+        }
+
+            .card-colorful::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: var(--gradient-flat);
+            }
+
+            .card-colorful:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 40px -8px rgba(42, 125, 225, 0.3);
+            }
+
+        /* Speed tier cards */
+        .card-speed-green {
+            border-left: 6px solid #10b981;
+        }
+
+        .card-speed-blue {
+            border-left: 6px solid #2a7de1;
+        }
+
+        .card-speed-purple {
+            border-left: 6px solid #8b5cf6;
+        }
+
+        .provider-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            white-space: nowrap;
+           
+        }
+
+        @media (max-width: 480px) {
+            .provider-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+
+        .badge-blue {
+            background: #e6f0ff;
+            color: #2a7de1;
+        }
+
+        .badge-teal {
+            background: #e0f7f5;
+            color: #00b8b0;
+        }
+
+        .badge-purple {
+            background: #f0e7ff;
+            color: #8b5cf6;
+        }
+
+        .badge-gold {
+            background: #fff0d9;
+            color: #ff8c42;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #d0e0ff;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: #2a7de1;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #1a2b3c;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .price-highlight {
+            background: linear-gradient(135deg, #ffd166, #ffb347);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            color: #1a2b3c;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            white-space: nowrap;
+        }
+
+        /* Table responsive */
+        .table-wrapper {
+            background: white;
+            border-radius: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid var(--border-light);
+            margin: 1.5rem 0;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .table-wrapper table {
+                width: 100%;
+                min-width: 500px;
+                border-collapse: collapse;
+            }
+
+            .table-wrapper th {
+                background: linear-gradient(135deg, #e6f0ff, #d9e8ff);
+                padding: 1rem;
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                color: #2a7de1;
+                text-align: left;
+                font-family: 'Outfit', sans-serif;
+            }
+
+            .table-wrapper td {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid #e6f0ff;
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+            }
+
+        /* Two column responsive */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 0.8rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 2fr 1fr;
+            }
+        }
+
+        /* CTA responsive - CENTERED */
+        .cta-spectacular {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 50%, #FFB347 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+        }
+
+            .cta-spectacular::after {
+                content: '🏢';
+                font-size: clamp(5rem, 20vw, 10rem);
+                position: absolute;
+                bottom: -20px;
+                right: 5px;
+                opacity: 0.15;
+                transform: rotate(-5deg);
+                pointer-events: none;
+            }
+
+            .cta-spectacular h2 {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                -webkit-text-fill-color: white;
+                font-size: clamp(1.6rem, 6vw, 2.8rem);
+                text-align: center;
+            }
+
+            .cta-spectacular p {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                text-align: center;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-glow {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            font-weight: 700;
+            color: #4158D0;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            white-space: nowrap;
+            margin: 0 auto;
+        }
+
+        @media (max-width: 480px) {
+            .btn-glow {
+                padding: 0.7rem 1.2rem;
+                gap: 0.5rem;
+            }
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.3);
+        }
+
+        /* Center align utility */
+        .text-center {
+            text-align: center;
+        }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, #2a7de1, #00b8b0, #8b5cf6);
+            border-radius: 3px;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        /* Quick summary banner */
+        .summary-banner {
+            background: linear-gradient(145deg, #2a7de1, #00b8b0);
+            border-radius: 2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            color: white;
+        }
+
+            .summary-banner p {
+                color: white;
+                margin-bottom: 0.5rem;
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- HERO - CENTERED -->
+        <div class="hero-vibrant">
+            <h1>FLATS BROADBAND<br><span style="font-size: 0.6em; display: block; color: rgba(255,255,255,0.9);">UK 2026 guide</span></h1>
+            <p>🏢 More choice, faster speeds, better deals – flats have the best broadband in the UK</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-building"></i> Full fibre pre-installed</span>
+                <span><i class="fas fa-network-wired"></i> Multiple Alt-Nets</span>
+                <span><i class="fas fa-bolt"></i> Gigabit-ready</span>
+                <span><i class="fas fa-pound-sign"></i> from £22/mo</span>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="main-content">
+            <!-- Quick Summary Banner -->
+            <div class="summary-banner">
+                <h2 style="color: white; -webkit-text-fill-color: white; margin-top:0;">📋 Quick Summary</h2>
+                <div class="grid-5x1" style="margin:1rem 0 0;">
+                    <p>✅ Full fibre common in modern flats</p>
+                    <p>✅ 150–300 Mbps ideal for most flats</p>
+                    <p>✅ Alt-Nets often available in flat blocks</p>
+                    <p>✅ Installation usually simpler in flats</p>
+                    <p>✅ Cheapest deals from £22–£30/month</p>
+                </div>
+               
+            </div>
+
+            <!-- 2x2 Why different? -->
+            <h2>🏙️ Why broadband is different in flats</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-blue"><i class="fas fa-check"></i> FLAT ADVANTAGES</span>
+                    <p>✅ Pre-installed fibre infrastructure</p>
+                    <p>✅ Dedicated riser cabling</p>
+                    <p>✅ Multiple network providers</p>
+                    <p>✅ Shorter cable runs</p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge badge-teal"><i class="fas fa-bolt"></i> THIS MEANS</span>
+                    <p>⚡ Faster installation</p>
+                    <p>⚡ Access to symmetrical gigabit</p>
+                    <p>⚡ More competition = lower prices</p>
+                    <p>⚠️ Older buildings may still rely on FTTC</p>
+                </div>
+            </div>
+
+            <!-- Speed needed - 3x2 -->
+            <h2>📶 What speed do you need in a flat?</h2>
+            <div class="grid-3x2">
+                <div class="card-colorful card-speed-green">
+                    <span class="provider-badge" style="background:#e0ffe0; color:#10b981;">🟢 67–100 Mbps</span>
+                    <p class="stat-number">67-100</p>
+                    <p>Solo residents<br>HD streaming<br>Video calls</p>
+                </div>
+                <div class="card-colorful card-speed-blue">
+                    <span class="provider-badge" style="background:#e6f0ff; color:#2a7de1;">🔵 150–300 Mbps</span>
+                    <p class="stat-number">150-300</p>
+                    <p>Couples • Flatshares<br>4K streaming<br>Remote workers</p>
+                    <span class="price-highlight">⭐ BEST VALUE</span>
+                </div>
+                <div class="card-colorful card-speed-purple">
+                    <span class="provider-badge" style="background:#f0e7ff; color:#8b5cf6;">⚡ 500–1Gbps</span>
+                    <p class="stat-number">1 Gbps</p>
+                    <p>Tech-heavy households<br>Multiple heavy users<br>Future-proofing</p>
+                </div>
+            </div>
+
+            <!-- Full fibre in flats - 2x2 -->
+            <h2>🔌 Full fibre in flats</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-blue">OPENREACH FTTP</span>
+                    <p>BT • Sky • TalkTalk</p>
+                    <p>Widest coverage, TV bundles available</p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge badge-purple">ALT-NETS</span>
+                    <p>Hyperoptic • CityFibre • Community Fibre</p>
+                    <p>Often cheaper gigabit • Symmetrical speeds</p>
+                </div>
+            </div>
+
+            <!-- Symmetrical speeds highlight -->
+            <div class="card-colorful" style="background: linear-gradient(145deg, #f0e7ff, #e6f0ff);">
+                <span class="provider-badge badge-purple"><i class="fas fa-arrows-up-down"></i> SYMMETRICAL SPEEDS: BIG ADVANTAGE</span>
+                <p>Many Alt-Nets in flats offer: <strong>300 Mbps download + 300 Mbps upload</strong> or <strong>1Gbps + 1Gbps</strong></p>
+                <p>Compared to Openreach-based 1Gbps plans with ~100 Mbps upload, this is a major difference for:</p>
+                <div class="grid-4x1" style="margin-top:1rem;">
+                    <span>💼 Remote work</span>
+                    <span>☁️ Cloud backups</span>
+                    <span>🎨 Content creation</span>
+                    <span>🎮 Gaming streaming</span>
+                </div>
+            </div>
+
+            <!-- Price table -->
+            <h2>💰 Cheapest broadband for flats (2026 pricing)</h2>
+            <div class="table-wrapper">
+                <table>
+                    <tr><th>Speed</th><th>Typical Monthly Cost</th></tr>
+                    <tr><td>67 Mbps</td><td>£22–£27</td></tr>
+                    <tr><td>150 Mbps</td><td>£25–£32</td></tr>
+                    <tr><td>300 Mbps</td><td>£28–£35</td></tr>
+                    <tr><td>1Gbps</td><td>£30–£45</td></tr>
+                </table>
+            </div>
+            <p class="text-center">In competitive urban areas, gigabit can cost only £5–£10 more than 300 Mbps.</p>
+
+            <!-- Installation & flatshares 2x2 -->
+            <h2>🔧 Installation & flatshares</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-teal"><i class="fas fa-tools"></i> INSTALLATION</span>
+                    <p>✅ Fibre may already be run to building</p>
+                    <p>✅ Internal wiring may exist</p>
+                    <p>✅ Short cable runs reduce delays</p>
+                    <p>⏱️ 5–14 days, often free on 18–24 month contracts</p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge badge-gold"><i class="fas fa-users"></i> FLATSHARES</span>
+                    <p>Choose at least <strong>150 Mbps</strong></p>
+                    <p>Consider <strong>300 Mbps</strong> for 3+ people</p>
+                    <p>Split the cost: 300 Mbps at £30 = £10 each</p>
+                    <p>Gigabit affordable when shared</p>
+                </div>
+            </div>
+
+            <!-- Contracts for renters -->
+            <h2>📝 Contracts for renters</h2>
+            <div class="grid-4x1">
+                <div class="card-colorful"><span class="stat-number">12 mo</span><p>More flexible</p></div>
+                <div class="card-colorful"><span class="stat-number">24 mo</span><p>Cheaper monthly</p></div>
+                <div class="card-colorful"><span class="stat-number">🔄</span><p>Transfer options</p></div>
+                <div class="card-colorful"><span class="stat-number">⚠️</span><p>Early fees apply</p></div>
+            </div>
+            <p>If you expect to move within a year, flexibility matters more than cheapest monthly rate.</p>
+
+            <!-- Openreach vs Alt-Nets -->
+            <h2>⚔️ Openreach vs Alt-Nets in flats</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-blue">🟢 OPENREACH</span>
+                    <p>BT, Sky, TalkTalk</p>
+                    <p>✅ Widest coverage</p>
+                    <p>✅ TV bundles available</p>
+                    <p>⚠️ Upload ~50 Mbps on gigabit</p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge badge-purple">🔵 ALT-NETS</span>
+                    <p>Hyperoptic, Community Fibre, CityFibre</p>
+                    <p>✅ Often cheaper gigabit</p>
+                    <p>✅ Symmetrical speeds</p>
+                    <p>⭐ If both available, Alt-Nets win on value</p>
+                </div>
+            </div>
+
+            <!-- Wi-Fi in flats -->
+            <h2>📡 Wi-Fi in flats: what to consider</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-teal">✅ ADVANTAGES</span>
+                    <p>Smaller floor space</p>
+                    <p>Strong signal coverage</p>
+                    <p>Fewer dead zones</p>
+                    <p>300 Mbps feels extremely fast</p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge" style="background:#ffe0e0; color:#c62828;">⚠️ CONSIDER</span>
+                    <p>Thick concrete walls may block signal</p>
+                    <p>Router placement still matters</p>
+                </div>
+            </div>
+
+            <!-- Example comparison -->
+            <div class="card-colorful" style="background: linear-gradient(145deg, #e6f0ff, #d9e8ff);">
+                <span class="provider-badge badge-purple"><i class="fas fa-scale-balanced"></i> EXAMPLE COMPARISON (300 Mbps)</span>
+                <div class="two-col">
+                    <div>
+                        <p><strong>Openreach-based:</strong> £34/month</p>
+                        <p>Upload ~50 Mbps</p>
+                    </div>
+                    <div>
+                        <p><strong>Comparing infrastructure is key:</strong> £144 saved over 24 months</p>
+                        <p>Much faster upload</p>
+                    </div>
+                  
+                    <div>
+                        <p><strong>Alt-Net:</strong> £28/month</p>
+                        <p>Upload 300 Mbps</p>
+                    </div>
+                </div>
+              
+            </div>
+
+            <!-- FAQ 2x2 -->
+            <h2>❓ Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <h3 style="color:#2a7de1;">Is broadband cheaper in flats?</h3>
+                    <p>Often yes — especially where Alt-Nets are available.</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#2a7de1;">Is gigabit worth it in a flat?</h3>
+                    <p>For 1–2 people, usually not necessary. For flatshares, possibly.</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#2a7de1;">Can I install fibre in a rented flat?</h3>
+                    <p>Yes — but landlord permission may be required.</p>
+                </div>
+                <div class="card-colorful">
+                    <h3 style="color:#2a7de1;">Are Alt-Nets common in apartment blocks?</h3>
+                    <p>Yes — many focus on multi-dwelling units.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-colorful" style="background: linear-gradient(145deg, #e6f0ff, #f0e7ff);">
+                <span class="provider-badge" style="background: #2a7de1; color:white;"><i class="fas fa-crown"></i> WHY COMPARE WITH UTILITY KING?</span>
+                <p>We help you:</p>
+                <div class="grid-2x2" style="margin-top:0.5rem;">
+                    <p>✅ Check all available networks in your building</p>
+                    <p>✅ Compare symmetrical vs asymmetrical fibre</p>
+                    <p>✅ Review total contract cost</p>
+                    <p>✅ Compare 12 vs 24-month contracts</p>
+                </div>
+                <p><strong>We focus on infrastructure first — because in flats, that's often where the best deals are.</strong></p>
+            </div>
+
+            <!-- FINAL CTA -->
+            <div class="cta-spectacular">
+                <h2>Ready to contact us?</h2>
+                <p>If you live in a flat, you may have access to faster and cheaper full fibre than you realise.</p>
+                <p>Comparing providers in your postcode could unlock gigabit speeds at highly competitive prices.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-glow"><i class="fas fa-paper-plane"></i> Contact Us Now</a>
+                </div>
+                <p style="margin-top: 1rem;"><i class="fas fa-map-pin"></i> Find the Best Deal in Your Building</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#7c8f9b; font-size:clamp(0.9rem, 3.5vw, 1.1rem);">© Utility King 2026 · Compare Broadband Deals for Flats · UK guide</p>
+        </div>
+    </div>
+</body>
+</html>

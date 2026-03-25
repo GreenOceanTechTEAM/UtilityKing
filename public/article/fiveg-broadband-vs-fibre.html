@@ -1,0 +1,1450 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | 5G vs Fibre Broadband UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit + Cormorant -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Cormorant:wght@600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: linear-gradient(135deg, #f5f7fc 0%, #f0f5ff 100%);
+            color: #1a2b4c;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Light Hero with gradient orbs */
+        .premium-hero {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            color: #1a2b4c;
+            box-shadow: 0 30px 50px -20px rgba(79, 142, 211, 0.3);
+            border: 1px solid rgba(159, 122, 234, 0.2);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 500px;
+            height: 500px;
+            background: #9f7aea;
+            top: -200px;
+            right: -100px;
+        }
+
+        .shape-2 {
+            width: 450px;
+            height: 450px;
+            background: #4f8ed3;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 400px;
+            height: 400px;
+            background: #f3a446;
+            top: 150px;
+            left: 20%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background: linear-gradient(135deg, #9f7aea10, #4f8ed310);
+            padding: 0.8rem 2rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border: 1px solid #9f7aea;
+            margin-bottom: 2.5rem;
+            color: #1a2b4c;
+            backdrop-filter: blur(5px);
+        }
+
+            .hero-badge i {
+                color: #9f7aea;
+                font-size: 1.3rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Outfit', sans-serif;
+            letter-spacing: -2px;
+            color: #1a2b4c;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #9f7aea, #4f8ed3, #f3a446);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #4a5f7a;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 300;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #9f7aea;
+            padding: 1rem 2.2rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #1a2b4c;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px -5px rgba(0,0,0,0.05);
+        }
+
+            .hero-pill:hover {
+                border-color: #4f8ed3;
+                background: linear-gradient(135deg, #9f7aea10, #4f8ed310);
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px #9f7aea;
+            }
+
+            .hero-pill i {
+                color: #9f7aea;
+                margin-right: 10px;
+            }
+
+        /* Main content area */
+        .content-area {
+            background: white;
+            border-radius: 48px;
+            padding: 4rem;
+            box-shadow: 0 30px 60px -20px rgba(79, 142, 211, 0.2);
+            border: 1px solid rgba(159, 122, 234, 0.2);
+        }
+
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 1rem;
+            }
+
+        .section-subhead {
+            font-size: 1.4rem;
+            font-weight: 600;
+            background: linear-gradient(135deg, #9f7aea, #4f8ed3);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: #1a2b4c;
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Quick summary cards - 2x2 with colored borders */
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin-bottom: 4rem;
+        }
+
+        .summary-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            transition: all 0.4s ease;
+            border: 2px solid;
+            box-shadow: 0 15px 30px -12px rgba(0,0,0,0.1);
+        }
+
+            .summary-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .summary-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .summary-card:nth-child(3) {
+                border-color: #f3a446;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .summary-card:nth-child(4) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .summary-card:hover {
+                transform: translateY(-8px) scale(1.02);
+                box-shadow: 0 25px 40px -15px rgba(0,0,0,0.2);
+            }
+
+        .summary-icon {
+            width: 90px;
+            height: 90px;
+            background: white;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            box-shadow: 0 15px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .summary-card:nth-child(1) .summary-icon {
+            color: #9f7aea;
+        }
+
+        .summary-card:nth-child(2) .summary-icon {
+            color: #4f8ed3;
+        }
+
+        .summary-card:nth-child(3) .summary-icon {
+            color: #f3a446;
+        }
+
+        .summary-card:nth-child(4) .summary-icon {
+            color: #2ecc71;
+        }
+
+        .summary-content h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .summary-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* Definition cards - 2x2 with colored borders */
+        .grid-2x2 {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .premium-card {
+            border-radius: 40px;
+            padding: 3rem 2.5rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 20px 30px -15px rgba(0,0,0,0.1);
+            border: 3px solid;
+            background: white;
+        }
+
+            .premium-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .premium-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .premium-card:hover {
+                transform: translateY(-8px);
+                box-shadow: 0 30px 40px -15px rgba(79, 142, 211, 0.3);
+            }
+
+        .card-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .premium-card:nth-child(1) .card-icon {
+            color: #9f7aea;
+        }
+
+        .premium-card:nth-child(2) .card-icon {
+            color: #4f8ed3;
+        }
+
+        .premium-card h3 {
+            font-size: 2.4rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            font-family: 'Outfit', sans-serif;
+            color: #1a2b4c;
+        }
+
+        .premium-card p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+            line-height: 1.7;
+        }
+
+        .def-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .def-tag {
+            background: white;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            border: 1px solid;
+        }
+
+        .premium-card:nth-child(1) .def-tag {
+            border-color: #9f7aea;
+            color: #4a5f7a;
+        }
+
+        .premium-card:nth-child(2) .def-tag {
+            border-color: #4f8ed3;
+            color: #4a5f7a;
+        }
+
+        /* Speed comparison - 2x2 with colored borders */
+        .speed-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2.5rem;
+            margin: 3rem 0;
+        }
+
+        .speed-card {
+            background: white;
+            border-radius: 40px;
+            padding: 3rem;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .speed-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .speed-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .speed-card:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 25px 35px -15px rgba(0,0,0,0.15);
+            }
+
+        .speed-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+            .speed-header h3 {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #1a2b4c;
+            }
+
+        .speed-badge-5g {
+            background: #9f7aea;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .speed-badge-fibre {
+            background: #4f8ed3;
+            color: white;
+            padding: 0.7rem 1.8rem;
+            border-radius: 60px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .speed-table {
+            width: 100%;
+        }
+
+            .speed-table td {
+                padding: 1.2rem 0;
+                font-size: 1.3rem;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                color: #4a5f7a;
+            }
+
+                .speed-table td:last-child {
+                    font-weight: 700;
+                    color: #9f7aea;
+                    text-align: right;
+                }
+
+        .speed-note {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #4a5f7a;
+            background: white;
+            padding: 1rem 1.5rem;
+            border-radius: 60px;
+            border: 1px solid;
+        }
+
+        .speed-card:nth-child(1) .speed-note {
+            border-color: #9f7aea;
+        }
+
+        .speed-card:nth-child(2) .speed-note {
+            border-color: #4f8ed3;
+        }
+
+        /* Reliability - 2x2 with colored cards */
+        .reliability-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .reliability-item {
+            border-radius: 36px;
+            padding: 2.5rem;
+            display: flex;
+            gap: 1.8rem;
+            align-items: flex-start;
+            border: 2px solid;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+            .reliability-item:nth-child(1) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .reliability-item:nth-child(2) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .reliability-item:nth-child(3) {
+                border-color: #f3a446;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .reliability-item:nth-child(4) {
+                border-color: #f3a446;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+        .reliability-icon {
+            width: 80px;
+            height: 80px;
+            background: white;
+            border-radius: 28px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.2rem;
+            flex-shrink: 0;
+            box-shadow: 0 15px 20px -10px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.05);
+        }
+
+        .reliability-item:nth-child(1) .reliability-icon {
+            color: #2ecc71;
+        }
+
+        .reliability-item:nth-child(2) .reliability-icon {
+            color: #2ecc71;
+        }
+
+        .reliability-item:nth-child(3) .reliability-icon {
+            color: #f3a446;
+        }
+
+        .reliability-item:nth-child(4) .reliability-icon {
+            color: #f3a446;
+        }
+
+        .reliability-content h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            color: #1a2b4c;
+        }
+
+        .reliability-content p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+        }
+
+        /* Latency grid - 3x1 with colored cards */
+        .latency-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .latency-card {
+            border-radius: 36px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+            .latency-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .latency-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .latency-card:nth-child(3) {
+                border-color: #f3a446;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .latency-card strong {
+                font-size: 1.5rem;
+                color: #1a2b4c;
+            }
+
+        .latency-value {
+            font-size: 3rem;
+            font-weight: 800;
+            margin: 1rem 0;
+        }
+
+        .latency-card:nth-child(1) .latency-value {
+            color: #9f7aea;
+        }
+
+        .latency-card:nth-child(2) .latency-value {
+            color: #4f8ed3;
+        }
+
+        .latency-card:nth-child(3) .latency-value {
+            color: #f3a446;
+        }
+
+        /* Cost table with colored header */
+        .cost-card {
+            background: white;
+            border-radius: 40px;
+            padding: 3rem;
+            margin: 3rem 0;
+            border: 3px solid #9f7aea;
+            box-shadow: 0 20px 30px -15px rgba(159, 122, 234, 0.2);
+        }
+
+        .cost-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .cost-table th {
+                text-align: left;
+                padding: 1.5rem 1rem;
+                font-size: 1.4rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                border-bottom: 3px solid #9f7aea;
+            }
+
+            .cost-table td {
+                padding: 1.5rem 1rem;
+                font-size: 1.3rem;
+                border-bottom: 1px solid rgba(159, 122, 234, 0.2);
+                color: #4a5f7a;
+            }
+
+            .cost-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .cost-highlight {
+            color: #9f7aea;
+            font-weight: 700;
+        }
+
+        /* Data note with colored border */
+        .data-note {
+            background: linear-gradient(145deg, #f5f0ff, #f0f7ff);
+            border-radius: 32px;
+            padding: 2rem 3rem;
+            margin: 2rem 0 3rem;
+            text-align: center;
+            font-size: 1.3rem;
+            border: 3px solid;
+            border-color: #9f7aea #4f8ed3 #9f7aea #4f8ed3;
+            color: #1a2b4c;
+        }
+
+        /* Installation - 2x2 with colored borders */
+        .install-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .install-card {
+            background: white;
+            border-radius: 36px;
+            padding: 2.5rem;
+            text-align: center;
+            border: 3px solid;
+            transition: all 0.3s ease;
+        }
+
+            .install-card:nth-child(1) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .install-card:nth-child(2) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+        .install-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .install-card:nth-child(1) .install-icon {
+            color: #4f8ed3;
+        }
+
+        .install-card:nth-child(2) .install-icon {
+            color: #9f7aea;
+        }
+
+        .install-card h4 {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #1a2b4c;
+        }
+
+        .install-card p {
+            font-size: 1.2rem;
+            color: #4a5f7a;
+            line-height: 1.8;
+        }
+
+        /* When to choose - 2x2 with colored borders */
+        .when-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .when-card {
+            border-radius: 40px;
+            padding: 3rem;
+            border: 3px solid;
+            transition: all 0.3s ease;
+            background: white;
+        }
+
+            .when-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .when-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .when-card h4 {
+                font-size: 2.2rem;
+                font-weight: 800;
+                margin-bottom: 2rem;
+                font-family: 'Outfit', sans-serif;
+            }
+
+            .when-card:nth-child(1) h4 {
+                color: #9f7aea;
+            }
+
+            .when-card:nth-child(2) h4 {
+                color: #4f8ed3;
+            }
+
+            .when-card ul {
+                list-style: none;
+            }
+
+            .when-card li {
+                font-size: 1.3rem;
+                margin-bottom: 1.2rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+                color: #4a5f7a;
+            }
+
+            .when-card i {
+                width: 28px;
+                font-size: 1.3rem;
+            }
+
+            .when-card:nth-child(1) i {
+                color: #9f7aea;
+            }
+
+            .when-card:nth-child(2) i {
+                color: #4f8ed3;
+            }
+
+        /* Example block with colored border */
+        .example-card {
+            background: white;
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 3rem 0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 2rem;
+            border: 4px solid;
+            border-color: #9f7aea #4f8ed3 #9f7aea #4f8ed3;
+        }
+
+        .example-item {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            flex: 1;
+            min-width: 280px;
+        }
+
+        .example-icon {
+            width: 100px;
+            height: 100px;
+            background: white;
+            border-radius: 35px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.8rem;
+            box-shadow: 0 20px 25px -12px rgba(0,0,0,0.1);
+            flex-shrink: 0;
+            border: 2px solid;
+        }
+
+        .example-item:nth-child(1) .example-icon {
+            color: #9f7aea;
+            border-color: #9f7aea;
+        }
+
+        .example-item:nth-child(2) .example-icon {
+            color: #4f8ed3;
+            border-color: #4f8ed3;
+        }
+
+        .example-text h4 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: #1a2b4c;
+        }
+
+        .example-text p {
+            font-size: 1.3rem;
+            color: #4a5f7a;
+        }
+
+        .example-divider {
+            width: 2px;
+            height: 100px;
+            background: linear-gradient(to bottom, transparent, #9f7aea, #4f8ed3, transparent);
+        }
+
+        .example-badge {
+            background: linear-gradient(135deg, #9f7aea, #4f8ed3);
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: white;
+            border: none;
+            box-shadow: 0 20px 30px -10px #9f7aea;
+        }
+
+        /* Replace card with colored border */
+        .replace-card {
+            background: white;
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border: 4px dashed #9f7aea;
+        }
+
+        .replace-tags {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin: 2.5rem 0 1rem;
+        }
+
+        .replace-tag {
+            background: white;
+            padding: 1rem 2.5rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            border: 2px solid #9f7aea;
+            color: #4a5f7a;
+        }
+
+        /* Gigabit note with colored border */
+        .gigabit-note {
+            background: linear-gradient(145deg, #f5f0ff, #f0f7ff);
+            border-radius: 48px;
+            padding: 3rem;
+            margin: 3rem 0;
+            text-align: center;
+            border: 4px solid;
+            border-color: #9f7aea #4f8ed3 #f3a446 #9f7aea;
+        }
+
+            .gigabit-note h3 {
+                font-size: 2.5rem;
+                margin-bottom: 1.5rem;
+                color: #1a2b4c;
+            }
+
+            .gigabit-note p {
+                font-size: 1.3rem;
+                color: #4a5f7a;
+            }
+
+        /* FAQ - 3x2 with colored borders */
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .faq-card {
+            border-radius: 36px;
+            padding: 2.5rem;
+            transition: all 0.3s ease;
+            border: 3px solid;
+            background: white;
+        }
+
+            .faq-card:nth-child(1) {
+                border-color: #9f7aea;
+                background: linear-gradient(145deg, white, #f5f0ff);
+            }
+
+            .faq-card:nth-child(2) {
+                border-color: #4f8ed3;
+                background: linear-gradient(145deg, white, #f0f7ff);
+            }
+
+            .faq-card:nth-child(3) {
+                border-color: #f3a446;
+                background: linear-gradient(145deg, white, #fff5e8);
+            }
+
+            .faq-card:nth-child(4) {
+                border-color: #2ecc71;
+                background: linear-gradient(145deg, white, #e8f7ed);
+            }
+
+            .faq-card:nth-child(5) {
+                border-color: #e74c3c;
+                background: linear-gradient(145deg, white, #ffe8e8);
+            }
+
+            .faq-card:nth-child(6) {
+                border-color: #3498db;
+                background: linear-gradient(145deg, white, #e8f0ff);
+            }
+
+            .faq-card:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+            }
+
+            .faq-card strong {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: #1a2b4c;
+                display: block;
+                margin-bottom: 1rem;
+            }
+
+            .faq-card p {
+                font-size: 1.2rem;
+                color: #4a5f7a;
+                line-height: 1.6;
+            }
+
+        /* CTA with gradient border */
+        .cta-section {
+            background: white;
+            border-radius: 48px;
+            padding: 4.5rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            border: 4px solid;
+            border-color: #9f7aea #4f8ed3 #9f7aea #4f8ed3;
+        }
+
+            .cta-section h2 {
+                font-size: 3.8rem;
+                font-weight: 800;
+                font-family: 'Outfit', sans-serif;
+                margin-bottom: 1.5rem;
+                color: #1a2b4c;
+            }
+
+            .cta-section p {
+                font-size: 1.5rem;
+                color: #4a5f7a;
+                margin-bottom: 3.5rem;
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1.2rem;
+            background: linear-gradient(135deg, #9f7aea, #4f8ed3);
+            color: white;
+            padding: 1.6rem 4rem;
+            border-radius: 60px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.4s ease;
+            border: none;
+            box-shadow: 0 20px 30px -10px #9f7aea;
+        }
+
+            .cta-button:hover {
+                transform: translateY(-6px);
+                box-shadow: 0 30px 40px -10px #9f7aea;
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            font-size: 1.2rem;
+            color: #a0b8d0;
+        }
+
+        @media (max-width: 1200px) {
+            .latency-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .faq-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .grid-2x2, .speed-grid, .reliability-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .summary-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .install-grid, .when-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .latency-grid, .faq-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .example-card {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .example-divider {
+                width: 100px;
+                height: 2px;
+            }
+
+            .hero-title {
+                font-size: 3.2rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Light Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i> Utility King · UK 2026 Guide
+                </div>
+                <h1 class="hero-title">
+                    <span>5G Broadband</span> vs <span>Fibre</span><br>Comparison UK 2026
+                </h1>
+                <p class="hero-description">
+                    Speed, reliability, cost & performance — which connection really wins for your home?
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-bolt"></i> 5G: 50–500 Mbps</span>
+                    <span class="hero-pill"><i class="fas fa-bolt"></i> Fibre: 30–1,000+ Mbps</span>
+                    <span class="hero-pill"><i class="fas fa-shield-alt"></i> Reliability</span>
+                    <span class="hero-pill"><i class="fas fa-gamepad"></i> Gaming latency</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- Quick Summary - 2x2 with colored borders -->
+            <div class="summary-grid">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-home"></i></div>
+                    <div class="summary-content">
+                        <h4>Fibre: stable & consistent</h4>
+                        <p>Reliable speeds 24/7</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-5g"></i></div>
+                    <div class="summary-content">
+                        <h4>5G: flexible, fast setup</h4>
+                        <p>No installation delays</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <div class="summary-content">
+                        <h4>5G: 50–500 Mbps</h4>
+                        <p>Area dependent</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-users"></i></div>
+                    <div class="summary-content">
+                        <h4>Fibre for heavy use</h4>
+                        <p>Families, remote work</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- What is 5G / Fibre - 2x2 with colored borders -->
+            <div class="section-header">
+                <div class="section-subhead">THE BASICS</div>
+                <h2 class="section-heading">5G vs Fibre explained</h2>
+            </div>
+
+            <div class="grid-2x2">
+                <div class="premium-card">
+                    <div class="card-icon"><i class="fas fa-5g"></i></div>
+                    <h3>5G Home Broadband</h3>
+                    <p>SIM card + 5G router. No landline or fibre installation. Connects via nearest 5G mast.</p>
+                    <div class="def-tags">
+                        <span class="def-tag">Renters</span>
+                        <span class="def-tag">Short-term</span>
+                        <span class="def-tag">No fibre areas</span>
+                    </div>
+                </div>
+                <div class="premium-card">
+                    <div class="card-icon"><i class="fas fa-home"></i></div>
+                    <h3>Fibre Broadband</h3>
+                    <p>Physical cables: FTTC or FTTP. Direct connection to your property.</p>
+                    <div class="def-tags">
+                        <span class="def-tag">Long-term homes</span>
+                        <span class="def-tag">Families</span>
+                        <span class="def-tag">Remote workers</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Speed Comparison - 2x2 with colored borders -->
+            <div class="section-header">
+                <div class="section-subhead">PERFORMANCE</div>
+                <h2 class="section-heading">Speed comparison</h2>
+            </div>
+
+            <div class="speed-grid">
+                <div class="speed-card">
+                    <div class="speed-header">
+                        <h3><i class="fas fa-5g"></i> 5G Broadband</h3>
+                        <span class="speed-badge-5g">VARIABLE</span>
+                    </div>
+                    <p style="font-size: 1.4rem; margin-bottom: 2rem; color: #4a5f7a;">Typical: 50–300 Mbps<br>Peak: 500 Mbps+</p>
+                    <div class="speed-note">
+                        <i class="fas fa-exclamation-circle" style="color:#9f7aea;"></i> Varies by congestion & signal
+                    </div>
+                </div>
+                <div class="speed-card">
+                    <div class="speed-header">
+                        <h3><i class="fas fa-home"></i> Fibre Broadband</h3>
+                        <span class="speed-badge-fibre">STABLE</span>
+                    </div>
+                    <table class="speed-table">
+                        <tr><td>FTTC</td><td class="cost-highlight">30–67 Mbps</td></tr>
+                        <tr><td>FTTP</td><td class="cost-highlight">100–900 Mbps</td></tr>
+                        <tr><td>Gigabit</td><td class="cost-highlight">900–1,000+ Mbps</td></tr>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Reliability - 2x2 with colored cards -->
+            <div class="section-header">
+                <div class="section-subhead">TRUST</div>
+                <h2 class="section-heading">Reliability comparison</h2>
+            </div>
+
+            <div class="reliability-grid">
+                <div class="reliability-item">
+                    <div class="reliability-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="reliability-content">
+                        <h4>Fibre</h4>
+                        <p>Stable speeds, low latency, weather-resistant, no congestion</p>
+                    </div>
+                </div>
+                <div class="reliability-item">
+                    <div class="reliability-icon"><i class="fas fa-check-circle"></i></div>
+                    <div class="reliability-content">
+                        <h4>Always on</h4>
+                        <p>Not affected by time of day</p>
+                    </div>
+                </div>
+                <div class="reliability-item">
+                    <div class="reliability-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="reliability-content">
+                        <h4>5G</h4>
+                        <p>Speeds fluctuate, affected by congestion</p>
+                    </div>
+                </div>
+                <div class="reliability-item">
+                    <div class="reliability-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                    <div class="reliability-content">
+                        <h4>Signal blockage</h4>
+                        <p>Walls can weaken signal indoors</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Latency - 3x1 with colored cards -->
+            <div class="section-header">
+                <div class="section-subhead">GAMING & CALLS</div>
+                <h2 class="section-heading">Latency comparison</h2>
+            </div>
+
+            <div class="latency-grid">
+                <div class="latency-card">
+                    <strong>FTTP</strong>
+                    <div class="latency-value">5–15ms</div>
+                    <p style="color: #4a5f7a;">Best for gaming</p>
+                </div>
+                <div class="latency-card">
+                    <strong>FTTC</strong>
+                    <div class="latency-value">10–25ms</div>
+                    <p style="color: #4a5f7a;">Good for most</p>
+                </div>
+                <div class="latency-card">
+                    <strong>5G</strong>
+                    <div class="latency-value">20–40ms</div>
+                    <p style="color: #4a5f7a;">Casual gaming</p>
+                </div>
+            </div>
+
+            <!-- Cost Table -->
+            <div class="section-header">
+                <div class="section-subhead">PRICING</div>
+                <h2 class="section-heading">Cost comparison 2026</h2>
+            </div>
+
+            <div class="cost-card">
+                <table class="cost-table">
+                    <tr><th>Type</th><th>Monthly Cost</th></tr>
+                    <tr><td>FTTC</td><td class="cost-highlight">£22–£27</td></tr>
+                    <tr><td>FTTP 150 Mbps</td><td class="cost-highlight">£25–£32</td></tr>
+                    <tr><td>FTTP 300 Mbps</td><td class="cost-highlight">£28–£35</td></tr>
+                    <tr><td>5G Unlimited</td><td class="cost-highlight">£30–£45</td></tr>
+                </table>
+            </div>
+
+            <!-- Data limits -->
+            <div class="data-note">
+                <i class="fas fa-database" style="margin-right: 1rem; color: #9f7aea;"></i>
+                <strong>Data limits:</strong> Most fibre = unlimited. 5G often unlimited with fair usage policies.
+            </div>
+
+            <!-- Installation - 2x2 with colored borders -->
+            <div class="section-header">
+                <div class="section-subhead">SETUP</div>
+                <h2 class="section-heading">Installation & contracts</h2>
+            </div>
+
+            <div class="install-grid">
+                <div class="install-card">
+                    <div class="install-icon"><i class="fas fa-home"></i></div>
+                    <h4>Fibre</h4>
+                    <p>5–14 days install<br>Engineer may be needed<br>12–24 month contracts</p>
+                </div>
+                <div class="install-card">
+                    <div class="install-icon"><i class="fas fa-5g"></i></div>
+                    <h4>5G</h4>
+                    <p>Plug-and-play<br>No engineer<br>Flexible contracts</p>
+                </div>
+            </div>
+
+            <!-- When to choose - 2x2 with colored borders -->
+            <div class="section-header">
+                <div class="section-subhead">DECISION GUIDE</div>
+                <h2 class="section-heading">When to choose each</h2>
+            </div>
+
+            <div class="when-grid">
+                <div class="when-card">
+                    <h4>5G is better for</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Immediate internet</li>
+                        <li><i class="fas fa-check"></i> Short-term renters</li>
+                        <li><i class="fas fa-check"></i> No fibre available</li>
+                        <li><i class="fas fa-check"></i> Move frequently</li>
+                        <li><i class="fas fa-check"></i> Backup connection</li>
+                    </ul>
+                </div>
+                <div class="when-card">
+                    <h4>Fibre is better for</h4>
+                    <ul>
+                        <li><i class="fas fa-check"></i> Working from home</li>
+                        <li><i class="fas fa-check"></i> Regular streaming</li>
+                        <li><i class="fas fa-check"></i> Competitive gaming</li>
+                        <li><i class="fas fa-check"></i> 3+ users</li>
+                        <li><i class="fas fa-check"></i> Long-term stability</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Example comparison -->
+            <div class="section-header">
+                <div class="section-subhead">REAL WORLD</div>
+                <h2 class="section-heading">Example household</h2>
+            </div>
+
+            <div class="example-card">
+                <div class="example-item">
+                    <div class="example-icon"><i class="fas fa-5g"></i></div>
+                    <div class="example-text">
+                        <h4>Household A (5G)</h4>
+                        <p>£35/mo · 80–250 Mbps variable</p>
+                    </div>
+                </div>
+                <div class="example-divider"></div>
+                <div class="example-item">
+                    <div class="example-icon"><i class="fas fa-home"></i></div>
+                    <div class="example-text">
+                        <h4>Household B (300 FTTP)</h4>
+                        <p>£32/mo · stable 300 Mbps</p>
+                    </div>
+                </div>
+                <div class="example-badge">Fibre = more consistency</div>
+            </div>
+
+            <!-- Can 5G replace fibre -->
+            <div class="section-header">
+                <div class="section-subhead">THE BIG QUESTION</div>
+                <h2 class="section-heading">Can 5G replace fibre?</h2>
+            </div>
+
+            <div class="replace-card">
+                <p style="font-size: 1.4rem; margin-bottom: 2rem; color: #1a2b4c;">In strong 5G areas: <strong style="color: #9f7aea;">Yes for light-to-moderate users</strong></p>
+                <p style="font-size: 1.3rem; margin-bottom: 2.5rem; color: #4a5f7a;">For heavy households and remote workers: <strong style="color: #4f8ed3;">Fibre remains more reliable</strong></p>
+                <div class="replace-tags">
+                    <span class="replace-tag">Temporary solution</span>
+                    <span class="replace-tag">Backup connection</span>
+                    <span class="replace-tag">Rural alternative</span>
+                </div>
+            </div>
+
+            <!-- Gigabit note -->
+            <div class="gigabit-note">
+                <h3>⚡ 5G vs Gigabit Fibre</h3>
+                <p>Gigabit fibre (900–1,000 Mbps): faster than typical 5G, lower latency, more stable. If available at competitive pricing, it outperforms 5G.</p>
+            </div>
+
+            <!-- FAQ - 3x2 with colored borders -->
+            <div class="section-header">
+                <div class="section-subhead">COMMON QUESTIONS</div>
+                <h2 class="section-heading">FAQs</h2>
+            </div>
+
+            <div class="faq-grid">
+                <div class="faq-card"><strong>Is 5G as fast as fibre?</strong> <p>Sometimes — but less consistent.</p></div>
+                <div class="faq-card"><strong>Is 5G cheaper?</strong> <p>Not always — similar to mid-tier fibre.</p></div>
+                <div class="faq-card"><strong>Does weather affect 5G?</strong> <p>Signal can vary in extreme conditions.</p></div>
+                <div class="faq-card"><strong>5G in rural areas?</strong> <p>Only if 5G coverage exists.</p></div>
+                <div class="faq-card"><strong>Best for working from home?</strong> <p>Full fibre.</p></div>
+                <div class="faq-card"><strong>Which has lower latency?</strong> <p>Fibre.</p></div>
+            </div>
+
+            <!-- Why Utility King - 2x2 with colored borders (reusing summary card style) -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+
+            <div class="summary-grid" style="margin-bottom: 2rem;">
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-map-marked-alt"></i></div>
+                    <div class="summary-content">
+                        <h4>Check 5G coverage</h4>
+                        <p>See what's available in your area</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-home"></i></div>
+                    <div class="summary-content">
+                        <h4>Fibre availability</h4>
+                        <p>Full fibre options near you</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-infinity"></i></div>
+                    <div class="summary-content">
+                        <h4>Compare unlimited plans</h4>
+                        <p>Find the best value</p>
+                    </div>
+                </div>
+                <div class="summary-card">
+                    <div class="summary-icon"><i class="fas fa-file-invoice"></i></div>
+                    <div class="summary-content">
+                        <h4>Total contract cost</h4>
+                        <p>No hidden fees</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Choose the right connection</h2>
+                <p>Compare 5G and fibre broadband in your postcode — speed, cost & reliability.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank" rel="noopener noreferrer">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #9f7aea;"></i> Utility King — 5G vs fibre broadband UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

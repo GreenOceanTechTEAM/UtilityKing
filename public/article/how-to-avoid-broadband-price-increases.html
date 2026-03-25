@@ -1,0 +1,773 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>How to Avoid Broadband Price Increases | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Premium Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fa;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            color: #2d3a4a;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium color palette */
+        :root {
+            --primary-navy: #1a2b3f;
+            --primary-sage: #7c9a8f;
+            --primary-gold: #c9a86b;
+            --primary-mauve: #a57c8b;
+            --gradient-premium: linear-gradient(145deg, #1a2b3f, #2c4a5c);
+            --gradient-accent: linear-gradient(135deg, #c9a86b, #b58d6b);
+            --card-bg: #ffffff;
+            --bg-soft: #f8f9fc;
+            --text-dark: #1a2b3f;
+            --text-soft: #4a5b6b;
+            --border-subtle: #e2e8f0;
+            --shadow-elegant: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Font 1: Cormorant Garamond - elegant serif for headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color: var(--text-dark);
+        }
+
+        /* Font 2: Plus Jakarta Sans - modern sans for subheads, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag, .meta {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - clean body text */
+
+        /* Premium typography */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: var(--primary-gold);
+            }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--primary-navy);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-sage);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-elegant);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(201, 168, 107, 0.15));
+                pointer-events: none;
+            }
+
+            .hero-premium h1 {
+                color: white;
+                max-width: 1400px;
+                text-align:center;
+            }
+
+            .hero-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: clamp(1.1rem, 4vw, 1.25rem);
+                max-width: 1400px;
+                text-align: center;
+                margin-bottom: 1.5rem;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 100px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hero-tags i {
+                margin-right: 0.5rem;
+                color: var(--primary-gold);
+            }
+
+        /* Main content */
+        .main-content {
+            background: white;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            box-shadow: var(--shadow-elegant);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive grids */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Premium Card Design */
+        .card-premium {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+            .card-premium:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-sage);
+            }
+
+            .card-premium::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-accent);
+                opacity: 0.6;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: var(--bg-soft);
+            color: var(--primary-navy);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .badge-navy {
+            background: var(--primary-navy);
+            color: white;
+            border: none;
+        }
+
+        .badge-sage {
+            background: var(--primary-sage);
+            color: white;
+            border: none;
+        }
+
+        .badge-gold {
+            background: var(--primary-gold);
+            color: white;
+            border: none;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-sage);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary-navy);
+            font-size: 1rem;
+        }
+
+        .price-highlight {
+            background: var(--gradient-accent);
+            padding: 0.3rem 1.2rem;
+            border-radius: 50px;
+            display: inline-block;
+            color: white;
+            font-weight: 700;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            border: none;
+        }
+
+        /* Premium Table */
+        .table-premium {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+            width: 100%;
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .table-premium table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table-premium th {
+                background: var(--primary-navy);
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: white;
+                text-align: left;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            .table-premium td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                font-size: 1rem;
+                color: var(--text-soft);
+            }
+
+            .table-premium tr:last-child td {
+                border-bottom: none;
+            }
+
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Premium CTA */
+        .cta-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .cta-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(201, 168, 107, 0.2), transparent 60%);
+                pointer-events: none;
+            }
+
+            .cta-premium h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+                .cta-premium h2::after {
+                    display: none;
+                }
+
+            .cta-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-premium {
+            background: var(--primary-gold);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--primary-navy);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin: 1rem 0;
+        }
+
+            .btn-premium:hover {
+                background: #dbb676;
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+            }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Summary card */
+        .summary-card {
+            background: linear-gradient(145deg, var(--bg-soft), white);
+            border-radius: 1.5rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid var(--border-subtle);
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .summary-card h2 {
+                margin-top: 0;
+            }
+
+        /* Numbered list */
+        .numbered-list {
+            list-style: none;
+            counter-reset: item;
+        }
+
+            .numbered-list li {
+                counter-increment: item;
+                margin-bottom: 1.5rem;
+                position: relative;
+                padding-left: 2.5rem;
+            }
+
+                .numbered-list li::before {
+                    content: counter(item);
+                    position: absolute;
+                    left: 0;
+                    top: 0;
+                    width: 1.8rem;
+                    height: 1.8rem;
+                    background: var(--primary-sage);
+                    color: white;
+                    border-radius: 50%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    font-weight: 700;
+                    font-size: 0.9rem;
+                }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-soft);
+            }
+
+                .feature-list li i {
+                    color: var(--primary-gold);
+                    font-size: 1.1rem;
+                }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-gold), transparent);
+            margin: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Hero -->
+        <div class="hero-premium">
+            <h1>How to Avoid Broadband<br><span style="color: var(--primary-gold);">Price Increases</span></h1>
+            <p>A strategic guide to protecting your budget from mid-contract hikes and inflation-linked rises.</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-chart-line"></i> CPI + 3.9%</span>
+                <span><i class="fas fa-shield-alt"></i> Fixed-price options</span>
+                <span><i class="fas fa-calendar-alt"></i> 12 vs 24 months</span>
+                <span><i class="fas fa-pound-sign"></i> Save up to £150</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Executive Summary -->
+            <div class="summary-card">
+                <h2>Key insights</h2>
+                <div class="grid-4x1" style="margin: 0;">
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-navy); font-size: 1.2rem;">CPI + 3.9%</p>
+                        <p style="font-size: 0.95rem;">Standard increase formula used by major providers</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-navy); font-size: 1.2rem;">£30–£100+</p>
+                        <p style="font-size: 0.95rem;">Potential savings over 24-month contract</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-navy); font-size: 1.2rem;">7 strategies</p>
+                        <p style="font-size: 0.95rem;">Proven methods to avoid price hikes</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-navy); font-size: 1.2rem;">Fixed-price</p>
+                        <p style="font-size: 0.95rem;">Available via Alt-Nets and regional providers</p>
+                    </div>
+                </div>
+              
+            </div>
+
+            <!-- Why prices increase -->
+            <h2>Why broadband prices increase</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-navy">The contract clause</span>
+                    <p style="font-size: 1.1rem; font-weight: 600; color: var(--primary-navy); margin-top: 0.5rem;">"Your price will increase each April by CPI + 3.9%"</p>
+                    <p>If CPI is 5%, your total increase becomes:</p>
+                    <p style="font-size: 2rem; font-weight: 700; color: var(--primary-sage); text-align: center; margin: 1rem 0;">8.9%</p>
+                    <p>On a £35 plan, that's an extra <strong>£3+ per month</strong>.</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-sage">Key characteristics</span>
+                    <ul class="feature-list" style="margin-top: 1rem;">
+                        <li><i class="fas fa-check-circle"></i> Automatic increases</li>
+                        <li><i class="fas fa-check-circle"></i> Pre-agreed in your contract</li>
+                        <li><i class="fas fa-check-circle"></i> Applied even during minimum term</li>
+                        <li><i class="fas fa-check-circle"></i> Usually every April</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- 7 Ways to Avoid -->
+            <h2>7 proven ways to avoid price increases</h2>
+            <ol class="numbered-list">
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Choose a fixed-price contract</h3>
+                    <p>Some providers offer fixed monthly pricing with no inflation-linked rises. These are often alternative fibre networks (Alt-Nets) and regional full fibre providers. Always check the "Price Changes" section before signing.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Consider 12-month contracts</h3>
+                    <p>Shorter contracts mean less exposure to annual increases and more flexibility. The monthly price may be slightly higher, but overall cost may be more predictable.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Switch when your contract ends</h3>
+                    <p>The biggest price jump often happens when promotional pricing expires. Set a reminder 30–60 days before your contract ends to avoid "loyalty penalties" that can be £10–£20 more per month.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Avoid auto-renewal</h3>
+                    <p>Standard out-of-contract rates are often significantly higher than new customer deals. Always review your deal before renewal.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Compare total 24-month cost — not monthly price</h3>
+                    <p>A deal with a slightly higher monthly price but fixed term may be cheaper than a lower headline rate with CPI increases.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Check for Alt-Net providers in your area</h3>
+                    <p>Alternative fibre networks often compete aggressively on price, offer symmetrical speeds, and avoid CPI-linked increases. Availability depends on postcode.</p>
+                </li>
+                <li>
+                    <h3 style="margin-bottom: 0.5rem;">Don't overpay for unnecessary speed</h3>
+                    <p>Most homes only need 150–300 Mbps. Paying an extra £8/month for 1Gbps adds £192 over 2 years.</p>
+                </li>
+            </ol>
+
+            <!-- Cost savings calculator -->
+            <h2>How much can you save?</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-sage">Small increases add up</span>
+                    <div style="display: flex; justify-content: space-around; margin: 1.5rem 0;">
+                        <div style="text-align: center;">
+                            <p style="color: var(--text-soft); margin: 0;">£3/month</p>
+                            <p style="font-size: 2rem; font-weight: 700; color: var(--primary-sage); margin: 0.5rem 0;">£36</p>
+                            <p style="font-size: 0.9rem;">over 12 months</p>
+                        </div>
+                        <div style="text-align: center;">
+                            <p style="color: var(--text-soft); margin: 0;">£3/month</p>
+                            <p style="font-size: 2rem; font-weight: 700; color: var(--primary-navy); margin: 0.5rem 0;">£72</p>
+                            <p style="font-size: 0.9rem;">over 24 months</p>
+                        </div>
+                    </div>
+                    <p style="text-align: center;">Add end-of-contract increases, and savings can exceed <strong>£100+</strong> per cycle.</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-gold">Compound effect</span>
+                    <div class="stat-row">
+                        <span class="stat-label">Year 1 monthly</span>
+                        <span class="stat-value">£30.00</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">Year 2 monthly (8.9%)</span>
+                        <span class="stat-value">£32.67</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">2-year total (CPI)</span>
+                        <span class="stat-value">£752</span>
+                    </div>
+                    <div class="stat-row">
+                        <span class="stat-label">2-year total (fixed £32)</span>
+                        <span class="stat-value">£768</span>
+                    </div>
+                    <p style="margin-top: 1rem;"><i class="fas fa-info-circle" style="color: var(--primary-gold);"></i> Fixed-price deal is only £16 more — but offers complete predictability.</p>
+                </div>
+            </div>
+
+            <!-- What you can't do -->
+            <h2>What you can't usually do</h2>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <div class="two-col" style="margin: 0;">
+                    <div>
+                        <span class="badge badge-navy">Ofcom rules</span>
+                        <p style="margin-top: 1rem;">If the increase was clearly written in your contract (e.g., CPI + 3.9%), you usually cannot cancel without early termination fees.</p>
+                    </div>
+                    <div>
+                        <span class="badge badge-gold">Key takeaway</span>
+                        <p style="margin-top: 1rem;">Checking terms before signing matters more than ever.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Red flags -->
+            <h2>Red flags to watch before signing</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">⚠️</span><p style="margin-top: 0.5rem;">"Price may increase annually"</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p style="margin-top: 0.5rem;">CPI-linked clauses</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p style="margin-top: 0.5rem;">Promotional pricing expires after 12 months</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p style="margin-top: 0.5rem;">No clarity on second-year pricing</p></div>
+            </div>
+
+            <!-- Example comparison table -->
+            <h2>Deal comparison</h2>
+            <div class="table-premium">
+                <table>
+                    <tr>
+                        <th>Deal Type</th>
+                        <th>Monthly</th>
+                        <th>24-Month Total</th>
+                        <th>Notes</th>
+                    </tr>
+                    <tr>
+                        <td>£30 + CPI</td>
+                        <td>£30 + increases</td>
+                        <td>~£750+</td>
+                        <td>Depends on inflation</td>
+                    </tr>
+                    <tr>
+                        <td>£32 Fixed</td>
+                        <td>£32</td>
+                        <td>£768</td>
+                        <td>Complete predictability</td>
+                    </tr>
+                    <tr>
+                        <td>£28 12-Month</td>
+                        <td>£28</td>
+                        <td>£336/year</td>
+                        <td>More flexibility</td>
+                    </tr>
+                </table>
+            </div>
+            <p class="text-center">The cheapest-looking deal isn't always cheapest long-term.</p>
+
+            <!-- When to prioritise fixed pricing -->
+            <h2>When to prioritise fixed pricing</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">📊</span><p>Predictable monthly bills</p></div>
+                <div class="card-premium"><span class="stat-number">💰</span><p>Tight budgeting</p></div>
+                <div class="card-premium"><span class="stat-number">👵</span><p>Fixed income</p></div>
+                <div class="card-premium"><span class="stat-number">🔒</span><p>Dislike surprises</p></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2>Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Can I avoid broadband price rises completely?</h3>
+                    <p>Yes — by choosing fixed-price contracts or switching regularly.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Are all providers using CPI + 3.9%?</h3>
+                    <p>Many major providers do — but not all. Always check terms.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is it worth switching every 18–24 months?</h3>
+                    <p>Often yes — new customer deals are usually cheaper.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Do Alt-Nets increase prices?</h3>
+                    <p>Some don't — always check individual provider terms.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-premium" style="background: var(--primary-navy); color: white;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: var(--primary-gold);"></i>
+                    <span style="font-size: 1.3rem; font-weight: 600; color: white;">Utility King approach</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.9);">We help you compare fixed vs CPI-linked contracts, review total 24-month costs, check postcode-level availability, and avoid loyalty penalties. Our focus is transparency so you stay in control of your broadband costs.</p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-premium">
+                <h2>Ready to avoid broadband price increases?</h2>
+                <p>If your bill has risen — or you're worried about future increases — fixed-price full fibre deals may be available in your postcode.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium"><i class="fas fa-paper-plane"></i> Contact Us</a>
+                </div>
+                <p style="margin-top: 1.5rem;"><i class="fas fa-map-pin" style="color: var(--primary-gold);"></i> Find options in your area</p>
+            </div>
+
+            <hr>
+            <p style="text-align: center; color: #999; font-size: 0.9rem;">© Utility King 2026 · How to Avoid Broadband Price Increases · Premium UK Guide</p>
+        </div>
+    </div>
+</body>
+</html>

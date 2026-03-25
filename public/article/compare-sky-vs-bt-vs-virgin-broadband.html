@@ -1,0 +1,643 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Sky vs BT vs Virgin Broadband 2026 | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: 3 families -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&family=Outfit:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f0f9 100%);
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1rem;
+            color: #1a2639;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --sky-gradient: linear-gradient(145deg, #0099ff, #0066cc);
+            --bt-gradient: linear-gradient(145deg, #a36eff, #7b3fe0);
+            --virgin-gradient: linear-gradient(145deg, #ff4d5a, #c62828);
+            --card-bg: rgba(255, 255, 255, 0.95);
+            --bg-soft: #f0f7ff;
+            --text-dark: #1a2639;
+            --text-soft: #2c3e50;
+            --accent-yellow: #ffc107;
+            --accent-pink: #ff6b9d;
+            --accent-teal: #00c9b6;
+            --shadow-color: rgba(0, 100, 200, 0.2);
+        }
+
+        /* Font 1: Montserrat - headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        /* Font 2: Outfit - subheadings, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag {
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - body text (default) */
+
+        /* RESPONSIVE FONT SIZES - using clamp() for fluid typography */
+        h1 {
+            font-size: clamp(2.2rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 0.75rem;
+            background: linear-gradient(135deg, #1a2639, #2d3b5c);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h2 {
+            font-size: clamp(1.8rem, 6vw, 3rem);
+            margin: 1.5rem 0 1rem;
+            background: linear-gradient(135deg, #1e3b5c, #2b4c7a);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            word-wrap: break-word;
+        }
+
+        h3 {
+            font-size: clamp(1.4rem, 5vw, 2rem);
+            margin-bottom: 0.75rem;
+            word-wrap: break-word;
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.2rem);
+            line-height: 1.5;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(1.8rem, 6vw, 2.6rem);
+            font-weight: 700;
+            background: linear-gradient(135deg, #0066cc, #0099ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1440px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* HERO SECTION - fully responsive */
+        .hero-vibrant {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #ff6b9d 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            box-shadow: 0 30px 40px -20px rgba(102, 126, 234, 0.6);
+            margin-bottom: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero-vibrant::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><polygon points="0,100 100,0 100,100" fill="rgba(255,255,255,0.1)"/></svg>');
+                background-size: cover;
+                opacity: 0.3;
+            }
+
+            .hero-vibrant h1 {
+                color: white;
+                -webkit-text-fill-color: white;
+                text-shadow: 0 4px 15px rgba(0,0,0,0.3);
+                position: relative;
+                z-index: 2;
+                font-size: clamp(1.8rem, 7vw, 4rem);
+                text-align:center;
+            }
+
+            .hero-vibrant p {
+                color: rgba(255,255,255,0.95);
+                font-size: clamp(1rem, 4vw, 1.4rem);
+                text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+                position: relative;
+                z-index: 2;
+                text-align:center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+            position: relative;
+            z-index: 2;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255,255,255,0.25);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 50px;
+                font-size: clamp(0.8rem, 3.5vw, 1.1rem);
+                font-weight: 600;
+                color: white;
+                border: 1px solid rgba(255,255,255,0.4);
+                white-space: nowrap;
+            }
+
+            .hero-tags i {
+                margin-right: 0.3rem;
+            }
+
+        /* Main content */
+        .main-content {
+            background: rgba(255,255,255,0.7);
+            backdrop-filter: blur(10px);
+            border-radius: 2rem;
+            padding: clamp(1.2rem, 4vw, 3rem);
+            box-shadow: 0 20px 40px -10px rgba(0,0,0,0.2);
+            width: 100%;
+        }
+
+        /* RESPONSIVE GRIDS */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1rem;
+            margin: 1.5rem 0;
+            width: 100%;
+        }
+
+        /* Mobile first - then scale up */
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        /* Tablet */
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            body {
+                padding: 1.5rem;
+            }
+        }
+
+        /* Desktop */
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            body {
+                padding: 2rem 1.5rem;
+            }
+        }
+
+        /* Card style - fully responsive */
+        .card-colorful {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            box-shadow: 0 15px 30px -10px var(--shadow-color);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.8);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+            word-wrap: break-word;
+        }
+
+            .card-colorful::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 6px;
+                background: linear-gradient(90deg, #0099ff, #a36eff, #ff4d5a);
+            }
+
+            .card-colorful:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 40px -8px rgba(0,150,255,0.4);
+            }
+
+        /* Provider specific */
+        .card-sky {
+            border-left: 6px solid #0099ff;
+        }
+
+        .card-bt {
+            border-left: 6px solid #a36eff;
+        }
+
+        .card-virgin {
+            border-left: 6px solid #ff4d5a;
+        }
+
+        .provider-badge {
+            display: inline-block;
+            padding: 0.3rem 1rem;
+            border-radius: 30px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 0.8rem;
+            white-space: nowrap;
+        }
+
+        @media (max-width: 480px) {
+            .provider-badge {
+                font-size: 0.7rem;
+                padding: 0.2rem 0.8rem;
+            }
+        }
+
+        .badge-sky {
+            background: #e3f2ff;
+            color: #0066cc;
+        }
+
+        .badge-bt {
+            background: #ede7ff;
+            color: #7b3fe0;
+        }
+
+        .badge-virgin {
+            background: #ffe7e9;
+            color: #c62828;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.6rem 0;
+            border-bottom: 1px dashed #d0e0f0;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: #4a6a8a;
+            font-weight: 600;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .stat-value {
+            font-weight: 700;
+            color: #1e3b5c;
+            font-size: clamp(0.9rem, 3.5vw, 1rem);
+        }
+
+        .price-highlight {
+            background: linear-gradient(135deg, #ffd166, #ffb347);
+            padding: 0.3rem 1rem;
+            border-radius: 40px;
+            display: inline-block;
+            color: #1a2639;
+            font-weight: 700;
+            font-size: clamp(0.8rem, 3vw, 1rem);
+            white-space: nowrap;
+        }
+
+        /* Table responsive */
+        .table-vibrant {
+            background: white;
+            border-radius: 1.5rem;
+            overflow-x: auto;
+            border: 1px solid #e0ecff;
+            margin: 1.5rem 0;
+            width: 100%;
+            -webkit-overflow-scrolling: touch;
+        }
+
+            .table-vibrant table {
+                width: 100%;
+                min-width: 500px;
+                border-collapse: collapse;
+            }
+
+            .table-vibrant th {
+                background: linear-gradient(135deg, #0099ff20, #a36eff20);
+                padding: 1rem;
+                font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+                color: #1a3b5c;
+                text-align: left;
+            }
+
+            .table-vibrant td {
+                padding: 0.8rem 1rem;
+                border-bottom: 1px solid #e5f0ff;
+                font-size: clamp(0.9rem, 3.5vw, 1rem);
+            }
+
+        /* FAQ responsive */
+        .faq-vibrant {
+            background: linear-gradient(135deg, #f9f3ff, #e8f0ff);
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            border: 1px solid #d0bfff;
+            height: auto;
+            word-wrap: break-word;
+        }
+
+        /* Two column responsive */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* CTA responsive */
+        .cta-spectacular {
+            background: linear-gradient(135deg, #4158D0 0%, #C850C0 50%, #FFCC70 100%);
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 5vw, 3.5rem);
+            margin: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .cta-spectacular::after {
+                content: '🚀';
+                font-size: clamp(5rem, 20vw, 10rem);
+                position: absolute;
+                bottom: -10px;
+                right: 5px;
+                opacity: 0.15;
+                transform: rotate(-10deg);
+                pointer-events: none;
+            }
+
+            .cta-spectacular h2 {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                -webkit-text-fill-color: white;
+                font-size: clamp(1.6rem, 6vw, 2.8rem);
+                text-align:center;
+            }
+
+            .cta-spectacular p {
+                color: white;
+                text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+                font-size: clamp(1rem, 4vw, 1.3rem);
+                text-align: center;
+            }
+
+        .btn-glow {
+            background: white;
+            border: none;
+            padding: 0.8rem 1.8rem;
+            border-radius: 60px;
+            font-size: clamp(1rem, 4vw, 1.4rem);
+            font-weight: 700;
+            color: #4158D0;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+            transition: 0.3s;
+            white-space: nowrap;
+           
+        }
+
+        @media (max-width: 480px) {
+            .btn-glow {
+                padding: 0.7rem 1.2rem;
+                gap: 0.5rem;
+            }
+        }
+
+        .btn-glow:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(255,255,255,0.3);
+        }
+
+        hr {
+            border: none;
+            height: 3px;
+            background: linear-gradient(90deg, #0099ff, #a36eff, #ff4d5a);
+            border-radius: 3px;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        /* Utility classes */
+        .text-wrap {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        .no-overflow {
+            overflow: hidden;
+        }
+
+        .w-100 {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- HERO - fully responsive -->
+        <div class="hero-vibrant">
+            <h1>SKY vs BT vs VIRGIN<br><span style="font-size: 0.7em; display: block; color: rgba(255,255,255,0.9);">broadband showdown 2026</span></h1>
+            <p>⚡ We compare speed, TV bundles, reliability & real costs – find your perfect provider!</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-tower-broadcast"></i> Openreach vs Cable</span>
+                <span><i class="fas fa-rocket"></i> 1.1 Gbps</span>
+                <span><i class="fas fa-tv"></i> TV bundles</span>
+                <span><i class="fas fa-pound-sign"></i> Best value</span>
+            </div>
+        </div>
+
+        <!-- main content -->
+        <div class="main-content">
+            <!-- 2x2 colorful cards -->
+            <div class="grid-2x2">
+                <div class="card-colorful">
+                    <span class="provider-badge badge-sky"><i class="fas fa-cloud-sun"></i> SKY</span>
+                    <h3>Openreach FTTP</h3>
+                    <p>Reliable full fibre, 95% coverage by 2026. Great TV integration.</p>
+                    <div class="stat-row"><span class="stat-label">Max download</span><span class="stat-value">900 Mbps</span></div>
+                    <div class="stat-row"><span class="stat-label">Upload (gigabit)</span><span class="stat-value">100+ Mbps</span></div>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge badge-bt"><i class="fas fa-broadcast-tower"></i> BT</span>
+                    <h3>Openreach FTTP</h3>
+                    <p>Premium positioning, Halo benefits, strong support & reliability.</p>
+                    <div class="stat-row"><span class="stat-label">Max download</span><span class="stat-value">900 Mbps</span></div>
+                    <div class="stat-row"><span class="stat-label">Upload (gigabit)</span><span class="stat-value">100+ Mbps</span></div>
+                </div>
+            </div>
+
+            <!-- 4x1 price cards -->
+            <div class="grid-4x1">
+                <div class="card-colorful"><span class="subhead">Sky entry</span><span class="stat-number">£25-30</span><p>67 Mbps</p><span class="price-highlight">⭐ best value</span></div>
+                <div class="card-colorful"><span class="subhead">BT entry</span><span class="stat-number">£28-35</span><p>67 Mbps</p><span class="price-highlight">🛡️ Halo included</span></div>
+                <div class="card-colorful"><span class="subhead">Virgin entry</span><span class="stat-number">£28-35</span><p>132 Mbps</p><span class="price-highlight">🚀 fastest entry</span></div>
+                <div class="card-colorful"><span class="subhead">Gigabit</span><span class="stat-number">£40-50</span><p>1.1 Gbps / 900 Mbps</p><span class="price-highlight">⚡ ultrafast</span></div>
+            </div>
+
+            <!-- Speed tiers 3x2 -->
+            <h2>📊 Speed tiers <span style="color: #ff4d5a;">full comparison</span></h2>
+            <div class="grid-3x2">
+                <div class="card-colorful card-sky"><span class="subhead">Sky essential</span><span class="stat-number">67 Mbps</span><p>£25-30/m · FTTC</p></div>
+                <div class="card-colorful card-bt"><span class="subhead">BT essential</span><span class="stat-number">67 Mbps</span><p>£28-35/m · FTTC</p></div>
+                <div class="card-colorful card-virgin"><span class="subhead">Virgin M125</span><span class="stat-number">132 Mbps</span><p>£28-35/m · cable</p></div>
+                <div class="card-colorful card-sky"><span class="subhead">Sky ultrafast</span><span class="stat-number">150 Mbps</span><p>£30-35/m · FTTP</p></div>
+                <div class="card-colorful card-bt"><span class="subhead">BT fast</span><span class="stat-number">150 Mbps</span><p>£32-38/m · FTTP</p></div>
+                <div class="card-colorful card-virgin"><span class="subhead">Virgin M350</span><span class="stat-number">362 Mbps</span><p>£30-40/m · cable</p></div>
+            </div>
+
+            <!-- Two column upload + reliability -->
+            <div class="two-col">
+                <div class="card-colorful">
+                    <span class="provider-badge" style="background: #cff0ff; color:#0066cc;"><i class="fas fa-upload"></i> UPLOAD MATTERS</span>
+                    <p>
+                        <span style="color:#0066cc; font-weight:700;">Openreach FTTP:</span> 100+ Mbps on gigabit – perfect for cloud & gaming.<br>
+                        <span style="color:#c62828; font-weight:700;">Virgin cable:</span> ~52 Mbps on top tier, improving.
+                    </p>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge" style="background: #e9d7ff; color:#7b3fe0;"><i class="fas fa-shield-alt"></i> RELIABILITY</span>
+                    <p>
+                        <span style="color:#0066cc;">Sky/BT FTTP:</span> ultra stable, low latency.<br>
+                        <span style="color:#c62828;">Virgin:</span> great in urban areas, occasional peak congestion.
+                    </p>
+                </div>
+            </div>
+
+            <!-- TV bundles 2x2 -->
+            <h2>📺 TV & entertainment bundles</h2>
+            <div class="grid-2x2">
+                <div class="card-colorful"><span class="provider-badge badge-sky">SKY TV</span><p>Sky Q, Netflix included, Sky Sports & Cinema <span style="color:#0066cc; font-weight:700;">⭐ best for movies</span></p></div>
+                <div class="card-colorful"><span class="provider-badge badge-bt">BT TV</span><p>BT Sport + Warner Bros Discovery, NOW <span style="color:#7b3fe0; font-weight:700;">⚽ best for football</span></p></div>
+                <div class="card-colorful"><span class="provider-badge badge-virgin">VIRGIN TV</span><p>360 box, O2 priority, Volt benefits <span style="color:#c62828; font-weight:700;">📱 best mobile integration</span></p></div>
+                <div class="card-colorful"><span class="provider-badge" style="background: #ffe0b0;">COMPARE</span><p>All offer sports add-ons, multi-room, streaming apps</p></div>
+            </div>
+
+            <!-- Cost comparison 2 col -->
+            <div class="two-col">
+                <div class="card-colorful">
+                    <span class="provider-badge" style="background:#ffe0f0;">💰 24-MONTH COST</span>
+                    <div class="stat-row"><span class="stat-label">Sky 150 Mbps</span><span class="stat-value">£32 × 24 = £768</span></div>
+                    <div class="stat-row"><span class="stat-label">BT 150 Mbps</span><span class="stat-value">£35 × 24 = £840</span></div>
+                    <div class="stat-row"><span class="stat-label">Virgin 150 Mbps</span><span class="stat-value">£33 × 24 = £792</span></div>
+                </div>
+                <div class="card-colorful">
+                    <span class="provider-badge" style="background:#e0ffe0;">✅ KEY CHECKS</span>
+                    <p><i class="fas fa-check-circle" style="color:#00c9b6;"></i> <span class="highlight">Full fibre at your postcode?</span></p>
+                    <p><i class="fas fa-check-circle" style="color:#00c9b6;"></i> <span class="highlight">Upload speed for work/gaming?</span></p>
+                    <p><i class="fas fa-check-circle" style="color:#00c9b6;"></i> <span class="highlight">Mid-contract price rises?</span></p>
+                </div>
+            </div>
+
+            <!-- FAQ section 2x2 -->
+            <h2>❓ Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="faq-vibrant">
+                    <h3 style="color:#0066cc;">Is Virgin faster?</h3>
+                    <p>Download often yes (1.1 Gbps), but upload lower than FTTP. For gaming, Sky/BT may be better.</p>
+                </div>
+                <div class="faq-vibrant">
+                    <h3 style="color:#7b3fe0;">Are Sky & BT same?</h3>
+                    <p>On Openreach network speeds similar, but TV bundles, support, extras differ.</p>
+                </div>
+                <div class="faq-vibrant">
+                    <h3 style="color:#c62828;">Which is cheapest?</h3>
+                    <p>Sky often has lowest entry (£25-30), but promotions vary by postcode.</p>
+                </div>
+                <div class="faq-vibrant">
+                    <h3 style="color:#ffb347;">Gigabit worth it?</h3>
+                    <p>For most 150-300 Mbps is enough. Gamers/creators may want 900+.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach card -->
+            <div class="card-colorful" style="background: linear-gradient(145deg, #f0e7ff, #ffe7f0);">
+                <span class="provider-badge" style="background: #ffd700; color:#1a2639;"><i class="fas fa-crown"></i> UTILITY KING APPROACH</span>
+                <p style="font-size:clamp(1rem, 4vw, 1.3rem);">We compare <span style="color:#0066cc; font-weight:700;">real postcode availability</span>, <span style="color:#7b3fe0; font-weight:700;">total contract cost</span>, and <span style="color:#c62828; font-weight:700;">infrastructure type</span> – so you choose the best value for YOUR home, not just the biggest brand.</p>
+            </div>
+
+            <!-- SPECTACULAR CTA -->
+            <div class="cta-spectacular">
+                <h2>Ready to save?</h2>
+                <p>Find the best broadband deal at your address – we check live availability!</p>
+                <div align="center">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-glow"><i class="fas fa-paper-plane"></i> Contact Utility King</a>
+                </div>
+                <p style="margin-top: 1rem;"><i class="fas fa-map-pin"></i> We check your postcode instantly</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#4a6a8a; font-size:clamp(0.9rem, 3.5vw, 1.1rem);">© Utility King 2026 · Sky vs BT vs Virgin broadband · vibrant comparison</p>
+        </div>
+    </div>
+</body>
+</html>

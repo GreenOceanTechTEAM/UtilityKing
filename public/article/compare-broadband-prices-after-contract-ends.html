@@ -1,0 +1,936 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Compare Broadband Prices After Contract Ends (UK 2026 Guide) | Utility King</title>
+    <meta name="description" content="Complete guide to comparing broadband prices after your contract ends in the UK for 2026. Learn how much you could be overpaying and how to switch to better deals.">
+    <meta name="keywords" content="broadband contract ended, out of contract broadband, broadband price increase, switch broadband after contract, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        .custom-caption
+        {
+            font-weight:bold;
+            font-size:large;
+            color:#fff;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f9fbfd;
+            color: #1e2b3c;
+            line-height: 1.5;
+        }
+
+        /* === PROFESSIONAL DESIGN - NAVY & GOLD === */
+        .hero {
+            background: linear-gradient(145deg, #0b1f33 0%, #142b44 100%);
+            color: #fff;
+            padding: clamp(3.5rem, 8vw, 5.5rem) 1.5rem;
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            text-align: center;
+            width: 100%;
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 50%, rgba(198, 155, 80, 0.08) 0%, transparent 50%);
+                z-index: 1;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                right: 0;
+                height: 60px;
+                background: linear-gradient(to top, #f9fbfd, transparent);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 600;
+            line-height: 1.2;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            letter-spacing: -0.02em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero .highlight {
+            color: #c69b50;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: clamp(1rem, 2.5vw, 1.2rem);
+            max-width: 700px;
+            opacity: 0.85;
+            margin: 0 auto 2.5rem;
+            color: #d1dce8;
+            font-weight: 300;
+            padding: 0 1rem;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.03);
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            border: 1px solid rgba(198, 155, 80, 0.2);
+            min-width: 100px;
+        }
+
+            .hero-stat .number {
+                font-size: clamp(1.8rem, 4vw, 2.2rem);
+                font-weight: 600;
+                color: #c69b50;
+                line-height: 1;
+                margin-bottom: 0.2rem;
+            }
+
+            .hero-stat .label {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                opacity: 0.6;
+                font-weight: 400;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1200px;
+            margin: -2rem auto 4rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2.5rem;
+            box-shadow: 0 15px 35px -20px rgba(11,31,51,0.15);
+            margin-bottom: 3rem;
+            border: 1px solid #eaeef3;
+        }
+
+        .intro-quote {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #0b1f33;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+            padding-left: 1.5rem;
+            border-left: 4px solid #c69b50;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #455a64;
+            line-height: 1.7;
+        }
+
+        /* quick summary card */
+        .summary-card {
+            margin: 2.5rem 0;
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .summary-item {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 12px;
+            border: 1px solid #eaeef3;
+            box-shadow: 0 5px 15px -8px rgba(11,31,51,0.1);
+        }
+
+        .summary-feature {
+            font-weight: 600;
+            color: #c69b50;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .summary-value {
+            font-weight: 500;
+            color: #1e2b3c;
+            font-size: 1.1rem;
+            display: block;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 3.5rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #0b1f33;
+            color: #c69b50;
+            width: 44px;
+            height: 44px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            font-weight: 500;
+        }
+
+        .section-header h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #0b1f33;
+            margin: 0;
+        }
+
+            .section-header h2 span {
+                background: #eaeef3;
+                color: #455a64;
+                padding: 0.2rem 1.2rem;
+                border-radius: 30px;
+                font-size: 0.9rem;
+                margin-left: 1rem;
+                font-weight: 400;
+            }
+
+        /* what happens card */
+        .happens-card {
+            background: linear-gradient(145deg, #0b1f33 0%, #142b44 100%);
+            border-radius: 16px;
+            padding: 2rem 4rem;
+            border: 1px solid #eaeef3;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            place-items: center;
+        }
+
+        .happens-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1.5rem;
+           
+        }
+
+            .happens-list li {
+                background: #f0f4f9;
+                padding: 1rem;
+                border-radius: 8px;
+                text-align: center;
+                font-weight: 500;
+                margin-top: 1rem;
+            }
+
+        /* price increase card */
+        .increase-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #eaeef3;
+        }
+
+        .increase-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 2rem 0;
+        }
+
+            .increase-table th {
+                background: #f0f4f9;
+                padding: 1rem;
+                text-align: left;
+                font-weight: 600;
+                color: #0b1f33;
+            }
+
+            .increase-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #eaeef3;
+            }
+
+            .increase-table tr:last-child td {
+                border-bottom: none;
+            }
+
+        .increase-highlight {
+            background: #f0f4f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #c69b50;
+        }
+
+        /* why providers increase */
+        .why-increase {
+            background: #f0f4f9;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .why-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .why-grid-item {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .why-note {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #c69b50;
+        }
+
+        /* options grid */
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        .option-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #eaeef3;
+            border-top: 4px solid;
+        }
+
+            .option-card.renegotiate {
+                border-top-color: #2c3e50;
+            }
+
+            .option-card.switch {
+                border-top-color: #c69b50;
+            }
+
+        .option-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: #0b1f33;
+            margin-bottom: 1rem;
+        }
+
+        .option-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .option-list li {
+                padding: 0.3rem 0 0.3rem 2rem;
+                position: relative;
+                font-size: 0.95rem;
+            }
+
+                .option-list li::before {
+                    content: "•";
+                    color: #c69b50;
+                    position: absolute;
+                    left: 0;
+                    font-weight: 600;
+                }
+
+        .option-note {
+            background: #f0f4f9;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* savings card */
+        .savings-card {
+            background: linear-gradient(145deg, #0b1f33, #142b44);
+            color: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .savings-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #c69b50;
+            margin: 1rem 0;
+        }
+
+        .savings-detail {
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            color: #d1dce8;
+        }
+
+        /* mid-contract card */
+        .midcontract-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #eaeef3;
+            border-left: 4px solid #c69b50;
+        }
+
+        /* steps grid */
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .step-card {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            text-align: center;
+            border: 1px solid #eaeef3;
+        }
+
+        .step-number {
+            background: #0b1f33;
+            color: #c69b50;
+            width: 36px;
+            height: 36px;
+            border-radius: 36px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            margin: 0 auto 1rem;
+        }
+
+        /* upgrade card */
+        .upgrade-card {
+            background: #f0f4f9;
+            border-radius: 16px;
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+
+        .upgrade-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .upgrade-item {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .upgrade-note {
+            background: #ffffff;
+            padding: 1rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            border-left: 4px solid #c69b50;
+        }
+
+        /* how often */
+        .howoften-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 2rem;
+            border: 1px solid #eaeef3;
+            text-align: center;
+        }
+
+        .howoften-highlight {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #c69b50;
+            margin: 1rem 0;
+        }
+
+        /* mistakes grid */
+        .mistakes-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .mistake-item {
+            background: #fff5e6;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #c69b50;
+        }
+
+        /* FAQ grid - STACKED VERTICALLY */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .faq-block {
+            background: #ffffff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            border: 1px solid #eaeef3;
+            transition: all 0.2s ease;
+        }
+
+            .faq-block:hover {
+                border-color: #c69b50;
+            }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0b1f33;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+
+            .faq-q span {
+                background: #0b1f33;
+                color: #c69b50;
+                width: 28px;
+                height: 28px;
+                border-radius: 28px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 0.9rem;
+            }
+
+        .faq-block p {
+            color: #455a64;
+        }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(145deg, #0b1f33, #142b44);
+            color: white;
+            border-radius: 16px;
+            padding: 2.5rem;
+            margin: 3rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #c69b50;
+            gap: 2rem;
+        }
+
+        .cta-premium-left {
+            flex: 1 1 300px;
+        }
+
+            .cta-premium-left p {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-premium-left small {
+                color: #d1dce8;
+                font-size: 1rem;
+                display: block;
+            }
+
+        .cta-btn {
+            background: #c69b50;
+            color: #0b1f33;
+            padding: 1rem 2.5rem;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: none;
+            white-space: nowrap;
+        }
+
+            .cta-btn:hover {
+                background: #d4af6c;
+                transform: translateY(-2px);
+            }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #c69b50, #eaeef3, #c69b50, transparent);
+            margin: 3rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #9aaeb9;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .happens-card {
+               
+               
+                grid-template-columns: 1fr;
+               
+            }
+            .hero-stats {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .hero-stat {
+                width: 100%;
+                max-width: 200px;
+            }
+
+            .section-header {
+                flex-wrap: wrap;
+            }
+
+                .section-header h2 span {
+                    margin-left: 0;
+                    display: block;
+                    margin-top: 0.5rem;
+                }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .cta-btn {
+                white-space: normal;
+                width: 100%;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- PROFESSIONAL DESIGN - NAVY & GOLD -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Compare Broadband Prices After Contract Ends <span class="highlight">(UK 2026 Guide)</span></h1>
+            <div class="hero-sub">When your broadband contract ends, your price usually doesn't stay the same. Most providers move you to a higher out-of-contract tariff — often £10–£20 more per month.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">£10-20</span> <span class="label">monthly increase</span></div>
+                <div class="hero-stat"><span class="number">£150-300</span> <span class="label">yearly overpayment</span></div>
+                <div class="hero-stat"><span class="number">1-2</span> <span class="label">weeks to switch</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">When your broadband contract ends, your price usually doesn't stay the same. In fact, most UK providers move customers onto a standard out-of-contract tariff — and that's often £10–£20 more per month than new customer deals.</div>
+            <p class="intro-text">If your broadband contract has ended (or is about to), this guide will help you: understand what happens to your price, see how much you could be overpaying, compare better-value deals, decide whether to renegotiate or switch, and avoid loyalty penalties. At Utility King, we help you compare broadband prices clearly — so you don't keep paying more than necessary.</p>
+        </div>
+
+        <!-- Quick Summary -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Quick Summary</h2>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-grid">
+                <div class="summary-item"><span class="summary-feature">Out-of-contract</span><span class="summary-value">Usually more expensive</span></div>
+                <div class="summary-item"><span class="summary-feature">Overpayment</span><span class="summary-value">£150–£300 per year</span></div>
+                <div class="summary-item"><span class="summary-feature">New customer deals</span><span class="summary-value">Often significantly cheaper</span></div>
+                <div class="summary-item"><span class="summary-feature">Switching time</span><span class="summary-value">1–2 weeks</span></div>
+                <div class="summary-item"><span class="summary-feature">Outcome</span><span class="summary-value">Save and upgrade speed</span></div>
+            </div>
+        </div>
+
+        <!-- What Happens When Your Broadband Contract Ends? -->
+        <div class="section-header">
+            <div class="section-icon">📅</div>
+            <h2>What Happens When <span>Your Broadband Contract Ends?</span></h2>
+        </div>
+
+        <div class="happens-card">
+            <div>
+                <p class="custom-caption">Most broadband contracts in the UK last:</p>
+                <ul class="happens-list">
+                    <li>12 months</li>
+                    <li>18 months</li>
+                    <li>24 months</li>
+                </ul>
+            </div>
+
+            <div>
+                <p class="custom-caption">Once your minimum term ends:</p>
+                <ul class="happens-list">
+                    <li>Your service continues</li>
+                    <li>But your promotional discount ends</li>
+                    <li>You're moved onto a standard monthly rate</li>
+                </ul>
+
+            </div>
+            <p style="margin-top:1rem;text-align:center" class="custom-caption">This rate is usually much higher than your original deal.</p>
+        </div>
+      
+        <!-- How Much Do Prices Increase After Contract Ends? -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>How Much Do Prices Increase <span>After Contract Ends?</span></h2>
+        </div>
+
+        <div class="increase-card">
+            <p>Here's a typical example:</p>
+            <table class="increase-table">
+                <thead>
+                    <tr>
+                        <th>During Contract</th>
+                        <th>After Contract Ends</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>£28/month (150 Mbps)</td>
+                        <td>£42/month</td>
+                    </tr>
+                    <tr>
+                        <td>£25/month (67 Mbps)</td>
+                        <td>£38/month</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="increase-highlight">
+                That's an increase of £10–£17 per month — £120–£204 per year. Many customers don't realise the increase until they review their bill.
+            </div>
+        </div>
+
+        <!-- Why Do Providers Increase Prices? -->
+        <div class="section-header">
+            <div class="section-icon">🏦</div>
+            <h2>Why Do Providers <span>Increase Prices?</span></h2>
+        </div>
+
+        <div class="why-increase">
+            <p>Promotional deals are designed to attract new customers. After the contract ends:</p>
+            <div class="why-grid">
+                <div class="why-grid-item">Discounts expire</div>
+                <div class="why-grid-item">Providers assume inertia</div>
+                <div class="why-grid-item">Standard pricing applies</div>
+            </div>
+            <div class="why-note">
+                This is often called a "loyalty penalty." New customers usually get better pricing than existing out-of-contract customers.
+            </div>
+        </div>
+
+        <!-- Should You Renegotiate or Switch? -->
+        <div class="section-header">
+            <div class="section-icon">⚖️</div>
+            <h2>Should You <span>Renegotiate or Switch?</span></h2>
+        </div>
+
+        <div class="options-grid">
+            <div class="option-card renegotiate">
+                <div class="option-title">Option 1: Renegotiate</div>
+                <ul class="option-list">
+                    <li>Call and ask for best renewal offer</li>
+                    <li>Ask if they can match new customer pricing</li>
+                    <li>Inquire about speed upgrades</li>
+                </ul>
+                <div class="option-note">Retention teams sometimes offer competitive deals — but not always as strong as switching offers.</div>
+            </div>
+            <div class="option-card switch">
+                <div class="option-title">Option 2: Switch Providers</div>
+                <ul class="option-list">
+                    <li>Access to promotional pricing</li>
+                    <li>Potential speed upgrade</li>
+                    <li>Fresh contract incentives</li>
+                </ul>
+                <div class="option-note">Switching often saves more — especially if full fibre is now available.</div>
+            </div>
+        </div>
+
+        <!-- Example Savings Card -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>Example Savings <span>from Switching</span></h2>
+        </div>
+
+        <div class="savings-card">
+            <p>If you're paying: <strong>£42/month for 67 Mbps</strong></p>
+            <p style="margin-top:0.5rem;">And new customer deals offer: <strong>£28/month for 150 Mbps</strong></p>
+            <div class="savings-number">£14</div>
+            <p>per month</p>
+            <div class="savings-detail">£168 per year · Improve speed significantly</div>
+            <p style="margin-top:1.5rem;">Many households are overpaying without realising it.</p>
+        </div>
+
+        <!-- Mid-Contract Price Rises -->
+        <div class="section-header">
+            <div class="section-icon">📈</div>
+            <h2>What About <span>Mid-Contract Price Rises?</span></h2>
+        </div>
+
+        <div class="midcontract-card">
+            <p>Even during contracts, many providers apply annual increases (often CPI + 3.9%). After your contract ends, you may face both expired discounts and prior increases — making reviewing your deal even more important.</p>
+        </div>
+
+        <!-- How to Compare -->
+        <div class="section-header">
+            <div class="section-icon">🔍</div>
+            <h2>How to Compare Broadband Prices <span>After Contract Ends</span></h2>
+        </div>
+
+        <div class="steps-grid">
+            <div class="step-card"><div class="step-number">1</div><p>Check your current bill</p></div>
+            <div class="step-card"><div class="step-number">2</div><p>Enter your postcode</p></div>
+            <div class="step-card"><div class="step-number">3</div><p>Compare speed tiers</p></div>
+            <div class="step-card"><div class="step-number">4</div><p>Review total cost</p></div>
+            <div class="step-card"><div class="step-number">5</div><p>Switch or renegotiate</p></div>
+        </div>
+
+        <!-- Should You Upgrade? -->
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h2>Should You <span>Upgrade When Switching?</span></h2>
+        </div>
+
+        <div class="upgrade-card">
+            <p>Often, yes. Example pricing:</p>
+            <div class="upgrade-grid">
+                <div class="upgrade-item">67 Mbps – £26</div>
+                <div class="upgrade-item">150 Mbps – £28</div>
+                <div class="upgrade-item">300 Mbps – £34</div>
+            </div>
+            <div class="upgrade-note">
+                For just a few pounds more, you can significantly improve performance — especially if you stream in 4K, work from home, or have multiple users.
+            </div>
+        </div>
+
+        <!-- How Often Should You Compare? -->
+        <div class="section-header">
+            <div class="section-icon">⏰</div>
+            <h2>How Often Should <span>You Compare Broadband?</span></h2>
+        </div>
+
+        <div class="howoften-card">
+            <div class="howoften-highlight">At minimum: When your contract ends or once per year</div>
+            <p>Broadband pricing changes frequently. New infrastructure rollout may unlock better deals.</p>
+        </div>
+
+        <!-- Common Mistakes -->
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>Common Mistakes <span>to Avoid</span></h2>
+        </div>
+
+        <div class="mistakes-grid">
+            <div class="mistake-item">❌ Ignoring renewal notices</div>
+            <div class="mistake-item">❌ Assuming loyalty brings discounts</div>
+            <div class="mistake-item">❌ Not checking full fibre availability</div>
+            <div class="mistake-item">❌ Overlooking total contract cost</div>
+            <div class="mistake-item">❌ Forgetting to return old equipment</div>
+        </div>
+        <p>Regular comparison prevents long-term overpayment.</p>
+
+        <!-- FAQ -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does broadband automatically increase after contract ends?</div><p>Yes, in most cases promotional pricing ends and standard tariffs apply.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Can I leave immediately once my contract ends?</div><p>Yes — usually with 30 days' notice.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Will I lose internet during switching?</div><p>In most cases, no or minimal downtime.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is it better to stay loyal?</div><p>Not always. New customer deals are often cheaper.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Can I keep my phone number?</div><p>Yes, in most cases.</p></div>
+        </div>
+
+        <!-- Why Trust -->
+        <div class="section-header">
+            <div class="section-icon">🤝</div>
+            <h2>Why Compare Broadband Prices <span>with Utility King?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:4px solid #c69b50; padding:2rem; border-radius:12px; margin:2rem 0;">
+            <p style="color:#455a64;">At Utility King, we help you see postcode-specific deals, compare total contract cost, understand contract lengths, check speed tiers clearly, and switch easily. We focus on helping you avoid loyalty penalties — and keep more money in your pocket.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Ready to stop overpaying?</p>
+                <small>If your broadband contract has ended, there's a strong chance you're paying more than new customers. Switching takes minutes — and could save you hundreds.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact Us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to comparing broadband prices after contract ends UK. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

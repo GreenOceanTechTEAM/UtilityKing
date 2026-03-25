@@ -1,0 +1,628 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Business Fibre Broadband Comparison 2026 · Utility King</title>
+    <!-- Font Awesome 5 (free) -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #eef0e9;
+            font-family: 'Sora', 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.5;
+            padding: 1rem;
+            color: #1f352b;
+        }
+
+        @import url('https://fonts.googleapis.com/css2?family=Sora:wght@300;500;600;800&display=swap');
+
+        /* responsive container */
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: #fafaf5;
+            border-radius: 2rem;
+            box-shadow: 0 45px 70px -28px #2f4d3a;
+            overflow: hidden;
+            border: 1px solid #dde6d5;
+        }
+
+        /* header */
+        .hero {
+            background: #1f3b2f;
+            padding: 2rem 1.5rem;
+            color: #fcf7e7;
+            border-bottom: 8px solid #e5b567;
+        }
+
+        @media (min-width: 640px) {
+            .hero {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero {
+                padding: 2.8rem 3.8rem;
+            }
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .hero h1 {
+                font-size: 2.4rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 2.9rem;
+            }
+        }
+
+        .hero h1 i {
+            background: #e5b567;
+            color: #1f3b2f;
+            padding: 0.6rem;
+            border-radius: 60px;
+            font-size: 1.8rem;
+        }
+
+        .hero .subhead {
+            font-size: 1.1rem;
+            font-weight: 350;
+            max-width: 950px;
+            opacity: 0.95;
+            margin-top: 0.8rem;
+        }
+
+        .hero .quick-info {
+            display: flex;
+            gap: 1.2rem 2rem;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            font-weight: 400;
+        }
+
+            .hero .quick-info span i {
+                margin-right: 6px;
+                color: #eedba7;
+            }
+
+        /* main content */
+        .main {
+            padding: 1.8rem 1.2rem;
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 2.5rem 2rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 3rem 3.8rem;
+            }
+        }
+
+        /* stats row */
+        .stats-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.5rem;
+            background: #f3efe4;
+            border-radius: 3rem;
+            padding: 1.5rem 1.2rem;
+            margin-bottom: 2.2rem;
+            border: 1px solid #dac29c;
+            justify-content: center;
+        }
+
+        .stat-block {
+            flex: 1 1 120px;
+            min-width: 100px;
+            text-align: center;
+        }
+
+            .stat-block .figure {
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: #9e6d3b;
+                line-height: 1.2;
+                word-break: break-word;
+            }
+
+            .stat-block .caption {
+                font-size: 0.8rem;
+                font-weight: 600;
+                color: #476651;
+                text-transform: uppercase;
+                letter-spacing: 0.3px;
+            }
+
+        @media (min-width: 480px) {
+            .stat-block .figure {
+                font-size: 1.9rem;
+            }
+
+            .stat-block .caption {
+                font-size: 0.9rem;
+            }
+        }
+
+        /* section title */
+        .title {
+            font-size: 1.7rem;
+            font-weight: 700;
+            color: #1f3b2f;
+            margin: 2rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 4px solid #e5b567;
+            padding-bottom: 0.5rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .title {
+                font-size: 2rem;
+            }
+        }
+
+        .title i {
+            background: #ecdba9;
+            color: #7b5e38;
+            border-radius: 50%;
+            padding: 0.6rem;
+            font-size: 1.4rem;
+        }
+
+        /* fibre comparison cards */
+        .fibre-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .fibre-item {
+            flex: 1 1 260px;
+            min-width: 240px;
+            background: #fcfaf3;
+            border-radius: 2rem;
+            padding: 1.8rem 1.3rem;
+            box-shadow: 0 20px 30px -16px #8faa8b;
+            border: 2px solid #e0cdb3;
+        }
+
+            .fibre-item.fttp {
+                border-color: #e5b567;
+            }
+
+        .fibre-icon {
+            font-size: 2rem;
+            background: #b38b54;
+            color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .fibre-item h3 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: #1f3b2f;
+            margin-bottom: 0.5rem;
+        }
+
+        .spec-list {
+            list-style: none;
+            margin: 1rem 0;
+        }
+
+            .spec-list li {
+                padding: 0.4rem 0;
+                font-weight: 500;
+                border-bottom: 1px dashed #c7b59b;
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+                .spec-list li i {
+                    color: #b38b54;
+                    width: 1.5rem;
+                }
+
+        /* speed mosaic */
+        .speed-mosaic {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1.2rem;
+            margin: 1.8rem 0;
+        }
+
+        .mosaic-piece {
+            background: #f9f5eb;
+            border-radius: 1.8rem;
+            padding: 1.5rem 0.8rem;
+            border: 2px solid #e7d9c5;
+            text-align: center;
+        }
+
+            .mosaic-piece .icon-s {
+                font-size: 1.8rem;
+                color: #e5b567;
+                background: #fff0d8;
+                padding: 0.4rem 0.6rem;
+                border-radius: 40px;
+                display: inline-block;
+                margin-bottom: 0.8rem;
+            }
+
+            .mosaic-piece .speed-value {
+                font-size: 1.5rem;
+                font-weight: 800;
+                color: #1f3b2f;
+                word-break: break-word;
+            }
+
+            .mosaic-piece .price-chip {
+                background: #e5b567;
+                color: #1f3b2f;
+                font-weight: 700;
+                padding: 0.2rem 1rem;
+                border-radius: 60px;
+                display: inline-block;
+                margin: 0.5rem 0;
+                font-size: 0.9rem;
+            }
+
+        /* upload spotlight */
+        .upload-spot {
+            background: #f7edd9;
+            border-radius: 3rem;
+            padding: 1.5rem 1.2rem;
+            margin: 2rem 0;
+            border: 3px solid #e5b567;
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+
+        @media (min-width: 600px) {
+            .upload-spot {
+                flex-direction: row;
+                align-items: center;
+                justify-content: space-between;
+                padding: 1.8rem 2rem;
+            }
+        }
+
+        .upload-spot .title-small {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #2c543c;
+            white-space: nowrap;
+        }
+
+        .upload-spot .big-numbers {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: #a87233;
+            word-break: break-word;
+        }
+
+        /* sla bar */
+        .sla-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.2rem 1.8rem;
+            background: #e2e9d9;
+            border-radius: 3rem;
+            padding: 1.5rem 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+            .sla-bar > div {
+                flex: 1 1 130px;
+                min-width: 130px;
+            }
+
+            .sla-bar i {
+                color: #b38b54;
+                font-size: 1.6rem;
+                margin-right: 6px;
+            }
+
+        /* save zone */
+        .save-zone {
+            background: #1f3b2f;
+            color: #fcf3df;
+            border-radius: 2.5rem;
+            padding: 1.8rem 1.5rem;
+            margin: 2rem 0;
+        }
+
+            .save-zone .big-em {
+                font-size: 2.2rem;
+                font-weight: 800;
+                color: #e5b567;
+                margin: 0.5rem 0;
+            }
+
+            .save-zone .flex-save {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 1rem;
+                margin-top: 1rem;
+            }
+
+        /* checklist */
+        .list-fresh {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem 1.5rem;
+            background: #f4f0e2;
+            border-radius: 2.5rem;
+            padding: 1.5rem 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+            .list-fresh span {
+                flex: 1 1 130px;
+                font-weight: 600;
+                color: #1f3b2f;
+                display: flex;
+                align-items: center;
+                gap: 6px;
+            }
+
+            .list-fresh i {
+                color: #b38b54;
+            }
+
+        /* faq */
+        .faq-zone {
+            margin: 1.8rem 0;
+        }
+
+        .faq-q {
+            background: #f7f2e6;
+            border-radius: 2rem;
+            padding: 1.1rem 1.3rem;
+            margin: 0.8rem 0;
+            border-left: 10px solid #e5b567;
+            word-wrap: break-word;
+        }
+
+        /* cta */
+        .cta-bottom {
+            background: #f7ecd9;
+            border-radius: 3rem;
+            padding: 2rem 1.2rem;
+            margin: 2.5rem 0 1.5rem;
+            text-align: center;
+            border: 3px solid #e5b567;
+        }
+
+        .btn-action {
+            background: #9e6d3b;
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 700;
+            padding: 1rem 2rem;
+            border-radius: 60px;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 24px 36px -16px #6d5133;
+            transition: all 0.2s;
+            margin: 0.8rem 0;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        @media (min-width: 480px) {
+            .btn-action {
+                font-size: 1.6rem;
+                padding: 1.2rem 3rem;
+            }
+        }
+
+        .btn-action:hover {
+            background: #ac7f48;
+            transform: translateY(-4px);
+        }
+
+        .btn-action i {
+            font-size: 1.4rem;
+        }
+
+        hr {
+            border: 1px solid #dfcfb2;
+            margin: 1.8rem 0;
+        }
+
+        /* responsive images / text */
+        p, li, .spec-list li {
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* remove any leftover blue */
+        a, button, i, .figure, .price-chip, .big-numbers {
+            color: inherit;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="hero">
+            <h1>
+                <i class="fas fa-chart-pie"></i>
+                Business Fibre Broadband Comparison (2026)
+            </h1>
+            <div class="subhead">If your business depends on stable internet, choosing the right fibre isn’t optional — it’s critical. Video calls, cloud software, VoIP, large file transfers — all rely on strong connectivity. Not all business fibre is the same.</div>
+            <div class="quick-info">
+                <span><i class="fas fa-leaf"></i> FTTC vs FTTP</span>
+                <span><i class="fas fa-leaf"></i> Speed tiers</span>
+                <span><i class="fas fa-leaf"></i> Upload matters</span>
+                <span><i class="fas fa-leaf"></i> SLA & support</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- stats row -->
+            <div class="stats-row">
+                <div class="stat-block"><span class="figure">100 Mbps</span><span class="caption">entry fibre</span></div>
+                <div class="stat-block"><span class="figure">150–300 Mbps</span><span class="caption">best value office</span></div>
+                <div class="stat-block"><span class="figure">FTTP</span><span class="caption">full fibre recommended</span></div>
+                <div class="stat-block"><span class="figure">£30–£65+</span><span class="caption">monthly (excl. VAT)</span></div>
+                <div class="stat-block"><span class="figure">SLA</span><span class="caption">faster repair</span></div>
+            </div>
+
+            <!-- what is business fibre -->
+            <div class="title"><i class="fas fa-briefcase"></i> What is business fibre broadband?</div>
+            <p>Business fibre broadband is designed for commercial use: fibre connection (FTTC/FTTP), priority support, Service Level Agreements (SLAs), optional static IP, and faster fault repair times. It offers stronger guarantees than residential.</p>
+
+            <!-- fibre comparison cards -->
+            <div class="title"><i class="fas fa-code-branch"></i> Standard fibre (FTTC) vs full fibre (FTTP)</div>
+            <div class="fibre-row">
+                <div class="fibre-item fttc">
+                    <div class="fibre-icon"><i class="fas fa-tint"></i></div>
+                    <h3>FTTC</h3>
+                    <ul class="spec-list">
+                        <li><i class="fas fa-arrow-down"></i> up to 67–80 Mbps</li>
+                        <li><i class="fas fa-arrow-up"></i> 10–20 Mbps upload</li>
+                        <li><i class="fas fa-share-alt"></i> shared cabinet</li>
+                    </ul>
+                    <p><strong>Best for:</strong> sole traders, home offices, low data use. Slower uploads, less consistent under load.</p>
+                </div>
+                <div class="fibre-item fttp">
+                    <div class="fibre-icon" style="background:#e5b567; color:#1f3b2f;"><i class="fas fa-broadcast-tower"></i></div>
+                    <h3>FTTP</h3>
+                    <ul class="spec-list">
+                        <li><i class="fas fa-arrow-down"></i> 100–1000 Mbps</li>
+                        <li><i class="fas fa-arrow-up"></i> 100–900 Mbps upload</li>
+                        <li><i class="fas fa-link"></i> direct fibre</li>
+                    </ul>
+                    <p><strong>Best for:</strong> growing teams, cloud‑dependent, VoIP, large file transfers. Stronger long‑term.</p>
+                </div>
+            </div>
+
+            <!-- speed mosaic -->
+            <div class="title"><i class="fas fa-gauge-high"></i> Business fibre speed tiers</div>
+            <div class="speed-mosaic">
+                <div class="mosaic-piece"><span class="icon-s"><i class="fas fa-user"></i></span><div class="speed-value">100 Mbps</div><div class="price-chip">£30–40</div><div>1–3 users, video calls</div></div>
+                <div class="mosaic-piece"><span class="icon-s"><i class="fas fa-people-group"></i></span><div class="speed-value">150–300 Mbps</div><div class="price-chip">£35–55</div><div>3–10 staff ⭐ best value</div></div>
+                <div class="mosaic-piece"><span class="icon-s"><i class="fas fa-chart-line"></i></span><div class="speed-value">300–500 Mbps</div><div class="price-chip">£45–65</div><div>10+ staff, file‑heavy</div></div>
+                <div class="mosaic-piece"><span class="icon-s"><i class="fas fa-rocket"></i></span><div class="speed-value">1 Gbps</div><div class="price-chip">£60–80+</div><div>high‑growth, media</div></div>
+            </div>
+
+            <!-- upload spotlight -->
+            <div class="upload-spot">
+                <span class="title-small"><i class="fas fa-upload" style="margin-right:8px;"></i>Upload performance:</span>
+                <span class="big-numbers">FTTC 10–20 Mbps  /  FTTP 100–900 Mbps</span>
+            </div>
+
+            <!-- sla & contract bar -->
+            <div class="sla-bar">
+                <div><i class="fas fa-file-contract"></i> <strong>SLA:</strong> 24–48h repair</div>
+                <div><i class="fas fa-calendar-week"></i> <strong>Contracts:</strong> 12/24/36 months</div>
+                <div><i class="fas fa-clock"></i> <strong>Installation:</strong> 7–14 days</div>
+            </div>
+
+            <!-- residential fibre enough -->
+            <div class="title"><i class="fas fa-home"></i> Residential fibre enough?</div>
+            <p>Sole trader, work from home, manageable downtime → residential full fibre cheaper. But business fibre gives protection + support.</p>
+
+            <!-- example comparison with saving -->
+            <div class="save-zone">
+                <i class="fas fa-file-invoice" style="font-size:2.5rem; color:#e5b567;"></i>
+                <h3 style="color:white; margin:0.5rem 0;">Example business fibre comparison</h3>
+                <p style="opacity:0.9;">Old: £65/month for 80 Mbps FTTC <br> New: £45/month for 300 Mbps full fibre</p>
+                <div class="big-em">Save £20/month</div>
+                <div class="flex-save">
+                    <span>➕ faster speed</span>
+                    <span>➕ upload boost</span>
+                    <span>➕ lower risk</span>
+                </div>
+            </div>
+
+            <!-- dedicated leased lines -->
+            <div class="title"><i class="fas fa-server"></i> Leased lines</div>
+            <p>Dedicated, guaranteed, strong SLAs — but £200+/month. Most SMEs are fine with full fibre.</p>
+
+            <!-- key features checklist -->
+            <div class="title"><i class="fas fa-clipboard-list"></i> Compare these features</div>
+            <div class="list-fresh">
+                <span><i class="fas fa-check-circle"></i> Download speed</span>
+                <span><i class="fas fa-check-circle"></i> Upload speed</span>
+                <span><i class="fas fa-check-circle"></i> SLA repair time</span>
+                <span><i class="fas fa-check-circle"></i> Static IP</span>
+                <span><i class="fas fa-check-circle"></i> Contract length</span>
+                <span><i class="fas fa-check-circle"></i> Total cost (inc. VAT)</span>
+            </div>
+
+            <!-- FAQ -->
+            <div class="title"><i class="fas fa-question"></i> Frequently asked questions</div>
+            <div class="faq-zone">
+                <div class="faq-q"><strong>Is business fibre faster than residential?</strong> Not necessarily — but includes stronger support & SLAs.</div>
+                <div class="faq-q"><strong>Do I need a static IP?</strong> Only if hosting servers, CCTV remote access.</div>
+                <div class="faq-q"><strong>Is full fibre worth it for small businesses?</strong> Yes, especially for upload performance.</div>
+                <div class="faq-q"><strong>How long does installation take?</strong> Typically 7–14 days. Full fibre may need engineer.</div>
+                <div class="faq-q"><strong>Can I switch business broadband easily?</strong> Yes — check notice periods and exit fees.</div>
+            </div>
+
+            <!-- why compare with Utility King -->
+            <div class="title"><i class="fas fa-crown"></i> Why compare with Utility King?</div>
+            <p style="background:#f3efdf; border-radius: 3rem; padding:1.2rem 1.5rem;">We help you compare FTTC vs FTTP, total contract costs, postcode availability, SLA differences, and speed tiers — balancing cost, reliability and performance.</p>
+
+            <!-- single contact button -->
+            <div class="cta-bottom">
+                <h2 style="color:#1f3b2f; font-size:1.8rem;">Ready to compare business fibre broadband?</h2>
+                <p style="font-size:1.1rem; color:#3b6249;">If your business relies on stable internet — or your contract is ending — better‑value fibre deals may be available in your postcode. Switching could reduce costs while improving speed & reliability.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-action">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#5b755f;"><i class="fas fa-info-circle"></i> We'll help you find the best plan for your company.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#6a7f66;">© Utility King 2026 · Business fibre comparison · fully responsive</p>
+        </div> <!-- end main -->
+    </div> <!-- end container -->
+</body>
+</html>

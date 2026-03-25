@@ -1,0 +1,537 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>CityFibre broadband comparison 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- premium type: Plus Jakarta Sans & Lora (light & elegant) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fa;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #1d2c3a;
+        }
+
+        /* refined CityFibre palette: deep teal, warm gold, soft pearl, muted navy */
+        :root {
+            --teal: #1d6f6f; /* CityFibre teal */
+            --gold: #dba254; /* warm gold */
+            --pearl: #ffffff;
+            --bg-light: #f9fbfd;
+            --border-soft: #e5e9f0;
+            --slate: #2b4152;
+            --shadow: 0 15px 30px -15px rgba(29,111,111,0.15);
+        }
+
+        .guide {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: var(--pearl);
+            border-radius: 2.5rem;
+            box-shadow: var(--shadow);
+            overflow: hidden;
+            border: 1px solid #eaeef3;
+        }
+
+        /* header – elegant light gradient */
+        .header {
+            background: linear-gradient(135deg, #f5f9fc, #ecf3f7);
+            padding: 2.2rem 2rem;
+            color: var(--slate);
+            border-bottom: 3px solid var(--gold);
+            position: relative;
+        }
+
+        @media (min-width: 640px) {
+            .header {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        .header h1 {
+            font-family: 'Lora', serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 0.8rem;
+            color: #1d3a47;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 2rem;
+            }
+        }
+
+        .header h1 i {
+            background: rgba(29,111,111,0.1);
+            padding: 0.7rem 0.9rem;
+            border-radius: 1.8rem 0.2rem 1.8rem 0.2rem;
+            font-size: 1.8rem;
+            border: 1px solid rgba(29,111,111,0.3);
+            color: var(--teal);
+        }
+
+        .header .sub {
+            font-size: 1.1rem;
+            max-width: 850px;
+            color: #3d5768;
+            border-left: 4px solid var(--gold);
+            padding-left: 1.5rem;
+            margin: 1.2rem 0 1.8rem;
+            font-weight: 300;
+        }
+
+        .header .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: #3c6273;
+        }
+
+            .header .tags i {
+                color: var(--gold);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main {
+            padding: 2.2rem 2rem;
+            background: var(--bg-light);
+        }
+
+        @media (min-width: 640px) {
+            .main {
+                padding: 2.8rem 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main {
+                padding: 3.5rem 4.5rem;
+            }
+        }
+
+        /* quick stats */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .stat-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.5rem 0.3rem;
+            text-align: center;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 5px 12px -8px #9fb0c0;
+        }
+
+            .stat-card .big {
+                font-size: 1.6rem;
+                font-weight: 700;
+                color: var(--teal);
+            }
+
+            .stat-card .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                text-transform: uppercase;
+                color: #5a7385;
+                letter-spacing: 0.5px;
+            }
+
+        /* section heading */
+        .section-head {
+            font-family: 'Lora', serif;
+            font-size: 2rem;
+            font-weight: 600;
+            color: #1d3a47;
+            margin: 2.8rem 0 1.2rem 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+            .section-head i {
+                color: var(--teal);
+                font-size: 1.8rem;
+                background: rgba(29,111,111,0.1);
+                padding: 0.5rem;
+                border-radius: 1.2rem 0.1rem 1.2rem 0.1rem;
+            }
+
+        /* two‑col layout */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0 2.5rem;
+        }
+
+        @media (max-width: 700px) {
+            .two-col {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .info-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem 1.8rem;
+            border: 1px solid var(--border-soft);
+            box-shadow: 0 8px 16px -12px #8da1b0;
+        }
+
+            .info-card .card-title {
+                font-size: 1.6rem;
+                font-weight: 600;
+                font-family: 'Lora', serif;
+                color: var(--teal);
+                margin: 0.8rem 0 1rem;
+            }
+
+        /* speed table */
+        .table-wrapper {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            background: var(--pearl);
+            border: 1px solid var(--border-soft);
+        }
+
+        .city-table {
+            width: 100%;
+            border-collapse: collapse;
+            min-width: 500px;
+        }
+
+            .city-table th {
+                background: #ecf3f9;
+                padding: 1.2rem 1rem;
+                font-weight: 600;
+                color: #1d3a47;
+            }
+
+            .city-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #ecf0f5;
+                color: #2b4a5a;
+            }
+
+        /* vs comparison cards */
+        .vs-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .vs-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .vs-card {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 1.8rem;
+            border: 1px solid var(--border-soft);
+        }
+
+            .vs-card .vs-title {
+                font-size: 1.4rem;
+                font-weight: 700;
+                margin: 0.8rem 0;
+            }
+
+        .openreach .vs-title {
+            color: #4f6f8a;
+        }
+
+        .cityfibre .vs-title {
+            color: var(--teal);
+        }
+
+        /* upload spotlight */
+        .upload-block {
+            background: #eaf3f3;
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 1px solid rgba(29,111,111,0.2);
+        }
+
+        /* choice boxes */
+        .choice-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .choice-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .choice-box {
+            background: var(--pearl);
+            border-radius: 2rem 0.2rem 2rem 0.2rem;
+            padding: 2rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* example box */
+        .example-box {
+            background: linear-gradient(135deg, #f5f9fc, #ecf3f7);
+            border-radius: 2.5rem 0.2rem 2.5rem 0.2rem;
+            padding: 2.2rem;
+            margin: 2.5rem 0;
+            border: 1px solid var(--gold);
+        }
+
+        .big-number {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--teal);
+        }
+
+        /* faq */
+        .faq details {
+            background: var(--pearl);
+            border-radius: 1.8rem 0.1rem 1.8rem 0.1rem;
+            margin: 0.8rem 0;
+            padding: 1rem 1.5rem;
+            border: 1px solid var(--border-soft);
+        }
+
+        /* cta */
+        .cta {
+            background: linear-gradient(135deg, #ffffff, #f5f9fc);
+            border-radius: 3rem 0.2rem 3rem 0.2rem;
+            padding: 2.8rem 2rem;
+            margin: 3.5rem 0 2rem;
+            border: 2px solid var(--gold);
+            text-align: center;
+        }
+
+        .btn {
+            background: var(--teal);
+            color: white;
+            border: none;
+            font-size: 1.4rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.1rem 3rem 0.1rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn:hover {
+                background: #155a5a;
+            }
+
+        hr {
+            border: 1px solid #e5e9f0;
+            margin: 2rem 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header">
+            <h1><i class="fas fa-city"></i> CityFibre Broadband Comparison (2026)</h1>
+            <div class="sub">CityFibre is one of the UK’s largest alternative fibre networks, rolling out full fibre (FTTP) across towns and cities. Often delivers symmetrical gigabit speeds at competitive prices.</div>
+            <div class="tags">
+                <span><i class="fas fa-tachometer-alt"></i> 100–1000+ Mbps</span>
+                <span><i class="fas fa-upload"></i> symmetrical uploads</span>
+                <span><i class="fas fa-pound-sign"></i> £25–45/month</span>
+            </div>
+        </div>
+
+        <div class="main">
+            <!-- stats grid -->
+            <div class="stats-grid">
+                <div class="stat-card"><span class="big">FTTP</span><span class="small">full fibre only</span></div>
+                <div class="stat-card"><span class="big">100–1000+</span><span class="small">Mbps speeds</span></div>
+                <div class="stat-card"><span class="big">symmetrical</span><span class="small">upload=download</span></div>
+                <div class="stat-card"><span class="big">postcode</span><span class="small">availability</span></div>
+            </div>
+
+            <!-- what is cityfibre -->
+            <div class="section-head"><i class="fas fa-question-circle"></i> What is CityFibre?</div>
+            <div class="info-card" style="margin-bottom:1rem;">
+                CityFibre is a wholesale fibre infrastructure provider. It builds and maintains 100% full fibre (FTTP) networks, used by retail broadband providers. No copper, modern design, high upload speeds.
+            </div>
+
+            <!-- which providers -->
+            <div class="two-col">
+                <div class="info-card">
+                    <i class="fas fa-building" style="font-size:2rem; color:var(--teal);"></i>
+                    <div class="card-title">Providers using CityFibre</div>
+                    <ul style="list-style:none; margin-top:0.5rem;">
+                        <li>✓ Vodafone (many areas)</li>
+                        <li>✓ TalkTalk (selected regions)</li>
+                        <li>✓ Zen Internet</li>
+                        <li>✓ IDNet · various regional ISPs</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-map-pin" style="font-size:2rem; color:var(--teal);"></i>
+                    <div class="card-title">Availability</div>
+                    <p>CityFibre networks are expanding rapidly across UK towns and cities. Check your postcode for exact coverage.</p>
+                </div>
+            </div>
+
+            <!-- speed comparison table -->
+            <div class="section-head"><i class="fas fa-gauge-high"></i> CityFibre speed tiers</div>
+            <div class="table-wrapper">
+                <table class="city-table">
+                    <tr><th>Speed tier</th><th>Download</th><th>Upload</th><th>Typical price</th></tr>
+                    <tr><td>100–150 Mbps</td><td>100–150</td><td>100–150</td><td>£25–30</td></tr>
+                    <tr><td>300 Mbps</td><td>300</td><td>300</td><td>£28–35</td></tr>
+                    <tr><td>500 Mbps</td><td>500</td><td>500</td><td>£32–40</td></tr>
+                    <tr><td>900–1000 Mbps</td><td>900+</td><td>900+</td><td>£35–45</td></tr>
+                </table>
+            </div>
+
+            <!-- vs openreach -->
+            <div class="section-head"><i class="fas fa-code-branch"></i> CityFibre vs Openreach</div>
+            <div class="vs-grid">
+                <div class="vs-card openreach">
+                    <i class="fas fa-tower-cell" style="color:#4f6f8a; font-size:2rem;"></i>
+                    <div class="vs-title">Openreach FTTP</div>
+                    <p>Widest UK coverage · major brands (BT, Sky) · upload often lower than download (20–110 Mbps).</p>
+                </div>
+                <div class="vs-card cityfibre">
+                    <i class="fas fa-city" style="color:var(--teal); font-size:2rem;"></i>
+                    <div class="vs-title">CityFibre FTTP</div>
+                    <p>Selected towns/cities · symmetrical speeds · competitive gigabit pricing · modern infrastructure.</p>
+                </div>
+            </div>
+
+            <!-- upload spotlight -->
+            <div class="upload-block">
+                <i class="fas fa-upload" style="font-size:2rem; color:var(--teal); margin-right:1rem;"></i>
+                <strong style="font-size:1.2rem;">Why upload speed matters:</strong> video calls, cloud backups, file sharing, remote desktop, content creation, game streaming. Example: 5GB file @20 Mbps = ~35 min · @300 Mbps = ~3 min · @900 Mbps = under 1 min.
+            </div>
+
+            <!-- reliability & contract -->
+            <div class="two-col">
+                <div class="info-card">
+                    <i class="fas fa-shield-alt" style="color:var(--teal);"></i>
+                    <div class="card-title">Reliability</div>
+                    <p>Full fibre only, modern capacity, strong performance. Availability more limited than Openreach but growing fast.</p>
+                </div>
+                <div class="info-card">
+                    <i class="fas fa-file-contract" style="color:var(--teal);"></i>
+                    <div class="card-title">Contracts</div>
+                    <p>12–24 month terms. Competitive pricing, especially at 300 Mbps & gigabit. Check setup fees, installation, mid‑contract rises.</p>
+                </div>
+            </div>
+
+            <!-- cityfibre vs virgin -->
+            <div class="section-head"><i class="fas fa-exchange-alt"></i> CityFibre vs Virgin</div>
+            <div class="vs-grid">
+                <div class="vs-card">
+                    <i class="fas fa-city" style="color:var(--teal);"></i>
+                    <div class="vs-title">CityFibre</div>
+                    <p>Full fibre (FTTP) · symmetrical upload · competitive gigabit pricing · town/city specific.</p>
+                </div>
+                <div class="vs-card">
+                    <i class="fas fa-bolt" style="color:#d97706;"></i>
+                    <div class="vs-title">Virgin Media</div>
+                    <p>Cable (DOCSIS) · upload lower tiers · also competitive gigabit · urban focus.</p>
+                </div>
+            </div>
+
+            <!-- who should choose -->
+            <div class="section-head"><i class="fas fa-users"></i> Who should choose CityFibre?</div>
+            <div class="choice-row">
+                <div class="choice-box">
+                    <i class="fas fa-check-circle" style="color:var(--teal); font-size:1.5rem;"></i>
+                    <h3 style="margin:0.8rem 0;">CityFibre ideal if:</h3>
+                    <p>Remote work · large uploads · symmetrical gigabit · live in CityFibre postcode · want competitive full fibre pricing.</p>
+                </div>
+                <div class="choice-box">
+                    <i class="fas fa-check-circle" style="color:#8fafc0;"></i>
+                    <h3 style="margin:0.8rem 0;">Prefer Openreach if:</h3>
+                    <p>CityFibre not available · want TV bundles · prefer BT/Sky · need wider national support.</p>
+                </div>
+            </div>
+
+            <!-- example cost -->
+            <div class="example-box">
+                <i class="fas fa-calculator" style="font-size:2rem; color:var(--teal); margin-right:1rem;"></i>
+                <strong style="font-size:1.4rem;">300 Mbps example (24 months)</strong><br>
+                CityFibre: £30/mo · upload 300 Mbps → total £720<br>
+                Openreach: £34/mo · upload ~50 Mbps → total £816<br>
+                <span class="big-number">£96 less + 6x faster upload</span>
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-head"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq">
+                <details><summary>Is CityFibre better than BT/Sky?</summary>If upload speed and price matter, often yes – but availability is postcode‑dependent.</details>
+                <details><summary>Does CityFibre offer gigabit?</summary>Yes – typically 900 Mbps+ symmetrical.</details>
+                <details><summary>Is installation complicated?</summary>Engineer visit required for full fibre setup – often free on longer contracts.</details>
+                <details><summary>Is CityFibre reliable?</summary>Generally yes – modern fibre infrastructure, strong performance.</details>
+            </div>
+
+            <!-- why compare with utility king -->
+            <div style="background:#f0f7fa; border-radius:2rem 0.2rem; padding:2rem; margin:2.5rem 0;">
+                <i class="fas fa-crown" style="color:var(--teal); font-size:2rem; margin-right:1rem;"></i>
+                <strong style="font-size:1.3rem;">Utility King approach:</strong> We check CityFibre availability in your postcode, compare providers on the network, review upload/download speeds, total contract cost – because infrastructure matters more than brand.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta">
+                <h2 style="font-size:2rem; color:#1d3a47;">ready to compare CityFibre broadband?</h2>
+                <p style="margin:1rem 0; color:#3c6273;">If CityFibre has launched in your area, you may have access to faster upload speeds and lower‑cost gigabit broadband. Comparing providers could unlock significant savings.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#5a7385;"><i class="fas fa-info-circle"></i> We'll help you see all full fibre options in your postcode.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#7b8f9f;">© Utility King 2026 · CityFibre broadband comparison · light & elegant</p>
+        </div> <!-- main -->
+    </div> <!-- guide -->
+</body>
+</html>

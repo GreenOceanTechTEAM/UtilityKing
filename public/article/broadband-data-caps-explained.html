@@ -1,0 +1,752 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility King | Broadband Data Caps Explained UK 2026</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Google Fonts: Inter + Outfit + Space Grotesk -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Outfit:wght@400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: radial-gradient(circle at 10% 20%, #f8fafc, #eff3f8);
+            color: #1e293b;
+            line-height: 1.5;
+            padding: 2rem;
+            min-height: 100vh;
+        }
+
+        .master-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        /* Premium Hero with Soft Gradient */
+        .premium-hero {
+            background: linear-gradient(135deg, #ffffff 0%, #fef7e8 100%);
+            border-radius: 56px;
+            padding: 4.5rem 4rem;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 35px 60px -25px rgba(0,0,0,0.12);
+            border: 1px solid rgba(245, 158, 11, 0.2);
+        }
+
+        .hero-shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(70px);
+            opacity: 0.2;
+        }
+
+        .shape-1 {
+            width: 550px;
+            height: 550px;
+            background: #f59e0b;
+            top: -200px;
+            right: -120px;
+        }
+
+        .shape-2 {
+            width: 500px;
+            height: 500px;
+            background: #ef4444;
+            bottom: -200px;
+            left: -100px;
+        }
+
+        .shape-3 {
+            width: 450px;
+            height: 450px;
+            background: #10b981;
+            top: 150px;
+            left: 15%;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 10;
+            max-width: 900px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(245, 158, 11, 0.08);
+            padding: 0.8rem 2rem;
+            border-radius: 100px;
+            font-size: 1rem;
+            font-weight: 600;
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            margin-bottom: 2.5rem;
+            color: #b45309;
+            letter-spacing: 0.3px;
+        }
+
+            .hero-badge i {
+                color: #f59e0b;
+                font-size: 1.2rem;
+            }
+
+        .hero-title {
+            font-size: 5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 2rem;
+            font-family: 'Space Grotesk', sans-serif;
+            letter-spacing: -2px;
+            color: #0f172a;
+        }
+
+            .hero-title span {
+                background: linear-gradient(135deg, #f59e0b, #ef4444, #10b981);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+
+        .hero-description {
+            font-size: 1.5rem;
+            color: #475569;
+            max-width: 750px;
+            margin: 0 auto 3rem;
+            line-height: 1.6;
+            font-weight: 400;
+        }
+
+        .hero-pills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        .hero-pill {
+            background: white;
+            border: 1px solid #e2e8f0;
+            padding: 1rem 2rem;
+            border-radius: 100px;
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #1e293b;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 12px -5px rgba(0,0,0,0.05);
+        }
+
+            .hero-pill:hover {
+                border-color: #f59e0b;
+                background: #fffbeb;
+                transform: translateY(-3px);
+                box-shadow: 0 15px 25px -10px rgba(245, 158, 11, 0.2);
+            }
+
+            .hero-pill i {
+                color: #f59e0b;
+                margin-right: 10px;
+            }
+
+        /* Main Content */
+        .content-area {
+            background: white;
+            border-radius: 56px;
+            padding: 4rem;
+            box-shadow: 0 30px 55px -20px rgba(0,0,0,0.1);
+            border: 1px solid #f1f5f9;
+        }
+
+        /* Section Headers */
+        .section-header {
+            text-align: center;
+            margin: 4rem 0 3rem;
+        }
+
+            .section-header:first-of-type {
+                margin-top: 0.5rem;
+            }
+
+        .section-subhead {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #f59e0b;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1rem;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .section-heading {
+            font-size: 3.2rem;
+            font-weight: 800;
+            color: #0f172a;
+            font-family: 'Space Grotesk', sans-serif;
+            line-height: 1.2;
+            letter-spacing: -1px;
+        }
+
+        /* Info Cards Grid */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .info-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2.2rem;
+            border: 1px solid #eef2ff;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 20px -8px rgba(0,0,0,0.05);
+        }
+
+            .info-card:hover {
+                transform: translateY(-6px);
+                border-color: #f59e0b;
+                box-shadow: 0 20px 30px -12px rgba(245, 158, 11, 0.15);
+            }
+
+        .info-icon {
+            width: 65px;
+            height: 65px;
+            background: #fef3c7;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            color: #f59e0b;
+            margin-bottom: 1.5rem;
+        }
+
+        .info-card h3 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #0f172a;
+        }
+
+        .info-card p {
+            font-size: 1.05rem;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        /* Data Cap Example Cards */
+        .cap-examples {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.8rem;
+            margin: 2.5rem 0;
+        }
+
+        .cap-card {
+            background: linear-gradient(145deg, #ffffff, #fefaf0);
+            border-radius: 28px;
+            padding: 2rem;
+            text-align: center;
+            border: 2px solid #fef3c7;
+            transition: all 0.3s ease;
+        }
+
+            .cap-card:hover {
+                border-color: #f59e0b;
+                transform: scale(1.02);
+            }
+
+        .cap-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: #f59e0b;
+            font-family: 'Space Grotesk', sans-serif;
+            margin: 1rem 0;
+        }
+
+        .cap-card p {
+            font-size: 1rem;
+            color: #475569;
+        }
+
+        /* Usage Table */
+        .usage-card {
+            background: #fefce8;
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #fde68a;
+        }
+
+        .usage-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+            .usage-table th {
+                text-align: left;
+                padding: 1.2rem 1rem;
+                font-size: 1.2rem;
+                font-weight: 700;
+                color: #0f172a;
+                border-bottom: 2px solid #f59e0b;
+            }
+
+            .usage-table td {
+                padding: 1rem 1rem;
+                font-size: 1.1rem;
+                border-bottom: 1px solid #fef3c7;
+                color: #334155;
+            }
+
+        .usage-highlight {
+            color: #f59e0b;
+            font-weight: 700;
+        }
+
+        /* Comparison Grid */
+        .comparison-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            margin: 2.5rem 0;
+        }
+
+        .comp-card {
+            background: #ffffff;
+            border-radius: 32px;
+            padding: 2rem;
+            border: 2px solid;
+        }
+
+            .comp-card:nth-child(1) {
+                border-color: #10b981;
+                background: linear-gradient(145deg, #ffffff, #ecfdf5);
+            }
+
+            .comp-card:nth-child(2) {
+                border-color: #f59e0b;
+                background: linear-gradient(145deg, #ffffff, #fffbeb);
+            }
+
+            .comp-card h3 {
+                font-size: 1.8rem;
+                font-weight: 700;
+                margin-bottom: 1rem;
+            }
+
+            .comp-card:nth-child(1) h3 {
+                color: #10b981;
+            }
+
+            .comp-card:nth-child(2) h3 {
+                color: #f59e0b;
+            }
+
+        .comp-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+            .comp-list li {
+                font-size: 1.1rem;
+                margin-bottom: 1rem;
+                display: flex;
+                align-items: center;
+                gap: 12px;
+            }
+
+            .comp-list i {
+                width: 24px;
+            }
+
+        .comp-card:nth-child(1) .comp-list i {
+            color: #10b981;
+        }
+
+        .comp-card:nth-child(2) .comp-list i {
+            color: #f59e0b;
+        }
+
+        /* Example Calculation */
+        .calc-card {
+            background: linear-gradient(145deg, #fefce8, #ffffff);
+            border-radius: 36px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            text-align: center;
+            border: 1px solid #fde68a;
+        }
+
+        .calc-value {
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f59e0b;
+            margin: 1rem 0;
+        }
+
+        /* Signs Grid */
+        .signs-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2.5rem 0;
+        }
+
+        .sign-card {
+            background: #fff5f5;
+            border-radius: 24px;
+            padding: 1.5rem;
+            border-left: 5px solid #ef4444;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .sign-icon {
+            font-size: 1.8rem;
+            color: #ef4444;
+            flex-shrink: 0;
+        }
+
+        .sign-card p {
+            font-size: 1rem;
+            color: #1e293b;
+            font-weight: 500;
+        }
+
+        /* CTA */
+        .cta-section {
+            background: linear-gradient(135deg, #0f172a, #1e293b);
+            border-radius: 48px;
+            padding: 4rem;
+            margin: 4rem 0 2rem;
+            text-align: center;
+            color: white;
+            box-shadow: 0 30px 45px -20px rgba(0,0,0,0.3);
+        }
+
+            .cta-section h2 {
+                font-size: 3.2rem;
+                font-weight: 800;
+                font-family: 'Space Grotesk', sans-serif;
+                margin-bottom: 1rem;
+            }
+
+            .cta-section p {
+                font-size: 1.3rem;
+                opacity: 0.9;
+                margin-bottom: 2.5rem;
+                max-width: 650px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 1rem;
+            background: linear-gradient(135deg, #f59e0b, #ef4444);
+            color: white;
+            padding: 1.2rem 3rem;
+            border-radius: 60px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 15px 25px -8px rgba(245, 158, 11, 0.4);
+        }
+
+            .cta-button:hover {
+                transform: translateY(-5px);
+                box-shadow: 0 25px 35px -10px rgba(245, 158, 11, 0.6);
+            }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 2.5rem;
+            font-size: 1rem;
+            color: #94a3b8;
+        }
+
+        @media (max-width: 1200px) {
+            .cap-examples, .signs-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .hero-title {
+                font-size: 4rem;
+            }
+        }
+
+        @media (max-width: 900px) {
+            .info-grid, .comparison-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cap-examples, .signs-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-title {
+                font-size: 2.8rem;
+            }
+
+            .content-area {
+                padding: 2rem;
+            }
+
+            .section-heading {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="master-container">
+        <!-- Premium Hero -->
+        <div class="premium-hero">
+            <div class="hero-shape shape-1"></div>
+            <div class="hero-shape shape-2"></div>
+            <div class="hero-shape shape-3"></div>
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-chart-simple"></i> UTILITY KING · UK 2026 GUIDE
+                </div>
+                <h1 class="hero-title">
+                    <span>Broadband Data Caps</span><br>Explained
+                </h1>
+                <p class="hero-description">
+                    Are you still on a limited plan? Data caps still exist — especially on mobile broadband. Learn what they mean and when to switch to unlimited.
+                </p>
+                <div class="hero-pills">
+                    <span class="hero-pill"><i class="fas fa-home"></i> Fibre: unlimited standard</span>
+                    <span class="hero-pill"><i class="fas fa-sim-card"></i> Mobile: caps common</span>
+                    <span class="hero-pill"><i class="fas fa-chart-line"></i> Families use 500GB+</span>
+                    <span class="hero-pill"><i class="fas fa-shield-alt"></i> Unlimited safer</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Content Area -->
+        <div class="content-area">
+            <!-- What is a Data Cap -->
+            <div class="section-header">
+                <div class="section-subhead">DEFINITION</div>
+                <h2 class="section-heading">What is a broadband data cap?</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-gauge-high"></i></div>
+                    <h3>A limit on monthly usage</h3>
+                    <p>Data caps restrict how much data you can download or upload per month — for example, 50GB, 100GB, or 200GB.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-triangle-exclamation"></i></div>
+                    <h3>What happens when you exceed?</h3>
+                    <p>Your provider may slow your speed (throttle), charge extra fees, pause your connection, or restrict certain activities until the next billing cycle.</p>
+                </div>
+            </div>
+
+            <!-- Data Cap Examples -->
+            <div class="section-header">
+                <div class="section-subhead">COMMON CAPS</div>
+                <h2 class="section-heading">Typical data cap limits</h2>
+            </div>
+            <div class="cap-examples">
+                <div class="cap-card">
+                    <i class="fas fa-mobile-alt" style="font-size: 2rem; color: #f59e0b;"></i>
+                    <div class="cap-value">30–50GB</div>
+                    <p>Light browsing, emails, occasional streaming</p>
+                </div>
+                <div class="cap-card">
+                    <i class="fas fa-wifi" style="font-size: 2rem; color: #f59e0b;"></i>
+                    <div class="cap-value">100–200GB</div>
+                    <p>Regular streaming, small family, moderate use</p>
+                </div>
+                <div class="cap-card">
+                    <i class="fas fa-tv" style="font-size: 2rem; color: #f59e0b;"></i>
+                    <div class="cap-value">500GB–1TB+</div>
+                    <p>Heavy 4K streaming, large households, gamers</p>
+                </div>
+            </div>
+
+            <!-- Do Fibre Plans Have Caps? -->
+            <div class="section-header">
+                <div class="section-subhead">FIBRE vs MOBILE</div>
+                <h2 class="section-heading">Do fibre plans have data caps?</h2>
+            </div>
+            <div class="comparison-grid">
+                <div class="comp-card">
+                    <h3>Fibre Broadband</h3>
+                    <ul class="comp-list">
+                        <li><i class="fas fa-check-circle"></i> FTTP: truly unlimited</li>
+                        <li><i class="fas fa-check-circle"></i> FTTC: unlimited standard</li>
+                        <li><i class="fas fa-check-circle"></i> Cable: unlimited</li>
+                        <li><i class="fas fa-check-circle"></i> Data caps are now rare on fixed-line</li>
+                    </ul>
+                </div>
+                <div class="comp-card">
+                    <h3>Mobile Broadband</h3>
+                    <ul class="comp-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> 30GB, 50GB, 100GB caps common</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> "Unlimited" may have fair usage</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Speed throttling after limit</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Mobile networks manage spectrum</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- How Much Data Do You Use? -->
+            <div class="section-header">
+                <div class="section-subhead">USAGE STATISTICS</div>
+                <h2 class="section-heading">How much data do households actually use?</h2>
+            </div>
+            <div class="usage-card">
+                <table class="usage-table">
+                    <tr><th>Activity</th><th>Monthly Estimate</th></tr>
+                    <tr><td>Light browsing</td><td class="usage-highlight">50–100GB</td></tr>
+                    <tr><td>HD streaming daily</td><td class="usage-highlight">200–400GB</td></tr>
+                    <tr><td>4K streaming daily</td><td class="usage-highlight">400–800GB</td></tr>
+                    <tr><td>Large game downloads</td><td class="usage-highlight">50–150GB each</td></tr>
+                    <tr><td>Cloud backups</td><td class="usage-highlight">100GB+</td></tr>
+                </table>
+                <p style="margin-top: 1.5rem; font-size: 1.05rem;"><i class="fas fa-chart-line" style="color:#f59e0b;"></i> A family streaming 4K several times per week can easily exceed 500GB per month.</p>
+            </div>
+
+            <!-- Is 100GB Enough? -->
+            <div class="section-header">
+                <div class="section-subhead">REAL-WORLD MATH</div>
+                <h2 class="section-heading">Is 100GB enough for your household?</h2>
+            </div>
+            <div class="calc-card">
+                <p style="font-size: 1.1rem; font-weight: 500;">If you stream HD Netflix:</p>
+                <div class="calc-value">3GB × 2 hours × 30 days = 180GB</div>
+                <p><strong>100GB would not be enough.</strong> For 4K streaming: 7GB × 2 hours × 30 days = 420GB</p>
+                <p style="margin-top: 1rem; background: #fef3c7; padding: 0.8rem; border-radius: 60px;">Data caps become restrictive quickly for streaming households.</p>
+            </div>
+
+            <!-- What Happens When You Exceed -->
+            <div class="section-header">
+                <div class="section-subhead">CONSEQUENCES</div>
+                <h2 class="section-heading">What happens if you exceed your cap?</h2>
+            </div>
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-tachometer-alt"></i></div>
+                    <h3>Speed throttling</h3>
+                    <p>Your speed may be reduced to 1–5 Mbps until the next billing cycle — making streaming and downloads very slow.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-pound-sign"></i></div>
+                    <h3>Extra charges</h3>
+                    <p>Some providers charge per additional GB used after hitting your cap. This can add up quickly.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-ban"></i></div>
+                    <h3>Restricted access</h3>
+                    <p>Your connection may be paused entirely until the next billing cycle, or you may need to purchase a data add-on.</p>
+                </div>
+                <div class="info-card">
+                    <div class="info-icon"><i class="fas fa-file-contract"></i></div>
+                    <h3>Check your policy</h3>
+                    <p>Always review the Fair Usage or Acceptable Use Policy — terms vary by provider.</p>
+                </div>
+            </div>
+
+            <!-- When a Capped Plan Makes Sense -->
+            <div class="section-header">
+                <div class="section-subhead">WHO IT SUITS</div>
+                <h2 class="section-heading">When a data-capped plan makes sense</h2>
+            </div>
+            <div class="cap-examples">
+                <div class="cap-card">
+                    <i class="fas fa-user" style="font-size: 1.8rem; color: #f59e0b;"></i>
+                    <p style="margin-top: 1rem;"><strong>Single-person households</strong><br>Light browsing, email only</p>
+                </div>
+                <div class="cap-card">
+                    <i class="fas fa-laptop" style="font-size: 1.8rem; color: #f59e0b;"></i>
+                    <p style="margin-top: 1rem;"><strong>Temporary use</strong><br>Short-term rental, backup connection</p>
+                </div>
+                <div class="cap-card">
+                    <i class="fas fa-coins" style="font-size: 1.8rem; color: #f59e0b;"></i>
+                    <p style="margin-top: 1rem;"><strong>Budget-conscious</strong><br>Occasional streaming, low usage patterns</p>
+                </div>
+            </div>
+            <p style="text-align: center; font-size: 1rem; color: #64748b; margin: 1rem 0 2rem;">For families and heavy users, unlimited is usually better value and stress-free.</p>
+
+            <!-- Signs You Need to Upgrade -->
+            <div class="section-header">
+                <div class="section-subhead">WARNING SIGNS</div>
+                <h2 class="section-heading">Signs you should upgrade to unlimited</h2>
+            </div>
+            <div class="signs-grid">
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-chart-line"></i></div><p>You regularly approach your data limit</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-tachometer-alt"></i></div><p>Speeds slow near month-end</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-tv"></i></div><p>You stream more than before</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-users"></i></div><p>Household size increased</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-briefcase"></i></div><p>You work from home</p></div>
+                <div class="sign-card"><div class="sign-icon"><i class="fas fa-gamepad"></i></div><p>Kids download large games regularly</p></div>
+            </div>
+
+            <!-- FAQ Section -->
+            <div class="section-header">
+                <div class="section-subhead">QUESTIONS</div>
+                <h2 class="section-heading">Frequently asked questions</h2>
+            </div>
+            <div class="cap-examples" style="grid-template-columns: repeat(2, 1fr);">
+                <div class="cap-card" style="text-align: left; background: white;">
+                    <strong style="font-size: 1.2rem;">Are data caps common in the UK?</strong>
+                    <p style="margin-top: 0.5rem;">Rare on fibre — common on mobile broadband. Most fixed-line plans are now unlimited.</p>
+                </div>
+                <div class="cap-card" style="text-align: left; background: white;">
+                    <strong style="font-size: 1.2rem;">Is unlimited broadband truly unlimited?</strong>
+                    <p style="margin-top: 0.5rem;">Usually yes for fibre — check fair usage terms. Mobile "unlimited" may have traffic management.</p>
+                </div>
+                <div class="cap-card" style="text-align: left; background: white;">
+                    <strong style="font-size: 1.2rem;">How much data does gaming use?</strong>
+                    <p style="margin-top: 0.5rem;">Online gaming uses little — but game downloads use 50–150GB each. This adds up quickly.</p>
+                </div>
+                <div class="cap-card" style="text-align: left; background: white;">
+                    <strong style="font-size: 1.2rem;">Is 200GB enough for a family?</strong>
+                    <p style="margin-top: 0.5rem;">Usually not if streaming regularly. A family can easily exceed 500GB per month with HD/4K content.</p>
+                </div>
+            </div>
+
+            <!-- Why Utility King -->
+            <div class="section-header">
+                <div class="section-subhead">WHY US</div>
+                <h2 class="section-heading">Compare with Utility King</h2>
+            </div>
+            <div class="info-grid" style="margin-bottom: 2rem;">
+                <div class="info-card"><div class="info-icon"><i class="fas fa-map-marked-alt"></i></div><h3>Check fibre availability</h3><p>Find truly unlimited plans in your area</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-file-contract"></i></div><h3>Review fair usage terms</h3><p>Know what "unlimited" really means</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-chart-simple"></i></div><h3>Match plan to usage</h3><p>Avoid overpaying for unnecessary limits</p></div>
+                <div class="info-card"><div class="info-icon"><i class="fas fa-pound-sign"></i></div><h3>Total cost comparison</h3><p>No hidden fees or surprises</p></div>
+            </div>
+
+            <!-- CTA -->
+            <div class="cta-section">
+                <h2>Worried about data limits?</h2>
+                <p>Switch to unlimited full fibre — often similar cost, no usage stress.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="cta-button" target="_blank">
+                    <i class="fas fa-envelope"></i> Contact us
+                </a>
+            </div>
+            <div class="footer-note">
+                <i class="fas fa-crown" style="color: #f59e0b;"></i> Utility King — broadband data caps explained UK 2026
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,860 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Router Quality Comparison by Provider | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Premium Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f5f7fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            color: #1e2b3c;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium color palette - professional tech */
+        :root {
+            --primary-deep: #0a1929;
+            --primary-navy: #1e3a6f;
+            --primary-blue: #2b6ed3;
+            --primary-silver: #e9edf2;
+            --primary-gold: #c9a86b;
+            --gradient-premium: linear-gradient(145deg, #0a1929, #1e3a6f);
+            --gradient-accent: linear-gradient(135deg, #2b6ed3, #4b8be0);
+            --card-bg: #ffffff;
+            --bg-soft: #f0f5ff;
+            --text-dark: #0a1929;
+            --text-soft: #2d3f5e;
+            --border-subtle: #d9e2f0;
+            --shadow-elegant: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Font 1: Cormorant Garamond - elegant serif for headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color: var(--text-dark);
+        }
+
+        /* Font 2: Plus Jakarta Sans - modern sans for subheads, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag, .meta, .provider-tag {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - clean body text */
+
+        /* Premium typography */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: var(--primary-blue);
+            }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-blue);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-elegant);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(43, 110, 211, 0.2));
+                pointer-events: none;
+            }
+
+            .hero-premium h1 {
+                color: white;
+                max-width: 1400px;
+                text-align: center;
+            }
+
+            .hero-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: clamp(1.1rem, 4vw, 1.25rem);
+                max-width: 1400px;
+                margin-bottom: 1.5rem;
+                text-align:center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 100px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hero-tags i {
+                margin-right: 0.5rem;
+                color: var(--primary-gold);
+            }
+
+        /* Main content */
+        .main-content {
+            background: white;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            box-shadow: var(--shadow-elegant);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive grids */
+        .grid-2x2, .grid-4x1, .grid-3x2 {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Premium Card Design */
+        .card-premium {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+            .card-premium:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-blue);
+            }
+
+            .card-premium::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-accent);
+                opacity: 0.6;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: var(--bg-soft);
+            color: var(--primary-deep);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .badge-deep {
+            background: var(--primary-deep);
+            color: white;
+            border: none;
+        }
+
+        .badge-navy {
+            background: var(--primary-navy);
+            color: white;
+            border: none;
+        }
+
+        .badge-blue {
+            background: var(--primary-blue);
+            color: white;
+            border: none;
+        }
+
+        .badge-gold {
+            background: var(--primary-gold);
+            color: var(--primary-deep);
+            border: none;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-blue);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary-deep);
+            font-size: 1rem;
+        }
+
+        .provider-rating {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .rating-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--primary-gold);
+        }
+
+            .rating-dot.inactive {
+                background: var(--border-subtle);
+            }
+
+        /* Premium Table */
+        .table-premium {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+            width: 100%;
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .table-premium table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table-premium th {
+                background: var(--primary-deep);
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: white;
+                text-align: left;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            .table-premium td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                font-size: 1rem;
+                color: var(--text-soft);
+            }
+
+            .table-premium tr:last-child td {
+                border-bottom: none;
+            }
+
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Premium CTA */
+        .cta-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .cta-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(43, 110, 211, 0.2), transparent 60%);
+                pointer-events: none;
+            }
+
+            .cta-premium h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+                .cta-premium h2::after {
+                    display: none;
+                }
+
+            .cta-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-premium {
+            background: var(--primary-blue);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin: 1rem 0;
+        }
+
+            .btn-premium:hover {
+                background: #4b8be0;
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+            }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Provider cards */
+        .provider-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (max-width: 800px) {
+            .provider-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (max-width: 500px) {
+            .provider-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .provider-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 5px 15px -8px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+
+            .provider-card:hover {
+                transform: translateY(-3px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-blue);
+            }
+
+            .provider-card .provider-name {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--primary-deep);
+                margin-bottom: 0.5rem;
+            }
+
+            .provider-card .wifi-tag {
+                display: inline-block;
+                background: var(--bg-soft);
+                padding: 0.2rem 0.8rem;
+                border-radius: 20px;
+                font-size: 0.8rem;
+                font-weight: 600;
+                margin-bottom: 1rem;
+            }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-soft);
+            }
+
+                .feature-list li i {
+                    color: var(--primary-blue);
+                    font-size: 1.1rem;
+                }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-blue), transparent);
+            margin: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .wifi-badge {
+            display: inline-block;
+            background: var(--primary-deep);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+            .wifi-badge.wifi5 {
+                background: var(--primary-navy);
+            }
+
+            .wifi-badge.wifi6 {
+                background: var(--primary-blue);
+            }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Hero -->
+        <div class="hero-premium">
+            <h1>Router Quality Comparison<br><span style="color: var(--primary-gold);">by UK Provider (2026)</span></h1>
+            <p>A professional analysis of broadband routers — because your Wi-Fi experience depends on more than just speed.</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-wifi"></i> Wi-Fi 5 vs Wi-Fi 6</span>
+                <span><i class="fas fa-network-wired"></i> Mesh compatibility</span>
+                <span><i class="fas fa-gamepad"></i> Gaming performance</span>
+                <span><i class="fas fa-home"></i> Large home solutions</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- Executive Summary -->
+            <div class="card-premium" style="background: var(--bg-soft); margin-bottom: 2rem;">
+                <h2 style="margin-top: 0;">Why router quality matters</h2>
+                <div class="grid-4x1" style="margin: 0;">
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep);">📶 Coverage</p>
+                        <p style="font-size: 0.95rem;">Signal strength throughout your home</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep);">⚡ Real speed</p>
+                        <p style="font-size: 0.95rem;">Wi-Fi bottleneck affects throughput</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep);">📱 Device handling</p>
+                        <p style="font-size: 0.95rem;">15+ devices need modern hardware</p>
+                    </div>
+                    <div>
+                        <p style="font-weight: 700; color: var(--primary-deep);">🎮 Gaming</p>
+                        <p style="font-size: 0.95rem;">Latency depends on router quality</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Wi-Fi standards explained -->
+            <h2>Wi-Fi standards explained</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-navy">Wi-Fi 5 (802.11ac)</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Suitable for speeds up to ~300 Mbps</li>
+                        <li><i class="fas fa-check"></i> Good for small homes and flats</li>
+                        <li><i class="fas fa-check"></i> Older generation</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-blue">Wi-Fi 6 (802.11ax)</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Faster and more efficient</li>
+                        <li><i class="fas fa-check"></i> Better for 300 Mbps+ and gigabit</li>
+                        <li><i class="fas fa-check"></i> Handles many devices simultaneously</li>
+                        <li><i class="fas fa-check"></i> Lower latency for gaming</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Provider comparison cards -->
+            <h2>Router quality by major provider (2026 overview)</h2>
+            <div class="provider-grid">
+                <!-- BT -->
+                <div class="provider-card">
+                    <div class="provider-name">BT</div>
+                    <div><span class="wifi-badge wifi5">Wi-Fi 5</span><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p><strong>Smart Hub 2 / Newer Fibre Hubs</strong></p>
+                    <p>Wi-Fi 5 on older plans · Wi-Fi 6 on newer full fibre · Good range for average homes · Mesh "Complete Wi-Fi" available (extra)</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot inactive"></span>
+                    </div>
+                    <p><small>Best for: Medium homes · Upgrade needed for large homes</small></p>
+                </div>
+                <!-- Sky -->
+                <div class="provider-card">
+                    <div class="provider-name">Sky</div>
+                    <div><span class="wifi-badge wifi5">Wi-Fi 5</span><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p><strong>Sky Broadband Hub / Max Hub</strong></p>
+                    <p>Wi-Fi 5 on entry plans · Wi-Fi 6 on premium fibre · Stable performance · Mesh boosters available (subscription)</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot inactive"></span>
+                    </div>
+                    <p><small>Best for: Families on 150–300 Mbps · Consider upgrade for large properties</small></p>
+                </div>
+                <!-- Virgin Media -->
+                <div class="provider-card">
+                    <div class="provider-name">Virgin Media</div>
+                    <div><span class="wifi-badge wifi5">Wi-Fi 5</span><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p><strong>Hub 3 / Hub 4 / Hub 5</strong></p>
+                    <p>Hub 3 = Wi-Fi 5 · Hub 4 = Wi-Fi 5 (gigabit capable) · Hub 5 = Wi-Fi 6 · Mesh pods available (monthly fee)</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot inactive"></span>
+                    </div>
+                    <p><small>Best for: High-speed cable users · Watch for older Hub 3 limitations</small></p>
+                </div>
+                <!-- TalkTalk -->
+                <div class="provider-card">
+                    <div class="provider-name">TalkTalk</div>
+                    <div><span class="wifi-badge wifi5">Wi-Fi 5</span><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p><strong>Wi-Fi Hub / Amazon eero</strong></p>
+                    <p>Wi-Fi 6 on full fibre packages · Some packages include Amazon eero (mesh-ready) · Competitive hardware on higher tiers</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span>
+                    </div>
+                    <p><small>Best for: Budget fibre users wanting Wi-Fi 6</small></p>
+                </div>
+                <!-- Vodafone -->
+                <div class="provider-card">
+                    <div class="provider-name">Vodafone</div>
+                    <div><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p><strong>Power Hub / Ultra Hub</strong></p>
+                    <p>Wi-Fi 6 on full fibre · Optional "Super WiFi" mesh · Strong hardware performance</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span>
+                    </div>
+                    <p><small>Best for: Full fibre households</small></p>
+                </div>
+                <!-- Hyperoptic -->
+                <div class="provider-card">
+                    <div class="provider-name">Hyperoptic</div>
+                    <div><span class="wifi-badge wifi6">Wi-Fi 6</span></div>
+                    <p>Wi-Fi 6 routers common · Designed for apartment performance · Good symmetrical handling</p>
+                    <div class="provider-rating">
+                        <span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span><span class="rating-dot"></span>
+                    </div>
+                    <p><small>Best for: Flats · Strong symmetrical performance</small></p>
+                </div>
+            </div>
+
+            <!-- Comparison Table -->
+            <h2>Router quality comparison table</h2>
+            <div class="table-premium">
+                <table>
+                    <tr>
+                        <th>Provider</th>
+                        <th>Wi-Fi 6 Standard?</th>
+                        <th>Mesh Option</th>
+                        <th>Best For</th>
+                    </tr>
+                    <tr><td>BT</td><td>On newer FTTP</td><td>Yes (extra)</td><td>Medium homes</td></tr>
+                    <tr><td>Sky</td><td>On premium</td><td>Yes (extra)</td><td>Families</td></tr>
+                    <tr><td>Virgin Media</td><td>Hub 5 only</td><td>Yes (extra)</td><td>High speeds</td></tr>
+                    <tr><td>TalkTalk</td><td>Yes (FTTP)</td><td>Sometimes</td><td>Budget fibre</td></tr>
+                    <tr><td>Vodafone</td><td>Yes</td><td>Yes</td><td>Full fibre homes</td></tr>
+                    <tr><td>Hyperoptic</td><td>Yes</td><td>Limited</td><td>Flats</td></tr>
+                    <tr><td>Community Fibre</td><td>Yes</td><td>Yes</td><td>London gigabit</td></tr>
+                </table>
+            </div>
+
+            <!-- Large homes section -->
+            <h2>Large homes: Router vs mesh</h2>
+            <div class="card-premium">
+                <p>If you live in:</p>
+                <div class="grid-4x1" style="margin: 1rem 0;">
+                    <div>🏠 3+ bedroom house</div>
+                    <div>🧱 Thick brick/concrete walls</div>
+                    <div>📐 Multi-floor property</div>
+                </div>
+                <p>A single router — even Wi-Fi 6 — may not be enough.</p>
+                <div class="grid-2x2" style="margin-top: 1rem;">
+                    <div>
+                        <span class="badge badge-blue">Mesh benefits</span>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-check"></i> Improves coverage</li>
+                            <li><i class="fas fa-check"></i> Reduces dead zones</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <span class="badge badge-navy">Cost</span>
+                        <ul class="feature-list">
+                            <li><i class="fas fa-pound-sign"></i> £5–£10/month extra (rented)</li>
+                            <li><i class="fas fa-home"></i> Buying own mesh may be cheaper long-term</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gaming performance -->
+            <h2>Gaming performance by provider</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-blue">For gaming, look for:</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Wi-Fi 6</li>
+                        <li><i class="fas fa-check"></i> Low latency</li>
+                        <li><i class="fas fa-check"></i> Device prioritisation</li>
+                        <li><i class="fas fa-check"></i> Strong upload speeds</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-navy">Top performers</span>
+                    <p>Alt-Nets with symmetrical fibre + Wi-Fi 6 routers often perform very well for gaming.</p>
+                </div>
+            </div>
+
+            <!-- Own router option -->
+            <h2>Should you use your own router?</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-blue">Benefits</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Improve performance</li>
+                        <li><i class="fas fa-check"></i> Advanced controls</li>
+                        <li><i class="fas fa-check"></i> Better parental controls</li>
+                        <li><i class="fas fa-check"></i> Enhanced coverage</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-navy">Considerations</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-tools"></i> Manual configuration required</li>
+                        <li><i class="fas fa-phone"></i> Some providers require hub for phone services</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Real-world example -->
+            <h2>Real-world example</h2>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <div class="two-col" style="margin: 0;">
+                    <div>
+                        <p><strong>Household A:</strong></p>
+                        <p>📶 Wi-Fi 5 router</p>
+                        <p>🏠 Large 4-bed house</p>
+                        <p>📉 Poor upstairs coverage</p>
+                    </div>
+                    <div>
+                        <p><strong>Household B:</strong></p>
+                        <p>📶 Wi-Fi 6 + mesh</p>
+                        <p>🏠 Large 4-bed house</p>
+                        <p>📈 Stable coverage everywhere</p>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 1rem;"><strong>Same broadband speed — very different experience.</strong></p>
+            </div>
+
+            <!-- When router quality matters most -->
+            <h2>When router quality matters most</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">📱</span><p>15+ devices</p></div>
+                <div class="card-premium"><span class="stat-number">💼</span><p>Work from home</p></div>
+                <div class="card-premium"><span class="stat-number">📺</span><p>4K streaming</p></div>
+                <div class="card-premium"><span class="stat-number">🏠</span><p>Large properties</p></div>
+            </div>
+
+            <!-- FAQ -->
+            <h2>Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Does router affect broadband speed?</h3>
+                    <p>Yes — especially over Wi-Fi. A weak router can bottleneck a fast fibre connection.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is Wi-Fi 6 worth it?</h3>
+                    <p>For 300 Mbps+, yes. For gigabit, strongly recommended.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Should I pay extra for mesh?</h3>
+                    <p>If you have coverage issues in a larger home, yes.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Can I request a newer router?</h3>
+                    <p>Sometimes — depending on your package and provider.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-premium" style="background: var(--primary-deep); color: white;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: var(--primary-gold);"></i>
+                    <span style="font-size: 1.3rem; font-weight: 600; color: white;">Utility King approach</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.9);">We help you compare router types by provider, match speed to hardware quality, check mesh availability, compare full fibre infrastructure, and avoid underpowered hardware on fast plans. Because broadband performance depends on more than just Mbps.</p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-premium">
+                <h2>Ready to compare broadband & router quality?</h2>
+                <p>If you're switching broadband, comparing router hardware could significantly improve your home Wi-Fi — sometimes more than upgrading speed.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium"><i class="fas fa-paper-plane"></i> Contact Us</a>
+                </div>
+                <p style="margin-top: 1.5rem;"><i class="fas fa-map-pin" style="color: var(--primary-gold);"></i> Find the best fibre & Wi-Fi setup in your area</p>
+            </div>
+
+            <hr>
+            <p style="text-align: center; color: #999; font-size: 0.9rem;">© Utility King 2026 · Router Quality Comparison by Provider · Premium UK Guide</p>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,882 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <title>Broadband Reliability Comparison | UK 2026 Guide | Utility King</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Premium Google Fonts: Cormorant Garamond (headings), Plus Jakarta Sans (subheads), Inter (body) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f6f8fc;
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 2rem;
+            color: #1e2b3c;
+            min-height: 100vh;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium color palette - trustworthy, stable tones */
+        :root {
+            --primary-deep: #0b2a34;
+            --primary-teal: #1e6f6b;
+            --primary-sage: #5e8b7e;
+            --primary-stone: #d0d9e0;
+            --primary-gold: #c9a86b;
+            --gradient-premium: linear-gradient(145deg, #0b2a34, #1e6f6b);
+            --gradient-accent: linear-gradient(135deg, #1e6f6b, #5e8b7e);
+            --card-bg: #ffffff;
+            --bg-soft: #f0f5fa;
+            --text-dark: #0b2a34;
+            --text-soft: #2c4a55;
+            --border-subtle: #d4e0e8;
+            --shadow-elegant: 0 20px 35px -10px rgba(0, 0, 0, 0.08);
+            --shadow-hover: 0 25px 40px -12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Font 1: Cormorant Garamond - elegant serif for headings */
+        h1, h2, h3, .heading-xl {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            color: var(--text-dark);
+        }
+
+        /* Font 2: Plus Jakarta Sans - modern sans for subheads, stats, buttons */
+        .subhead, .stat-number, .badge, .btn, .card-tag, .price-tag, .meta, .provider-tag {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 600;
+        }
+
+        /* Font 3: Inter - clean body text */
+
+        /* Premium typography */
+        h1 {
+            font-size: clamp(2.5rem, 8vw, 4rem);
+            line-height: 1.1;
+            margin-bottom: 1.2rem;
+        }
+
+        h2 {
+            font-size: clamp(2rem, 6vw, 2.8rem);
+            margin: 2.5rem 0 1.5rem;
+            position: relative;
+            padding-bottom: 0.75rem;
+        }
+
+            h2::after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                width: 80px;
+                height: 3px;
+                background: var(--primary-teal);
+            }
+
+        h3 {
+            font-size: clamp(1.3rem, 5vw, 1.6rem);
+            margin-bottom: 1rem;
+            color: var(--primary-deep);
+        }
+
+        p {
+            font-size: clamp(1rem, 4vw, 1.1rem);
+            line-height: 1.6;
+            color: var(--text-soft);
+            margin-bottom: 1rem;
+            word-wrap: break-word;
+        }
+
+        .stat-number {
+            font-size: clamp(2rem, 6vw, 2.5rem);
+            font-weight: 700;
+            color: var(--primary-teal);
+            display: inline-block;
+            line-height: 1.2;
+        }
+
+        .wrapper {
+            max-width: 1400px;
+            margin: 0 auto;
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+        /* Premium Hero Section */
+        .hero-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            box-shadow: var(--shadow-elegant);
+            margin-bottom: 2rem;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+            .hero-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                right: 0;
+                width: 40%;
+                height: 100%;
+                background: linear-gradient(90deg, transparent, rgba(94, 139, 126, 0.2));
+                pointer-events: none;
+            }
+
+            .hero-premium h1 {
+                color: white;
+                max-width: 1400px;
+                text-align: center;
+            }
+
+            .hero-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                font-size: clamp(1.1rem, 4vw, 1.25rem);
+                max-width: 1400px;
+                margin-bottom: 1.5rem;
+                text-align:center;
+            }
+
+        .hero-tags {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content:center;
+        }
+
+            .hero-tags span {
+                background: rgba(255, 255, 255, 0.1);
+                backdrop-filter: blur(10px);
+                padding: 0.5rem 1.2rem;
+                border-radius: 100px;
+                font-size: 0.9rem;
+                font-weight: 500;
+                color: white;
+                border: 1px solid rgba(255, 255, 255, 0.2);
+            }
+
+            .hero-tags i {
+                margin-right: 0.5rem;
+                color: var(--primary-gold);
+            }
+
+        /* Main content */
+        .main-content {
+            background: white;
+            border-radius: 2rem;
+            padding: clamp(1.5rem, 4vw, 3rem);
+            box-shadow: var(--shadow-elegant);
+            width: 100%;
+            border: 1px solid var(--border-subtle);
+        }
+
+        /* Responsive grids */
+        .grid-2x2, .grid-4x1, .grid-3x2, .grid-ranking {
+            display: grid;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .grid-2x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-4x1 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-3x2 {
+            grid-template-columns: 1fr;
+        }
+
+        .grid-ranking {
+            grid-template-columns: 1fr;
+        }
+
+        @media (min-width: 640px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid-2x2 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .grid-4x1 {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .grid-3x2 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .grid-ranking {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Premium Card Design */
+        .card-premium {
+            background: white;
+            border-radius: 1.5rem;
+            padding: 1.8rem;
+            box-shadow: 0 10px 25px -8px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-subtle);
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            height: auto;
+        }
+
+            .card-premium:hover {
+                transform: translateY(-4px);
+                box-shadow: var(--shadow-hover);
+                border-color: var(--primary-teal);
+            }
+
+            .card-premium::after {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                height: 4px;
+                background: var(--gradient-accent);
+                opacity: 0.6;
+            }
+
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 1rem;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+            background: var(--bg-soft);
+            color: var(--primary-deep);
+            border: 1px solid var(--border-subtle);
+        }
+
+        .badge-deep {
+            background: var(--primary-deep);
+            color: white;
+            border: none;
+        }
+
+        .badge-teal {
+            background: var(--primary-teal);
+            color: white;
+            border: none;
+        }
+
+        .badge-sage {
+            background: var(--primary-sage);
+            color: white;
+            border: none;
+        }
+
+        .badge-gold {
+            background: var(--primary-gold);
+            color: var(--primary-deep);
+            border: none;
+        }
+
+        .reliability-meter {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin: 0.5rem 0;
+        }
+
+        .meter-bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border-subtle);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .meter-fill {
+            height: 100%;
+            background: var(--primary-teal);
+            border-radius: 4px;
+        }
+
+            .meter-fill.gold {
+                background: var(--primary-gold);
+            }
+
+            .meter-fill.sage {
+                background: var(--primary-sage);
+            }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border-subtle);
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .stat-label {
+            color: var(--primary-teal);
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .stat-value {
+            font-weight: 600;
+            color: var(--primary-deep);
+            font-size: 1rem;
+        }
+
+        /* Premium Table */
+        .table-premium {
+            background: white;
+            border-radius: 1.2rem;
+            overflow: hidden;
+            border: 1px solid var(--border-subtle);
+            margin: 2rem 0;
+            width: 100%;
+            box-shadow: var(--shadow-elegant);
+        }
+
+            .table-premium table {
+                width: 100%;
+                border-collapse: collapse;
+            }
+
+            .table-premium th {
+                background: var(--primary-deep);
+                padding: 1rem 1.5rem;
+                font-size: 1rem;
+                color: white;
+                text-align: left;
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-weight: 600;
+            }
+
+            .table-premium td {
+                padding: 1rem 1.5rem;
+                border-bottom: 1px solid var(--border-subtle);
+                font-size: 1rem;
+                color: var(--text-soft);
+            }
+
+            .table-premium tr:last-child td {
+                border-bottom: none;
+            }
+
+        /* Two column */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        @media (min-width: 768px) {
+            .two-col {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        /* Premium CTA */
+        .cta-premium {
+            background: var(--gradient-premium);
+            border-radius: 2rem;
+            padding: clamp(2rem, 5vw, 4rem);
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+            .cta-premium::before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 70% 30%, rgba(94, 139, 126, 0.2), transparent 60%);
+                pointer-events: none;
+            }
+
+            .cta-premium h2 {
+                color: white;
+                margin-bottom: 1rem;
+            }
+
+                .cta-premium h2::after {
+                    display: none;
+                }
+
+            .cta-premium p {
+                color: rgba(255, 255, 255, 0.9);
+                max-width: 700px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+        .btn-premium {
+            background: var(--primary-teal);
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: white;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.3);
+            transition: all 0.3s ease;
+            white-space: nowrap;
+            margin: 1rem 0;
+        }
+
+            .btn-premium:hover {
+                background: #2f8f8a;
+                transform: scale(1.02);
+                box-shadow: 0 15px 30px -5px rgba(0, 0, 0, 0.4);
+            }
+
+        .btn-wrapper {
+            display: flex;
+            justify-content: center;
+            width: 100%;
+        }
+
+        /* Ranking cards */
+        .ranking-card {
+            background: white;
+            border-radius: 1.2rem;
+            padding: 1.5rem;
+            border: 1px solid var(--border-subtle);
+            box-shadow: 0 5px 15px -8px rgba(0,0,0,0.1);
+        }
+
+        .ranking-number {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary-gold);
+            line-height: 1;
+            margin-bottom: 0.5rem;
+        }
+
+        .ranking-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-deep);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-list {
+            list-style: none;
+            padding: 0;
+        }
+
+            .feature-list li {
+                padding: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                gap: 0.75rem;
+                color: var(--text-soft);
+            }
+
+                .feature-list li i {
+                    color: var(--primary-teal);
+                    font-size: 1.1rem;
+                }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--primary-teal), transparent);
+            margin: 3rem 0;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .reliability-badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            margin-right: 0.5rem;
+        }
+
+        .badge-excellent {
+            background: #e1f0e8;
+            color: #1e6f6b;
+        }
+
+        .badge-good {
+            background: #e8f0d0;
+            color: #5e7d3a;
+        }
+
+        .badge-fair {
+            background: #f8e8d0;
+            color: #b06d3a;
+        }
+    </style>
+</head>
+<body>
+    <div class="wrapper">
+        <!-- Premium Hero -->
+        <div class="hero-premium">
+            <h1>Broadband Reliability<br><span style="color: var(--primary-gold);">Comparison (2026)</span></h1>
+            <p>Speed gets the headlines — but reliability determines your daily experience. A professional analysis of network stability across the UK.</p>
+            <div class="hero-tags">
+                <span><i class="fas fa-check-circle"></i> FTTP stability</span>
+                <span><i class="fas fa-exclamation-triangle"></i> Peak congestion</span>
+                <span><i class="fas fa-arrow-up"></i> Upload reliability</span>
+                <span><i class="fas fa-briefcase"></i> Business SLAs</span>
+            </div>
+        </div>
+
+        <!-- Main content -->
+        <div class="main-content">
+            <!-- What reliability means -->
+            <h2>What does broadband reliability mean?</h2>
+            <div class="grid-4x1">
+                <div class="card-premium">
+                    <span class="stat-number">⏱️</span>
+                    <p style="font-weight: 600;">Uptime</p>
+                    <p>How often it stays connected</p>
+                </div>
+                <div class="card-premium">
+                    <span class="stat-number">📊</span>
+                    <p style="font-weight: 600;">Stability</p>
+                    <p>Consistent speeds</p>
+                </div>
+                <div class="card-premium">
+                    <span class="stat-number">🎮</span>
+                    <p style="font-weight: 600;">Latency</p>
+                    <p>Consistency for gaming & calls</p>
+                </div>
+                <div class="card-premium">
+                    <span class="stat-number">🔧</span>
+                    <p style="font-weight: 600;">Fault repair</p>
+                    <p>Speed of fixes</p>
+                </div>
+            </div>
+
+            <!-- Fibre types ranked -->
+            <h2>Fibre types ranked by reliability</h2>
+            <div class="grid-ranking">
+                <div class="ranking-card">
+                    <div class="ranking-number">🥇</div>
+                    <div class="ranking-title">Full Fibre (FTTP)</div>
+                    <span class="reliability-badge badge-excellent">Excellent</span>
+                    <p>Fibre directly to your home · No copper · Least interference · Most stable long-term</p>
+                    <div class="reliability-meter">
+                        <span style="width: 60px;">Uptime</span>
+                        <div class="meter-bar"><div class="meter-fill" style="width: 98%;"></div></div>
+                        <span>98%+</span>
+                    </div>
+                    <p><small>Best for: Remote workers, businesses, gamers, streaming households</small></p>
+                </div>
+                <div class="ranking-card">
+                    <div class="ranking-number">🥈</div>
+                    <div class="ranking-title">Cable (Virgin DOCSIS)</div>
+                    <span class="reliability-badge badge-good">Good</span>
+                    <p>Fibre to cabinet + coax to home · High downloads · Can vary during peak times</p>
+                    <div class="reliability-meter">
+                        <span style="width: 60px;">Uptime</span>
+                        <div class="meter-bar"><div class="meter-fill sage" style="width: 95%;"></div></div>
+                        <span>~95%</span>
+                    </div>
+                    <p><small>Good performance in most areas — but congestion can occur locally</small></p>
+                </div>
+                <div class="ranking-card">
+                    <div class="ranking-number">🥉</div>
+                    <div class="ranking-title">Standard Fibre (FTTC)</div>
+                    <span class="reliability-badge badge-fair">Fair</span>
+                    <p>Fibre to cabinet + copper to property · Speed depends on distance · More prone to faults</p>
+                    <div class="reliability-meter">
+                        <span style="width: 60px;">Uptime</span>
+                        <div class="meter-bar"><div class="meter-fill" style="width: 92%; background: var(--primary-gold);"></div></div>
+                        <span>~92%</span>
+                    </div>
+                    <p><small>Least reliable of modern fibre options</small></p>
+                </div>
+            </div>
+
+            <!-- Openreach vs Alt-Nets -->
+            <h2>Openreach vs Alt-Net reliability</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">🟢 Openreach FTTP</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Largest UK network</li>
+                        <li><i class="fas fa-check"></i> Mature infrastructure</li>
+                        <li><i class="fas fa-check"></i> Strong national backbone</li>
+                        <li><i class="fas fa-check"></i> Very stable in most areas</li>
+                    </ul>
+                    <p>Widely available and dependable.</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-teal">🔵 Alt-Nets</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> 100% fibre infrastructure</li>
+                        <li><i class="fas fa-check"></i> Newer networks</li>
+                        <li><i class="fas fa-check"></i> Often symmetrical speeds</li>
+                        <li><i class="fas fa-check"></i> Strong performance where available</li>
+                    </ul>
+                    <p>Reliability is usually excellent — coverage is postcode-specific.</p>
+                </div>
+            </div>
+
+            <!-- Virgin Media reliability -->
+            <h2>Virgin Media reliability</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-sage">Pros</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> High download speeds</li>
+                        <li><i class="fas fa-check"></i> Good performance for streaming</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-deep">Cons</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> Upload speeds lower than full fibre</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Congestion possible in high-demand areas</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="text-center">In some areas, performance is excellent. In others, peak-time variation may occur.</p>
+
+            <!-- Upload reliability -->
+            <h2>Upload reliability comparison</h2>
+            <div class="table-premium">
+                <table>
+                    <tr>
+                        <th>Network Type</th>
+                        <th>Upload Stability</th>
+                        <th>Best For</th>
+                    </tr>
+                    <tr>
+                        <td>Symmetrical Fibre (Alt-Nets)</td>
+                        <td><span class="badge-excellent">Most consistent</span></td>
+                        <td>Remote work, cloud backups</td>
+                    </tr>
+                    <tr>
+                        <td>Openreach FTTP</td>
+                        <td><span class="badge-good">Good stability</span></td>
+                        <td>General use</td>
+                    </tr>
+                    <tr>
+                        <td>Cable (Virgin)</td>
+                        <td><span class="badge-fair">Can fluctuate</span></td>
+                        <td>Download-focused households</td>
+                    </tr>
+                </table>
+            </div>
+
+            <!-- Peak-time congestion -->
+            <h2>Peak-time congestion</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Most prone to congestion</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> Cable networks in dense areas</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> FTTC cabinets serving many homes</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-teal">Least prone to congestion</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Full fibre networks</li>
+                        <li><i class="fas fa-check"></i> Lower-density Alt-Net areas</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Business vs residential -->
+            <h2>Business vs residential reliability</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Residential</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-times"></i> No guaranteed repair times</li>
+                        <li><i class="fas fa-clock"></i> Faults may take 2–5 working days</li>
+                        <li><i class="fas fa-headset"></i> Standard support</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-teal">Business</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> Service Level Agreement (SLA)</li>
+                        <li><i class="fas fa-check"></i> Faster fault repair (often 24–48 hours)</li>
+                        <li><i class="fas fa-check"></i> Priority support</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Real-world example -->
+            <h2>Real-world reliability comparison</h2>
+            <div class="card-premium" style="background: var(--bg-soft);">
+                <div class="two-col" style="margin: 0;">
+                    <div>
+                        <p><strong>Household A:</strong></p>
+                        <p>📶 67 Mbps FTTC</p>
+                        <p>⚠️ Frequent dropouts in bad weather</p>
+                    </div>
+                    <div>
+                        <p><strong>Household B:</strong></p>
+                        <p>📶 150 Mbps FTTP</p>
+                        <p>✅ Stable connection year-round</p>
+                    </div>
+                </div>
+                <p class="text-center" style="margin-top: 1rem;"><strong>Even with lower speeds, FTTP generally delivers better long-term stability.</strong></p>
+            </div>
+
+            <!-- Rural vs urban -->
+            <h2>Rural vs urban reliability</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <span class="badge badge-deep">Rural</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-exclamation-triangle"></i> FTTC may struggle due to long copper lines</li>
+                        <li><i class="fas fa-check"></i> Full fibre rollout expanding</li>
+                        <li><i class="fas fa-check"></i> Some rural Alt-Nets offer excellent stability</li>
+                    </ul>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-teal">Urban</span>
+                    <ul class="feature-list">
+                        <li><i class="fas fa-check"></i> More infrastructure choice</li>
+                        <li><i class="fas fa-exclamation-triangle"></i> Possible congestion on cable</li>
+                        <li><i class="fas fa-check"></i> Alt-Nets often strong in city centres</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Signs of unreliable broadband -->
+            <h2>Signs your broadband isn't reliable</h2>
+            <div class="grid-4x1">
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Frequent dropouts</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Slow speeds during evenings</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Video calls freezing</p></div>
+                <div class="card-premium"><span class="stat-number">⚠️</span><p>Router constantly restarting</p></div>
+            </div>
+
+            <!-- How to improve reliability -->
+            <h2>How to improve reliability</h2>
+            <div class="grid-3x2">
+                <div class="card-premium">✔️ Upgrade from FTTC to FTTP</div>
+                <div class="card-premium">✔️ Consider symmetrical fibre if available</div>
+                <div class="card-premium">✔️ Use wired Ethernet where possible</div>
+                <div class="card-premium">✔️ Upgrade to Wi-Fi 6 router</div>
+                <div class="card-premium">✔️ Use mesh in larger homes</div>
+                <div class="card-premium">✔️ Switch at end of contract if performance poor</div>
+            </div>
+
+            <!-- Overall ranking -->
+            <h2>Most reliable broadband type (overall ranking)</h2>
+            <div class="grid-3x2">
+                <div class="card-premium">
+                    <span class="badge badge-teal">1️⃣</span>
+                    <p style="font-weight: 700;">Full Fibre (FTTP)</p>
+                    <p>Openreach or Alt-Net</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-sage">2️⃣</span>
+                    <p style="font-weight: 700;">Cable</p>
+                    <p>Virgin Media</p>
+                </div>
+                <div class="card-premium">
+                    <span class="badge badge-deep">3️⃣</span>
+                    <p style="font-weight: 700;">Standard Fibre</p>
+                    <p>FTTC</p>
+                </div>
+            </div>
+
+            <!-- FAQ -->
+            <h2>Frequently asked questions</h2>
+            <div class="grid-2x2">
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is full fibre more reliable than standard fibre?</h3>
+                    <p>Yes — significantly. No copper means fewer faults.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Is Virgin reliable?</h3>
+                    <p>Often yes — but performance varies by area and peak congestion.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Do Alt-Nets offer good reliability?</h3>
+                    <p>Yes — especially due to 100% fibre networks.</p>
+                </div>
+                <div class="card-premium">
+                    <h3 style="font-size: 1.3rem;">Should I choose business broadband for reliability?</h3>
+                    <p>If downtime affects your income, yes — SLAs provide guarantees.</p>
+                </div>
+            </div>
+
+            <!-- Utility King approach -->
+            <div class="card-premium" style="background: var(--primary-deep); color: white;">
+                <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+                    <i class="fas fa-crown" style="font-size: 2rem; color: var(--primary-gold);"></i>
+                    <span style="font-size: 1.3rem; font-weight: 600; color: white;">Utility King approach</span>
+                </div>
+                <p style="color: rgba(255,255,255,0.9);">We help you compare infrastructure types in your postcode, identify full fibre availability, compare upload performance, review contract protections, and avoid staying on outdated copper connections. Because reliability matters more than headline speed.</p>
+            </div>
+
+            <!-- Final CTA -->
+            <div class="cta-premium">
+                <h2>Ready to find the most reliable broadband?</h2>
+                <p>If you're experiencing dropouts or inconsistent speeds, better infrastructure may already be available in your area. Switching to full fibre could dramatically improve stability.</p>
+                <div class="btn-wrapper">
+                    <a href="https://www.utilityking.co.uk/contact.html" class="btn-premium"><i class="fas fa-paper-plane"></i> Contact Us Now</a>
+                </div>
+                <p style="margin-top: 1.5rem;"><i class="fas fa-map-pin" style="color: var(--primary-gold);"></i> See full fibre options in your postcode</p>
+            </div>
+
+            <hr>
+            <p style="text-align: center; color: #999; font-size: 0.9rem;">© Utility King 2026 · Broadband Reliability Comparison · Premium UK Guide</p>
+        </div>
+    </div>
+</body>
+</html>

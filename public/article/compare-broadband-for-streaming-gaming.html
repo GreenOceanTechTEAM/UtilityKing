@@ -1,0 +1,940 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- SEO meta tags -->
+    <title>Compare Broadband for Streaming & Gaming UK (2026 Guide) | Utility King</title>
+    <meta name="description" content="Complete guide to comparing broadband for streaming and gaming in the UK for 2026. Find the right speed, latency requirements, and best deals for your household.">
+    <meta name="keywords" content="broadband for gaming, streaming broadband, low latency, full fibre gaming, compare broadband, Utility King">
+    <meta name="author" content="Utility King">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: #f0f4f8;
+            color: #1a2b3c;
+            line-height: 1.6;
+        }
+
+        /* === DARK HERO - DEEP SLATE & EMERALD === */
+        .hero {
+            background: linear-gradient(165deg, #0a1922 0%, #1a3b4f 100%);
+            color: #fff;
+            padding: 5rem 2rem 7rem;
+            position: relative;
+            isolation: isolate;
+            box-shadow: 0 30px 50px -25px rgba(10,25,34,0.8);
+            text-align: center;
+        }
+
+            .hero::before {
+                content: "";
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: radial-gradient(circle at 30% 70%, rgba(16,185,129,0.08) 0%, transparent 40%);
+                z-index: 1;
+            }
+
+            .hero::after {
+                content: "";
+                position: absolute;
+                bottom: -1px;
+                left: 0;
+                right: 0;
+                height: 100px;
+                background: linear-gradient(to bottom right, transparent 49%, #f0f4f8 50%);
+                z-index: 2;
+            }
+
+        .hero-content {
+            max-width: 1100px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 5;
+        }
+
+        .hero h1 {
+            font-size: 3.8rem;
+            font-weight: 700;
+            line-height: 1.1;
+            max-width: 900px;
+            margin: 0 auto 1.5rem;
+            letter-spacing: -0.02em;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .hero .highlight {
+            color: #10b981;
+            border-bottom: 3px solid #10b981;
+            padding-bottom: 5px;
+            display: inline-block;
+        }
+
+        .hero-sub {
+            font-size: 1.3rem;
+            max-width: 700px;
+            opacity: 0.85;
+            margin: 0 auto 2.5rem;
+            color: #b0d4e0;
+            font-weight: 300;
+        }
+
+        .hero-stats {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-top: 3rem;
+            justify-content: center;
+        }
+
+        .hero-stat {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: rgba(255,255,255,0.03);
+            padding: 1.2rem 2.2rem;
+            border-radius: 100px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(16,185,129,0.2);
+        }
+
+            .hero-stat .number {
+                font-size: 2.2rem;
+                font-weight: 700;
+                color: #10b981;
+                line-height: 1;
+                margin-bottom: 0.2rem;
+            }
+
+            .hero-stat .label {
+                font-size: 0.8rem;
+                text-transform: uppercase;
+                letter-spacing: 2px;
+                opacity: 0.6;
+                font-weight: 400;
+            }
+
+        /* === MAIN CONTAINER === */
+        .container {
+            max-width: 1100px;
+            margin: -4rem auto 5rem;
+            padding: 0 2rem 4rem;
+            position: relative;
+            z-index: 10;
+        }
+
+        /* intro card */
+        .intro-card {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 2.5rem;
+            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.2);
+            margin-bottom: 3rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        .intro-quote {
+            font-size: 1.3rem;
+            font-weight: 500;
+            color: #0a1922;
+            margin-bottom: 1.5rem;
+            line-height: 1.5;
+            border-left: 4px solid #10b981;
+            padding-left: 1.5rem;
+            background: #f8fafc;
+            padding: 1.5rem;
+            border-radius: 16px;
+        }
+
+        .intro-text {
+            font-size: 1.1rem;
+            color: #3a4e62;
+        }
+
+        /* quick summary card */
+        .summary-card {
+            background: #ffffff;
+            border-radius: 30px;
+            padding: 2rem;
+            margin: 2.5rem 0;
+            border: 1px solid #e0e8f0;
+            box-shadow: 0 10px 25px -15px rgba(0,0,0,0.1);
+        }
+
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .summary-item {
+            background: #f8fafc;
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: left;
+            border: 1px solid #e0e8f0;
+            transition: all 0.2s ease;
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+            .summary-item:hover {
+                border-color: #10b981;
+                box-shadow: 0 5px 15px -10px #10b981;
+            }
+
+        .summary-feature {
+            font-weight: 600;
+            color: #10b981;
+            font-size: 0.85rem;
+            letter-spacing: 0.3px;
+        }
+
+        .summary-value {
+            font-weight: 600;
+            color: #1a2b3c;
+            font-size: 1.1rem;
+        }
+
+        /* section headers */
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin: 4rem 0 2rem;
+        }
+
+        .section-icon {
+            background: #0a1922;
+            color: #10b981;
+            width: 50px;
+            height: 50px;
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.6rem;
+            font-weight: 500;
+            border: 1px solid #10b98120;
+        }
+
+        .section-header h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            color: #0a1922;
+            margin: 0;
+        }
+
+            .section-header h2 span {
+                background: #e0e8f0;
+                color: #1a2b3c;
+                padding: 0.2rem 1.2rem;
+                border-radius: 50px;
+                font-size: 1.1rem;
+                margin-left: 1rem;
+                font-weight: 400;
+            }
+
+        /* streaming speeds table */
+        .streaming-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        .streaming-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+            .streaming-table th {
+                background: #f0f4f8;
+                padding: 1rem;
+                text-align: left;
+                font-weight: 600;
+                color: #0a1922;
+                border-radius: 12px 12px 0 0;
+            }
+
+            .streaming-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #e0e8f0;
+            }
+
+        .streaming-note {
+            background: #f0f4f8;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            border-left: 4px solid #10b981;
+        }
+
+        /* latency card */
+        .latency-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        .latency-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .latency-item {
+            background: #f8fafc;
+            padding: 1.2rem;
+            border-radius: 16px;
+            text-align: center;
+        }
+
+        .latency-range {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #10b981;
+            margin: 0.5rem 0;
+        }
+
+        .latency-desc {
+            font-size: 0.95rem;
+            color: #64748b;
+        }
+
+        /* fibre comparison */
+        .fibre-compare {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .fibre-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e0e8f0;
+        }
+
+            .fibre-card.fttc {
+                border-top: 4px solid #94a3b8;
+            }
+
+            .fibre-card.fttp {
+                border-top: 4px solid #10b981;
+            }
+
+        .fibre-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .fibre-speed {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0a1922;
+            margin: 0.5rem 0;
+        }
+
+        .fibre-list {
+            list-style: none;
+            padding: 0;
+            margin-top: 1rem;
+        }
+
+            .fibre-list li {
+                padding: 0.4rem 0 0.4rem 1.5rem;
+                position: relative;
+                font-size: 0.95rem;
+            }
+
+                .fibre-list li::before {
+                    content: "✓";
+                    color: #10b981;
+                    position: absolute;
+                    left: 0;
+                    font-weight: 600;
+                }
+
+        /* speed tiers */
+        .tiers-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .tier-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid #e0e8f0;
+            text-align: center;
+            transition: all 0.2s ease;
+        }
+
+            .tier-card:hover {
+                transform: translateY(-3px);
+                border-color: #10b981;
+            }
+
+        .tier-icon {
+            font-size: 2rem;
+            margin-bottom: 0.8rem;
+        }
+
+        .tier-speed {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: #0a1922;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-desc {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .tier-note {
+            background: #f0f4f8;
+            padding: 0.5rem;
+            border-radius: 8px;
+            margin-top: 1rem;
+            font-size: 0.85rem;
+        }
+
+        /* upload speeds */
+        .upload-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .upload-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid #e0e8f0;
+            text-align: center;
+        }
+
+        .upload-speed {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #10b981;
+            margin: 0.8rem 0;
+        }
+
+        /* pricing table */
+        .pricing-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e0e8f0;
+        }
+
+        .pricing-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1.5rem 0;
+        }
+
+            .pricing-table th {
+                background: #f0f4f8;
+                padding: 1rem;
+                text-align: left;
+                font-weight: 600;
+                color: #0a1922;
+            }
+
+            .pricing-table td {
+                padding: 1rem;
+                border-bottom: 1px solid #e0e8f0;
+            }
+
+        .pricing-note {
+            background: #f0f4f8;
+            padding: 1rem;
+            border-radius: 12px;
+            margin-top: 1rem;
+            text-align: center;
+        }
+
+        /* issues card */
+        .issues-card {
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 2rem;
+            border: 1px solid #e0e8f0;
+            border-left: 4px solid #f59e0b;
+        }
+
+        .issues-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 1.5rem 0;
+        }
+
+        .issues-item {
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.95rem;
+        }
+
+        /* savings card */
+        .savings-card {
+            background: linear-gradient(145deg, #0a1922, #1a3b4f);
+            color: white;
+            border-radius: 30px;
+            padding: 2.5rem;
+            margin: 2rem 0;
+            text-align: center;
+        }
+
+        .savings-number {
+            font-size: 4rem;
+            font-weight: 700;
+            color: #10b981;
+            margin: 1rem 0;
+        }
+
+        .savings-detail {
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin: 1rem 0;
+            color: #b0d4e0;
+        }
+
+        /* setup grid */
+        .setup-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .setup-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.8rem;
+            border: 1px solid #e0e8f0;
+            text-align: center;
+        }
+
+        .setup-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .setup-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .setup-recommend {
+            background: #f0f4f8;
+            padding: 0.5rem;
+            border-radius: 20px;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+            color: #10b981;
+            font-weight: 600;
+        }
+
+        /* FAQ grid - STACKED VERTICALLY */
+        .faq-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            margin: 2rem 0;
+            width: 100%;
+        }
+
+        .faq-block {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 1.5rem;
+            border: 1px solid #e0e8f0;
+            transition: all 0.2s ease;
+            width: 100%;
+        }
+
+            .faq-block:hover {
+                border-color: #10b981;
+                background: #f8fafc;
+            }
+
+        .faq-q {
+            font-weight: 600;
+            color: #0a1922;
+            margin-bottom: 0.8rem;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+            .faq-q span {
+                background: #0a1922;
+                color: #10b981;
+                width: 32px;
+                height: 32px;
+                border-radius: 32px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                font-weight: 600;
+                font-size: 1rem;
+            }
+
+        .faq-block p {
+            color: #3a4e62;
+        }
+
+        /* CTA premium */
+        .cta-premium {
+            background: linear-gradient(145deg, #0a1922, #1a3b4f);
+            border-radius: 50px;
+            padding: 2.5rem;
+            margin: 3rem 0 2rem;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            border: 1px solid #10b98130;
+        }
+
+        .cta-premium-left {
+            color: white;
+        }
+
+            .cta-premium-left p {
+                font-size: 1.8rem;
+                font-weight: 600;
+                margin-bottom: 0.5rem;
+            }
+
+            .cta-premium-left small {
+                color: #b0d4e0;
+                font-size: 1rem;
+                font-weight: 300;
+            }
+
+        .cta-btn {
+            background: #10b981;
+            color: #0a1922;
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            transition: all 0.2s ease;
+            display: inline-block;
+            border: none;
+        }
+
+            .cta-btn:hover {
+                background: #34d399;
+                transform: scale(1.02);
+            }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, #10b981, #e0e8f0, #10b981, transparent);
+            margin: 3rem 0 2rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            color: #64748b;
+            font-size: 0.9rem;
+            font-weight: 300;
+        }
+
+        @media (max-width: 900px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .summary-grid, .latency-grid, .fibre-compare, .tiers-grid, .upload-grid, .issues-grid, .setup-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cta-premium {
+                flex-direction: column;
+                text-align: center;
+                gap: 1.5rem;
+                padding: 2rem;
+            }
+
+            .section-header h2 {
+                font-size: 1.6rem;
+            }
+
+                .section-header h2 span {
+                    display: block;
+                    margin-left: 0;
+                    margin-top: 0.5rem;
+                }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- DARK HERO - DEEP SLATE & EMERALD -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Compare Broadband for Streaming & Gaming <span class="highlight">(UK 2026 Guide)</span></h1>
+            <div class="hero-sub">Buffering during a film. Lag mid-match. Pixelated live streams. You don't need the fastest — you need the right broadband for your home.</div>
+            <div class="hero-stats">
+                <div class="hero-stat"><span class="number">25</span> <span class="label">Mbps per 4K stream</span></div>
+                <div class="hero-stat"><span class="number">20ms</span> <span class="label">ideal gaming ping</span></div>
+                <div class="hero-stat"><span class="number">£150+</span> <span class="label">potential savings</span></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- MAIN CONTAINER -->
+    <main class="container">
+        <!-- intro card -->
+        <div class="intro-card">
+            <div class="intro-quote">Buffering during a film. Lag mid-match. Pixelated live streams. If your broadband can't keep up with modern streaming and gaming demands, it quickly becomes frustrating.</div>
+            <p class="intro-text">But here's the truth: You don't always need the fastest broadband available — you need the right speed, low latency, and stable connection for your household. In this guide, Utility King breaks down how to compare broadband for streaming and gaming in the UK, including: what speeds you actually need, why latency matters more than raw Mbps, fibre vs full fibre for gaming, best broadband tiers for different households, and how to avoid overpaying.</p>
+        </div>
+
+        <!-- Quick Summary -->
+        <div class="section-header">
+            <div class="section-icon">📊</div>
+            <h2>Quick Summary</h2>
+        </div>
+
+        <div class="summary-card">
+            <div class="summary-grid">
+                <div class="summary-item"><span class="summary-feature">HD streaming min</span><span class="summary-value">10–15 Mbps</span></div>
+                <div class="summary-item"><span class="summary-feature">4K streaming min</span><span class="summary-value">25 Mbps per stream</span></div>
+                <div class="summary-item"><span class="summary-feature">Gaming households</span><span class="summary-value">100–300 Mbps</span></div>
+                <div class="summary-item"><span class="summary-feature">Serious gamers</span><span class="summary-value">300–500 Mbps full fibre</span></div>
+                <div class="summary-item"><span class="summary-feature">Average savings</span><span class="summary-value">£150–£220 per year</span></div>
+            </div>
+        </div>
+
+        <!-- Broadband for Streaming -->
+        <div class="section-header">
+            <div class="section-icon">📺</div>
+            <h2>Broadband for Streaming: <span>What Speed Do You Need?</span></h2>
+        </div>
+
+        <div class="streaming-card">
+            <p>Streaming platforms require different speeds depending on quality.</p>
+            <table class="streaming-table">
+                <thead><tr><th>Streaming Quality</th><th>Recommended Speed (per device)</th></tr></thead>
+                <tbody>
+                    <tr><td>SD</td><td>3–5 Mbps</td></tr>
+                    <tr><td>HD</td><td>10–15 Mbps</td></tr>
+                    <tr><td>4K Ultra HD</td><td>25 Mbps</td></tr>
+                </tbody>
+            </table>
+            <div class="streaming-note">
+                If two people are watching Netflix in 4K at the same time, that's 50 Mbps already — before gaming, browsing, or video calls are considered.
+            </div>
+            <p style="margin-top:1rem;"><strong>For Streaming-Heavy Homes:</strong><br>1–2 people → 50–100 Mbps<br>3–4 people → 150–300 Mbps<br>4+ users → 300 Mbps+</p>
+        </div>
+
+        <!-- Broadband for Gaming -->
+        <div class="section-header">
+            <div class="section-icon">🎮</div>
+            <h2>Broadband for Gaming: <span>Why Latency Matters</span></h2>
+        </div>
+
+        <div class="latency-card">
+            <p>For gamers, speed isn't everything. Latency (ping) is critical. Latency measures how quickly your device communicates with game servers. Lower is better.</p>
+            <div class="latency-grid">
+                <div class="latency-item"><span class="latency-range">Under 20ms</span><span class="latency-desc">Excellent</span></div>
+                <div class="latency-item"><span class="latency-range">20–40ms</span><span class="latency-desc">Very good</span></div>
+                <div class="latency-item"><span class="latency-range">40–60ms</span><span class="latency-desc">Playable</span></div>
+                <div class="latency-item"><span class="latency-range">60ms+</span><span class="latency-desc">Noticeable lag</span></div>
+            </div>
+            <p>Full fibre connections typically offer lower latency than standard fibre.</p>
+        </div>
+
+        <!-- Fibre vs Full Fibre -->
+        <div class="section-header">
+            <div class="section-icon">🔌</div>
+            <h2>Fibre vs Full Fibre <span>for Streaming & Gaming</span></h2>
+        </div>
+
+        <div class="fibre-compare">
+            <div class="fibre-card fttc">
+                <div class="fibre-title">Standard Fibre (FTTC)</div>
+                <div class="fibre-speed">Up to 80 Mbps</div>
+                <ul class="fibre-list">
+                    <li>Upload speeds 10–20 Mbps</li>
+                    <li>Can slow during peak times</li>
+                    <li>Good for small households</li>
+                </ul>
+            </div>
+            <div class="fibre-card fttp">
+                <div class="fibre-title">Full Fibre (FTTP)</div>
+                <div class="fibre-speed">100–1000 Mbps</div>
+                <ul class="fibre-list">
+                    <li>Much higher upload speeds</li>
+                    <li>Lower latency</li>
+                    <li>More stable performance</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Best Speed Tiers -->
+        <div class="section-header">
+            <div class="section-icon">⚡</div>
+            <h2>Best Broadband Speed <span>for Gaming & Streaming</span></h2>
+        </div>
+
+        <div class="tiers-grid">
+            <div class="tier-card"><div class="tier-icon">🟢</div><div class="tier-speed">50–67 Mbps</div><div class="tier-desc">1–2 people, HD streaming, casual gaming</div><div class="tier-note">Not ideal for multiple 4K streams</div></div>
+            <div class="tier-card"><div class="tier-icon">🔵</div><div class="tier-speed">100–300 Mbps</div><div class="tier-desc">Families, multiple streamers, console gaming</div><div class="tier-note">Best value tier</div></div>
+            <div class="tier-card"><div class="tier-icon">🔴</div><div class="tier-speed">300–500 Mbps</div><div class="tier-desc">4+ heavy users, competitive gaming, 4K streaming</div><div class="tier-note">Future-proof and stable</div></div>
+            <div class="tier-card"><div class="tier-icon">⚡</div><div class="tier-speed">900–1000 Mbps</div><div class="tier-desc">Tech-heavy homes, content creators</div><div class="tier-note">May be more than necessary</div></div>
+        </div>
+
+        <!-- Upload Speed -->
+        <div class="section-header">
+            <div class="section-icon">☁️</div>
+            <h2>Upload Speed: <span>Crucial for Gamers & Streamers</span></h2>
+        </div>
+
+        <div class="upload-grid">
+            <div class="upload-card"><p>Standard fibre uploads</p><div class="upload-speed">10–20 Mbps</div></div>
+            <div class="upload-card"><p>Full fibre uploads</p><div class="upload-speed">100–900 Mbps</div></div>
+        </div>
+        <p style="text-align:center; margin:1rem 0;">If you stream gameplay, upload speed is critical.</p>
+
+        <!-- Pricing -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>How Much Does <span>Gaming & Streaming Broadband Cost?</span></h2>
+        </div>
+
+        <div class="pricing-card">
+            <p>Typical UK pricing:</p>
+            <table class="pricing-table">
+                <thead><tr><th>Speed</th><th>Average Monthly Cost</th></tr></thead>
+                <tbody>
+                    <tr><td>67 Mbps</td><td>£24–£27</td></tr>
+                    <tr><td>150 Mbps</td><td>£27–£30</td></tr>
+                    <tr><td>300 Mbps</td><td>£32–£38</td></tr>
+                    <tr><td>500 Mbps</td><td>£35–£42</td></tr>
+                </tbody>
+            </table>
+            <div class="pricing-note">
+                Often, upgrading from 67 Mbps to 150 Mbps costs only £3–£5 more per month. That small increase can dramatically improve performance.
+            </div>
+        </div>
+
+        <!-- When Speed Isn't the Problem -->
+        <div class="section-header">
+            <div class="section-icon">⚠️</div>
+            <h2>When Faster Broadband <span>Isn't the Problem</span></h2>
+        </div>
+
+        <div class="issues-card">
+            <p>Sometimes issues aren't speed-related. Common causes of lag or buffering:</p>
+            <div class="issues-grid">
+                <div class="issues-item">Poor Wi-Fi signal</div>
+                <div class="issues-item">Outdated router</div>
+                <div class="issues-item">Too many connected devices</div>
+                <div class="issues-item">Background downloads</div>
+                <div class="issues-item">Distance from router</div>
+            </div>
+            <p style="margin-top:1rem;">Even gigabit broadband won't fix weak internal Wi-Fi coverage. Router quality matters.</p>
+        </div>
+
+        <!-- Savings Card -->
+        <div class="section-header">
+            <div class="section-icon">💰</div>
+            <h2>How Much Could <span>You Save?</span></h2>
+        </div>
+
+        <div class="savings-card">
+            <p>If you're paying: <strong>£40/month for 100 Mbps</strong></p>
+            <p style="margin-top:0.5rem;">And new deals offer: <strong>£30/month for 300 Mbps</strong></p>
+            <div class="savings-number">£10</div>
+            <p>per month</p>
+            <div class="savings-detail">Save £10/month + triple your speed + improve gaming stability</div>
+            <p style="margin-top:1.5rem; color:#b0d4e0;">Many households stay on outdated tariffs long after better deals become available.</p>
+        </div>
+
+        <!-- Best for Different Setups -->
+        <div class="section-header">
+            <div class="section-icon">🏠</div>
+            <h2>Best Broadband <span>for Different Setups</span></h2>
+        </div>
+
+        <div class="setup-grid">
+            <div class="setup-card"><div class="setup-icon">🎮</div><h4>Solo Gamer</h4><div class="setup-recommend">100–150 Mbps fibre or full fibre</div></div>
+            <div class="setup-card"><div class="setup-icon">👨‍👩‍👧</div><h4>Family of Four</h4><div class="setup-recommend">150–300 Mbps recommended</div></div>
+            <div class="setup-card"><div class="setup-icon">🏠</div><h4>Large Smart Home</h4><div class="setup-recommend">300–500 Mbps full fibre ideal</div></div>
+            <div class="setup-card"><div class="setup-icon">🎥</div><h4>Content Creator / Streamer</h4><div class="setup-recommend">300 Mbps+ strong upload speeds</div></div>
+        </div>
+
+        <!-- FAQ - STACKED VERTICALLY -->
+        <div class="section-header">
+            <div class="section-icon">❓</div>
+            <h2>Frequently Asked <span>Questions</span></h2>
+        </div>
+
+        <div class="faq-grid">
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is 100 Mbps enough for gaming?</div><p>Yes — for most gamers, 100 Mbps is sufficient if latency is low.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Does faster broadband reduce lag?</div><p>Not directly. Lower latency and stable infrastructure reduce lag more than raw speed.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is full fibre better for gaming?</div><p>Yes. Full fibre typically offers lower latency and better stability.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> What broadband speed is best for 4K streaming?</div><p>25 Mbps per stream minimum.</p></div>
+            <div class="faq-block"><div class="faq-q"><span>Q</span> Is gigabit broadband worth it for gaming?</div><p>Usually unnecessary unless you have multiple heavy users or large downloads.</p></div>
+        </div>
+
+        <!-- Why Trust -->
+        <div class="section-header">
+            <div class="section-icon">🤝</div>
+            <h2>Why Compare with <span>Utility King?</span></h2>
+        </div>
+
+        <div class="info-card" style="background:white; border-left:4px solid #10b981; padding:2rem; border-radius:20px; margin:2rem 0;">
+            <p style="color:#3a4e62;">At Utility King, we help you compare speed tiers clearly, infrastructure type (FTTC vs FTTP), total contract costs, postcode-level availability, and value — not just headline speeds. We focus on helping you choose the right performance level without overspending.</p>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-premium">
+            <div class="cta-premium-left">
+                <p>Ready to upgrade your broadband for streaming & gaming?</p>
+                <small>If your current connection struggles during peak times, it may be time to upgrade — or switch to a better-value deal.</small>
+            </div>
+            <a href="https://www.utilityking.co.uk/contact.html" class="cta-btn">Contact Us →</a>
+        </div>
+
+        <hr>
+        <div class="footer-note">
+            <p>© Utility King 2026 — Complete guide to comparing broadband for streaming and gaming UK. All rights reserved.</p>
+        </div>
+    </main>
+</body>
+</html>

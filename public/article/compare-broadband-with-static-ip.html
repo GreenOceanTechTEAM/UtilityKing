@@ -1,0 +1,527 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <title>Static IP broadband comparison 2026 | Utility King</title>
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css">
+    <!-- premium modern type: Inter + Manrope for headings -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Manrope:wght@500;600;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #f3f5f2; /* soft neutral background */
+            font-family: 'Inter', sans-serif;
+            line-height: 1.5;
+            padding: 1.5rem 1rem;
+            color: #1d2b33;
+        }
+
+        /* sophisticated palette: deep slate, electric blue, warm sand, cool grey */
+        :root {
+            --slate: #1f3a47; /* deep blue‑grey */
+            --electric: #3d7b94; /* muted teal/blue */
+            --sand: #edddd0; /* warm sand */
+            --cream-bg: #faf8f2;
+            --accent-gold: #c4a079; /* aged gold for subtle contrast */
+            --border-light: #dfd5c9;
+        }
+
+        .guide {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--cream-bg);
+            border-radius: 2.8rem;
+            box-shadow: 0 45px 75px -35px #2b404a;
+            overflow: hidden;
+            border: 1px solid #d6cdc0;
+        }
+
+        /* header — deep slate + electric stripe */
+        .header-static {
+            background: var(--slate);
+            padding: 2rem 1.8rem;
+            color: #f7f3ec;
+            border-bottom: 6px solid var(--electric);
+        }
+
+        @media (min-width: 640px) {
+            .header-static {
+                padding: 2.5rem 2.8rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-static {
+                padding: 3.2rem 4rem;
+            }
+        }
+
+        .header-static h1 {
+            font-family: 'Manrope', sans-serif;
+            font-size: 2.4rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .header-static h1 {
+                font-size: 3rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .header-static h1 {
+                font-size: 3.6rem;
+            }
+        }
+
+        .header-static h1 i {
+            background: var(--electric);
+            color: var(--slate);
+            padding: 0.8rem;
+            border-radius: 1.8rem;
+            font-size: 2rem;
+        }
+
+        .header-static .sub {
+            font-size: 1.1rem;
+            font-weight: 300;
+            max-width: 900px;
+            opacity: 0.9;
+            margin: 1rem 0 1.8rem;
+            border-left: 4px solid var(--electric);
+            padding-left: 1.5rem;
+        }
+
+        .header-static .tags {
+            display: flex;
+            gap: 1.2rem 2.5rem;
+            flex-wrap: wrap;
+            font-weight: 400;
+            text-transform: uppercase;
+            font-size: 0.75rem;
+            letter-spacing: 0.8px;
+            color: #cfd9d4;
+        }
+
+            .header-static .tags i {
+                color: var(--electric);
+                margin-right: 6px;
+            }
+
+        /* main */
+        .main-static {
+            padding: 2rem 1.5rem;
+        }
+
+        @media (min-width: 640px) {
+            .main-static {
+                padding: 2.5rem 2.5rem;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .main-static {
+                padding: 3.5rem 4rem;
+            }
+        }
+
+        /* KPI cards */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+            gap: 1rem;
+            background: transparent;
+            margin-bottom: 2.5rem;
+        }
+
+        .kpi-card {
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.2rem 0.5rem;
+            text-align: center;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 5px 12px -10px #1f3a47;
+        }
+
+            .kpi-card .big {
+                font-size: 1.6rem;
+                font-weight: 800;
+                color: var(--electric);
+                line-height: 1.2;
+            }
+
+            .kpi-card .small {
+                font-size: 0.7rem;
+                font-weight: 600;
+                color: #556d78;
+                text-transform: uppercase;
+            }
+
+        /* section headings */
+        .section-title {
+            font-family: 'Manrope', sans-serif;
+            font-size: 1.9rem;
+            font-weight: 700;
+            color: var(--slate);
+            margin: 2.2rem 0 1rem 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid var(--electric);
+            padding-bottom: 0.4rem;
+            flex-wrap: wrap;
+        }
+
+        @media (min-width: 640px) {
+            .section-title {
+                font-size: 2.2rem;
+            }
+        }
+
+        .section-title i {
+            color: var(--electric);
+            font-size: 1.8rem;
+        }
+
+        /* definition blocks */
+        .def-block {
+            background: #f4f0e9;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        /* two-col comparison */
+        .comp-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .comp-card {
+            flex: 1 1 200px;
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem 1.2rem;
+            border: 1px solid var(--border-light);
+        }
+
+            .comp-card .title {
+                font-weight: 700;
+                font-size: 1.3rem;
+                color: var(--slate);
+                margin-bottom: 0.8rem;
+            }
+
+            .comp-card i {
+                color: var(--electric);
+                font-size: 1.6rem;
+                margin-right: 8px;
+            }
+
+        /* table */
+        .mini-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 6px;
+            margin: 1.5rem 0;
+        }
+
+            .mini-table th {
+                text-align: left;
+                font-weight: 600;
+                color: var(--slate);
+                border-bottom: 2px dashed var(--electric);
+                padding-bottom: 0.2rem;
+            }
+
+            .mini-table td {
+                background: white;
+                padding: 0.8rem 1rem;
+                border-radius: 1.2rem 0.3rem 1.2rem 0.3rem;
+                border: 1px solid #e3d9cf;
+            }
+
+        /* static IP / speed pill list */
+        .pill-strip {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin: 1.2rem 0;
+        }
+
+        .pill {
+            background: white;
+            border: 1px solid var(--electric);
+            border-radius: 40px;
+            padding: 0.4rem 1.2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+
+        /* upload highlight */
+        .upload-note {
+            background: var(--slate);
+            color: #ede7de;
+            border-radius: 2.5rem 0.5rem 2.5rem 0.5rem;
+            padding: 1.5rem 2rem;
+            margin: 2rem 0;
+        }
+
+        /* dynamic dns block */
+        .dns-block {
+            background: #eae5db;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        /* pricing table */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .price-item {
+            background: white;
+            border-radius: 1.5rem 0.3rem 1.5rem 0.3rem;
+            padding: 1.2rem;
+            border: 1px solid #d7cbbc;
+        }
+
+            .price-item .label {
+                font-weight: 600;
+                color: var(--slate);
+            }
+
+            .price-item .cost {
+                font-size: 1.5rem;
+                font-weight: 700;
+                color: var(--electric);
+            }
+
+        /* checklist */
+        .checklist {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 0.8rem;
+            background: white;
+            border-radius: 2rem 0.5rem 2rem 0.5rem;
+            padding: 1.8rem;
+            margin: 2rem 0;
+        }
+
+            .checklist .item {
+                display: flex;
+                align-items: center;
+                gap: 8px;
+            }
+
+        /* faq */
+        .faq-list details {
+            background: white;
+            border-radius: 2rem 0.3rem 2rem 0.3rem;
+            margin: 0.8rem 0;
+            padding: 0.8rem 1.2rem;
+            border: 1px solid #d9cfc2;
+        }
+
+        /* cta */
+        .cta-block {
+            background: white;
+            border-radius: 3rem 1rem 3rem 1rem;
+            padding: 2.5rem 2rem;
+            margin: 3rem 0 2rem;
+            border: 4px solid var(--electric);
+            text-align: center;
+        }
+
+        .btn-static {
+            background: var(--electric);
+            color: white;
+            border: none;
+            font-size: 1.5rem;
+            font-weight: 600;
+            padding: 1rem 2.5rem;
+            border-radius: 3rem 0.5rem 3rem 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+            box-shadow: 0 18px 24px -16px #1c5e79;
+            transition: 0.2s;
+            margin: 1rem 0;
+        }
+
+            .btn-static:hover {
+                background: #2e637c;
+                transform: translateY(-3px);
+            }
+
+        hr {
+            border: 1px solid #d4cbbc;
+            margin: 2rem 0;
+        }
+
+        /* responsive */
+        p, li {
+            word-break: break-word;
+            overflow-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+    <div class="guide">
+        <div class="header-static">
+            <h1><i class="fas fa-fingerprint"></i> Compare Broadband With Static IP (UK 2026)</h1>
+            <div class="sub">Most connections use dynamic IPs – but for servers, remote access, CCTV, or advanced networking, a static IP is essential. We compare availability, costs, and when it’s worth paying extra.</div>
+            <div class="tags">
+                <span><i class="fas fa-check-circle"></i> static = fixed IP</span>
+                <span><i class="fas fa-check-circle"></i> business plans include it</span>
+                <span><i class="fas fa-check-circle"></i> £2–10/month extra</span>
+            </div>
+        </div>
+
+        <div class="main-static">
+            <!-- KPI grid -->
+            <div class="kpi-grid">
+                <div class="kpi-card"><span class="big">£2–10</span><span class="small">static add‑on</span></div>
+                <div class="kpi-card"><span class="big">FTTP</span><span class="small">best upload</span></div>
+                <div class="kpi-card"><span class="big">servers</span><span class="small">remote access</span></div>
+                <div class="kpi-card"><span class="big">CCTV</span><span class="small">simplifies</span></div>
+            </div>
+
+            <!-- what is static ip -->
+            <div class="section-title"><i class="fas fa-question-circle"></i> What is a static IP address?</div>
+            <p><strong>Dynamic IP</strong> – changes periodically, standard on home broadband. <strong>Static IP</strong> – fixed, permanent, allows direct remote access. Essential for hosting, VPN servers, remote systems, business VoIP, and CCTV.</p>
+
+            <!-- who needs it? -->
+            <div class="section-title"><i class="fas fa-user-check"></i> Who needs broadband with static IP?</div>
+            <div class="def-block">
+                <ul style="margin-left:1.2rem;">
+                    <li>Host a website/server from premises</li>
+                    <li>Run a VPN server for remote access</li>
+                    <li>Secure remote office systems</li>
+                    <li>Business‑grade VoIP / mail servers</li>
+                    <li>Remote CCTV management</li>
+                    <li>Advanced network config</li>
+                </ul>
+            </div>
+
+            <!-- residential vs business -->
+            <div class="section-title"><i class="fas fa-building"></i> Residential vs business static IP</div>
+            <div class="comp-row">
+                <div class="comp-card">
+                    <i class="fas fa-home"></i>
+                    <div class="title">Residential</div>
+                    <p>Limited providers, £2–6/month add‑on, no SLA. Suitable for tech‑savvy users, home labs, basic remote access.</p>
+                </div>
+                <div class="comp-card">
+                    <i class="fas fa-briefcase"></i>
+                    <div class="title">Business</div>
+                    <p>Often included or optional £0–10, with SLA & priority support. Ideal for offices, hosting, client‑facing ops.</p>
+                </div>
+            </div>
+
+            <!-- static IP and speed tiers table -->
+            <div class="section-title"><i class="fas fa-tachometer-alt"></i> Static IP & speed tiers</div>
+            <table class="mini-table">
+                <tr><th>Speed tier</th><th>Static IP availability</th></tr>
+                <tr><td>67 Mbps fibre</td><td>Sometimes (residential add‑on)</td></tr>
+                <tr><td>100–300 Mbps</td><td>Yes, most business plans</td></tr>
+                <tr><td>300–500 Mbps</td><td>Yes</td></tr>
+                <tr><td>1 Gbps+</td><td>Yes</td></tr>
+            </table>
+
+            <!-- upload speed matters -->
+            <div class="upload-note">
+                <i class="fas fa-upload" style="font-size:2rem; color:var(--electric); margin-right:1rem;"></i>
+                <strong>Why upload speed matters with static IP:</strong> Hosting services, large file transfers, remote workers. Standard fibre upload 10–20 Mbps, full fibre 100–900 Mbps. Full fibre strongly recommended.
+            </div>
+
+            <!-- static IP vs Dynamic DNS -->
+            <div class="section-title"><i class="fas fa-arrows-spin"></i> Static IP vs Dynamic DNS (DDNS)</div>
+            <div class="dns-block">
+                <p><strong>Dynamic DNS</strong> can work with changing IPs – but less stable, requires config, not ideal for mission‑critical. For reliable business use, static IP is safer.</p>
+            </div>
+
+            <!-- typical pricing grid -->
+            <div class="section-title"><i class="fas fa-pound-sign"></i> Typical UK pricing (static IP)</div>
+            <div class="price-grid">
+                <div class="price-item"><span class="label">Residential + static</span><span class="cost">£25–35</span><span>/mo</span></div>
+                <div class="price-item"><span class="label">Business fibre + static</span><span class="cost">£30–60</span><span>/mo excl. VAT</span></div>
+                <div class="price-item"><span class="label">Full fibre business + static</span><span class="cost">£40–70</span><span>/mo excl. VAT</span></div>
+            </div>
+
+            <!-- security note -->
+            <div class="section-title"><i class="fas fa-shield"></i> Is static IP more secure?</div>
+            <p>Not automatically – it's predictable, so you <em>must</em> configure firewalls properly. Consistency ≠ built‑in security.</p>
+
+            <!-- contract & checklist -->
+            <div class="section-title"><i class="fas fa-file-contract"></i> Contract length & key questions</div>
+            <p>Standard 12–36 months. Always compare: static IP add‑on cost, setup fees, SLA terms (for business).</p>
+            <div class="checklist">
+                <div class="item"><i class="fas fa-check-circle" style="color:var(--electric);"></i> Included or add‑on?</div>
+                <div class="item"><i class="fas fa-check-circle" style="color:var(--electric);"></i> IPv4 or IPv6?</div>
+                <div class="item"><i class="fas fa-check-circle" style="color:var(--electric);"></i> How many IPs?</div>
+                <div class="item"><i class="fas fa-check-circle" style="color:var(--electric);"></i> Reverse DNS supported?</div>
+                <div class="item"><i class="fas fa-check-circle" style="color:var(--electric);"></i> Upload speed guarantee?</div>
+            </div>
+
+            <!-- example saving -->
+            <div style="background:#e2ded3; border-radius:2rem 0.5rem; padding:1.5rem; margin:2rem 0;">
+                <i class="fas fa-calculator" style="color:var(--electric); font-size:2rem; margin-right:1rem;"></i>
+                <strong>Example saving:</strong> Old £55/mo business + static → new full fibre £42/mo <strong>inc. static</strong> = save £13/mo, faster speed, better upload.
+            </div>
+
+            <!-- FAQ -->
+            <div class="section-title"><i class="fas fa-question"></i> FAQs</div>
+            <div class="faq-list">
+                <details><summary>Can I get a static IP on residential broadband?</summary>Yes, some providers offer as paid add‑on (£2–6/mo).</details>
+                <details><summary>Do I need static IP for remote desktop?</summary>Not always – VPN or DDNS may work, but static simplifies.</details>
+                <details><summary>Is static IP required for CCTV access?</summary>Not strictly, but makes remote viewing much simpler.</details>
+                <details><summary>Is business broadband required for static IP?</summary>No, but it's more commonly available and supported with SLA.</details>
+                <details><summary>Does static IP slow down connection?</summary>No – speed depends on your broadband plan.</details>
+            </div>
+
+            <!-- why utility king -->
+            <div style="background:#f2ede4; border-radius:2rem 0.5rem; padding:1.5rem;">
+                <i class="fas fa-crown" style="color:var(--electric); font-size:1.8rem; margin-right:0.8rem;"></i>
+                <strong>Utility King approach:</strong> Compare static IP availability, upload speeds, FTTC vs FTTP, SLA protection, and total cost – so you get the right technical setup without overpaying.
+            </div>
+
+            <!-- final cta -->
+            <div class="cta-block">
+                <h2 style="font-size:2rem; color:var(--slate);">Ready to find broadband with static IP?</h2>
+                <p style="font-size:1.2rem; margin:1rem 0;">If your setup needs a fixed IP, better‑value options may be available in your postcode – with improved speed and reliability.</p>
+                <a href="https://www.utilityking.co.uk/contact.html" class="btn-static">
+                    <i class="fas fa-paper-plane"></i> Contact Utility King
+                </a>
+                <p style="margin-top:1rem; color:#617c88;"><i class="fas fa-info-circle"></i> We'll match you with the right static IP plan.</p>
+            </div>
+
+            <hr>
+            <p style="text-align:center; color:#6d898f;">©Utility King 2026 · Static IP broadband comparison · fully responsive</p>
+        </div> <!-- main-static -->
+    </div> <!-- guide -->
+</body>
+</html>
