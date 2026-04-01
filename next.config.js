@@ -57,11 +57,11 @@ const nextConfig = {
   },
   async redirects() {
     return [
-      {
-        source: '/:path((?!^$|api|public|_next/static|_next/image|favicon.ico).*)',
-        destination: '/',
-        permanent: false,
-      },
+     // {
+      //  source: '/:path((?!^$|api|public|_next/static|_next/image|favicon.ico).*)',
+      //  destination: '/',
+       // permanent: false,
+     // },
     ];
   },
 };
