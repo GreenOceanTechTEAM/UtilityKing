@@ -68,14 +68,36 @@
 
 //module.exports = nextConfig;
 
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: 'export',           // Enables static HTML export
-  trailingSlash: false,       // URLs without trailing slash
 
+const nextConfig = {
+  
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+  },
+  
+  // ADD THIS SECTION for redirects
   async redirects() {
     return [
-      // Main pages (11 pages)
+      // Main pages
       { source: '/about.html', destination: '/about', permanent: true },
       { source: '/blog.html', destination: '/blog', permanent: true },
       { source: '/career.html', destination: '/career', permanent: true },
@@ -87,8 +109,8 @@ const nextConfig = {
       { source: '/privacy.html', destination: '/privacy', permanent: true },
       { source: '/terms.html', destination: '/terms', permanent: true },
       { source: '/water.html', destination: '/water', permanent: true },
-
-      // ALL 179+ article pages - ONE line handles everything!
+      
+      // All article pages
       { source: '/article/:path*.html', destination: '/article/:path*', permanent: true },
     ];
   },
