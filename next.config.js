@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
-const nextConfig = {
-  /* config options here */
+ /*const nextConfig = {
+  
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -22,8 +22,8 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-  },
-  async rewrites() {
+  }, */
+/*  async rewrites() {
     return [
       {
         source: '/about',
@@ -54,14 +54,42 @@ const nextConfig = {
         destination: '/article/:slug.html',
       },
     ];
-  },
-  async redirects() {
-    return [
+  },*/
+//  async redirects() {
+  //  return [
      // {
       //  source: '/:path((?!^$|api|public|_next/static|_next/image|favicon.ico).*)',
       //  destination: '/',
        // permanent: false,
      // },
+  //  ];
+ // },
+//};
+
+//module.exports = nextConfig;
+
+/** @type {import('next').NextConfig} */
+const nextConfig = {
+  output: 'export',           // Enables static HTML export
+  trailingSlash: false,       // URLs without trailing slash
+
+  async redirects() {
+    return [
+      // Main pages (11 pages)
+      { source: '/about.html', destination: '/about', permanent: true },
+      { source: '/blog.html', destination: '/blog', permanent: true },
+      { source: '/career.html', destination: '/career', permanent: true },
+      { source: '/broadband.html', destination: '/broadband', permanent: true },
+      { source: '/contact.html', destination: '/contact', permanent: true },
+      { source: '/energy.html', destination: '/energy', permanent: true },
+      { source: '/faq.html', destination: '/faq', permanent: true },
+      { source: '/mobile.html', destination: '/mobile', permanent: true },
+      { source: '/privacy.html', destination: '/privacy', permanent: true },
+      { source: '/terms.html', destination: '/terms', permanent: true },
+      { source: '/water.html', destination: '/water', permanent: true },
+
+      // ALL 179+ article pages - ONE line handles everything!
+      { source: '/article/:path*.html', destination: '/article/:path*', permanent: true },
     ];
   },
 };
