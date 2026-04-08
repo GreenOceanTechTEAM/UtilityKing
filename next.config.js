@@ -70,7 +70,6 @@
 
 
 const nextConfig = {
-  
   typescript: {
     ignoreBuildErrors: true,
   },
@@ -94,10 +93,29 @@ const nextConfig = {
     ],
   },
   
-  // ADD THIS SECTION for redirects
+  // ADD THIS - to serve the actual HTML files
+  async rewrites() {
+    return [
+      // When someone requests /about, serve /about.html
+      { source: '/about', destination: '/about.html' },
+      { source: '/blog', destination: '/blog.html' },
+      { source: '/career', destination: '/career.html' },
+      { source: '/broadband', destination: '/broadband.html' },
+      { source: '/contact', destination: '/contact.html' },
+      { source: '/energy', destination: '/energy.html' },
+      { source: '/faq', destination: '/faq.html' },
+      { source: '/mobile', destination: '/mobile.html' },
+      { source: '/privacy', destination: '/privacy.html' },
+      { source: '/terms', destination: '/terms.html' },
+      { source: '/water', destination: '/water.html' },
+      // For all articles
+      { source: '/article/:path*', destination: '/article/:path*.html' },
+    ];
+  },
+  
   async redirects() {
     return [
-      // Main pages
+      // Redirect .html URLs to clean URLs
       { source: '/about.html', destination: '/about', permanent: true },
       { source: '/blog.html', destination: '/blog', permanent: true },
       { source: '/career.html', destination: '/career', permanent: true },
@@ -109,8 +127,6 @@ const nextConfig = {
       { source: '/privacy.html', destination: '/privacy', permanent: true },
       { source: '/terms.html', destination: '/terms', permanent: true },
       { source: '/water.html', destination: '/water', permanent: true },
-      
-      // All article pages
       { source: '/article/:path*.html', destination: '/article/:path*', permanent: true },
     ];
   },
